@@ -1,0 +1,15 @@
+using UnityEngine;
+
+namespace UnityShared.Demos.TrajectoryLine
+{
+    public class Rotator : MonoBehaviour
+    {
+        [SerializeField] private Vector3 _rot;
+
+
+        private void Update()
+        {
+            transform.Rotate(_rot * Time.deltaTime);
+        }
+    }
+}

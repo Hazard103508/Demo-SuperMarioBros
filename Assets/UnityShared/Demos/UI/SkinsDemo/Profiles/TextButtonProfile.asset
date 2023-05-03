@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f1bc639df6a26478c3a3c987f374f9, type: 3}
+  m_Name: TextButtonProfile
+  m_EditorClassIdentifier: 
+  RectTransform:
+    Size:
+      Width: 500
+      Height: 60
+    Rotation: 0
+    Scale: {x: 1, y: 1}
+  Image:
+    Sprite: {fileID: 21300000, guid: fb454916653821341b74296b25d98d0e, type: 3}
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Type: 1
+  TextMeshPro:
+    <FontAsset>k__BackingField: {fileID: 0}
+    <FontStyle>k__BackingField: 0
+    <FontSize>k__BackingField: 0
+    <AutoSize>k__BackingField: 0
+    <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}

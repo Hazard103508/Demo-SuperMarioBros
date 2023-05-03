@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PanelTransitionsSizeInOut_Controller
+  m_Controller: {fileID: 9100000, guid: eabe3b48a87b8334c88d3313ac31d14e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d83d7a3bb0dce7640b1bd99ffce9ae18, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 94a799b65cccb1640802ce0dc8ae5ed2, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7971b279d255ee642a30d7dd2060d637, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 07ae9297e56971143b578008be4d5a1f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c6eee86d2560a664f847cd5429b4bb0f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8f79140460746d942be248eaa43878ae, type: 2}

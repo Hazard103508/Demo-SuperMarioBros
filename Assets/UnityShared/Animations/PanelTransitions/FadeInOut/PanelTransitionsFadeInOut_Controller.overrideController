@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PanelTransitionsFadeInOut_Controller
+  m_Controller: {fileID: 9100000, guid: eabe3b48a87b8334c88d3313ac31d14e, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: d83d7a3bb0dce7640b1bd99ffce9ae18, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: efed17af6d4c9e64984ab9af5b0e1355, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 7971b279d255ee642a30d7dd2060d637, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1bef4ffd42487924dbc5e5b834d03d5c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c6eee86d2560a664f847cd5429b4bb0f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 829503e533b217c4f9001fe73825b21e, type: 2}
