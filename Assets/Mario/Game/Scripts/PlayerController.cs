@@ -58,6 +58,8 @@ namespace Mario.Game
                 X = UnityEngine.Input.GetAxisRaw("Horizontal"),
                 Run = UnityEngine.Input.GetKey(KeyCode.Z),
             };
+
+            print(Input.X);
         }
         private void MoveCharacter()
         {

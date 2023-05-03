@@ -1,3 +1,4 @@
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace Mario.Game
@@ -55,7 +56,7 @@ namespace Mario.Game
             }
 
             if (this.State == PlayerStates.Running)
-                _anim.speed = Mathf.Clamp(_player.SpeedFactor, 0.5f, 1);
+                _anim.speed = Mathf.Clamp(_player.SpeedFactor, 0.5f, 1.5f);
 
             //if (_player.JumpingThisFrame)
             //    this.State = PlayerStates.Jumping;
@@ -68,7 +69,8 @@ namespace Mario.Game
             else if (_playerGrounded && !_player.Grounded)
                 _playerGrounded = false;
 
-
+            var aux = UnityEngine.Input.GetAxisRaw("Horizontal");
+            print(aux);
         }
     }
     public enum PlayerStates
