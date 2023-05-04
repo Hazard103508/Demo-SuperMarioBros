@@ -48,7 +48,7 @@ namespace Mario.Game
             {
                 if (_player.Input.X != 0)
                 {
-                    this.State = Mathf.Sign(_player.RawMovement.x) != Mathf.Sign(_player.Input.X) ? PlayerStates.StoppingRun : PlayerStates.Running;
+                    this.State = _player.RawMovement.x != 0 && Mathf.Sign(_player.RawMovement.x) != Mathf.Sign(_player.Input.X) ? PlayerStates.StoppingRun : PlayerStates.Running;
                     transform.localScale = new Vector3(_player.Input.X > 0 ? 1 : -1, 1, 1);
                 }
                 else
@@ -68,9 +68,6 @@ namespace Mario.Game
             }
             else if (_playerGrounded && !_player.Grounded)
                 _playerGrounded = false;
-
-            var aux = UnityEngine.Input.GetAxisRaw("Horizontal");
-            print(aux);
         }
     }
     public enum PlayerStates
