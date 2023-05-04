@@ -14,13 +14,12 @@ namespace Mario.Game
     {
         [SerializeField] private PlayerProfile playerProfile;
 
-        private Vector2 _currentSpeed;
         private ControllerVariables _controllerVariables;
 
 
         public PlayerInput Input { get; private set; }
         public Vector3 RawMovement { get; private set; }
-        public float SpeedFactor => Mathf.Abs(_currentSpeed.x) / playerProfile.Walk.MaxSpeed;
+        public float SpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / playerProfile.Walk.MaxSpeed;
         public bool Grounded { get; private set; }
 
 
@@ -36,11 +35,11 @@ namespace Mario.Game
 
             GatherInput();
             RunCollisionChecks();
-            
 
-            CalculateWalk();
+            CalculateWalk();    // Horizontal movement
+            CalculateGravity(); // Vertical movement
 
-            MoveCharacter();
+            MoveCharacter();    // Actually perform the axis movement
         }
 
         private void CalculateWalk()
@@ -48,22 +47,22 @@ namespace Mario.Game
             if (Input.X != 0)
             {
                 float currentAcceleration = Input.Run ? playerProfile.Run.Acceleration : playerProfile.Walk.Acceleration;
-                _currentSpeed.x += Input.X * currentAcceleration * Time.deltaTime;
+                _controllerVariables.currentSpeed.x += Input.X * currentAcceleration * Time.deltaTime;
 
                 float currentSpeed = Input.Run ? playerProfile.Run.MaxSpeed : playerProfile.Walk.MaxSpeed;
-                _currentSpeed.x = Mathf.Clamp(_currentSpeed.x, -currentSpeed, currentSpeed);
+                _controllerVariables.currentSpeed.x = Mathf.Clamp(_controllerVariables.currentSpeed.x, -currentSpeed, currentSpeed);
             }
             else
             {
                 float currentDeacceleration = Input.Run ? playerProfile.Run.Deacceleration : playerProfile.Walk.Deacceleration;
-                _currentSpeed.x = Mathf.MoveTowards(_currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
+                _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
 
-            if (_currentSpeed.x > 0 && _controllerVariables.collitionBounds.right || _currentSpeed.x < 0 && _controllerVariables.collitionBounds.left)
+            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.collitionBounds.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.collitionBounds.left)
             {
                 // Don't walk through walls
-                _currentSpeed.x = 0;
+                _controllerVariables.currentSpeed.x = 0;
             }
         }
         private void GatherInput()
@@ -78,7 +77,7 @@ namespace Mario.Game
         }
         private void MoveCharacter()
         {
-            RawMovement = _currentSpeed;
+            RawMovement = _controllerVariables.currentSpeed;
             transform.position += RawMovement * Time.deltaTime;
         }
 
@@ -91,7 +90,7 @@ namespace Mario.Game
             // Ground
             //LandingThisFrame = false;
 
-            var groundedCheck = RunCollitionDetection(rayBounds.bottom);
+            //var groundedCheck = RunCollitionDetection(rayBounds.bottom);
             //if (_collitionBounds.bottom && !groundedCheck)
             //    _timeLeftGrounded = Time.time; // Only trigger when first leaving
 
@@ -100,8 +99,9 @@ namespace Mario.Game
             //    _coyoteUsable = true; // Only trigger when first touching
             //    LandingThisFrame = true;
             //}
-            
-            _controllerVariables.collitionBounds.bottom = groundedCheck;
+
+            _controllerVariables.collitionBounds.bottom = RunCollitionDetection(rayBounds.bottom);
+            //_controllerVariables.collitionBounds.bottom = groundedCheck;
             _controllerVariables.collitionBounds.top = RunCollitionDetection(rayBounds.top);
             _controllerVariables.collitionBounds.left = RunCollitionDetection(rayBounds.left);
             _controllerVariables.collitionBounds.right = RunCollitionDetection(rayBounds.right);
@@ -132,14 +132,31 @@ namespace Mario.Game
             var render = GetComponent<SpriteRenderer>();
             _controllerVariables.spriteSize = render.sprite.bounds.size;
         }
+        private void CalculateGravity()
+        {
+            if (_controllerVariables.collitionBounds.bottom)
+            {
+                if (_controllerVariables.currentSpeed.y < 0)
+                    _controllerVariables.currentSpeed.y = 0;
+            }
+            else
+            {
+                _controllerVariables.currentSpeed.y -= playerProfile.Fall.FallSpeed;
+
+                if (_controllerVariables.currentSpeed.y < -playerProfile.Fall.MaxFallSpeed)
+                    _controllerVariables.currentSpeed.y = -playerProfile.Fall.MaxFallSpeed;
+            }
+        }
     }
     internal class ControllerVariables
     {
-        public Vector2 spriteSize;
         public int detectorCount = 3;
-        public float detectionRayLength = 0.1f;
+        public float detectionRayLength = 0.05f;
         public float rayBuffer = 0.1f;
+
         public Bounds<bool> collitionBounds = new Bounds<bool>();
+        public Vector2 currentSpeed;
+        public Vector2 spriteSize;
     }
     public class PlayerInput
     {
