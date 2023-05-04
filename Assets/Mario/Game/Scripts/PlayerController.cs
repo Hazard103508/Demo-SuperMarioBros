@@ -78,7 +78,15 @@ namespace Mario.Game
         private void MoveCharacter()
         {
             RawMovement = _controllerVariables.currentSpeed;
-            transform.position += RawMovement * Time.deltaTime;
+            var nextPosition = transform.position + RawMovement * Time.deltaTime;
+            if (RawMovement.y == 0)
+            {
+                float fixPos = (int)nextPosition.y + 0.5f;
+                float dif = fixPos - nextPosition.y;
+                nextPosition.y = nextPosition.y + dif; // ajusto diferencia en posicion del personaje
+            }
+
+            transform.position = nextPosition;
         }
 
 
@@ -120,7 +128,8 @@ namespace Mario.Game
             var b = new Bounds(transform.position, _controllerVariables.spriteSize);
             return new Bounds<RayRange>()
             {
-                bottom = new RayRange(b.min.x + _controllerVariables.rayBuffer, b.min.y, b.max.x - _controllerVariables.rayBuffer, b.min.y, Vector2.down),
+                //bottom = new RayRange(b.min.x + _controllerVariables.rayBuffer, b.min.y, b.max.x - _controllerVariables.rayBuffer, b.min.y, Vector2.down),
+                bottom = new RayRange(b.min.x, b.min.y, b.max.x, b.min.y, Vector2.down),
                 top = new RayRange(b.min.x + _controllerVariables.rayBuffer, b.max.y, b.max.x - _controllerVariables.rayBuffer, b.max.y, Vector2.up),
                 left = new RayRange(b.min.x, b.min.y + _controllerVariables.rayBuffer, b.min.x, b.max.y - _controllerVariables.rayBuffer, Vector2.left),
                 right = new RayRange(b.max.x, b.min.y + _controllerVariables.rayBuffer, b.max.x, b.max.y - _controllerVariables.rayBuffer, Vector2.right),
@@ -151,7 +160,7 @@ namespace Mario.Game
     internal class ControllerVariables
     {
         public int detectorCount = 3;
-        public float detectionRayLength = 0.05f;
+        public float detectionRayLength = 0.1f;
         public float rayBuffer = 0.1f;
 
         public Bounds<bool> collitionBounds = new Bounds<bool>();
