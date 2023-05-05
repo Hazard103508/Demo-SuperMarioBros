@@ -27,8 +27,6 @@ namespace Mario.Game
                     Skin.HashIdIdle;
 
                 _anim.CrossFade(hashId, 0, 0);
-
-
             }
         }
         public PlayerSkin Skin { get; set; }

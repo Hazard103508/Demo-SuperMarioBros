@@ -7,6 +7,7 @@ using UnityEditorInternal;
 using UnityEngine;
 using UnityShared.Behaviours.Controllers.Players.TarodevController;
 using UnityShared.Commons.Structs;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Mario.Game
 {
@@ -52,7 +53,8 @@ namespace Mario.Game
                 float currentSpeed = Input.Run ? playerProfile.Run.MaxSpeed : playerProfile.Walk.MaxSpeed;
                 _controllerVariables.currentSpeed.x = Mathf.Clamp(_controllerVariables.currentSpeed.x, -currentSpeed, currentSpeed);
             }
-            else
+
+            if (RawMovement.x != 0 && (Input.X == 0 || Mathf.Sign(RawMovement.x) != Mathf.Sign(Input.X)))
             {
                 float currentDeacceleration = Input.Run ? playerProfile.Run.Deacceleration : playerProfile.Walk.Deacceleration;
                 _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
@@ -60,10 +62,7 @@ namespace Mario.Game
 
 
             if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.collitionBounds.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.collitionBounds.left)
-            {
-                // Don't walk through walls
-                _controllerVariables.currentSpeed.x = 0;
-            }
+                _controllerVariables.currentSpeed.x = 0; // Don't walk through walls
         }
         private void GatherInput()
         {
