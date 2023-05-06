@@ -1,14 +1,8 @@
 using Mario.Game.ScriptableObjects;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
-using Unity.VisualScripting;
-using UnityEditorInternal;
 using UnityEngine;
-using UnityEngine.Windows;
-using UnityShared.Behaviours.Controllers.Players.TarodevController;
 using UnityShared.Commons.Structs;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Mario.Game
 {
@@ -75,7 +69,7 @@ namespace Mario.Game
                 Run = UnityEngine.Input.GetKey(KeyCode.Z),
             };
 
-            if (!_jumpDown && Input.JumpDown)
+            if (Grounded && !_jumpDown && Input.JumpDown)
                 _lastJumpPressed = Time.time;
         }
         private void MoveCharacter()
@@ -117,8 +111,7 @@ namespace Mario.Game
             var b = new Bounds(transform.position, _controllerVariables.spriteSize);
             return new Bounds<RayRange>()
             {
-                //bottom = new RayRange(b.min.x + _controllerVariables.rayBuffer, b.min.y, b.max.x - _controllerVariables.rayBuffer, b.min.y, Vector2.down),
-                bottom = new RayRange(b.min.x, b.min.y, b.max.x, b.min.y, Vector2.down),
+                bottom = new RayRange(b.min.x + _controllerVariables.bottomRayBuffer, b.min.y, b.max.x - _controllerVariables.bottomRayBuffer, b.min.y, Vector2.down),
                 top = new RayRange(b.min.x + _controllerVariables.rayBuffer, b.max.y, b.max.x - _controllerVariables.rayBuffer, b.max.y, Vector2.up),
                 left = new RayRange(b.min.x, b.min.y + _controllerVariables.rayBuffer, b.min.x, b.max.y - _controllerVariables.rayBuffer, Vector2.left),
                 right = new RayRange(b.max.x, b.min.y + _controllerVariables.rayBuffer, b.max.x, b.max.y - _controllerVariables.rayBuffer, Vector2.right),
@@ -132,6 +125,7 @@ namespace Mario.Game
         }
         private void CalculateGravity()
         {
+            _controllerVariables.currentSpeed.y -= playerProfile.Fall.FallSpeed * Time.deltaTime;
             if (Grounded)
             {
                 if (_controllerVariables.currentSpeed.y < 0)
@@ -139,8 +133,6 @@ namespace Mario.Game
             }
             else
             {
-                _controllerVariables.currentSpeed.y -= playerProfile.Fall.FallSpeed * Time.deltaTime;
-
                 if (_controllerVariables.currentSpeed.y < -playerProfile.Fall.MaxFallSpeed)
                     _controllerVariables.currentSpeed.y = -playerProfile.Fall.MaxFallSpeed;
             }
@@ -149,15 +141,30 @@ namespace Mario.Game
         public float MaxJumpSpeed = 12;
         public float jumpSpeed = 300;
         public float jumpMinBuffer = 0.05f;
-        public float jumpMaxBuffer = 0.2f;
+        public float jumpMaxBuffer = 0.25f;
+        public float jumpMaxRunBuffer = 0.35f;
         private float _lastJumpPressed;
 
         private bool MinBufferedJump => _lastJumpPressed + jumpMinBuffer > Time.time;
-        private bool MaxBufferedJump => _lastJumpPressed + jumpMaxBuffer > Time.time;
+        private bool MaxBufferedJump
+        {
+            get
+            {
+                float absCurrentSpeed = Mathf.Abs(_controllerVariables.currentSpeed.x);
+                if (absCurrentSpeed > playerProfile.Walk.MaxSpeed)
+                {
+                    float maxSpeedDif = playerProfile.Run.MaxSpeed - playerProfile.Walk.MaxSpeed;
+                    float runSpeedDif = absCurrentSpeed - playerProfile.Walk.MaxSpeed;
+                    float runSpeedFactor = runSpeedDif / maxSpeedDif;
+                    return _lastJumpPressed + (jumpMaxRunBuffer * runSpeedFactor) > Time.time;
+                }
+                else
+                    return _lastJumpPressed + jumpMaxBuffer > Time.time;
+            }
+        }
 
         private void CalculateJump()
         {
-            //if (Input.JumpDown || MinBufferedJump)
             if (MinBufferedJump || (Input.JumpDown && MaxBufferedJump))
                 _controllerVariables.currentSpeed.y += jumpSpeed * Time.deltaTime;
 
@@ -175,7 +182,8 @@ namespace Mario.Game
     {
         public int detectorCount = 3;
         public float detectionRayLength = 0.1f;
-        public float rayBuffer = 0.1f;
+        public float rayBuffer = 0.15f;
+        public float bottomRayBuffer = 0.05f;
 
         public Bounds<bool> collitionBounds = new Bounds<bool>();
         public Vector2 currentSpeed;

@@ -58,9 +58,9 @@ namespace Mario.Game
             if (_player.RawMovement.y > 0)
                 this.State = PlayerStates.Jumping;
 
-            if(_player.Grounded && this.State != PlayerStates.Running)
+            if (_player.RawMovement.y == 0 && this.State == PlayerStates.Jumping)
                 this.State = PlayerStates.Idle;
-        }   
+        }
     }
     public enum PlayerStates
     {

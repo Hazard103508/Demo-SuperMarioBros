@@ -7206,6 +7206,7 @@ MonoBehaviour:
   MaxJumpSpeed: 12
   jumpSpeed: 300
   jumpMinBuffer: 0.05
+  jumpMaxBuffer: 0.25
 --- !u!114 &6432609861401994336
 MonoBehaviour:
   m_ObjectHideFlags: 0
