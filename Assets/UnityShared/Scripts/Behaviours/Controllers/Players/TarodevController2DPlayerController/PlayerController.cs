@@ -53,14 +53,16 @@ namespace UnityShared.Behaviours.Controllers.Players.TarodevController
 
         private void GatherInput()
         {
+            var _jumpDown = Input.JumpDown;
             Input = new FrameInput
             {
                 JumpDown = UnityEngine.Input.GetButtonDown("Jump"),
                 JumpUp = UnityEngine.Input.GetButtonUp("Jump"),
                 X = UnityEngine.Input.GetAxisRaw("Horizontal")
             };
-            if (Input.JumpDown)
+            if (!_jumpDown && Input.JumpDown)
             {
+                print("Saltando");
                 _lastJumpPressed = Time.time;
             }
         }

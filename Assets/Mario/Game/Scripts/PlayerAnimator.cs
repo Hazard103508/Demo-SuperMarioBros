@@ -8,7 +8,6 @@ namespace Mario.Game
         [SerializeField] private Animator _anim;
 
         private PlayerController _player;
-        private bool _playerGrounded;
         private PlayerStates _state;
 
         public PlayerStates State
@@ -42,7 +41,7 @@ namespace Mario.Game
         {
             if (_player == null) return;
 
-            if (_player.Grounded)
+            if (this.State != PlayerStates.Jumping)
             {
                 if (_player.Input.X != 0)
                 {
@@ -56,17 +55,12 @@ namespace Mario.Game
             if (this.State == PlayerStates.Running)
                 _anim.speed = Mathf.Clamp(_player.SpeedFactor, 0.5f, 1.5f);
 
-            //if (_player.JumpingThisFrame)
-            //    this.State = PlayerStates.Jumping;
+            if (_player.RawMovement.y > 0)
+                this.State = PlayerStates.Jumping;
 
-            if (!_playerGrounded && _player.Grounded)
-            {
+            if(_player.Grounded && this.State != PlayerStates.Running)
                 this.State = PlayerStates.Idle;
-                _playerGrounded = true;
-            }
-            else if (_playerGrounded && !_player.Grounded)
-                _playerGrounded = false;
-        }
+        }   
     }
     public enum PlayerStates
     {

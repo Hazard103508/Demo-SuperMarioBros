@@ -5,6 +5,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Windows;
 using UnityShared.Behaviours.Controllers.Players.TarodevController;
 using UnityShared.Commons.Structs;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -21,7 +22,7 @@ namespace Mario.Game
         public PlayerInput Input { get; private set; }
         public Vector3 RawMovement { get; private set; }
         public float SpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / playerProfile.Walk.MaxSpeed;
-        public bool Grounded { get; private set; }
+        public bool Grounded => _controllerVariables.collitionBounds.bottom;
 
 
         private void Awake()
@@ -32,13 +33,13 @@ namespace Mario.Game
         }
         private void Update()
         {
-            Grounded = true; // harcodeado por ahora
 
             GatherInput();
             RunCollisionChecks();
 
             CalculateWalk();    // Horizontal movement
             CalculateGravity(); // Vertical movement
+            CalculateJump();
 
             MoveCharacter();    // Actually perform the axis movement
         }
@@ -66,13 +67,16 @@ namespace Mario.Game
         }
         private void GatherInput()
         {
+            var _jumpDown = Input.JumpDown;
             Input = new PlayerInput
             {
-                JumpDown = UnityEngine.Input.GetKeyDown(KeyCode.X),
-                JumpUp = UnityEngine.Input.GetKeyUp(KeyCode.X),
+                JumpDown = UnityEngine.Input.GetKey(KeyCode.X),
                 X = UnityEngine.Input.GetAxisRaw("Horizontal"),
                 Run = UnityEngine.Input.GetKey(KeyCode.Z),
             };
+
+            if (!_jumpDown && Input.JumpDown)
+                _lastJumpPressed = Time.time;
         }
         private void MoveCharacter()
         {
@@ -94,21 +98,7 @@ namespace Mario.Game
         {
             var rayBounds = CalculateRayRanged(); // Generate ray ranges. 
 
-            // Ground
-            //LandingThisFrame = false;
-
-            //var groundedCheck = RunCollitionDetection(rayBounds.bottom);
-            //if (_collitionBounds.bottom && !groundedCheck)
-            //    _timeLeftGrounded = Time.time; // Only trigger when first leaving
-
-            //else if (!_colDown && groundedCheck)
-            //{
-            //    _coyoteUsable = true; // Only trigger when first touching
-            //    LandingThisFrame = true;
-            //}
-
             _controllerVariables.collitionBounds.bottom = RunCollitionDetection(rayBounds.bottom);
-            //_controllerVariables.collitionBounds.bottom = groundedCheck;
             _controllerVariables.collitionBounds.top = RunCollitionDetection(rayBounds.top);
             _controllerVariables.collitionBounds.left = RunCollitionDetection(rayBounds.left);
             _controllerVariables.collitionBounds.right = RunCollitionDetection(rayBounds.right);
@@ -142,17 +132,42 @@ namespace Mario.Game
         }
         private void CalculateGravity()
         {
-            if (_controllerVariables.collitionBounds.bottom)
+            if (Grounded)
             {
                 if (_controllerVariables.currentSpeed.y < 0)
                     _controllerVariables.currentSpeed.y = 0;
             }
             else
             {
-                _controllerVariables.currentSpeed.y -= playerProfile.Fall.FallSpeed;
+                _controllerVariables.currentSpeed.y -= playerProfile.Fall.FallSpeed * Time.deltaTime;
 
                 if (_controllerVariables.currentSpeed.y < -playerProfile.Fall.MaxFallSpeed)
                     _controllerVariables.currentSpeed.y = -playerProfile.Fall.MaxFallSpeed;
+            }
+        }
+
+        public float MaxJumpSpeed = 12;
+        public float jumpSpeed = 300;
+        public float jumpMinBuffer = 0.05f;
+        public float jumpMaxBuffer = 0.2f;
+        private float _lastJumpPressed;
+
+        private bool MinBufferedJump => _lastJumpPressed + jumpMinBuffer > Time.time;
+        private bool MaxBufferedJump => _lastJumpPressed + jumpMaxBuffer > Time.time;
+
+        private void CalculateJump()
+        {
+            //if (Input.JumpDown || MinBufferedJump)
+            if (MinBufferedJump || (Input.JumpDown && MaxBufferedJump))
+                _controllerVariables.currentSpeed.y += jumpSpeed * Time.deltaTime;
+
+            if (_controllerVariables.currentSpeed.y > MaxJumpSpeed)
+                _controllerVariables.currentSpeed.y = MaxJumpSpeed;
+
+            if (_controllerVariables.collitionBounds.top)
+            {
+                if (_controllerVariables.currentSpeed.y > 0)
+                    _controllerVariables.currentSpeed.y = 0;
             }
         }
     }
@@ -170,7 +185,7 @@ namespace Mario.Game
     {
         public float X { get; set; }
         public bool JumpDown { get; set; }
-        public bool JumpUp { get; set; }
+        //public bool JumpUp { get; set; }
         public bool Run { get; set; }
     }
     public struct RayRange

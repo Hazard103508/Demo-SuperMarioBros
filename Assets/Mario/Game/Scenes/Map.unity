@@ -7183,7 +7183,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6432609861401994333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 6.5, z: 0}
+  m_LocalPosition: {x: 1.5, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7203,8 +7203,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerProfile: {fileID: 11400000, guid: 629a99770e243da45a5c7163e52df944, type: 2}
-  _fallClamp: -14.5
-  _fallSpeed: 1
+  MaxJumpSpeed: 12
+  jumpSpeed: 300
+  jumpMinBuffer: 0.05
 --- !u!114 &6432609861401994336
 MonoBehaviour:
   m_ObjectHideFlags: 0
