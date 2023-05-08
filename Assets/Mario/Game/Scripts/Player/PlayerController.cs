@@ -1,6 +1,11 @@
+using Mario.Game.Enums;
+using Mario.Game.Interfaces;
+using Mario.Game.Props;
 using Mario.Game.ScriptableObjects;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -52,8 +57,9 @@ namespace Mario.Game.Player
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
+            MoveCharacter();
 
-            MoveCharacter();    // Actually perform the axis movement
+            EvaluateHit();
         }
         #endregion
 
@@ -75,10 +81,10 @@ namespace Mario.Game.Player
         {
             var rayBounds = CalculateRayRanged(); // Generate ray ranges. 
 
-            _controllerVariables.collitionBounds.bottom = CalculateCollisionDetection(rayBounds.bottom);
-            _controllerVariables.collitionBounds.top = CalculateCollisionDetection(rayBounds.top);
-            _controllerVariables.collitionBounds.left = CalculateCollisionDetection(rayBounds.left);
-            _controllerVariables.collitionBounds.right = CalculateCollisionDetection(rayBounds.right);
+            _controllerVariables.collitionBounds.bottom = CalculateCollisionDetection(rayBounds.bottom, out _controllerVariables.hits.bottom);
+            _controllerVariables.collitionBounds.top = CalculateCollisionDetection(rayBounds.top, out _controllerVariables.hits.top);
+            _controllerVariables.collitionBounds.left = CalculateCollisionDetection(rayBounds.left, out _controllerVariables.hits.left);
+            _controllerVariables.collitionBounds.right = CalculateCollisionDetection(rayBounds.right, out _controllerVariables.hits.right);
         }
         private void CalculateWalk()
         {
@@ -145,10 +151,38 @@ namespace Mario.Game.Player
 
             transform.position = nextPosition;
         }
+        private void EvaluateHit()
+        {
+            foreach (GameObject obj in _controllerVariables.hits.top)
+            {
+                if (HitObjectTop<Brick>(Tags.Brick, obj)) continue;
+
+            }
+        }
+        private bool HitObjectTop<T>(Tags tag, GameObject obj) where T : MonoBehaviour, ITopHitable
+        {
+            if (obj.CompareTag(tag.ToString()))
+            {
+                T script = obj.GetComponent<T>();
+                script.HitTop(this);
+                return true;
+            }
+
+            return false;
+        }
         #endregion
 
         #region Other Methods
-        private bool CalculateCollisionDetection(RayRange range) => EvaluateRayPositions(range).Any(point => Physics2D.Raycast(point, range.Dir, _controllerVariables.detectionRayLength, playerProfile.GroundLayer));
+        private bool CalculateCollisionDetection(RayRange range, out List<GameObject> hits)
+        {
+            hits = EvaluateRayPositions(range)
+                .Select(point => Physics2D.Raycast(point, range.Dir, _controllerVariables.detectionRayLength, playerProfile.GroundLayer))
+                .Where(hit => hit.collider != null)
+                .Select(hit => hit.collider.gameObject)
+                .ToList();
+
+            return hits.Any();
+        }
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
         {
             for (var i = 0; i < _controllerVariables.detectorCount; i++)
@@ -183,6 +217,7 @@ namespace Mario.Game.Player
             public float rayBuffer = 0.15f;
             public float bottomRayBuffer = 0.05f;
 
+            public Bounds<List<GameObject>> hits = new Bounds<List<GameObject>>();
             public Bounds<bool> collitionBounds = new Bounds<bool>();
             public Vector2 currentSpeed;
             public Vector2 spriteSize;

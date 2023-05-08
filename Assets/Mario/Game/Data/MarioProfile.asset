@@ -26,3 +26,9 @@ MonoBehaviour:
   Fall:
     FallSpeed: 60
     MaxFallSpeed: 14.5
+  Jump:
+    Acceleration: 300
+    MaxSpeed: 12
+    MinBufferTime: 0.05
+    MaxWalkBufferTime: 0.25
+    MaxRunBufferTime: 0.35
