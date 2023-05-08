@@ -53,12 +53,12 @@ namespace Mario.Game
             }
 
             if (this.State == PlayerStates.Running)
-                _anim.speed = Mathf.Clamp(_player.SpeedFactor, 0.5f, 1.5f);
+                _anim.speed = Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
 
             if (_player.RawMovement.y > 0)
                 this.State = PlayerStates.Jumping;
 
-            if (_player.RawMovement.y == 0 && this.State == PlayerStates.Jumping)
+            if (_player.RawMovement.y == 0 && this.State == PlayerStates.Jumping && _player.IsGrounded)
                 this.State = PlayerStates.Idle;
         }
     }

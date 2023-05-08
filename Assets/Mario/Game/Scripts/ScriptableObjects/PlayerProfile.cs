@@ -10,6 +10,7 @@ namespace Mario.Game.ScriptableObjects
         public HorizontalMovement Walk;
         public HorizontalMovement Run;
         public VerticalMovement Fall;
+        public JumpMovement Jump;
 
         [Serializable]
         public class HorizontalMovement
@@ -23,6 +24,15 @@ namespace Mario.Game.ScriptableObjects
         {
             public float FallSpeed;
             public float MaxFallSpeed;
+        }
+        [Serializable]
+        public class JumpMovement
+        {
+            public float Acceleration;
+            public float MaxSpeed;
+            public float MinBufferTime;
+            public float MaxWalkBufferTime;
+            public float MaxRunBufferTime;
         }
     }
 }

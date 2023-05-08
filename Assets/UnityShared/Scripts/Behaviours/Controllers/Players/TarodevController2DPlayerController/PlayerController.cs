@@ -1,7 +1,7 @@
-using Mario.Game;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace UnityShared.Behaviours.Controllers.Players.TarodevController
 {
