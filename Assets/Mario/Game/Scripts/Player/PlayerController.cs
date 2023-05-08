@@ -4,7 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
-namespace Mario.Game
+namespace Mario.Game.Player
 {
     public class PlayerController : MonoBehaviour
     {

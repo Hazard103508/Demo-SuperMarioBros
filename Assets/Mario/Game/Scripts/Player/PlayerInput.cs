@@ -1,4 +1,4 @@
-namespace Mario.Game
+namespace Mario.Game.Player
 {
     public class PlayerInput
     {

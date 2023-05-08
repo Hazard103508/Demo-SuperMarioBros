@@ -1,7 +1,6 @@
-using UnityEditorInternal;
 using UnityEngine;
 
-namespace Mario.Game
+namespace Mario.Game.Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
