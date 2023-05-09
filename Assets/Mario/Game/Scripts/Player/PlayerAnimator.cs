@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 namespace Mario.Game.Player
@@ -22,6 +23,7 @@ namespace Mario.Game.Player
                     State == PlayerStates.Jumping ? Skin.HashIdJump :
                     State == PlayerStates.StoppingRun ? Skin.HashIdStop :
                     State == PlayerStates.Running ? Skin.HashIdRun :
+                    State == PlayerStates.PowerUp ? Skin.HashIdPowerUp :
                     Skin.HashIdIdle;
 
                 _anim.CrossFade(hashId, 0, 0);
@@ -59,6 +61,10 @@ namespace Mario.Game.Player
 
             if (_player.RawMovement.y == 0 && this.State == PlayerStates.Jumping && _player.IsGrounded)
                 this.State = PlayerStates.Idle;
+
+            // TEMPORAL...
+            if (Input.GetKeyDown(KeyCode.Space))
+                this.State = PlayerStates.PowerUp;
         }
     }
     public enum PlayerStates
@@ -66,7 +72,8 @@ namespace Mario.Game.Player
         Idle,
         Jumping,
         Running,
-        StoppingRun
+        StoppingRun,
+        PowerUp,
     }
     public class PlayerSkin
     {
@@ -88,6 +95,7 @@ namespace Mario.Game.Player
             HashIdJump = Animator.StringToHash("Small_Jump");
             HashIdStop = Animator.StringToHash("Small_Stop");
             HashIdRun = Animator.StringToHash("Small_Run");
+            HashIdPowerUp = Animator.StringToHash("Small_PowerUp");
         }
     }
     public class PlayerSkinBig : PlayerSkin

@@ -48,7 +48,7 @@ namespace Mario.Game.Player
         private void Update()
         {
             GatherInput();
-            
+
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
@@ -135,10 +135,10 @@ namespace Mario.Game.Player
             // fuerzo ajuste de posicion en los lados de los bloques 
             if (!_controllerVariables.ProximityHit.bottom)
             {
-              if (!_controllerVariables.ProximityHit.left && _controllerVariables.ProximityHit.right)
-                  nextPosition.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-              if (!_controllerVariables.ProximityHit.right && _controllerVariables.ProximityHit.left)
-                  nextPosition.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+                if (!_controllerVariables.ProximityHit.left && _controllerVariables.ProximityHit.right)
+                    nextPosition.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+                if (!_controllerVariables.ProximityHit.right && _controllerVariables.ProximityHit.left)
+                    nextPosition.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
             }
 
             transform.position = nextPosition;
