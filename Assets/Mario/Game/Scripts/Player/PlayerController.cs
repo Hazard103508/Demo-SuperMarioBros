@@ -2,6 +2,7 @@ using Mario.Game.Enums;
 using Mario.Game.Interfaces;
 using Mario.Game.Props;
 using Mario.Game.ScriptableObjects;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Mario.Game.Player
         public PlayerInput Input { get; private set; }
         public Vector3 RawMovement { get; private set; }
         public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / playerProfile.Walk.MaxSpeed;
-        public bool IsGrounded => _controllerVariables.collitionBounds.bottom;
+        public bool IsGrounded => _controllerVariables.collisionProximity.bottom;
         private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + playerProfile.Jump.MinBufferTime > Time.time;
         private bool JumpMaxBuffered
         {
@@ -79,12 +80,16 @@ namespace Mario.Game.Player
         }
         private void CalculateCollision()
         {
-            var rayBounds = CalculateRayRanged(); // Generate ray ranges. 
+            var rayProximityBounds = CalculateProximityRayRanged();
 
-            _controllerVariables.collitionBounds.bottom = CalculateCollisionDetection(rayBounds.bottom, out _controllerVariables.hits.bottom);
-            _controllerVariables.collitionBounds.top = CalculateCollisionDetection(rayBounds.top, out _controllerVariables.hits.top);
-            _controllerVariables.collitionBounds.left = CalculateCollisionDetection(rayBounds.left, out _controllerVariables.hits.left);
-            _controllerVariables.collitionBounds.right = CalculateCollisionDetection(rayBounds.right, out _controllerVariables.hits.right);
+            _controllerVariables.collisionProximity.bottom = CalculateCollisionDetection(rayProximityBounds.bottom, out _controllerVariables.hits.bottom);
+            _controllerVariables.collisionProximity.top = CalculateCollisionDetection(rayProximityBounds.top, out _controllerVariables.hits.top);
+            _controllerVariables.collisionProximity.left = CalculateCollisionDetection(rayProximityBounds.left, out _controllerVariables.hits.left);
+            _controllerVariables.collisionProximity.right = CalculateCollisionDetection(rayProximityBounds.right, out _controllerVariables.hits.right);
+
+            var rayCurrentBounds = CalculateCurrentRayRanged();
+            _controllerVariables.currentCollision.left = CalculateCollisionDetection(rayCurrentBounds.left, out _);
+            _controllerVariables.currentCollision.right = CalculateCollisionDetection(rayCurrentBounds.right, out _);
         }
         private void CalculateWalk()
         {
@@ -103,8 +108,7 @@ namespace Mario.Game.Player
                 _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
-
-            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.collitionBounds.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.collitionBounds.left)
+            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.collisionProximity.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.collisionProximity.left)
                 _controllerVariables.currentSpeed.x = 0; // Don't walk through walls
         }
         private void CalculateGravity()
@@ -129,7 +133,7 @@ namespace Mario.Game.Player
             if (_controllerVariables.currentSpeed.y > playerProfile.Jump.MaxSpeed)
                 _controllerVariables.currentSpeed.y = playerProfile.Jump.MaxSpeed;
 
-            if (_controllerVariables.collitionBounds.top)
+            if (_controllerVariables.collisionProximity.top)
             {
                 if (_controllerVariables.currentSpeed.y > 0)
                 {
@@ -138,6 +142,7 @@ namespace Mario.Game.Player
                 }
             }
         }
+
         private void MoveCharacter()
         {
             RawMovement = _controllerVariables.currentSpeed;
@@ -147,6 +152,15 @@ namespace Mario.Game.Player
                 float fixPos = (int)nextPosition.y + 0.5f;
                 float dif = fixPos - nextPosition.y;
                 nextPosition.y = nextPosition.y + dif; // ajusto diferencia en posicion del personaje
+            }
+
+            // fuerzo ajuste de posicion en los lados de los bloques 
+            if (!_controllerVariables.collisionProximity.bottom)
+            {
+              if (!_controllerVariables.currentCollision.left && _controllerVariables.currentCollision.right)
+                  nextPosition.x -= playerProfile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+              if (!_controllerVariables.currentCollision.right && _controllerVariables.currentCollision.left)
+                  nextPosition.x += playerProfile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
             }
 
             transform.position = nextPosition;
@@ -191,15 +205,24 @@ namespace Mario.Game.Player
                 yield return Vector2.Lerp(range.Start, range.End, t);
             }
         }
-        private Bounds<RayRange> CalculateRayRanged()
+        private Bounds<RayRange> CalculateProximityRayRanged()
         {
             var b = new Bounds(transform.position, _controllerVariables.spriteSize);
             return new Bounds<RayRange>()
             {
-                bottom = new RayRange(b.min.x + _controllerVariables.RayBuffer.bottom, b.min.y, b.max.x - _controllerVariables.RayBuffer.bottom, b.min.y, Vector2.down),
-                top = new RayRange(b.min.x + _controllerVariables.RayBuffer.top, b.max.y, b.max.x - _controllerVariables.RayBuffer.top, b.max.y, Vector2.up),
-                left = new RayRange(b.min.x, b.min.y + _controllerVariables.RayBuffer.left, b.min.x, b.max.y - _controllerVariables.RayBuffer.left, Vector2.left),
-                right = new RayRange(b.max.x, b.min.y + _controllerVariables.RayBuffer.right, b.max.x, b.max.y - _controllerVariables.RayBuffer.right, Vector2.right),
+                bottom = new RayRange(b.min.x + _controllerVariables.ProximityRayBuffer.bottom, b.min.y, b.max.x - _controllerVariables.ProximityRayBuffer.bottom, b.min.y, Vector2.down),
+                top = new RayRange(b.min.x + _controllerVariables.ProximityRayBuffer.top, b.max.y, b.max.x - _controllerVariables.ProximityRayBuffer.top, b.max.y, Vector2.up),
+                left = new RayRange(b.min.x, b.min.y + _controllerVariables.ProximityRayBuffer.left, b.min.x, b.max.y - _controllerVariables.ProximityRayBuffer.left, Vector2.left),
+                right = new RayRange(b.max.x, b.min.y + _controllerVariables.ProximityRayBuffer.right, b.max.x, b.max.y - _controllerVariables.ProximityRayBuffer.right, Vector2.right),
+            };
+        }
+        private Bounds<RayRange> CalculateCurrentRayRanged()
+        {
+            var b = new Bounds(transform.position, _controllerVariables.spriteSize);
+            return new Bounds<RayRange>()
+            {
+                left = new RayRange(b.min.x, b.min.y + _controllerVariables.currentCollisionRayBuffer, b.min.x, b.max.y - _controllerVariables.currentCollisionRayBuffer, Vector2.left),
+                right = new RayRange(b.max.x, b.min.y + _controllerVariables.currentCollisionRayBuffer, b.max.x, b.max.y - _controllerVariables.currentCollisionRayBuffer, Vector2.right),
             };
         }
         private void SetSpriteSize()
@@ -216,14 +239,16 @@ namespace Mario.Game.Player
             public float detectionRayLength = 0.1f;
 
             public Bounds<List<GameObject>> hits = new Bounds<List<GameObject>>();
-            public Bounds<bool> collitionBounds = new Bounds<bool>();
-            public Bounds<float> RayBuffer = new Bounds<float>()
+            public Bounds<bool> collisionProximity = new Bounds<bool>();
+            public Bounds<bool> currentCollision = new Bounds<bool>();
+            public Bounds<float> ProximityRayBuffer = new Bounds<float>() // crear clase custom para rayDistance & Bool result
             {
-                bottom = 0.05f,
-                top = 0.45f,
-                left= 0.15f,
+                bottom = 0.1f,
+                top = 0.49f,
+                left = 0.15f,
                 right = 0.15f,
             };
+            public float currentCollisionRayBuffer = 0.1f;
             public Vector2 currentSpeed;
             public Vector2 spriteSize;
             public float lastJumpPressed;

@@ -33,6 +33,7 @@ namespace Mario.Game.ScriptableObjects
             public float MinBufferTime;
             public float MaxWalkBufferTime;
             public float MaxRunBufferTime;
+            public float HorizontalAdjustmentSpeed;
         }
     }
 }
