@@ -61,5 +61,13 @@ namespace UnityShared.Behaviours.Various
                 yield return Vector2.Lerp(range.Start, range.End, t);
             }
         }
+
+        private void OnDrawGizmos()
+        {
+            var rayRange = CalculateRayRange();
+            Gizmos.color = Color.blue;
+            foreach (var point in EvaluateRayPositions(rayRange))
+                Gizmos.DrawRay(point, rayRange.Dir * _profile.DetectionRayLength);
+        }
     }
 }
