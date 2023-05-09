@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.ScriptableObjects
 {
@@ -11,6 +12,7 @@ namespace Mario.Game.ScriptableObjects
         public HorizontalMovement Run;
         public VerticalMovement Fall;
         public JumpMovement Jump;
+        public PlayerSizes sizes;
 
         [Serializable]
         public class HorizontalMovement
@@ -34,6 +36,12 @@ namespace Mario.Game.ScriptableObjects
             public float MaxWalkBufferTime;
             public float MaxRunBufferTime;
             public float HorizontalAdjustmentSpeed;
+        }
+        [Serializable]
+        public class PlayerSizes
+        {
+            public Size2 small;
+            public Size2 big;
         }
     }
 }

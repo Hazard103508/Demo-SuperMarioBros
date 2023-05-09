@@ -213,8 +213,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948a82aa65f2d6747b9b64d99ad42730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
-  SpriteSize: {x: 1, y: 1}
+  SpriteSize:
+    Width: 0
+    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -393,8 +396,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6223d95e6d8ee7488bc8322b4544b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
-  SpriteSize: {x: 1, y: 1}
+  SpriteSize:
+    Width: 0
+    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -4991,8 +4997,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64cfaa7d5844d41b6c273af4f347a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
-  SpriteSize: {x: 1, y: 1}
+  SpriteSize:
+    Width: 0
+    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -5134,6 +5143,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4159430047776393569, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
   m_PrefabInstance: {fileID: 791990905}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &660871036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 660871037}
+  - component: {fileID: 660871038}
+  m_Layer: 0
+  m_Name: GrowUp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &660871037
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660871036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1460471461}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &660871038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660871036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c574a5e183547641bc3f5da6597f117, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventProfile: {fileID: 11400000, guid: 11690a641cf570e4990ccbe0659c2b96, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6432609861401994335}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnPlayerGrowUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &738404121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7803,6 +7872,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
+--- !u!1 &1460471460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1460471461}
+  m_Layer: 0
+  m_Name: EventListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1460471461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460471460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 660871037}
+  m_Father: {fileID: 6432609861401994334}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1598921964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4159430047776393569, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -8219,8 +8320,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0251167db07c314dad5917fee47edaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
-  SpriteSize: {x: 1, y: 1}
+  SpriteSize:
+    Width: 0
+    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -8697,6 +8801,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 150652411}
+  - {fileID: 1460471461}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8713,6 +8818,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 629a99770e243da45a5c7163e52df944, type: 2}
+  raycastRanges:
+  - {fileID: 494842737}
+  - {fileID: 68495050}
+  - {fileID: 271291471}
+  - {fileID: 1954814296}
 --- !u!114 &6432609861401994336
 MonoBehaviour:
   m_ObjectHideFlags: 0

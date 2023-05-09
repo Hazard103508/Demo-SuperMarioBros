@@ -7,8 +7,12 @@ namespace Mario.Game.Player
     {
         [SerializeField] private Animator _anim;
 
+        private PlayerSkinSmall _skinSmall;
+        private PlayerSkinBig _skinBig;
+
         private PlayerController _player;
         private PlayerStates _state;
+        private PlayerModes _mode;
 
         public PlayerStates State
         {
@@ -33,14 +37,28 @@ namespace Mario.Game.Player
 
         void Awake()
         {
-            Skin = new PlayerSkinSmall();
-            State = PlayerStates.Idle;
-            _player = GetComponentInParent<PlayerController>();
-        }
+            _skinSmall = new PlayerSkinSmall();
+            _skinBig = new PlayerSkinBig();
 
+            Skin = _skinSmall;
+            State = PlayerStates.Idle;
+            
+            _player = GetComponentInParent<PlayerController>();
+            _mode = _player.Mode;
+        }
         void Update()
         {
             if (_player == null) return;
+
+            if (State == PlayerStates.PowerUp)
+                return;
+
+            if (_mode != _player.Mode)
+            {
+                State = PlayerStates.PowerUp; // validar up/down por int del enum --------------------------------
+                _mode = _player.Mode;
+                return;
+            }
 
             if (this.State != PlayerStates.Jumping)
             {
@@ -62,9 +80,13 @@ namespace Mario.Game.Player
             if (_player.RawMovement.y == 0 && this.State == PlayerStates.Jumping && _player.IsGrounded)
                 this.State = PlayerStates.Idle;
 
-            // TEMPORAL...
-            if (Input.GetKeyDown(KeyCode.Space))
-                this.State = PlayerStates.PowerUp;
+            
+        }
+
+        public void OnPowerUpCompleted()
+        {
+            Skin = _skinBig;
+            State = PlayerStates.Idle;
         }
     }
     public enum PlayerStates

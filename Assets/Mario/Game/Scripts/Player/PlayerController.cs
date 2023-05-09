@@ -2,7 +2,9 @@ using Mario.Game.Enums;
 using Mario.Game.Interfaces;
 using Mario.Game.Props;
 using Mario.Game.ScriptableObjects;
+using System;
 using UnityEngine;
+using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -11,12 +13,27 @@ namespace Mario.Game.Player
     {
         #region Variables
         [SerializeField] private PlayerProfile _profile;
+        [SerializeField] private RaycastRange[] raycastRanges = null;
         private ControllerVariables _controllerVariables;
+        private PlayerModes _mode;
         #endregion
 
         #region Properties
         public PlayerInput Input { get; private set; }
         public Vector3 RawMovement { get; private set; }
+        public PlayerModes Mode
+        {
+            get => _mode;
+            private set
+            {
+                if (_mode == PlayerModes.Small)
+                    transform.position += Vector3.up * _controllerVariables.smallAdjustmentPositionY;
+
+                _mode = value;
+                var size = value == PlayerModes.Small ? _profile.sizes.small : _profile.sizes.big;
+                Array.ForEach(raycastRanges, r => r.SpriteSize = size);
+            }
+        }
         public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / _profile.Walk.MaxSpeed;
         public bool IsGrounded => _controllerVariables.ProximityHit.bottom;
         private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
@@ -43,7 +60,7 @@ namespace Mario.Game.Player
         {
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
-            SetSpriteSize();
+            Mode = PlayerModes.Small;
         }
         private void Update()
         {
@@ -125,9 +142,11 @@ namespace Mario.Game.Player
         {
             RawMovement = _controllerVariables.currentSpeed;
             var nextPosition = transform.position + RawMovement * Time.deltaTime;
-            if (RawMovement.y == 0)
+            
+            // ajusto posicion de contacto con el suelo
+            if (IsGrounded && RawMovement.y == 0)
             {
-                float fixPos = (int)nextPosition.y + 0.5f;
+                float fixPos = (int)nextPosition.y + (this.Mode == PlayerModes.Small ? _controllerVariables.smallAdjustmentPositionY : 0);
                 float dif = fixPos - nextPosition.y;
                 nextPosition.y = nextPosition.y + dif; // ajusto diferencia en posicion del personaje
             }
@@ -152,20 +171,17 @@ namespace Mario.Game.Player
         public void OnProximityRayHitTop(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.top = hitInfo.IsHiting;
         #endregion
 
-        #region Other Methods
-        private void SetSpriteSize()
-        {
-            var render = GetComponent<SpriteRenderer>();
-            _controllerVariables.spriteSize = render.sprite.bounds.size;
-        }
+        #region EventListener
+        public void OnPlayerGrowUp() => this.Mode = PlayerModes.Big;
+        public void OnPlayerSuper() => this.Mode = PlayerModes.Super;
         #endregion
 
         #region Classes
         internal class ControllerVariables
         {
+            public float smallAdjustmentPositionY = 0.5f;
             public Bounds<bool> ProximityHit = new Bounds<bool>();
             public Vector2 currentSpeed;
-            public Vector2 spriteSize;
             public float lastJumpPressed;
         }
         #endregion

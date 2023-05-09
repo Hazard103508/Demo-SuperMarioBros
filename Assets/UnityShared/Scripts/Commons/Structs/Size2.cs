@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 namespace UnityShared.Commons.Structs
 {
@@ -16,5 +17,7 @@ namespace UnityShared.Commons.Structs
 
         public float Width;
         public float Height;
+
+        public static implicit operator Vector3(Size2 size) => new Vector3(size.Width, size.Height);
     }
 }

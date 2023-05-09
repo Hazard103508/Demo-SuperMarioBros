@@ -33,3 +33,10 @@ MonoBehaviour:
     MaxWalkBufferTime: 0.27
     MaxRunBufferTime: 0.35
     HorizontalAdjustmentSpeed: 5
+  sizes:
+    small:
+      Width: 1
+      Height: 1
+    big:
+      Width: 1
+      Height: 2
