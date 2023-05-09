@@ -18,7 +18,7 @@ namespace Mario.Game.Player
         public PlayerInput Input { get; private set; }
         public Vector3 RawMovement { get; private set; }
         public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / _profile.Walk.MaxSpeed;
-        public bool IsGrounded => _controllerVariables.ProximityHit.bottom.IsHiting;
+        public bool IsGrounded => _controllerVariables.ProximityHit.bottom;
         private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
         private bool JumpMaxBuffered
         {
@@ -53,8 +53,6 @@ namespace Mario.Game.Player
             CalculateGravity();
             CalculateJump();
             MoveCharacter();
-
-            EvaluateHit();
         }
         #endregion
 
@@ -89,7 +87,7 @@ namespace Mario.Game.Player
                 _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
-            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.ProximityHit.right.IsHiting || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.ProximityHit.left.IsHiting)
+            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.ProximityHit.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.ProximityHit.left)
                 _controllerVariables.currentSpeed.x = 0; // Don't walk through walls
         }
         private void CalculateGravity()
@@ -114,7 +112,7 @@ namespace Mario.Game.Player
             if (_controllerVariables.currentSpeed.y > _profile.Jump.MaxSpeed)
                 _controllerVariables.currentSpeed.y = _profile.Jump.MaxSpeed;
 
-            if (_controllerVariables.ProximityHit.top.IsHiting)
+            if (_controllerVariables.ProximityHit.top)
             {
                 if (_controllerVariables.currentSpeed.y > 0)
                 {
@@ -123,7 +121,6 @@ namespace Mario.Game.Player
                 }
             }
         }
-
         private void MoveCharacter()
         {
             RawMovement = _controllerVariables.currentSpeed;
@@ -136,42 +133,23 @@ namespace Mario.Game.Player
             }
 
             // fuerzo ajuste de posicion en los lados de los bloques 
-            if (!_controllerVariables.ProximityHit.bottom.IsHiting)
+            if (!_controllerVariables.ProximityHit.bottom)
             {
-              if (!_controllerVariables.ProximityHit.left.IsHiting && _controllerVariables.ProximityHit.right.IsHiting)
+              if (!_controllerVariables.ProximityHit.left && _controllerVariables.ProximityHit.right)
                   nextPosition.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-              if (!_controllerVariables.ProximityHit.right.IsHiting && _controllerVariables.ProximityHit.left.IsHiting)
+              if (!_controllerVariables.ProximityHit.right && _controllerVariables.ProximityHit.left)
                   nextPosition.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
             }
 
             transform.position = nextPosition;
         }
-        private void EvaluateHit()
-        {
-            foreach (GameObject obj in _controllerVariables.ProximityHit.top.hitObjects)
-            {
-                if (HitObjectTop<Brick>(Tags.Brick, obj)) continue;
-
-            }
-        }
-        private bool HitObjectTop<T>(Tags tag, GameObject obj) where T : MonoBehaviour, ITopHitable
-        {
-            if (obj.CompareTag(tag.ToString()))
-            {
-                T script = obj.GetComponent<T>();
-                script.HitTop(this);
-                return true;
-            }
-
-            return false;
-        }
         #endregion
 
         #region On Ray Range Hit
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.left = hitInfo;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.right = hitInfo;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.bottom = hitInfo;
-        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.top = hitInfo;
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.left = hitInfo.IsHiting;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.right = hitInfo.IsHiting;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.bottom = hitInfo.IsHiting;
+        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.top = hitInfo.IsHiting;
         #endregion
 
         #region Other Methods
@@ -185,18 +163,7 @@ namespace Mario.Game.Player
         #region Classes
         internal class ControllerVariables
         {
-            public ControllerVariables()
-            {
-                ProximityHit = new Bounds<RayHitInfo>()
-                {
-                    left = new RayHitInfo(),
-                    right= new RayHitInfo(),
-                    bottom = new RayHitInfo(),
-                    top = new RayHitInfo(),
-                };
-            }
-
-            public Bounds<RayHitInfo> ProximityHit;
+            public Bounds<bool> ProximityHit = new Bounds<bool>();
             public Vector2 currentSpeed;
             public Vector2 spriteSize;
             public float lastJumpPressed;

@@ -210,7 +210,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 68495048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Script: {fileID: 11500000, guid: 948a82aa65f2d6747b9b64d99ad42730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
@@ -220,6 +220,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6432609861401994335}
         m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6432609861401994339}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
         m_MethodName: OnProximityRayHitRight
         m_Mode: 0
         m_Arguments:
@@ -378,7 +390,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 271291469}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Script: {fileID: 11500000, guid: a6223d95e6d8ee7488bc8322b4544b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
@@ -388,6 +400,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6432609861401994335}
         m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitBottom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6432609861401994339}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
         m_MethodName: OnProximityRayHitBottom
         m_Mode: 0
         m_Arguments:
@@ -4964,7 +4988,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 494842735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Script: {fileID: 11500000, guid: 4a64cfaa7d5844d41b6c273af4f347a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
@@ -4974,6 +4998,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6432609861401994335}
         m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6432609861401994339}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
         m_MethodName: OnProximityRayHitLeft
         m_Mode: 0
         m_Arguments:
@@ -8180,7 +8216,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1954814294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Script: {fileID: 11500000, guid: d0251167db07c314dad5917fee47edaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
@@ -8190,6 +8226,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6432609861401994335}
         m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitTop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6432609861401994339}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
         m_MethodName: OnProximityRayHitTop
         m_Mode: 0
         m_Arguments:
@@ -8627,6 +8675,7 @@ GameObject:
   - component: {fileID: 6432609861401994338}
   - component: {fileID: 6432609861401994337}
   - component: {fileID: 6432609861401994336}
+  - component: {fileID: 6432609861401994339}
   - component: {fileID: 6432609861401994335}
   m_Layer: 0
   m_Name: Player
@@ -8749,3 +8798,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!114 &6432609861401994339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6432609861401994333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 869d60c4737cd6944b0c9b9ad6a3f67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
