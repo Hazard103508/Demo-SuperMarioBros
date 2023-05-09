@@ -6,11 +6,11 @@ using System.Linq;
 using UnityEngine.Events;
 using UnityShared.ScriptableObjects.GameObjects;
 
-namespace UnityShared.Behaviours.Various
+namespace UnityShared.Behaviours.Various.RaycastRange
 {
-    public class RaycastRange : MonoBehaviour
+    public abstract class RaycastRange : MonoBehaviour
     {
-        [SerializeField] private RaycastRangeProfile _profile;
+        [SerializeField] protected RaycastRangeProfile _profile;
         public Vector2 SpriteSize;
 
         public UnityEvent<RayHitInfo> onHit;
@@ -20,18 +20,7 @@ namespace UnityShared.Behaviours.Various
             CalculateCollision();
         }
 
-        private RayRange CalculateRayRange()
-        {
-            var b = new Bounds(transform.position, SpriteSize);
-            return _profile.Bound switch
-            {
-                BoundTypes.LEFT => new RayRange(b.min.x, b.min.y + _profile.OffSet, b.min.x, b.max.y - _profile.OffSet, Vector2.left),
-                BoundTypes.RIGHT => new RayRange(b.max.x, b.min.y + _profile.OffSet, b.max.x, b.max.y - _profile.OffSet, Vector2.right),
-                BoundTypes.TOP => new RayRange(b.min.x + _profile.OffSet, b.max.y, b.max.x - _profile.OffSet, b.max.y, Vector2.up),
-                BoundTypes.BOTTOM => new RayRange(b.min.x + _profile.OffSet, b.min.y, b.max.x - _profile.OffSet, b.min.y, Vector2.down),
-                _ => throw new System.NotImplementedException(),
-            };
-        }
+        protected abstract RayRange CalculateRayRange();
         private void CalculateCollision()
         {
             var rayBound = CalculateRayRange();
