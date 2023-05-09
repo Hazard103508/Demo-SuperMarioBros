@@ -196,10 +196,10 @@ namespace Mario.Game.Player
             var b = new Bounds(transform.position, _controllerVariables.spriteSize);
             return new Bounds<RayRange>()
             {
-                bottom = new RayRange(b.min.x + _controllerVariables.bottomRayBuffer, b.min.y, b.max.x - _controllerVariables.bottomRayBuffer, b.min.y, Vector2.down),
-                top = new RayRange(b.min.x + _controllerVariables.rayBuffer, b.max.y, b.max.x - _controllerVariables.rayBuffer, b.max.y, Vector2.up),
-                left = new RayRange(b.min.x, b.min.y + _controllerVariables.rayBuffer, b.min.x, b.max.y - _controllerVariables.rayBuffer, Vector2.left),
-                right = new RayRange(b.max.x, b.min.y + _controllerVariables.rayBuffer, b.max.x, b.max.y - _controllerVariables.rayBuffer, Vector2.right),
+                bottom = new RayRange(b.min.x + _controllerVariables.RayBuffer.bottom, b.min.y, b.max.x - _controllerVariables.RayBuffer.bottom, b.min.y, Vector2.down),
+                top = new RayRange(b.min.x + _controllerVariables.RayBuffer.top, b.max.y, b.max.x - _controllerVariables.RayBuffer.top, b.max.y, Vector2.up),
+                left = new RayRange(b.min.x, b.min.y + _controllerVariables.RayBuffer.left, b.min.x, b.max.y - _controllerVariables.RayBuffer.left, Vector2.left),
+                right = new RayRange(b.max.x, b.min.y + _controllerVariables.RayBuffer.right, b.max.x, b.max.y - _controllerVariables.RayBuffer.right, Vector2.right),
             };
         }
         private void SetSpriteSize()
@@ -214,11 +214,16 @@ namespace Mario.Game.Player
         {
             public int detectorCount = 3;
             public float detectionRayLength = 0.1f;
-            public float rayBuffer = 0.15f;
-            public float bottomRayBuffer = 0.05f;
 
             public Bounds<List<GameObject>> hits = new Bounds<List<GameObject>>();
             public Bounds<bool> collitionBounds = new Bounds<bool>();
+            public Bounds<float> RayBuffer = new Bounds<float>()
+            {
+                bottom = 0.05f,
+                top = 0.45f,
+                left= 0.15f,
+                right = 0.15f,
+            };
             public Vector2 currentSpeed;
             public Vector2 spriteSize;
             public float lastJumpPressed;
