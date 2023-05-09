@@ -10,30 +10,30 @@ namespace Mario.Game.Player
     public class PlayerController : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private PlayerProfile playerProfile;
+        [SerializeField] private PlayerProfile _profile;
         private ControllerVariables _controllerVariables;
         #endregion
 
         #region Properties
         public PlayerInput Input { get; private set; }
         public Vector3 RawMovement { get; private set; }
-        public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / playerProfile.Walk.MaxSpeed;
+        public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / _profile.Walk.MaxSpeed;
         public bool IsGrounded => _controllerVariables.ProximityHit.bottom.IsHiting;
-        private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + playerProfile.Jump.MinBufferTime > Time.time;
+        private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
         private bool JumpMaxBuffered
         {
             get
             {
                 float absCurrentSpeed = Mathf.Abs(_controllerVariables.currentSpeed.x);
-                if (absCurrentSpeed > playerProfile.Walk.MaxSpeed)
+                if (absCurrentSpeed > _profile.Walk.MaxSpeed)
                 {
-                    float maxSpeedDif = playerProfile.Run.MaxSpeed - playerProfile.Walk.MaxSpeed;
-                    float runSpeedDif = absCurrentSpeed - playerProfile.Walk.MaxSpeed;
+                    float maxSpeedDif = _profile.Run.MaxSpeed - _profile.Walk.MaxSpeed;
+                    float runSpeedDif = absCurrentSpeed - _profile.Walk.MaxSpeed;
                     float runSpeedFactor = runSpeedDif / maxSpeedDif;
-                    return _controllerVariables.lastJumpPressed + (playerProfile.Jump.MaxRunBufferTime * runSpeedFactor) > Time.time;
+                    return _controllerVariables.lastJumpPressed + (_profile.Jump.MaxRunBufferTime * runSpeedFactor) > Time.time;
                 }
                 else
-                    return _controllerVariables.lastJumpPressed + playerProfile.Jump.MaxWalkBufferTime > Time.time;
+                    return _controllerVariables.lastJumpPressed + _profile.Jump.MaxWalkBufferTime > Time.time;
             }
         }
         #endregion
@@ -76,16 +76,16 @@ namespace Mario.Game.Player
         {
             if (Input.X != 0)
             {
-                float currentAcceleration = Input.Run ? playerProfile.Run.Acceleration : playerProfile.Walk.Acceleration;
+                float currentAcceleration = Input.Run ? _profile.Run.Acceleration : _profile.Walk.Acceleration;
                 _controllerVariables.currentSpeed.x += Input.X * currentAcceleration * Time.deltaTime;
 
-                float currentSpeed = Input.Run ? playerProfile.Run.MaxSpeed : playerProfile.Walk.MaxSpeed;
+                float currentSpeed = Input.Run ? _profile.Run.MaxSpeed : _profile.Walk.MaxSpeed;
                 _controllerVariables.currentSpeed.x = Mathf.Clamp(_controllerVariables.currentSpeed.x, -currentSpeed, currentSpeed);
             }
 
             if (RawMovement.x != 0 && (Input.X == 0 || Mathf.Sign(RawMovement.x) != Mathf.Sign(Input.X)))
             {
-                float currentDeacceleration = Input.Run ? playerProfile.Run.Deacceleration : playerProfile.Walk.Deacceleration;
+                float currentDeacceleration = Input.Run ? _profile.Run.Deacceleration : _profile.Walk.Deacceleration;
                 _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
@@ -94,7 +94,7 @@ namespace Mario.Game.Player
         }
         private void CalculateGravity()
         {
-            _controllerVariables.currentSpeed.y -= playerProfile.Fall.FallSpeed * Time.deltaTime;
+            _controllerVariables.currentSpeed.y -= _profile.Fall.FallSpeed * Time.deltaTime;
             if (IsGrounded)
             {
                 if (_controllerVariables.currentSpeed.y < 0)
@@ -102,17 +102,17 @@ namespace Mario.Game.Player
             }
             else
             {
-                if (_controllerVariables.currentSpeed.y < -playerProfile.Fall.MaxFallSpeed)
-                    _controllerVariables.currentSpeed.y = -playerProfile.Fall.MaxFallSpeed;
+                if (_controllerVariables.currentSpeed.y < -_profile.Fall.MaxFallSpeed)
+                    _controllerVariables.currentSpeed.y = -_profile.Fall.MaxFallSpeed;
             }
         }
         private void CalculateJump()
         {
             if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
-                _controllerVariables.currentSpeed.y += playerProfile.Jump.Acceleration * Time.deltaTime;
+                _controllerVariables.currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
 
-            if (_controllerVariables.currentSpeed.y > playerProfile.Jump.MaxSpeed)
-                _controllerVariables.currentSpeed.y = playerProfile.Jump.MaxSpeed;
+            if (_controllerVariables.currentSpeed.y > _profile.Jump.MaxSpeed)
+                _controllerVariables.currentSpeed.y = _profile.Jump.MaxSpeed;
 
             if (_controllerVariables.ProximityHit.top.IsHiting)
             {
@@ -139,9 +139,9 @@ namespace Mario.Game.Player
             if (!_controllerVariables.ProximityHit.bottom.IsHiting)
             {
               if (!_controllerVariables.ProximityHit.left.IsHiting && _controllerVariables.ProximityHit.right.IsHiting)
-                  nextPosition.x -= playerProfile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+                  nextPosition.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
               if (!_controllerVariables.ProximityHit.right.IsHiting && _controllerVariables.ProximityHit.left.IsHiting)
-                  nextPosition.x += playerProfile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+                  nextPosition.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
             }
 
             transform.position = nextPosition;

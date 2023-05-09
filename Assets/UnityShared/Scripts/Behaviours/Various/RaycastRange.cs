@@ -4,16 +4,13 @@ using UnityShared.Commons.Structs;
 using UnityShared.Enums;
 using System.Linq;
 using UnityEngine.Events;
+using UnityShared.ScriptableObjects.GameObjects;
 
 namespace UnityShared.Behaviours.Various
 {
     public class RaycastRange : MonoBehaviour
     {
-        [SerializeField] private BoundTypes _bound;
-        [SerializeField] private LayerMask _groundLayer;
-        [SerializeField] private float _offSet;
-        [SerializeField] private int _rayCount;
-        [SerializeField] private float _detectionRayLength = 0.1f;
+        [SerializeField] private RaycastRangeProfile _profile;
         public Vector2 SpriteSize;
 
         public UnityEvent<RayHitInfo> onHit;
@@ -26,12 +23,12 @@ namespace UnityShared.Behaviours.Various
         private RayRange CalculateRayRange()
         {
             var b = new Bounds(transform.position, SpriteSize);
-            return _bound switch
+            return _profile.Bound switch
             {
-                BoundTypes.LEFT => new RayRange(b.min.x, b.min.y + _offSet, b.min.x, b.max.y - _offSet, Vector2.left),
-                BoundTypes.RIGHT => new RayRange(b.max.x, b.min.y + _offSet, b.max.x, b.max.y - _offSet, Vector2.right),
-                BoundTypes.TOP => new RayRange(b.min.x + _offSet, b.max.y, b.max.x - _offSet, b.max.y, Vector2.up),
-                BoundTypes.BOTTOM => new RayRange(b.min.x + _offSet, b.min.y, b.max.x - _offSet, b.min.y, Vector2.down),
+                BoundTypes.LEFT => new RayRange(b.min.x, b.min.y + _profile.OffSet, b.min.x, b.max.y - _profile.OffSet, Vector2.left),
+                BoundTypes.RIGHT => new RayRange(b.max.x, b.min.y + _profile.OffSet, b.max.x, b.max.y - _profile.OffSet, Vector2.right),
+                BoundTypes.TOP => new RayRange(b.min.x + _profile.OffSet, b.max.y, b.max.x - _profile.OffSet, b.max.y, Vector2.up),
+                BoundTypes.BOTTOM => new RayRange(b.min.x + _profile.OffSet, b.min.y, b.max.x - _profile.OffSet, b.min.y, Vector2.down),
                 _ => throw new System.NotImplementedException(),
             };
         }
@@ -49,7 +46,7 @@ namespace UnityShared.Behaviours.Various
         private bool CalculateCollisionDetection(RayRange range, out List<GameObject> hits)
         {
             hits = EvaluateRayPositions(range)
-                .Select(point => Physics2D.Raycast(point, range.Dir, _detectionRayLength, _groundLayer))
+                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.DetectionRayLength, _profile.GroundLayer))
                 .Where(hit => hit.collider != null)
                 .Select(hit => hit.collider.gameObject)
                 .ToList();
@@ -58,9 +55,9 @@ namespace UnityShared.Behaviours.Various
         }
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
         {
-            for (var i = 0; i < _rayCount; i++)
+            for (var i = 0; i < _profile.RayCount; i++)
             {
-                var t = (float)i / (_rayCount - 1);
+                var t = (float)i / (_profile.RayCount - 1);
                 yield return Vector2.Lerp(range.Start, range.End, t);
             }
         }
