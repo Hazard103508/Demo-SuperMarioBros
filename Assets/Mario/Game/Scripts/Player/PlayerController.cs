@@ -238,7 +238,7 @@ namespace Mario.Game.Player
             public int detectorCount = 3;
             public float detectionRayLength = 0.1f;
 
-            public Bounds<List<GameObject>> hits = new Bounds<List<GameObject>>();
+            public Bounds<List<GameObject>> hits = new Bounds<List<GameObject>>(); // separar en otro script
             public Bounds<bool> collisionProximity = new Bounds<bool>();
             public Bounds<bool> currentCollision = new Bounds<bool>();
             public Bounds<float> ProximityRayBuffer = new Bounds<float>() // crear clase custom para rayDistance & Bool result
