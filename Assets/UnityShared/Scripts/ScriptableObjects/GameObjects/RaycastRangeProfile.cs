@@ -8,7 +8,7 @@ namespace UnityShared.ScriptableObjects.GameObjects
     {
         public LayerMask GroundLayer;
         public float OffSet;
-        public int RayCount;
+        [Range(1,10)] public int RayCount;
         public float DetectionRayLength;
     }
 }

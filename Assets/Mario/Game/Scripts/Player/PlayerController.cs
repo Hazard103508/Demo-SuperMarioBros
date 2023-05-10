@@ -44,10 +44,9 @@ namespace Mario.Game.Player
                 float absCurrentSpeed = Mathf.Abs(_controllerVariables.currentSpeed.x);
                 if (absCurrentSpeed > _profile.Walk.MaxSpeed)
                 {
-                    float maxSpeedDif = _profile.Run.MaxSpeed - _profile.Walk.MaxSpeed;
-                    float runSpeedDif = absCurrentSpeed - _profile.Walk.MaxSpeed;
-                    float runSpeedFactor = runSpeedDif / maxSpeedDif;
-                    return _controllerVariables.lastJumpPressed + (_profile.Jump.MaxRunBufferTime * runSpeedFactor) > Time.time;
+                    float speedFactor = Mathf.InverseLerp(_profile.Walk.MaxSpeed, _profile.Run.MaxSpeed, absCurrentSpeed);
+                    float finalBufferTime = Mathf.Lerp(_profile.Jump.MaxWalkBufferTime, _profile.Jump.MaxRunBufferTime, speedFactor);
+                    return _controllerVariables.lastJumpPressed + finalBufferTime > Time.time;
                 }
                 else
                     return _controllerVariables.lastJumpPressed + _profile.Jump.MaxWalkBufferTime > Time.time;
@@ -191,7 +190,7 @@ namespace Mario.Game.Player
             public float smallAdjustmentPositionY = 0.5f;
             public Bounds<bool> ProximityHit = new Bounds<bool>();
             public Vector2 currentSpeed;
-            public float lastJumpPressed;
+            public float lastJumpPressed = -1;
         }
         #endregion
     }

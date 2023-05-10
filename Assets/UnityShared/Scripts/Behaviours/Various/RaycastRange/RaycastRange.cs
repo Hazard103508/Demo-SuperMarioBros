@@ -45,11 +45,14 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         }
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
         {
-            for (var i = 0; i < _profile.RayCount; i++)
-            {
-                var t = (float)i / (_profile.RayCount - 1);
-                yield return Vector2.Lerp(range.Start, range.End, t);
-            }
+            if (_profile.RayCount == 1)
+                yield return Vector2.Lerp(range.Start, range.End, 0.5f);
+            else
+                for (var i = 0; i < _profile.RayCount; i++)
+                {
+                    var t = (float)i / (_profile.RayCount - 1);
+                    yield return Vector2.Lerp(range.Start, range.End, t);
+                }
         }
 
         private void OnDrawGizmos()
