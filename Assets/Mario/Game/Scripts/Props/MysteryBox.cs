@@ -1,6 +1,6 @@
 namespace Mario.Game.Props
 {
-    public class Brick : TopHitableBlock
+    public class MysteryBox : TopHitableBlock
     {
         
     }

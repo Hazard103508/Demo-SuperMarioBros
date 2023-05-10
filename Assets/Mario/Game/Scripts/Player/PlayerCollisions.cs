@@ -38,7 +38,7 @@ namespace Mario.Game.Player
                 foreach (GameObject obj in _proximityHit.top)
                 {
                     if (HitObjectTop<Brick>(GameTags.Brick, obj)) continue;
-
+                    if (HitObjectTop<MysteryBox>(GameTags.MysteryBox, obj)) continue;
                 }
         }
         private bool HitObjectTop<T>(GameTags tag, GameObject obj) where T : MonoBehaviour, ITopHitable
