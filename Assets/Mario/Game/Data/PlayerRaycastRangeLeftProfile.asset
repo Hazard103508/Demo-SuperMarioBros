@@ -16,5 +16,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   OffSet: 0.15
-  RayCount: 6
+  RayCount: 4
   DetectionRayLength: 0.05
