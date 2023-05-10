@@ -6,12 +6,12 @@ namespace Mario.Game.Props
 {
     public class TopHitableBlock : MonoBehaviour, ITopHitable
     {
-        private Animator _animator;
+        private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
 
         private void Awake()
         {
-            _animator = GetComponent<Animator>();
+            _boxAnimator = GetComponent<Animator>();
             IsHitable = true;
         }
         public virtual void HitTop(PlayerController player)
@@ -19,7 +19,7 @@ namespace Mario.Game.Props
             if (!IsHitable)
                 return;
 
-            _animator.SetTrigger("Jump");
+            _boxAnimator.SetTrigger("Jump");
             IsHitable = false;
         }
         public virtual void OnJumpCompleted() => IsHitable = true;
