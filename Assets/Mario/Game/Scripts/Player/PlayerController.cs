@@ -53,6 +53,7 @@ namespace Mario.Game.Player
                     return _controllerVariables.lastJumpPressed + _profile.Jump.MaxWalkBufferTime > Time.time;
             }
         }
+        public bool IsJumping { get; private set; }
         #endregion
 
         #region Unity Methods
@@ -85,7 +86,10 @@ namespace Mario.Game.Player
             };
 
             if (IsGrounded && !_jumpDown && Input.JumpDown)
+            {
+                IsJumping = true;
                 _controllerVariables.lastJumpPressed = Time.time;
+            }
         }
         private void CalculateWalk()
         {
@@ -123,8 +127,13 @@ namespace Mario.Game.Player
         }
         private void CalculateJump()
         {
-            if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
-                _controllerVariables.currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
+            if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
+            {
+                if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
+                    _controllerVariables.currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
+                else
+                    IsJumping = false;
+            }
 
             if (_controllerVariables.currentSpeed.y > _profile.Jump.MaxSpeed)
                 _controllerVariables.currentSpeed.y = _profile.Jump.MaxSpeed;
@@ -142,7 +151,7 @@ namespace Mario.Game.Player
         {
             RawMovement = _controllerVariables.currentSpeed;
             var nextPosition = transform.position + RawMovement * Time.deltaTime;
-            
+
             // ajusto posicion de contacto con el suelo
             if (IsGrounded && RawMovement.y == 0)
             {

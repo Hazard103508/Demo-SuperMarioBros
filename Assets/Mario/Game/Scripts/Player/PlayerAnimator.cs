@@ -79,8 +79,6 @@ namespace Mario.Game.Player
 
             if (_player.RawMovement.y == 0 && this.State == PlayerStates.Jumping && _player.IsGrounded)
                 this.State = PlayerStates.Idle;
-
-            
         }
 
         public void OnPowerUpCompleted()
