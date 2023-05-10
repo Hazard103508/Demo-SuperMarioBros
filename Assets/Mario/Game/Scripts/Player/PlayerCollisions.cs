@@ -37,11 +37,11 @@ namespace Mario.Game.Player
             if (_proximityHit.top != null)
                 foreach (GameObject obj in _proximityHit.top)
                 {
-                    if (HitObjectTop<Brick>(Tags.Brick, obj)) continue;
+                    if (HitObjectTop<Brick>(GameTags.Brick, obj)) continue;
 
                 }
         }
-        private bool HitObjectTop<T>(Tags tag, GameObject obj) where T : MonoBehaviour, ITopHitable
+        private bool HitObjectTop<T>(GameTags tag, GameObject obj) where T : MonoBehaviour, ITopHitable
         {
             if (obj.CompareTag(tag.ToString()))
             {

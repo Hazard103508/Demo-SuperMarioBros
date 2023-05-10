@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.Enums
 {
-    public enum Tags
+    public enum GameTags
     {
         Player,
         Brick

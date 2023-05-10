@@ -1,4 +1,5 @@
-using System.Security.Cryptography;
+using Mario.Game.Enums;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mario.Game.Player
@@ -7,14 +8,12 @@ namespace Mario.Game.Player
     {
         [SerializeField] private Animator _anim;
 
-        private PlayerSkinSmall _skinSmall;
-        private PlayerSkinBig _skinBig;
-
+        private Dictionary<PlayerModes, PlayerAnimationMode> _playerAnimationModes;
         private PlayerController _player;
-        private PlayerStates _state;
+        private PlayerAnimationStates _state;
         private PlayerModes _mode;
 
-        public PlayerStates State
+        public PlayerAnimationStates State
         {
             get => _state;
             set
@@ -23,25 +22,29 @@ namespace Mario.Game.Player
                     return;
 
                 _state = value;
+
+                var _currentAnimationMode = _playerAnimationModes[_mode];
                 var hashId =
-                    State == PlayerStates.Jumping ? Skin.HashIdJump :
-                    State == PlayerStates.StoppingRun ? Skin.HashIdStop :
-                    State == PlayerStates.Running ? Skin.HashIdRun :
-                    State == PlayerStates.PowerUp ? Skin.HashIdPowerUp :
-                    Skin.HashIdIdle;
+                    State == PlayerAnimationStates.Jumping ? _currentAnimationMode.HashIdJump :
+                    State == PlayerAnimationStates.StoppingRun ? _currentAnimationMode.HashIdStop :
+                    State == PlayerAnimationStates.Running ? _currentAnimationMode.HashIdRun :
+                    State == PlayerAnimationStates.PowerUp ? _currentAnimationMode.HashIdPowerUp :
+                    _currentAnimationMode.HashIdIdle;
 
                 _anim.CrossFade(hashId, 0, 0);
             }
         }
-        public PlayerSkin Skin { get; set; }
 
         void Awake()
         {
-            _skinSmall = new PlayerSkinSmall();
-            _skinBig = new PlayerSkinBig();
+            _playerAnimationModes = new Dictionary<PlayerModes, PlayerAnimationMode>()
+            {
+                [PlayerModes.Small] = new PlayerAnimationModeSmall(),
+                [PlayerModes.Big] = new PlayerAnimationModeBig(),
+                [PlayerModes.Super] = new PlayerAnimationModeSuper()
+            };
 
-            Skin = _skinSmall;
-            State = PlayerStates.Idle;
+            State = PlayerAnimationStates.Idle;
             
             _player = GetComponentInParent<PlayerController>();
             _mode = _player.Mode;
@@ -50,82 +53,37 @@ namespace Mario.Game.Player
         {
             if (_player == null) return;
 
-            if (State == PlayerStates.PowerUp)
+            if (State == PlayerAnimationStates.PowerUp)
                 return;
 
             if (_mode != _player.Mode)
             {
-                State = PlayerStates.PowerUp; // validar up/down por int del enum --------------------------------
+                State = _mode < _player.Mode ? PlayerAnimationStates.PowerUp : PlayerAnimationStates.PowerDown;
                 _mode = _player.Mode;
                 return;
             }
 
-            if (this.State != PlayerStates.Jumping)
+            if (this.State != PlayerAnimationStates.Jumping)
             {
                 if (_player.Input.X != 0)
                 {
-                    this.State = _player.RawMovement.x != 0 && Mathf.Sign(_player.RawMovement.x) != Mathf.Sign(_player.Input.X) ? PlayerStates.StoppingRun : PlayerStates.Running;
+                    this.State = _player.RawMovement.x != 0 && Mathf.Sign(_player.RawMovement.x) != Mathf.Sign(_player.Input.X) ? PlayerAnimationStates.StoppingRun : PlayerAnimationStates.Running;
                     transform.localScale = new Vector3(_player.Input.X > 0 ? 1 : -1, 1, 1);
                 }
                 else
-                    State = _player.RawMovement.x != 0 ? PlayerStates.Running : PlayerStates.Idle;
+                    State = _player.RawMovement.x != 0 ? PlayerAnimationStates.Running : PlayerAnimationStates.Idle;
             }
 
-            if (this.State == PlayerStates.Running)
+            if (this.State == PlayerAnimationStates.Running)
                 _anim.speed = _player.RawMovement.y < 0 ? 0 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
 
             if (_player.RawMovement.y > 0)
-                this.State = PlayerStates.Jumping;
+                this.State = PlayerAnimationStates.Jumping;
 
-            if (_player.RawMovement.y == 0 && this.State == PlayerStates.Jumping && _player.IsGrounded)
-                this.State = PlayerStates.Idle;
+            if (_player.RawMovement.y == 0 && this.State == PlayerAnimationStates.Jumping && _player.IsGrounded)
+                this.State = PlayerAnimationStates.Idle;
         }
 
-        public void OnPowerUpCompleted()
-        {
-            Skin = _skinBig;
-            State = PlayerStates.Idle;
-        }
-    }
-    public enum PlayerStates
-    {
-        Idle,
-        Jumping,
-        Running,
-        StoppingRun,
-        PowerUp,
-    }
-    public class PlayerSkin
-    {
-        public int HashIdIdle { get; protected set; }
-        public int HashIdJump { get; protected set; }
-        public int HashIdRun { get; protected set; }
-        public int HashIdStop { get; protected set; }
-        public int HashIdDying { get; protected set; }
-        public int HashIdPowerDown { get; protected set; }
-        public int HashIdPowerUp { get; protected set; }
-        public int HashIdBend { get; protected set; }
-        public int HashIdFlag { get; protected set; }
-    }
-    public class PlayerSkinSmall : PlayerSkin
-    {
-        public PlayerSkinSmall()
-        {
-            HashIdIdle = Animator.StringToHash("Small_Idle");
-            HashIdJump = Animator.StringToHash("Small_Jump");
-            HashIdStop = Animator.StringToHash("Small_Stop");
-            HashIdRun = Animator.StringToHash("Small_Run");
-            HashIdPowerUp = Animator.StringToHash("Small_PowerUp");
-        }
-    }
-    public class PlayerSkinBig : PlayerSkin
-    {
-        public PlayerSkinBig()
-        {
-            HashIdIdle = Animator.StringToHash("Big_Idle");
-            HashIdJump = Animator.StringToHash("Big_Jump");
-            HashIdStop = Animator.StringToHash("Big_Stop");
-            HashIdRun = Animator.StringToHash("Big_Run");
-        }
+        public void OnPowerUpCompleted() => State = PlayerAnimationStates.Idle;
     }
 }
