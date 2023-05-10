@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948a82aa65f2d6747b9b64d99ad42730, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
+  _spriteRenderer: {fileID: 6432609861401994338}
   SpriteSize:
     Width: 0
     Height: 0
@@ -396,8 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6223d95e6d8ee7488bc8322b4544b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
+  _spriteRenderer: {fileID: 6432609861401994338}
   SpriteSize:
     Width: 0
     Height: 0
@@ -4997,8 +4997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64cfaa7d5844d41b6c273af4f347a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
+  _spriteRenderer: {fileID: 6432609861401994338}
   SpriteSize:
     Width: 0
     Height: 0
@@ -8320,8 +8320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0251167db07c314dad5917fee47edaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 6432609861401994338}
   _profile: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
+  _spriteRenderer: {fileID: 6432609861401994338}
   SpriteSize:
     Width: 0
     Height: 0

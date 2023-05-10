@@ -72,7 +72,7 @@ namespace Mario.Game.Player
             }
 
             if (this.State == PlayerStates.Running)
-                _anim.speed = Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
+                _anim.speed = _player.RawMovement.y < 0 ? 0 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
 
             if (_player.RawMovement.y > 0)
                 this.State = PlayerStates.Jumping;

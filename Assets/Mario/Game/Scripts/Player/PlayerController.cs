@@ -70,6 +70,9 @@ namespace Mario.Game.Player
             CalculateGravity();
             CalculateJump();
             MoveCharacter();
+
+            if (UnityEngine.Input.GetKey(KeyCode.R))
+                transform.position = new Vector3(transform.position.x, 4f);
         }
         #endregion
 
@@ -154,9 +157,14 @@ namespace Mario.Game.Player
             // ajusto posicion de contacto con el suelo
             if (IsGrounded && RawMovement.y == 0)
             {
-                float fixPos = (int)nextPosition.y + (this.Mode == PlayerModes.Small ? _controllerVariables.smallAdjustmentPositionY : 0);
-                float dif = fixPos - nextPosition.y;
-                nextPosition.y = nextPosition.y + dif; // ajusto diferencia en posicion del personaje
+                if (this.Mode == PlayerModes.Small)
+                {
+                    float fixPos = (int)nextPosition.y + _controllerVariables.smallAdjustmentPositionY;
+                    float dif = fixPos - nextPosition.y;
+                    nextPosition.y = nextPosition.y + dif; // ajusto diferencia en posicion del personaje
+                }
+                else
+                    nextPosition.y = Mathf.Round(nextPosition.y);
             }
 
             // fuerzo ajuste de posicion en los lados de los bloques 
@@ -190,7 +198,7 @@ namespace Mario.Game.Player
             public float smallAdjustmentPositionY = 0.5f;
             public Bounds<bool> ProximityHit = new Bounds<bool>();
             public Vector2 currentSpeed;
-            public float lastJumpPressed = -1;
+            public float lastJumpPressed = 0;
         }
         #endregion
     }

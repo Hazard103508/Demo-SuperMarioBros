@@ -10,9 +10,9 @@ namespace UnityShared.Behaviours.Various.RaycastRange
 {
     public abstract class RaycastRange : MonoBehaviour
     {
-        [SerializeField] protected SpriteRenderer _spriteRenderer;
         [SerializeField] protected RaycastRangeProfile _profile;
-        public Size2 SpriteSize;
+        [SerializeField] protected SpriteRenderer _spriteRenderer;
+        [HideInInspector] public Size2 SpriteSize;
 
         public UnityEvent<RayHitInfo> onHit;
 

@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
   m_Name: PlayerRaycastRangeLeftProfile
   m_EditorClassIdentifier: 
-  Bound: 2
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
   OffSet: 0.15
-  RayCount: 2
-  DetectionRayLength: 0.1
+  RayCount: 6
+  DetectionRayLength: 0.05
