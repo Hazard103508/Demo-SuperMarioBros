@@ -21,7 +21,7 @@ namespace Mario.Game.Props
             var obj = Instantiate(profile.Prefab);
             obj.transform.position = this.transform.position;
 
-            GameDataHandler.Instance.IncreaseScore(profile.Score, transform.position);
+            GameDataHandler.Instance.IncreaseScore(profile.Points, transform.position);
         }
     }
 }

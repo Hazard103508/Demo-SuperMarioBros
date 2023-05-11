@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MisteryBoxCoinProfile
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7232380791890894777, guid: 11edffef54ef3e24cb397f4c763299ab, type: 3}
-  Score: 200
+  Points: 200

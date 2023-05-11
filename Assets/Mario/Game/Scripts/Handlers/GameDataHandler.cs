@@ -23,8 +23,9 @@ namespace Mario.Game.Handlers
 
             if (positon.HasValue)
             {
-                var point = Instantiate(targetPointsPrefab);
+                TargetPoints point = Instantiate(targetPointsPrefab);
                 point.transform.position = positon.Value + Vector3.up;
+                point.SetPoints(value);
             }
         }
     }

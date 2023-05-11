@@ -6,6 +6,6 @@ namespace Mario.Game.ScriptableObjects
     public class MysteryBoxProfile : ScriptableObject
     {
         public GameObject Prefab;
-        public int Score;
+        public int Points;
     }
 }

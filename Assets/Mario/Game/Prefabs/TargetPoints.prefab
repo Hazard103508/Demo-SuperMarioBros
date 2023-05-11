@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71097d706d587a44b6cc6929c3f4ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberRenders:
+  profile: {fileID: 11400000, guid: e4ba77442c1aae849858199ab58582a1, type: 2}
+  _numberRenders:
   - {fileID: 2035694833108766539}
   - {fileID: 2035694833099341482}
   - {fileID: 2035694833819823992}
