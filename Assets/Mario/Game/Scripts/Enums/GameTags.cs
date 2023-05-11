@@ -4,6 +4,7 @@ namespace Mario.Game.Enums
     {
         Player,
         Brick,
-        MysteryBox
+        MysteryBox,
+        CoinBrick
     }
 }

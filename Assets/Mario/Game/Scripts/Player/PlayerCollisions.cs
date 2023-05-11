@@ -38,6 +38,7 @@ namespace Mario.Game.Player
                 {
                     if (HitObjectTop<Brick>(GameTags.Brick, obj)) continue;
                     if (HitObjectTop<MysteryBox>(GameTags.MysteryBox, obj)) continue;
+                    if (HitObjectTop<CoinBrick>(GameTags.CoinBrick, obj)) continue;
                 }
         }
         private bool HitObjectTop<T>(GameTags tag, GameObject obj) where T : MonoBehaviour, ITopHitable

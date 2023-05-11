@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Brick
   - MysteryBox
+  - CoinBrick
   layers:
   - Default
   - TransparentFX
