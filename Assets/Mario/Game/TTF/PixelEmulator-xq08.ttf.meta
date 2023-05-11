@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a037c40b2c1dcea46b9b9cdee504d490
+guid: 4b3a6c075bd73b447ace79be4fd66438
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Super Mario Bros. 2
+  - Pixel Emulator
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
