@@ -42,11 +42,12 @@ namespace Mario.Game.UI
         }
         private void UpdateText()
         {
-            for (int i = 0; i < _text.Length; i++)
-            {
-                var img = letters[i];
-                img.sprite = _fontProfile.Sprites[_text[i]];
-            }
+            if (letters != null)
+                for (int i = 0; i < _text.Length; i++)
+                {
+                    var img = letters[i];
+                    img.sprite = _fontProfile.Sprites[_text[i]];
+                }
         }
     }
 }
