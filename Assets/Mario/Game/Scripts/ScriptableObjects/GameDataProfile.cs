@@ -8,6 +8,7 @@ namespace Mario.Game.ScriptableObjects
     public class GameDataProfile : ScriptableObject
     {
         [SerializeField] private string _player;
+        [SerializeField] private string _worldName;
         [SerializeField] private int _score;
         [SerializeField] private int _coins;
 
@@ -30,6 +31,7 @@ namespace Mario.Game.ScriptableObjects
             }
         }
         public string Player => _player;
+        public string WorldName => _worldName;
 
         [HideInInspector] public UnityEvent onScoreChanged;
         [HideInInspector] public UnityEvent onCoinsChanged;

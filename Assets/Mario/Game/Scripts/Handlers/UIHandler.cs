@@ -9,10 +9,12 @@ namespace Mario.Game.Handlers
         [SerializeField] private Mario.Game.UI.TextGenerator labelPlayer;
         [SerializeField] private Mario.Game.UI.TextGenerator labelScore;
         [SerializeField] private Mario.Game.UI.TextGenerator labelCoins;
+        [SerializeField] private Mario.Game.UI.TextGenerator labelWorldName;
 
         private void Awake()
         {
             labelPlayer.Text = gameDataProfile.Player;
+            labelWorldName.Text = gameDataProfile.WorldName;
         }
         private void OnEnable()
         {

@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: GameDataProfile
   m_EditorClassIdentifier: 
   _player: MARIO
+  _worldName: 1-1
   _score: 0
+  _coins: 12
   onScoreChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onCoinsChanged:
     m_PersistentCalls:
       m_Calls: []
