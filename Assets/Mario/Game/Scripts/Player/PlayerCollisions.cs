@@ -1,10 +1,9 @@
 using Mario.Game.Enums;
 using Mario.Game.Interfaces;
 using Mario.Game.Props;
-using UnityEngine;
-using static Mario.Game.Player.PlayerController;
-using UnityShared.Commons.Structs;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {

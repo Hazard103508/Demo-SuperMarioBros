@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityShared.Enums;
 
 namespace UnityShared.ScriptableObjects.GameObjects
 {
@@ -8,7 +7,7 @@ namespace UnityShared.ScriptableObjects.GameObjects
     {
         public LayerMask GroundLayer;
         public float OffSet;
-        [Range(1,10)] public int RayCount;
+        [Range(1, 10)] public int RayCount;
         public float DetectionRayLength;
     }
 }

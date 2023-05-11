@@ -1,6 +1,4 @@
 using Mario.Game.Enums;
-using Mario.Game.Interfaces;
-using Mario.Game.Props;
 using Mario.Game.ScriptableObjects;
 using System;
 using UnityEngine;

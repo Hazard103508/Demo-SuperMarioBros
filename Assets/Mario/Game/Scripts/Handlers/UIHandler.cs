@@ -23,7 +23,7 @@ namespace Mario.Game.Handlers
             gameDataProfile.onScoreChanged.RemoveListener(OnScoreChanged);
         }
 
-        private void OnScoreChanged() 
+        private void OnScoreChanged()
         {
             labelScore.text = gameDataProfile.Score.ToString("D6");
             print("score updated!");

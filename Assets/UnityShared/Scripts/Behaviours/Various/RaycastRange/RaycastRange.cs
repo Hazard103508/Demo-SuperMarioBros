@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using UnityEngine;
-using UnityShared.Commons.Structs;
-using UnityShared.Enums;
 using System.Linq;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityShared.Commons.Structs;
 using UnityShared.ScriptableObjects.GameObjects;
 
 namespace UnityShared.Behaviours.Various.RaycastRange

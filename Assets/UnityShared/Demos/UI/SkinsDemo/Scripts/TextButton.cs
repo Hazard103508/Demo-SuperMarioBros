@@ -19,6 +19,6 @@ public class TextButton : MonoBehaviour
 
         _rectTransform.SetSkin(_profile.RectTransform);
         _image.SetSkin(_profile.Image);
-  
+
     }
 }

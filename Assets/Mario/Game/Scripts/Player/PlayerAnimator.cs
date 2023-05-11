@@ -45,7 +45,7 @@ namespace Mario.Game.Player
             };
 
             State = PlayerAnimationStates.Idle;
-            
+
             _player = GetComponentInParent<PlayerController>();
             _mode = _player.Mode;
         }

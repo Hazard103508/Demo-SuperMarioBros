@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityShared.Commons.Structs;
-using UnityShared.Enums;
 
 namespace UnityShared.Commons.Skins
 {

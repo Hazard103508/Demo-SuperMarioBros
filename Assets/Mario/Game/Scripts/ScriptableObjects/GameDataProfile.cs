@@ -9,7 +9,7 @@ namespace Mario.Game.ScriptableObjects
         [SerializeField] private string _player;
         [SerializeField] private int _score;
 
-        public int Score 
+        public int Score
         {
             get => _score;
             set

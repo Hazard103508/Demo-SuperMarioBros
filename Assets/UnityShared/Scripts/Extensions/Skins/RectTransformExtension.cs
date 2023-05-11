@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityShared.Commons.Skins;
-using UnityShared.Extensions.Unity3D;
 
 namespace UnityShared.Extensions.Skins
 {
