@@ -1,6 +1,8 @@
+using Mario.Game.Handlers;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 namespace Mario.Game.Props
 {
@@ -17,8 +19,10 @@ namespace Mario.Game.Props
             base.HitTop(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            var obj = Instantiate(profile.prefab);
+            var obj = Instantiate(profile.Prefab);
             obj.transform.position = this.transform.position;
+
+            GameDataHandler.Instance.IncreaseScore(profile.Score, transform.position);
         }
         public override void OnJumpCompleted()
         {
