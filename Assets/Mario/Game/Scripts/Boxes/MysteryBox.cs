@@ -4,7 +4,7 @@ using Mario.Game.Rewards;
 using Mario.Game.ScriptableObjects;
 using UnityEngine;
 
-namespace Mario.Game.Props
+namespace Mario.Game.Boxes
 {
     public class MysteryBox : TopHitableBlock
     {

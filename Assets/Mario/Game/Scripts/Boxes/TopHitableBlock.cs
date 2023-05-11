@@ -4,7 +4,7 @@ using Mario.Game.Player;
 using Mario.Game.Rewards;
 using UnityEngine;
 
-namespace Mario.Game.Props
+namespace Mario.Game.Boxes
 {
     public class TopHitableBlock : MonoBehaviour, ITopHitable
     {

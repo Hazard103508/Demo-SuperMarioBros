@@ -1,4 +1,4 @@
-namespace Mario.Game.Props
+namespace Mario.Game.Boxes
 {
     public class Brick : TopHitableBlock
     {
