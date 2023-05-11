@@ -1,10 +1,13 @@
 using Mario.Game.Handlers;
+using Mario.Game.ScriptableObjects;
 using UnityEngine;
 
-namespace Mario.Game.Rewards
+namespace Mario.Game.Items
 {
-    public class JumpingCoin : Reward
+    public class JumpingCoin : MonoBehaviour
     {
+        public RewardProfile Profile;
+
         private void OnEnable()
         {
             GameDataHandler.Instance.IncreaseScore(Profile.Points);

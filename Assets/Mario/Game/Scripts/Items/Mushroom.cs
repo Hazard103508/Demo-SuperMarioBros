@@ -7,9 +7,9 @@ using UnityShared.Commons.Structs;
 using UnityShared.Behaviours.Various.RaycastRange;
 using System;
 
-namespace Mario.Game.Rewards
+namespace Mario.Game.Items
 {
-    public class Mushroom : Reward
+    public class Mushroom : MonoBehaviour
     {
         [SerializeField] private MushroomProfile _mushroomProfile;
         [SerializeField] private RaycastRange[] raycastRanges = null;

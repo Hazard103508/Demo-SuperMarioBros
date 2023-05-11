@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53b59680049246c4cb882a50daf4d3fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardPrefab: {fileID: 5064765457543540361, guid: 11edffef54ef3e24cb397f4c763299ab, type: 3}
+  _contentPrefab: {fileID: 7232380791890894777, guid: 11edffef54ef3e24cb397f4c763299ab, type: 3}
   _spriteAnimator: {fileID: 40360478294182497}
   _limitTime: 3.25
 --- !u!1 &40360478294182502
