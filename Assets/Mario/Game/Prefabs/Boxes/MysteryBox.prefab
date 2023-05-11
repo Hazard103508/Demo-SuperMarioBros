@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5dd83a5f83d214894ef90f562358ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 53f04e5f844820e4ca86fa298b3b29a6, type: 2}
+  _rewardPrefab: {fileID: 5064765457543540361, guid: 11edffef54ef3e24cb397f4c763299ab, type: 3}
   _spriteAnimator: {fileID: 1458048380726434528}
 --- !u!1 &1458048380726434535
 GameObject:

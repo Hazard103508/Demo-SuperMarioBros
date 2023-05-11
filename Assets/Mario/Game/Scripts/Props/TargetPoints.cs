@@ -23,6 +23,6 @@ namespace Mario.Game.Props
                     _numberRenders[i].sprite = profile.Sprites[number];
             }
         }
+        public void OnRisingCompleted() => Destroy(gameObject);
     }
-
 }

@@ -17,16 +17,12 @@ namespace Mario.Game.Handlers
             gameDataProfile.Score = 0;
         }
 
-        public void IncreaseScore(int value, Vector3? positon = null)
+        public void IncreaseScore(int value) => gameDataProfile.Score += value;
+        public void ShowPoint(int value, Vector3 positon)
         {
-            gameDataProfile.Score += value;
-
-            if (positon.HasValue)
-            {
-                TargetPoints point = Instantiate(targetPointsPrefab);
-                point.transform.position = positon.Value + Vector3.up;
-                point.SetPoints(value);
-            }
+            TargetPoints point = Instantiate(targetPointsPrefab);
+            point.transform.position = positon;
+            point.SetPoints(value);
         }
     }
 }
