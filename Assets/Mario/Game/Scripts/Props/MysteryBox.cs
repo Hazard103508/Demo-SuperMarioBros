@@ -7,7 +7,7 @@ namespace Mario.Game.Props
 {
     public class MysteryBox : TopHitableBlock
     {
-        [SerializeField] private MisteryBoxProfile profile;
+        [SerializeField] private MysteryBoxProfile profile;
         [SerializeField] private Animator _spriteAnimator;
 
         public override void HitTop(PlayerController player)
@@ -22,9 +22,6 @@ namespace Mario.Game.Props
             obj.transform.position = this.transform.position;
 
             GameDataHandler.Instance.IncreaseScore(profile.Score, transform.position);
-        }
-        public override void OnJumpCompleted()
-        {
         }
     }
 }

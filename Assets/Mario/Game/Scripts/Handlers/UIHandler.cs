@@ -26,7 +26,6 @@ namespace Mario.Game.Handlers
         private void OnScoreChanged()
         {
             labelScore.text = gameDataProfile.Score.ToString("D6");
-            print("score updated!");
         }
     }
 }

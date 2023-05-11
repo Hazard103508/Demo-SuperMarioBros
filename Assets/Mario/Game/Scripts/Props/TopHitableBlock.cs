@@ -22,6 +22,8 @@ namespace Mario.Game.Props
             _boxAnimator.SetTrigger("Jump");
             IsHitable = false;
         }
-        public virtual void OnJumpCompleted() => IsHitable = true;
+        public virtual void OnJumpCompleted()
+        {
+        }
     }
 }

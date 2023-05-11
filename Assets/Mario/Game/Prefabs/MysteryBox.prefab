@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6872637405630037414}
   - component: {fileID: 6872637405630037415}
   m_Layer: 3
-  m_Name: MisteryBox
+  m_Name: MysteryBox
   m_TagString: MysteryBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
