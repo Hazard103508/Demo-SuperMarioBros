@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d265394145a794747a71ee762756e33b, type: 3}
   m_Name: GameDataProfile
   m_EditorClassIdentifier: 
-  _player: Mario
+  _player: MARIO
   _score: 0
   onScoreChanged:
     m_PersistentCalls:

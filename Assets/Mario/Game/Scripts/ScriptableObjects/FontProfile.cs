@@ -5,8 +5,8 @@ using static Mario.Game.ScriptableObjects.TargetPointsProfile;
 
 namespace Mario.Game.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "Font", menuName = "ScriptableObjects/Game/Font", order = 3)]
-    public class Font : ScriptableObject
+    [CreateAssetMenu(fileName = "FontProfile", menuName = "ScriptableObjects/Game/FontProfile", order = 3)]
+    public class FontProfile : ScriptableObject
     {
         [SerializeField] private NumberSprite[] _numberSprites;
         public Dictionary<char, Sprite> Sprites { get; private set; }

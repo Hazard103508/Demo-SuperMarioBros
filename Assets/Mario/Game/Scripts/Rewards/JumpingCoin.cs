@@ -8,6 +8,7 @@ namespace Mario.Game.Rewards
         private void OnEnable()
         {
             GameDataHandler.Instance.IncreaseScore(Profile.Points);
+            GameDataHandler.Instance.IncreaseCoin(1);
         }
         public void OnJumpCompleted()
         {

@@ -18,6 +18,7 @@ namespace Mario.Game.Handlers
         }
 
         public void IncreaseScore(int value) => gameDataProfile.Score += value;
+        public void IncreaseCoin(int value) => gameDataProfile.Coins += value;
         public void ShowPoint(int value, Vector3 positon)
         {
             TargetPoints point = Instantiate(targetPointsPrefab);

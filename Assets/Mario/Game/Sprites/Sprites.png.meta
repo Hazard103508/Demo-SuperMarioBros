@@ -4167,162 +4167,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sprites_46
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 488
-        width: 4
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed83857ed1602c840b65825539bd001f
-      internalID: -112405520
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_47
-      rect:
-        serializedVersion: 2
-        x: 212
-        y: 488
-        width: 4
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 41900f888eca703448d368f7516ded44
-      internalID: -996375539
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_48
-      rect:
-        serializedVersion: 2
-        x: 216
-        y: 488
-        width: 4
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16fe86f063bb08a46baaae85b7f9cfbd
-      internalID: -480366482
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_49
-      rect:
-        serializedVersion: 2
-        x: 220
-        y: 488
-        width: 4
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f3d1dd2a61ca7bc43b24a58c04d15e69
-      internalID: 2060070762
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_50
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 480
-        width: 4
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 337ef69e9fb9d504e95acd696dfde91b
-      internalID: 416489022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_51
-      rect:
-        serializedVersion: 2
-        x: 212
-        y: 480
-        width: 4
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb4b802d65740fb40b8cb13dc07854ef
-      internalID: 183379537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sprites_52
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 488
-        width: 16
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c78dcb01eacba4946b5f4f30131aeab2
-      internalID: -522299795
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Sprites_53
       rect:
         serializedVersion: 2
-        x: 216
-        y: 480
+        x: 208
+        y: 488
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4338,12 +4191,12 @@ TextureImporter:
       name: Sprites_54
       rect:
         serializedVersion: 2
-        x: 224
+        x: 208
         y: 480
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4359,12 +4212,12 @@ TextureImporter:
       name: Sprites_55
       rect:
         serializedVersion: 2
-        x: 232
+        x: 216
         y: 480
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -4425,8 +4278,8 @@ TextureImporter:
       Sprites_9: 8279819551763339774
       Sprites_23: -5129541754429850415
       Sprites_25: -975749167277906879
-      Sprites_41: 1442167871
       Sprites_54: -571391256
+      Sprites_41: 1442167871
       Sprites_55: -538933936
       Sprites_43: -758459611
       Sprites_0: 4773600122041589604

@@ -9,6 +9,7 @@ namespace Mario.Game.ScriptableObjects
     {
         [SerializeField] private string _player;
         [SerializeField] private int _score;
+        [SerializeField] private int _coins;
 
         public int Score
         {
@@ -19,8 +20,18 @@ namespace Mario.Game.ScriptableObjects
                 onScoreChanged.Invoke();
             }
         }
+        public int Coins
+        {
+            get => _coins;
+            set
+            {
+                _coins = value;
+                onCoinsChanged.Invoke();
+            }
+        }
         public string Player => _player;
 
         [HideInInspector] public UnityEvent onScoreChanged;
+        [HideInInspector] public UnityEvent onCoinsChanged;
     }
 }
