@@ -18,7 +18,7 @@ namespace Mario.Game.Boxes
             base.HitTop(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            base.InstantiateReward();
+            base.InstantiateContent();
         }
     }
 }

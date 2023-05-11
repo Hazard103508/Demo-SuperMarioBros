@@ -29,7 +29,7 @@ namespace Mario.Game.Boxes
                 _spriteAnimator.SetTrigger("Disable");
             }
 
-            base.InstantiateReward();
+            base.InstantiateContent();
         }
         public override void OnJumpCompleted()
         {

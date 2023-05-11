@@ -150,4 +150,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb30bacd0b800cb4a8024fe259a79d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Profile: {fileID: 11400000, guid: bc41babc1e82d814a82b0e84808d3049, type: 2}
+  _coinProfile: {fileID: 11400000, guid: 7c1080fdcf95e194fa7c2a4790bea570, type: 2}

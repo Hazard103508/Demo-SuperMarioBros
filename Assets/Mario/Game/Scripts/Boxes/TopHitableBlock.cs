@@ -29,10 +29,10 @@ namespace Mario.Game.Boxes
         {
         }
 
-        protected void InstantiateReward()
+        protected void InstantiateContent()
         {
-            var reward = Instantiate(_contentPrefab);
-            reward.transform.position = this.transform.position;
+            var content = Instantiate(_contentPrefab);
+            content.transform.position = this.transform.position;
         }
     }
 }
