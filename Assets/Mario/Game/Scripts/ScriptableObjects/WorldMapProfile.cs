@@ -10,5 +10,6 @@ namespace Mario.Game.ScriptableObjects
         public string WorldName;
         public Color BackgroundColor;
         public int Time;
+        public Vector2 StartPosition;
     }
 }

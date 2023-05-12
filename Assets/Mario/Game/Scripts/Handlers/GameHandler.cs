@@ -10,7 +10,7 @@ namespace Mario.Game.Handlers
 {
     public class GameHandler : Singleton<GameHandler>
     {
-        [SerializeField] private GameDataProfile gameDataProfile;
+        public GameDataProfile gameDataProfile;
         [SerializeField] private TargetPoints targetPointsPrefab;
         //private PauseHandler pauseHandler;
 

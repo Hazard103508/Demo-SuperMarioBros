@@ -7,8 +7,7 @@ namespace Mario.Game.Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
-        [SerializeField] private Animator _anim;
-
+        private Animator _animator;
         private Dictionary<PlayerModes, PlayerAnimationMode> _playerAnimationModes;
         private PlayerController _player;
         private PlayerAnimationStates _state;
@@ -32,7 +31,7 @@ namespace Mario.Game.Player
                     State == PlayerAnimationStates.PowerUp ? _currentAnimationMode.HashIdPowerUp :
                     _currentAnimationMode.HashIdIdle;
 
-                _anim.CrossFade(hashId, 0, 0);
+                _animator.CrossFade(hashId, 0, 0);
             }
         }
 
@@ -48,6 +47,7 @@ namespace Mario.Game.Player
             State = PlayerAnimationStates.Idle;
 
             _player = GetComponentInParent<PlayerController>();
+            _animator = GetComponent<Animator>();
             _mode = _player.Mode;
         }
         void Update()
@@ -76,7 +76,7 @@ namespace Mario.Game.Player
             }
 
             if (this.State == PlayerAnimationStates.Running)
-                _anim.speed = _player.RawMovement.y < 0 ? 0 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
+                _animator.speed = _player.RawMovement.y < 0 ? 0 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
 
             if (_player.RawMovement.y > 0)
                 this.State = PlayerAnimationStates.Jumping;

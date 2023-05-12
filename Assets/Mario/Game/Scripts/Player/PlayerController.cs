@@ -5,6 +5,7 @@ using System;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
+using static Mario.Game.Player.PlayerController;
 
 namespace Mario.Game.Player
 {
@@ -12,6 +13,7 @@ namespace Mario.Game.Player
     {
         #region Variables
         [SerializeField] private PlayerProfile _profile;
+        [SerializeField] private SpriteRenderer _render;
         [SerializeField] private RaycastRange[] raycastRanges = null;
         private ControllerVariables _controllerVariables;
         private PlayerModes _mode;
@@ -25,14 +27,21 @@ namespace Mario.Game.Player
             get => _mode;
             set
             {
-                if (_mode == PlayerModes.Small)
-                    transform.position += Vector3.up * _controllerVariables.smallAdjustmentPositionY;
-
                 if (_mode != value)
                     GameHandler.Instance.FreezeMove();
 
                 _mode = value;
-                var size = value == PlayerModes.Small ? _profile.sizes.small : _profile.sizes.big;
+
+                Vector3 localPosition = _controllerVariables.localPositionSmall;
+                Size2 size = _profile.sizes.small;
+                if (value == PlayerModes.Big)
+                {
+                    localPosition = _controllerVariables.localPositionBig;
+                    size = _profile.sizes.big;
+                }
+
+                _render.transform.localPosition = localPosition;
+                raycastRanges[0].transform.parent.localPosition = localPosition;
                 Array.ForEach(raycastRanges, r => r.SpriteSize = size);
             }
         }
@@ -63,6 +72,7 @@ namespace Mario.Game.Player
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             Mode = PlayerModes.Small;
+            transform.position = GameHandler.Instance.gameDataProfile.WorldMapProfile.StartPosition;
         }
         private void Update()
         {
@@ -161,16 +171,7 @@ namespace Mario.Game.Player
 
             // ajusto posicion de contacto con el suelo
             if (IsGrounded && RawMovement.y == 0)
-            {
-                if (this.Mode == PlayerModes.Small)
-                {
-                    float fixPos = (int)nextPosition.y + _controllerVariables.smallAdjustmentPositionY;
-                    float dif = fixPos - nextPosition.y;
-                    nextPosition.y = nextPosition.y + dif; // ajusto diferencia en posicion del personaje
-                }
-                else
-                    nextPosition.y = Mathf.Round(nextPosition.y);
-            }
+                nextPosition.y = Mathf.Round(nextPosition.y);
 
             // fuerzo ajuste de posicion en los lados de los bloques 
             if (!IsGrounded)
@@ -200,7 +201,8 @@ namespace Mario.Game.Player
         #region Classes
         internal class ControllerVariables
         {
-            public float smallAdjustmentPositionY = 0.5f;
+            public Vector3 localPositionSmall = new Vector3(0.5f, 0.5f);
+            public Vector3 localPositionBig = new Vector3(1, 1);
             public Bounds<bool> ProximityBlock = new Bounds<bool>();
             public Vector2 currentSpeed;
             public float lastJumpPressed = 0;
