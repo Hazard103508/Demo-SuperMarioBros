@@ -34,7 +34,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         private bool CalculateCollisionDetection(RayRange range, out List<GameObject> hits)
         {
             hits = EvaluateRayPositions(range)
-                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.DetectionRayLength, _profile.GroundLayer))
+                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.DetectionRayLength, _profile.LayerMask))
                 .Where(hit => hit.collider != null)
                 .Select(hit => hit.collider.gameObject)
                 .ToList();
