@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d265394145a794747a71ee762756e33b, type: 3}
   m_Name: GameDataProfile
   m_EditorClassIdentifier: 
+  WorldMapProfile: {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
   _player: MARIO
-  _worldName: 1-1
-  _score: 0
-  _coins: 12
   onScoreChanged:
     m_PersistentCalls:
       m_Calls: []
   onCoinsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onTimeChanged:
     m_PersistentCalls:
       m_Calls: []

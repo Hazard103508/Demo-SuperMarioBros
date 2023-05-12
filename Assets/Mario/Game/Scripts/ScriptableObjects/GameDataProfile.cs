@@ -6,11 +6,18 @@ namespace Mario.Game.ScriptableObjects
     [CreateAssetMenu(fileName = "GameDataProfile", menuName = "ScriptableObjects/Game/GameDataProfile", order = 99)]
     public class GameDataProfile : ScriptableObject
     {
+        public WorldMapProfile WorldMapProfile;
         [SerializeField] private string _player;
-        [SerializeField] private string _worldName;
-        [SerializeField] private int _score;
-        [SerializeField] private int _coins;
+        private int _score;
+        private int _coins;
+        private int _timer;
 
+        public void Init()
+        {
+            Score = 0;
+            Coins = 0;
+            Timer = WorldMapProfile.Time;
+        }
         public int Score
         {
             get => _score;
@@ -29,10 +36,23 @@ namespace Mario.Game.ScriptableObjects
                 onCoinsChanged.Invoke();
             }
         }
+        public int Timer
+        {
+            get => _timer;
+            set
+            {
+                float _old = _timer;
+                _timer = value;
+
+                if (_timer != _old)
+                    onTimeChanged.Invoke();
+            }
+        }
+
         public string Player => _player;
-        public string WorldName => _worldName;
 
         [HideInInspector] public UnityEvent onScoreChanged;
         [HideInInspector] public UnityEvent onCoinsChanged;
+        [HideInInspector] public UnityEvent onTimeChanged;
     }
 }

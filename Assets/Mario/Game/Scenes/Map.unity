@@ -609,7 +609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4952921070829784033, guid: e7e6e8a86c2eee8478ff0d7ab7e7cf6d, type: 3}
       propertyPath: _text
-      value: 400
+      value: 000
       objectReference: {fileID: 0}
     - target: {fileID: 4952921070829784033, guid: e7e6e8a86c2eee8478ff0d7ab7e7cf6d, type: 3}
       propertyPath: _letterCount
@@ -6047,6 +6047,7 @@ MonoBehaviour:
   labelScore: {fileID: 1966007714}
   labelCoins: {fileID: 200388768}
   labelWorldName: {fileID: 1410990132}
+  labelTime: {fileID: 2049728177}
 --- !u!1001 &878622701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10379,6 +10380,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4159430047776393569, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
   m_PrefabInstance: {fileID: 2038929146}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2049728177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4952921070829784033, guid: e7e6e8a86c2eee8478ff0d7ab7e7cf6d, type: 3}
+  m_PrefabInstance: {fileID: 199348859}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35db13ff949cdb94793b839b206b8b7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2087402763
 PrefabInstance:
   m_ObjectHideFlags: 0
