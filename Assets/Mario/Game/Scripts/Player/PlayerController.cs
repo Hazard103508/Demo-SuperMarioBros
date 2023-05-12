@@ -28,6 +28,9 @@ namespace Mario.Game.Player
                 if (_mode == PlayerModes.Small)
                     transform.position += Vector3.up * _controllerVariables.smallAdjustmentPositionY;
 
+                if (_mode != value)
+                    GameHandler.Instance.FreezeMove();
+
                 _mode = value;
                 var size = value == PlayerModes.Small ? _profile.sizes.small : _profile.sizes.big;
                 Array.ForEach(raycastRanges, r => r.SpriteSize = size);
