@@ -44,7 +44,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
         {
             if (_profile.RayCount == 1)
-                yield return Vector2.Lerp(range.Start, range.End, 0.5f);
+                yield return Vector2.Lerp(range.Start, range.End, 0.5f + _profile.OffSet);
             else
                 for (var i = 0; i < _profile.RayCount; i++)
                 {

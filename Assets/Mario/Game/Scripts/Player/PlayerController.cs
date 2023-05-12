@@ -166,7 +166,7 @@ namespace Mario.Game.Player
             }
 
             // fuerzo ajuste de posicion en los lados de los bloques 
-            if (!_controllerVariables.ProximityHit.bottom)
+            if (!IsGrounded)
             {
                 if (!_controllerVariables.ProximityHit.left && _controllerVariables.ProximityHit.right)
                     nextPosition.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;

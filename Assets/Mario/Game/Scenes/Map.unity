@@ -1164,7 +1164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6223d95e6d8ee7488bc8322b4544b0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _profile: {fileID: 11400000, guid: 0f55032fafce7b742b06d17d8fa3e6ac, type: 2}
+  _profile: {fileID: 11400000, guid: d764ebb188295504490e601c5fd79f52, type: 2}
   SpriteSize:
     Width: 0
     Height: 0
@@ -5814,7 +5814,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741454643}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.5, y: 6.5, z: 0}
+  m_LocalPosition: {x: 21.5, y: 6.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5834,7 +5834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdc8b7738874bf8448912d133c77d968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomProfile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
+  _profile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
   raycastRanges:
   - {fileID: 1458799108}
   - {fileID: 949403957}
@@ -11034,7 +11034,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6432609861401994333}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.5, y: 2.5, z: 0}
+  m_LocalPosition: {x: 16.5, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

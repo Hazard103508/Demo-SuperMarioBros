@@ -15,6 +15,6 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  OffSet: 0.15
-  RayCount: 4
+  OffSet: 0.35
+  RayCount: 1
   DetectionRayLength: 0.05

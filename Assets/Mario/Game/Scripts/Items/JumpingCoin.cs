@@ -6,16 +6,16 @@ namespace Mario.Game.Items
 {
     public class JumpingCoin : MonoBehaviour
     {
-        [SerializeField] private CoinProfile _coinProfile;
+        [SerializeField] private CoinProfile _profile;
 
         private void OnEnable()
         {
-            GameDataHandler.Instance.IncreaseScore(_coinProfile.Points);
+            GameDataHandler.Instance.IncreaseScore(_profile.Points);
             GameDataHandler.Instance.IncreaseCoin(1);
         }
         public void OnJumpCompleted()
         {
-            GameDataHandler.Instance.ShowPoint(_coinProfile.Points, transform.position + new Vector3(0, 1.5f, 0));
+            GameDataHandler.Instance.ShowPoint(_profile.Points, transform.position + new Vector3(0, 1.5f, 0));
             Destroy(gameObject);
         }
     }
