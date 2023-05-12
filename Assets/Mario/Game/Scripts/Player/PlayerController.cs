@@ -1,4 +1,5 @@
 using Mario.Game.Enums;
+using Mario.Game.Handlers;
 using Mario.Game.ScriptableObjects;
 using System;
 using UnityEngine;
@@ -62,6 +63,9 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
+            if (!GameHandler.Instance.AllowMove)
+                return;
+
             GatherInput();
 
             CalculateWalk();

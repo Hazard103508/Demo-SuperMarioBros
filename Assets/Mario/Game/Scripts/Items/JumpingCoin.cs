@@ -10,12 +10,12 @@ namespace Mario.Game.Items
 
         private void OnEnable()
         {
-            GameDataHandler.Instance.IncreaseScore(_profile.Points);
-            GameDataHandler.Instance.IncreaseCoin(1);
+            GameHandler.Instance.IncreaseScore(_profile.Points);
+            GameHandler.Instance.IncreaseCoin(1);
         }
         public void OnJumpCompleted()
         {
-            GameDataHandler.Instance.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
+            GameHandler.Instance.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
             Destroy(gameObject);
         }
     }

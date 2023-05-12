@@ -1,4 +1,5 @@
 using Mario.Game.Enums;
+using Mario.Game.Handlers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -84,6 +85,10 @@ namespace Mario.Game.Player
                 this.State = PlayerAnimationStates.Idle;
         }
 
-        public void OnPowerUpCompleted() => State = PlayerAnimationStates.Idle;
+        public void OnPowerUpCompleted()
+        {
+            GameHandler.Instance.ResumeMove();
+            State = PlayerAnimationStates.Idle;
+        }
     }
 }
