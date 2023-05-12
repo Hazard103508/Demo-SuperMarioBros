@@ -9,6 +9,7 @@ namespace Mario.Game.Boxes
     public class MysteryBox : TopHitableBlock
     {
         [SerializeField] private Animator _spriteAnimator;
+        [SerializeField] private bool _instantiateItemOnHit;
 
         public override void HitTop(PlayerController player)
         {
@@ -18,7 +19,13 @@ namespace Mario.Game.Boxes
             base.HitTop(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            base.InstantiateContent();
+            if (_instantiateItemOnHit)
+                base.InstantiateContent();
+        }
+        public override void OnJumpCompleted()
+        {
+            if (!_instantiateItemOnHit)
+                base.InstantiateContent();
         }
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6872637405630037414}
   - component: {fileID: 6872637405630037415}
   m_Layer: 3
-  m_Name: MysteryBox
+  m_Name: CoinBox
   m_TagString: MysteryBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _contentPrefab: {fileID: 7232380791890894777, guid: 11edffef54ef3e24cb397f4c763299ab, type: 3}
   _spriteAnimator: {fileID: 1458048380726434528}
+  _instantiateItemOnHit: 1
 --- !u!1 &1458048380726434535
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,8 +189,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1191700519
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 799512423, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
