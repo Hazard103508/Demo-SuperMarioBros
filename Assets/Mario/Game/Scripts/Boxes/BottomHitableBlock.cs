@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class TopHitableBlock : MonoBehaviour, ITopHitable
+    public class BottomHitableBlock : MonoBehaviour, IBottomHitable
     {
         [SerializeField] private GameObject _contentPrefab;
         private Animator _boxAnimator;
@@ -15,7 +15,7 @@ namespace Mario.Game.Boxes
             _boxAnimator = GetComponent<Animator>();
             IsHitable = true;
         }
-        public virtual void OnHitTop(PlayerController player)
+        public virtual void OnHitFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
@@ -26,7 +26,6 @@ namespace Mario.Game.Boxes
         public virtual void OnJumpCompleted()
         {
         }
-
         protected void InstantiateContent()
         {
             var content = Instantiate(_contentPrefab);

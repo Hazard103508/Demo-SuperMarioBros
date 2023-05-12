@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class MysteryBox : TopHitableBlock
+    public class MysteryBox : BottomHitableBlock
     {
         [SerializeField] private Animator _spriteAnimator;
         [SerializeField] private bool _instantiateItemOnHit;
 
-        public override void OnHitTop(PlayerController player)
+        public override void OnHitFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
-            base.OnHitTop(player);
+            base.OnHitFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
             if (_instantiateItemOnHit)

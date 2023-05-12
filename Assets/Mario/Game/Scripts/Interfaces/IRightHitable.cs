@@ -3,6 +3,6 @@ namespace Mario.Game.Interfaces
 {
     public interface IRightHitable
     {
-        void OnHitRight(PlayerController player);
+        void OnHitFromRight(PlayerController player);
     }
 }

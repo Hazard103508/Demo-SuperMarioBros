@@ -91,16 +91,16 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public virtual void OnHitTop(PlayerController player)
+        public virtual void OnHitFromTop(PlayerController player)
         {
         }
-        public virtual void OnHitBottom(PlayerController player)
+        public virtual void OnHitFromBottom(PlayerController player)
         {
         }
-        public virtual void OnHitLeft(PlayerController player)
+        public virtual void OnHitFromLeft(PlayerController player)
         {
         }
-        public virtual void OnHitRight(PlayerController player)
+        public virtual void OnHitFromRight(PlayerController player)
         {
         }
         #endregion

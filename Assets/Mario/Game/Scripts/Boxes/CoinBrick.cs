@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class CoinBrick : TopHitableBlock
+    public class CoinBrick : BottomHitableBlock
     {
         [SerializeField] private Animator _spriteAnimator;
         [SerializeField] private float _limitTime;
@@ -11,14 +11,14 @@ namespace Mario.Game.Boxes
         private bool _firstHit;
         private bool _isEmpty;
 
-        public override void OnHitTop(PlayerController player)
+        public override void OnHitFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
             _firstHit = true;
 
-            base.OnHitTop(player);
+            base.OnHitFromBottom(player);
 
             if (_limitTime < 0)
             {
