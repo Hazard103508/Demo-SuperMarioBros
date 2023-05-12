@@ -15,7 +15,7 @@ namespace Mario.Game.Items
         }
         public void OnJumpCompleted()
         {
-            GameDataHandler.Instance.ShowPoint(_profile.Points, transform.position + new Vector3(0, 1.5f, 0));
+            GameDataHandler.Instance.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
             Destroy(gameObject);
         }
     }

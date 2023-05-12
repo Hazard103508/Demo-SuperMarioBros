@@ -1,6 +1,6 @@
 using Mario.Game.ScriptableObjects;
 using UnityEngine;
-
+using UnityShared.Behaviours.Various.Lerpers;
 
 namespace Mario.Game.Props
 {
@@ -8,8 +8,14 @@ namespace Mario.Game.Props
     {
         [SerializeField] private TargetPointsProfile profile;
         [SerializeField] private SpriteRenderer[] _numberRenders;
+        private LocalPositionLerper _lerper;
 
-        public void SetPoints(int point)
+        private void Awake()
+        {
+            _lerper = GetComponent<LocalPositionLerper>();
+            _lerper.onLerpCompleted.AddListener(OnRisingCompleted);
+        }
+        public void ShowPoints(int point, float time, float hight)
         {
             string txtPoint = point.ToString("D4");
 
@@ -21,7 +27,11 @@ namespace Mario.Game.Props
                 else
                     _numberRenders[i].sprite = profile.Sprites[number];
             }
+
+            _lerper.Speed = 1 / time;
+            _lerper.GoalPosition = transform.position + Vector3.up * hight;
+            _lerper.RunForward();
         }
-        public void OnRisingCompleted() => Destroy(gameObject);
+        private void OnRisingCompleted() => Destroy(gameObject);
     }
 }

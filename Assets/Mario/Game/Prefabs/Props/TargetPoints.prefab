@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2035694832352201164}
   - component: {fileID: 2035694832352201171}
-  - component: {fileID: 2244265957846383938}
+  - component: {fileID: 1253545595182618755}
   m_Layer: 0
   m_Name: TargetPoints
   m_TagString: Untagged
@@ -52,26 +52,44 @@ MonoBehaviour:
   - {fileID: 2035694833099341482}
   - {fileID: 2035694833819823992}
   - {fileID: 2035694832385282918}
---- !u!95 &2244265957846383938
-Animator:
-  serializedVersion: 5
+--- !u!114 &1253545595182618755
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035694832352201165}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 469636b54c6067144b9b13a799c88cf4, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 468b8fd5f9ddec94eb5c6120cfab963e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _speed: 0
+  _goalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2035694832385282912
 GameObject:
   m_ObjectHideFlags: 0

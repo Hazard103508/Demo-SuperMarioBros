@@ -21,7 +21,7 @@ namespace Mario.Game.Items
 
             isCollected = true;
             GameDataHandler.Instance.IncreaseScore(_profile.Points);
-            GameDataHandler.Instance.ShowPoint(_profile.Points, this.transform.position + Vector3.up * 1.5f);
+            GameDataHandler.Instance.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
             player.Mode = PlayerModes.Big;
             Destroy(gameObject);
 

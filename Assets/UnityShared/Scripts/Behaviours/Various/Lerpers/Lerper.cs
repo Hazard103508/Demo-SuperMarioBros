@@ -1,26 +1,28 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UnityShared.Behaviours.Various.Lerpers
 {
     public abstract class Lerper : MonoBehaviour
     {
         [SerializeField] private AnimationCurve _curve;
-        [SerializeField] private float _speed;
-
-        private bool _isRunning;
         private float _current, _target;
 
+        public UnityEvent onLerpCompleted;
+
+        public float Speed { get; set; }
+        protected bool IsRunning { get; set; }
         protected float CurrentCurve => GetCurrentCurve(_curve, _current);
 
         private void Awake() => Init();
         private void Update()
         {
-            _current = Mathf.MoveTowards(_current, _target, _speed * Time.deltaTime);
+            _current = Mathf.MoveTowards(_current, _target, Speed * Time.deltaTime);
 
-            if (_isRunning)
+            if (IsRunning)
                 UpdateTarget();
 
-            _isRunning = _current != _target;
+            IsRunning = _current != _target;
         }
 
         protected abstract void UpdateTarget();

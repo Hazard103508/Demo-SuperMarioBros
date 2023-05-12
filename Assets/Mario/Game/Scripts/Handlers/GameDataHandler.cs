@@ -20,11 +20,10 @@ namespace Mario.Game.Handlers
 
         public void IncreaseScore(int value) => gameDataProfile.Score += value;
         public void IncreaseCoin(int value) => gameDataProfile.Coins += value;
-        public void ShowPoint(int value, Vector3 positon)
+        public void ShowPoint(int value, Vector3 initPosition, float time, float hight)
         {
-            TargetPoints point = Instantiate(targetPointsPrefab);
-            point.transform.position = positon;
-            point.SetPoints(value);
+            TargetPoints point = Instantiate(targetPointsPrefab, initPosition, Quaternion.identity);
+            point.ShowPoints(value, time, hight);
         }
     }
 }
