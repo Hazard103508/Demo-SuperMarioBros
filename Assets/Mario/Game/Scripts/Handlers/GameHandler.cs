@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Mario.Game.Props;
 using Mario.Game.ScriptableObjects;
 using System.Net.NetworkInformation;
@@ -56,7 +57,7 @@ namespace Mario.Game.Handlers
             if (AllowCountdown)
             {
                 _timer += Time.deltaTime * 2.5f;
-                gameDataProfile.Timer = gameDataProfile.WorldMapProfile.Time - (int)_timer;
+                gameDataProfile.Timer = Mathf.Max(0,gameDataProfile.WorldMapProfile.Time - (int)_timer);
             }
         }
     }
