@@ -1,3 +1,5 @@
+using Mario.Game.Interfaces;
+using Mario.Game.Player;
 using Mario.Game.ScriptableObjects;
 using System;
 using System.Collections;
@@ -7,14 +9,13 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
-    public class Mushroom : MonoBehaviour
+    public class Mushroom : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable
     {
-        [SerializeField] private MushroomProfile _profile;
+        [SerializeField] protected MushroomProfile _profile;
         [SerializeField] private RaycastRange[] raycastRanges = null;
 
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityHit = new Bounds<bool>();
-        //private float adjustmentPositionY = 0.5f;
         private bool isRising;
 
         private void Awake()
@@ -87,6 +88,21 @@ namespace Mario.Game.Items
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityHit.left = hitInfo.IsHiting;
         public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityHit.right = hitInfo.IsHiting;
         public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityHit.bottom = hitInfo.IsHiting;
+        #endregion
+
+        #region On Player Hit
+        public virtual void HitTop(PlayerController player)
+        {
+        }
+        public virtual void HitBottom(PlayerController player)
+        {
+        }
+        public virtual void HitLeft(PlayerController player)
+        {
+        }
+        public virtual void HitRight(PlayerController player)
+        {
+        }
         #endregion
     }
 }

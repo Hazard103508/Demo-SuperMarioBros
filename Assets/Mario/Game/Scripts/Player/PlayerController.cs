@@ -22,7 +22,7 @@ namespace Mario.Game.Player
         public PlayerModes Mode
         {
             get => _mode;
-            private set
+            set
             {
                 if (_mode == PlayerModes.Small)
                     transform.position += Vector3.up * _controllerVariables.smallAdjustmentPositionY;
