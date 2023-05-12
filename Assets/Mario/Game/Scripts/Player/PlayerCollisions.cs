@@ -22,7 +22,7 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            EvaluateHit(_playerController);
+            EvaluateHit();
         }
 
         #region On Ray Range Hit
@@ -32,20 +32,63 @@ namespace Mario.Game.Player
         public void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityHit.top = hitInfo.hitObjects;
         #endregion
 
-        public void EvaluateHit(PlayerController playerController)
+        public void EvaluateHit()
         {
             if (_proximityHit.top != null)
                 foreach (GameObject obj in _proximityHit.top)
-                {
-                    if (HitObjectTop(obj)) continue;
-                }
+                    HitObjectTop(obj);
+
+            if (_proximityHit.bottom != null)
+                foreach (GameObject obj in _proximityHit.bottom)
+                    HitObjectBottom(obj);
+
+            if (_proximityHit.left != null)
+                foreach (GameObject obj in _proximityHit.left)
+                    HitObjectLeft(obj);
+
+            if (_proximityHit.right != null)
+                foreach (GameObject obj in _proximityHit.right)
+                    HitObjectRight(obj);
         }
         private bool HitObjectTop(GameObject obj)
         {
             ITopHitable script = obj.GetComponent<ITopHitable>();
             if (script != null)
             {
-                script.HitTop(_playerController);
+                script.OnHitTop(_playerController);
+                return true;
+            }
+
+            return false;
+        }
+        private bool HitObjectBottom(GameObject obj)
+        {
+            IBottomHitable script = obj.GetComponent<IBottomHitable>();
+            if (script != null)
+            {
+                script.OnHitBottom(_playerController);
+                return true;
+            }
+
+            return false;
+        }
+        private bool HitObjectLeft(GameObject obj)
+        {
+            ILeftHitable script = obj.GetComponent<ILeftHitable>();
+            if (script != null)
+            {
+                script.OnHitLeft(_playerController);
+                return true;
+            }
+
+            return false;
+        }
+        private bool HitObjectRight(GameObject obj)
+        {
+            IRightHitable script = obj.GetComponent<IRightHitable>();
+            if (script != null)
+            {
+                script.OnHitRight(_playerController);
                 return true;
             }
 

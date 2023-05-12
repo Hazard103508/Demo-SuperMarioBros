@@ -18,4 +18,4 @@ MonoBehaviour:
   MoveSpeed: 3.7
   FallSpeed: 60
   MaxFallSpeed: 14.5
-  Points: 0
+  Points: 1000

@@ -15,7 +15,7 @@ namespace Mario.Game.Boxes
             _boxAnimator = GetComponent<Animator>();
             IsHitable = true;
         }
-        public virtual void HitTop(PlayerController player)
+        public virtual void OnHitTop(PlayerController player)
         {
             if (!IsHitable)
                 return;

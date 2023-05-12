@@ -15,7 +15,7 @@ namespace Mario.Game.Items
         [SerializeField] private RaycastRange[] raycastRanges = null;
 
         private Vector3 _currentSpeed;
-        private Bounds<bool> _proximityHit = new Bounds<bool>();
+        private Bounds<bool> _proximityBlock = new Bounds<bool>();
         private bool isRising;
 
         private void Awake()
@@ -40,13 +40,13 @@ namespace Mario.Game.Items
 
         private void CalculateWalk()
         {
-            if (_currentSpeed.x > 0 && _proximityHit.right || _proximityHit.left)
+            if (_currentSpeed.x > 0 && _proximityBlock.right || _proximityBlock.left)
                 _currentSpeed.x *= -1;
         }
         private void CalculateGravity()
         {
             _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
-            if (_proximityHit.bottom)
+            if (_proximityBlock.bottom)
             {
                 if (_currentSpeed.y < 0)
                     _currentSpeed.y = 0;
@@ -62,7 +62,7 @@ namespace Mario.Game.Items
             var nextPosition = transform.position + _currentSpeed * Time.deltaTime;
 
             // ajusto posicion de contacto con el suelo
-            if (_proximityHit.bottom && _currentSpeed.y == 0)
+            if (_proximityBlock.bottom && _currentSpeed.y == 0)
                 nextPosition.y = Mathf.Round(nextPosition.y);
 
             transform.position = nextPosition;
@@ -85,22 +85,22 @@ namespace Mario.Game.Items
         }
 
         #region On Ray Range Hit
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityHit.left = hitInfo.IsHiting;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityHit.right = hitInfo.IsHiting;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityHit.bottom = hitInfo.IsHiting;
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityBlock.bottom = hitInfo.IsBlock;
         #endregion
 
         #region On Player Hit
-        public virtual void HitTop(PlayerController player)
+        public virtual void OnHitTop(PlayerController player)
         {
         }
-        public virtual void HitBottom(PlayerController player)
+        public virtual void OnHitBottom(PlayerController player)
         {
         }
-        public virtual void HitLeft(PlayerController player)
+        public virtual void OnHitLeft(PlayerController player)
         {
         }
-        public virtual void HitRight(PlayerController player)
+        public virtual void OnHitRight(PlayerController player)
         {
         }
         #endregion

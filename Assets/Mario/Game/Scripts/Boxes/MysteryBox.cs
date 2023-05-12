@@ -8,12 +8,12 @@ namespace Mario.Game.Boxes
         [SerializeField] private Animator _spriteAnimator;
         [SerializeField] private bool _instantiateItemOnHit;
 
-        public override void HitTop(PlayerController player)
+        public override void OnHitTop(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
-            base.HitTop(player);
+            base.OnHitTop(player);
             _spriteAnimator.SetTrigger("Disable");
 
             if (_instantiateItemOnHit)

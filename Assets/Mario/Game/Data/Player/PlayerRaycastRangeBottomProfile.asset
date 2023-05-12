@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
   m_Name: PlayerRaycastRangeBottomProfile
   m_EditorClassIdentifier: 
-  LayerMask:
+  BlockLayers:
     serializedVersion: 2
     m_Bits: 8
+  OtherLayers:
+    serializedVersion: 2
+    m_Bits: 64
   OffSet: 0.1
   RayCount: 4
   DetectionRayLength: 0.1

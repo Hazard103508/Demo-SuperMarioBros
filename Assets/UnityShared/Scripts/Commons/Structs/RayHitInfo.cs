@@ -5,7 +5,7 @@ namespace UnityShared.Commons.Structs
 {
     public class RayHitInfo
     {
-        public bool IsHiting { get; set; }
+        public bool IsBlock { get; set; }
         public List<GameObject> hitObjects { get; set; }
     }
 }

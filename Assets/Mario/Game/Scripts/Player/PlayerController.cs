@@ -33,7 +33,7 @@ namespace Mario.Game.Player
             }
         }
         public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / _profile.Walk.MaxSpeed;
-        public bool IsGrounded => _controllerVariables.ProximityHit.bottom;
+        public bool IsGrounded => _controllerVariables.ProximityBlock.bottom;
         private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
         private bool JumpMaxBuffered
         {
@@ -108,7 +108,7 @@ namespace Mario.Game.Player
                 _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
-            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.ProximityHit.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.ProximityHit.left)
+            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.ProximityBlock.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.ProximityBlock.left)
                 _controllerVariables.currentSpeed.x = 0; // Don't walk through walls
         }
         private void CalculateGravity()
@@ -138,7 +138,7 @@ namespace Mario.Game.Player
             if (_controllerVariables.currentSpeed.y > _profile.Jump.MaxSpeed)
                 _controllerVariables.currentSpeed.y = _profile.Jump.MaxSpeed;
 
-            if (_controllerVariables.ProximityHit.top)
+            if (_controllerVariables.ProximityBlock.top)
             {
                 if (_controllerVariables.currentSpeed.y > 0)
                 {
@@ -168,9 +168,9 @@ namespace Mario.Game.Player
             // fuerzo ajuste de posicion en los lados de los bloques 
             if (!IsGrounded)
             {
-                if (!_controllerVariables.ProximityHit.left && _controllerVariables.ProximityHit.right)
+                if (!_controllerVariables.ProximityBlock.left && _controllerVariables.ProximityBlock.right)
                     nextPosition.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-                if (!_controllerVariables.ProximityHit.right && _controllerVariables.ProximityHit.left)
+                if (!_controllerVariables.ProximityBlock.right && _controllerVariables.ProximityBlock.left)
                     nextPosition.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
             }
 
@@ -179,10 +179,10 @@ namespace Mario.Game.Player
         #endregion
 
         #region On Ray Range Hit
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.left = hitInfo.IsHiting;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.right = hitInfo.IsHiting;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.bottom = hitInfo.IsHiting;
-        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _controllerVariables.ProximityHit.top = hitInfo.IsHiting;
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.left = hitInfo.IsBlock;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.right = hitInfo.IsBlock;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.bottom = hitInfo.IsBlock;
+        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.top = hitInfo.IsBlock;
         #endregion
 
         #region EventListener
@@ -194,7 +194,7 @@ namespace Mario.Game.Player
         internal class ControllerVariables
         {
             public float smallAdjustmentPositionY = 0.5f;
-            public Bounds<bool> ProximityHit = new Bounds<bool>();
+            public Bounds<bool> ProximityBlock = new Bounds<bool>();
             public Vector2 currentSpeed;
             public float lastJumpPressed = 0;
         }

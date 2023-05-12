@@ -11,14 +11,14 @@ namespace Mario.Game.Boxes
         private bool _firstHit;
         private bool _isEmpty;
 
-        public override void HitTop(PlayerController player)
+        public override void OnHitTop(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
             _firstHit = true;
 
-            base.HitTop(player);
+            base.OnHitTop(player);
 
             if (_limitTime < 0)
             {

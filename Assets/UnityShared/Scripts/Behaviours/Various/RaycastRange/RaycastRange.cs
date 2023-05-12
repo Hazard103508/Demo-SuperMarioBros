@@ -25,7 +25,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             var rayBound = CalculateRayRange();
             var hitInfo = new RayHitInfo()
             {
-                IsHiting = CalculateCollisionDetection(rayBound, out List<GameObject> hits)
+                IsBlock = CalculateCollisionDetection(rayBound, out List<GameObject> hits)
             };
             hitInfo.hitObjects = hits;
 
@@ -33,13 +33,23 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         }
         private bool CalculateCollisionDetection(RayRange range, out List<GameObject> hits)
         {
-            hits = EvaluateRayPositions(range)
-                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.DetectionRayLength, _profile.LayerMask))
+            hits = new List<GameObject>();
+            
+            var _block = GetHitGameObjects(range, _profile.BlockLayers);
+            hits.AddRange(_block);
+
+            var _noBlock = GetHitGameObjects(range, _profile.OtherLayers);
+            hits.AddRange(_noBlock);
+
+            return _block.Any();
+        }
+        private List<GameObject> GetHitGameObjects(RayRange range, LayerMask layerMask) 
+        {
+            return EvaluateRayPositions(range)
+                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.DetectionRayLength, layerMask))
                 .Where(hit => hit.collider != null)
                 .Select(hit => hit.collider.gameObject)
                 .ToList();
-
-            return hits.Any();
         }
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
         {
