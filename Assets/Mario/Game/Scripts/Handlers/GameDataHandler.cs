@@ -15,7 +15,7 @@ namespace Mario.Game.Handlers
         {
             base.Awake();
             gameDataProfile.Score = 0;
-            gameDataProfile.Coins= 0;
+            gameDataProfile.Coins = 0;
         }
 
         public void IncreaseScore(int value) => gameDataProfile.Score += value;

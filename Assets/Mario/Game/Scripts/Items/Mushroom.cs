@@ -1,9 +1,9 @@
-using UnityEngine;
 using Mario.Game.ScriptableObjects;
-using UnityShared.Commons.Structs;
-using UnityShared.Behaviours.Various.RaycastRange;
 using System;
 using System.Collections;
+using UnityEngine;
+using UnityShared.Behaviours.Various.RaycastRange;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
@@ -75,7 +75,7 @@ namespace Mario.Game.Items
             while (_timer < _maxTime)
             {
                 _timer += Time.deltaTime;
-                var t = Mathf.InverseLerp(0,_maxTime, _timer);
+                var t = Mathf.InverseLerp(0, _maxTime, _timer);
                 transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
                 yield return null;
             }

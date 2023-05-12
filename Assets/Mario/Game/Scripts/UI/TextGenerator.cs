@@ -1,5 +1,4 @@
 using Mario.Game.ScriptableObjects;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

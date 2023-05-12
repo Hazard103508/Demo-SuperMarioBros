@@ -1,7 +1,4 @@
-using Mario.Game.Handlers;
 using Mario.Game.Player;
-using Mario.Game.Items;
-using Mario.Game.ScriptableObjects;
 using UnityEngine;
 
 namespace Mario.Game.Boxes

@@ -1,7 +1,6 @@
 using Mario.Game.Commons;
 using System.Collections.Generic;
 using UnityEngine;
-using static Mario.Game.ScriptableObjects.TargetPointsProfile;
 
 namespace Mario.Game.ScriptableObjects
 {

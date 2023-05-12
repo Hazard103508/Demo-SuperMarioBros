@@ -1,6 +1,6 @@
+using Mario.Game.Boxes;
 using Mario.Game.Enums;
 using Mario.Game.Interfaces;
-using Mario.Game.Boxes;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityShared.Commons.Structs;
