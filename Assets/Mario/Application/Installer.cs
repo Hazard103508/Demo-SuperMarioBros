@@ -8,7 +8,6 @@ using UnityEngine;
 
 namespace Mario.Application
 {
-    [InitializeOnLoad]
     public class Installer : MonoBehaviour
     {
         [SerializeField] private TargetPoints targetPointsPrefab;
@@ -30,8 +29,8 @@ namespace Mario.Application
                 AllServices.TimeService
             };
 
-            AllServices.GameDataService.MapProfile = _mapProfile;
-            Camera.main.backgroundColor = _mapProfile.BackgroundColor; // TEMPORAL........
+            AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
+            
         }
         private void Update()
         {
