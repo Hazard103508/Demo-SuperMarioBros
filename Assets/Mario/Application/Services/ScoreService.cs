@@ -20,5 +20,8 @@ namespace Mario.Application.Services
             _gameDataService.Score += points;
             OnScoreChanged.Invoke();
         }
+        public void Update()
+        {
+        }
     }
 }

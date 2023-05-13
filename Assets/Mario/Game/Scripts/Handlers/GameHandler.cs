@@ -12,26 +12,17 @@ namespace Mario.Game.Handlers
     {
         public GameDataProfile gameDataProfile;
         [SerializeField] private TargetPoints targetPointsPrefab;
-        //private PauseHandler pauseHandler;
 
-        private float _timer;
 
         public bool AllowMove { get; private set; }
-        public bool AllowCountdown { get; private set; }
 
         protected override void Awake()
         {
             base.Awake();
-            //pauseHandler = GetComponent<PauseHandler>();
-            gameDataProfile.Init();
+
             Camera.main.backgroundColor = gameDataProfile.WorldMapProfile.BackgroundColor;
             
             AllowMove = true;
-            AllowCountdown = true;
-        }
-        private void Update()
-        {
-            UpdateTime();
         }
 
         public void ShowPoint(int value, Vector3 initPosition, float time, float hight)
@@ -42,21 +33,12 @@ namespace Mario.Game.Handlers
         public void FreezeMove()
         {
             AllowMove = false;
-            AllowCountdown = false;
         }
         public void ResumeMove()
         {
             AllowMove = true;
-            AllowCountdown = true;
         }
 
-        private void UpdateTime()
-        {
-            if (AllowCountdown)
-            {
-                _timer += Time.deltaTime * 2.5f;
-                gameDataProfile.Timer = Mathf.Max(0,gameDataProfile.WorldMapProfile.Time - (int)_timer);
-            }
-        }
+
     }
 }

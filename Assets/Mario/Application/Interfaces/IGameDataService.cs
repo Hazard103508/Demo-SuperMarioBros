@@ -4,5 +4,6 @@ namespace Mario.Application.Interfaces
     {
         int Coins { get; set; }
         int Score { get; set; }
+        int Time { get; set; }
     }
 }

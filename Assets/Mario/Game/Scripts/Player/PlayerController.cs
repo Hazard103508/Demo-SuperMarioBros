@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.Handlers;
 using Mario.Game.ScriptableObjects;
@@ -28,7 +30,10 @@ namespace Mario.Game.Player
             set
             {
                 if (_mode != value)
+                {
                     GameHandler.Instance.FreezeMove();
+                    ServiceLocator.Current.Get<ITimeService>().Enabled = false;
+                }
 
                 _mode = value;
 

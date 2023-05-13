@@ -1,5 +1,6 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Enums;
-using Mario.Game.Handlers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -87,7 +88,7 @@ namespace Mario.Game.Player
 
         public void OnPowerUpCompleted()
         {
-            GameHandler.Instance.ResumeMove();
+            ServiceLocator.Current.Get<ITimeService>().Enabled = true;
             State = PlayerAnimationStates.Idle;
         }
     }

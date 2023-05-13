@@ -6,5 +6,10 @@ namespace Mario.Application.Services
     {
         public int Coins { get; set; }
         public int Score { get; set; }
+        public int Time { get; set; }
+
+        public void Update()
+        {
+        }
     }
 }

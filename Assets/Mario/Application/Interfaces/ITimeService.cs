@@ -1,0 +1,11 @@
+using UnityEngine.Events;
+
+namespace Mario.Application.Interfaces
+{
+    public interface ITimeService : IGameService
+    {
+        bool Enabled { get; set; }
+        int InitTime { get; set; }
+        UnityEvent OnTimeChanged { get; set; }
+    }
+}

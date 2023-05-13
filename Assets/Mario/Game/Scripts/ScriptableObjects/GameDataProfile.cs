@@ -9,29 +9,8 @@ namespace Mario.Game.ScriptableObjects
         public WorldMapProfile WorldMapProfile;
         [SerializeField] private string _player;
 
-        private int _timer;
 
-        public void Init()
-        {
-            Timer = WorldMapProfile.Time;
-        }
-
-        public int Timer
-        {
-            get => _timer;
-            set
-            {
-                float _old = _timer;
-                _timer = value;
-
-                if (_timer != _old)
-                    onTimeChanged.Invoke();
-            }
-        }
 
         public string Player => _player;
-
-
-        [HideInInspector] public UnityEvent onTimeChanged;
     }
 }
