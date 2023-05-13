@@ -9,7 +9,7 @@ namespace Mario.Application.Services
     {
         private ServiceLocator() { }
 
-        private readonly Dictionary<string, IGameService> services = new Dictionary<string, IGameService>();
+        private readonly Dictionary<Type, IGameService> services = new Dictionary<Type, IGameService>();
         public static ServiceLocator Current { get; private set; }
 
         /// <summary>
@@ -27,10 +27,10 @@ namespace Mario.Application.Services
         /// <returns>The service instance.</returns>
         public T Get<T>() where T : IGameService
         {
-            string key = typeof(T).Name;
+            Type key = typeof(T);
             if (!services.ContainsKey(key))
             {
-                Debug.LogError($"{key} not registered with {GetType().Name}");
+                Debug.LogError($"{key.Name} not registered with {GetType().Name}");
                 throw new InvalidOperationException();
             }
 
@@ -44,10 +44,10 @@ namespace Mario.Application.Services
         /// <param name="service">Service instance.</param>
         public void Register<T>(T service) where T : IGameService
         {
-            string key = typeof(T).Name;
+            Type key = typeof(T);
             if (services.ContainsKey(key))
             {
-                Debug.LogError($"Attempted to register service of type {key} which is already registered with the {GetType().Name}.");
+                Debug.LogError($"Attempted to register service of type {key.Name} which is already registered with the {GetType().Name}.");
                 return;
             }
 
@@ -60,10 +60,10 @@ namespace Mario.Application.Services
         /// <typeparam name="T">Service type.</typeparam>
         public void Unregister<T>() where T : IGameService
         {
-            string key = typeof(T).Name;
+            Type key = typeof(T);
             if (!services.ContainsKey(key))
             {
-                Debug.LogError($"Attempted to unregister service of type {key} which is not registered with the {GetType().Name}.");
+                Debug.LogError($"Attempted to unregister service of type {key.Name} which is not registered with the {GetType().Name}.");
                 return;
             }
 
