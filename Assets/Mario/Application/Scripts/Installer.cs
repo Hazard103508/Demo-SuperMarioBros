@@ -5,6 +5,7 @@ using Mario.Game.ScriptableObjects;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityShared.Behaviours.Handlers;
 
 namespace Mario.Application
 {
@@ -19,7 +20,7 @@ namespace Mario.Application
 
         private List<IGameService> lstServices;
 
-        private void Awake()
+        private void Start()
         {
             ServiceLocator.Initiailze();
             ServiceLocator.Current.Register<IGameDataService>(new GameDataService());
@@ -35,6 +36,8 @@ namespace Mario.Application
 
             AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
             AllServices.GameDataService.PlayerProfile = _playerProfile;
+
+            SceneHandler.Instance.LoadScene("Map", UnityShared.Enums.LoadSceneBehaviour.ASYNC);
         }
         private void Update()
         {

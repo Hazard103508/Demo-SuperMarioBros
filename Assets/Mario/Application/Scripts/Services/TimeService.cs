@@ -7,7 +7,6 @@ namespace Mario.Application.Services
     public class TimeService : ITimeService
     {
         private float _timer;
-        private int _initTime;
 
         public TimeService()
         {
@@ -20,7 +19,6 @@ namespace Mario.Application.Services
 
         public void Reset()
         {
-            _initTime = AllServices.GameDataService.MapProfile.Time;
             _timer = 0;
         }
         public void Update()
@@ -28,7 +26,7 @@ namespace Mario.Application.Services
             if (Enabled)
             {
                 _timer += Time.deltaTime * 2.5f;
-                AllServices.GameDataService.Time = _initTime - (int)_timer;
+                AllServices.GameDataService.Time = AllServices.GameDataService.MapProfile.Time - (int)_timer;
                 OnTimeChanged.Invoke();
             }
         }
