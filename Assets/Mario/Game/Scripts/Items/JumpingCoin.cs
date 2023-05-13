@@ -1,5 +1,6 @@
 using Mario.Game.Handlers;
 using Mario.Game.ScriptableObjects;
+using Mario.Services.Interfaces;
 using UnityEngine;
 
 namespace Mario.Game.Items
@@ -11,7 +12,7 @@ namespace Mario.Game.Items
         private void OnEnable()
         {
             GameHandler.Instance.IncreaseScore(_profile.Points);
-            GameHandler.Instance.IncreaseCoin(1);
+            Services.ServiceLocator.Current.Get<ICoinService>().Coins++;
         }
         public void OnJumpCompleted()
         {

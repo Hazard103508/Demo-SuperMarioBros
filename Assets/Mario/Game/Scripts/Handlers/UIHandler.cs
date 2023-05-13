@@ -1,4 +1,6 @@
 using Mario.Game.ScriptableObjects;
+using Mario.Services;
+using Mario.Services.Interfaces;
 using UnityEngine;
 
 namespace Mario.Game.Handlers
@@ -24,13 +26,13 @@ namespace Mario.Game.Handlers
         private void OnEnable()
         {
             gameDataProfile.onScoreChanged.AddListener(OnScoreChanged);
-            gameDataProfile.onCoinsChanged.AddListener(OnCoinsChanged);
+            ServiceLocator.Current.Get<ICoinService>().OnCoinsChanged.AddListener(OnCoinsChanged);
             gameDataProfile.onTimeChanged.AddListener(OnTimeChanged);
         }
         private void OnDisable()
         {
             gameDataProfile.onScoreChanged.RemoveListener(OnScoreChanged);
-            gameDataProfile.onCoinsChanged.RemoveListener(OnCoinsChanged);
+            ServiceLocator.Current.Get<ICoinService>().OnCoinsChanged.RemoveListener(OnCoinsChanged);
             gameDataProfile.onTimeChanged.RemoveListener(OnTimeChanged);
         }
 
