@@ -29,7 +29,7 @@ namespace Mario.Game.Player
                 if (_mode != value)
                 {
                     AllServices.CharacterService.StopMovement();
-                    AllServices.TimeService.Enabled = false;
+                    AllServices.TimeService.StopTimer(); 
                 }
 
                 _mode = value;
@@ -79,7 +79,7 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            if (!AllServices.CharacterService.CanMove())
+            if (!AllServices.CharacterService.CanMove)
                 return;
 
             GatherInput();

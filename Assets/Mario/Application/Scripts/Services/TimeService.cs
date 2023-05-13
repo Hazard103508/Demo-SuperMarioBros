@@ -13,14 +13,16 @@ namespace Mario.Application.Services
             OnTimeChanged = new UnityEvent();
         }
 
-        public bool Enabled { get; set; }
+        public bool Enabled { get; private set; }
         public UnityEvent OnTimeChanged { get; set; }
 
-        public void Reset()
+        public void ResetTimer()
         {
             _timer = 0;
         }
-        public void UpdateTime()
+        public void StopTimer() => Enabled = false;
+        public void StartTimer() => Enabled = true;
+        public void UpdateTimer()
         {
             if (Enabled)
             {

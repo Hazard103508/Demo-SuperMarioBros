@@ -4,9 +4,11 @@ namespace Mario.Application.Interfaces
 {
     public interface ITimeService : IGameService
     {
-        bool Enabled { get; set; }
+        bool Enabled { get; }
         UnityEvent OnTimeChanged { get; set; }
-        void Reset();
-        void UpdateTime();
+        void ResetTimer();
+        void StopTimer();
+        void StartTimer();
+        void UpdateTimer();
     }
 }

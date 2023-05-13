@@ -4,16 +4,14 @@ namespace Mario.Application.Services
 {
     public class CharacterService : ICharacterService
     {
-        private bool _allowMove;
-
         public CharacterService()
         {
-            _allowMove = true;
+            CanMove = true;
         }
 
+        public bool CanMove { get; private set; }
 
-        public bool CanMove() => _allowMove;
-        public void StopMovement() => _allowMove = false;
-        public void ResumeMovement() => _allowMove = true;
+        public void StopMovement() => CanMove = false;
+        public void ResumeMovement() => CanMove = true;
     }
 }

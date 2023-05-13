@@ -86,7 +86,7 @@ namespace Mario.Game.Player
 
         public void OnPowerUpCompleted()
         {
-            AllServices.TimeService.Enabled = true;
+            AllServices.TimeService.StartTimer();
             AllServices.CharacterService.ResumeMovement();
 
             State = PlayerAnimationStates.Idle;

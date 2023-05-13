@@ -7,12 +7,12 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             Camera.main.backgroundColor = AllServices.GameDataService.MapProfile.BackgroundColor;
-            AllServices.TimeService.Reset();
-            AllServices.TimeService.Enabled= true;
+            AllServices.TimeService.ResetTimer();
+            AllServices.TimeService.StartTimer();
         }
         private void Update()
         {
-            AllServices.TimeService.UpdateTime();
+            AllServices.TimeService.UpdateTimer();
         }
     
     }
