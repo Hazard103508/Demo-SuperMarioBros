@@ -27,14 +27,10 @@ namespace Mario.Application
 
             lstServices = new List<IGameService>()
             {
-                //ServiceLocator.Current.Get<IGameDataService>(),
-                //ServiceLocator.Current.Get<ICoinService>(),
-                //ServiceLocator.Current.Get<IScoreService>(),
-                ServiceLocator.Current.Get<ITimeService>(),
-                //ServiceLocator.Current.Get<ICharacterService>(),
+                AllServices.TimeService
             };
 
-            ServiceLocator.Current.Get<IGameDataService>().MapProfile = _mapProfile;
+            AllServices.GameDataService.MapProfile = _mapProfile;
             Camera.main.backgroundColor = _mapProfile.BackgroundColor; // TEMPORAL........
         }
         private void Update()

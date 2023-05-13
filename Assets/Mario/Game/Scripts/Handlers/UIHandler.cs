@@ -13,41 +13,29 @@ namespace Mario.Game.Handlers
         [SerializeField] private Mario.Game.UI.TextGenerator labelWorldName;
         [SerializeField] private Mario.Game.UI.TextGenerator labelTime;
 
-        private IGameDataService _gameDataService;
-        private ICoinService _coinService;
-        private IScoreService _scoreService;
-        private ITimeService _timeService;
-
-        private void Awake()
-        {
-            _gameDataService = ServiceLocator.Current.Get<IGameDataService>();
-            _coinService = ServiceLocator.Current.Get<ICoinService>();
-            _scoreService = ServiceLocator.Current.Get<IScoreService>();
-            _timeService = ServiceLocator.Current.Get<ITimeService>();
-        }
         private void Start()
         {
             OnScoreChanged();
             OnTimeChanged();
 
             labelPlayer.Text = "AEIOU";//_gameDataService.Player;
-            labelWorldName.Text = _gameDataService.MapProfile.WorldName;
+            labelWorldName.Text = AllServices.GameDataService.MapProfile.WorldName;
         }
         private void OnEnable()
         {
-            _scoreService.OnScoreChanged.AddListener(OnScoreChanged);
-            _coinService.OnCoinsChanged.AddListener(OnCoinsChanged);
-            _timeService.OnTimeChanged.AddListener(OnTimeChanged);
+            AllServices.ScoreService.OnScoreChanged.AddListener(OnScoreChanged);
+            AllServices.CoinService.OnCoinsChanged.AddListener(OnCoinsChanged);
+            AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
         }
         private void OnDisable()
         {
-            _scoreService.OnScoreChanged.RemoveListener(OnScoreChanged);
-            _coinService.OnCoinsChanged.RemoveListener(OnCoinsChanged);
-            _timeService.OnTimeChanged.RemoveListener(OnTimeChanged);
+            AllServices.ScoreService.OnScoreChanged.RemoveListener(OnScoreChanged);
+            AllServices.CoinService.OnCoinsChanged.RemoveListener(OnCoinsChanged);
+            AllServices.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);
         }
 
-        private void OnScoreChanged() => labelScore.Text = _gameDataService.Score.ToString("D6");
-        private void OnCoinsChanged() => labelCoins.Text = _gameDataService.Coins.ToString("D2");
-        private void OnTimeChanged() => labelTime.Text = _gameDataService.Time.ToString("D3");
+        private void OnScoreChanged() => labelScore.Text = AllServices.GameDataService.Score.ToString("D6");
+        private void OnCoinsChanged() => labelCoins.Text = AllServices.GameDataService.Coins.ToString("D2");
+        private void OnTimeChanged() => labelTime.Text = AllServices.GameDataService.Time.ToString("D3");
     }
 }

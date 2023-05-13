@@ -5,11 +5,8 @@ namespace Mario.Application.Services
 {
     public class CoinService : ICoinService
     {
-        private IGameDataService _gameDataService;
-
         public CoinService()
         {
-            _gameDataService = ServiceLocator.Current.Get<IGameDataService>();
             OnCoinsChanged = new UnityEvent();
         }
 
@@ -20,7 +17,7 @@ namespace Mario.Application.Services
         }
         public void Add()
         {
-            _gameDataService.Coins++;
+            AllServices.GameDataService.Coins++;
             OnCoinsChanged.Invoke();
         }
     }

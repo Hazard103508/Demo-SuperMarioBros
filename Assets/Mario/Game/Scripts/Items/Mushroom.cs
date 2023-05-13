@@ -17,18 +17,12 @@ namespace Mario.Game.Items
         [SerializeField] protected MushroomProfile _profile;
         [SerializeField] private RaycastRange[] raycastRanges = null;
 
-        protected ICharacterService _characterService;
-        protected IScoreService _scoreService;
-
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityBlock = new Bounds<bool>();
         private bool isRising;
 
         private void Awake()
         {
-            _characterService = ServiceLocator.Current.Get<ICharacterService>();
-            _scoreService = ServiceLocator.Current.Get<IScoreService>();
-
             isRising = true;
             _currentSpeed = Vector2.right * _profile.MoveSpeed;
             Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(1, 1));
@@ -42,7 +36,7 @@ namespace Mario.Game.Items
             if (isRising)
                 return;
 
-            if (!_characterService.AllowMove)
+            if (!AllServices.CharacterService.AllowMove)
                 return;
 
             CalculateWalk();

@@ -19,10 +19,6 @@ namespace Mario.Game.Player
         [SerializeField] private RaycastRange[] raycastRanges = null;
         private ControllerVariables _controllerVariables;
         private PlayerModes _mode;
-
-        private IGameDataService _gameDataService;
-        private ICharacterService _characterService;
-        private ITimeService _timeService;
         #endregion
 
         #region Properties
@@ -35,8 +31,8 @@ namespace Mario.Game.Player
             {
                 if (_mode != value)
                 {
-                    _characterService.AllowMove = false;
-                    _timeService.Enabled = false;
+                    AllServices.CharacterService.AllowMove = false;
+                    AllServices.TimeService.Enabled = false;
                 }
 
                 _mode = value;
@@ -78,18 +74,14 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
-            _gameDataService = ServiceLocator.Current.Get<IGameDataService>();
-            _characterService = ServiceLocator.Current.Get<ICharacterService>();
-            _timeService = ServiceLocator.Current.Get<ITimeService>();
-
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             Mode = PlayerModes.Small;
-            transform.position = _gameDataService.MapProfile.StartPosition;
+            transform.position = AllServices.GameDataService.MapProfile.StartPosition;
         }
         private void Update()
         {
-            if (!_characterService.AllowMove)
+            if (!AllServices.CharacterService.AllowMove)
                 return;
 
             GatherInput();
