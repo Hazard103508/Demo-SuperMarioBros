@@ -1,5 +1,5 @@
 using Mario.Application.Interfaces;
-using Mario.Game.Props;
+using Mario.Game.Environment;
 using UnityEngine;
 using UnityEngine.Events;
 

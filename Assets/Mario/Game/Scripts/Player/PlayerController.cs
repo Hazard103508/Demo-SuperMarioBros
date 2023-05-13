@@ -20,6 +20,7 @@ namespace Mario.Game.Player
         private ControllerVariables _controllerVariables;
         private PlayerModes _mode;
 
+        private IGameDataService _gameDataService;
         private ICharacterService _characterService;
         private ITimeService _timeService;
         #endregion
@@ -77,13 +78,14 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
+            _gameDataService = ServiceLocator.Current.Get<IGameDataService>();
             _characterService = ServiceLocator.Current.Get<ICharacterService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
 
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             Mode = PlayerModes.Small;
-            transform.position = GameHandler.Instance.gameDataProfile.WorldMapProfile.StartPosition;
+            transform.position = _gameDataService.MapProfile.StartPosition;
         }
         private void Update()
         {

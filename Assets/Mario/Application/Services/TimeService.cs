@@ -14,8 +14,6 @@ namespace Mario.Application.Services
             _gameDataService = ServiceLocator.Current.Get<IGameDataService>();
             OnTimeChanged = new UnityEvent();
             Enabled = true;
-
-            InitTime = 500; // HARCODEADO....
         }
 
         public bool Enabled { get; set; }
@@ -27,7 +25,7 @@ namespace Mario.Application.Services
             if (Enabled)
             {
                 _timer += Time.deltaTime * 2.5f;
-                _gameDataService.Time = InitTime - (int)_timer;
+                _gameDataService.Time = ServiceLocator.Current.Get<IGameDataService>().MapProfile.Time - (int)_timer;
                 OnTimeChanged.Invoke();
             }
         }

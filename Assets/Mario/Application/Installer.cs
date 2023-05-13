@@ -1,6 +1,7 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
-using Mario.Game.Props;
+using Mario.Game.Environment;
+using Mario.Game.ScriptableObjects;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Mario.Application
     public class Installer : MonoBehaviour
     {
         [SerializeField] private TargetPoints targetPointsPrefab;
+        [SerializeField] private MapProfile _mapProfile; // TEMPORAL
+
         private List<IGameService> lstServices;
 
         private void Awake()
@@ -30,6 +33,9 @@ namespace Mario.Application
                 ServiceLocator.Current.Get<ITimeService>(),
                 //ServiceLocator.Current.Get<ICharacterService>(),
             };
+
+            ServiceLocator.Current.Get<IGameDataService>().MapProfile = _mapProfile;
+            Camera.main.backgroundColor = _mapProfile.BackgroundColor; // TEMPORAL........
         }
         private void Update()
         {

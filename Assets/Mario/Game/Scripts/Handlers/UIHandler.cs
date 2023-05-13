@@ -7,7 +7,6 @@ namespace Mario.Game.Handlers
 {
     public class UIHandler : MonoBehaviour
     {
-        [SerializeField] private GameDataProfile gameDataProfile;
         [SerializeField] private Mario.Game.UI.TextGenerator labelPlayer;
         [SerializeField] private Mario.Game.UI.TextGenerator labelScore;
         [SerializeField] private Mario.Game.UI.TextGenerator labelCoins;
@@ -25,14 +24,14 @@ namespace Mario.Game.Handlers
             _coinService = ServiceLocator.Current.Get<ICoinService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
-
-            labelPlayer.Text = gameDataProfile.Player;
-            labelWorldName.Text = gameDataProfile.WorldMapProfile.WorldName;
         }
         private void Start()
         {
             OnScoreChanged();
             OnTimeChanged();
+
+            labelPlayer.Text = "AEIOU";//_gameDataService.Player;
+            labelWorldName.Text = _gameDataService.MapProfile.WorldName;
         }
         private void OnEnable()
         {

@@ -2,7 +2,7 @@ using Mario.Game.ScriptableObjects;
 using UnityEngine;
 using UnityShared.Behaviours.Various.Lerpers;
 
-namespace Mario.Game.Props
+namespace Mario.Game.Environment
 {
     public class TargetPoints : MonoBehaviour
     {

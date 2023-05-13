@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects
 {
-    [CreateAssetMenu(fileName = "WorldMapProfile", menuName = "ScriptableObjects/Game/WorldMapProfile", order = 7)]
-    public class WorldMapProfile : ScriptableObject
+    [CreateAssetMenu(fileName = "MapProfile", menuName = "ScriptableObjects/Game/MapProfile", order = 7)]
+    public class MapProfile : ScriptableObject
     {
         public string WorldName;
         public Color BackgroundColor;
