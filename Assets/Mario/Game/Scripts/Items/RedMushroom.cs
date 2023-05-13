@@ -23,7 +23,7 @@ namespace Mario.Game.Items
 
             isCollected = true;
             ServiceLocator.Current.Get<IScoreService>().Add(_profile.Points);
-            GameHandler.Instance.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
+            _scoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
             player.Mode = PlayerModes.Big;
             Destroy(gameObject);
         }

@@ -11,7 +11,7 @@ namespace Mario.Game.Handlers
     public class GameHandler : Singleton<GameHandler>
     {
         public GameDataProfile gameDataProfile;
-        [SerializeField] private TargetPoints targetPointsPrefab;
+        
 
 
         protected override void Awake()
@@ -19,12 +19,6 @@ namespace Mario.Game.Handlers
             base.Awake();
 
             Camera.main.backgroundColor = gameDataProfile.WorldMapProfile.BackgroundColor;
-        }
-
-        public void ShowPoint(int value, Vector3 initPosition, float time, float hight)
-        {
-            TargetPoints point = Instantiate(targetPointsPrefab, initPosition, Quaternion.identity);
-            point.ShowPoints(value, time, hight);
         }
     }
 }

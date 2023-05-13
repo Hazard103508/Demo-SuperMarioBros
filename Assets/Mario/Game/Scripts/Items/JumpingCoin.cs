@@ -9,15 +9,22 @@ namespace Mario.Game.Items
     public class JumpingCoin : MonoBehaviour
     {
         [SerializeField] private CoinProfile _profile;
+        private IScoreService _scoreService;
+        private ICoinService _coinService;
 
+        private void Awake()
+        {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _coinService = ServiceLocator.Current.Get<ICoinService>();
+        }
         private void OnEnable()
         {
-            ServiceLocator.Current.Get<IScoreService>().Add(_profile.Points);
-            ServiceLocator.Current.Get<ICoinService>().Add();
+            _scoreService.Add(_profile.Points);
+            _coinService.Add();
         }
         public void OnJumpCompleted()
         {
-            GameHandler.Instance.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
+            _scoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
             Destroy(gameObject);
         }
     }
