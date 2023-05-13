@@ -28,7 +28,7 @@ namespace Mario.Game.Player
             {
                 if (_mode != value)
                 {
-                    AllServices.CharacterService.AllowMove = false;
+                    AllServices.CharacterService.StopMovement();
                     AllServices.TimeService.Enabled = false;
                 }
 
@@ -79,7 +79,7 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            if (!AllServices.CharacterService.AllowMove)
+            if (!AllServices.CharacterService.CanMove())
                 return;
 
             GatherInput();
