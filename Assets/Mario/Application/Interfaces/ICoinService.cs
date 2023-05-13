@@ -5,6 +5,6 @@ namespace Mario.Application.Interfaces
     public interface ICoinService : IGameService
     {
         UnityEvent OnCoinsChanged { get; set; }
-        void AddCoin();
+        void Add();
     }
 }

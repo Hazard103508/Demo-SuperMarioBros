@@ -12,8 +12,8 @@ namespace Mario.Game.Items
 
         private void OnEnable()
         {
-            GameHandler.Instance.IncreaseScore(_profile.Points);
-            ServiceLocator.Current.Get<ICoinService>().AddCoin();
+            ServiceLocator.Current.Get<IScoreService>().Add(_profile.Points);
+            ServiceLocator.Current.Get<ICoinService>().Add();
         }
         public void OnJumpCompleted()
         {

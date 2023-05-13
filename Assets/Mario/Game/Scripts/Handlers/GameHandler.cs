@@ -34,7 +34,6 @@ namespace Mario.Game.Handlers
             UpdateTime();
         }
 
-        public void IncreaseScore(int value) => gameDataProfile.Score += value;
         public void ShowPoint(int value, Vector3 initPosition, float time, float hight)
         {
             TargetPoints point = Instantiate(targetPointsPrefab, initPosition, Quaternion.identity);
