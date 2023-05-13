@@ -16,9 +16,6 @@ namespace Mario.Application.Services
 
         public UnityEvent OnScoreChanged { get; set; }
 
-        public void Update()
-        {
-        }
         public void Add(int points)
         {
             AllServices.GameDataService.Score += points;

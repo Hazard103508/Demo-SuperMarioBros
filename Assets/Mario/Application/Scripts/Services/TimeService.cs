@@ -11,7 +11,6 @@ namespace Mario.Application.Services
         public TimeService()
         {
             OnTimeChanged = new UnityEvent();
-            Enabled = true;
         }
 
         public bool Enabled { get; set; }
@@ -21,7 +20,7 @@ namespace Mario.Application.Services
         {
             _timer = 0;
         }
-        public void Update()
+        public void UpdateTime()
         {
             if (Enabled)
             {

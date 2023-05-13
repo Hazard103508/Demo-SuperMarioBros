@@ -18,8 +18,6 @@ namespace Mario.Application
         [SerializeField] private MapProfile _mapProfile; // TEMPORAL
         [SerializeField] private PlayerProfile _playerProfile; // TEMPORAL
 
-        private List<IGameService> lstServices;
-
         private void Start()
         {
             ServiceLocator.Initiailze();
@@ -29,20 +27,11 @@ namespace Mario.Application
             ServiceLocator.Current.Register<ITimeService>(new TimeService());
             ServiceLocator.Current.Register<ICharacterService>(new CharacterService());
 
-            lstServices = new List<IGameService>()
-            {
-                AllServices.TimeService
-            };
 
             AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
             AllServices.GameDataService.PlayerProfile = _playerProfile;
 
             SceneHandler.Instance.LoadScene("Map", UnityShared.Enums.LoadSceneBehaviour.ASYNC);
-        }
-        private void Update()
-        {
-            foreach (IGameService service in lstServices)
-                service.Update();
         }
     }
 }

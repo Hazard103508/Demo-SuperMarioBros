@@ -12,9 +12,6 @@ namespace Mario.Application.Services
 
         public UnityEvent OnCoinsChanged { get; set; }
 
-        public void Update()
-        {
-        }
         public void Add()
         {
             AllServices.GameDataService.Coins++;

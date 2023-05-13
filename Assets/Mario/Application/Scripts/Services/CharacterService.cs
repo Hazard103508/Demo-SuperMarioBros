@@ -10,9 +10,5 @@ namespace Mario.Application.Services
         }
 
         public bool AllowMove { get; set; }
-
-        public void Update()
-        {
-        }
     }
 }
