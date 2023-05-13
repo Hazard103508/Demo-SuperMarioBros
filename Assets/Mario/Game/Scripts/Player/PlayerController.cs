@@ -19,6 +19,9 @@ namespace Mario.Game.Player
         [SerializeField] private RaycastRange[] raycastRanges = null;
         private ControllerVariables _controllerVariables;
         private PlayerModes _mode;
+
+        private ICharacterService _characterService;
+        private ITimeService _timeService;
         #endregion
 
         #region Properties
@@ -31,8 +34,8 @@ namespace Mario.Game.Player
             {
                 if (_mode != value)
                 {
-                    GameHandler.Instance.FreezeMove();
-                    ServiceLocator.Current.Get<ITimeService>().Enabled = false;
+                    _characterService.AllowMove = false;
+                    _timeService.Enabled = false;
                 }
 
                 _mode = value;
@@ -74,6 +77,9 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
+            _characterService = ServiceLocator.Current.Get<ICharacterService>();
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
+
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             Mode = PlayerModes.Small;
@@ -81,7 +87,7 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            if (!GameHandler.Instance.AllowMove)
+            if (!_characterService.AllowMove)
                 return;
 
             GatherInput();
@@ -207,7 +213,7 @@ namespace Mario.Game.Player
         internal class ControllerVariables
         {
             public Vector3 localPositionSmall = new Vector3(0.5f, 0.5f);
-            public Vector3 localPositionBig = new Vector3(1, 1);
+            public Vector3 localPositionBig = new Vector3(0.5f, 1);
             public Bounds<bool> ProximityBlock = new Bounds<bool>();
             public Vector2 currentSpeed;
             public float lastJumpPressed = 0;

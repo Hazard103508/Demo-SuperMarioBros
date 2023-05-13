@@ -14,6 +14,9 @@ namespace Mario.Game.Player
         private PlayerAnimationStates _state;
         private PlayerModes _mode;
 
+        private ICharacterService _characterService;
+        private ITimeService _timeService;
+
         public PlayerAnimationStates State
         {
             get => _state;
@@ -38,6 +41,9 @@ namespace Mario.Game.Player
 
         void Awake()
         {
+            _characterService = ServiceLocator.Current.Get<ICharacterService>();
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
+
             _playerAnimationModes = new Dictionary<PlayerModes, PlayerAnimationMode>()
             {
                 [PlayerModes.Small] = new PlayerAnimationModeSmall(),
@@ -88,7 +94,9 @@ namespace Mario.Game.Player
 
         public void OnPowerUpCompleted()
         {
-            ServiceLocator.Current.Get<ITimeService>().Enabled = true;
+            _timeService.Enabled = true;
+            _characterService.AllowMove = true;
+
             State = PlayerAnimationStates.Idle;
         }
     }

@@ -18,13 +18,15 @@ namespace Mario.Application
             ServiceLocator.Current.Register<ICoinService>(new CoinService());
             ServiceLocator.Current.Register<IScoreService>(new ScoreService());
             ServiceLocator.Current.Register<ITimeService>(new TimeService());
+            ServiceLocator.Current.Register<ICharacterService>(new CharacterService());
 
             lstServices = new List<IGameService>()
             {
-                ServiceLocator.Current.Get<IGameDataService>(),
-                ServiceLocator.Current.Get<ICoinService>(),
-                ServiceLocator.Current.Get<IScoreService>(),
-                ServiceLocator.Current.Get<ITimeService>()
+                //ServiceLocator.Current.Get<IGameDataService>(),
+                //ServiceLocator.Current.Get<ICoinService>(),
+                //ServiceLocator.Current.Get<IScoreService>(),
+                ServiceLocator.Current.Get<ITimeService>(),
+                //ServiceLocator.Current.Get<ICharacterService>(),
             };
         }
         private void Update()
