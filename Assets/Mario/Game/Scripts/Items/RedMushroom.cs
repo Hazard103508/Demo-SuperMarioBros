@@ -1,7 +1,4 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
 using Mario.Game.Enums;
-using Mario.Game.Handlers;
 using Mario.Game.Player;
 using UnityEngine;
 

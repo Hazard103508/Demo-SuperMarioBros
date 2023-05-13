@@ -1,14 +1,9 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
 using Mario.Game.Enums;
-using Mario.Game.Handlers;
 using Mario.Game.ScriptableObjects;
 using System;
 using UnityEngine;
-using UnityEngine.Profiling;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
-using static Mario.Game.Player.PlayerController;
 
 namespace Mario.Game.Player
 {

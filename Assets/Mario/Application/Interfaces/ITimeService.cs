@@ -6,5 +6,6 @@ namespace Mario.Application.Interfaces
     {
         bool Enabled { get; set; }
         UnityEvent OnTimeChanged { get; set; }
+        void Reset();
     }
 }

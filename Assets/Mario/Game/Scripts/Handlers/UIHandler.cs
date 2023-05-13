@@ -1,6 +1,3 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
-using Mario.Game.ScriptableObjects;
 using UnityEngine;
 
 namespace Mario.Game.Handlers
@@ -13,7 +10,7 @@ namespace Mario.Game.Handlers
         [SerializeField] private Mario.Game.UI.TextGenerator labelWorldName;
         [SerializeField] private Mario.Game.UI.TextGenerator labelTime;
 
-        private void Start()
+        private void Awake()
         {
             OnScoreChanged();
             OnTimeChanged();

@@ -34,7 +34,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         private bool CalculateCollisionDetection(RayRange range, out List<GameObject> hits)
         {
             hits = new List<GameObject>();
-            
+
             var _block = GetHitGameObjects(range, _profile.BlockLayers);
             hits.AddRange(_block);
 
@@ -43,7 +43,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
 
             return _block.Any();
         }
-        private List<GameObject> GetHitGameObjects(RayRange range, LayerMask layerMask) 
+        private List<GameObject> GetHitGameObjects(RayRange range, LayerMask layerMask)
         {
             return EvaluateRayPositions(range)
                 .Select(point => Physics2D.Raycast(point, range.Dir, _profile.DetectionRayLength, layerMask))

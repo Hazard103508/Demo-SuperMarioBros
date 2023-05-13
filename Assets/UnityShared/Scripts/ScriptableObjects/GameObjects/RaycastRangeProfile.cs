@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityShared.Commons.PropertyAttributes;
 
 namespace UnityShared.ScriptableObjects.GameObjects
 {

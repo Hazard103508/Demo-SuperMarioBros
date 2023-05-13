@@ -1,6 +1,3 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
-using Mario.Game.Handlers;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects;

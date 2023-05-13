@@ -1,5 +1,3 @@
-using System;
-
 namespace Mario.Game.Enums
 {
     public enum PlayerModes

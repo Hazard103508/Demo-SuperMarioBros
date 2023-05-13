@@ -8,6 +8,7 @@ using UnityEngine;
 
 namespace Mario.Application
 {
+    [InitializeOnLoad]
     public class Installer : MonoBehaviour
     {
         [SerializeField] private TargetPoints targetPointsPrefab;
