@@ -8,7 +8,6 @@ namespace Mario.Game.ScriptableObjects
     {
         public WorldMapProfile WorldMapProfile;
         [SerializeField] private string _player;
-        [HideInInspector] public int Coins;
 
         private int _score;
         private int _timer;
@@ -42,6 +41,7 @@ namespace Mario.Game.ScriptableObjects
         }
 
         public string Player => _player;
+
 
         [HideInInspector] public UnityEvent onScoreChanged;
         [HideInInspector] public UnityEvent onTimeChanged;

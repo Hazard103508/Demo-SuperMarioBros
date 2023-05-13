@@ -1,6 +1,6 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.ScriptableObjects;
-using Mario.Services;
-using Mario.Services.Interfaces;
 using UnityEngine;
 
 namespace Mario.Game.Handlers
@@ -14,8 +14,14 @@ namespace Mario.Game.Handlers
         [SerializeField] private Mario.Game.UI.TextGenerator labelWorldName;
         [SerializeField] private Mario.Game.UI.TextGenerator labelTime;
 
+        private ICoinService _coinService;
+        private IGameDataService _gameDataService;
+
         private void Awake()
         {
+            _gameDataService = ServiceLocator.Current.Get<IGameDataService>();
+            _coinService = ServiceLocator.Current.Get<ICoinService>();
+
             labelPlayer.Text = gameDataProfile.Player;
             labelWorldName.Text = gameDataProfile.WorldMapProfile.WorldName;
         }
@@ -26,18 +32,18 @@ namespace Mario.Game.Handlers
         private void OnEnable()
         {
             gameDataProfile.onScoreChanged.AddListener(OnScoreChanged);
-            ServiceLocator.Current.Get<ICoinService>().OnCoinsChanged.AddListener(OnCoinsChanged);
+            _coinService.OnCoinsChanged.AddListener(OnCoinsChanged);
             gameDataProfile.onTimeChanged.AddListener(OnTimeChanged);
         }
         private void OnDisable()
         {
             gameDataProfile.onScoreChanged.RemoveListener(OnScoreChanged);
-            ServiceLocator.Current.Get<ICoinService>().OnCoinsChanged.RemoveListener(OnCoinsChanged);
+            _coinService.OnCoinsChanged.RemoveListener(OnCoinsChanged);
             gameDataProfile.onTimeChanged.RemoveListener(OnTimeChanged);
         }
 
         private void OnScoreChanged() => labelScore.Text = gameDataProfile.Score.ToString("D6");
-        private void OnCoinsChanged() => labelCoins.Text = gameDataProfile.Coins.ToString("D2");
+        private void OnCoinsChanged() => labelCoins.Text = _gameDataService.Coins.ToString("D2");
         private void OnTimeChanged() => labelTime.Text = gameDataProfile.Timer.ToString("D3");
     }
 }

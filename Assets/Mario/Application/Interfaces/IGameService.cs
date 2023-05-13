@@ -1,4 +1,4 @@
-namespace Mario.Services.Interfaces
+namespace Mario.Application.Interfaces
 {
     public interface IGameService
     {

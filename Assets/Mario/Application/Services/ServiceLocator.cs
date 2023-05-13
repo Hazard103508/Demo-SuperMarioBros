@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using Mario.Services.Interfaces;
+using Mario.Application.Interfaces;
 
-namespace Mario.Services
+namespace Mario.Application.Services
 {
     public class ServiceLocator
     {

@@ -1,10 +1,10 @@
 using UnityEngine.Events;
 
-namespace Mario.Services.Interfaces
+namespace Mario.Application.Interfaces
 {
     public interface ICoinService : IGameService
     {
         UnityEvent OnCoinsChanged { get; set; }
-        int Coins { get; set; }
+        void AddCoin();
     }
 }
