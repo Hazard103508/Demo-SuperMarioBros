@@ -11,7 +11,10 @@ namespace Mario.Application
     public class Installer : MonoBehaviour
     {
         [SerializeField] private TargetPoints targetPointsPrefab;
+
+        [Header("--TEMPORAL--")]
         [SerializeField] private MapProfile _mapProfile; // TEMPORAL
+        [SerializeField] private PlayerProfile _playerProfile; // TEMPORAL
 
         private List<IGameService> lstServices;
 
@@ -30,7 +33,7 @@ namespace Mario.Application
             };
 
             AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
-            
+            AllServices.GameDataService.PlayerProfile = _playerProfile;
         }
         private void Update()
         {

@@ -18,7 +18,7 @@ namespace Mario.Game.Handlers
             OnScoreChanged();
             OnTimeChanged();
 
-            labelPlayer.Text = "AEIOU";//_gameDataService.Player;
+            labelPlayer.Text = AllServices.GameDataService.PlayerProfile.PlayerName;
             labelWorldName.Text = AllServices.GameDataService.MapProfile.WorldName;
         }
         private void OnEnable()

@@ -5,6 +5,7 @@ using Mario.Game.Handlers;
 using Mario.Game.ScriptableObjects;
 using System;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
 using static Mario.Game.Player.PlayerController;
@@ -14,9 +15,10 @@ namespace Mario.Game.Player
     public class PlayerController : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private PlayerProfile _profile;
         [SerializeField] private SpriteRenderer _render;
         [SerializeField] private RaycastRange[] raycastRanges = null;
+
+        private PlayerProfile _profile;
         private ControllerVariables _controllerVariables;
         private PlayerModes _mode;
         #endregion
@@ -74,6 +76,7 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
+            _profile = AllServices.GameDataService.PlayerProfile;
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             Mode = PlayerModes.Small;

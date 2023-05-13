@@ -7,6 +7,7 @@ namespace Mario.Game.ScriptableObjects
     [CreateAssetMenu(fileName = "PlayerProfile", menuName = "ScriptableObjects/Game/PlayerProfile", order = 0)]
     public class PlayerProfile : ScriptableObject
     {
+        public string PlayerName;
         public LayerMask GroundLayer;
         public HorizontalMovement Walk;
         public HorizontalMovement Run;
