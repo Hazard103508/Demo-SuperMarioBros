@@ -116,6 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentPrefab: {fileID: 2024378923883265902, guid: 3fc1e033ec0a6d54ab0e7c3f96c98dce, type: 3}
+  _brickProfile: {fileID: 11400000, guid: 555031ff12707e84a91fd5a889d3c489, type: 2}
 --- !u!1 &4159430047784207719
 GameObject:
   m_ObjectHideFlags: 0
