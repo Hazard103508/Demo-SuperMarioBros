@@ -23,7 +23,7 @@ MonoBehaviour:
   Run:
     Acceleration: 13
     MaxSpeed: 9.5
-    Deacceleration: 20
+    Deacceleration: 15
   Fall:
     FallSpeed: 60
     MaxFallSpeed: 14.5
