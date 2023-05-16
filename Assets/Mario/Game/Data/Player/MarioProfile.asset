@@ -43,10 +43,10 @@ MonoBehaviour:
       width: 1
       height: 1
   BigPlayer:
-    SpritePosition: {x: 1, y: 1}
+    SpritePosition: {x: 0.5, y: 1}
     Collider:
       serializedVersion: 2
-      x: 1
-      y: 1
+      x: 0.5
+      y: 0.8
       width: 1
-      height: 2
+      height: 1.6
