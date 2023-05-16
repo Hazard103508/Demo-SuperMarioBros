@@ -32,8 +32,8 @@ namespace Mario.Game.Handlers
             AllServices.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);
         }
 
-        private void OnScoreChanged() => labelScore.Text = AllServices.GameDataService.Score.ToString("D6");
-        private void OnCoinsChanged() => labelCoins.Text = AllServices.GameDataService.Coins.ToString("D2");
-        private void OnTimeChanged() => labelTime.Text = AllServices.GameDataService.Time.ToString("D3");
+        private void OnScoreChanged() => labelScore.Text = AllServices.ScoreService.Score.ToString("D6");
+        private void OnCoinsChanged() => labelCoins.Text = AllServices.CoinService.Coins.ToString("D2");
+        private void OnTimeChanged() => labelTime.Text = AllServices.TimeService.Time.ToString("D3");
     }
 }

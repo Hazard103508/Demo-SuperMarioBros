@@ -8,12 +8,15 @@ namespace Mario.Application.Services
     {
         private float _timer;
 
+        public int Time { get; private set; }
+        public bool Enabled { get; private set; }
+
         public TimeService()
         {
             OnTimeChanged = new UnityEvent();
         }
 
-        public bool Enabled { get; private set; }
+
         public UnityEvent OnTimeChanged { get; set; }
 
         public void ResetTimer()
@@ -26,8 +29,8 @@ namespace Mario.Application.Services
         {
             if (Enabled)
             {
-                _timer += Time.deltaTime * 2.5f;
-                AllServices.GameDataService.Time = AllServices.GameDataService.MapProfile.Time - (int)_timer;
+                _timer += UnityEngine.Time.deltaTime * 2.5f;
+                this.Time = AllServices.GameDataService.MapProfile.Time - (int)_timer;
                 OnTimeChanged.Invoke();
             }
         }

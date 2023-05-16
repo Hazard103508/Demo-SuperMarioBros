@@ -8,6 +8,10 @@ namespace Mario.Application.Services
     public class ScoreService : IScoreService
     {
         private TargetPoints _targetPointsPrefab;
+
+        public int Score { get; private set; }
+
+
         public ScoreService(TargetPoints targetPointsPrefab)
         {
             _targetPointsPrefab = targetPointsPrefab;
@@ -18,7 +22,7 @@ namespace Mario.Application.Services
 
         public void Add(int points)
         {
-            AllServices.GameDataService.Score += points;
+            this.Score += points;
             OnScoreChanged.Invoke();
         }
         public void ShowPoint(int value, Vector3 initPosition, float time, float hight)

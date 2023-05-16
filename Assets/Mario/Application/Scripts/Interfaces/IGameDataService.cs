@@ -6,8 +6,5 @@ namespace Mario.Application.Interfaces
     {
         MapProfile MapProfile { get; set; }
         PlayerProfile PlayerProfile { get; set; }
-        int Coins { get; set; }
-        int Score { get; set; }
-        int Time { get; set; }
     }
 }
