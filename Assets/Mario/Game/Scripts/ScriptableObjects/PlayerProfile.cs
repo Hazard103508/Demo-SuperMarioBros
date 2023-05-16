@@ -13,7 +13,9 @@ namespace Mario.Game.ScriptableObjects
         public HorizontalMovement Run;
         public VerticalMovement Fall;
         public JumpMovement Jump;
-        public PlayerSizes sizes;
+
+        public PlayerRect SmallPlayer;
+        public PlayerRect BigPlayer;
 
         [Serializable]
         public class HorizontalMovement
@@ -39,10 +41,10 @@ namespace Mario.Game.ScriptableObjects
             public float HorizontalAdjustmentSpeed;
         }
         [Serializable]
-        public class PlayerSizes
+        public class PlayerRect
         {
-            public Size2 small;
-            public Size2 big;
+            public Vector2 SpritePosition;
+            public Rect Collider;
         }
     }
 }

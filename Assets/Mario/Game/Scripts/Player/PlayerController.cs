@@ -1,6 +1,7 @@
 using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects;
 using System;
+using System.Drawing;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
@@ -33,18 +34,19 @@ namespace Mario.Game.Player
                 }
 
                 _mode = value;
-
-                Vector3 localPosition = _controllerVariables.localPositionSmall;
-                Size2 size = _profile.sizes.small;
-                if (value == PlayerModes.Big)
+                
+                if (value == PlayerModes.Small)
                 {
-                    localPosition = _controllerVariables.localPositionBig;
-                    size = _profile.sizes.big;
+                    _render.transform.localPosition = _profile.SmallPlayer.SpritePosition;
+                    raycastRanges[0].transform.parent.localPosition = _profile.SmallPlayer.Collider.position;
+                    Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.SmallPlayer.Collider.width, _profile.SmallPlayer.Collider.height));
                 }
-
-                _render.transform.localPosition = localPosition;
-                raycastRanges[0].transform.parent.localPosition = localPosition;
-                Array.ForEach(raycastRanges, r => r.SpriteSize = size);
+                else
+                {
+                    _render.transform.localPosition = _profile.BigPlayer.SpritePosition;
+                    raycastRanges[0].transform.parent.localPosition = _profile.BigPlayer.Collider.position;
+                    Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.BigPlayer.Collider.width, _profile.BigPlayer.Collider.height));
+                }
             }
         }
         public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / _profile.Walk.MaxSpeed;
@@ -204,8 +206,6 @@ namespace Mario.Game.Player
         #region Classes
         internal class ControllerVariables
         {
-            public Vector3 localPositionSmall = new Vector3(0.5f, 0.5f);
-            public Vector3 localPositionBig = new Vector3(0.5f, 1);
             public Bounds<bool> ProximityBlock = new Bounds<bool>();
             public Vector2 currentSpeed;
             public float lastJumpPressed = 0;

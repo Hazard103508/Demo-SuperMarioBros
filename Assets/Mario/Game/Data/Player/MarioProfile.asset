@@ -34,10 +34,19 @@ MonoBehaviour:
     MaxWalkBufferTime: 0.27
     MaxRunBufferTime: 0.32
     HorizontalAdjustmentSpeed: 5
-  sizes:
-    small:
-      Width: 1
-      Height: 1
-    big:
-      Width: 1
-      Height: 2
+  SmallPlayer:
+    SpritePosition: {x: 0.5, y: 0.5}
+    Collider:
+      serializedVersion: 2
+      x: 0.5
+      y: 0.5
+      width: 1
+      height: 1
+  BigPlayer:
+    SpritePosition: {x: 1, y: 1}
+    Collider:
+      serializedVersion: 2
+      x: 1
+      y: 1
+      width: 1
+      height: 2

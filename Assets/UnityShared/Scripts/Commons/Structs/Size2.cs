@@ -6,6 +6,8 @@ namespace UnityShared.Commons.Structs
     [Serializable]
     public class Size2
     {
+        public static Size2 zero = new Size2();
+
         public Size2()
         {
         }
