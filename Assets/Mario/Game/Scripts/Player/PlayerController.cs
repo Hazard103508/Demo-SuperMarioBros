@@ -19,6 +19,7 @@ namespace Mario.Game.Player
         private PlayerProfile _profile;
         private ControllerVariables _controllerVariables;
         private PlayerModes _mode;
+        private bool _isDucking;
         #endregion
 
         #region Properties
@@ -38,19 +39,12 @@ namespace Mario.Game.Player
                 _mode = value;
 
                 if (value == PlayerModes.Small)
-                {
-                    _render.transform.localPosition = _profile.SmallPlayer.SpritePosition;
-                    raycastRanges[0].transform.parent.localPosition = _profile.SmallPlayer.Collider.position;
-                    Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.SmallPlayer.Collider.width, _profile.SmallPlayer.Collider.height));
-                }
+                    SetSmallCollider();
                 else
-                {
-                    _render.transform.localPosition = _profile.BigPlayer.SpritePosition;
-                    raycastRanges[0].transform.parent.localPosition = _profile.BigPlayer.Collider.position;
-                    Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.BigPlayer.Collider.width, _profile.BigPlayer.Collider.height));
-                }
+                    SetBigCollider();
             }
         }
+
         public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / _profile.Walk.MaxSpeed;
         public bool IsGrounded => _controllerVariables.ProximityBlock.bottom;
         private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
@@ -70,10 +64,26 @@ namespace Mario.Game.Player
             }
         }
         public bool IsJumping { get; private set; }
-        public bool IsDucking { get; private set; }
+        public bool IsDucking
+        {
+            get => _isDucking;
+            private set
+            {
+                _isDucking = value;
+                if (value)
+                    SetDuckingCollider();
+                else
+                {
+                    if (Mode == PlayerModes.Small)
+                        SetSmallCollider();
+                    else
+                        SetBigCollider();
+                }
+            }
+        }
         #endregion
 
-        #region Unity Methods
+            #region Unity Methods
         private void Awake()
         {
             _profile = AllServices.GameDataService.PlayerProfile;
@@ -194,6 +204,24 @@ namespace Mario.Game.Player
             }
 
             transform.position = nextPosition;
+        }
+        private void SetSmallCollider()
+        {
+            _render.transform.localPosition = _profile.SmallPlayer.SpritePosition;
+            raycastRanges[0].transform.parent.localPosition = _profile.SmallPlayer.Collider.position;
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.SmallPlayer.Collider.width, _profile.SmallPlayer.Collider.height));
+        }
+        private void SetBigCollider()
+        {
+            _render.transform.localPosition = _profile.BigPlayer.SpritePosition;
+            raycastRanges[0].transform.parent.localPosition = _profile.BigPlayer.Collider.position;
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.BigPlayer.Collider.width, _profile.BigPlayer.Collider.height));
+        }
+        private void SetDuckingCollider()
+        {
+            _render.transform.localPosition = _profile.DuckingPlayer.SpritePosition;
+            raycastRanges[0].transform.parent.localPosition = _profile.DuckingPlayer.Collider.position;
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.DuckingPlayer.Collider.width, _profile.DuckingPlayer.Collider.height));
         }
         #endregion
 

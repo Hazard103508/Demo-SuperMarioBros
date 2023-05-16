@@ -16,6 +16,7 @@ namespace Mario.Game.ScriptableObjects
 
         public PlayerRect SmallPlayer;
         public PlayerRect BigPlayer;
+        public PlayerRect DuckingPlayer;
 
         [Serializable]
         public class HorizontalMovement
