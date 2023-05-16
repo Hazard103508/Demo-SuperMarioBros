@@ -1,20 +1,23 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 
-public static class AllServices
+namespace Mario.Application.Services
 {
-    public static IGameDataService GameDataService { get; private set; }
-    public static ICoinService CoinService { get; private set; }
-    public static IScoreService ScoreService { get; private set; }
-    public static ITimeService TimeService { get; private set; }
-    public static ICharacterService CharacterService { get; private set; }
-
-    public static void Load()
+    public static class AllServices
     {
-        GameDataService = ServiceLocator.Current.Get<IGameDataService>();
-        CoinService = ServiceLocator.Current.Get<ICoinService>();
-        ScoreService = ServiceLocator.Current.Get<IScoreService>();
-        TimeService = ServiceLocator.Current.Get<ITimeService>();
-        CharacterService = ServiceLocator.Current.Get<ICharacterService>();
+        public static IGameDataService GameDataService { get; private set; }
+        public static ICoinService CoinService { get; private set; }
+        public static IScoreService ScoreService { get; private set; }
+        public static ITimeService TimeService { get; private set; }
+        public static ICharacterService CharacterService { get; private set; }
+
+        public static void Load()
+        {
+            GameDataService = ServiceLocator.Current.Get<IGameDataService>();
+            CoinService = ServiceLocator.Current.Get<ICoinService>();
+            ScoreService = ServiceLocator.Current.Get<IScoreService>();
+            TimeService = ServiceLocator.Current.Get<ITimeService>();
+            CharacterService = ServiceLocator.Current.Get<ICharacterService>();
+        }
     }
 }
