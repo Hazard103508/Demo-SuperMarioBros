@@ -6,6 +6,7 @@ using System.Drawing;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Mario.Game.Player
 {
@@ -31,11 +32,11 @@ namespace Mario.Game.Player
                 if (_mode != value)
                 {
                     AllServices.CharacterService.StopMovement();
-                    AllServices.TimeService.StopTimer(); 
+                    AllServices.TimeService.StopTimer();
                 }
 
                 _mode = value;
-                
+
                 if (value == PlayerModes.Small)
                 {
                     _render.transform.localPosition = _profile.SmallPlayer.SpritePosition;
@@ -69,6 +70,7 @@ namespace Mario.Game.Player
             }
         }
         public bool IsJumping { get; private set; }
+        public bool IsDucking { get; private set; }
         #endregion
 
         #region Unity Methods
@@ -106,6 +108,7 @@ namespace Mario.Game.Player
                 JumpDown = UnityEngine.Input.GetKey(KeyCode.X),
                 X = UnityEngine.Input.GetAxisRaw("Horizontal"),
                 Run = UnityEngine.Input.GetKey(KeyCode.Z),
+                IsDucking = UnityEngine.Input.GetKey(KeyCode.DownArrow),
             };
 
             if (IsGrounded && !_jumpDown && Input.JumpDown)
@@ -116,7 +119,9 @@ namespace Mario.Game.Player
         }
         private void CalculateWalk()
         {
-            if (Input.X != 0)
+            this.IsDucking = Mode != PlayerModes.Small && Input.X == 0 && Input.IsDucking;
+
+            if (Input.X != 0 && !Input.IsDucking)
             {
                 float currentAcceleration = Input.Run ? _profile.Run.Acceleration : _profile.Walk.Acceleration;
                 _controllerVariables.currentSpeed.x += Input.X * currentAcceleration * Time.deltaTime;
@@ -125,7 +130,7 @@ namespace Mario.Game.Player
                 _controllerVariables.currentSpeed.x = Mathf.Clamp(_controllerVariables.currentSpeed.x, -currentSpeed, currentSpeed);
             }
 
-            if (RawMovement.x != 0 && (Input.X == 0 || Mathf.Sign(RawMovement.x) != Mathf.Sign(Input.X)))
+            if (RawMovement.x != 0 && (Input.X == 0 || Mathf.Sign(RawMovement.x) != Mathf.Sign(Input.X) || Input.IsDucking))
             {
                 float currentDeacceleration = Input.Run ? _profile.Run.Deacceleration : _profile.Walk.Deacceleration;
                 _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);

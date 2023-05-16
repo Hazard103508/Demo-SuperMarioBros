@@ -8,5 +8,6 @@ namespace Mario.Game.Enums
         StoppingRun,
         PowerUp,
         PowerDown,
+        Ducking,
     }
 }

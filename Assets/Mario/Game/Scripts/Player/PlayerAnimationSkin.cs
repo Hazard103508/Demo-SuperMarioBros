@@ -11,7 +11,7 @@ namespace Mario.Game.Player
         public int HashIdDying { get; protected set; }
         public int HashIdPowerDown { get; protected set; }
         public int HashIdPowerUp { get; protected set; }
-        public int HashIdBend { get; protected set; }
+        public int HashIdDucking { get; protected set; }
         public int HashIdFlag { get; protected set; }
     }
     public class PlayerAnimationModeSmall : PlayerAnimationMode
@@ -33,6 +33,7 @@ namespace Mario.Game.Player
             HashIdJump = Animator.StringToHash("Big_Jump");
             HashIdStop = Animator.StringToHash("Big_Stop");
             HashIdRun = Animator.StringToHash("Big_Run");
+            HashIdDucking = Animator.StringToHash("Big_Ducking");
         }
     }
     public class PlayerAnimationModeSuper : PlayerAnimationMode

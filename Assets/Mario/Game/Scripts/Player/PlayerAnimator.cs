@@ -29,6 +29,7 @@ namespace Mario.Game.Player
                     State == PlayerAnimationStates.StoppingRun ? _currentAnimationMode.HashIdStop :
                     State == PlayerAnimationStates.Running ? _currentAnimationMode.HashIdRun :
                     State == PlayerAnimationStates.PowerUp ? _currentAnimationMode.HashIdPowerUp :
+                    State == PlayerAnimationStates.Ducking ? _currentAnimationMode.HashIdDucking :
                     _currentAnimationMode.HashIdIdle;
 
                 _animator.CrossFade(hashId, 0, 0);
@@ -64,8 +65,35 @@ namespace Mario.Game.Player
                 return;
             }
 
+            if (this.State == PlayerAnimationStates.Jumping)
+            {
+                if (_player.RawMovement.y == 0 && _player.IsGrounded)
+                    this.State = PlayerAnimationStates.Idle;
+                else
+                    return;
+            }
+
+            if (this.State == PlayerAnimationStates.Ducking && _player.RawMovement.y != 0)
+                return;
+
+
+            if (_player.IsDucking)
+            {
+                this.State = PlayerAnimationStates.Ducking;
+                return;
+            }
+
+            if (this.State == PlayerAnimationStates.Running)
+                _animator.speed = _player.RawMovement.y < 0 ? 0 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
+
             if (this.State != PlayerAnimationStates.Jumping)
             {
+                if (_player.Input.IsDucking)
+                {
+                    this.State = _player.RawMovement.x != 0 ? PlayerAnimationStates.Running : PlayerAnimationStates.Idle;
+                    return;
+                }
+
                 if (_player.Input.X != 0)
                 {
                     this.State = _player.RawMovement.x != 0 && Mathf.Sign(_player.RawMovement.x) != Mathf.Sign(_player.Input.X) ? PlayerAnimationStates.StoppingRun : PlayerAnimationStates.Running;
@@ -75,14 +103,8 @@ namespace Mario.Game.Player
                     State = _player.RawMovement.x != 0 ? PlayerAnimationStates.Running : PlayerAnimationStates.Idle;
             }
 
-            if (this.State == PlayerAnimationStates.Running)
-                _animator.speed = _player.RawMovement.y < 0 ? 0 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
-
             if (_player.RawMovement.y > 0)
                 this.State = PlayerAnimationStates.Jumping;
-
-            if (_player.RawMovement.y == 0 && this.State == PlayerAnimationStates.Jumping && _player.IsGrounded)
-                this.State = PlayerAnimationStates.Idle;
         }
 
         public void OnPowerUpCompleted()
