@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Map
 {
-    [CreateAssetMenu(fileName = "MapProfile", menuName = "ScriptableObjects/Game/MapProfile", order = 7)]
+    [CreateAssetMenu(fileName = "MapProfile", menuName = "ScriptableObjects/Game/Map/MapProfile", order = 0)]
     public class MapProfile : ScriptableObject
     {
         public string WorldName;

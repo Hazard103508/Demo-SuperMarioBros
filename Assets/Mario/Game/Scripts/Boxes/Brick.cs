@@ -7,7 +7,7 @@ namespace Mario.Game.Boxes
 {
     public class Brick : BottomHitableBlock
     {
-        [SerializeField] private BrickProfile _brickProfile;
+        [SerializeField] private BrickBoxEmptyProfile _brickProfile;
 
         public override void OnHitFromBottom(PlayerController player)
         {

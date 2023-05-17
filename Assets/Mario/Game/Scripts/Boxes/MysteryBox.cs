@@ -6,7 +6,7 @@ namespace Mario.Game.Boxes
 {
     public class MysteryBox : BottomHitableBlock
     {
-        [SerializeField] protected MysteryBoxProfile _mysteryBoxProfile;
+        [SerializeField] protected MysteryBoxCoinProfile _mysteryBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
 
         public override void OnHitFromBottom(PlayerController player)
@@ -18,12 +18,12 @@ namespace Mario.Game.Boxes
             _spriteAnimator.SetTrigger("Disable");
 
             if (_mysteryBoxProfile.InstantiateItemOnHit)
-                base.InstantiateContent(_mysteryBoxProfile.Item);
+                base.InstantiateContent(_mysteryBoxProfile.CoinPrefab);
         }
         public override void OnJumpCompleted()
         {
             if (!_mysteryBoxProfile.InstantiateItemOnHit)
-                base.InstantiateContent(_mysteryBoxProfile.Item);
+                base.InstantiateContent(_mysteryBoxProfile.CoinPrefab);
         }
     }
 }

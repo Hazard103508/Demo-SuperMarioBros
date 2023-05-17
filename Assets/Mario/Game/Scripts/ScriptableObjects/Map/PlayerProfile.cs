@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Map
 {
-    [CreateAssetMenu(fileName = "PlayerProfile", menuName = "ScriptableObjects/Game/PlayerProfile", order = 0)]
+    [CreateAssetMenu(fileName = "PlayerProfile", menuName = "ScriptableObjects/Game/Map/PlayerProfile", order = 1)]
     public class PlayerProfile : ScriptableObject
     {
         public string PlayerName;

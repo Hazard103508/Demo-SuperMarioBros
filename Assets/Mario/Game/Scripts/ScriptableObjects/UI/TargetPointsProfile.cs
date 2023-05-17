@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.UI
 {
-    [CreateAssetMenu(fileName = "TargetPointsProfile", menuName = "ScriptableObjects/Game/TargetPointsProfile", order = 2)]
+    [CreateAssetMenu(fileName = "TargetPointsProfile", menuName = "ScriptableObjects/Game/UI/TargetPointsProfile", order = 1)]
     public class TargetPointsProfile : ScriptableObject
     {
         [SerializeField] private NumberSprite[] _numberSprites;

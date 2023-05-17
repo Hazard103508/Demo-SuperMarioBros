@@ -8,7 +8,7 @@ namespace Mario.Game.Boxes
     {
         private GameObject _itemPrefab;
 
-        [SerializeField] protected PowerUpBoxProfile _powerUpBoxProfile;
+        [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
 
         public override void OnHitFromBottom(PlayerController player)

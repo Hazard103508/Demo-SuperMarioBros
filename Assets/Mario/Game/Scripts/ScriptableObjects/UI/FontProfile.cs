@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.UI
 {
-    [CreateAssetMenu(fileName = "FontProfile", menuName = "ScriptableObjects/Game/FontProfile", order = 3)]
+    [CreateAssetMenu(fileName = "FontProfile", menuName = "ScriptableObjects/Game/UI/FontProfile", order = 0)]
     public class FontProfile : ScriptableObject
     {
         [SerializeField] private NumberSprite[] _numberSprites;

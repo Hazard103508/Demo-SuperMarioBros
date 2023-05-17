@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Items
 {
-    [CreateAssetMenu(fileName = "MushroomProfile", menuName = "ScriptableObjects/Game/MushroomProfile", order = 5)]
+    [CreateAssetMenu(fileName = "MushroomProfile", menuName = "ScriptableObjects/Game/Items/MushroomProfile", order = 1)]
     public class MushroomProfile : ScriptableObject
     {
         public LayerMask GroundLayer;
