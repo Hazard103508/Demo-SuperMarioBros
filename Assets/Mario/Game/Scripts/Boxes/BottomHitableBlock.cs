@@ -6,7 +6,7 @@ namespace Mario.Game.Boxes
 {
     public class BottomHitableBlock : MonoBehaviour, IBottomHitable
     {
-        [SerializeField] private GameObject _contentPrefab;
+        [SerializeField] protected GameObject _contentPrefab;
         private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
 

@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5764129421368389410}
   - component: {fileID: 9146301211402210798}
   - component: {fileID: 403916497190662731}
-  - component: {fileID: 334050476648432740}
+  - component: {fileID: 920537186043033023}
   m_Layer: 3
-  m_Name: RedMushroomBox
+  m_Name: PowerUpBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5764129421368389409}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21, y: 5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -81,7 +81,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &334050476648432740
+--- !u!114 &920537186043033023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,12 +90,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5764129421368389409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf5dd83a5f83d214894ef90f562358ac, type: 3}
+  m_Script: {fileID: 11500000, guid: fbd08e7078e1ac64a9c8148403600491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contentPrefab: {fileID: 1068909089230204733, guid: e3a5b4b0351280c45a9fa635d777580b, type: 3}
+  _contentPrefab: {fileID: 0}
   _spriteAnimator: {fileID: 5764129421426795299}
   _instantiateItemOnHit: 0
+  _redMushroom: {fileID: 1068909089230204733, guid: e3a5b4b0351280c45a9fa635d777580b, type: 3}
+  _flower: {fileID: 3853551237058702402, guid: b6de99f027f1088479950fb4b50f96da, type: 3}
 --- !u!1 &5764129421426795300
 GameObject:
   m_ObjectHideFlags: 0
