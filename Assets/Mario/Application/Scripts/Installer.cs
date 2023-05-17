@@ -8,7 +8,6 @@ using UnityShared.Behaviours.Handlers;
 
 namespace Mario.Application
 {
-    [InitializeOnLoad]
     public class Installer : MonoBehaviour
     {
         [SerializeField] private TargetPoints targetPointsPrefab;

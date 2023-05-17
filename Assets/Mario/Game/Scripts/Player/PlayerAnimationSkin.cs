@@ -34,12 +34,18 @@ namespace Mario.Game.Player
             HashIdStop = Animator.StringToHash("Big_Stop");
             HashIdRun = Animator.StringToHash("Big_Run");
             HashIdDucking = Animator.StringToHash("Big_Ducking");
+            HashIdPowerUp = Animator.StringToHash("Big_PowerUp");
         }
     }
     public class PlayerAnimationModeSuper : PlayerAnimationMode
     {
         public PlayerAnimationModeSuper()
         {
+            HashIdIdle = Animator.StringToHash("Super_Idle");
+            HashIdJump = Animator.StringToHash("Super_Jump");
+            HashIdStop = Animator.StringToHash("Super_Stop");
+            HashIdRun = Animator.StringToHash("Super_Run");
+            HashIdDucking = Animator.StringToHash("Super_Ducking");
         }
     }
 }
