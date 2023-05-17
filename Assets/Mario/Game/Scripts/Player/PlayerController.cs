@@ -170,11 +170,6 @@ namespace Mario.Game.Player
         }
         private void CalculateJump()
         {
-            if (Input.JumpDown)
-            { 
-            }
-
-
             if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
             {
                 if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
