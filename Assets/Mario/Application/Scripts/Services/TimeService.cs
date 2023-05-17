@@ -30,7 +30,7 @@ namespace Mario.Application.Services
             if (Enabled)
             {
                 _timer += UnityEngine.Time.deltaTime * 2.5f;
-                this.Time = AllServices.GameDataService.MapProfile.Time - (int)_timer;
+                this.Time = Mathf.Max(0, AllServices.GameDataService.MapProfile.Time - (int)_timer);
                 OnTimeChanged.Invoke();
             }
         }

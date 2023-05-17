@@ -4,6 +4,7 @@ using Mario.Game.ScriptableObjects;
 using System;
 using System.Drawing;
 using UnityEngine;
+using UnityEngine.UIElements;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
 using static UnityEditor.Experimental.GraphView.GraphView;
@@ -81,9 +82,10 @@ namespace Mario.Game.Player
                 }
             }
         }
+        public bool IsStuck { get; set; }
         #endregion
 
-            #region Unity Methods
+        #region Unity Methods
         private void Awake()
         {
             _profile = AllServices.GameDataService.PlayerProfile;
@@ -102,10 +104,13 @@ namespace Mario.Game.Player
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
-            MoveCharacter();
 
             if (UnityEngine.Input.GetKey(KeyCode.R))
                 transform.position = new Vector3(transform.position.x, 4f);
+        }
+        private void LateUpdate()
+        {
+            MoveCharacter();
         }
         #endregion
 
@@ -165,6 +170,11 @@ namespace Mario.Game.Player
         }
         private void CalculateJump()
         {
+            if (Input.JumpDown)
+            { 
+            }
+
+
             if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
             {
                 if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
@@ -195,15 +205,22 @@ namespace Mario.Game.Player
                 nextPosition.y = Mathf.Round(nextPosition.y);
 
             // fuerzo ajuste de posicion en los lados de los bloques 
-            if (!IsGrounded)
-            {
-                if (!_controllerVariables.ProximityBlock.left && _controllerVariables.ProximityBlock.right)
-                    nextPosition.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-                if (!_controllerVariables.ProximityBlock.right && _controllerVariables.ProximityBlock.left)
-                    nextPosition.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-            }
+            if (!IsGrounded || IsStuck)
+                nextPosition = AdjustHorizontalPosition(nextPosition);
 
             transform.position = nextPosition;
+            IsStuck = false;
+        }
+        private Vector3 AdjustHorizontalPosition(Vector3 position)
+        {
+            if (!_controllerVariables.ProximityBlock.left && _controllerVariables.ProximityBlock.right)
+                position.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+            else if (!_controllerVariables.ProximityBlock.right && _controllerVariables.ProximityBlock.left)
+                position.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+            else if (_controllerVariables.ProximityBlock.right && _controllerVariables.ProximityBlock.left)
+                position.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
+
+            return position;
         }
         private void SetSmallCollider()
         {

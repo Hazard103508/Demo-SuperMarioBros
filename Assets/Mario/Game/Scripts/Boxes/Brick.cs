@@ -11,13 +11,23 @@ namespace Mario.Game.Boxes
 
         public override void OnHitFromBottom(PlayerController player)
         {
-            if (player.Mode == Enums.PlayerModes.Small)
-                base.OnHitFromBottom(player);
+            if (player.IsJumping)
+            {
+                if (player.Mode == Enums.PlayerModes.Small)
+                    base.OnHitFromBottom(player);
+                else
+                {
+                    InstantiateContent();
+                    AllServices.ScoreService.Add(_brickProfile.Points);
+                    Destroy(gameObject);
+                }
+            }
             else
             {
-                InstantiateContent();
-                AllServices.ScoreService.Add(_brickProfile.Points);
-                Destroy(gameObject);
+                if (player.IsDucking)
+                    return;
+
+                player.IsStuck = true;
             }
         }
 
