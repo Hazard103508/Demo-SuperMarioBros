@@ -110,6 +110,9 @@ namespace Mario.Game.Player
         }
         private void LateUpdate()
         {
+            if (!AllServices.CharacterService.CanMove)
+                return;
+
             MoveCharacter();
         }
         #endregion

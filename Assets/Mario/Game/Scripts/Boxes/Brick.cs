@@ -11,7 +11,7 @@ namespace Mario.Game.Boxes
 
         public override void OnHitFromBottom(PlayerController player)
         {
-            if (player.IsJumping)
+            if (player.RawMovement.y > 0)
             {
                 if (player.Mode == Enums.PlayerModes.Small)
                     base.OnHitFromBottom(player);
