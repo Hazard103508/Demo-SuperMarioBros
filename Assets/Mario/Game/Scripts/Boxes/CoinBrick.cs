@@ -1,16 +1,22 @@
 using Mario.Game.Player;
+using Mario.Game.ScriptableObjects;
 using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
     public class CoinBrick : BottomHitableBlock
     {
+        [SerializeField] private CoinBrickProfile  _coinBrickProfile;
         [SerializeField] private Animator _spriteAnimator;
-        [SerializeField] private float _limitTime;
+        private float _limitTime;
 
         private bool _firstHit;
         private bool _isEmpty;
 
+        private void Start()
+        {
+            _limitTime = _coinBrickProfile.LimitTime;
+        }
         public override void OnHitFromBottom(PlayerController player)
         {
             if (!IsHitable)
@@ -26,7 +32,7 @@ namespace Mario.Game.Boxes
                 _spriteAnimator.SetTrigger("Disable");
             }
 
-            base.InstantiateContent();
+            base.InstantiateContent(_coinBrickProfile.CoinPrefab);
         }
         public override void OnJumpCompleted()
         {

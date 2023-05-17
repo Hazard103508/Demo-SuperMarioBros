@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class BreakedBrick : MonoBehaviour
+    public class BrokenBrick : MonoBehaviour
     {
         public void OnAnimationCompleted() => Destroy(gameObject);
     }

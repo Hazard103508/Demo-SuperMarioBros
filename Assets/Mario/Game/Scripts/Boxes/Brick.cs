@@ -17,7 +17,7 @@ namespace Mario.Game.Boxes
                     base.OnHitFromBottom(player);
                 else
                 {
-                    InstantiateContent();
+                    InstantiateContent(_brickProfile.BrokenBrick);
                     AllServices.ScoreService.Add(_brickProfile.Points);
                     Destroy(gameObject);
                 }

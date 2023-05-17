@@ -6,7 +6,6 @@ namespace Mario.Game.Boxes
 {
     public class BottomHitableBlock : MonoBehaviour, IBottomHitable
     {
-        [SerializeField] protected GameObject _contentPrefab;
         private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
 
@@ -26,9 +25,9 @@ namespace Mario.Game.Boxes
         public virtual void OnJumpCompleted()
         {
         }
-        protected void InstantiateContent()
+        protected void InstantiateContent(GameObject item)
         {
-            var content = Instantiate(_contentPrefab);
+            var content = Instantiate(item);
             content.transform.position = this.transform.position;
         }
     }

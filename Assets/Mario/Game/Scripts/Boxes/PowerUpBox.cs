@@ -1,17 +1,29 @@
 using Mario.Game.Player;
+using Mario.Game.ScriptableObjects;
 using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class PowerUpBox : MysteryBox
+    public class PowerUpBox : BottomHitableBlock
     {
-        [SerializeField] private GameObject _redMushroom;
-        [SerializeField] private GameObject _flower;
+        private GameObject _itemPrefab;
+
+        [SerializeField] protected PowerUpBoxProfile _powerUpBoxProfile;
+        [SerializeField] private Animator _spriteAnimator;
 
         public override void OnHitFromBottom(PlayerController player)
         {
-            base._contentPrefab = player.Mode == Enums.PlayerModes.Small ? _redMushroom : _flower;
+            if (!IsHitable)
+                return;
+
             base.OnHitFromBottom(player);
+            _spriteAnimator.SetTrigger("Disable");
+
+            _itemPrefab = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroom : _powerUpBoxProfile.Flower;
+        }
+        public override void OnJumpCompleted()
+        {
+            base.InstantiateContent(_itemPrefab);
         }
     }
 }

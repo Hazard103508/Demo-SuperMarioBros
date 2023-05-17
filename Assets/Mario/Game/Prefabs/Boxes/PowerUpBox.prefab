@@ -94,10 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _contentPrefab: {fileID: 0}
+  _mysteryBoxProfile: {fileID: 11400000, guid: c211a313d2239c34194e28ddcb84e03d, type: 2}
   _spriteAnimator: {fileID: 5764129421426795299}
-  _instantiateItemOnHit: 0
-  _redMushroom: {fileID: 1068909089230204733, guid: e3a5b4b0351280c45a9fa635d777580b, type: 3}
-  _flower: {fileID: 3853551237058702402, guid: b6de99f027f1088479950fb4b50f96da, type: 3}
+  _powerUpBoxProfile: {fileID: 11400000, guid: e98054718b7e67b469b09329c304f4be, type: 2}
 --- !u!1 &5764129421426795300
 GameObject:
   m_ObjectHideFlags: 0
