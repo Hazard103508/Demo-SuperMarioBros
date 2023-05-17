@@ -1,8 +1,7 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Environment;
-using Mario.Game.ScriptableObjects;
-using System.Collections.Generic;
+using Mario.Game.ScriptableObjects.Map;
 using UnityEditor;
 using UnityEngine;
 using UnityShared.Behaviours.Handlers;

@@ -1,4 +1,4 @@
-using Mario.Game.ScriptableObjects;
+using Mario.Game.ScriptableObjects.Map;
 
 namespace Mario.Application.Interfaces
 {

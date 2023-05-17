@@ -1,5 +1,4 @@
 using Mario.Application.Interfaces;
-using Mario.Application.Services;
 
 namespace Mario.Application.Services
 {

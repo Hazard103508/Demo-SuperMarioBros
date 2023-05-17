@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
-namespace Mario.Game.ScriptableObjects
+namespace Mario.Game.ScriptableObjects.Map
 {
     [CreateAssetMenu(fileName = "PlayerProfile", menuName = "ScriptableObjects/Game/PlayerProfile", order = 0)]
     public class PlayerProfile : ScriptableObject

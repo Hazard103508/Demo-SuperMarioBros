@@ -2,7 +2,7 @@ using Mario.Game.Commons;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mario.Game.ScriptableObjects
+namespace Mario.Game.ScriptableObjects.UI
 {
     [CreateAssetMenu(fileName = "TargetPointsProfile", menuName = "ScriptableObjects/Game/TargetPointsProfile", order = 2)]
     public class TargetPointsProfile : ScriptableObject

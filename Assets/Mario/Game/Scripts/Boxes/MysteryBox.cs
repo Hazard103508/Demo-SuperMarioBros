@@ -1,5 +1,5 @@
 using Mario.Game.Player;
-using Mario.Game.ScriptableObjects;
+using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
 
 namespace Mario.Game.Boxes

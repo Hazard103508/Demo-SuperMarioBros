@@ -1,4 +1,4 @@
-using Mario.Game.ScriptableObjects;
+using Mario.Game.ScriptableObjects.UI;
 using UnityEngine;
 using UnityShared.Behaviours.Various.Lerpers;
 

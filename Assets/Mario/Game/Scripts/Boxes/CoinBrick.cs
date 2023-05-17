@@ -1,12 +1,12 @@
 using Mario.Game.Player;
-using Mario.Game.ScriptableObjects;
+using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
     public class CoinBrick : BottomHitableBlock
     {
-        [SerializeField] private CoinBrickProfile  _coinBrickProfile;
+        [SerializeField] private CoinBrickProfile _coinBrickProfile;
         [SerializeField] private Animator _spriteAnimator;
         private float _limitTime;
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Mario.Game.ScriptableObjects
+namespace Mario.Game.ScriptableObjects.Boxes
 {
     [CreateAssetMenu(fileName = "PowerUpBoxProfile", menuName = "ScriptableObjects/Game/PowerUpBoxProfile", order = 10)]
     public class PowerUpBoxProfile : ScriptableObject

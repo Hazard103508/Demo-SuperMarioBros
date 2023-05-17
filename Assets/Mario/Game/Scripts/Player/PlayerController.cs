@@ -1,13 +1,10 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
-using Mario.Game.ScriptableObjects;
+using Mario.Game.ScriptableObjects.Map;
 using System;
-using System.Drawing;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Mario.Game.Player
 {

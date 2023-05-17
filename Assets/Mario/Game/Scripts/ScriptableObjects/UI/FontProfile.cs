@@ -2,7 +2,7 @@ using Mario.Game.Commons;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Mario.Game.ScriptableObjects
+namespace Mario.Game.ScriptableObjects.UI
 {
     [CreateAssetMenu(fileName = "FontProfile", menuName = "ScriptableObjects/Game/FontProfile", order = 3)]
     public class FontProfile : ScriptableObject

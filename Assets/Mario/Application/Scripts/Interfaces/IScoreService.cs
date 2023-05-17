@@ -5,7 +5,7 @@ namespace Mario.Application.Interfaces
 {
     public interface IScoreService : IGameService
     {
-        int Score { get;}
+        int Score { get; }
 
         UnityEvent OnScoreChanged { get; set; }
         void Add(int points);

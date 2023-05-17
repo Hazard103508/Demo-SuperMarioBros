@@ -15,6 +15,6 @@ namespace Mario.Game.Environment
         {
             AllServices.TimeService.UpdateTimer();
         }
-    
+
     }
 }

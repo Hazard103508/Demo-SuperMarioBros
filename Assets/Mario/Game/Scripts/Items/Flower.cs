@@ -2,12 +2,9 @@ using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
-using Mario.Game.ScriptableObjects;
-using System;
+using Mario.Game.ScriptableObjects.Items;
 using System.Collections;
 using UnityEngine;
-using UnityShared.Behaviours.Various.RaycastRange;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
