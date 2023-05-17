@@ -6,6 +6,5 @@ namespace Mario.Game.ScriptableObjects.Boxes
     public class MysteryBoxCoinProfile : ScriptableObject
     {
         public GameObject CoinPrefab;
-        public bool InstantiateItemOnHit;
     }
 }

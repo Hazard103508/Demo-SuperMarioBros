@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class CoinBrick : BottomHitableBlock
+    public class BrickBoxCoin : BottomHitableBox
     {
         [SerializeField] private BrickBoxCoinProfile _coinBrickProfile;
         [SerializeField] private Animator _spriteAnimator;

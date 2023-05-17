@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class PowerUpBox : BottomHitableBlock
+    public class MysteryBoxCoin : BottomHitableBox
     {
-        private GameObject _itemPrefab;
-
-        [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
+        [SerializeField] protected MysteryBoxCoinProfile _mysteryBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
 
         public override void OnHitFromBottom(PlayerController player)
@@ -19,11 +17,7 @@ namespace Mario.Game.Boxes
             base.OnHitFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            _itemPrefab = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroom : _powerUpBoxProfile.Flower;
-        }
-        public override void OnJumpCompleted()
-        {
-            base.InstantiateContent(_itemPrefab);
+            base.InstantiateContent(_mysteryBoxProfile.CoinPrefab);
         }
     }
 }

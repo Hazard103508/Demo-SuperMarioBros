@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Mario.Game.Boxes
+namespace Mario.Game.Items
 {
     public class BrokenBrick : MonoBehaviour
     {

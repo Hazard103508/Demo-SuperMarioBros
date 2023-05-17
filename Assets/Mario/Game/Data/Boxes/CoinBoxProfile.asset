@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b024dabbbe73eb469380a5c51b0fc5f, type: 3}
   m_Name: CoinBoxProfile
   m_EditorClassIdentifier: 
-  Item: {fileID: 7232380791890894777, guid: 11edffef54ef3e24cb397f4c763299ab, type: 3}
+  CoinPrefab: {fileID: 7232380791890894777, guid: 11edffef54ef3e24cb397f4c763299ab, type: 3}
   InstantiateItemOnHit: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class Brick : BottomHitableBlock
+    public class BrickBoxEmpty : BottomHitableBox
     {
         [SerializeField] private BrickBoxEmptyProfile _brickProfile;
 

@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -288,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -598,7 +598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -665,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -727,7 +727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -789,7 +789,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -865,7 +865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -5082,7 +5082,7 @@ GameObject:
   m_Component:
   - component: {fileID: 576060182}
   m_Layer: 0
-  m_Name: CoinBrickBoxes
+  m_Name: BrickBoxCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5264,7 +5264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -5278,15 +5278,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1218687762}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5764129421368389409, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_Name
-      value: PowerUpBox (2)
+      value: MysteryBoxPowerUp
       objectReference: {fileID: 0}
     - target: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5330,11 +5330,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
---- !u!4 &785081625 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
-  m_PrefabInstance: {fileID: 785081624}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &791990905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5388,7 +5383,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -5445,7 +5440,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -5582,7 +5577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -5648,7 +5643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -5847,7 +5842,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -5939,7 +5934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -5996,7 +5991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -8102,7 +8097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -8168,7 +8163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -8239,7 +8234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -8258,7 +8253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1218687762}
   m_Layer: 0
-  m_Name: PowerUpBoxes
+  m_Name: MysteryBoxPowerUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8278,8 +8273,6 @@ Transform:
   m_Children:
   - {fileID: 1458048380518231846}
   - {fileID: 1822732608}
-  - {fileID: 1665113225}
-  - {fileID: 785081625}
   m_Father: {fileID: 928055950}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8450,7 +8443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -8512,7 +8505,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -8574,7 +8567,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -8707,7 +8700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1369325301}
   m_Layer: 0
-  m_Name: CoinBoxes
+  m_Name: MysteryBoxCoin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8791,7 +8784,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -8978,7 +8971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9116,7 +9109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
-      value: CoinBox
+      value: MysteryBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 6872637405630037415, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: profile
@@ -9182,7 +9175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9244,7 +9237,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9253,15 +9246,15 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1218687762}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5764129421368389409, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_Name
-      value: PowerUpBox (1)
+      value: MysteryBoxPowerUp
       objectReference: {fileID: 0}
     - target: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9305,11 +9298,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
---- !u!4 &1665113225 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
-  m_PrefabInstance: {fileID: 1665113224}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1667751872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9363,7 +9351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9493,7 +9481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9555,7 +9543,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9573,7 +9561,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5764129421368389409, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_Name
-      value: PowerUpBox
+      value: MysteryBoxPowerUp
       objectReference: {fileID: 0}
     - target: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_RootOrder
@@ -9679,7 +9667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9909,7 +9897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -9923,7 +9911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2003023743}
   m_Layer: 0
-  m_Name: BrickBoxex
+  m_Name: BrickBoxEmpty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10055,7 +10043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -10117,7 +10105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -10190,7 +10178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -10247,7 +10235,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -10371,7 +10359,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
       propertyPath: m_Name
-      value: Brick
+      value: BrickBoxEmpty
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
@@ -10600,7 +10588,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5764129421368389409, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_Name
-      value: PowerUpBox
+      value: MysteryBoxPowerUp
       objectReference: {fileID: 0}
     - target: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_RootOrder
@@ -10706,7 +10694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 40360478236427875, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
       propertyPath: m_Name
-      value: CoinBrick
+      value: BrickBoxCoin
       objectReference: {fileID: 0}
     - target: {fileID: 40360478294182501, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
       propertyPath: m_Sprite

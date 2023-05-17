@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class BottomHitableBlock : MonoBehaviour, IBottomHitable
+    public class BottomHitableBox : MonoBehaviour, IBottomHitable
     {
         private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
