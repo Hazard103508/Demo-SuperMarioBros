@@ -8,6 +8,7 @@ namespace Mario.Game.Boxes
     {
         private GameObject _itemPrefab;
 
+        [SerializeField] private AudioSource _risingSoundFX;
         [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
 
@@ -20,6 +21,7 @@ namespace Mario.Game.Boxes
 
             base.OnHitFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
+            _risingSoundFX.Play();
 
             _itemPrefab = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroom : _powerUpBoxProfile.Flower;
         }

@@ -1,13 +1,17 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static Mario.Game.Player.PlayerAnimator;
 
 namespace Mario.Game.Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
+        [SerializeField] private PlayerSoundFX _playerSoundFX;
+
         private Animator _animator;
         private Dictionary<PlayerModes, PlayerAnimationMode> _playerAnimationModes;
         private PlayerController _player;
@@ -24,6 +28,10 @@ namespace Mario.Game.Player
                     return;
 
                 _playerAnimationModes[_mode].ChangeAnimation(_animator, value, _animationFrame);
+
+                if (_state != value)
+                    PlayAudioFX(value);
+
                 _state = value;
             }
         }
@@ -77,7 +85,7 @@ namespace Mario.Game.Player
 
             if (this.State == PlayerAnimationStates.Running)
                 _animator.speed = _player.RawMovement.y < 0 ? 1 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
-            
+
 
             if (this.State != PlayerAnimationStates.Jumping)
             {
@@ -108,5 +116,26 @@ namespace Mario.Game.Player
             State = PlayerAnimationStates.Idle;
         }
         public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
+
+        private void PlayAudioFX(PlayerAnimationStates state)
+        {
+            if (state == PlayerAnimationStates.PowerUp)
+                _playerSoundFX.PowerUpFX.Play();
+            else if (state == PlayerAnimationStates.Jumping)
+            {
+                if (_player.Mode == PlayerModes.Small)
+                    _playerSoundFX.JumpSmallFX.Play();
+                else
+                    _playerSoundFX.JumpBigFX.Play();
+            }
+        }
+
+        [Serializable]
+        public class PlayerSoundFX
+        {
+            public AudioSource PowerUpFX;
+            public AudioSource JumpSmallFX;
+            public AudioSource JumpBigFX;
+        }
     }
 }
