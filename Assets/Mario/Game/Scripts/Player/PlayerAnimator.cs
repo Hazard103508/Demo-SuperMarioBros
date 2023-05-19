@@ -81,7 +81,7 @@ namespace Mario.Game.Player
 
             if (this.State != PlayerAnimationStates.Jumping)
             {
-                if (_player.Input.IsDucking)
+                if (_player.Input.IsDucking && _player.Mode != PlayerModes.Small)
                 {
                     this.State = _player.RawMovement.x != 0 ? PlayerAnimationStates.Running : PlayerAnimationStates.Idle;
                     return;

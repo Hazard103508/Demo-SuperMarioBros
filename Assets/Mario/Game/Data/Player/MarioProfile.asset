@@ -40,7 +40,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0.5
       y: 0.4
-      width: 1
+      width: 0.85
       height: 0.8
   BigPlayer:
     SpritePosition: {x: 0.5, y: 1}
@@ -48,7 +48,7 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0.5
       y: 0.8
-      width: 1
+      width: 0.85
       height: 1.6
   DuckingPlayer:
     SpritePosition: {x: 0.5, y: 1}
@@ -56,5 +56,5 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0.5
       y: 0.4
-      width: 1
+      width: 0.85
       height: 0.8
