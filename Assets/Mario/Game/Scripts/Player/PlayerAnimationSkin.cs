@@ -1,18 +1,22 @@
 using Mario.Game.Enums;
-using System.Threading;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Mario.Game.Player
 {
     public abstract class PlayerAnimationMode
     {
-        public abstract int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState);
+        protected abstract int GetHash(PlayerAnimationStates currentState, PlayerAnimationFrames playerAnimationFrames);
+        public void ChangeAnimation(Animator animator, PlayerAnimationStates currentState, PlayerAnimationFrames playerAnimationFrames)
+        {
+            int hashId = this.GetHash(currentState, playerAnimationFrames);
+            animator.CrossFade(hashId, 0, 0);
+            animator.speed = 1;
+        }
 
     }
     public class PlayerAnimationModeSmall : PlayerAnimationMode
     {
-        public override int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState)
+        protected override int GetHash(PlayerAnimationStates currentState, PlayerAnimationFrames playerAnimationFrames)
         {
             return currentState switch
             {
@@ -26,19 +30,20 @@ namespace Mario.Game.Player
     }
     public class PlayerAnimationModeBig : PlayerAnimationMode
     {
-        public override int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState)
+        protected override int GetHash(PlayerAnimationStates currentState, PlayerAnimationFrames playerAnimationFrames)
         {
             if (currentState == PlayerAnimationStates.PowerUp)
             {
-                return previousState switch
+                return playerAnimationFrames switch
                 {
-                    PlayerAnimationStates.Idle => Animator.StringToHash("Big_Flower_Idle"),
-                    PlayerAnimationStates.Jumping => Animator.StringToHash("Big_Flower_Jump"),
-                    PlayerAnimationStates.StoppingRun => Animator.StringToHash("Big_Flower_Stop"),
-                    //PlayerAnimationStates.Running => Animator.StringToHash("Super_Run"),
-                    PlayerAnimationStates.Ducking => Animator.StringToHash("Big_Flower_Ducking"),
+                    PlayerAnimationFrames.Idle => Animator.StringToHash("Big_Flower_Idle"),
+                    PlayerAnimationFrames.Jumping => Animator.StringToHash("Big_Flower_Jump"),
+                    PlayerAnimationFrames.StoppingRun => Animator.StringToHash("Big_Flower_Stop"),
+                    PlayerAnimationFrames.Ducking => Animator.StringToHash("Big_Flower_Ducking"),
+                    PlayerAnimationFrames.Running1 => Animator.StringToHash("Big_Flower_Run1"),
+                    PlayerAnimationFrames.Running2 => Animator.StringToHash("Big_Flower_Run2"),
+                    PlayerAnimationFrames.Running3 => Animator.StringToHash("Big_Flower_Run3"),
                 };
-
             }
             else
                 return currentState switch
@@ -54,7 +59,7 @@ namespace Mario.Game.Player
     }
     public class PlayerAnimationModeSuper : PlayerAnimationMode
     {
-        public override int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState)
+        protected override int GetHash(PlayerAnimationStates currentState, PlayerAnimationFrames playerAnimationFrames)
         {
             return currentState switch
             {

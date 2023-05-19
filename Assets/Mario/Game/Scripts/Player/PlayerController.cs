@@ -28,11 +28,11 @@ namespace Mario.Game.Player
             get => _mode;
             set
             {
-                if (_mode != value)
-                {
-                    AllServices.CharacterService.StopMovement();
-                    AllServices.TimeService.StopTimer();
-                }
+                if (_mode == value)
+                    return;
+
+                AllServices.CharacterService.StopMovement();
+                AllServices.TimeService.StopTimer();
 
                 _mode = value;
 

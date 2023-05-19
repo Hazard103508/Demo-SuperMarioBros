@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Game.Player
@@ -12,6 +13,7 @@ namespace Mario.Game.Player
         private PlayerController _player;
         private PlayerAnimationStates _state;
         private PlayerModes _mode;
+        private PlayerAnimationFrames _animationFrame; // el ultimo frame me determina que animacion de debo mostrar al agarrar la flor, y asi respetar la animacion en curso
 
         public PlayerAnimationStates State
         {
@@ -21,11 +23,8 @@ namespace Mario.Game.Player
                 if (_state == value)
                     return;
 
-                var _currentAnimationMode = _playerAnimationModes[_mode];
-                int hashId = _currentAnimationMode.GetHash(value, _state);
-
+                _playerAnimationModes[_mode].ChangeAnimation(_animator, value, _animationFrame);
                 _state = value;
-                _animator.CrossFade(hashId, 0, 0);
             }
         }
 
@@ -78,6 +77,7 @@ namespace Mario.Game.Player
 
             if (this.State == PlayerAnimationStates.Running)
                 _animator.speed = _player.RawMovement.y < 0 ? 1 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
+            
 
             if (this.State != PlayerAnimationStates.Jumping)
             {
@@ -107,5 +107,6 @@ namespace Mario.Game.Player
 
             State = PlayerAnimationStates.Idle;
         }
+        public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
     }
 }
