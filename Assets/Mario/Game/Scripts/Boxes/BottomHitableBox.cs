@@ -6,6 +6,7 @@ namespace Mario.Game.Boxes
 {
     public class BottomHitableBox : MonoBehaviour, IBottomHitable
     {
+        [SerializeField] protected AudioSource _hitSoundFX;
         private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
 

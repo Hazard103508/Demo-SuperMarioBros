@@ -11,6 +11,8 @@ namespace Mario.Game.Boxes
 
         public override void OnHitFromBottom(PlayerController player)
         {
+            _hitSoundFX.Play();
+
             if (player.RawMovement.y > 0 || player.Input.JumpDown)
             {
                 if (player.Mode == Enums.PlayerModes.Small)
@@ -19,6 +21,7 @@ namespace Mario.Game.Boxes
                 {
                     InstantiateContent(_brickProfile.BrokenBrick);
                     AllServices.ScoreService.Add(_brickProfile.Points);
+                    AudioSource.PlayClipAtPoint(_hitSoundFX.clip, transform.position);
                     Destroy(gameObject);
                 }
             }
