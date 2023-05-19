@@ -1,0 +1,29 @@
+namespace Mario.Game.Enums
+{
+    public enum SoundFXType
+    {
+        GameOver,
+        PlayerDies,
+        OutOfTime,
+        StageClear,
+        WorldClear,
+        _1Up,
+        BowserFalls,
+        BowserFire,
+        BrickSmash,
+        Bump,
+        Coin,
+        Flag,
+        FirBall,
+        Fireworks,
+        JumpSmall,
+        JumpBig,
+        Kick,
+        Pause,
+        Pipe,
+        PowerUp,
+        PowerUpRise,
+        Stomp,
+        Vine,
+    }
+}

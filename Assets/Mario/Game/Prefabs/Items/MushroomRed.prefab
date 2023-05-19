@@ -192,6 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91665cc5f99afd64abf1261723513f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soundFXRise: {fileID: 0}
+  _soundFXCollect: {fileID: 0}
   _profile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
   raycastRanges:
   - {fileID: 1068909089117085194}

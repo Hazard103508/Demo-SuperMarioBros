@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPointsPrefab: {fileID: 2035694832352201171, guid: b9526c839700feb4bbea32f156771724, type: 3}
+  _soundFXProfile: {fileID: 11400000, guid: 94955c5d511fb0c4d9f45a8fddcb6a47, type: 2}
   _mapProfile: {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
   _playerProfile: {fileID: 11400000, guid: 629a99770e243da45a5c7163e52df944, type: 2}
 --- !u!4 &1573977435
