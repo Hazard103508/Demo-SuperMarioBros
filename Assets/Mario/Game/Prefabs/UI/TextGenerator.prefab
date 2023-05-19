@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40, y: 40}
+  m_SizeDelta: {x: 37.5, y: 37.5}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4952921070157568324
 CanvasRenderer:
@@ -112,7 +112,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 40}
+  m_SizeDelta: {x: 0, y: 37.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4952921070829784033
 MonoBehaviour:
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fontProfile: {fileID: 11400000, guid: de1e20b7a197e014680941f8ff38703b, type: 2}
+  _letterCount: 0
   _text: 
-  letterWidth: 40
+  letterWidth: 37.5
   letterSpriteTemplate: {fileID: 4952921070157568325}
