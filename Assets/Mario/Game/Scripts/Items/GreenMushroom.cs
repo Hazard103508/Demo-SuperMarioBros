@@ -1,12 +1,13 @@
 using Mario.Application.Services;
 using Mario.Game.Player;
+using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;
 
 namespace Mario.Game.Items
 {
     public class GreenMushroom : Mushroom
     {
-        [SerializeField] private Sprite Label1UP;
+        [SerializeField] private GreenMushroomProfile _greenMushroomProfile;
         private bool isCollected;
 
         public override void OnHitFromLeft(PlayerController player) => CollectMushroom(player);
@@ -20,8 +21,8 @@ namespace Mario.Game.Items
                 return;
             
             isCollected = true;
-            //AllServices.ScoreService.Add(_mushroomProfile.Points);
-            AllServices.ScoreService.ShowLabel(Label1UP, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
+            AllServices.LifeService.Add();
+            AllServices.ScoreService.ShowLabel(_greenMushroomProfile.Sprite1UP, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
             
             Destroy(gameObject);
         }
