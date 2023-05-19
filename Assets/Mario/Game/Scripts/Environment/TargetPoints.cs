@@ -1,4 +1,5 @@
 using Mario.Game.ScriptableObjects.UI;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityShared.Behaviours.Various.Lerpers;
 
@@ -27,6 +28,15 @@ namespace Mario.Game.Environment
                 else
                     _numberRenders[i].sprite = profile.Sprites[number];
             }
+
+            _lerper.Speed = 1 / time;
+            _lerper.GoalPosition = transform.position + Vector3.up * hight;
+            _lerper.RunForward();
+        }
+        public void ShowLabel(Sprite sprite, float time, float hight)
+        {
+            _numberRenders[0].enabled = false;
+            _numberRenders[1].sprite = sprite;
 
             _lerper.Speed = 1 / time;
             _lerper.GoalPosition = transform.position + Vector3.up * hight;

@@ -12,7 +12,7 @@ namespace Mario.Game.Items
 {
     public class Mushroom : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable
     {
-        [SerializeField] protected MushroomProfile _profile;
+        [SerializeField] private MushroomProfile _mushroomProfile;
         [SerializeField] private RaycastRange[] raycastRanges = null;
 
         private Vector3 _currentSpeed;
@@ -22,7 +22,7 @@ namespace Mario.Game.Items
         private void Awake()
         {
             isRising = true;
-            _currentSpeed = Vector2.right * _profile.MoveSpeed;
+            _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
             Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(1, 1));
         }
         private void Start()
@@ -49,7 +49,7 @@ namespace Mario.Game.Items
         }
         private void CalculateGravity()
         {
-            _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
+            _currentSpeed.y -= _mushroomProfile.FallSpeed * Time.deltaTime;
             if (_proximityBlock.bottom)
             {
                 if (_currentSpeed.y < 0)
@@ -57,8 +57,8 @@ namespace Mario.Game.Items
             }
             else
             {
-                if (_currentSpeed.y < -_profile.MaxFallSpeed)
-                    _currentSpeed.y = -_profile.MaxFallSpeed;
+                if (_currentSpeed.y < -_mushroomProfile.MaxFallSpeed)
+                    _currentSpeed.y = -_mushroomProfile.MaxFallSpeed;
             }
         }
         private void Move()

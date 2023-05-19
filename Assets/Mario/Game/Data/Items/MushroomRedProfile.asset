@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 286eea8ff593584449527785ccb93554, type: 3}
-  m_Name: MushroomProfile
+  m_Script: {fileID: 11500000, guid: 410e0974c773c94468200f81e8a846ce, type: 3}
+  m_Name: MushroomRedProfile
   m_EditorClassIdentifier: 
   GroundLayer:
     serializedVersion: 2
@@ -18,3 +18,4 @@ MonoBehaviour:
   MoveSpeed: 3.7
   FallSpeed: 60
   MaxFallSpeed: 14.5
+  Points: 1000

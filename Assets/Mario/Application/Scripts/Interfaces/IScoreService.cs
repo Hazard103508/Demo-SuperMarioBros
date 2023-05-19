@@ -10,5 +10,6 @@ namespace Mario.Application.Interfaces
         UnityEvent OnScoreChanged { get; set; }
         void Add(int points);
         void ShowPoint(int value, Vector3 initPosition, float time, float hight);
+        void ShowLabel(Sprite label, Vector3 initPosition, float time, float hight);
     }
 }
