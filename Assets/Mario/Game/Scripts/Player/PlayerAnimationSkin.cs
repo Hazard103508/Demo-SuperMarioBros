@@ -1,51 +1,69 @@
+using Mario.Game.Enums;
+using System.Threading;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Mario.Game.Player
 {
     public abstract class PlayerAnimationMode
     {
-        public int HashIdIdle { get; protected set; }
-        public int HashIdJump { get; protected set; }
-        public int HashIdRun { get; protected set; }
-        public int HashIdStop { get; protected set; }
-        public int HashIdDying { get; protected set; }
-        public int HashIdPowerDown { get; protected set; }
-        public int HashIdPowerUp { get; protected set; }
-        public int HashIdDucking { get; protected set; }
-        public int HashIdFlag { get; protected set; }
+        public abstract int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState);
+
     }
     public class PlayerAnimationModeSmall : PlayerAnimationMode
     {
-        public PlayerAnimationModeSmall()
+        public override int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState)
         {
-            HashIdIdle = Animator.StringToHash("Small_Idle");
-            HashIdJump = Animator.StringToHash("Small_Jump");
-            HashIdStop = Animator.StringToHash("Small_Stop");
-            HashIdRun = Animator.StringToHash("Small_Run");
-            HashIdPowerUp = Animator.StringToHash("Small_PowerUp");
+            return currentState switch
+            {
+                PlayerAnimationStates.Idle => Animator.StringToHash("Small_Idle"),
+                PlayerAnimationStates.Jumping => Animator.StringToHash("Small_Jump"),
+                PlayerAnimationStates.StoppingRun => Animator.StringToHash("Small_Stop"),
+                PlayerAnimationStates.Running => Animator.StringToHash("Small_Run"),
+                PlayerAnimationStates.PowerUp => Animator.StringToHash("Small_GrowingUp"),
+            };
         }
     }
     public class PlayerAnimationModeBig : PlayerAnimationMode
     {
-        public PlayerAnimationModeBig()
+        public override int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState)
         {
-            HashIdIdle = Animator.StringToHash("Big_Idle");
-            HashIdJump = Animator.StringToHash("Big_Jump");
-            HashIdStop = Animator.StringToHash("Big_Stop");
-            HashIdRun = Animator.StringToHash("Big_Run");
-            HashIdDucking = Animator.StringToHash("Big_Ducking");
-            HashIdPowerUp = Animator.StringToHash("Big_PowerUp");
+            if (currentState == PlayerAnimationStates.PowerUp)
+            {
+                return previousState switch
+                {
+                    PlayerAnimationStates.Idle => Animator.StringToHash("Big_Flower_Idle"),
+                    PlayerAnimationStates.Jumping => Animator.StringToHash("Big_Flower_Jump"),
+                    PlayerAnimationStates.StoppingRun => Animator.StringToHash("Big_Flower_Stop"),
+                    //PlayerAnimationStates.Running => Animator.StringToHash("Super_Run"),
+                    PlayerAnimationStates.Ducking => Animator.StringToHash("Big_Flower_Ducking"),
+                };
+
+            }
+            else
+                return currentState switch
+                {
+                    PlayerAnimationStates.Idle => Animator.StringToHash("Big_Idle"),
+                    PlayerAnimationStates.Jumping => Animator.StringToHash("Big_Jump"),
+                    PlayerAnimationStates.StoppingRun => Animator.StringToHash("Big_Stop"),
+                    PlayerAnimationStates.Running => Animator.StringToHash("Big_Run"),
+                    PlayerAnimationStates.Ducking => Animator.StringToHash("Big_Ducking"),
+                    PlayerAnimationStates.PowerUp => Animator.StringToHash("Big_Flower_Idle"),
+                };
         }
     }
     public class PlayerAnimationModeSuper : PlayerAnimationMode
     {
-        public PlayerAnimationModeSuper()
+        public override int GetHash(PlayerAnimationStates currentState, PlayerAnimationStates previousState)
         {
-            HashIdIdle = Animator.StringToHash("Super_Idle");
-            HashIdJump = Animator.StringToHash("Super_Jump");
-            HashIdStop = Animator.StringToHash("Super_Stop");
-            HashIdRun = Animator.StringToHash("Super_Run");
-            HashIdDucking = Animator.StringToHash("Super_Ducking");
+            return currentState switch
+            {
+                PlayerAnimationStates.Idle => Animator.StringToHash("Super_Idle"),
+                PlayerAnimationStates.Jumping => Animator.StringToHash("Super_Jump"),
+                PlayerAnimationStates.StoppingRun => Animator.StringToHash("Super_Stop"),
+                PlayerAnimationStates.Running => Animator.StringToHash("Super_Run"),
+                PlayerAnimationStates.Ducking => Animator.StringToHash("Super_Ducking"),
+            };
         }
     }
 }

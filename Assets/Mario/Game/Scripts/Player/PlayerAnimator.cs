@@ -21,17 +21,10 @@ namespace Mario.Game.Player
                 if (_state == value)
                     return;
 
-                _state = value;
-
                 var _currentAnimationMode = _playerAnimationModes[_mode];
-                var hashId =
-                    State == PlayerAnimationStates.Jumping ? _currentAnimationMode.HashIdJump :
-                    State == PlayerAnimationStates.StoppingRun ? _currentAnimationMode.HashIdStop :
-                    State == PlayerAnimationStates.Running ? _currentAnimationMode.HashIdRun :
-                    State == PlayerAnimationStates.PowerUp ? _currentAnimationMode.HashIdPowerUp :
-                    State == PlayerAnimationStates.Ducking ? _currentAnimationMode.HashIdDucking :
-                    _currentAnimationMode.HashIdIdle;
+                int hashId = _currentAnimationMode.GetHash(value, _state);
 
+                _state = value;
                 _animator.CrossFade(hashId, 0, 0);
             }
         }
@@ -84,7 +77,7 @@ namespace Mario.Game.Player
             }
 
             if (this.State == PlayerAnimationStates.Running)
-                _animator.speed = _player.RawMovement.y < 0 ? 0 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
+                _animator.speed = _player.RawMovement.y < 0 ? 1 : Mathf.Clamp(_player.WalkSpeedFactor, 0.5f, 1.5f);
 
             if (this.State != PlayerAnimationStates.Jumping)
             {
