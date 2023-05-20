@@ -26,6 +26,7 @@ namespace Mario.Application
             ServiceLocator.Current.Register<ITimeService>(new TimeService());
             ServiceLocator.Current.Register<ICharacterService>(new CharacterService());
             ServiceLocator.Current.Register<ILifeService>(new LifeService());
+            ServiceLocator.Current.Register<IAssetReferencesService>(new AssetReferencesService());
 
             AllServices.Load();
             AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior

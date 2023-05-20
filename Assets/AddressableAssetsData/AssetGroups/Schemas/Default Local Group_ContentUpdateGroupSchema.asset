@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
-  m_Name: BrickProfile
+  m_Script: {fileID: 11500000, guid: 5834b5087d578d24c926ce20cd31e6d6, type: 3}
+  m_Name: Default Local Group_ContentUpdateGroupSchema
   m_EditorClassIdentifier: 
-  BrokenBrick:
-    m_AssetGUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  Points: 50
+  m_Group: {fileID: 11400000, guid: 68519c05abdae0c42b13fc6d7e6d73ab, type: 2}
+  m_StaticContent: 0

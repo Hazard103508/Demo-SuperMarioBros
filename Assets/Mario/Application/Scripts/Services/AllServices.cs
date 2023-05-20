@@ -10,6 +10,7 @@ namespace Mario.Application.Services
         public static ITimeService TimeService { get; private set; }
         public static ICharacterService CharacterService { get; private set; }
         public static ILifeService LifeService { get; private set; }
+        public static IAssetReferencesService AssetReferencesService { get; private set; }
 
         public static void Load()
         {
@@ -19,6 +20,7 @@ namespace Mario.Application.Services
             TimeService = ServiceLocator.Current.Get<ITimeService>();
             CharacterService = ServiceLocator.Current.Get<ICharacterService>();
             LifeService = ServiceLocator.Current.Get<ILifeService>();
+            AssetReferencesService = ServiceLocator.Current.Get<IAssetReferencesService>();
         }
     }
 }

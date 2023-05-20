@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
@@ -9,6 +10,11 @@ namespace Mario.Game.Boxes
         [SerializeField] protected MysteryBoxCoinProfile _mysteryBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            AllServices.AssetReferencesService.Add(_mysteryBoxProfile.CoinReference);
+        }
         public override void OnHitFromBottom(PlayerController player)
         {
             _hitSoundFX.Play();
@@ -19,7 +25,8 @@ namespace Mario.Game.Boxes
             base.OnHitFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            base.InstantiateContent(_mysteryBoxProfile.CoinPrefab);
+            var prefab = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_mysteryBoxProfile.CoinReference);
+            base.InstantiateContent(prefab);
         }
     }
 }

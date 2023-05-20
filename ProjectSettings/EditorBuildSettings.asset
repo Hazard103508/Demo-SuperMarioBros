@@ -15,4 +15,5 @@ EditorBuildSettings:
     path: Assets/Mario/Game/Scenes/Game.unity
     guid: eeeb5f73adcc66d41a2c9e7a69b68165
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 10cd46608b1e79f448da15219dace0aa, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

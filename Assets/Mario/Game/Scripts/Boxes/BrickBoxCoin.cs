@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
@@ -13,9 +14,12 @@ namespace Mario.Game.Boxes
         private bool _firstHit;
         private bool _isEmpty;
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
             _limitTime = _coinBrickProfile.LimitTime;
+
+            AllServices.AssetReferencesService.Add(_coinBrickProfile.CoinReference);
         }
         public override void OnHitFromBottom(PlayerController player)
         {
@@ -34,7 +38,8 @@ namespace Mario.Game.Boxes
                 _spriteAnimator.SetTrigger("Disable");
             }
 
-            base.InstantiateContent(_coinBrickProfile.CoinPrefab);
+            var prefab = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_coinBrickProfile.CoinReference);
+            base.InstantiateContent(prefab);
         }
         public override void OnJumpCompleted()
         {

@@ -9,6 +9,11 @@ namespace Mario.Game.Boxes
     {
         [SerializeField] private BrickBoxEmptyProfile _brickProfile;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            AllServices.AssetReferencesService.Add(_brickProfile.BrokenBrickReference);
+        }
         public override void OnHitFromBottom(PlayerController player)
         {
             _hitSoundFX.Play();
@@ -19,7 +24,8 @@ namespace Mario.Game.Boxes
                     base.OnHitFromBottom(player);
                 else
                 {
-                    InstantiateContent(_brickProfile.BrokenBrick);
+                    var prefab = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_brickProfile.BrokenBrickReference);
+                    InstantiateContent(prefab);
                     AllServices.ScoreService.Add(_brickProfile.Points);
                     AudioSource.PlayClipAtPoint(_hitSoundFX.clip, transform.position);
                     Destroy(gameObject);

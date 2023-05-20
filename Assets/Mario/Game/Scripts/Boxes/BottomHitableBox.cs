@@ -10,7 +10,7 @@ namespace Mario.Game.Boxes
         private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             _boxAnimator = GetComponent<Animator>();
             IsHitable = true;
