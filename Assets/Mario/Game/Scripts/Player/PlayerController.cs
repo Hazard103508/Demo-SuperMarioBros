@@ -101,9 +101,6 @@ namespace Mario.Game.Player
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
-
-            if (UnityEngine.Input.GetKey(KeyCode.R))
-                transform.position = new Vector3(transform.position.x, 4f);
         }
         private void LateUpdate()
         {

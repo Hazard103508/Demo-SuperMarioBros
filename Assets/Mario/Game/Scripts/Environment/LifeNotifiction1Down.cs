@@ -20,7 +20,7 @@ namespace Mario.Game.Environment
         private IEnumerator ReloadMap()
         {
             yield return new WaitForSeconds(3.5f);
-            SceneManager.LoadScene("StandBy");
+            SceneManager.LoadScene(AllServices.LifeService.Lives > 0 ? "StandBy" : "GameOver");
         }
     }
 }
