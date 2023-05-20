@@ -17,6 +17,13 @@ namespace Mario.Application.Services
         public void Add()
         {
             this.Coins++;
+
+            if (this.Coins >= 100)
+            {
+                AllServices.LifeService.Add();
+                this.Coins = 0;
+            }
+
             OnCoinsChanged.Invoke();
         }
     }
