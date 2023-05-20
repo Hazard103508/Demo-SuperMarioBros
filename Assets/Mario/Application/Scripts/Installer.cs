@@ -31,7 +31,7 @@ namespace Mario.Application
             AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
             AllServices.GameDataService.PlayerProfile = _playerProfile;
 
-            SceneManager.LoadScene("Loading", LoadSceneMode.Single);
+            SceneManager.LoadScene("StandBy", LoadSceneMode.Single);
         }
     }
 }

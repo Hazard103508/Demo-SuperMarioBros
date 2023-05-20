@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Mario/Init/Init.unity
     guid: 4241874f842a1604794bbba843b8858c
   - enabled: 1
-    path: Assets/Mario/Loading/Scenes/Loading.unity
+    path: Assets/Mario/StandBy/Scenes/StandBy.unity
     guid: 080731c60857e7744bee76e42370570a
   - enabled: 1
     path: Assets/Mario/Game/Scenes/Map.unity
