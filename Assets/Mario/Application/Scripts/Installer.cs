@@ -4,6 +4,7 @@ using Mario.Game.Environment;
 using Mario.Game.ScriptableObjects.Map;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityShared.Behaviours.Handlers;
 
 namespace Mario.Application
@@ -30,7 +31,7 @@ namespace Mario.Application
             AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
             AllServices.GameDataService.PlayerProfile = _playerProfile;
 
-            SceneHandler.Instance.LoadScene("Map", UnityShared.Enums.LoadSceneBehaviour.ASYNC);
+            SceneManager.LoadScene("Loading", LoadSceneMode.Single);
         }
     }
 }

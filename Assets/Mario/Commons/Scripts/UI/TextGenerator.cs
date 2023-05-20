@@ -2,7 +2,7 @@ using Mario.Game.ScriptableObjects.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Mario.Game.UI
+namespace Mario.Commons.UI
 {
     public class TextGenerator : MonoBehaviour
     {

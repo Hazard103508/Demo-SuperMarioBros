@@ -1,11 +1,11 @@
 using Mario.Application.Services;
 using UnityEngine;
 
-namespace Mario.Game.UI
+namespace Mario.Commons.UI
 {
     public class UIScore : MonoBehaviour
     {
-        [SerializeField] private Mario.Game.UI.TextGenerator label;
+        [SerializeField] private TextGenerator label;
 
         private void Awake()
         {

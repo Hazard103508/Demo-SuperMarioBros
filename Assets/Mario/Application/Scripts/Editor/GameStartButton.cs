@@ -9,7 +9,8 @@ namespace RossoGame.Application.Editor
     public class GameStartButton
     {
         const string ICONS_PATH = "Assets/Mario/Application/Sprites/Editor/";
-        const string editScene = "Map";
+        //const string editScene = "Map";
+        const string editScene = "Loading";
         const string startScene = "Init";
 
         static GameStartButton()
