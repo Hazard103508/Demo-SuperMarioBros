@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46b97501013ddf48b3b41691f185c43, type: 3}
   m_Name: InvisibleBox1UPProfile
   m_EditorClassIdentifier: 
-  GreenMushroomPrefab: {fileID: 7787869368713805164, guid: 3dc86bf01a9156e44a09dc9ec612d79b, type: 3}
+  GreenMushroomReference:
+    m_AssetGUID: 3dc86bf01a9156e44a09dc9ec612d79b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

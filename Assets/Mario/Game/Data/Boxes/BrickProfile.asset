@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
   m_Name: BrickProfile
   m_EditorClassIdentifier: 
-  BrokenBrick:
+  BrokenBrickReference:
     m_AssetGUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
     m_SubObjectName: 
     m_SubObjectType: 

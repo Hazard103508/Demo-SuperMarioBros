@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
@@ -11,6 +12,11 @@ namespace Mario.Game.Boxes
         [SerializeField] private Animator _spriteAnimator;
         float _disabledTimer;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            AllServices.AssetReferencesService.Add(_invisibleBox1UPProfile.GreenMushroomReference);
+        }
         private void Update()
         {
             _disabledTimer = Mathf.Max(0, _disabledTimer - Time.deltaTime);
@@ -36,7 +42,8 @@ namespace Mario.Game.Boxes
 
         public override void OnJumpCompleted()
         {
-            base.InstantiateContent(_invisibleBox1UPProfile.GreenMushroomPrefab);
+            var prefab = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_invisibleBox1UPProfile.GreenMushroomReference);
+            base.InstantiateContent(prefab);
         }
     }
 }

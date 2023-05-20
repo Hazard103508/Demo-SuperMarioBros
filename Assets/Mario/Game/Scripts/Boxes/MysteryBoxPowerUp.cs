@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
@@ -12,6 +13,12 @@ namespace Mario.Game.Boxes
         [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
 
+        protected override void Awake()
+        {
+            base.Awake();
+            AllServices.AssetReferencesService.Add(_powerUpBoxProfile.RedMushroomReference);
+            AllServices.AssetReferencesService.Add(_powerUpBoxProfile.FlowerReference);
+        }
         public override void OnHitFromBottom(PlayerController player)
         {
             _hitSoundFX.Play();
@@ -23,7 +30,9 @@ namespace Mario.Game.Boxes
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
 
-            _itemPrefab = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroom : _powerUpBoxProfile.Flower;
+            _itemPrefab = player.Mode == Enums.PlayerModes.Small ?
+                AllServices.AssetReferencesService.GetObjectReference<GameObject>(_powerUpBoxProfile.RedMushroomReference) :
+                AllServices.AssetReferencesService.GetObjectReference<GameObject>(_powerUpBoxProfile.FlowerReference);
         }
         public override void OnJumpCompleted()
         {
