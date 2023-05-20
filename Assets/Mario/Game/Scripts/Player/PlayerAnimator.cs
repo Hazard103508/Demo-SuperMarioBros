@@ -16,6 +16,7 @@ namespace Mario.Game.Player
         private Dictionary<PlayerModes, PlayerAnimationMode> _playerAnimationModes;
         private PlayerController _player;
         private PlayerAnimationStates _state;
+        private PlayerAnimationStates _previousState;
         private PlayerModes _mode;
         private PlayerAnimationFrames _animationFrame; // el ultimo frame me determina que animacion de debo mostrar al agarrar la flor, y asi respetar la animacion en curso
 
@@ -32,6 +33,7 @@ namespace Mario.Game.Player
                 if (_state != value)
                     PlayAudioFX(value);
 
+                _previousState = _state;
                 _state = value;
             }
         }
@@ -113,12 +115,15 @@ namespace Mario.Game.Player
             AllServices.TimeService.StartTimer();
             AllServices.CharacterService.ResumeMovement();
 
-            State = PlayerAnimationStates.Idle;
+            State = _previousState;
         }
         public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
 
         private void PlayAudioFX(PlayerAnimationStates state)
         {
+            if (State == PlayerAnimationStates.PowerUp)
+                return;
+
             if (state == PlayerAnimationStates.PowerUp)
                 _playerSoundFX.PowerUpFX.Play();
             else if (state == PlayerAnimationStates.Jumping)
