@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Mario.Application.Services
@@ -10,15 +11,22 @@ namespace Mario.Application.Services
         public LifeService()
         {
             Lives = 3;
-            OnLivesChanged = new UnityEvent();
+            OnLivesAdded = new UnityEvent();
+            OnLivesRemoved = new UnityEvent();
         }
-        
-        public UnityEvent OnLivesChanged { get; set; }
+
+        public UnityEvent OnLivesAdded { get; set; }
+        public UnityEvent OnLivesRemoved { get; set; }
 
         public void Add()
         {
             this.Lives++;
-            OnLivesChanged.Invoke();
+            OnLivesAdded.Invoke();
+        }
+        public void Remove()
+        {
+            this.Lives--;
+            OnLivesRemoved.Invoke();
         }
     }
 }

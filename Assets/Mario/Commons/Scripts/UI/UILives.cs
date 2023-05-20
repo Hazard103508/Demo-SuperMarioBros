@@ -11,8 +11,8 @@ namespace Mario.Commons.UI
         {
             OnLivesChanged();
         }
-        private void OnEnable() => AllServices.LifeService.OnLivesChanged.AddListener(OnLivesChanged);
-        private void OnDisable() => AllServices.LifeService.OnLivesChanged.RemoveListener(OnLivesChanged);
+        private void OnEnable() => AllServices.LifeService.OnLivesAdded.AddListener(OnLivesChanged);
+        private void OnDisable() => AllServices.LifeService.OnLivesAdded.RemoveListener(OnLivesChanged);
         private void OnLivesChanged() => label.Text = AllServices.LifeService.Lives.ToString();
     }
 }

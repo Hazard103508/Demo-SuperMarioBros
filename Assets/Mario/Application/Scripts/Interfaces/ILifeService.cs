@@ -7,7 +7,10 @@ namespace Mario.Application.Interfaces
         int Lives { get; }
 
 
-        UnityEvent OnLivesChanged { get; set; }
+        UnityEvent OnLivesAdded { get; set; }
+        UnityEvent OnLivesRemoved { get; set; }
+
         void Add();
+        void Remove();
     }
 }

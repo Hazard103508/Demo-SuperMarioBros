@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Mario/StandBy/Scenes/StandBy.unity
     guid: 080731c60857e7744bee76e42370570a
   - enabled: 1
-    path: Assets/Mario/Game/Scenes/Map.unity
+    path: Assets/Mario/Game/Scenes/Game.unity
     guid: eeeb5f73adcc66d41a2c9e7a69b68165
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}

@@ -14,6 +14,9 @@ namespace Mario.Game.Environment
         private void Update()
         {
             AllServices.TimeService.UpdateTimer();
+
+            if(Input.GetKeyDown(KeyCode.Space))
+                AllServices.LifeService.Remove();
         }
 
     }
