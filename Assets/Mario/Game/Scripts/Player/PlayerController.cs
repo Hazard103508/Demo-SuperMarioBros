@@ -94,8 +94,8 @@ namespace Mario.Game.Player
             Input = new PlayerInput();
             transform.position = AllServices.GameDataService.CurrentMapProfile.StartPosition;
 
-            SetInitMode(PlayerModes.Small);
             AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
+            SetInitMode(PlayerModes.Small);
         }
         private void OnDestroy()
         {

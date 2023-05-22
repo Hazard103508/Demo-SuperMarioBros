@@ -45,11 +45,13 @@ namespace Mario.Game.Player
                 [PlayerModes.Super] = new PlayerAnimationModeSuper()
             };
 
-            State = PlayerAnimationStates.Idle;
-
             _player = GetComponentInParent<PlayerController>();
             _animator = GetComponent<Animator>();
+        }
+        private void Start()
+        {
             _mode = _player.Mode;
+            State = PlayerAnimationStates.Idle;
         }
         void Update()
         {
