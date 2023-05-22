@@ -1,5 +1,4 @@
 using Mario.Application.Interfaces;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Mario.Application.Services

@@ -2,10 +2,8 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Environment;
 using Mario.Game.ScriptableObjects.Map;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityShared.Behaviours.Handlers;
 
 namespace Mario.Application
 {

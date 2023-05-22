@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mario.Game.Environment
@@ -11,7 +9,7 @@ namespace Mario.Game.Environment
         void Update()
         {
             var viewportPoint = Camera.main.ViewportToWorldPoint(Vector3.zero);
-            
+
             var position = transform.position + Vector3.right * this.Width;
             if (viewportPoint.x > position.x)
                 Destroy(gameObject);

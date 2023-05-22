@@ -2,9 +2,7 @@ using Mario.Application.Services;
 using Mario.Game.Enums;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static Mario.Game.Player.PlayerAnimator;
 
 namespace Mario.Game.Player
 {

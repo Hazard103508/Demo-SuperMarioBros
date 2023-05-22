@@ -13,7 +13,7 @@ namespace Mario.Game.Player
         #region Variables
         [SerializeField] private SpriteRenderer _render;
         [SerializeField] private RaycastRange[] raycastRanges = null;
-        
+
         private PlayerProfile _profile;
         private ControllerVariables _controllerVariables;
         private PlayerModes _mode;

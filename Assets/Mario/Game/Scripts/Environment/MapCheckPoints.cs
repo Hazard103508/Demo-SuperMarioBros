@@ -1,5 +1,4 @@
 using Mario.Application.Services;
-using System.Linq;
 using UnityEngine;
 
 namespace Mario.Game.Environment
