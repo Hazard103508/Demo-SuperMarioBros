@@ -89,7 +89,7 @@ namespace Mario.Game.Player
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             Mode = PlayerModes.Small;
-            transform.position = AllServices.GameDataService.MapProfile.StartPosition;
+            transform.position = AllServices.GameDataService.CurrentMapProfile.StartPosition;
         }
         private void Update()
         {

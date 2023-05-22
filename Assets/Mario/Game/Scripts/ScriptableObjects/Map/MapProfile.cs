@@ -12,6 +12,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public int Time;
         public Vector2 StartPosition;
         public MapSection[] MapsSections;
+        public CheckPoint checkPoint;
     }
     [Serializable]
     public class MapSection
@@ -19,5 +20,11 @@ namespace Mario.Game.ScriptableObjects.Map
         public int InitXPosition;
         public int Width;
         public AssetReferenceGameObject Reference;
+    }
+    [Serializable]
+    public class CheckPoint
+    {
+        public int PositionX;
+        public MapProfile mapProfile;
     }
 }

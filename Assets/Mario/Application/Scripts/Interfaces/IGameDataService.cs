@@ -4,7 +4,8 @@ namespace Mario.Application.Interfaces
 {
     public interface IGameDataService : IGameService
     {
-        MapProfile MapProfile { get; set; }
         PlayerProfile PlayerProfile { get; set; }
+        MapProfile CurrentMapProfile { get; set; }
+        MapProfile NextMapProfile { get; set; }
     }
 }

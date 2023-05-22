@@ -29,7 +29,7 @@ namespace Mario.Application
             ServiceLocator.Current.Register<IAssetReferencesService>(new AssetReferencesService());
 
             AllServices.Load();
-            AllServices.GameDataService.MapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
+            AllServices.GameDataService.CurrentMapProfile = _mapProfile; // ASIGNAR MAPA EN Escena anterior
             AllServices.GameDataService.PlayerProfile = _playerProfile;
 
             SceneManager.LoadScene("StandBy", LoadSceneMode.Single);

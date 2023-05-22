@@ -7,16 +7,20 @@ namespace Mario.Game.Environment
 {
     public class MapLoader : MonoBehaviour
     {
-        [SerializeField] private Transform playerTransform;
-
         private void Awake()
         {
-            foreach (var mapSection in AllServices.GameDataService.MapProfile.MapsSections)
+            if (AllServices.GameDataService.NextMapProfile != null)
+            {
+                AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
+                AllServices.GameDataService.NextMapProfile = null;
+            }
+
+            foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)
                 LoadMapSection(mapSection);
         }
         private void OnDestroy()
         {
-            Array.ForEach(AllServices.GameDataService.MapProfile.MapsSections, m => m.Reference.ReleaseAsset());
+            Array.ForEach(AllServices.GameDataService.CurrentMapProfile.MapsSections, m => m.Reference.ReleaseAsset());
         }
 
         private void LoadMapSection(MapSection mapSection)
