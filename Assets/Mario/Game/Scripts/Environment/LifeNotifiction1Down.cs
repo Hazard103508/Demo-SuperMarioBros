@@ -14,13 +14,22 @@ namespace Mario.Game.Environment
 
         private void OnLivesRemoved()
         {
+            AllServices.TimeService.StopTimer();
+            AllServices.CharacterService.StopMovement();
+
             _1DownFX.Play();
             StartCoroutine(ReloadMap());
         }
         private IEnumerator ReloadMap()
         {
             yield return new WaitForSeconds(3.5f);
-            SceneManager.LoadScene(AllServices.LifeService.Lives > 0 ? "StandBy" : "GameOver");
+            
+            string _nextScene =
+                AllServices.LifeService.Lives == 0 ? "GameOver" :
+                AllServices.TimeService.Time == 0 ? "TimeUp" :
+                "StandBy";
+
+            SceneManager.LoadScene(_nextScene);
         }
     }
 }

@@ -271,8 +271,6 @@ namespace Mario.Game.Player
             IsDead = true;
             enabled = false;
             Mode = PlayerModes.Small;
-            AllServices.TimeService.StopTimer();
-            AllServices.CharacterService.StopMovement();
             AllServices.LifeService.Remove();
         }
         private void SetInitMode(PlayerModes playerMode)
