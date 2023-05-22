@@ -32,5 +32,12 @@ namespace Mario.Application.Services
 
             return default;
         }
+        public void ReleaseAllAsset()
+        {
+            foreach (var item in _references)
+                item.Key.ReleaseAsset();
+
+            _references.Clear();
+        }
     }
 }

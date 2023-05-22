@@ -6,5 +6,6 @@ namespace Mario.Application.Interfaces
     {
         void Add(AssetReference AssetReference);
         T GetObjectReference<T>(AssetReference assetReference);
+        void ReleaseAllAsset();
     }
 }

@@ -11,9 +11,7 @@ namespace Mario.Game.Environment
             AllServices.TimeService.ResetTimer();
             AllServices.TimeService.StartTimer();
         }
-        private void Update()
-        {
-            AllServices.TimeService.UpdateTimer();
-        }
+        private void Update() => AllServices.TimeService.UpdateTimer();
+        private void OnDestroy() => AllServices.AssetReferencesService.ReleaseAllAsset();
     }
 }
