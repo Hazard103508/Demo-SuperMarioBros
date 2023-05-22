@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410e0974c773c94468200f81e8a846ce, type: 3}
   m_Name: MushroomRedProfile
   m_EditorClassIdentifier: 
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  MoveSpeed: 3.7
-  FallSpeed: 60
-  MaxFallSpeed: 14.5
+  PowerUpFXReference:
+    m_AssetGUID: 76824b930fc80f347b83fc7084db0e83
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   Points: 1000

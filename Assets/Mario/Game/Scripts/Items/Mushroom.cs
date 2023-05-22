@@ -19,7 +19,7 @@ namespace Mario.Game.Items
         private Bounds<bool> _proximityBlock = new Bounds<bool>();
         private bool isRising;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             isRising = true;
             _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;

@@ -128,12 +128,7 @@ namespace Mario.Game.Player
 
         private void PlayAudioFX(PlayerAnimationStates state)
         {
-            if (State == PlayerAnimationStates.PowerUp)
-                return;
-
-            if (state == PlayerAnimationStates.PowerUp)
-                _playerSoundFX.PowerUpFX.Play();
-            else if (state == PlayerAnimationStates.Jumping)
+           if (state == PlayerAnimationStates.Jumping)
             {
                 if (_player.Mode == PlayerModes.Small)
                     _playerSoundFX.JumpSmallFX.Play();
@@ -145,7 +140,6 @@ namespace Mario.Game.Player
         [Serializable]
         public class PlayerSoundFX
         {
-            public AudioSource PowerUpFX;
             public AudioSource JumpSmallFX;
             public AudioSource JumpBigFX;
         }

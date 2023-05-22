@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: MushroomRed
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 76824b930fc80f347b83fc7084db0e83
+    m_Address: PowerUpSoundFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
   m_SchemaSet:
