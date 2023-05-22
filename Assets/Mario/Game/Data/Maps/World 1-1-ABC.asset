@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldName: 1-1
   BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-  Time: 400
+  Time: 120
   StartPosition: {x: 2.5, y: 2}
   MapsSections:
   - InitXPosition: 0
@@ -41,3 +41,6 @@ MonoBehaviour:
   checkPoint:
     PositionX: 90
     mapProfile: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
+  Sounds:
+    MainTheme: {fileID: 8300000, guid: e0dea324e8d4e304bb1a93934febc692, type: 3}
+    HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}

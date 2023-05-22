@@ -31,3 +31,9 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  checkPoint:
+    PositionX: 0
+    mapProfile: {fileID: 0}
+  Sounds:
+    MainTheme: {fileID: 8300000, guid: e0dea324e8d4e304bb1a93934febc692, type: 3}
+    HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}

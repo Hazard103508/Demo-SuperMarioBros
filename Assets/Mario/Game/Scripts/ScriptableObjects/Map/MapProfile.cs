@@ -13,6 +13,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public Vector2 StartPosition;
         public MapSection[] MapsSections;
         public CheckPoint checkPoint;
+        public MapSounds Sounds;
     }
     [Serializable]
     public class MapSection
@@ -26,5 +27,11 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public int PositionX;
         public MapProfile mapProfile;
+    }
+    [Serializable]
+    public class MapSounds
+    {
+        public AudioClip MainTheme;
+        public AudioClip HurryTheme;
     }
 }
