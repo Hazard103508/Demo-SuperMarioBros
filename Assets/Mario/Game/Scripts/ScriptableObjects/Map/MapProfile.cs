@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Mario.Game.ScriptableObjects.Map
 {
@@ -9,5 +11,13 @@ namespace Mario.Game.ScriptableObjects.Map
         public Color BackgroundColor;
         public int Time;
         public Vector2 StartPosition;
+        public MapSection[] MapsSections;
+    }
+    [Serializable]
+    public class MapSection
+    {
+        public int InitXPosition;
+        public int Width;
+        public AssetReferenceGameObject Reference;
     }
 }
