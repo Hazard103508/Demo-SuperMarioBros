@@ -67,6 +67,9 @@ namespace Mario.Game.Player
             get => _isDucking;
             private set
             {
+                if (_isDucking == value)
+                    return;
+
                 _isDucking = value;
                 if (value)
                     SetDuckingCollider();
@@ -80,6 +83,7 @@ namespace Mario.Game.Player
             }
         }
         public bool IsStuck { get; set; }
+        public bool IsDead { get; set; }
         #endregion
 
         #region Unity Methods
@@ -88,8 +92,14 @@ namespace Mario.Game.Player
             _profile = AllServices.GameDataService.PlayerProfile;
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
-            Mode = PlayerModes.Small;
             transform.position = AllServices.GameDataService.CurrentMapProfile.StartPosition;
+
+            SetInitMode(PlayerModes.Small);
+            AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
+        }
+        private void OnDestroy()
+        {
+            AllServices.TimeService.OnTimeOut.RemoveListener(OnTimeOut);
         }
         private void Update()
         {
@@ -246,8 +256,36 @@ namespace Mario.Game.Player
         public void OnPlayerSuper() => this.Mode = PlayerModes.Super;
         public void OnFall()
         {
+            if (!enabled)
+                return;
+
             gameObject.SetActive(false);
             AllServices.LifeService.Remove();
+        }
+        private void OnTimeOut() => Kill();
+        #endregion
+
+        #region Other Methods
+        public void Kill()
+        {
+            IsDead = true;
+            enabled = false;
+            Mode = PlayerModes.Small;
+            AllServices.TimeService.StopTimer();
+            AllServices.CharacterService.StopMovement();
+            AllServices.LifeService.Remove();
+        }
+        private void SetInitMode(PlayerModes playerMode)
+        {
+            _mode = playerMode;
+            SetModeCollider(_mode);
+        }
+        private void SetModeCollider(PlayerModes playerMode)
+        {
+            if (playerMode == PlayerModes.Small)
+                SetSmallCollider();
+            else
+                SetBigCollider();
         }
         #endregion
 

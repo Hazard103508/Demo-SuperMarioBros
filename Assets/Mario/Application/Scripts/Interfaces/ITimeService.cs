@@ -8,6 +8,8 @@ namespace Mario.Application.Interfaces
         bool Enabled { get; }
 
         UnityEvent OnTimeChanged { get; set; }
+        UnityEvent OnTimeOut { get; set; }
+
         void ResetTimer();
         void StopTimer();
         void StartTimer();

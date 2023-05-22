@@ -55,6 +55,12 @@ namespace Mario.Game.Player
         {
             if (_player == null) return;
 
+            if (_player.IsDead)
+            {
+                State = PlayerAnimationStates.Died;
+                return;
+            }
+
             if (State == PlayerAnimationStates.PowerUp)
                 return;
 
