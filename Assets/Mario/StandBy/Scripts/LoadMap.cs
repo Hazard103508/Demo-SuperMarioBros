@@ -10,10 +10,25 @@ namespace Mario.StandBy
         {
             StartCoroutine(LosMap());
         }
+
         private IEnumerator LosMap()
         {
-            yield return new WaitForSeconds(2.5f);
-            SceneManager.LoadSceneAsync("Game", LoadSceneMode.Single);
+            yield return null;
+            float timer = 0;
+            float minDelay = 2.5f; // demora forzada para simular el original
+
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Game");
+            asyncOperation.allowSceneActivation = false;
+
+            while (!asyncOperation.isDone || timer < minDelay)
+            {
+
+                if (asyncOperation.progress >= 0.9f && timer >= minDelay)
+                    asyncOperation.allowSceneActivation = true;
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
     }
 }
