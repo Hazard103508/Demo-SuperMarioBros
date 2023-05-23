@@ -50,7 +50,7 @@ namespace UnityShared.Behaviours.Controllers.Cameras
             if (!lockedMargin.top && targetToFollow.transform.position.y - y > worldMargins.top)
                 y = targetToFollow.transform.position.y - worldMargins.top;
 
-            this.transform.position = new Vector3(x, y) + distance;
+            this.transform.position = Vector3.Lerp(this.transform.position, distance + new Vector3(x, y), Time.deltaTime * 8);
         }
 
         [Serializable]
