@@ -1,9 +1,8 @@
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
-using UnityShared.Behaviours.Various.Lerpers;
 
 namespace Mario.Game.Interactable
 {
@@ -11,37 +10,42 @@ namespace Mario.Game.Interactable
     {
         [SerializeField] private GameObject _flag;
         [SerializeField] private AudioSource _audioSource;
-        [SerializeField] private LocalPositionLerper _flagLerper;
 
         private bool _isLowering;
 
-        private void Awake()
-        {
-            _flagLerper.Speed = 1;
-        }
-        private void Start()
-        {
-            _flagLerper.Init();
-        }
-
-        public void LowerFlag()
+        public void LowerFlag(PlayerController player)
         {
             if (!_isLowering)
             {
-                _audioSource.Play();
                 _isLowering = true;
-                _flagLerper.RunForward();
+                AllServices.TimeService.StopTimer();
+
+                player.HoldFlagPole(transform.position.y);
+
+                player.transform.localScale = Vector3.one;
+                player.transform.position = new Vector3(transform.position.x - 0.5f, player.transform.position.y, player.transform.position.z);
+
+                _audioSource.Play();
+                StartCoroutine(DownFlagPole(player));
                 AllServices.GameDataService.IsMapCompleted = true;
             }
         }
 
-        public void OnHitFromLeft(PlayerController player)
+        public void OnHitFromLeft(PlayerController player) => LowerFlag(player);
+        private IEnumerator DownFlagPole(PlayerController player)
         {
-            AllServices.TimeService.StopTimer();
+            while (_flag.transform.position.y > transform.position.y + 0.5f)
+            {
+                _flag.transform.Translate(Vector3.down * Time.deltaTime * 9);
+                yield return null;
+            }
 
-            player.HoldFlagPole(transform.position.y);
-            player.transform.position = new Vector3(transform.position.x - 0.5f, player.transform.position.y, player.transform.position.z);
-            LowerFlag();
+            player.transform.Find("Visual").localScale = new Vector3(-1, 1, 1);
+            player.transform.Translate(Vector3.right);
+
+            yield return new WaitForSeconds(0.4f);
+            player.ReleaseFlagPole();
+            player.StartAutoPlay();
         }
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   WorldName: 1-1
   BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
   Time: 200
-  StartPosition: {x: 35, y: 2}
+  StartPosition: {x: 28, y: 10}
   MapsSections:
   - InitXPosition: 0
     Width: 52
@@ -25,8 +25,8 @@ MonoBehaviour:
       m_SubObjectType: 
       m_EditorAssetChanged: 0
   checkPoint:
-    PositionX: 90
-    mapProfile: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
+    PositionX: 0
+    mapProfile: {fileID: 0}
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
     HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}

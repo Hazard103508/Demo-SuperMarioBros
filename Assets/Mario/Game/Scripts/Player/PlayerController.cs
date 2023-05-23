@@ -3,6 +3,7 @@ using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
@@ -84,7 +85,7 @@ namespace Mario.Game.Player
             }
         }
         public bool IsStuck { get; set; }
-        public bool IsDead { get; set; }
+        public bool IsDead { get; private set; }
         public bool IsInFlagPole { get; private set; }
         #endregion
 
@@ -132,6 +133,15 @@ namespace Mario.Game.Player
         #region Update Methods
         private void GatherInput()
         {
+            if (_controllerVariables.isAutoPlay)
+            {
+                Input = new PlayerInput
+                {
+                    X = 1,
+                };
+                return;
+            }
+
             var _jumpDown = Input.JumpDown;
             Input = new PlayerInput
             {
@@ -262,7 +272,7 @@ namespace Mario.Game.Player
         #region On Events
         public void OnPlayerGrowUp() => this.Mode = PlayerModes.Big;
         public void OnPlayerSuper() => this.Mode = PlayerModes.Super;
-         public void OnFall()
+        public void OnFall()
         {
             if (!enabled)
                 return;
@@ -281,6 +291,7 @@ namespace Mario.Game.Player
             Mode = PlayerModes.Small;
             AllServices.LifeService.Remove();
         }
+        public void StartAutoPlay() => _controllerVariables.isAutoPlay = true;
         public void HoldFlagPole(float positionY)
         {
             if (!IsInFlagPole)
@@ -289,6 +300,7 @@ namespace Mario.Game.Player
                 StartCoroutine(DownFlagPole(positionY));
             }
         }
+        public void ReleaseFlagPole() => IsInFlagPole = false;
         private IEnumerator DownFlagPole(float positionY)
         {
             while (transform.position.y > positionY)
@@ -317,6 +329,7 @@ namespace Mario.Game.Player
             public Bounds<bool> ProximityBlock = new Bounds<bool>();
             public Vector2 currentSpeed;
             public float lastJumpPressed = 0;
+            public bool isAutoPlay;
         }
         #endregion
     }
