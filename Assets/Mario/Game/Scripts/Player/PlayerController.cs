@@ -2,6 +2,7 @@ using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
@@ -84,6 +85,7 @@ namespace Mario.Game.Player
         }
         public bool IsStuck { get; set; }
         public bool IsDead { get; set; }
+        public bool IsInFlagPole { get; private set; }
         #endregion
 
         #region Unity Methods
@@ -106,6 +108,9 @@ namespace Mario.Game.Player
             if (!AllServices.CharacterService.CanMove)
                 return;
 
+            if (IsInFlagPole)
+                return;
+
             GatherInput();
 
             CalculateWalk();
@@ -115,6 +120,9 @@ namespace Mario.Game.Player
         private void LateUpdate()
         {
             if (!AllServices.CharacterService.CanMove)
+                return;
+
+            if (IsInFlagPole)
                 return;
 
             MoveCharacter();
@@ -254,7 +262,7 @@ namespace Mario.Game.Player
         #region On Events
         public void OnPlayerGrowUp() => this.Mode = PlayerModes.Big;
         public void OnPlayerSuper() => this.Mode = PlayerModes.Super;
-        public void OnFall()
+         public void OnFall()
         {
             if (!enabled)
                 return;
@@ -272,6 +280,22 @@ namespace Mario.Game.Player
             enabled = false;
             Mode = PlayerModes.Small;
             AllServices.LifeService.Remove();
+        }
+        public void HoldFlagPole(float positionY)
+        {
+            if (!IsInFlagPole)
+            {
+                IsInFlagPole = true;
+                StartCoroutine(DownFlagPole(positionY));
+            }
+        }
+        private IEnumerator DownFlagPole(float positionY)
+        {
+            while (transform.position.y > positionY)
+            {
+                transform.Translate(Vector3.down * Time.deltaTime * 9);
+                yield return null;
+            }
         }
         private void SetInitMode(PlayerModes playerMode)
         {

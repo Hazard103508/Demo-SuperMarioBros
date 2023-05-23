@@ -345,7 +345,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerSoundFX:
-    PowerUpFX: {fileID: 0}
     JumpSmallFX: {fileID: 6509256881085814937}
     JumpBigFX: {fileID: 4002796248244958292}
 --- !u!114 &7707397596782956978

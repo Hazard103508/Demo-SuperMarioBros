@@ -41,11 +41,11 @@ namespace Mario.Game.Player
 
             if (_proximityHit.left != null)
                 foreach (GameObject obj in _proximityHit.left)
-                    HitObjectOnRight(obj);
+                    HitObjectOnLeft(obj);
 
             if (_proximityHit.right != null)
                 foreach (GameObject obj in _proximityHit.right)
-                    HitObjectOnLeft(obj);
+                    HitObjectOnRight(obj);
         }
         private bool HitObjectOnTop(GameObject obj)
         {

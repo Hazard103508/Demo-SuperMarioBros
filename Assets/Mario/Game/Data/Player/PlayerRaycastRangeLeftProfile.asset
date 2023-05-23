@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 136
   OtherLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 320
   OffSet: 0.15
   RayCount: 4
   DetectionRayLength: 0.05

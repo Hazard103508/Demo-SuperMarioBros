@@ -1,4 +1,5 @@
 using Mario.Game.ScriptableObjects.Map;
+using UnityEngine.Events;
 
 namespace Mario.Application.Interfaces
 {
@@ -7,5 +8,8 @@ namespace Mario.Application.Interfaces
         PlayerProfile PlayerProfile { get; set; }
         MapProfile CurrentMapProfile { get; set; }
         MapProfile NextMapProfile { get; set; }
+        bool IsMapCompleted { get; set; }
+
+        UnityEvent OnMapCompleted { get;}
     }
 }

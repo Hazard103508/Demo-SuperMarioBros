@@ -57,6 +57,12 @@ namespace Mario.Game.Player
         {
             if (_player == null) return;
 
+            if (_player.IsInFlagPole)
+            {
+                State = PlayerAnimationStates.Flag;
+                return;
+            }
+
             if (_player.IsDead)
             {
                 State = PlayerAnimationStates.Died;

@@ -26,6 +26,7 @@ namespace Mario.Game.Player
                 PlayerAnimationStates.Running => Animator.StringToHash("Small_Run"),
                 PlayerAnimationStates.PowerUp => Animator.StringToHash("Small_GrowingUp"),
                 PlayerAnimationStates.Died => Animator.StringToHash("Small_Died"),
+                PlayerAnimationStates.Flag => Animator.StringToHash("Small_Flag"),
                 _ => throw new System.NotImplementedException(),
             };
         }
@@ -58,6 +59,7 @@ namespace Mario.Game.Player
                     PlayerAnimationStates.Ducking => Animator.StringToHash("Big_Ducking"),
                     PlayerAnimationStates.PowerUp => Animator.StringToHash("Big_Flower_Idle"),
                     PlayerAnimationStates.Died => Animator.StringToHash("Small_Died"),
+                    PlayerAnimationStates.Flag => Animator.StringToHash("Big_Flag"),
                     _ => throw new System.NotImplementedException(),
                 };
         }
@@ -74,6 +76,7 @@ namespace Mario.Game.Player
                 PlayerAnimationStates.Running => Animator.StringToHash("Super_Run"),
                 PlayerAnimationStates.Ducking => Animator.StringToHash("Super_Ducking"),
                 PlayerAnimationStates.Died => Animator.StringToHash("Small_Died"),
+                PlayerAnimationStates.Flag => Animator.StringToHash("Super_Flag"),
                 _ => throw new System.NotImplementedException(),
             };
         }

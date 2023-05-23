@@ -14,8 +14,13 @@ namespace Mario.Game.Environment
         {
             _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Sounds.MainTheme;
             AllServices.LifeService.OnLivesRemoved.AddListener(OnLivesRemoved);
+            AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
         }
-        private void OnDestroy() => AllServices.LifeService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
+        private void OnDestroy()
+        {
+            AllServices.LifeService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
+            AllServices.GameDataService.OnMapCompleted.RemoveListener(OnMapCompleted);
+        }
         private void Start()
         {
             _audioSource.Play();
@@ -34,6 +39,10 @@ namespace Mario.Game.Environment
         {
             _audioSource.Stop();
             Destroy(gameObject);
+        }
+        private void OnMapCompleted()
+        {
+            _audioSource.Stop();
         }
     }
 }
