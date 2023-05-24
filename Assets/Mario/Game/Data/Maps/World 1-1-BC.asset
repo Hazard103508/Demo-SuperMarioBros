@@ -35,8 +35,8 @@ MonoBehaviour:
     PositionX: 0
     mapProfile: {fileID: 0}
   WinPoint:
-    PositionX: 0
-    mapProfile: {fileID: 0}
+    PositionX: 124
+    mapProfile: {fileID: 11400000}
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
     HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}

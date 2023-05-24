@@ -1,5 +1,8 @@
 using Mario.Application.Services;
+using System.Collections;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Mario.Game.Environment
 {
@@ -21,7 +24,15 @@ namespace Mario.Game.Environment
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.WinPoint.mapProfile;
                 AllServices.GameDataService.OnMapCompleted.Invoke();
                 AllServices.TimeService.StartTimer();
+
+                StartCoroutine(CloseMap());
             }
+        }
+
+        public IEnumerator CloseMap()
+        {
+            yield return new WaitForSeconds(6);
+            SceneManager.LoadScene("StandBy");
         }
     }
 }

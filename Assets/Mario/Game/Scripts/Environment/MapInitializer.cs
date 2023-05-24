@@ -11,6 +11,7 @@ namespace Mario.Game.Environment
         {
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.BackgroundColor;
             AllServices.CharacterService.ResumeMovement();
+            AllServices.GameDataService.IsMapCompleted = false;
 
             foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)
                 LoadMapSection(mapSection);
