@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mario.Game.Environment
 {
-    public class MapCheckPoints : MonoBehaviour
+    public class MapCheckPoint : MonoBehaviour
     {
         private void Awake()
         {
@@ -15,8 +15,8 @@ namespace Mario.Game.Environment
         }
         public void OnPlayerPositionChanged(Vector3 position)
         {
-            if (position.x >= AllServices.GameDataService.CurrentMapProfile.checkPoint.PositionX)
-                AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.checkPoint.mapProfile;
+            if (position.x >= AllServices.GameDataService.CurrentMapProfile.CheckPoint.PositionX)
+                AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.CheckPoint.mapProfile;
         }
     }
 }

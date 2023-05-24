@@ -18,7 +18,6 @@ namespace Mario.Application.Services
 
         public UnityEvent<Vector3> OnPlayerPositionChanged { get; private set; }
 
-
         public void StopMovement() => CanMove = false;
         public void ResumeMovement() => CanMove = true;
         public void UpdatePlayerPositon(Vector3 position)

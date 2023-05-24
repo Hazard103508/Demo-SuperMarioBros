@@ -38,8 +38,11 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  checkPoint:
+  CheckPoint:
     PositionX: 90
+    mapProfile: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
+  WinPoint:
+    PositionX: 204
     mapProfile: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}

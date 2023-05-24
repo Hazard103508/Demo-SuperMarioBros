@@ -98,11 +98,14 @@ namespace Mario.Game.Player
             transform.position = AllServices.GameDataService.CurrentMapProfile.StartPosition;
 
             AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
+            AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
+
             SetInitMode(PlayerModes.Small);
         }
         private void OnDestroy()
         {
             AllServices.TimeService.OnTimeOut.RemoveListener(OnTimeOut);
+            AllServices.GameDataService.OnMapCompleted.RemoveListener(OnMapCompleted);
         }
         private void Update()
         {
@@ -286,6 +289,7 @@ namespace Mario.Game.Player
             AllServices.LifeService.Remove();
         }
         private void OnTimeOut() => Kill();
+        private void OnMapCompleted() => gameObject.SetActive(false);
         #endregion
 
         #region Other Methods

@@ -11,6 +11,7 @@ namespace Mario.Application.Interfaces
         MapProfile NextMapProfile { get; set; }
         bool IsMapCompleted { get; set; }
 
-        UnityEvent OnMapCompleted { get;}
+        UnityEvent OnFlagReached { get;}
+        UnityEvent OnMapCompleted { get; }
     }
 }

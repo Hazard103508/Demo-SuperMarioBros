@@ -14,19 +14,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldName: 1-1
   BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-  Time: 200
-  StartPosition: {x: 28, y: 10}
+  Time: 400
+  StartPosition: {x: 188, y: 10}
   MapsSections:
   - InitXPosition: 0
+    Width: 80
+    Reference:
+      m_AssetGUID: 18234092574721c4596e9a8b37bbed6b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - InitXPosition: 80
+    Width: 80
+    Reference:
+      m_AssetGUID: 1eb2a5e16892cc140bb2e7d989da51eb
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - InitXPosition: 160
     Width: 52
     Reference:
       m_AssetGUID: 7c286d7ab204f9243854dbab54c97d2d
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
-  checkPoint:
-    PositionX: 0
-    mapProfile: {fileID: 0}
+  CheckPoint:
+    PositionX: 90
+    mapProfile: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
+  WinPoint:
+    PositionX: 204
+    mapProfile: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
     HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
