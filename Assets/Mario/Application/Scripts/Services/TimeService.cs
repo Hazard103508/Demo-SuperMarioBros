@@ -25,7 +25,7 @@ namespace Mario.Application.Services
         public void ResetTimer()
         {
             TimeSpeed = 2.5f;
-            this.Time = AllServices.GameDataService.CurrentMapProfile.Time;
+            this.Time = AllServices.GameDataService.CurrentMapProfile.Time.StartTime;
             _timer = 0;
         }
         public void StopTimer() => Enabled = false;
@@ -35,7 +35,7 @@ namespace Mario.Application.Services
             if (Enabled && this.Time > 0)
             {
                 _timer += UnityEngine.Time.deltaTime * TimeSpeed;
-                this.Time = Mathf.Max(0, AllServices.GameDataService.CurrentMapProfile.Time - (int)_timer);
+                this.Time = Mathf.Max(0, AllServices.GameDataService.CurrentMapProfile.Time.StartTime - (int)_timer);
                 OnTimeChanged.Invoke();
 
                 if (this.Time == 0)

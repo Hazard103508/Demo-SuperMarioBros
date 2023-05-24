@@ -10,26 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f55d97fa783210a4c8c30bc6e76f176f, type: 3}
-  m_Name: World 1-1-BC
+  m_Name: World 1-2-A
   m_EditorClassIdentifier: 
-  WorldName: 1-1
+  WorldName: 1-2
   BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
   Time:
-    UseTime: 1
-    StartTime: 400
-  StartPosition: {x: 2.5, y: 2}
+    UseTime: 0
+    StartTime: 0
+  StartPosition: {x: 2, y: 2}
   MapsSections:
   - InitXPosition: 0
-    Width: 80
+    Width: 16
     Reference:
-      m_AssetGUID: 1eb2a5e16892cc140bb2e7d989da51eb
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
-  - InitXPosition: 80
-    Width: 52
-    Reference:
-      m_AssetGUID: 7c286d7ab204f9243854dbab54c97d2d
+      m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
@@ -37,10 +30,10 @@ MonoBehaviour:
     PositionX: 0
     mapProfile: {fileID: 0}
   WinPoint:
-    PositionX: 124
-    mapProfile: {fileID: 11400000}
+    PositionX: 0
+    mapProfile: {fileID: 0}
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-    HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
-    VictoryTheme: {fileID: 8300000, guid: ec54ce87d8bca1048aca5c0ae7253c35, type: 3}
-  RemainingTimePoints: 50
+    HurryTheme: {fileID: 0}
+    VictoryTheme: {fileID: 0}
+  RemainingTimePoints: 0

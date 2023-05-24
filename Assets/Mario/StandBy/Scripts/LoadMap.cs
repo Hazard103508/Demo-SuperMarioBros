@@ -14,12 +14,6 @@ namespace Mario.StandBy
 
         private IEnumerator LosMap()
         {
-            if (AllServices.GameDataService.NextMapProfile != null)
-            {
-                AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
-                AllServices.GameDataService.NextMapProfile = null;
-            }
-
             yield return null;
 
             float timer = 0;

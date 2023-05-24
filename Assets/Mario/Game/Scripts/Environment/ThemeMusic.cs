@@ -37,6 +37,9 @@ namespace Mario.Game.Environment
             if (AllServices.GameDataService.IsMapCompleted)
                 return;
 
+            if (!AllServices.GameDataService.CurrentMapProfile.Time.UseTime)
+                return;
+
             if (!isHurry && AllServices.TimeService.Time <= 100)
             {
                 isHurry = true;

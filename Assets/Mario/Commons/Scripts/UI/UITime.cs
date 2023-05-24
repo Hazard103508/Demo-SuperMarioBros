@@ -10,6 +10,9 @@ namespace Mario.Commons.UI
         private void Awake()
         {
             OnTimeChanged();
+
+            if (!AllServices.GameDataService.CurrentMapProfile.Time.UseTime)
+                Destroy(gameObject);
         }
         private void OnEnable() => AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
         private void OnDisable() => AllServices.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);

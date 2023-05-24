@@ -16,6 +16,11 @@ namespace Mario.Game.Environment
         {
             AllServices.CharacterService.OnPlayerPositionChanged.RemoveListener(OnPlayerPositionChanged);
         }
+        private void Start()
+        {
+            if (AllServices.GameDataService.CurrentMapProfile.WinPoint.mapProfile == null)
+                Destroy(this);
+        }
         public void OnPlayerPositionChanged(Vector3 position)
         {
             if (position.x >= AllServices.GameDataService.CurrentMapProfile.WinPoint.PositionX)
@@ -32,6 +37,13 @@ namespace Mario.Game.Environment
         public IEnumerator CloseMap()
         {
             yield return new WaitForSeconds(6);
+
+            if (AllServices.GameDataService.NextMapProfile != null)
+            {
+                AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
+                AllServices.GameDataService.NextMapProfile = null;
+            }
+
             SceneManager.LoadScene("StandBy");
         }
     }

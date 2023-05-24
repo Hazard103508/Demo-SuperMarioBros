@@ -9,7 +9,7 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public string WorldName;
         public Color BackgroundColor;
-        public int Time;
+        public MapTime Time;
         public Vector2 StartPosition;
         public MapSection[] MapsSections;
         public NewMapPoint CheckPoint;
@@ -36,5 +36,11 @@ namespace Mario.Game.ScriptableObjects.Map
         public AudioClip MainTheme;
         public AudioClip HurryTheme;
         public AudioClip VictoryTheme;
+    }
+    [Serializable]
+    public class MapTime
+    {
+        public bool UseTime;
+        public int StartTime;
     }
 }

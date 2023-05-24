@@ -8,6 +8,9 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             AllServices.CharacterService.OnPlayerPositionChanged.AddListener(OnPlayerPositionChanged);
+
+            if (AllServices.GameDataService.CurrentMapProfile.CheckPoint.mapProfile == null)
+                Destroy(this);
         }
         private void OnDestroy()
         {

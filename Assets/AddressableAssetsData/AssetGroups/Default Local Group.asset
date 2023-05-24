@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: a64120bc46a88ff41bd2201237812f3c
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 317b8460021e2ce4d85764db25e4f653
+    m_Address: Assets/Mario/Game/Prefabs/Environment/Map_1-2-A.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
   m_SchemaSet:

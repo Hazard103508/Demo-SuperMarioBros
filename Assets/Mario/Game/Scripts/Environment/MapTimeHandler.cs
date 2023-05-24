@@ -15,6 +15,9 @@ namespace Mario.Game.Environment
 
             AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
             AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
+
+            if (!AllServices.GameDataService.CurrentMapProfile.Time.UseTime)
+                Destroy(this);
         }
         private void OnDestroy()
         {
