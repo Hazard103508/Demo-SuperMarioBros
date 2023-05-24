@@ -8,6 +8,7 @@ namespace Mario.Game.Boxes
 {
     public class InvisibleBox1UP : BottomHitableBox, ITopHitable, ILeftHitable, IRightHitable
     {
+        [SerializeField] private AudioSource _risingSoundFX;
         [SerializeField] protected InvisibleBox1UPProfile _invisibleBox1UPProfile;
         [SerializeField] private Animator _spriteAnimator;
         float _disabledTimer;
@@ -34,6 +35,7 @@ namespace Mario.Game.Boxes
             gameObject.layer = LayerMask.NameToLayer("Ground");
             base.OnHitFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
+            _risingSoundFX.Play();
         }
 
         public void OnHitFromTop(PlayerController player) => _disabledTimer = 0.5f;
