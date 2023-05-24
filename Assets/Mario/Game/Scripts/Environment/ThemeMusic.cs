@@ -35,11 +35,7 @@ namespace Mario.Game.Environment
                 return;
             }
         }
-        private void OnLivesRemoved()
-        {
-            _audioSource.Stop();
-            Destroy(gameObject);
-        }
+        private void OnLivesRemoved() => _audioSource.Stop();
         private void OnMapCompleted()
         {
             _audioSource.Stop();
