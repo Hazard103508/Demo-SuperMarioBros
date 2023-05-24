@@ -21,18 +21,22 @@ namespace Mario.Game.Interactable
                 _isLowering = true;
                 AllServices.TimeService.StopTimer();
 
-                player.HoldFlagPole(transform.position.y);
 
                 player.transform.localScale = Vector3.one;
                 player.transform.position = new Vector3(transform.position.x - 0.5f, player.transform.position.y, player.transform.position.z);
 
+                var _playerAnimator = player.GetComponentInChildren<PlayerAnimator>();
+
                 _audioSource.Play();
-                StartCoroutine(DownFlagPole(player));
+                StartCoroutine(DownPlayerPole(player, _playerAnimator));
+                StartCoroutine(DownFlagPole(player, _playerAnimator));
                 AllServices.GameDataService.IsMapCompleted = true;
             }
         }
-        private IEnumerator DownFlagPole(PlayerController player)
+        private IEnumerator DownFlagPole(PlayerController player, PlayerAnimator animator)
         {
+            AllServices.CharacterService.StopMovement();
+
             while (_flag.transform.position.y > transform.position.y + 0.5f)
             {
                 _flag.transform.Translate(Vector3.down * Time.deltaTime * 9);
@@ -43,8 +47,21 @@ namespace Mario.Game.Interactable
             player.transform.Translate(Vector3.right);
 
             yield return new WaitForSeconds(0.4f);
-            player.ReleaseFlagPole();
-            player.StartAutoPlay();
+            animator.IsInFlagPole = false;
+            player.IsAutoWalk = true;
+
+            AllServices.CharacterService.ResumeMovement();
+        }
+        private IEnumerator DownPlayerPole(PlayerController player, PlayerAnimator animator)
+        {
+            animator.IsInFlagPole = true;
+            while (player.transform.position.y > transform.position.y)
+            {
+                player.transform.Translate(Vector3.down * Time.deltaTime * 9);
+                yield return null;
+            }
+
+            animator.IsInFlagBase = true;
         }
     }
 }

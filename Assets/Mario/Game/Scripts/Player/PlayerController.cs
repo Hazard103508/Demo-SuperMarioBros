@@ -86,8 +86,7 @@ namespace Mario.Game.Player
         }
         public bool IsStuck { get; set; }
         public bool IsDead { get; private set; }
-        public bool IsInFlagPole { get; private set; }
-        public bool IsInFlagBase { get; private set; }
+        public bool IsAutoWalk { get; set; }
         #endregion
 
         #region Unity Methods
@@ -99,7 +98,7 @@ namespace Mario.Game.Player
             transform.position = AllServices.GameDataService.CurrentMapProfile.StartPosition;
 
             AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
-            SetInitMode(PlayerModes.Big);
+            SetInitMode(PlayerModes.Small);
         }
         private void OnDestroy()
         {
@@ -108,9 +107,6 @@ namespace Mario.Game.Player
         private void Update()
         {
             if (!AllServices.CharacterService.CanMove)
-                return;
-
-            if (IsInFlagPole)
                 return;
 
             GatherInput();
@@ -124,9 +120,6 @@ namespace Mario.Game.Player
             if (!AllServices.CharacterService.CanMove)
                 return;
 
-            if (IsInFlagPole)
-                return;
-
             MoveCharacter();
         }
         #endregion
@@ -134,7 +127,7 @@ namespace Mario.Game.Player
         #region Update Methods
         private void GatherInput()
         {
-            if (_controllerVariables.isAutoPlay)
+            if (IsAutoWalk)
             {
                 Input = new PlayerInput
                 {
@@ -196,7 +189,7 @@ namespace Mario.Game.Player
         }
         private void CalculateJump()
         {
-            if (_controllerVariables.isAutoPlay)
+            if (IsAutoWalk)
             {
                 IsJumping = false;
                 if (_controllerVariables.currentSpeed.y > 0)
@@ -301,25 +294,6 @@ namespace Mario.Game.Player
             Mode = PlayerModes.Small;
             AllServices.LifeService.Remove();
         }
-        public void StartAutoPlay() => _controllerVariables.isAutoPlay = true;
-        public void HoldFlagPole(float positionY)
-        {
-            if (!IsInFlagPole)
-            {
-                IsInFlagPole = true;
-                StartCoroutine(DownFlagPole(positionY));
-            }
-        }
-        public void ReleaseFlagPole() => IsInFlagPole = false;
-        private IEnumerator DownFlagPole(float positionY)
-        {
-            while (transform.position.y > positionY)
-            {
-                transform.Translate(Vector3.down * Time.deltaTime * 9);
-                yield return null;
-            }
-            IsInFlagBase = true;
-        }
         private void SetInitMode(PlayerModes playerMode)
         {
             _mode = playerMode;
@@ -340,7 +314,6 @@ namespace Mario.Game.Player
             public Bounds<bool> ProximityBlock = new Bounds<bool>();
             public Vector2 currentSpeed;
             public float lastJumpPressed = 0;
-            public bool isAutoPlay;
         }
         #endregion
     }

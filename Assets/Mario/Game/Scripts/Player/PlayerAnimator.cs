@@ -18,6 +18,8 @@ namespace Mario.Game.Player
         private PlayerModes _mode;
         private PlayerAnimationFrames _animationFrame; // el ultimo frame me determina que animacion de debo mostrar al agarrar la flor, y asi respetar la animacion en curso
 
+        public bool IsInFlagPole { get; set; }
+        public bool IsInFlagBase { get; set; }
         public PlayerAnimationStates State
         {
             get => _state;
@@ -57,10 +59,10 @@ namespace Mario.Game.Player
         {
             if (_player == null) return;
 
-            if (_player.IsInFlagPole)
+            if (this.IsInFlagPole)
             {
                 State = PlayerAnimationStates.Flag;
-                if (_player.IsInFlagBase)
+                if (this.IsInFlagBase)
                     _animator.speed = 0;
                 return;
             }
@@ -138,6 +140,9 @@ namespace Mario.Game.Player
         {
             if (State == PlayerAnimationStates.PowerUp)
                 return; // si el estado actual es powerup, ignora el sonido siguente
+
+            if (_player.IsAutoWalk)
+                return;
 
             if (state == PlayerAnimationStates.Jumping)
             {
