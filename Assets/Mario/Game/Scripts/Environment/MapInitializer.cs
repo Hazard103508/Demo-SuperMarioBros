@@ -14,12 +14,6 @@ namespace Mario.Game.Environment
             AllServices.TimeService.StartTimer();
             AllServices.CharacterService.ResumeMovement();
 
-            if (AllServices.GameDataService.NextMapProfile != null)
-            {
-                AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
-                AllServices.GameDataService.NextMapProfile = null;
-            }
-
             foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)
                 LoadMapSection(mapSection);
         }

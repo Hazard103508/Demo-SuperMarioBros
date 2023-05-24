@@ -5,18 +5,18 @@ namespace Mario.Game.Environment
 {
     public class MapCheckPoints : MonoBehaviour
     {
-        [SerializeField] private Transform PlayerTransform;
-
-        private void Update()
+        private void Awake()
         {
-            if (AllServices.GameDataService.CurrentMapProfile.checkPoint.mapProfile == null)
-                Destroy(this);
-
-            if (PlayerTransform.position.x >= AllServices.GameDataService.CurrentMapProfile.checkPoint.PositionX)
-            {
+            AllServices.CharacterService.OnPlayerPositionChanged.AddListener(OnPlayerPositionChanged);
+        }
+        private void OnDestroy()
+        {
+            AllServices.CharacterService.OnPlayerPositionChanged.RemoveListener(OnPlayerPositionChanged);
+        }
+        public void OnPlayerPositionChanged(Vector3 position)
+        {
+            if (position.x >= AllServices.GameDataService.CurrentMapProfile.checkPoint.PositionX)
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.checkPoint.mapProfile;
-                Destroy(this);
-            }
         }
     }
 }

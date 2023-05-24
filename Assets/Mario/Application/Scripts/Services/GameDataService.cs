@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Map;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Mario.Application.Services
@@ -23,6 +24,7 @@ namespace Mario.Application.Services
         }
 
         public UnityEvent OnMapCompleted { get; private set; }
+
 
         public GameDataService()
         {

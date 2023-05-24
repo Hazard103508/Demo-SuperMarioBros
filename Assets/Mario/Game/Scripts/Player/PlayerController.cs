@@ -233,6 +233,8 @@ namespace Mario.Game.Player
 
             transform.position = nextPosition;
             IsStuck = false;
+
+            AllServices.CharacterService.UpdatePlayerPositon(transform.position);
         }
         private Vector3 AdjustHorizontalPosition(Vector3 position)
         {

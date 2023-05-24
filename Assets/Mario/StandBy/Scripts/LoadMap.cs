@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,14 @@ namespace Mario.StandBy
 
         private IEnumerator LosMap()
         {
+            if (AllServices.GameDataService.NextMapProfile != null)
+            {
+                AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
+                AllServices.GameDataService.NextMapProfile = null;
+            }
+
             yield return null;
+
             float timer = 0;
             float minDelay = 2.5f; // demora forzada para simular el original
 
