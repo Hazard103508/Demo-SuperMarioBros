@@ -14,18 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldName: 1-2
   BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
+  StartPosition: {x: 2, y: 2}
   Time:
     UseTime: 0
     StartTime: 0
-  StartPosition: {x: 2, y: 2}
   MapsSections:
   - InitXPosition: 0
     Width: 16
-    Reference:
-      m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
-      m_SubObjectName: 
-      m_SubObjectType: 
-      m_EditorAssetChanged: 0
+    Reference: {fileID: 981654926499773033, guid: 317b8460021e2ce4d85764db25e4f653, type: 3}
   CheckPoint:
     PositionX: 0
     mapProfile: {fileID: 0}

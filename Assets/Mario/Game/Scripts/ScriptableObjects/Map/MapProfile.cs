@@ -22,7 +22,7 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public int InitXPosition;
         public int Width;
-        public AssetReferenceGameObject Reference;
+        public GameObject Reference;
     }
     [Serializable]
     public class NewMapPoint
