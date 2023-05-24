@@ -60,6 +60,8 @@ namespace Mario.Game.Player
             if (_player.IsInFlagPole)
             {
                 State = PlayerAnimationStates.Flag;
+                if (_player.IsInFlagBase)
+                    _animator.speed = 0;
                 return;
             }
 

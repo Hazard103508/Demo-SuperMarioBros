@@ -87,6 +87,7 @@ namespace Mario.Game.Player
         public bool IsStuck { get; set; }
         public bool IsDead { get; private set; }
         public bool IsInFlagPole { get; private set; }
+        public bool IsInFlagBase { get; private set; }
         #endregion
 
         #region Unity Methods
@@ -98,7 +99,7 @@ namespace Mario.Game.Player
             transform.position = AllServices.GameDataService.CurrentMapProfile.StartPosition;
 
             AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
-            SetInitMode(PlayerModes.Small);
+            SetInitMode(PlayerModes.Big);
         }
         private void OnDestroy()
         {
@@ -195,6 +196,15 @@ namespace Mario.Game.Player
         }
         private void CalculateJump()
         {
+            if (_controllerVariables.isAutoPlay)
+            {
+                IsJumping = false;
+                if (_controllerVariables.currentSpeed.y > 0)
+                    _controllerVariables.currentSpeed.y = 0;
+
+                return;
+            }
+
             if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
             {
                 if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
@@ -308,6 +318,7 @@ namespace Mario.Game.Player
                 transform.Translate(Vector3.down * Time.deltaTime * 9);
                 yield return null;
             }
+            IsInFlagBase = true;
         }
         private void SetInitMode(PlayerModes playerMode)
         {

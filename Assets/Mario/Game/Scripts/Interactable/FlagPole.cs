@@ -13,6 +13,7 @@ namespace Mario.Game.Interactable
 
         private bool _isLowering;
 
+        public void OnHitFromLeft(PlayerController player) => LowerFlag(player);
         public void LowerFlag(PlayerController player)
         {
             if (!_isLowering)
@@ -30,8 +31,6 @@ namespace Mario.Game.Interactable
                 AllServices.GameDataService.IsMapCompleted = true;
             }
         }
-
-        public void OnHitFromLeft(PlayerController player) => LowerFlag(player);
         private IEnumerator DownFlagPole(PlayerController player)
         {
             while (_flag.transform.position.y > transform.position.y + 0.5f)
