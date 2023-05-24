@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
+using Mario.Game.ScriptableObjects.Items;
 using System.Collections;
 using UnityEngine;
 
@@ -8,12 +9,28 @@ namespace Mario.Game.Interactable
 {
     public class FlagPole : MonoBehaviour, ILeftHitable
     {
+        [SerializeField] private FlagPoleProfile _profile;
         [SerializeField] private GameObject _flag;
         [SerializeField] private AudioSource _audioSource;
 
         private bool _isLowering;
 
-        public void OnHitFromLeft(PlayerController player) => LowerFlag(player);
+        public void OnHitFromLeft(PlayerController player)
+        {
+            ShowPoint(player);
+            LowerFlag(player);
+        }
+        public void ShowPoint(PlayerController player)
+        {
+            if (!_isLowering)
+            {
+                int point = GetFlagPoints(player);
+                AllServices.ScoreService.Add(point);
+
+                var position = transform.position + new Vector3(0.75f, 0, 0);
+                AllServices.ScoreService.ShowPoint(point, position, 1, 8, false);
+            }
+        }
         public void LowerFlag(PlayerController player)
         {
             if (!_isLowering)
@@ -62,6 +79,12 @@ namespace Mario.Game.Interactable
             }
 
             animator.IsInFlagBase = true;
+        }
+        private int GetFlagPoints(PlayerController player)
+        {
+            var hitPoint = 1 - Mathf.InverseLerp(transform.position.y, transform.position.y + 10, player.transform.position.y);
+            int index = Mathf.FloorToInt(Mathf.Clamp(hitPoint * _profile.Points.Length, 0, _profile.Points.Length));
+            return _profile.Points[index];
         }
     }
 }

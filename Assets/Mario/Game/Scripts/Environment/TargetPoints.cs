@@ -9,14 +9,16 @@ namespace Mario.Game.Environment
         [SerializeField] private TargetPointsProfile profile;
         [SerializeField] private SpriteRenderer[] _numberRenders;
         private LocalPositionLerper _lerper;
+        private bool _destroyOnCompleted;
 
         private void Awake()
         {
             _lerper = GetComponent<LocalPositionLerper>();
             _lerper.onLerpCompleted.AddListener(OnRisingCompleted);
         }
-        public void ShowPoints(int point, float time, float hight)
+        public void ShowPoints(int point, float time, float hight, bool destroyOnCompleted)
         {
+            _destroyOnCompleted = destroyOnCompleted;
             string txtPoint = point.ToString("D4");
 
             for (int i = 0; i < txtPoint.Length; i++)
@@ -41,6 +43,10 @@ namespace Mario.Game.Environment
             _lerper.GoalPosition = transform.position + Vector3.up * hight;
             _lerper.RunForward();
         }
-        private void OnRisingCompleted() => Destroy(gameObject);
+        private void OnRisingCompleted()
+        {
+            if (_destroyOnCompleted)
+                Destroy(gameObject);
+        }
     }
 }

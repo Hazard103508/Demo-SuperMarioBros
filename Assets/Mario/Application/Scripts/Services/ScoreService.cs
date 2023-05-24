@@ -24,11 +24,13 @@ namespace Mario.Application.Services
         {
             this.Score += points;
             OnScoreChanged.Invoke();
+
         }
-        public void ShowPoint(int value, Vector3 initPosition, float time, float hight)
+        public void ShowPoint(int value, Vector3 initPosition, float time, float hight) => ShowPoint(value, initPosition, time, hight, true);
+        public void ShowPoint(int value, Vector3 initPosition, float time, float hight, bool destroyOnCompleted)
         {
             TargetPoints point = MonoBehaviour.Instantiate(_targetPointsPrefab, initPosition, Quaternion.identity);
-            point.ShowPoints(value, time, hight);
+            point.ShowPoints(value, time, hight, destroyOnCompleted);
         }
         public void ShowLabel(Sprite label, Vector3 initPosition, float time, float hight)
         {

@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1559953691
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 1599060738, guid: fd3a428495061d042a7272e9d77cecaa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -386,6 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8148fe647cbb244e80fbec6cd99fd7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _profile: {fileID: 11400000, guid: bffd7e492bb792f4db6b8c7e52f6d553, type: 2}
   _flag: {fileID: 376512778981076783}
   _audioSource: {fileID: 5599963882567957536}
 --- !u!61 &9183706983943275722
@@ -401,7 +402,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 6}
+  m_Offset: {x: 0.5, y: 5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -412,7 +413,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 12}
+  m_Size: {x: 0.3, y: 10}
   m_EdgeRadius: 0
 --- !u!1 &7762301643366577248
 GameObject:
