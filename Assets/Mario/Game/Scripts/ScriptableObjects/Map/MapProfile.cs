@@ -9,8 +9,8 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public string WorldName;
         public Color BackgroundColor;
-        public MapTime Time;
         public Vector2 StartPosition;
+        public MapTime Time;
         public MapSection[] MapsSections;
         public NewMapPoint CheckPoint;
         public NewMapPoint WinPoint;

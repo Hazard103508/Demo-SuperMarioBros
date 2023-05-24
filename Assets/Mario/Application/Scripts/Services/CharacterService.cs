@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using Mario.Game.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -14,6 +15,7 @@ namespace Mario.Application.Services
             OnPlayerPositionChanged = new UnityEvent<Vector3>();
         }
 
+        public PlayerModes CurrentPlayerMode { get; set; }
         public bool CanMove { get; private set; }
 
         public UnityEvent<Vector3> OnPlayerPositionChanged { get; private set; }

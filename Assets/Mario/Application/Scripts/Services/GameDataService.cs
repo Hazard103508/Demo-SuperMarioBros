@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,6 +13,7 @@ namespace Mario.Application.Services
         public PlayerProfile PlayerProfile { get; set; }
         public MapProfile CurrentMapProfile { get; set; }
         public MapProfile NextMapProfile { get; set; }
+
         public bool IsMapCompleted
         {
             get => _isMapCompleted;
