@@ -19,7 +19,10 @@ namespace Mario.Game.Environment
         public void OnPlayerPositionChanged(Vector3 position)
         {
             if (position.x >= AllServices.GameDataService.CurrentMapProfile.CheckPoint.PositionX)
+            {
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.CheckPoint.mapProfile;
+                Destroy(this);
+            }
         }
     }
 }

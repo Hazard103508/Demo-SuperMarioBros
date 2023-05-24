@@ -37,13 +37,6 @@ namespace Mario.Game.Environment
         public IEnumerator CloseMap()
         {
             yield return new WaitForSeconds(6);
-
-            if (AllServices.GameDataService.NextMapProfile != null)
-            {
-                AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
-                AllServices.GameDataService.NextMapProfile = null;
-            }
-
             SceneManager.LoadScene("StandBy");
         }
     }

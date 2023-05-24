@@ -18,6 +18,12 @@ namespace Mario.Game.Environment
 
         private void OnDestroy()
         {
+            if (AllServices.GameDataService.NextMapProfile != null)
+            {
+                AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
+                AllServices.GameDataService.NextMapProfile = null;
+            }
+
             AllServices.AssetReferencesService.ReleaseAllAsset();
         }
 
