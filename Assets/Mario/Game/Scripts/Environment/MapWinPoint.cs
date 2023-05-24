@@ -20,6 +20,7 @@ namespace Mario.Game.Environment
                 AllServices.CharacterService.StopMovement();
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.WinPoint.mapProfile;
                 AllServices.GameDataService.OnMapCompleted.Invoke();
+                AllServices.TimeService.StartTimer();
             }
         }
     }

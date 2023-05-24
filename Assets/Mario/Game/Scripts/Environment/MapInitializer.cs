@@ -10,15 +10,12 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.BackgroundColor;
-            AllServices.TimeService.ResetTimer();
-            AllServices.TimeService.StartTimer();
             AllServices.CharacterService.ResumeMovement();
 
             foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)
                 LoadMapSection(mapSection);
         }
 
-        private void Update() => AllServices.TimeService.UpdateTimer();
         private void OnDestroy()
         {
             Array.ForEach(AllServices.GameDataService.CurrentMapProfile.MapsSections, m => m.Reference.ReleaseAsset());

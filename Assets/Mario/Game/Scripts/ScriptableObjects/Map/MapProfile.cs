@@ -15,6 +15,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public NewMapPoint CheckPoint;
         public NewMapPoint WinPoint;
         public MapSounds Sounds;
+        public int RemainingTimePoints;
     }
     [Serializable]
     public class MapSection

@@ -8,6 +8,7 @@ namespace Mario.Application.Services
     {
         private float _timer;
 
+        public float TimeSpeed { get; set; }
         public int Time { get; private set; }
         public bool Enabled { get; private set; }
 
@@ -23,6 +24,7 @@ namespace Mario.Application.Services
 
         public void ResetTimer()
         {
+            TimeSpeed = 2.5f;
             this.Time = AllServices.GameDataService.CurrentMapProfile.Time;
             _timer = 0;
         }
@@ -32,7 +34,7 @@ namespace Mario.Application.Services
         {
             if (Enabled && this.Time > 0)
             {
-                _timer += UnityEngine.Time.deltaTime * 2.5f;
+                _timer += UnityEngine.Time.deltaTime * TimeSpeed;
                 this.Time = Mathf.Max(0, AllServices.GameDataService.CurrentMapProfile.Time - (int)_timer);
                 OnTimeChanged.Invoke();
 

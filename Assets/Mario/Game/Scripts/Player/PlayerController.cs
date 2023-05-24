@@ -288,7 +288,11 @@ namespace Mario.Game.Player
             gameObject.SetActive(false);
             AllServices.LifeService.Remove();
         }
-        private void OnTimeOut() => Kill();
+        private void OnTimeOut()
+        {
+            if (!AllServices.GameDataService.IsMapCompleted)
+                Kill();
+        }
         private void OnMapCompleted() => gameObject.SetActive(false);
         #endregion
 

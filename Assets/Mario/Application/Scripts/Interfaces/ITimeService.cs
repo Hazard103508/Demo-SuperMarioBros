@@ -4,6 +4,7 @@ namespace Mario.Application.Interfaces
 {
     public interface ITimeService : IGameService
     {
+        float TimeSpeed { get; set; }
         int Time { get; }
         bool Enabled { get; }
 

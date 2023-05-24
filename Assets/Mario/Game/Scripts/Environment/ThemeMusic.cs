@@ -27,6 +27,16 @@ namespace Mario.Game.Environment
         }
         private void Update()
         {
+            PlayHuttyTheme();
+        }
+        private void OnLivesRemoved() => _audioSource.Stop();
+        private void OnMapCompleted() => StartCoroutine(PlayVictoryTheme());
+
+        private void PlayHuttyTheme()
+        {
+            if (AllServices.GameDataService.IsMapCompleted)
+                return;
+
             if (!isHurry && AllServices.TimeService.Time <= 100)
             {
                 isHurry = true;
@@ -35,9 +45,6 @@ namespace Mario.Game.Environment
                 return;
             }
         }
-        private void OnLivesRemoved() => _audioSource.Stop();
-        private void OnMapCompleted() => StartCoroutine(PlayVictoryTheme());
-
         private IEnumerator PlayVictoryTheme()
         {
             _audioSource.Stop();
