@@ -33,5 +33,6 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public AudioClip MainTheme;
         public AudioClip HurryTheme;
+        public AudioClip VictoryTheme;
     }
 }

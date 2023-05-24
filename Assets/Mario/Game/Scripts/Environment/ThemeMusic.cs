@@ -1,6 +1,6 @@
 using Mario.Application.Services;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Mario.Game.Environment
 {
@@ -36,9 +36,14 @@ namespace Mario.Game.Environment
             }
         }
         private void OnLivesRemoved() => _audioSource.Stop();
-        private void OnMapCompleted()
+        private void OnMapCompleted() => StartCoroutine(PlayVictoryTheme());
+
+        private IEnumerator PlayVictoryTheme()
         {
             _audioSource.Stop();
+            yield return new WaitForSeconds(1);
+            _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Sounds.VictoryTheme;
+            _audioSource.Play();
         }
     }
 }
