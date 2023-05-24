@@ -5,6 +5,7 @@ namespace Mario.Game.Environment
 {
     public class MapTimeHandler : MonoBehaviour
     {
+        [SerializeField] private AudioSource _timeScoreFX;
         private int _previousTime;
 
         private void Awake()
@@ -29,6 +30,8 @@ namespace Mario.Game.Environment
             {
                 int _timedif = _previousTime - AllServices.TimeService.Time;
                 AllServices.ScoreService.Add(_timedif * AllServices.GameDataService.CurrentMapProfile.RemainingTimePoints);
+
+                _timeScoreFX.Play();
             }
 
             _previousTime = AllServices.TimeService.Time;
