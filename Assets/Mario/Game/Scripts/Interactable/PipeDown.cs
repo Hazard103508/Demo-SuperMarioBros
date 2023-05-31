@@ -26,6 +26,8 @@ namespace Mario.Game.Interactable
         {
             AllServices.TimeService.StopTimer();
             AllServices.PlayerService.CanMove = false;
+            AllServices.GameDataService.NextMapProfile = _pipeProfile.MapProfile;
+            AllServices.SceneService.LoadMapScene(1.25f);
 
             _isInPipe = true;
             _pipeInSoundFX.Play();
@@ -35,8 +37,6 @@ namespace Mario.Game.Interactable
                 player.transform.Translate(Vector3.down * Time.deltaTime * 4.5f);
                 yield return null;
             }
-
-            print("OK");
         }
     }
 }

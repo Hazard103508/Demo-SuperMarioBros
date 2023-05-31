@@ -52,7 +52,7 @@ namespace Mario.Game.Environment
         {
             _audioSource.Stop();
             yield return new WaitForSeconds(1);
-            _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Sounds.VictoryTheme;
+            _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.EndPoint.VictoryTheme;
             _audioSource.Play();
         }
     }

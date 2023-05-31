@@ -17,15 +17,15 @@ namespace Mario.Game.Environment
         }
         private void Start()
         {
-            if (AllServices.GameDataService.CurrentMapProfile.WinPoint.mapProfile == null)
+            if (AllServices.GameDataService.CurrentMapProfile.EndPoint.mapProfile == null)
                 Destroy(this);
         }
         public void OnPlayerPositionChanged(Vector3 position)
         {
-            if (position.x >= AllServices.GameDataService.CurrentMapProfile.WinPoint.PositionX)
+            if (position.x >= AllServices.GameDataService.CurrentMapProfile.EndPoint.PositionX)
             {
                 AllServices.PlayerService.CanMove = false;
-                AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.WinPoint.mapProfile;
+                AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.EndPoint.mapProfile;
                 AllServices.GameDataService.OnMapCompleted.Invoke();
                 AllServices.TimeService.StartTimer();
 

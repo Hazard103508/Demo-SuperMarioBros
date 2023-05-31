@@ -15,7 +15,7 @@ namespace Mario.Game.Items
 
         private void Awake()
         {
-            AllServices.AssetReferencesService.Add(_profile.PowerUpFXReference);
+            AllServices.SceneService.AddAsset(_profile.PowerUpFXReference);
         }
         private void Start()
         {
@@ -58,7 +58,7 @@ namespace Mario.Game.Items
         }
         private void PlayCollectSound()
         {
-            var soundFX = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_profile.PowerUpFXReference);
+            var soundFX = AllServices.SceneService.GetAssetReference<GameObject>(_profile.PowerUpFXReference);
             var soundFXObj = Instantiate(soundFX);
             soundFXObj.transform.position = this.transform.position;
         }

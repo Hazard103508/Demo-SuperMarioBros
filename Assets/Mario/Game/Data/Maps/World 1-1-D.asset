@@ -29,7 +29,7 @@ MonoBehaviour:
     PositionX: 0
     mapProfile: {fileID: 0}
   Sounds:
-    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-    HurryTheme: {fileID: 0}
+    MainTheme: {fileID: 8300000, guid: db9af3e066fbe1f4794eca8433efc58c, type: 3}
+    HurryTheme: {fileID: 8300000, guid: a804c1b70f103d3409c15fafb224c34c, type: 3}
     VictoryTheme: {fileID: 0}
   RemainingTimePoints: 0

@@ -31,7 +31,7 @@ namespace Mario.Game.Environment
             if (AllServices.GameDataService.IsMapCompleted)
             {
                 int _timedif = _previousTime - AllServices.TimeService.Time;
-                AllServices.ScoreService.Add(_timedif * AllServices.GameDataService.CurrentMapProfile.RemainingTimePoints);
+                AllServices.ScoreService.Add(_timedif * AllServices.GameDataService.CurrentMapProfile.EndPoint.RemainingTimePoints);
 
                 _timeScoreFX.Play();
             }

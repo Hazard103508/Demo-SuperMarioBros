@@ -9,7 +9,7 @@ namespace Mario.Application.Services
         public static IScoreService ScoreService { get; private set; }
         public static ITimeService TimeService { get; private set; }
         public static IPlayerService PlayerService { get; private set; }
-        public static IAssetReferencesService AssetReferencesService { get; private set; }
+        public static ISceneService SceneService { get; private set; }
 
         public static void Load()
         {
@@ -18,7 +18,7 @@ namespace Mario.Application.Services
             ScoreService = ServiceLocator.Current.Get<IScoreService>();
             TimeService = ServiceLocator.Current.Get<ITimeService>();
             PlayerService = ServiceLocator.Current.Get<IPlayerService>();
-            AssetReferencesService = ServiceLocator.Current.Get<IAssetReferencesService>();
+            SceneService = ServiceLocator.Current.Get<ISceneService>();
         }
     }
 }

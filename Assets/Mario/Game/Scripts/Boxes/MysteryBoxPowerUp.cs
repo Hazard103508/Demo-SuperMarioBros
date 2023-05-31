@@ -16,8 +16,8 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.AssetReferencesService.Add(_powerUpBoxProfile.RedMushroomReference);
-            AllServices.AssetReferencesService.Add(_powerUpBoxProfile.FlowerReference);
+            AllServices.SceneService.AddAsset(_powerUpBoxProfile.RedMushroomReference);
+            AllServices.SceneService.AddAsset(_powerUpBoxProfile.FlowerReference);
         }
         public override void OnHitFromBottom(PlayerController player)
         {
@@ -31,8 +31,8 @@ namespace Mario.Game.Boxes
             _risingSoundFX.Play();
 
             _itemPrefab = player.Mode == Enums.PlayerModes.Small ?
-                AllServices.AssetReferencesService.GetObjectReference<GameObject>(_powerUpBoxProfile.RedMushroomReference) :
-                AllServices.AssetReferencesService.GetObjectReference<GameObject>(_powerUpBoxProfile.FlowerReference);
+                AllServices.SceneService.GetAssetReference<GameObject>(_powerUpBoxProfile.RedMushroomReference) :
+                AllServices.SceneService.GetAssetReference<GameObject>(_powerUpBoxProfile.FlowerReference);
         }
         public override void OnJumpCompleted()
         {

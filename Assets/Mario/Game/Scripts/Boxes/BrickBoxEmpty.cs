@@ -12,7 +12,7 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.AssetReferencesService.Add(_brickProfile.BrokenBrickReference);
+            AllServices.SceneService.AddAsset(_brickProfile.BrokenBrickReference);
         }
         public override void OnHitFromBottom(PlayerController player)
         {
@@ -24,7 +24,7 @@ namespace Mario.Game.Boxes
                     base.OnHitFromBottom(player);
                 else
                 {
-                    var prefab = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_brickProfile.BrokenBrickReference);
+                    var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_brickProfile.BrokenBrickReference);
                     InstantiateContent(prefab);
                     AllServices.ScoreService.Add(_brickProfile.Points);
                     AudioSource.PlayClipAtPoint(_hitSoundFX.clip, transform.position);

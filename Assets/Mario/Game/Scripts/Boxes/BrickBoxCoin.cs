@@ -19,7 +19,7 @@ namespace Mario.Game.Boxes
             base.Awake();
             _limitTime = _coinBrickProfile.LimitTime;
 
-            AllServices.AssetReferencesService.Add(_coinBrickProfile.CoinReference);
+            AllServices.SceneService.AddAsset(_coinBrickProfile.CoinReference);
         }
         public override void OnHitFromBottom(PlayerController player)
         {
@@ -38,7 +38,7 @@ namespace Mario.Game.Boxes
                 _spriteAnimator.SetTrigger("Disable");
             }
 
-            var prefab = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_coinBrickProfile.CoinReference);
+            var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_coinBrickProfile.CoinReference);
             base.InstantiateContent(prefab);
         }
         public override void OnJumpCompleted()

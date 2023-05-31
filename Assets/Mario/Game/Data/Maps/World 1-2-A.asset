@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: World 1-2-A
   m_EditorClassIdentifier: 
   WorldName: 1-2
-  BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
   StartPosition: {x: 2, y: 2}
+  Sounds:
+    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
+    HurryTheme: {fileID: 0}
   Time:
     UseTime: 0
     StartTime: 0
@@ -25,11 +28,8 @@ MonoBehaviour:
   CheckPoint:
     PositionX: 0
     mapProfile: {fileID: 0}
-  WinPoint:
+  EndPoint:
     PositionX: 0
     mapProfile: {fileID: 0}
-  Sounds:
-    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-    HurryTheme: {fileID: 0}
+    RemainingTimePoints: 0
     VictoryTheme: {fileID: 0}
-  RemainingTimePoints: 0

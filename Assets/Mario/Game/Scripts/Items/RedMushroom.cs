@@ -14,7 +14,7 @@ namespace Mario.Game.Items
         protected override void Awake()
         {
             base.Awake();
-            AllServices.AssetReferencesService.Add(_redMushroomProfile.PowerUpFXReference);
+            AllServices.SceneService.AddAsset(_redMushroomProfile.PowerUpFXReference);
         }
 
         public override void OnHitFromLeft(PlayerController player) => CollectMushroom(player);
@@ -39,7 +39,7 @@ namespace Mario.Game.Items
         }
         private void PlayCollectSound()
         {
-            var soundFX = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_redMushroomProfile.PowerUpFXReference);
+            var soundFX = AllServices.SceneService.GetAssetReference<GameObject>(_redMushroomProfile.PowerUpFXReference);
             var soundFXObj = Instantiate(soundFX);
             soundFXObj.transform.position = this.transform.position;
         }

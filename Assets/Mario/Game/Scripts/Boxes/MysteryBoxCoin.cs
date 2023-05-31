@@ -13,7 +13,7 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.AssetReferencesService.Add(_mysteryBoxProfile.CoinReference);
+            AllServices.SceneService.AddAsset(_mysteryBoxProfile.CoinReference);
         }
         public override void OnHitFromBottom(PlayerController player)
         {
@@ -25,7 +25,7 @@ namespace Mario.Game.Boxes
             base.OnHitFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            var prefab = AllServices.AssetReferencesService.GetObjectReference<GameObject>(_mysteryBoxProfile.CoinReference);
+            var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_mysteryBoxProfile.CoinReference);
             base.InstantiateContent(prefab);
         }
     }

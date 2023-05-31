@@ -24,7 +24,7 @@ namespace Mario.Game.Environment
                 AllServices.GameDataService.NextMapProfile = null;
             }
 
-            AllServices.AssetReferencesService.ReleaseAllAsset();
+            AllServices.SceneService.ReleaseAllAssets();
         }
 
         private void LoadMapSection(MapSection mapSection)
