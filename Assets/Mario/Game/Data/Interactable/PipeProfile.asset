@@ -9,15 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
-  m_Name: PlayerRaycastRangeBottomProfile
+  m_Script: {fileID: 11500000, guid: 026272219f58ea140bfe3cdc8f736220, type: 3}
+  m_Name: PipeProfile
   m_EditorClassIdentifier: 
-  BlockLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  OtherLayers:
-    serializedVersion: 2
-    m_Bits: 320
-  OffSet: 0.1
-  RayCount: 6
-  DetectionRayLength: 0.1
+  MapProfile: {fileID: 11400000, guid: d6bda0b06819520488366b3810c7bf51, type: 2}
+  SoundFX: {fileID: 8300000, guid: 92029666d81b11f4cb36741682141e75, type: 3}

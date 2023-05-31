@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldName: 1-1
   BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-  StartPosition: {x: 2.5, y: 2}
+  StartPosition: {x: 1.2, y: 11}
   Time:
     UseTime: 1
     StartTime: 400
