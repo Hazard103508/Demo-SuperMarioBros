@@ -5,7 +5,6 @@ using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System.Collections;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 namespace Mario.Game.Items
 {

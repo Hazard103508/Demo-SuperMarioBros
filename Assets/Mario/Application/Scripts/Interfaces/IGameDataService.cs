@@ -1,6 +1,4 @@
-using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Mario.Application.Interfaces
@@ -13,7 +11,7 @@ namespace Mario.Application.Interfaces
 
         bool IsMapCompleted { get; set; }
 
-        UnityEvent OnFlagReached { get;}
+        UnityEvent OnFlagReached { get; }
         UnityEvent OnMapCompleted { get; }
     }
 }

@@ -1,6 +1,5 @@
 using Mario.Application.Services;
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,11 +9,11 @@ namespace Mario.Game.Environment
     {
         private void Awake()
         {
-            AllServices.PlayerService.OnPlayerPositionChanged.AddListener(OnPlayerPositionChanged);
+            AllServices.PlayerService.OnPositionChanged.AddListener(OnPlayerPositionChanged);
         }
         private void OnDestroy()
         {
-            AllServices.PlayerService.OnPlayerPositionChanged.RemoveListener(OnPlayerPositionChanged);
+            AllServices.PlayerService.OnPositionChanged.RemoveListener(OnPlayerPositionChanged);
         }
         private void Start()
         {
@@ -25,7 +24,7 @@ namespace Mario.Game.Environment
         {
             if (position.x >= AllServices.GameDataService.CurrentMapProfile.WinPoint.PositionX)
             {
-                AllServices.ItemsService.StopMovement();
+                AllServices.PlayerService.CanMove = false;
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.WinPoint.mapProfile;
                 AllServices.GameDataService.OnMapCompleted.Invoke();
                 AllServices.TimeService.StartTimer();

@@ -3,7 +3,6 @@ using Mario.Game.Enums;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;
-using UnityEngine.Profiling;
 
 namespace Mario.Game.Items
 {

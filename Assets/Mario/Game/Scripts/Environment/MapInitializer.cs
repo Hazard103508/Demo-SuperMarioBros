@@ -9,7 +9,7 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.BackgroundColor;
-            AllServices.ItemsService.ResumeMovement();
+            AllServices.PlayerService.CanMove = true;
             AllServices.GameDataService.IsMapCompleted = false;
 
             foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)

@@ -18,7 +18,6 @@ namespace Mario.Application
             ServiceLocator.Current.Register<ICoinService>(GetComponent<CoinService>());
             ServiceLocator.Current.Register<IScoreService>(GetComponent<ScoreService>());
             ServiceLocator.Current.Register<ITimeService>(GetComponent<TimeService>());
-            ServiceLocator.Current.Register<IItemsService>(GetComponent<ItemsService>());
             ServiceLocator.Current.Register<IPlayerService>(GetComponent<PlayerService>());
             ServiceLocator.Current.Register<IAssetReferencesService>(GetComponent<AssetReferencesService>());
 
@@ -31,7 +30,6 @@ namespace Mario.Application
             ServiceLocator.Current.Unregister<ICoinService>();
             ServiceLocator.Current.Unregister<IScoreService>();
             ServiceLocator.Current.Unregister<ITimeService>();
-            ServiceLocator.Current.Unregister<IItemsService>();
             ServiceLocator.Current.Unregister<IPlayerService>();
             ServiceLocator.Current.Unregister<IAssetReferencesService>();
 

@@ -7,14 +7,14 @@ namespace Mario.Game.Environment
     {
         private void Awake()
         {
-            AllServices.PlayerService.OnPlayerPositionChanged.AddListener(OnPlayerPositionChanged);
+            AllServices.PlayerService.OnPositionChanged.AddListener(OnPlayerPositionChanged);
 
             if (AllServices.GameDataService.CurrentMapProfile.CheckPoint.mapProfile == null)
                 Destroy(this);
         }
         private void OnDestroy()
         {
-            AllServices.PlayerService.OnPlayerPositionChanged.RemoveListener(OnPlayerPositionChanged);
+            AllServices.PlayerService.OnPositionChanged.RemoveListener(OnPlayerPositionChanged);
         }
         public void OnPlayerPositionChanged(Vector3 position)
         {

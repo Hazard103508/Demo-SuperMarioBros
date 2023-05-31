@@ -16,7 +16,7 @@ namespace Mario.Game.Items
         [SerializeField] private RaycastRange[] raycastRanges = null;
 
         private Vector3 _currentSpeed;
-        private Bounds<bool> _proximityBlock = new Bounds<bool>();
+        private Bounds<bool> _proximityBlock = new();
         private bool isRising;
 
         protected virtual void Awake()
@@ -34,7 +34,7 @@ namespace Mario.Game.Items
             if (isRising)
                 return;
 
-            if (!AllServices.ItemsService.CanMove)
+            if (!AllServices.PlayerService.CanMove)
                 return;
 
             CalculateWalk();

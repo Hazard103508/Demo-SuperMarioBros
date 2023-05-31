@@ -8,7 +8,7 @@ namespace Mario.Game.Items
 
         private void Update()
         {
-            if(!_audioSource.isPlaying)
+            if (!_audioSource.isPlaying)
                 Destroy(gameObject);
         }
     }

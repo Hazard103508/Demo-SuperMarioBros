@@ -15,7 +15,7 @@ namespace Mario.Game.Environment
         private void OnLivesRemoved()
         {
             AllServices.TimeService.StopTimer();
-            AllServices.ItemsService.StopMovement();
+            AllServices.PlayerService.CanMove = false;
 
             _1DownFX.Play();
             StartCoroutine(ReloadMap());
@@ -23,7 +23,7 @@ namespace Mario.Game.Environment
         private IEnumerator ReloadMap()
         {
             yield return new WaitForSeconds(3.5f);
-            
+
             string _nextScene =
                 AllServices.PlayerService.Lives == 0 ? "GameOver" :
                 AllServices.TimeService.Time == 0 ? "TimeUp" :

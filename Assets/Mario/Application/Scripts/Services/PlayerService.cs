@@ -9,8 +9,8 @@ namespace Mario.Application.Services
     {
         private Vector3 _playerPosition;
 
-        public PlayerModes CurrentPlayerMode { get; set; }
-        public Vector3 PlayerPosition
+        public PlayerModes CurrentMode { get; set; }
+        public Vector3 Position
         {
             get => _playerPosition;
             set
@@ -18,22 +18,24 @@ namespace Mario.Application.Services
                 if (_playerPosition != value)
                 {
                     _playerPosition = value;
-                    OnPlayerPositionChanged.Invoke(value);
+                    OnPositionChanged.Invoke(value);
                 }
             }
         }
+        public bool CanMove { get; set; }
         public int Lives { get; private set; }
 
         public UnityEvent OnLivesAdded { get; private set; }
         public UnityEvent OnLivesRemoved { get; private set; }
-        public UnityEvent<Vector3> OnPlayerPositionChanged { get; private set; }
+        public UnityEvent<Vector3> OnPositionChanged { get; private set; }
 
         public void LoadService()
         {
+            CanMove = true;
             Lives = 3;
             OnLivesAdded = new UnityEvent();
             OnLivesRemoved = new UnityEvent();
-            OnPlayerPositionChanged = new UnityEvent<Vector3>();
+            OnPositionChanged = new UnityEvent<Vector3>();
         }
         public void AddLife()
         {
@@ -44,7 +46,7 @@ namespace Mario.Application.Services
         {
             this.Lives--;
             OnLivesRemoved.Invoke();
-            this.CurrentPlayerMode = PlayerModes.Small;
+            this.CurrentMode = PlayerModes.Small;
         }
     }
 }

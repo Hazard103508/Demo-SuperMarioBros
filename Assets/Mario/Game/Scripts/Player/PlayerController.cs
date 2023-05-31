@@ -2,8 +2,6 @@ using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using System;
-using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
@@ -33,10 +31,10 @@ namespace Mario.Game.Player
                 if (_mode == value)
                     return;
 
-                AllServices.ItemsService.StopMovement();
+                AllServices.PlayerService.CanMove = false;
                 AllServices.TimeService.StopTimer();
 
-                AllServices.PlayerService.CurrentPlayerMode = _mode = value;
+                AllServices.PlayerService.CurrentMode = _mode = value;
 
                 if (value == PlayerModes.Small)
                     SetSmallCollider();
@@ -109,7 +107,7 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            if (!AllServices.ItemsService.CanMove)
+            if (!AllServices.PlayerService.CanMove)
                 return;
 
             GatherInput();
@@ -120,7 +118,7 @@ namespace Mario.Game.Player
         }
         private void LateUpdate()
         {
-            if (!AllServices.ItemsService.CanMove)
+            if (!AllServices.PlayerService.CanMove)
                 return;
 
             MoveCharacter();
@@ -237,7 +235,7 @@ namespace Mario.Game.Player
             transform.position = nextPosition;
             IsStuck = false;
 
-            AllServices.PlayerService.PlayerPosition = transform.position;
+            AllServices.PlayerService.Position = transform.position;
         }
         private Vector3 AdjustHorizontalPosition(Vector3 position)
         {
@@ -305,7 +303,7 @@ namespace Mario.Game.Player
         }
         private void SetInitMode()
         {
-            _mode = AllServices.PlayerService.CurrentPlayerMode;
+            _mode = AllServices.PlayerService.CurrentMode;
             SetModeCollider(_mode);
         }
         private void SetModeCollider(PlayerModes playerMode)
