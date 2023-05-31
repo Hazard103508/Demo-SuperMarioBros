@@ -13,17 +13,15 @@ MonoBehaviour:
   m_Name: World 1-1-ABC
   m_EditorClassIdentifier: 
   WorldName: 1-1
-  BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-  StartPosition: {x: 2.5, y: 2}
   MapInit:
     BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    StartPosition: {x: 2.5, y: 2}
+    StartPosition: {x: 50, y: 2}
     BlackScreenTime: 0
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
     HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
   Time:
-    UseTime: 1
+    Type: 1
     StartTime: 400
   MapsSections:
   - InitXPosition: 0

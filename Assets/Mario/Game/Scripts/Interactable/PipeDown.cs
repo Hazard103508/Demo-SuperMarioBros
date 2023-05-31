@@ -32,9 +32,10 @@ namespace Mario.Game.Interactable
             _isInPipe = true;
             _pipeInSoundFX.Play();
 
-            while (player.transform.position.y > transform.position.y)
+            var finalPosition = transform.position.y + 1;
+            while (player.transform.position.y > finalPosition)
             {
-                player.transform.Translate(Vector3.down * Time.deltaTime * 4.5f);
+                player.transform.Translate(Vector3.down * Time.deltaTime * 4f);
                 yield return null;
             }
         }

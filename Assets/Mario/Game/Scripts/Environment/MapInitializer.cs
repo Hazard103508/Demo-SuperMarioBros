@@ -23,15 +23,22 @@ namespace Mario.Game.Environment
 
         private void OnDestroy()
         {
+            SetNextMap();
+            AllServices.SceneService.ReleaseAllAssets();
+        }
+        private void SetNextMap()
+        {
             if (AllServices.GameDataService.NextMapProfile != null)
             {
+                AllServices.TimeService.StartTime =
+                    AllServices.GameDataService.NextMapProfile.Time.Type == MapTimeType.Continuated ? AllServices.TimeService.Time :
+                    AllServices.GameDataService.NextMapProfile.Time.Type == MapTimeType.Beginning ? AllServices.GameDataService.NextMapProfile.Time.StartTime :
+                    0;
+
                 AllServices.GameDataService.CurrentMapProfile = AllServices.GameDataService.NextMapProfile;
                 AllServices.GameDataService.NextMapProfile = null;
             }
-
-            AllServices.SceneService.ReleaseAllAssets();
         }
-
         private void LoadMapSection(MapSection mapSection)
         {
             var _mapSection = Instantiate(mapSection.Reference, transform);

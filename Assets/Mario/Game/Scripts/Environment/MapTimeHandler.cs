@@ -13,7 +13,7 @@ namespace Mario.Game.Environment
             AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
             AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
 
-            if (!AllServices.GameDataService.CurrentMapProfile.Time.UseTime)
+            if (AllServices.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 Destroy(this);
         }
         private void OnDestroy()

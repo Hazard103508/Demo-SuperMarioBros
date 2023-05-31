@@ -11,7 +11,7 @@ namespace Mario.Commons.UI
         {
             OnTimeChanged();
 
-            if (!AllServices.GameDataService.CurrentMapProfile.Time.UseTime)
+            if (AllServices.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 Destroy(gameObject);
         }
         private void OnEnable() => AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);

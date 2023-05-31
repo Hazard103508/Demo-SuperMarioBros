@@ -21,8 +21,8 @@ MonoBehaviour:
     MainTheme: {fileID: 8300000, guid: db9af3e066fbe1f4794eca8433efc58c, type: 3}
     HurryTheme: {fileID: 8300000, guid: a804c1b70f103d3409c15fafb224c34c, type: 3}
   Time:
-    UseTime: 1
-    StartTime: 400
+    Type: 2
+    StartTime: 0
   MapsSections:
   - InitXPosition: 0
     Width: 16

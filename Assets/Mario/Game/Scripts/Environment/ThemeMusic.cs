@@ -27,17 +27,17 @@ namespace Mario.Game.Environment
         }
         private void Update()
         {
-            PlayHuttyTheme();
+            PlayHurryTheme();
         }
         private void OnLivesRemoved() => _audioSource.Stop();
         private void OnMapCompleted() => StartCoroutine(PlayVictoryTheme());
 
-        private void PlayHuttyTheme()
+        private void PlayHurryTheme()
         {
             if (AllServices.GameDataService.IsMapCompleted)
                 return;
 
-            if (!AllServices.GameDataService.CurrentMapProfile.Time.UseTime)
+            if (AllServices.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 return;
 
             if (!isHurry && AllServices.TimeService.Time <= 100)

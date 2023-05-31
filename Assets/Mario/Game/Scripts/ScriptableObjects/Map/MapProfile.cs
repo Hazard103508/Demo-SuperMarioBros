@@ -51,7 +51,13 @@ namespace Mario.Game.ScriptableObjects.Map
     [Serializable]
     public class MapTime
     {
-        public bool UseTime;
+        public MapTimeType Type;
         public int StartTime;
+    }
+    public enum MapTimeType
+    {
+        None,
+        Beginning,
+        Continuated
     }
 }
