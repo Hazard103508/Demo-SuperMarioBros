@@ -9,13 +9,13 @@ namespace Mario.Game.Environment
     {
         [SerializeField] private AudioSource _1DownFX;
 
-        private void OnEnable() => AllServices.LifeService.OnLivesRemoved.AddListener(OnLivesRemoved);
-        private void OnDisable() => AllServices.LifeService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
+        private void OnEnable() => AllServices.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
+        private void OnDisable() => AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
 
         private void OnLivesRemoved()
         {
             AllServices.TimeService.StopTimer();
-            AllServices.CharacterService.StopMovement();
+            AllServices.ItemsService.StopMovement();
 
             _1DownFX.Play();
             StartCoroutine(ReloadMap());
@@ -25,7 +25,7 @@ namespace Mario.Game.Environment
             yield return new WaitForSeconds(3.5f);
             
             string _nextScene =
-                AllServices.LifeService.Lives == 0 ? "GameOver" :
+                AllServices.PlayerService.Lives == 0 ? "GameOver" :
                 AllServices.TimeService.Time == 0 ? "TimeUp" :
                 "StandBy";
 

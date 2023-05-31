@@ -1,13 +1,14 @@
 using Mario.Application.Interfaces;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
-    public class CoinService : ICoinService
+    public class CoinService : MonoBehaviour, ICoinService
     {
         public int Coins { get; private set; }
 
-        public CoinService()
+        public void LoadService()
         {
             OnCoinsChanged = new UnityEvent();
         }
@@ -20,7 +21,7 @@ namespace Mario.Application.Services
 
             if (this.Coins >= 100)
             {
-                AllServices.LifeService.Add();
+                AllServices.PlayerService.AddLife();
                 this.Coins = 0;
             }
 

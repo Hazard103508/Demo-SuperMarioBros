@@ -10,11 +10,11 @@ namespace Mario.Game.Environment
     {
         private void Awake()
         {
-            AllServices.CharacterService.OnPlayerPositionChanged.AddListener(OnPlayerPositionChanged);
+            AllServices.PlayerService.OnPlayerPositionChanged.AddListener(OnPlayerPositionChanged);
         }
         private void OnDestroy()
         {
-            AllServices.CharacterService.OnPlayerPositionChanged.RemoveListener(OnPlayerPositionChanged);
+            AllServices.PlayerService.OnPlayerPositionChanged.RemoveListener(OnPlayerPositionChanged);
         }
         private void Start()
         {
@@ -25,7 +25,7 @@ namespace Mario.Game.Environment
         {
             if (position.x >= AllServices.GameDataService.CurrentMapProfile.WinPoint.PositionX)
             {
-                AllServices.CharacterService.StopMovement();
+                AllServices.ItemsService.StopMovement();
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.WinPoint.mapProfile;
                 AllServices.GameDataService.OnMapCompleted.Invoke();
                 AllServices.TimeService.StartTimer();

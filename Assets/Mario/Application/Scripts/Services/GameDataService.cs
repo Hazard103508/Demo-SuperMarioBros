@@ -1,17 +1,16 @@
 using Mario.Application.Interfaces;
-using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
-    public class GameDataService : IGameDataService
+    public class GameDataService : MonoBehaviour, IGameDataService
     {
         private bool _isMapCompleted;
 
-        public PlayerProfile PlayerProfile { get; set; }
-        public MapProfile CurrentMapProfile { get; set; }
+        [field: SerializeField] public PlayerProfile PlayerProfile { get; set; }
+        [field: SerializeField] public MapProfile CurrentMapProfile { get; set; }
         public MapProfile NextMapProfile { get; set; }
 
         public bool IsMapCompleted
@@ -28,7 +27,7 @@ namespace Mario.Application.Services
         public UnityEvent OnFlagReached { get; private set; }
         public UnityEvent OnMapCompleted { get; private set; }
 
-        public GameDataService()
+        public void LoadService()
         {
             OnFlagReached = new UnityEvent();
             OnMapCompleted = new UnityEvent();

@@ -34,7 +34,7 @@ namespace Mario.Game.Items
             if (isRising)
                 return;
 
-            if (!AllServices.CharacterService.CanMove)
+            if (!AllServices.ItemsService.CanMove)
                 return;
 
             CalculateWalk();

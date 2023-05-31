@@ -130,7 +130,7 @@ namespace Mario.Game.Player
         public void OnPowerUpCompleted()
         {
             AllServices.TimeService.StartTimer();
-            AllServices.CharacterService.ResumeMovement();
+            AllServices.ItemsService.ResumeMovement();
 
             State = _previousState;
         }

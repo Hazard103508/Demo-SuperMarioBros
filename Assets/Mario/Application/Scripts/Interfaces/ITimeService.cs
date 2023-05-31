@@ -14,6 +14,5 @@ namespace Mario.Application.Interfaces
         void ResetTimer();
         void StopTimer();
         void StartTimer();
-        void UpdateTimer();
     }
 }

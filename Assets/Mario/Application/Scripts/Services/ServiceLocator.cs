@@ -51,6 +51,7 @@ namespace Mario.Application.Services
                 return;
             }
 
+            service.LoadService();
             services.Add(key, service);
         }
 

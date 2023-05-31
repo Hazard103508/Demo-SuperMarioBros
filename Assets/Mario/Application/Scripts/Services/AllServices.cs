@@ -8,8 +8,8 @@ namespace Mario.Application.Services
         public static ICoinService CoinService { get; private set; }
         public static IScoreService ScoreService { get; private set; }
         public static ITimeService TimeService { get; private set; }
-        public static ICharacterService CharacterService { get; private set; }
-        public static ILifeService LifeService { get; private set; }
+        public static IItemsService ItemsService { get; private set; }
+        public static IPlayerService PlayerService { get; private set; }
         public static IAssetReferencesService AssetReferencesService { get; private set; }
 
         public static void Load()
@@ -18,8 +18,8 @@ namespace Mario.Application.Services
             CoinService = ServiceLocator.Current.Get<ICoinService>();
             ScoreService = ServiceLocator.Current.Get<IScoreService>();
             TimeService = ServiceLocator.Current.Get<ITimeService>();
-            CharacterService = ServiceLocator.Current.Get<ICharacterService>();
-            LifeService = ServiceLocator.Current.Get<ILifeService>();
+            ItemsService = ServiceLocator.Current.Get<IItemsService>();
+            PlayerService = ServiceLocator.Current.Get<IPlayerService>();
             AssetReferencesService = ServiceLocator.Current.Get<IAssetReferencesService>();
         }
     }

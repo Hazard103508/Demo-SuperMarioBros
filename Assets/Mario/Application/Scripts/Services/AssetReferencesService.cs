@@ -6,15 +6,14 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Mario.Application.Services
 {
-    public class AssetReferencesService : IAssetReferencesService
+    public class AssetReferencesService : MonoBehaviour, IAssetReferencesService
     {
         private Dictionary<AssetReference, AsyncOperationHandle> _references;
 
-        public AssetReferencesService()
+        public void LoadService()
         {
             _references = new Dictionary<AssetReference, AsyncOperationHandle>();
         }
-
         public void Add(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))

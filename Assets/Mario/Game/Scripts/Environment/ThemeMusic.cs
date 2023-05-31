@@ -13,12 +13,12 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Sounds.MainTheme;
-            AllServices.LifeService.OnLivesRemoved.AddListener(OnLivesRemoved);
+            AllServices.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
             AllServices.GameDataService.OnFlagReached.AddListener(OnMapCompleted);
         }
         private void OnDestroy()
         {
-            AllServices.LifeService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
+            AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
             AllServices.GameDataService.OnFlagReached.RemoveListener(OnMapCompleted);
         }
         private void Start()

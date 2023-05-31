@@ -7,8 +7,8 @@ namespace Mario.Game.Environment
     {
         [SerializeField] private AudioSource _1UpFX;
 
-        private void OnEnable() => AllServices.LifeService.OnLivesAdded.AddListener(OnLivesChanged);
-        private void OnDisable() => AllServices.LifeService.OnLivesAdded.RemoveListener(OnLivesChanged);
+        private void OnEnable() => AllServices.PlayerService.OnLivesAdded.AddListener(OnLivesChanged);
+        private void OnDisable() => AllServices.PlayerService.OnLivesAdded.RemoveListener(OnLivesChanged);
 
         private void OnLivesChanged() => _1UpFX.Play();
     }

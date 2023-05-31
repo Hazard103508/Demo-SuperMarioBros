@@ -33,10 +33,10 @@ namespace Mario.Game.Player
                 if (_mode == value)
                     return;
 
-                AllServices.CharacterService.StopMovement();
+                AllServices.ItemsService.StopMovement();
                 AllServices.TimeService.StopTimer();
 
-                AllServices.CharacterService.CurrentPlayerMode = _mode = value;
+                AllServices.PlayerService.CurrentPlayerMode = _mode = value;
 
                 if (value == PlayerModes.Small)
                     SetSmallCollider();
@@ -100,7 +100,7 @@ namespace Mario.Game.Player
             AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
             AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
 
-            SetInitMode(AllServices.CharacterService.CurrentPlayerMode);
+            SetInitMode();
         }
         private void OnDestroy()
         {
@@ -109,7 +109,7 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            if (!AllServices.CharacterService.CanMove)
+            if (!AllServices.ItemsService.CanMove)
                 return;
 
             GatherInput();
@@ -120,7 +120,7 @@ namespace Mario.Game.Player
         }
         private void LateUpdate()
         {
-            if (!AllServices.CharacterService.CanMove)
+            if (!AllServices.ItemsService.CanMove)
                 return;
 
             MoveCharacter();
@@ -237,7 +237,7 @@ namespace Mario.Game.Player
             transform.position = nextPosition;
             IsStuck = false;
 
-            AllServices.CharacterService.UpdatePlayerPositon(transform.position);
+            AllServices.PlayerService.PlayerPosition = transform.position;
         }
         private Vector3 AdjustHorizontalPosition(Vector3 position)
         {
@@ -285,9 +285,8 @@ namespace Mario.Game.Player
             if (!enabled)
                 return;
 
-            AllServices.CharacterService.CurrentPlayerMode = PlayerModes.Small;
             gameObject.SetActive(false);
-            AllServices.LifeService.Remove();
+            AllServices.PlayerService.RemoveLife();
         }
         private void OnTimeOut()
         {
@@ -302,12 +301,11 @@ namespace Mario.Game.Player
         {
             IsDead = true;
             enabled = false;
-            AllServices.CharacterService.CurrentPlayerMode = PlayerModes.Small;
-            AllServices.LifeService.Remove();
+            AllServices.PlayerService.RemoveLife();
         }
-        private void SetInitMode(PlayerModes playerMode)
+        private void SetInitMode()
         {
-            _mode = playerMode;
+            _mode = AllServices.PlayerService.CurrentPlayerMode;
             SetModeCollider(_mode);
         }
         private void SetModeCollider(PlayerModes playerMode)

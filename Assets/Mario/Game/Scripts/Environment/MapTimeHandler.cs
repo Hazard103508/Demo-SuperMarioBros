@@ -24,7 +24,6 @@ namespace Mario.Game.Environment
             AllServices.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);
             AllServices.GameDataService.OnMapCompleted.RemoveListener(OnMapCompleted);
         }
-        private void Update() => AllServices.TimeService.UpdateTimer();
 
         public void OnMapCompleted() => AllServices.TimeService.TimeSpeed = 150f;
         public void OnTimeChanged()

@@ -5,21 +5,18 @@ using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
-    public class ScoreService : IScoreService
+    public class ScoreService : MonoBehaviour, IScoreService
     {
-        private TargetPoints _targetPointsPrefab;
+        [SerializeField] private TargetPoints _targetPointsPrefab;
 
         public int Score { get; private set; }
 
-
-        public ScoreService(TargetPoints targetPointsPrefab)
-        {
-            _targetPointsPrefab = targetPointsPrefab;
-            OnScoreChanged = new UnityEvent();
-        }
-
         public UnityEvent OnScoreChanged { get; set; }
 
+        public void LoadService()
+        {
+            OnScoreChanged = new UnityEvent();
+        }
         public void Add(int points)
         {
             this.Score += points;
