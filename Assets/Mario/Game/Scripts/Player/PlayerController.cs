@@ -93,7 +93,7 @@ namespace Mario.Game.Player
             _profile = AllServices.GameDataService.PlayerProfile;
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
-            transform.position = AllServices.GameDataService.CurrentMapProfile.StartPosition;
+            transform.position = AllServices.GameDataService.CurrentMapProfile.MapInit.StartPosition;
 
             AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
             AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);

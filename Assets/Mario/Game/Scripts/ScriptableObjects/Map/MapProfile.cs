@@ -7,13 +7,19 @@ namespace Mario.Game.ScriptableObjects.Map
     public class MapProfile : ScriptableObject
     {
         public string WorldName;
-        public Color BackgroundColor;
-        public Vector2 StartPosition;
+        public MapInit MapInit;
         public MapSounds Sounds;
         public MapTime Time;
         public MapSection[] MapsSections;
         public MapCheckPoint CheckPoint;
         public MapEndPoint EndPoint;
+    }
+    [Serializable]
+    public class MapInit
+    {
+        public Color BackgroundColor;
+        public Vector2 StartPosition;
+        public float BlackScreenTime;
     }
     [Serializable]
     public class MapSection

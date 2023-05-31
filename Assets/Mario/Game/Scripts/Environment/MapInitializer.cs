@@ -8,7 +8,7 @@ namespace Mario.Game.Environment
     {
         private void Awake()
         {
-            Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.BackgroundColor;
+            Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             AllServices.PlayerService.CanMove = true;
             AllServices.GameDataService.IsMapCompleted = false;
 

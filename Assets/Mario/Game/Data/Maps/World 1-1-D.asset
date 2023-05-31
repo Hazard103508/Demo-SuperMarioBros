@@ -15,6 +15,13 @@ MonoBehaviour:
   WorldName: 1-1
   BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
   StartPosition: {x: 1.2, y: 11}
+  MapInit:
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    StartPosition: {x: 1.2, y: 11}
+    BlackScreenTime: 0.4
+  Sounds:
+    MainTheme: {fileID: 8300000, guid: db9af3e066fbe1f4794eca8433efc58c, type: 3}
+    HurryTheme: {fileID: 8300000, guid: a804c1b70f103d3409c15fafb224c34c, type: 3}
   Time:
     UseTime: 1
     StartTime: 400
@@ -25,11 +32,8 @@ MonoBehaviour:
   CheckPoint:
     PositionX: 0
     mapProfile: {fileID: 0}
-  WinPoint:
+  EndPoint:
     PositionX: 0
     mapProfile: {fileID: 0}
-  Sounds:
-    MainTheme: {fileID: 8300000, guid: db9af3e066fbe1f4794eca8433efc58c, type: 3}
-    HurryTheme: {fileID: 8300000, guid: a804c1b70f103d3409c15fafb224c34c, type: 3}
+    RemainingTimePoints: 0
     VictoryTheme: {fileID: 0}
-  RemainingTimePoints: 0
