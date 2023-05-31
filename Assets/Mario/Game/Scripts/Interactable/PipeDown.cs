@@ -27,7 +27,7 @@ namespace Mario.Game.Interactable
             AllServices.TimeService.StopTimer();
             AllServices.PlayerService.CanMove = false;
             AllServices.GameDataService.NextMapProfile = _pipeProfile.MapProfile;
-            AllServices.SceneService.LoadMapScene(1.25f);
+            AllServices.SceneService.LoadMapScene(0.8f);
 
             _isInPipe = true;
             _pipeInSoundFX.Play();

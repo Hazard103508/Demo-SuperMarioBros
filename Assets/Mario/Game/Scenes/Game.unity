@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 204482465}
   - component: {fileID: 204482464}
   m_Layer: 5
-  m_Name: FakeLoadingScreen
+  m_Name: BlackScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1125,6 +1125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ef17b62029cdf4b978ce114ae8c635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blackScreen: {fileID: 204482462}
 --- !u!114 &1040989547
 MonoBehaviour:
   m_ObjectHideFlags: 0

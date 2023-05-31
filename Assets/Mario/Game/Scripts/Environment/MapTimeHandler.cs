@@ -10,9 +10,6 @@ namespace Mario.Game.Environment
 
         private void Awake()
         {
-            AllServices.TimeService.ResetTimer();
-            AllServices.TimeService.StartTimer();
-
             AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
             AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
 
