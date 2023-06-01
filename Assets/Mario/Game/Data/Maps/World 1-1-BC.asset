@@ -17,12 +17,14 @@ MonoBehaviour:
     BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
     StartPosition: {x: 2.5, y: 2}
     BlackScreenTime: 0
+    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
     HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
   Time:
     Type: 1
     StartTime: 400
+    HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
   MapsSections:
   - InitXPosition: 0
     Width: 80
@@ -31,9 +33,11 @@ MonoBehaviour:
     Width: 52
     Reference: {fileID: 981654926499773033, guid: 7c286d7ab204f9243854dbab54c97d2d, type: 3}
   CheckPoint:
+    HasCheckPoint: 0
     PositionX: 0
     mapProfile: {fileID: 0}
   EndPoint:
+    HasEndPoint: 1
     PositionX: 124
     mapProfile: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
     RemainingTimePoints: 50

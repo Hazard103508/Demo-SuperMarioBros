@@ -8,7 +8,6 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public string WorldName;
         public MapInit MapInit;
-        public MapSounds Sounds;
         public MapTime Time;
         public MapSection[] MapsSections;
         public MapCheckPoint CheckPoint;
@@ -20,6 +19,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public Color BackgroundColor;
         public Vector2 StartPosition;
         public float BlackScreenTime;
+        public AudioClip MainTheme;
     }
     [Serializable]
     public class MapSection
@@ -31,28 +31,25 @@ namespace Mario.Game.ScriptableObjects.Map
     [Serializable]
     public class MapCheckPoint
     {
+        public bool HasCheckPoint;
         public int PositionX;
         public MapProfile mapProfile;
     }
     [Serializable]
     public class MapEndPoint
     {
+        public bool HasEndPoint;
         public int PositionX;
         public MapProfile mapProfile;
         public int RemainingTimePoints;
         public AudioClip VictoryTheme;
     }
     [Serializable]
-    public class MapSounds
-    {
-        public AudioClip MainTheme;
-        public AudioClip HurryTheme;
-    }
-    [Serializable]
     public class MapTime
     {
         public MapTimeType Type;
         public int StartTime;
+        public AudioClip HurryTheme;
     }
     public enum MapTimeType
     {

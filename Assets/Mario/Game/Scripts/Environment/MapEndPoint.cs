@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Mario.Game.Environment
 {
-    public class MapWinPoint : MonoBehaviour
+    public class MapEndPoint : MonoBehaviour
     {
         private void Awake()
         {
@@ -17,7 +17,7 @@ namespace Mario.Game.Environment
         }
         private void Start()
         {
-            if (AllServices.GameDataService.CurrentMapProfile.EndPoint.mapProfile == null)
+            if (!AllServices.GameDataService.CurrentMapProfile.EndPoint.HasEndPoint)
                 Destroy(this);
         }
         public void OnPlayerPositionChanged(Vector3 position)

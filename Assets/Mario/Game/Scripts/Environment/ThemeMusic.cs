@@ -12,7 +12,7 @@ namespace Mario.Game.Environment
 
         private void Awake()
         {
-            _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Sounds.MainTheme;
+            _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
             AllServices.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
             AllServices.GameDataService.OnFlagReached.AddListener(OnMapCompleted);
         }
@@ -43,7 +43,7 @@ namespace Mario.Game.Environment
             if (!isHurry && AllServices.TimeService.Time <= 100)
             {
                 isHurry = true;
-                _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Sounds.HurryTheme;
+                _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
                 _audioSource.Play();
                 return;
             }

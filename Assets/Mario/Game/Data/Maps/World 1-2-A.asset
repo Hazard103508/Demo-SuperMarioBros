@@ -13,26 +13,28 @@ MonoBehaviour:
   m_Name: World 1-2-A
   m_EditorClassIdentifier: 
   WorldName: 1-2
-  BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-  StartPosition: {x: 2, y: 2}
   MapInit:
     BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
     StartPosition: {x: 2, y: 2}
     BlackScreenTime: 0
+    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
   Sounds:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
     HurryTheme: {fileID: 0}
   Time:
-    UseTime: 0
+    Type: 0
     StartTime: 0
+    HurryTheme: {fileID: 0}
   MapsSections:
   - InitXPosition: 0
     Width: 16
     Reference: {fileID: 981654926499773033, guid: 317b8460021e2ce4d85764db25e4f653, type: 3}
   CheckPoint:
+    HasCheckPoint: 0
     PositionX: 0
     mapProfile: {fileID: 0}
   EndPoint:
+    HasEndPoint: 0
     PositionX: 0
     mapProfile: {fileID: 0}
     RemainingTimePoints: 0
