@@ -10,6 +10,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public MapInit MapInit;
         public MapTime Time;
         public MapSection[] MapsSections;
+        public MapProfile[] PipesConnections;
         public MapCheckPoint CheckPoint;
         public MapEndPoint EndPoint;
     }

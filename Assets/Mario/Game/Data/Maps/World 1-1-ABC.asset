@@ -18,9 +18,6 @@ MonoBehaviour:
     StartPosition: {x: 2.5, y: 2}
     BlackScreenTime: 0
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-  Sounds:
-    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-    HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
   Time:
     Type: 1
     StartTime: 400
@@ -35,6 +32,8 @@ MonoBehaviour:
   - InitXPosition: 160
     Width: 52
     Reference: {fileID: 981654926499773033, guid: 7c286d7ab204f9243854dbab54c97d2d, type: 3}
+  PipesConnections:
+  - {fileID: 11400000, guid: d6bda0b06819520488366b3810c7bf51, type: 2}
   CheckPoint:
     HasCheckPoint: 1
     PositionX: 90

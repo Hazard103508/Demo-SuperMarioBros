@@ -1,24 +1,23 @@
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
-using Mario.Game.ScriptableObjects.Items;
 using System.Collections;
 using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class PipeDown : MonoBehaviour, ITopHitable
+    public class PipeRight : MonoBehaviour, ILeftHitable
     {
         [SerializeField] private int _pipeIndex;
         [SerializeField] private AudioSource _pipeInSoundFX;
         private bool _isInPipe;
 
-        public void OnHitFromTop(PlayerController player)
+        public void OnHitFromLeft(PlayerController player)
         {
             if (_isInPipe)
                 return;
 
-            if (player.Input.IsDucking)
+            if (player.IsGrounded && !player.Input.JumpDown)
                 StartCoroutine(MoveIntPipe(player));
         }
 
@@ -27,16 +26,19 @@ namespace Mario.Game.Interactable
             AllServices.TimeService.StopTimer();
             AllServices.PlayerService.CanMove = false;
             AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.PipesConnections[_pipeIndex];
-            AllServices.SceneService.LoadMapScene(0.8f);
+            AllServices.SceneService.LoadMapScene(2.8f);
 
             _isInPipe = true;
             _pipeInSoundFX.Play();
 
-            while (player.transform.position.y > transform.position.y)
+            player.IsAutoWalk = true;
+            Destroy(player.GetComponent<PlayerCollisions>());
+            while (player.transform.position.x < transform.position.x)
             {
-                player.transform.Translate(Vector3.down * Time.deltaTime * 4f);
+                player.transform.Translate(Vector3.right * Time.deltaTime * 2f);
                 yield return null;
             }
+            player.IsAutoWalk = false;
         }
     }
 }
