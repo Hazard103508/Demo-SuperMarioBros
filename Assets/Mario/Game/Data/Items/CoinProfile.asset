@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8b61afac54fe6458c8349739db409d, type: 3}
   m_Name: CoinProfile
   m_EditorClassIdentifier: 
+  CoinSoundFXReference:
+    m_AssetGUID: 3a86e29e462a63e42907418d9953dffe
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   Points: 200
