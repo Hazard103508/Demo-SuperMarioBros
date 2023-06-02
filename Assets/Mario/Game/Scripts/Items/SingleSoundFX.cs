@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class PowerUpSoundFX : MonoBehaviour
+    public class SingleSoundFX : MonoBehaviour
     {
         [SerializeField] private AudioSource _audioSource;
 
