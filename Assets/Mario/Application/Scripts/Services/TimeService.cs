@@ -13,12 +13,14 @@ namespace Mario.Application.Services
         public int Time { get; private set; }
         public bool Enabled { get; private set; }
 
+        public UnityEvent OnTimeStart { get; set; }
         public UnityEvent OnTimeChanged { get; set; }
         public UnityEvent OnTimeOut { get; set; }
 
 
         public void LoadService()
         {
+            OnTimeStart = new UnityEvent();
             OnTimeChanged = new UnityEvent();
             OnTimeOut = new UnityEvent();
 
@@ -33,7 +35,11 @@ namespace Mario.Application.Services
             _timer = 0;
         }
         public void StopTimer() => Enabled = false;
-        public void StartTimer() => Enabled = true;
+        public void StartTimer()
+        {
+            OnTimeStart.Invoke();
+            Enabled = true;
+        }
         private void UpdateTimer()
         {
             if (Enabled && this.Time > 0)

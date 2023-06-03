@@ -1,3 +1,4 @@
+using Mario.Game.Enums;
 using System;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public Color BackgroundColor;
         public Vector2 StartPosition;
+        public PlayerStartLocation StartLocation;
         public float BlackScreenTime;
         public AudioClip MainTheme;
     }

@@ -9,6 +9,7 @@ namespace Mario.Application.Interfaces
         int Time { get; }
         bool Enabled { get; }
 
+        UnityEvent OnTimeStart { get; set; }
         UnityEvent OnTimeChanged { get; set; }
         UnityEvent OnTimeOut { get; set; }
 

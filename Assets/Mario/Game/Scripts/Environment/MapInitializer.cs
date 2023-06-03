@@ -1,4 +1,5 @@
 using Mario.Application.Services;
+using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using System.Collections;
 using UnityEngine;
@@ -7,13 +8,13 @@ namespace Mario.Game.Environment
 {
     public class MapInitializer : MonoBehaviour
     {
+        [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
 
         private void Awake()
         {
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             AllServices.GameDataService.IsMapCompleted = false;
-            AllServices.TimeService.ResetTimer();
 
             foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)
                 LoadMapSection(mapSection);
@@ -52,6 +53,17 @@ namespace Mario.Game.Environment
             _blackScreen.SetActive(true);
             yield return new WaitForSeconds(AllServices.GameDataService.CurrentMapProfile.MapInit.BlackScreenTime); // fuerza una pantalla negra de demora
             _blackScreen.SetActive(false);
+
+            if (AllServices.GameDataService.CurrentMapProfile.MapInit.StartLocation == Enums.PlayerStartLocation.Pipe)
+            {
+                yield return new WaitForSeconds(1);
+
+                while (_player.transform.position.y < AllServices.GameDataService.CurrentMapProfile.MapInit.StartPosition.y + 2)
+                {
+                    _player.transform.Translate(Vector3.up * Time.deltaTime * 2f);
+                    yield return null;
+                }
+            }
 
             AllServices.PlayerService.CanMove = true;
             AllServices.TimeService.StartTimer();

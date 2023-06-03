@@ -9,10 +9,10 @@ namespace Mario.Commons.UI
 
         private void Awake()
         {
+            AllServices.PlayerService.OnLivesAdded.AddListener(OnLivesChanged);
             OnLivesChanged();
         }
-        private void OnEnable() => AllServices.PlayerService.OnLivesAdded.AddListener(OnLivesChanged);
-        private void OnDisable() => AllServices.PlayerService.OnLivesAdded.RemoveListener(OnLivesChanged);
+        private void OnDestroy() => AllServices.PlayerService.OnLivesAdded.RemoveListener(OnLivesChanged);
         private void OnLivesChanged() => label.Text = AllServices.PlayerService.Lives.ToString();
     }
 }

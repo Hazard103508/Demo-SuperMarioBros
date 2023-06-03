@@ -90,15 +90,17 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
+            AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
+            AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
+            AllServices.PlayerService.CanMove = false;
+
             _profile = AllServices.GameDataService.PlayerProfile;
             _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             transform.position = AllServices.GameDataService.CurrentMapProfile.MapInit.StartPosition;
 
-            AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
-            AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
-
-            SetInitMode();
+            _mode = AllServices.PlayerService.CurrentMode;
+            SetModeCollider(_mode);
         }
         private void OnDestroy()
         {
@@ -300,11 +302,6 @@ namespace Mario.Game.Player
             IsDead = true;
             enabled = false;
             AllServices.PlayerService.RemoveLife();
-        }
-        private void SetInitMode()
-        {
-            _mode = AllServices.PlayerService.CurrentMode;
-            SetModeCollider(_mode);
         }
         private void SetModeCollider(PlayerModes playerMode)
         {
