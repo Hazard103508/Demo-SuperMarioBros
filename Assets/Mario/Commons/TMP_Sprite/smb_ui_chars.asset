@@ -280,6 +280,12 @@ MonoBehaviour:
     m_Scale: 1
     m_Name: .
     m_HashCode: 46
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 40
+    m_Scale: 1
+    m_Name: ' '
+    m_HashCode: 32
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -915,6 +921,22 @@ MonoBehaviour:
     m_GlyphRect:
       m_X: 72
       m_Y: 16
+      m_Width: 8
+      m_Height: 8
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+    sprite: {fileID: 0}
+  - m_Index: 40
+    m_Metrics:
+      m_Width: 8
+      m_Height: 8
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 8
+      m_HorizontalAdvance: 8
+    m_GlyphRect:
+      m_X: 72
+      m_Y: 8
       m_Width: 8
       m_Height: 8
     m_Scale: 1
