@@ -64,6 +64,11 @@ namespace Mario.Game.Environment
                     yield return null;
                 }
             }
+            else if (AllServices.GameDataService.CurrentMapProfile.MapInit.StartLocation == Enums.PlayerStartLocation.Falling)
+            {
+                _player.Input.X = 1;
+                yield return new WaitForEndOfFrame();
+            }
 
             AllServices.PlayerService.CanMove = true;
             AllServices.TimeService.StartTimer();

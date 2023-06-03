@@ -119,7 +119,7 @@ namespace Mario.Game.Player
                     this.State = _player.RawMovement.x != 0 && Mathf.Sign(_player.RawMovement.x) != Mathf.Sign(_player.Input.X) ? PlayerAnimationStates.StoppingRun : PlayerAnimationStates.Running;
                     transform.localScale = new Vector3(_player.Input.X > 0 ? 1 : -1, 1, 1);
                 }
-                else
+                else if (_player.IsGrounded)
                     State = _player.RawMovement.x != 0 ? PlayerAnimationStates.Running : PlayerAnimationStates.Idle;
             }
 
