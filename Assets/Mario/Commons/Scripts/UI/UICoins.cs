@@ -5,7 +5,7 @@ namespace Mario.Commons.UI
 {
     public class UICoins : MonoBehaviour
     {
-        [SerializeField] private TextGenerator label;
+        [SerializeField] private IconText label;
 
         private void Awake()
         {
@@ -13,6 +13,6 @@ namespace Mario.Commons.UI
         }
         private void OnEnable() => AllServices.CoinService.OnCoinsChanged.AddListener(OnCoinsChanged);
         private void OnDisable() => AllServices.CoinService.OnCoinsChanged.RemoveListener(OnCoinsChanged);
-        private void OnCoinsChanged() => label.Text = AllServices.CoinService.Coins.ToString("D2");
+        private void OnCoinsChanged() => label.Text = "x" + AllServices.CoinService.Coins.ToString("D2");
     }
 }
