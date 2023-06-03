@@ -6,13 +6,11 @@ namespace Mario.Game.Environment
 {
     public class ThemeMusic : MonoBehaviour
     {
-        [SerializeField] private AudioSource _audioSource;
-
         private bool isHurry;
 
         private void Awake()
         {
-            _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
+            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
             AllServices.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
             AllServices.GameDataService.OnFlagReached.AddListener(OnMapCompleted);
         }
@@ -23,13 +21,13 @@ namespace Mario.Game.Environment
         }
         private void Start()
         {
-            _audioSource.Play();
+            AllServices.MusicService.Play();
         }
         private void Update()
         {
             PlayHurryTheme();
         }
-        private void OnLivesRemoved() => _audioSource.Stop();
+        private void OnLivesRemoved() => AllServices.MusicService.Stop();
         private void OnMapCompleted() => StartCoroutine(PlayVictoryTheme());
 
         private void PlayHurryTheme()
@@ -43,17 +41,17 @@ namespace Mario.Game.Environment
             if (!isHurry && AllServices.TimeService.Time <= 100)
             {
                 isHurry = true;
-                _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
-                _audioSource.Play();
+                AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
+                AllServices.MusicService.Play();
                 return;
             }
         }
         private IEnumerator PlayVictoryTheme()
         {
-            _audioSource.Stop();
+            AllServices.MusicService.Stop();
             yield return new WaitForSeconds(1);
-            _audioSource.clip = AllServices.GameDataService.CurrentMapProfile.EndPoint.VictoryTheme;
-            _audioSource.Play();
+            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.EndPoint.VictoryTheme;
+            AllServices.MusicService.Play();
         }
     }
 }

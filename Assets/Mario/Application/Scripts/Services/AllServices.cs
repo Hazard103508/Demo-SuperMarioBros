@@ -10,6 +10,7 @@ namespace Mario.Application.Services
         public static ITimeService TimeService { get; private set; }
         public static IPlayerService PlayerService { get; private set; }
         public static ISceneService SceneService { get; private set; }
+        public static IMusicService MusicService { get; private set; }
 
         public static void Load()
         {
@@ -19,6 +20,7 @@ namespace Mario.Application.Services
             TimeService = ServiceLocator.Current.Get<ITimeService>();
             PlayerService = ServiceLocator.Current.Get<IPlayerService>();
             SceneService = ServiceLocator.Current.Get<ISceneService>();
+            MusicService = ServiceLocator.Current.Get<IMusicService>();
         }
     }
 }

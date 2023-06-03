@@ -20,6 +20,7 @@ namespace Mario.Application
             ServiceLocator.Current.Register<ITimeService>(GetComponent<TimeService>());
             ServiceLocator.Current.Register<IPlayerService>(GetComponent<PlayerService>());
             ServiceLocator.Current.Register<ISceneService>(GetComponent<SceneService>());
+            ServiceLocator.Current.Register<IMusicService>(GetComponent<MusicService>());
 
             AllServices.Load();
             SceneManager.LoadScene("StandBy", LoadSceneMode.Single);
@@ -32,6 +33,7 @@ namespace Mario.Application
             ServiceLocator.Current.Unregister<ITimeService>();
             ServiceLocator.Current.Unregister<IPlayerService>();
             ServiceLocator.Current.Unregister<ISceneService>();
+            ServiceLocator.Current.Unregister<IMusicService>();
 
             Destroy(gameObject);
         }
