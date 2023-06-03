@@ -5,7 +5,7 @@ namespace Mario.Commons.UI
 {
     public class UIScore : MonoBehaviour
     {
-        [SerializeField] private TextGenerator label;
+        [SerializeField] private IconText label;
 
         private void Awake()
         {
