@@ -13,15 +13,19 @@ namespace Mario.Game.Environment
 
         private void Awake()
         {
-            Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
+            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
             AllServices.GameDataService.IsMapCompleted = false;
 
+            Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)
                 LoadMapSection(mapSection);
 
             StartCoroutine(StartGame());
         }
-
+        private void Start()
+        {
+            AllServices.MusicService.Play();
+        }
         private void OnDestroy()
         {
             SetNextMap();

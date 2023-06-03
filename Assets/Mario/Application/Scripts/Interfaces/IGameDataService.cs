@@ -11,7 +11,6 @@ namespace Mario.Application.Interfaces
 
         bool IsMapCompleted { get; set; }
 
-        UnityEvent OnFlagReached { get; }
         UnityEvent OnMapCompleted { get; }
     }
 }

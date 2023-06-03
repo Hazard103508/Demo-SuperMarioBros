@@ -47,6 +47,8 @@ namespace Mario.Application.Services
             this.Lives--;
             OnLivesRemoved.Invoke();
             this.CurrentMode = PlayerModes.Small;
+
+            AllServices.MusicService.Stop();
         }
     }
 }

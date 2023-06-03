@@ -7,6 +7,7 @@ namespace Mario.Game.Environment
     {
         [SerializeField] private AudioSource _timeScoreFX;
         private int _previousTime;
+        private bool isHurry;
 
         private void Awake()
         {
@@ -31,6 +32,14 @@ namespace Mario.Game.Environment
                 AllServices.ScoreService.Add(_timedif * AllServices.GameDataService.CurrentMapProfile.EndPoint.RemainingTimePoints);
 
                 _timeScoreFX.Play();
+            }
+
+            if (!isHurry && AllServices.TimeService.Time <= 100 && !AllServices.GameDataService.IsMapCompleted)
+            {
+                isHurry = true;
+                AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
+                AllServices.MusicService.Play();
+                return;
             }
 
             _previousTime = AllServices.TimeService.Time;

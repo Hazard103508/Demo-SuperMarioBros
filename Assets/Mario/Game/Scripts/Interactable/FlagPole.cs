@@ -47,11 +47,13 @@ namespace Mario.Game.Interactable
                 _audioSource.Play();
                 StartCoroutine(DownPlayerPole(player, _playerAnimator));
                 StartCoroutine(DownFlagPole(player, _playerAnimator));
+
                 AllServices.GameDataService.IsMapCompleted = true;
             }
         }
         private IEnumerator DownFlagPole(PlayerController player, PlayerAnimator animator)
         {
+            AllServices.MusicService.Stop();
             AllServices.PlayerService.CanMove = false;
 
             while (_flag.transform.position.y > transform.position.y + 0.5f)
@@ -67,6 +69,8 @@ namespace Mario.Game.Interactable
             animator.IsInFlagPole = false;
             player.IsAutoWalk = true;
 
+            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.EndPoint.VictoryTheme;
+            AllServices.MusicService.Play();
             AllServices.PlayerService.CanMove = true;
         }
         private IEnumerator DownPlayerPole(PlayerController player, PlayerAnimator animator)

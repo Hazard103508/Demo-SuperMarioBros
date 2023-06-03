@@ -19,17 +19,15 @@ namespace Mario.Application.Services
             set
             {
                 _isMapCompleted = value;
-                if (value)
-                    OnFlagReached.Invoke();
+                //if (value)
+                //    OnMapCompleted.Invoke();
             }
         }
 
-        public UnityEvent OnFlagReached { get; private set; }
         public UnityEvent OnMapCompleted { get; private set; }
 
         public void LoadService()
         {
-            OnFlagReached = new UnityEvent();
             OnMapCompleted = new UnityEvent();
         }
     }

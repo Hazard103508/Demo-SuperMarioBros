@@ -9,8 +9,8 @@ namespace Mario.Game.Environment
     {
         [SerializeField] private AudioSource _1DownFX;
 
-        private void OnEnable() => AllServices.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
-        private void OnDisable() => AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
+        private void Awake() => AllServices.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
+        private void OnDestroy() => AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
 
         private void OnLivesRemoved()
         {
