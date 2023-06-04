@@ -9,8 +9,8 @@ namespace Mario.Application.Interfaces
         MapProfile CurrentMapProfile { get; set; }
         MapProfile NextMapProfile { get; set; }
 
-        bool IsMapCompleted { get; set; }
+        bool IsGoalReached { get; set; }
 
-        UnityEvent OnMapCompleted { get; }
+        UnityEvent OnGoalReached { get; }
     }
 }

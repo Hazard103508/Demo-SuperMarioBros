@@ -7,28 +7,28 @@ namespace Mario.Application.Services
 {
     public class GameDataService : MonoBehaviour, IGameDataService
     {
-        private bool _isMapCompleted;
+        private bool _isGoalReached;
 
         [field: SerializeField] public PlayerProfile PlayerProfile { get; set; }
         [field: SerializeField] public MapProfile CurrentMapProfile { get; set; }
         public MapProfile NextMapProfile { get; set; }
 
-        public bool IsMapCompleted
+        public bool IsGoalReached
         {
-            get => _isMapCompleted;
+            get => _isGoalReached;
             set
             {
-                _isMapCompleted = value;
-                //if (value)
-                //    OnMapCompleted.Invoke();
+                _isGoalReached = value;
+                if (value)
+                    OnGoalReached.Invoke();
             }
         }
 
-        public UnityEvent OnMapCompleted { get; private set; }
+        public UnityEvent OnGoalReached { get; private set; }
 
         public void LoadService()
         {
-            OnMapCompleted = new UnityEvent();
+            OnGoalReached = new UnityEvent();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Mario.Game.Environment
             {
                 AllServices.PlayerService.CanMove = false;
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.EndPoint.mapProfile;
-                AllServices.GameDataService.OnMapCompleted.Invoke();
+                //AllServices.GameDataService.OnGoalReached.Invoke();
                 AllServices.TimeService.StartTimer();
 
                 StartCoroutine(CloseMap());

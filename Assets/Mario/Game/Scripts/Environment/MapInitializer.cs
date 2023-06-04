@@ -14,7 +14,7 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
-            AllServices.GameDataService.IsMapCompleted = false;
+            AllServices.GameDataService.IsGoalReached = false;
 
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)

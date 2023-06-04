@@ -91,7 +91,6 @@ namespace Mario.Game.Player
         private void Awake()
         {
             AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
-            AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
             AllServices.PlayerService.CanMove = false;
 
             _profile = AllServices.GameDataService.PlayerProfile;
@@ -105,7 +104,6 @@ namespace Mario.Game.Player
         private void OnDestroy()
         {
             AllServices.TimeService.OnTimeOut.RemoveListener(OnTimeOut);
-            AllServices.GameDataService.OnMapCompleted.RemoveListener(OnMapCompleted);
         }
         private void Update()
         {
@@ -290,10 +288,9 @@ namespace Mario.Game.Player
         }
         private void OnTimeOut()
         {
-            if (!AllServices.GameDataService.IsMapCompleted)
+            if (!AllServices.GameDataService.IsGoalReached)
                 Kill();
         }
-        private void OnMapCompleted() => gameObject.SetActive(false);
         #endregion
 
         #region Other Methods

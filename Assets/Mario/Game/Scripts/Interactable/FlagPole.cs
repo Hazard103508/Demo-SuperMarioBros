@@ -48,7 +48,7 @@ namespace Mario.Game.Interactable
                 StartCoroutine(DownPlayerPole(player, _playerAnimator));
                 StartCoroutine(DownFlagPole(player, _playerAnimator));
 
-                AllServices.GameDataService.IsMapCompleted = true;
+                AllServices.GameDataService.IsGoalReached = true;
             }
         }
         private IEnumerator DownFlagPole(PlayerController player, PlayerAnimator animator)

@@ -12,7 +12,7 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
-            AllServices.GameDataService.OnMapCompleted.AddListener(OnMapCompleted);
+            AllServices.GameDataService.OnGoalReached.AddListener(OnGoalReached);
 
             if (AllServices.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 Destroy(this);
@@ -20,13 +20,13 @@ namespace Mario.Game.Environment
         private void OnDestroy()
         {
             AllServices.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);
-            AllServices.GameDataService.OnMapCompleted.RemoveListener(OnMapCompleted);
+            AllServices.GameDataService.OnGoalReached.RemoveListener(OnGoalReached);
         }
 
-        public void OnMapCompleted() => AllServices.TimeService.TimeSpeed = 150f;
+        public void OnGoalReached() => AllServices.TimeService.TimeSpeed = 150f;
         public void OnTimeChanged()
         {
-            if (AllServices.GameDataService.IsMapCompleted)
+            if (AllServices.GameDataService.IsGoalReached)
             {
                 int _timedif = _previousTime - AllServices.TimeService.Time;
                 AllServices.ScoreService.Add(_timedif * AllServices.GameDataService.CurrentMapProfile.EndPoint.RemainingTimePoints);
@@ -34,7 +34,7 @@ namespace Mario.Game.Environment
                 _timeScoreFX.Play();
             }
 
-            if (!isHurry && AllServices.TimeService.Time <= 100 && !AllServices.GameDataService.IsMapCompleted)
+            if (!isHurry && AllServices.TimeService.Time <= 100 && !AllServices.GameDataService.IsGoalReached)
             {
                 isHurry = true;
                 AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
