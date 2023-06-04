@@ -24,12 +24,12 @@ namespace Mario.Game.Environment
         {
             yield return new WaitForSeconds(3.5f);
 
-            string _nextScene =
-                AllServices.PlayerService.Lives == 0 ? "GameOver" :
-                AllServices.TimeService.Time == 0 ? "TimeUp" :
-                "StandBy";
-
-            SceneManager.LoadScene(_nextScene);
+            if (AllServices.PlayerService.Lives == 0)
+                AllServices.SceneService.LoadGameOverScene();
+            else if (AllServices.TimeService.Time == 0)
+                AllServices.SceneService.LoadTimeUpScene();
+            else
+                AllServices.SceneService.LoadStandByScene();
         }
     }
 }

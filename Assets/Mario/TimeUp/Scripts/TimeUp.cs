@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ namespace Mario.TimeUp
         private IEnumerator LoadStandBy()
         {
             yield return new WaitForSeconds(2.4f);
-            SceneManager.LoadSceneAsync("StandBy", LoadSceneMode.Single);
+            AllServices.SceneService.LoadStandByScene();
         }
     }
 }

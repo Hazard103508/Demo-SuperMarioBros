@@ -23,7 +23,7 @@ namespace Mario.Application
             ServiceLocator.Current.Register<IMusicService>(GetComponent<MusicService>());
 
             AllServices.Load();
-            SceneManager.LoadScene("StandBy", LoadSceneMode.Single);
+            AllServices.SceneService.LoadStandByScene();
         }
         private void OnApplicationQuit()
         {

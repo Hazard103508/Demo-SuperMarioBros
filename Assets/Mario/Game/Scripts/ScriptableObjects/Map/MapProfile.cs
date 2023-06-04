@@ -42,7 +42,6 @@ namespace Mario.Game.ScriptableObjects.Map
     public class MapEndPoint
     {
         public bool HasEndPoint;
-        public int PositionX;
         public MapProfile mapProfile;
         public int RemainingTimePoints;
         public AudioClip VictoryTheme;
