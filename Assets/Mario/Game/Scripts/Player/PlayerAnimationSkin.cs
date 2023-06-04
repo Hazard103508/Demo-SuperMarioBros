@@ -75,7 +75,7 @@ namespace Mario.Game.Player
                 PlayerAnimationStates.StoppingRun => Animator.StringToHash("Super_Stop"),
                 PlayerAnimationStates.Running => Animator.StringToHash("Super_Run"),
                 PlayerAnimationStates.Ducking => Animator.StringToHash("Super_Ducking"),
-                PlayerAnimationStates.Died => Animator.StringToHash("Small_Died"),
+                PlayerAnimationStates.Died => Animator.StringToHash("Super_Died"),
                 PlayerAnimationStates.Flag => Animator.StringToHash("Super_Flag"),
                 _ => throw new System.NotImplementedException(),
             };
