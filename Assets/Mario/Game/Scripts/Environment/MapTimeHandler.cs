@@ -1,4 +1,5 @@
 using Mario.Application.Services;
+using Mario.Game.ScriptableObjects.Map;
 using UnityEngine;
 
 namespace Mario.Game.Environment
@@ -7,7 +8,8 @@ namespace Mario.Game.Environment
     {
         [SerializeField] private AudioSource _timeScoreFX;
         private int _previousTime;
-        private bool isHurry;
+        private bool _isHurry;
+        private int _hurryTime = 100;
 
         private void Awake()
         {
@@ -16,6 +18,9 @@ namespace Mario.Game.Environment
 
             if (AllServices.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 Destroy(this);
+
+            if (AllServices.GameDataService.CurrentMapProfile.Time.Type == MapTimeType.Continuated && AllServices.TimeService.Time <= _hurryTime)
+                _isHurry = true;
         }
         private void OnDestroy()
         {
@@ -34,9 +39,9 @@ namespace Mario.Game.Environment
                 _timeScoreFX.Play();
             }
 
-            if (!isHurry && AllServices.TimeService.Time <= 100 && !AllServices.GameDataService.IsGoalReached)
+            if (!_isHurry && AllServices.TimeService.Time <= _hurryTime && !AllServices.GameDataService.IsGoalReached)
             {
-                isHurry = true;
+                _isHurry = true;
                 AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
                 AllServices.MusicService.Play();
                 return;

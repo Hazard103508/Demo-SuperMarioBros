@@ -15,13 +15,13 @@ MonoBehaviour:
   WorldName: 1-1
   MapInit:
     BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    StartPosition: {x: 2.5, y: 2}
+    StartPosition: {x: 57.5, y: 6}
     StartLocation: 0
     BlackScreenTime: 0
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
   Time:
     Type: 1
-    StartTime: 50
+    StartTime: 400
     HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
   MapsSections:
   - InitXPosition: 0

@@ -18,7 +18,7 @@ MonoBehaviour:
     StartPosition: {x: 1.2, y: 11}
     StartLocation: 1
     BlackScreenTime: 0.5
-    MainTheme: {fileID: 8300000, guid: db9af3e066fbe1f4794eca8433efc58c, type: 3}
+    MainTheme: {fileID: 8300000, guid: f3364285157f4564e83e7c4a6a702056, type: 3}
   Time:
     Type: 2
     StartTime: 0
@@ -35,7 +35,6 @@ MonoBehaviour:
     mapProfile: {fileID: 0}
   EndPoint:
     HasEndPoint: 0
-    PositionX: 0
     mapProfile: {fileID: 0}
     RemainingTimePoints: 0
     VictoryTheme: {fileID: 0}
