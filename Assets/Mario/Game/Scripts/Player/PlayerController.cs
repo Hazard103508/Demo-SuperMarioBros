@@ -299,6 +299,7 @@ namespace Mario.Game.Player
             IsDead = true;
             enabled = false;
             AllServices.PlayerService.RemoveLife();
+            _render.sortingLayerName = "TimeOut";
         }
         private void SetModeCollider(PlayerModes playerMode)
         {

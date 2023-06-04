@@ -132,9 +132,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1418808743
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 817178179
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: -170117269, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -216,9 +216,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1418808743
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 817178179
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: 276099296, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0411d59741014dc41a219e369a8849a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pipeProfile: {fileID: 11400000, guid: e05be03b552a9e64480fe4a57c9954ae, type: 2}
+  _pipeIndex: 0
   _pipeInSoundFX: {fileID: 6536628779121331270}
 --- !u!1 &4898601988881693972
 GameObject:
@@ -503,9 +503,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1418808743
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 817178179
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: -222865148, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -587,9 +587,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1418808743
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 817178179
+  m_SortingLayer: 4
+  m_SortingOrder: 0
   m_Sprite: {fileID: 212272619, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

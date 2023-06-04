@@ -38,6 +38,8 @@ namespace Mario.Game.Interactable
                 player.transform.Translate(Vector3.right * Time.deltaTime * 2f);
                 yield return null;
             }
+
+            player.transform.position = new Vector3(Mathf.Round(player.transform.position.x), player.transform.position.y, player.transform.position.z);
             player.IsAutoWalk = false;
         }
     }
