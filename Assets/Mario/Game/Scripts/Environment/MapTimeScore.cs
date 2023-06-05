@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.Environment
 {
-    public class MapTimeHandler : MonoBehaviour
+    public class MapTimeScore : MonoBehaviour
     {
         [SerializeField] private AudioSource _timeScoreFX;
         private int _previousTime;
@@ -25,12 +25,7 @@ namespace Mario.Game.Environment
         }
 
         public void OnGoalReached() => AllServices.TimeService.TimeSpeed = 150f;
-        public void OnTimeChanged()
-        {
-            ValidScoreCount();
-
-            _previousTime = AllServices.TimeService.Time;
-        }
+        public void OnTimeChanged() => ValidScoreCount();
 
         private void ValidScoreCount()
         {
@@ -41,6 +36,7 @@ namespace Mario.Game.Environment
 
                 _timeScoreFX.Play();
             }
+            _previousTime = AllServices.TimeService.Time;
         }
     }
 }

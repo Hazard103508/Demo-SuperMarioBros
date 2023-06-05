@@ -11,9 +11,6 @@ namespace Mario.Game.Environment
         {
             AllServices.TimeService.OnHurryUpTimeStart.AddListener(OnHurryUpTimeStart);
 
-            if (AllServices.GameDataService.CurrentMapProfile.Time.Type == MapTimeType.None)
-                Destroy(this);
-
             LoadThemeSong();
         }
         private void Start()
