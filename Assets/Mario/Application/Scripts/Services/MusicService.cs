@@ -15,6 +15,10 @@ namespace Mario.Application.Services
 
         public void Play() => _audioSource.Play();
         public void Pause() => _audioSource.Pause();
-        public void Stop() => _audioSource.Stop();
+        public void Stop()
+        {
+            if (_audioSource != null)
+                _audioSource.Stop();
+        }
     }
 }

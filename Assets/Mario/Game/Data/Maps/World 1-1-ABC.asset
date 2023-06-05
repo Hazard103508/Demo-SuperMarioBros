@@ -18,11 +18,9 @@ MonoBehaviour:
     StartPosition: {x: 57.5, y: 6}
     StartLocation: 0
     BlackScreenTime: 0
-    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
   Time:
     Type: 1
     StartTime: 110
-    HurryFX: {fileID: 8300000, guid: 9d9e1a8b4fb62944aba994863e111ad3, type: 3}
     HurryTheme: {fileID: 8300000, guid: 932e32fcb7964664b8f4d5c79f35b905, type: 3}
     StartTimeBegin: 19.2
     StartTimeDefault: 20.4
@@ -46,4 +44,4 @@ MonoBehaviour:
     HasEndPoint: 1
     mapProfile: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
     RemainingTimePoints: 50
-    VictoryTheme: {fileID: 8300000, guid: ec54ce87d8bca1048aca5c0ae7253c35, type: 3}
+  Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}

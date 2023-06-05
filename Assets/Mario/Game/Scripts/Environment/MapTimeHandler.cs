@@ -32,6 +32,7 @@ namespace Mario.Game.Environment
         }
         private void OnDestroy()
         {
+            AllServices.MusicService.Stop();
             AllServices.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);
             AllServices.GameDataService.OnGoalReached.RemoveListener(OnGoalReached);
         }
@@ -50,17 +51,21 @@ namespace Mario.Game.Environment
             switch (AllServices.GameDataService.CurrentMapProfile.Time.Type)
             {
                 case MapTimeType.None:
-                    AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
+                    AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
+                    AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
                     break;
                 case MapTimeType.Beginning:
                 case MapTimeType.Continuated:
                     if (_isHurry)
                     {
-                        AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
-                        AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Time.StartTimeDefault;
+                        AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.HurryTheme.Clip;
+                        AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.HurryTheme.StartTime;
                     }
                     else
-                        AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
+                    {
+                        AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
+                        AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
+                    }
                     break;
             }
         }
@@ -79,7 +84,7 @@ namespace Mario.Game.Environment
             if (!_isHurry && AllServices.TimeService.Time <= _hurryTime && !AllServices.GameDataService.IsGoalReached)
             {
                 _isHurry = true;
-                AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryFX;
+                AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.HurryFX;
                 AllServices.MusicService.Play();
 
                 StartCoroutine(PlayHurryTheme());
@@ -89,8 +94,8 @@ namespace Mario.Game.Environment
         private IEnumerator PlayHurryTheme()
         {
             yield return new WaitForSeconds(3.5f);
-            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Time.HurryTheme;
-            AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Time.StartTimeBegin;
+            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;
+            AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
             AllServices.MusicService.Play();
         }
     }

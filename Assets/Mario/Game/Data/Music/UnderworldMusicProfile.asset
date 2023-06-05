@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc6ede4b3c62e647a6cbd24231f78ae, type: 3}
+  m_Name: UnderworldMusicProfile
+  m_EditorClassIdentifier: 
+  MainTheme:
+    Clip: {fileID: 8300000, guid: f3364285157f4564e83e7c4a6a702056, type: 3}
+    StartTime: 0
+  VictoryTheme:
+    Clip: {fileID: 8300000, guid: ec54ce87d8bca1048aca5c0ae7253c35, type: 3}
+    StartTime: 0
+  HurryFX: {fileID: 8300000, guid: 9d9e1a8b4fb62944aba994863e111ad3, type: 3}
+  HurryTheme:
+    Clip: {fileID: 8300000, guid: c3ad02d476672464ebaa944c7fc6850c, type: 3}
+    StartTime: 0
+  HurryThemeFirstTime:
+    Clip: {fileID: 8300000, guid: c3ad02d476672464ebaa944c7fc6850c, type: 3}
+    StartTime: 0

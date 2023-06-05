@@ -69,7 +69,8 @@ namespace Mario.Game.Interactable
             animator.IsInFlagPole = false;
             player.IsAutoWalk = true;
 
-            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.EndPoint.VictoryTheme;
+            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.VictoryTheme.Clip;
+            AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.VictoryTheme.StartTime;
             AllServices.MusicService.Play();
             AllServices.PlayerService.CanMove = true;
         }

@@ -14,6 +14,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public MapProfile[] PipesConnections;
         public MapCheckPoint CheckPoint;
         public MapEndPoint EndPoint;
+        public MusicProfile Music;
     }
     [Serializable]
     public class MapInit
@@ -22,7 +23,6 @@ namespace Mario.Game.ScriptableObjects.Map
         public Vector2 StartPosition;
         public PlayerStartLocation StartLocation;
         public float BlackScreenTime;
-        public AudioClip MainTheme;
     }
     [Serializable]
     public class MapSection
@@ -44,17 +44,12 @@ namespace Mario.Game.ScriptableObjects.Map
         public bool HasEndPoint;
         public MapProfile mapProfile;
         public int RemainingTimePoints;
-        public AudioClip VictoryTheme;
     }
     [Serializable]
     public class MapTime
     {
         public MapTimeType Type;
         public int StartTime;
-        public AudioClip HurryFX;
-        public AudioClip HurryTheme;
-        public float StartTimeBegin;
-        public float StartTimeDefault;
     }
     public enum MapTimeType
     {
