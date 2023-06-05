@@ -13,9 +13,6 @@ namespace Mario.Game.Environment
 
         private void Awake()
         {
-            if (AllServices.GameDataService.CurrentMapProfile.Time.Type != MapTimeType.Continuated)
-                AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.MapInit.MainTheme;
-
             AllServices.GameDataService.IsGoalReached = false;
 
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
@@ -23,10 +20,6 @@ namespace Mario.Game.Environment
                 LoadMapSection(mapSection);
 
             StartCoroutine(StartGame());
-        }
-        private void Start()
-        {
-            AllServices.MusicService.Play();
         }
         private void OnDestroy()
         {

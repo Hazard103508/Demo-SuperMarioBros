@@ -51,7 +51,10 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         public MapTimeType Type;
         public int StartTime;
+        public AudioClip HurryFX;
         public AudioClip HurryTheme;
+        public float StartTimeBegin;
+        public float StartTimeDefault;
     }
     public enum MapTimeType
     {

@@ -21,8 +21,11 @@ MonoBehaviour:
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
   Time:
     Type: 1
-    StartTime: 400
-    HurryTheme: {fileID: 8300000, guid: f0ab6e0796fe8ab47806696f26e430c4, type: 3}
+    StartTime: 110
+    HurryFX: {fileID: 8300000, guid: 9d9e1a8b4fb62944aba994863e111ad3, type: 3}
+    HurryTheme: {fileID: 8300000, guid: 932e32fcb7964664b8f4d5c79f35b905, type: 3}
+    StartTimeBegin: 19.2
+    StartTimeDefault: 20.4
   MapsSections:
   - InitXPosition: 0
     Width: 80

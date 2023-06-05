@@ -16,26 +16,27 @@ MonoBehaviour:
   MapInit:
     BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
     StartPosition: {x: 2, y: 2}
+    StartLocation: 0
     BlackScreenTime: 0
     MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-  Sounds:
-    MainTheme: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-    HurryTheme: {fileID: 0}
   Time:
     Type: 0
     StartTime: 0
-    HurryTheme: {fileID: 0}
+    HurryFX: {fileID: 8300000, guid: 9d9e1a8b4fb62944aba994863e111ad3, type: 3}
+    HurryTheme: {fileID: 8300000, guid: 932e32fcb7964664b8f4d5c79f35b905, type: 3}
+    StartTimeBegin: 0
+    StartTimeDefault: 0
   MapsSections:
   - InitXPosition: 0
     Width: 16
     Reference: {fileID: 981654926499773033, guid: 317b8460021e2ce4d85764db25e4f653, type: 3}
+  PipesConnections: []
   CheckPoint:
     HasCheckPoint: 0
     PositionX: 0
     mapProfile: {fileID: 0}
   EndPoint:
     HasEndPoint: 0
-    PositionX: 0
     mapProfile: {fileID: 0}
     RemainingTimePoints: 0
     VictoryTheme: {fileID: 0}

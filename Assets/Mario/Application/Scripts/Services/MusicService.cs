@@ -7,6 +7,7 @@ namespace Mario.Application.Services
     {
         [SerializeField] private AudioSource _audioSource;
         public AudioClip Clip { get => _audioSource.clip; set => _audioSource.clip = value; }
+        public float Time { get => _audioSource.time; set => _audioSource.time = value; }
 
         public void LoadService()
         {
