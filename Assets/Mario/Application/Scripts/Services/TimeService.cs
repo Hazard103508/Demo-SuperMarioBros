@@ -7,32 +7,51 @@ namespace Mario.Application.Services
     public class TimeService : MonoBehaviour, ITimeService
     {
         private float _timer;
+        private bool _isHurry;
+        private int _hurryTime = 100;
 
         public float TimeSpeed { get; set; }
         public int StartTime { get; set; }
         public int Time { get; private set; }
         public bool Enabled { get; private set; }
+        public bool IsHurry
+        {
+            get => _isHurry;
+            private set
+            {
+                _isHurry = value;
+                if (value)
+                    OnHurryUpTimeStart.Invoke();
+            }
+        }
 
-        public UnityEvent OnTimeStart { get; set; }
-        public UnityEvent OnTimeChanged { get; set; }
-        public UnityEvent OnTimeOut { get; set; }
+        public UnityEvent OnTimeStart { get; private set; }
+        public UnityEvent OnTimeChanged { get; private set; }
+        public UnityEvent OnHurryUpTimeStart { get; private set; }
+        public UnityEvent OnTimeOut { get; private set; }
 
 
         public void LoadService()
         {
             OnTimeStart = new UnityEvent();
             OnTimeChanged = new UnityEvent();
+            OnHurryUpTimeStart = new UnityEvent();
             OnTimeOut = new UnityEvent();
 
             this.StartTime = ServiceLocator.Current.Get<IGameDataService>().CurrentMapProfile.Time.StartTime;
         }
-        private void Update() => UpdateTimer();
+        private void Update()
+        {
+            UpdateTimer();
+            ValidHurryUpTime();
+        }
 
         public void ResetTimer()
         {
             TimeSpeed = 2.5f;
             this.Time = this.StartTime;
             _timer = 0;
+            IsHurry = this.StartTime <= _hurryTime;
         }
         public void StopTimer() => Enabled = false;
         public void StartTimer()
@@ -51,6 +70,11 @@ namespace Mario.Application.Services
                 if (this.Time == 0)
                     OnTimeOut.Invoke();
             }
+        }
+        private void ValidHurryUpTime()
+        {
+            if (!IsHurry && AllServices.TimeService.Time <= _hurryTime && !AllServices.GameDataService.IsGoalReached)
+                IsHurry = true;
         }
     }
 }

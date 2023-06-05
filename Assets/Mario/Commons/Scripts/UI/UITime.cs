@@ -11,7 +11,6 @@ namespace Mario.Commons.UI
         {
             AllServices.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
             AllServices.TimeService.OnTimeStart.AddListener(OnTimeStart);
-            AllServices.TimeService.ResetTimer();
 
             label.gameObject.SetActive(false);
             OnTimeChanged();

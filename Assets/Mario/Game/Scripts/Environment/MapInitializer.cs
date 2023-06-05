@@ -13,6 +13,7 @@ namespace Mario.Game.Environment
 
         private void Awake()
         {
+            AllServices.TimeService.ResetTimer();
             AllServices.GameDataService.IsGoalReached = false;
 
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
