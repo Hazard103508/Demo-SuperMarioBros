@@ -21,16 +21,11 @@ MonoBehaviour:
   Time:
     Type: 1
     StartTime: 400
-  MapsSections:
-  - InitXPosition: 0
-    Width: 80
-    Reference: {fileID: 981654926499773033, guid: 18234092574721c4596e9a8b37bbed6b, type: 3}
-  - InitXPosition: 80
-    Width: 80
-    Reference: {fileID: 5994704554902688051, guid: 1eb2a5e16892cc140bb2e7d989da51eb, type: 3}
-  - InitXPosition: 160
-    Width: 52
-    Reference: {fileID: 981654926499773033, guid: 7c286d7ab204f9243854dbab54c97d2d, type: 3}
+  Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
+  MapSectionReferences:
+  - {fileID: 981654926499773033, guid: 18234092574721c4596e9a8b37bbed6b, type: 3}
+  - {fileID: 5994704554902688051, guid: 1eb2a5e16892cc140bb2e7d989da51eb, type: 3}
+  - {fileID: 981654926499773033, guid: 7c286d7ab204f9243854dbab54c97d2d, type: 3}
   PipesConnections:
   - {fileID: 11400000, guid: d6bda0b06819520488366b3810c7bf51, type: 2}
   CheckPoints:
@@ -39,4 +34,3 @@ MonoBehaviour:
     HasEndPoint: 1
     mapProfile: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
     RemainingTimePoints: 50
-  Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}

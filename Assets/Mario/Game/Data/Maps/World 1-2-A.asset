@@ -21,18 +21,17 @@ MonoBehaviour:
   Time:
     Type: 0
     StartTime: 0
-    HurryTheme: {fileID: 8300000, guid: 932e32fcb7964664b8f4d5c79f35b905, type: 3}
-    StartTimeBegin: 0
-    StartTimeDefault: 0
   MapsSections:
   - InitXPosition: 0
     Width: 16
     Reference: {fileID: 981654926499773033, guid: 317b8460021e2ce4d85764db25e4f653, type: 3}
+  MapSectionReferences:
+  - m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   PipesConnections: []
-  CheckPoint:
-    HasCheckPoint: 0
-    PositionX: 0
-    mapProfile: {fileID: 0}
+  CheckPoints: []
   EndPoint:
     HasEndPoint: 0
     mapProfile: {fileID: 0}

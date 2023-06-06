@@ -3,6 +3,8 @@ using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.Tilemaps;
 
 namespace Mario.Game.Environment
 {
@@ -17,8 +19,7 @@ namespace Mario.Game.Environment
             AllServices.GameDataService.IsGoalReached = false;
 
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
-            foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapsSections)
-                LoadMapSection(mapSection);
+            LoadMapSection();
 
             StartCoroutine(StartGame());
         }
@@ -40,14 +41,26 @@ namespace Mario.Game.Environment
                 AllServices.GameDataService.NextMapProfile = null;
             }
         }
-        private void LoadMapSection(MapSection mapSection)
+        private void LoadMapSection()
         {
-            var _mapSection = Instantiate(mapSection.Reference, transform);
-            _mapSection.transform.position = Vector3.right * mapSection.InitXPosition;
-            var unloader = _mapSection.AddComponent<MapSectionUnloader>();
-            unloader.Width = mapSection.Width;
-        }
+            int positionX = 0;
+            foreach (var mapSection in AllServices.GameDataService.CurrentMapProfile.MapSectionReferences)
+                LoadMapSection(mapSection, ref positionX);
 
+            AllServices.GameDataService.CurrentMapProfile.Width = positionX;
+        }
+        private void LoadMapSection(GameObject mapSectionReference, ref int positionX)
+        {
+            var mapObj = Instantiate(mapSectionReference, transform);
+            mapObj.transform.position = Vector3.right * positionX;
+
+            var mapSection = mapObj.GetComponent<MapSection>();
+
+            var unloader = mapObj.AddComponent<MapSectionUnloader>();
+            unloader.Width = mapSection.Size.Width;
+
+            positionX += mapSection.Size.Width;
+        }
         private IEnumerator StartGame()
         {
             _blackScreen.SetActive(true);

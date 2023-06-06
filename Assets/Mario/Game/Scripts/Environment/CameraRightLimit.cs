@@ -8,9 +8,9 @@ namespace Mario.Game.Environment
     {
         private int limitXPosition;
 
-        private void Awake()
+        private void Start()
         {
-            limitXPosition = AllServices.GameDataService.CurrentMapProfile.MapsSections.Sum(m => m.Width);
+            limitXPosition = AllServices.GameDataService.CurrentMapProfile.Width;
         }
         private void LateUpdate()
         {
