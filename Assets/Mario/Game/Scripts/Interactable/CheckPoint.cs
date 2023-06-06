@@ -21,5 +21,13 @@ namespace Mario.Game.Interactable
 
             Destroy(gameObject);
         }
+
+        private void OnDrawGizmos()
+        {
+            var collider = GetComponent<BoxCollider2D>();
+
+            Gizmos.color = new Color(0, 0, 1, 0.5f);
+            Gizmos.DrawCube(transform.position + (Vector3)collider.offset, collider.size);
+        }
     }
 }

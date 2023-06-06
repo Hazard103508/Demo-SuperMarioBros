@@ -15,12 +15,12 @@ MonoBehaviour:
   WorldName: 1-1
   MapInit:
     BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    StartPosition: {x: 57.5, y: 6}
+    StartPosition: {x: 2.5, y: 2}
     StartLocation: 0
     BlackScreenTime: 0
   Time:
     Type: 1
-    StartTime: 110
+    StartTime: 400
   MapsSections:
   - InitXPosition: 0
     Width: 80

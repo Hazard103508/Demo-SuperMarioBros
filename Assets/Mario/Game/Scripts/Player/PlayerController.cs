@@ -275,9 +275,14 @@ namespace Mario.Game.Player
         public void OnProximityRayHitTop(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.top = hitInfo.IsBlock;
         #endregion
 
+        #region EventListener
+        public void OnEventListener_PowerUp() => this.Mode = this.Mode == PlayerModes.Small ? PlayerModes.Big : PlayerModes.Super;
+        public void OnEventListener_Kill() => Kill();
+        public void OnEventListener_AddLife() => AllServices.PlayerService.AddLife();
+        #endregion
+
         #region On Events
-        public void OnPlayerGrowUp() => this.Mode = PlayerModes.Big;
-        public void OnPlayerSuper() => this.Mode = PlayerModes.Super;
+
         public void OnFall()
         {
             if (!enabled)
