@@ -13,7 +13,6 @@ namespace Mario.Application.Interfaces
 
         UnityEvent OnLivesAdded { get; }
         UnityEvent OnLivesRemoved { get; }
-        UnityEvent<Vector3> OnPositionChanged { get; }
 
         void AddLife();
         void RemoveLife();

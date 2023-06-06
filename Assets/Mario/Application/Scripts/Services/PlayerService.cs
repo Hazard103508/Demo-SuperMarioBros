@@ -18,7 +18,6 @@ namespace Mario.Application.Services
                 if (_playerPosition != value)
                 {
                     _playerPosition = value;
-                    OnPositionChanged.Invoke(value);
                 }
             }
         }
@@ -27,7 +26,6 @@ namespace Mario.Application.Services
 
         public UnityEvent OnLivesAdded { get; private set; }
         public UnityEvent OnLivesRemoved { get; private set; }
-        public UnityEvent<Vector3> OnPositionChanged { get; private set; }
 
         public void LoadService()
         {
@@ -35,7 +33,6 @@ namespace Mario.Application.Services
             Lives = 3;
             OnLivesAdded = new UnityEvent();
             OnLivesRemoved = new UnityEvent();
-            OnPositionChanged = new UnityEvent<Vector3>();
         }
         public void AddLife()
         {
