@@ -12,7 +12,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public MapTime Time;
         public MapSection[] MapsSections;
         public MapProfile[] PipesConnections;
-        public MapCheckPoint CheckPoint;
+        public MapProfile[] CheckPoints;
         public MapEndPoint EndPoint;
         public MusicProfile Music;
     }
@@ -30,13 +30,6 @@ namespace Mario.Game.ScriptableObjects.Map
         public int InitXPosition;
         public int Width;
         public GameObject Reference;
-    }
-    [Serializable]
-    public class MapCheckPoint
-    {
-        public bool HasCheckPoint;
-        public int PositionX;
-        public MapProfile mapProfile;
     }
     [Serializable]
     public class MapEndPoint

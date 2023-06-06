@@ -27,10 +27,8 @@ MonoBehaviour:
     Reference: {fileID: 981654926499773033, guid: 6cc1974c8c2b5df4399571cfbf1a745e, type: 3}
   PipesConnections:
   - {fileID: 11400000, guid: b78297708f5853a4b803aa7687cdc32c, type: 2}
-  CheckPoint:
-    HasCheckPoint: 0
-    PositionX: 0
-    mapProfile: {fileID: 0}
+  CheckPoints:
+  - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
   EndPoint:
     HasEndPoint: 0
     mapProfile: {fileID: 0}

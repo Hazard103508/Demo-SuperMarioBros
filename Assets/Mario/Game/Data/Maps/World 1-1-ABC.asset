@@ -21,9 +21,6 @@ MonoBehaviour:
   Time:
     Type: 1
     StartTime: 110
-    HurryTheme: {fileID: 8300000, guid: 932e32fcb7964664b8f4d5c79f35b905, type: 3}
-    StartTimeBegin: 19.2
-    StartTimeDefault: 20.4
   MapsSections:
   - InitXPosition: 0
     Width: 80
@@ -36,10 +33,8 @@ MonoBehaviour:
     Reference: {fileID: 981654926499773033, guid: 7c286d7ab204f9243854dbab54c97d2d, type: 3}
   PipesConnections:
   - {fileID: 11400000, guid: d6bda0b06819520488366b3810c7bf51, type: 2}
-  CheckPoint:
-    HasCheckPoint: 1
-    PositionX: 90
-    mapProfile: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
+  CheckPoints:
+  - {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
   EndPoint:
     HasEndPoint: 1
     mapProfile: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
