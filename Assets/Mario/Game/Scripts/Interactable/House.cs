@@ -13,7 +13,7 @@ namespace Mario.Game.Items
             player.gameObject.SetActive(false);
 
             AllServices.PlayerService.CanMove = false;
-            AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.EndPoint.mapProfile;
+            AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.NextMap;
             AllServices.TimeService.StartTimer();
 
             StartCoroutine(CloseMap());

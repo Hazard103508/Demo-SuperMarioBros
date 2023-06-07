@@ -10,11 +10,11 @@ namespace Mario.Game.ScriptableObjects.Map
         public string WorldName;
         public MapInit MapInit;
         public MapTime Time;
-        public MusicProfile Music;
         public GameObject[] MapSectionReferences;
         public MapProfile[] PipesConnections;
         public MapProfile[] CheckPoints;
-        public MapEndPoint EndPoint;
+        public MapProfile NextMap;
+        public MusicProfile Music;
         
         [NonSerialized] public int Width;
     }
@@ -25,13 +25,6 @@ namespace Mario.Game.ScriptableObjects.Map
         public Vector2 StartPosition;
         public PlayerStartLocation StartLocation;
         public float BlackScreenTime;
-    }
-    [Serializable]
-    public class MapEndPoint
-    {
-        public bool HasEndPoint;
-        public MapProfile mapProfile;
-        public int RemainingTimePoints;
     }
     [Serializable]
     public class MapTime

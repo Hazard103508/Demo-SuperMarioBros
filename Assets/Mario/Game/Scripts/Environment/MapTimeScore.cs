@@ -8,6 +8,7 @@ namespace Mario.Game.Environment
     {
         [SerializeField] private AudioSource _timeScoreFX;
         private int _previousTime;
+        private int _pointsPerSecond = 50;
 
         private void Awake()
         {
@@ -32,7 +33,7 @@ namespace Mario.Game.Environment
             if (AllServices.GameDataService.IsGoalReached)
             {
                 int _timedif = _previousTime - AllServices.TimeService.Time;
-                AllServices.ScoreService.Add(_timedif * AllServices.GameDataService.CurrentMapProfile.EndPoint.RemainingTimePoints);
+                AllServices.ScoreService.Add(_timedif * _pointsPerSecond);
 
                 _timeScoreFX.Play();
             }
