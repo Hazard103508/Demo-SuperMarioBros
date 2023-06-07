@@ -15,7 +15,9 @@ namespace Mario.Game.Player
         [SerializeField] private RaycastRange[] raycastRanges = null;
 
         private PlayerProfile _profile;
-        private ControllerVariables _controllerVariables;
+        private Bounds<bool> _proximityBlock = new Bounds<bool>();
+        private Vector2 _currentSpeed;
+        private float _lastJumpPressed = 0;
         private PlayerModes _mode;
         private bool _isDucking;
         #endregion
@@ -43,24 +45,8 @@ namespace Mario.Game.Player
             }
         }
 
-        public float WalkSpeedFactor => Mathf.Abs(_controllerVariables.currentSpeed.x) / _profile.Walk.MaxSpeed;
-        public bool IsGrounded => _controllerVariables.ProximityBlock.bottom;
-        private bool JumpMinBuffered => _controllerVariables.lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
-        private bool JumpMaxBuffered
-        {
-            get
-            {
-                float absCurrentSpeed = Mathf.Abs(_controllerVariables.currentSpeed.x);
-                if (absCurrentSpeed > _profile.Walk.MaxSpeed)
-                {
-                    float speedFactor = Mathf.InverseLerp(_profile.Walk.MaxSpeed, _profile.Run.MaxSpeed, absCurrentSpeed);
-                    float finalBufferTime = Mathf.Lerp(_profile.Jump.MaxWalkBufferTime, _profile.Jump.MaxRunBufferTime, speedFactor);
-                    return _controllerVariables.lastJumpPressed + finalBufferTime > Time.time;
-                }
-                else
-                    return _controllerVariables.lastJumpPressed + _profile.Jump.MaxWalkBufferTime > Time.time;
-            }
-        }
+        public float WalkSpeedFactor => Mathf.Abs(_currentSpeed.x) / _profile.Walk.MaxSpeed;
+        public bool IsGrounded => _proximityBlock.bottom;
         public bool IsJumping { get; private set; }
         public bool IsDucking
         {
@@ -85,6 +71,23 @@ namespace Mario.Game.Player
         public bool IsStuck { get; set; }
         public bool IsDead { get; private set; }
         public bool IsAutoWalk { get; set; }
+
+        private bool JumpMinBuffered => _lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
+        private bool JumpMaxBuffered
+        {
+            get
+            {
+                float absCurrentSpeed = Mathf.Abs(_currentSpeed.x);
+                if (absCurrentSpeed > _profile.Walk.MaxSpeed)
+                {
+                    float speedFactor = Mathf.InverseLerp(_profile.Walk.MaxSpeed, _profile.Run.MaxSpeed, absCurrentSpeed);
+                    float finalBufferTime = Mathf.Lerp(_profile.Jump.MaxWalkBufferTime, _profile.Jump.MaxRunBufferTime, speedFactor);
+                    return _lastJumpPressed + finalBufferTime > Time.time;
+                }
+                else
+                    return _lastJumpPressed + _profile.Jump.MaxWalkBufferTime > Time.time;
+            }
+        }
         #endregion
 
         #region Unity Methods
@@ -94,7 +97,6 @@ namespace Mario.Game.Player
             AllServices.PlayerService.CanMove = false;
 
             _profile = AllServices.GameDataService.PlayerProfile;
-            _controllerVariables = new ControllerVariables();
             Input = new PlayerInput();
             transform.position = AllServices.GameDataService.CurrentMapProfile.MapInit.StartPosition;
 
@@ -149,7 +151,7 @@ namespace Mario.Game.Player
             if (IsGrounded && !_jumpDown && Input.JumpDown)
             {
                 IsJumping = true;
-                _controllerVariables.lastJumpPressed = Time.time;
+                _lastJumpPressed = Time.time;
             }
         }
         private void CalculateWalk()
@@ -159,33 +161,33 @@ namespace Mario.Game.Player
             if (Input.X != 0 && !Input.IsDucking)
             {
                 float currentAcceleration = Input.Run ? _profile.Run.Acceleration : _profile.Walk.Acceleration;
-                _controllerVariables.currentSpeed.x += Input.X * currentAcceleration * Time.deltaTime;
+                _currentSpeed.x += Input.X * currentAcceleration * Time.deltaTime;
 
-                float currentSpeed = Input.Run ? _profile.Run.MaxSpeed : _profile.Walk.MaxSpeed;
-                _controllerVariables.currentSpeed.x = Mathf.Clamp(_controllerVariables.currentSpeed.x, -currentSpeed, currentSpeed);
+                float _speed = Input.Run ? _profile.Run.MaxSpeed : _profile.Walk.MaxSpeed;
+                _currentSpeed.x = Mathf.Clamp(_currentSpeed.x, -_speed, _speed);
             }
 
             if (RawMovement.x != 0 && (Input.X == 0 || Mathf.Sign(RawMovement.x) != Mathf.Sign(Input.X) || Input.IsDucking))
             {
                 float currentDeacceleration = Input.Run ? _profile.Run.Deacceleration : _profile.Walk.Deacceleration;
-                _controllerVariables.currentSpeed.x = Mathf.MoveTowards(_controllerVariables.currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
+                _currentSpeed.x = Mathf.MoveTowards(_currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
-            if (_controllerVariables.currentSpeed.x > 0 && _controllerVariables.ProximityBlock.right || _controllerVariables.currentSpeed.x < 0 && _controllerVariables.ProximityBlock.left)
-                _controllerVariables.currentSpeed.x = 0; // Don't walk through walls
+            if (_currentSpeed.x > 0 && _proximityBlock.right || _currentSpeed.x < 0 && _proximityBlock.left)
+                _currentSpeed.x = 0; // Don't walk through walls
         }
         private void CalculateGravity()
         {
-            _controllerVariables.currentSpeed.y -= _profile.Fall.FallSpeed * Time.deltaTime;
+            _currentSpeed.y -= _profile.Fall.FallSpeed * Time.deltaTime;
             if (IsGrounded)
             {
-                if (_controllerVariables.currentSpeed.y < 0)
-                    _controllerVariables.currentSpeed.y = 0;
+                if (_currentSpeed.y < 0)
+                    _currentSpeed.y = 0;
             }
             else
             {
-                if (_controllerVariables.currentSpeed.y < -_profile.Fall.MaxFallSpeed)
-                    _controllerVariables.currentSpeed.y = -_profile.Fall.MaxFallSpeed;
+                if (_currentSpeed.y < -_profile.Fall.MaxFallSpeed)
+                    _currentSpeed.y = -_profile.Fall.MaxFallSpeed;
             }
         }
         private void CalculateJump()
@@ -193,8 +195,8 @@ namespace Mario.Game.Player
             if (IsAutoWalk)
             {
                 IsJumping = false;
-                if (_controllerVariables.currentSpeed.y > 0)
-                    _controllerVariables.currentSpeed.y = 0;
+                if (_currentSpeed.y > 0)
+                    _currentSpeed.y = 0;
 
                 return;
             }
@@ -202,26 +204,26 @@ namespace Mario.Game.Player
             if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
             {
                 if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
-                    _controllerVariables.currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
+                    _currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
                 else
                     IsJumping = false;
             }
 
-            if (_controllerVariables.currentSpeed.y > _profile.Jump.MaxSpeed)
-                _controllerVariables.currentSpeed.y = _profile.Jump.MaxSpeed;
+            if (_currentSpeed.y > _profile.Jump.MaxSpeed)
+                _currentSpeed.y = _profile.Jump.MaxSpeed;
 
-            if (_controllerVariables.ProximityBlock.top)
+            if (_proximityBlock.top)
             {
-                if (_controllerVariables.currentSpeed.y > 0)
+                if (_currentSpeed.y > 0)
                 {
-                    _controllerVariables.currentSpeed.y = 0;
-                    _controllerVariables.lastJumpPressed = 0;
+                    _currentSpeed.y = 0;
+                    _lastJumpPressed = 0;
                 }
             }
         }
         private void MoveCharacter()
         {
-            RawMovement = _controllerVariables.currentSpeed;
+            RawMovement = _currentSpeed;
             var nextPosition = transform.position + RawMovement * Time.deltaTime;
 
             // ajusto posicion de contacto con el suelo
@@ -239,11 +241,11 @@ namespace Mario.Game.Player
         }
         private Vector3 AdjustHorizontalPosition(Vector3 position)
         {
-            if (!_controllerVariables.ProximityBlock.left && _controllerVariables.ProximityBlock.right)
+            if (!_proximityBlock.left && _proximityBlock.right)
                 position.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-            else if (!_controllerVariables.ProximityBlock.right && _controllerVariables.ProximityBlock.left)
+            else if (!_proximityBlock.right && _proximityBlock.left)
                 position.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-            else if (_controllerVariables.ProximityBlock.right && _controllerVariables.ProximityBlock.left)
+            else if (_proximityBlock.right && _proximityBlock.left)
                 position.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
 
             return position;
@@ -269,10 +271,10 @@ namespace Mario.Game.Player
         #endregion
 
         #region On Ray Range Hit
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.left = hitInfo.IsBlock;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.right = hitInfo.IsBlock;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.bottom = hitInfo.IsBlock;
-        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _controllerVariables.ProximityBlock.top = hitInfo.IsBlock;
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityBlock.bottom = hitInfo.IsBlock;
+        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo.IsBlock;
         #endregion
 
         #region On Events
@@ -305,15 +307,6 @@ namespace Mario.Game.Player
                 SetSmallCollider();
             else
                 SetBigCollider();
-        }
-        #endregion
-
-        #region Classes
-        internal class ControllerVariables
-        {
-            public Bounds<bool> ProximityBlock = new Bounds<bool>();
-            public Vector2 currentSpeed;
-            public float lastJumpPressed = 0;
         }
         #endregion
     }
