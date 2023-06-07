@@ -21,19 +21,9 @@ MonoBehaviour:
   Time:
     Type: 0
     StartTime: 0
-  MapsSections:
-  - InitXPosition: 0
-    Width: 16
-    Reference: {fileID: 981654926499773033, guid: 317b8460021e2ce4d85764db25e4f653, type: 3}
   MapSectionReferences:
-  - m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  - {fileID: 981654926499773033, guid: 317b8460021e2ce4d85764db25e4f653, type: 3}
   PipesConnections: []
   CheckPoints: []
-  EndPoint:
-    HasEndPoint: 0
-    mapProfile: {fileID: 0}
-    RemainingTimePoints: 0
+  NextMap: {fileID: 0}
   Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
