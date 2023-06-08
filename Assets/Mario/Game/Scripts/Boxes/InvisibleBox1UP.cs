@@ -44,6 +44,7 @@ namespace Mario.Game.Boxes
 
         public override void OnJumpCompleted()
         {
+            base.OnJumpCompleted();
             var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_invisibleBox1UPProfile.GreenMushroomReference);
             base.InstantiateContent(prefab);
         }

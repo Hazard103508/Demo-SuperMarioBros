@@ -1,9 +1,11 @@
 using Mario.Application.Services;
+using Mario.Game.Boxes;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
@@ -91,7 +93,17 @@ namespace Mario.Game.Items
         #region On Ray Range Hit
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
         public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityBlock.bottom = hitInfo.IsBlock;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo)
+        {
+            _proximityBlock.bottom = hitInfo.IsBlock;
+
+            foreach (var obj in hitInfo.hitObjects)
+            {
+                var box = obj.GetComponent<BottomHitableBox>();
+                if (box.IsJumping)
+                    print("XXX");
+            };
+        }
         #endregion
 
         #region On Player Hit

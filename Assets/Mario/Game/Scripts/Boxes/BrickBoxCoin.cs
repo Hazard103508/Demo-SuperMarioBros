@@ -43,6 +43,7 @@ namespace Mario.Game.Boxes
         }
         public override void OnJumpCompleted()
         {
+            base.OnJumpCompleted();
             IsHitable = !_isEmpty;
         }
         private void Update()

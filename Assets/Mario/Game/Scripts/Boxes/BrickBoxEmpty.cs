@@ -40,6 +40,10 @@ namespace Mario.Game.Boxes
             }
         }
 
-        public override void OnJumpCompleted() => IsHitable = true;
+        public override void OnJumpCompleted()
+        {
+            base.OnJumpCompleted();
+            IsHitable = true;
+        }
     }
 }

@@ -36,6 +36,7 @@ namespace Mario.Game.Boxes
         }
         public override void OnJumpCompleted()
         {
+            base.OnJumpCompleted();
             base.InstantiateContent(_itemPrefab);
         }
     }

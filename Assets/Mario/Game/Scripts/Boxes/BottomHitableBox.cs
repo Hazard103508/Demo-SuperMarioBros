@@ -9,6 +9,7 @@ namespace Mario.Game.Boxes
         [SerializeField] protected AudioSource _hitSoundFX;
         private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
+        public bool IsJumping { get; private set; }
 
         protected virtual void Awake()
         {
@@ -20,11 +21,13 @@ namespace Mario.Game.Boxes
             if (!IsHitable)
                 return;
 
+            IsJumping = true;
             _boxAnimator.SetTrigger("Jump");
             IsHitable = false;
         }
         public virtual void OnJumpCompleted()
         {
+            IsJumping = false;
         }
         protected void InstantiateContent(GameObject item)
         {
