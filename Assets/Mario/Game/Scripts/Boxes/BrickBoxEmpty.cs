@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
+using System.Collections;
 using UnityEngine;
 
 namespace Mario.Game.Boxes
@@ -16,20 +17,13 @@ namespace Mario.Game.Boxes
         }
         public override void OnHitFromBottom(PlayerController player)
         {
-            _hitSoundFX.Play();
+            PlayHitSoundFX();
 
             if (player.RawMovement.y > 0 || player.Input.JumpDown)
             {
-                if (player.Mode == Enums.PlayerModes.Small)
-                    base.OnHitFromBottom(player);
-                else
-                {
-                    var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_brickProfile.BrokenBrickReference);
-                    InstantiateContent(prefab);
-                    AllServices.ScoreService.Add(_brickProfile.Points);
-                    AudioSource.PlayClipAtPoint(_hitSoundFX.clip, transform.position);
-                    Destroy(gameObject);
-                }
+                base.OnHitFromBottom(player);
+                if (player.Mode != Enums.PlayerModes.Small)
+                    StartCoroutine(InstantiateBreakedBox());
             }
             else
             {
@@ -38,6 +32,15 @@ namespace Mario.Game.Boxes
 
                 player.IsStuck = true;
             }
+        }
+        private IEnumerator InstantiateBreakedBox()
+        {
+            yield return new WaitForEndOfFrame();
+
+            var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_brickProfile.BrokenBrickReference);
+            InstantiateContent(prefab);
+            AllServices.ScoreService.Add(_brickProfile.Points);
+            Destroy(gameObject);
         }
 
         public override void OnJumpCompleted()

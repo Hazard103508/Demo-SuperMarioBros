@@ -17,10 +17,10 @@ namespace Mario.Game.Boxes
         }
         public override void OnHitFromBottom(PlayerController player)
         {
-            _hitSoundFX.Play();
-
             if (!IsHitable)
                 return;
+
+            PlayHitSoundFX();
 
             base.OnHitFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");

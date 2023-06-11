@@ -18,3 +18,4 @@ MonoBehaviour:
   MoveSpeed: 3.7
   FallSpeed: 60
   MaxFallSpeed: 14.5
+  JumpAcceleration: 3000

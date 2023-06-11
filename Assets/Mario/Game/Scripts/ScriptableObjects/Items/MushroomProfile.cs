@@ -9,5 +9,6 @@ namespace Mario.Game.ScriptableObjects.Items
         public float MoveSpeed;
         public float FallSpeed;
         public float MaxFallSpeed;
+        public float JumpAcceleration;
     }
 }

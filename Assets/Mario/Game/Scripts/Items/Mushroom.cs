@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Profiling;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
 
@@ -19,13 +20,16 @@ namespace Mario.Game.Items
 
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityBlock = new();
-        private bool isRising;
+        private bool _isRising;
+        private bool _isJumping;
+        private GameObject _hitBox;
 
+        #region Unity Methods
         protected virtual void Awake()
         {
-            isRising = true;
+            _isRising = true;
             _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(.9f, 1));
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(0.9f, 1));
         }
         private void Start()
         {
@@ -33,7 +37,7 @@ namespace Mario.Game.Items
         }
         private void Update()
         {
-            if (isRising)
+            if (_isRising)
                 return;
 
             if (!AllServices.PlayerService.CanMove)
@@ -41,13 +45,18 @@ namespace Mario.Game.Items
 
             CalculateWalk();
             CalculateGravity();
+
             Move();
         }
+        #endregion
 
+        #region Private Methods
         private void CalculateWalk()
         {
-            if (_currentSpeed.x > 0 && _proximityBlock.right || _proximityBlock.left)
-                _currentSpeed.x *= -1;
+            if (_proximityBlock.right)
+                _currentSpeed.x = -Mathf.Abs(_currentSpeed.x);
+            else if (_proximityBlock.left)
+                _currentSpeed.x = Mathf.Abs(_currentSpeed.x);
         }
         private void CalculateGravity()
         {
@@ -73,6 +82,7 @@ namespace Mario.Game.Items
 
             transform.position = nextPosition;
         }
+
         private IEnumerator RiseMushroom()
         {
             var _initPosition = transform.transform.position;
@@ -87,8 +97,18 @@ namespace Mario.Game.Items
                 yield return null;
             }
 
-            isRising = false;
+            _isRising = false;
         }
+        private void Jump()
+        {
+            if (!_isJumping)
+            {
+                _isJumping = true;
+                _currentSpeed.y = _mushroomProfile.JumpAcceleration * Time.deltaTime;
+            }
+        }
+        #endregion
+
 
         #region On Ray Range Hit
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
@@ -99,10 +119,24 @@ namespace Mario.Game.Items
 
             foreach (var obj in hitInfo.hitObjects)
             {
+                if (_hitBox != null && obj.Equals(_hitBox))
+                    continue;
+
                 var box = obj.GetComponent<BottomHitableBox>();
-                if (box.IsJumping)
-                    print("XXX");
+                if (box != null && box.IsJumping)
+                {
+                    _hitBox = obj;
+                    Jump();
+
+                    if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - obj.transform.position.x))
+                        _currentSpeed.x *= -1;
+
+                    return;
+                }
             };
+
+            _hitBox = null;
+            _isJumping = false;
         }
         #endregion
 

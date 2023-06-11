@@ -27,10 +27,11 @@ namespace Mario.Game.Boxes
             if (_disabledTimer > 0) // me aseguro que el primer contacto sea desde abajo
                 return;
 
-            _hitSoundFX.Play();
 
             if (!IsHitable)
                 return;
+
+            PlayHitSoundFX();
 
             gameObject.layer = LayerMask.NameToLayer("Ground");
             base.OnHitFromBottom(player);

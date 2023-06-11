@@ -6,7 +6,7 @@ namespace Mario.Game.Boxes
 {
     public class BottomHitableBox : MonoBehaviour, IBottomHitable
     {
-        [SerializeField] protected AudioSource _hitSoundFX;
+        [SerializeField] private AudioSource _hitSoundFX;
         private Animator _boxAnimator;
         protected bool IsHitable { get; set; }
         public bool IsJumping { get; private set; }
@@ -33,6 +33,11 @@ namespace Mario.Game.Boxes
         {
             var content = Instantiate(item);
             content.transform.position = this.transform.position;
+        }
+        protected void PlayHitSoundFX()
+        {
+            if (!_hitSoundFX.isPlaying)
+                _hitSoundFX.Play();
         }
     }
 }
