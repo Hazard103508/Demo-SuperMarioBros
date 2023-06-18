@@ -1,7 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Mario.Application
 {

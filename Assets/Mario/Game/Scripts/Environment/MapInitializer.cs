@@ -3,8 +3,6 @@ using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Tilemaps;
 
 namespace Mario.Game.Environment
 {

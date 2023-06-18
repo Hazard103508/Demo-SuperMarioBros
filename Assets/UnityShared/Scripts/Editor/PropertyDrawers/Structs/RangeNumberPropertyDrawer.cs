@@ -22,7 +22,7 @@ namespace UnityShared.Editor.PropertyDrawers.Structs
             float xFieldMax = xLabelMax + labelWidth;
 
             base.BeginPropertyDraw();
-            
+
             base.DrawLabel(xLabelMin, labelWidth, "Min");
             base.DrawField(property, xFieldMin, fieldWidth, "Min");
             base.DrawLabel(xLabelMax, labelWidth, "Max");

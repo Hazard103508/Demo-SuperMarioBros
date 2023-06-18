@@ -6,8 +6,8 @@ namespace Mario.Application.Services
     public class MusicService : MonoBehaviour, IMusicService
     {
         [SerializeField] private AudioSource _audioSource;
-        public AudioClip Clip 
-        { 
+        public AudioClip Clip
+        {
             get => _audioSource.clip;
             set
             {

@@ -1,10 +1,3 @@
-using UnityEditor;
-using UnityEngine;
-using UnityShared.Commons.Skins;
-using UnityShared.Commons.Structs;
-using UnityShared.Editor.Commons;
-using UnityShared.Enums;
-
 namespace UnityShared.Editor.PropertyDrawers.Skins
 {
     /*[CustomPropertyDrawer(typeof(RectTransformSkin))]

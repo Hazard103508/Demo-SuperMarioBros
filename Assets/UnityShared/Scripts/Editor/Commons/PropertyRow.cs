@@ -1,6 +1,5 @@
 using UnityEditor;
 using UnityEngine;
-using UnityShared.Editor.Enums;
 
 namespace UnityShared.Editor.Commons
 {

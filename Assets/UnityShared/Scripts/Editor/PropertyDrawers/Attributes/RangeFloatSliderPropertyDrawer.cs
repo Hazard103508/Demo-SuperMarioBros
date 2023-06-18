@@ -22,7 +22,7 @@ namespace UnityShared.Editor.PropertyDrawers.Attributes
             var attr = base.GetAttribute<RangeFloatSliderAttribute>();
 
             base.BeginPropertyDraw();
-            
+
             base.DrawField(property, xFieldMin, fieldWidth, "Min");
             base.DrawMinMaxSlider(property, xSlider, slideWidth, attr.Min, attr.Max, "Min", "Max");
             base.DrawField(property, xFieldMax, fieldWidth, "Max");

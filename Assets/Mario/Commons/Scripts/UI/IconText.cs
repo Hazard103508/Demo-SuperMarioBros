@@ -1,4 +1,3 @@
-using System;
 using System.Text;
 using TMPro;
 using UnityEngine;
@@ -10,7 +9,7 @@ namespace Mario.Commons.UI
         [SerializeField] private TextMeshProUGUI label;
         [SerializeField] private string _text;
 
-        public string Text 
+        public string Text
         {
             get => _text;
             set

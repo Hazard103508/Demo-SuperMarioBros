@@ -22,7 +22,7 @@ namespace UnityShared.Editor.PropertyDrawers.Structs
             float xFieldH = xLabelH + labelWidth;
 
             base.BeginPropertyDraw();
-            
+
             base.DrawLabel(xLabelW, labelWidth, "Width");
             base.DrawField(property, xFieldW, fieldWidth, "Width");
             base.DrawLabel(xLabelH, labelWidth, "Height");

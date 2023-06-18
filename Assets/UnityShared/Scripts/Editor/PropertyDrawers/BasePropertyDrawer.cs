@@ -1,9 +1,5 @@
-using System.Drawing.Printing;
 using UnityEditor;
-using UnityEditor.Graphs;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityShared.Commons.Structs;
 using UnityShared.Editor.Commons;
 using UnityShared.Editor.Enums;
 
@@ -63,7 +59,7 @@ namespace UnityShared.Editor.PropertyDrawers
         protected void DrawPopup(SerializedProperty property, float x, float width, PopupItems popupItems)
         {
             var rect = new Rect(x, FullRect.y, width, Height);
-            
+
             int index = popupItems[property.stringValue];
             index = EditorGUI.Popup(rect, index, popupItems);
             property.stringValue = popupItems[index];

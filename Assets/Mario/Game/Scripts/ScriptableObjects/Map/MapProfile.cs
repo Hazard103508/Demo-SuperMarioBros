@@ -15,7 +15,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public MapProfile[] CheckPoints;
         public MapProfile NextMap;
         public MusicProfile Music;
-        
+
         [NonSerialized] public int Width;
     }
     [Serializable]

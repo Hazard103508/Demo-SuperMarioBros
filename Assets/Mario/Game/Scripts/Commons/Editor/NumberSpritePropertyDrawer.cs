@@ -1,4 +1,3 @@
-using NUnit.Framework.Internal;
 using UnityEditor;
 using UnityEngine;
 using UnityShared.Editor.PropertyDrawers;
@@ -14,7 +13,7 @@ namespace Mario.Game.Commons.Editor
 
             float fieldValueWidth = 30;
             float extraSpacing = 5;
-            float fieldSpriteWidth = GetDynamicWidth(1, extraSpacing) - fieldValueWidth; 
+            float fieldSpriteWidth = GetDynamicWidth(1, extraSpacing) - fieldValueWidth;
 
             float xValue = FullRect.x;
             float xSprite = xValue + fieldValueWidth + extraSpacing;
