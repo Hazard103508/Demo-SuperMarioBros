@@ -3,6 +3,7 @@ using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
@@ -14,6 +15,7 @@ namespace Mario.Game.Npc
         [SerializeField] private GoombaProfile _goombaProfile;
         [SerializeField] private Animator _animator;
         [SerializeField] private RaycastRange[] _raycastRanges = null;
+        [SerializeField] private AudioSource _killSoundFX;
 
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityBlock = new();
@@ -70,7 +72,17 @@ namespace Mario.Game.Npc
         }
         private void KillGoomba()
         {
+            if (!enabled)
+                return;
 
+            _killSoundFX.Play();
+            enabled = false;
+            _animator.SetTrigger("Kill");
+
+            AllServices.ScoreService.Add(_goombaProfile.Points);
+            AllServices.ScoreService.ShowPoint(_goombaProfile.Points, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
+
+            StartCoroutine(DestroyGoomba());
         }
         private void DamagePlayer(PlayerController player)
         {
@@ -80,6 +92,11 @@ namespace Mario.Game.Npc
             _animator.speed = 0;
             enabled = false;
             player.Kill();
+        }
+        private IEnumerator DestroyGoomba()
+        {
+            yield return new WaitForSeconds(0.4f);
+            Destroy(gameObject);
         }
         #endregion
 
