@@ -70,7 +70,7 @@ namespace Mario.Game.Npc
 
             transform.position = nextPosition;
         }
-        private void KillGoomba()
+        private void KillGoomba(PlayerController player)
         {
             if (!enabled)
                 return;
@@ -83,6 +83,8 @@ namespace Mario.Game.Npc
             AllServices.ScoreService.ShowPoint(_goombaProfile.Points, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
 
             StartCoroutine(DestroyGoomba());
+
+            player.BounceJump();
         }
         private void DamagePlayer(PlayerController player)
         {
@@ -108,7 +110,7 @@ namespace Mario.Game.Npc
         #endregion
 
         #region On Player Hit
-        public void OnHitFromTop(PlayerController player) => KillGoomba();
+        public void OnHitFromTop(PlayerController player) => KillGoomba(player);
         public void OnHitFromBottom(PlayerController player) => DamagePlayer(player);
         public void OnHitFromLeft(PlayerController player) => DamagePlayer(player);
         public void OnHitFromRight(PlayerController player) => DamagePlayer(player);

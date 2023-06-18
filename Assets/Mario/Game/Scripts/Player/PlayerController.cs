@@ -294,6 +294,12 @@ namespace Mario.Game.Player
         #endregion
 
         #region Other Methods
+        public void BounceJump()
+        {
+            IsJumping = true;
+            _lastJumpPressed = Time.time - _profile.Jump.MinBufferTime / 2f; // redusco a la mitad el buffer de salto minimo
+            _currentSpeed.y = 0;
+        }
         public void Kill()
         {
             IsDead = true;
