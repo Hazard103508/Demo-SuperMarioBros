@@ -163,6 +163,7 @@ MonoBehaviour:
   - {fileID: 3369678261123299528}
   - {fileID: 6929331785105103088}
   - {fileID: 2679415428393443983}
+  _animator: {fileID: 8755595739624655819}
 --- !u!1 &3960439327849646874
 GameObject:
   m_ObjectHideFlags: 0
