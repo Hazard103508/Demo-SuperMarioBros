@@ -73,7 +73,7 @@ namespace Mario.Game.Player
                 return;
             }
 
-            if (State == PlayerAnimationStates.PowerUp)
+            if (State == PlayerAnimationStates.PowerUp || State == PlayerAnimationStates.PowerDown)
                 return;
 
             if (_mode != _player.Mode)
@@ -93,7 +93,6 @@ namespace Mario.Game.Player
 
             if (this.State == PlayerAnimationStates.Ducking && _player.RawMovement.y != 0)
                 return;
-
 
             if (_player.IsDucking)
             {
@@ -135,6 +134,12 @@ namespace Mario.Game.Player
             State = _previousState;
         }
         public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
+        public void OnPlayerNerfComplete()
+        {
+            AllServices.TimeService.StartTimer();
+            AllServices.PlayerService.CanMove = true;
+            State = PlayerAnimationStates.Idle;
+        }
 
         private void PlayAudioFX(PlayerAnimationStates state)
         {

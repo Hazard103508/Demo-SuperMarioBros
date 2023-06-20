@@ -119,7 +119,7 @@ namespace Mario.Game.Npc
 
             _animator.speed = 0;
             enabled = false;
-            player.Kill();
+            player.DamagePlayer();
         }
         private IEnumerator DestroyGoomba()
         {

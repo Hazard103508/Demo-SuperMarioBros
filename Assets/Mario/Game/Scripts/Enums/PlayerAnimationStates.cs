@@ -11,6 +11,6 @@ namespace Mario.Game.Enums
         PowerDown,
         Ducking,
         Died,
-        Flag
+        Flag,
     }
 }

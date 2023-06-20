@@ -2,6 +2,8 @@ using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using System;
+using System.Collections;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
@@ -35,7 +37,6 @@ namespace Mario.Game.Player
 
                 AllServices.PlayerService.CanMove = false;
                 AllServices.TimeService.StopTimer();
-
                 AllServices.PlayerService.CurrentMode = _mode = value;
 
                 if (value == PlayerModes.Small)
@@ -71,6 +72,7 @@ namespace Mario.Game.Player
         public bool IsStuck { get; set; }
         public bool IsDead { get; private set; }
         public bool IsAutoWalk { get; set; }
+        public bool IsInvensible { get; set; }
 
         private bool JumpMinBuffered => _lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
         private bool JumpMaxBuffered
@@ -299,6 +301,16 @@ namespace Mario.Game.Player
             IsJumping = true;
             _lastJumpPressed = Time.time - _profile.Jump.MinBufferTime / 2f; // redusco a la mitad el buffer de salto minimo
             _currentSpeed.y = 0;
+        }
+        public void DamagePlayer()
+        {
+            if (IsInvensible)
+                return;
+
+            if (this.Mode == PlayerModes.Small)
+                Kill();
+            else
+                this.Mode = PlayerModes.Small;
         }
         public void Kill()
         {
