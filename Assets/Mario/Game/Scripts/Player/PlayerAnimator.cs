@@ -151,14 +151,14 @@ namespace Mario.Game.Player
         }
         private void PlayAudioFX(PlayerAnimationStates state)
         {
-            if (State == PlayerAnimationStates.Buff || State == PlayerAnimationStates.Nerf)
-                return;
-
             if (_player.IsAutoWalk)
                 return;
 
             if(state == PlayerAnimationStates.Nerf && _previousState != state)
                 _playerSoundFX.PlayNerf();
+
+            if (state == PlayerAnimationStates.Buff && _previousState != state)
+                _playerSoundFX.PlayBuff();
 
             if (state == PlayerAnimationStates.Jumping)
             {

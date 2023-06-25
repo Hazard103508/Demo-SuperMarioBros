@@ -361,6 +361,7 @@ MonoBehaviour:
   JumpSmallFX: {fileID: 6509256881085814937}
   JumpBigFX: {fileID: 4002796248244958292}
   NerfFX: {fileID: 1546560273962162952}
+  BuffFX: {fileID: 710887528873282775}
 --- !u!114 &7707397596782956978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +556,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0187dc7dd84c01c49b1a5c46cf11222c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6e0b1461ceaa84a44899dbbee39f8476, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
