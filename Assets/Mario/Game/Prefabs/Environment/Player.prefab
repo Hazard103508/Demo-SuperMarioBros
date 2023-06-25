@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 291091329395467555}
   - component: {fileID: 291091329395467557}
   - component: {fileID: 291091329395467556}
+  - component: {fileID: 5741188174714274726}
   - component: {fileID: 7707397596782956978}
   m_Layer: 0
   m_Name: Visual
@@ -344,10 +345,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26eac792f499bcd4eb3130b7573703c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerSoundFX:
-    JumpSmallFX: {fileID: 6509256881085814937}
-    JumpBigFX: {fileID: 4002796248244958292}
-    NerfFX: {fileID: 1546560273962162952}
+  _playerSoundFX: {fileID: 5741188174714274726}
+--- !u!114 &5741188174714274726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291091329395467553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90234e2a88191ea4c94b7adf0e4e1710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpSmallFX: {fileID: 6509256881085814937}
+  JumpBigFX: {fileID: 4002796248244958292}
+  NerfFX: {fileID: 1546560273962162952}
 --- !u!114 &7707397596782956978
 MonoBehaviour:
   m_ObjectHideFlags: 0

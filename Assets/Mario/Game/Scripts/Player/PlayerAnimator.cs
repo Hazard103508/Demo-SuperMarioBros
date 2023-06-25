@@ -158,23 +158,15 @@ namespace Mario.Game.Player
                 return;
 
             if(state == PlayerAnimationStates.Nerf && _previousState != state)
-                _playerSoundFX.NerfFX.Play();
+                _playerSoundFX.PlayNerf();
 
             if (state == PlayerAnimationStates.Jumping)
             {
                 if (_player.Mode == PlayerModes.Small)
-                    _playerSoundFX.JumpSmallFX.Play();
+                    _playerSoundFX.PlayJumpSmall();
                 else
-                    _playerSoundFX.JumpBigFX.Play();
+                    _playerSoundFX.PlayJumpBig();
             }
-        }
-
-        [Serializable]
-        public class PlayerSoundFX
-        {
-            public AudioSource JumpSmallFX;
-            public AudioSource JumpBigFX;
-            public AudioSource NerfFX;
         }
     }
 }
