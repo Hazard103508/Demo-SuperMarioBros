@@ -97,12 +97,12 @@ namespace Mario.Game.Player
                 return;
             }
 
-            if (State == PlayerAnimationStates.PowerUp || State == PlayerAnimationStates.PowerDown)
+            if (State == PlayerAnimationStates.Buff || State == PlayerAnimationStates.Nerf)
                 return;
 
             if (_mode != _player.Mode)
             {
-                State = _mode < _player.Mode ? PlayerAnimationStates.PowerUp : PlayerAnimationStates.PowerDown;
+                State = _mode < _player.Mode ? PlayerAnimationStates.Buff : PlayerAnimationStates.Nerf;
                 _mode = _player.Mode;
                 return;
             }
@@ -151,11 +151,14 @@ namespace Mario.Game.Player
         }
         private void PlayAudioFX(PlayerAnimationStates state)
         {
-            if (State == PlayerAnimationStates.PowerUp)
-                return; // si el estado actual es powerup, ignora el sonido siguente
+            if (State == PlayerAnimationStates.Buff || State == PlayerAnimationStates.Nerf)
+                return;
 
             if (_player.IsAutoWalk)
                 return;
+
+            if(state == PlayerAnimationStates.Nerf && _previousState != state)
+                _playerSoundFX.NerfFX.Play();
 
             if (state == PlayerAnimationStates.Jumping)
             {
@@ -171,6 +174,7 @@ namespace Mario.Game.Player
         {
             public AudioSource JumpSmallFX;
             public AudioSource JumpBigFX;
+            public AudioSource NerfFX;
         }
     }
 }

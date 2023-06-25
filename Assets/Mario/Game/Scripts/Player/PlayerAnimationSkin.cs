@@ -24,7 +24,7 @@ namespace Mario.Game.Player
                 PlayerAnimationStates.Jumping => Animator.StringToHash("Small_Jump"),
                 PlayerAnimationStates.StoppingRun => Animator.StringToHash("Small_Stop"),
                 PlayerAnimationStates.Running => Animator.StringToHash("Small_Run"),
-                PlayerAnimationStates.PowerUp => Animator.StringToHash("Small_GrowingUp"),
+                PlayerAnimationStates.Buff => Animator.StringToHash("Small_GrowingUp"),
                 PlayerAnimationStates.Died => Animator.StringToHash("Small_Died"),
                 PlayerAnimationStates.Flag => Animator.StringToHash("Small_Flag"),
                 _ => throw new System.NotImplementedException(),
@@ -35,7 +35,7 @@ namespace Mario.Game.Player
     {
         protected override int GetHash(PlayerAnimationStates currentState, PlayerAnimationFrames playerAnimationFrames)
         {
-            if (currentState == PlayerAnimationStates.PowerUp)
+            if (currentState == PlayerAnimationStates.Buff)
             {
                 return playerAnimationFrames switch
                 {
@@ -57,10 +57,10 @@ namespace Mario.Game.Player
                     PlayerAnimationStates.StoppingRun => Animator.StringToHash("Big_Stop"),
                     PlayerAnimationStates.Running => Animator.StringToHash("Big_Run"),
                     PlayerAnimationStates.Ducking => Animator.StringToHash("Big_Ducking"),
-                    PlayerAnimationStates.PowerUp => Animator.StringToHash("Big_Flower_Idle"),
+                    PlayerAnimationStates.Buff => Animator.StringToHash("Big_Flower_Idle"),
                     PlayerAnimationStates.Died => Animator.StringToHash("Small_Died"),
                     PlayerAnimationStates.Flag => Animator.StringToHash("Big_Flag"),
-                    PlayerAnimationStates.PowerDown => Animator.StringToHash("Big_PowerDown"),
+                    PlayerAnimationStates.Nerf => Animator.StringToHash("Big_PowerDown"),
                     _ => throw new System.NotImplementedException(),
                 };
         }
@@ -78,7 +78,7 @@ namespace Mario.Game.Player
                 PlayerAnimationStates.Ducking => Animator.StringToHash("Super_Ducking"),
                 PlayerAnimationStates.Died => Animator.StringToHash("Super_Died"),
                 PlayerAnimationStates.Flag => Animator.StringToHash("Super_Flag"),
-                PlayerAnimationStates.PowerDown => Animator.StringToHash("Big_PowerDown"),
+                PlayerAnimationStates.Nerf => Animator.StringToHash("Big_PowerDown"),
                 _ => throw new System.NotImplementedException(),
             };
         }
