@@ -32,7 +32,7 @@ namespace Mario.Game.Items
             AllServices.ScoreService.ShowPoint(_redMushroomProfile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
 
             if (player.Mode == PlayerModes.Small)
-                player.Mode = PlayerModes.Big;
+                player.Buff();
 
             PlayCollectSound();
             Destroy(gameObject);

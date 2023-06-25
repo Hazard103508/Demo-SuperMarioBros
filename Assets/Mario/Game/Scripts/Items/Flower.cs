@@ -51,8 +51,8 @@ namespace Mario.Game.Items
             isCollected = true;
             AllServices.ScoreService.Add(_profile.Points);
             AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
-            player.Mode = player.Mode == PlayerModes.Small ? PlayerModes.Big : PlayerModes.Super;
 
+            player.Buff();
             PlayCollectSound();
             Destroy(gameObject);
         }

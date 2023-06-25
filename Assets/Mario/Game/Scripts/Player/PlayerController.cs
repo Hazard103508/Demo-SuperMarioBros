@@ -3,6 +3,7 @@ using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using System;
 using System.Collections;
+using UnityEditor.Media;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityShared.Behaviours.Various.RaycastRange;
@@ -30,19 +31,12 @@ namespace Mario.Game.Player
         public PlayerModes Mode
         {
             get => _mode;
-            set
+            private set
             {
                 if (_mode == value)
                     return;
 
-                AllServices.PlayerService.CanMove = false;
-                AllServices.TimeService.StopTimer();
                 AllServices.PlayerService.CurrentMode = _mode = value;
-
-                if (value == PlayerModes.Small)
-                    SetSmallCollider();
-                else
-                    SetBigCollider();
             }
         }
 
@@ -61,12 +55,7 @@ namespace Mario.Game.Player
                 if (value)
                     SetDuckingCollider();
                 else
-                {
-                    if (Mode == PlayerModes.Small)
-                        SetSmallCollider();
-                    else
-                        SetBigCollider();
-                }
+                    SetModeCollider(_mode);
             }
         }
         public bool IsStuck { get; set; }
@@ -310,7 +299,7 @@ namespace Mario.Game.Player
             if (this.Mode == PlayerModes.Small)
                 Kill();
             else
-                this.Mode = PlayerModes.Small;
+                Nerf();
         }
         public void Kill()
         {
@@ -319,6 +308,22 @@ namespace Mario.Game.Player
             AllServices.PlayerService.RemoveLife();
             _render.sortingLayerName = "Dead";
         }
+        public void Buff()
+        {
+            AllServices.PlayerService.CanMove = false;
+            AllServices.TimeService.StopTimer();
+
+            this.Mode = this.Mode == PlayerModes.Small ? PlayerModes.Big : PlayerModes.Super;
+            SetBigCollider();
+        }
+        public void Nerf()
+        {
+            AllServices.PlayerService.CanMove = false;
+            AllServices.TimeService.StopTimer();
+
+            this.Mode = PlayerModes.Small;
+        }
+        public void RefreshCollider() => SetModeCollider(this.Mode);
         private void SetModeCollider(PlayerModes playerMode)
         {
             if (playerMode == PlayerModes.Small)

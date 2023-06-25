@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -55,7 +56,30 @@ namespace Mario.Game.Player
             _mode = _player.Mode;
             State = PlayerAnimationStates.Idle;
         }
-        void Update()
+        void Update() => UpdateAnimation();
+
+        public void OnPowerUpCompleted()
+        {
+            AllServices.TimeService.StartTimer();
+            AllServices.PlayerService.CanMove = true;
+
+            State = _previousState;
+        }
+        public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
+        public void OnPlayerNerfComplete()
+        {
+            AllServices.TimeService.StartTimer();
+            AllServices.PlayerService.CanMove = true;
+            State = PlayerAnimationStates.Idle;
+            StartCoroutine(RefreshPlayerCollider());
+        }
+
+        private IEnumerator RefreshPlayerCollider()
+        {
+            yield return new WaitForEndOfFrame();
+            _player.RefreshCollider();
+        }
+        private void UpdateAnimation()
         {
             if (_player == null) return;
 
@@ -125,22 +149,6 @@ namespace Mario.Game.Player
             if (_player.RawMovement.y > 0)
                 this.State = PlayerAnimationStates.Jumping;
         }
-
-        public void OnPowerUpCompleted()
-        {
-            AllServices.TimeService.StartTimer();
-            AllServices.PlayerService.CanMove = true;
-
-            State = _previousState;
-        }
-        public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
-        public void OnPlayerNerfComplete()
-        {
-            AllServices.TimeService.StartTimer();
-            AllServices.PlayerService.CanMove = true;
-            State = PlayerAnimationStates.Idle;
-        }
-
         private void PlayAudioFX(PlayerAnimationStates state)
         {
             if (State == PlayerAnimationStates.PowerUp)
