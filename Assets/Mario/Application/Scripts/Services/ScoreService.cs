@@ -32,7 +32,7 @@ namespace Mario.Application.Services
         public void ShowLabel(Sprite label, Vector3 initPosition, float time, float hight)
         {
             TargetPoints point = MonoBehaviour.Instantiate(_targetPointsPrefab, initPosition, Quaternion.identity);
-            point.ShowLabel(label, time, hight);
+            point.ShowLabel(label, time, hight, true);
         }
     }
 }

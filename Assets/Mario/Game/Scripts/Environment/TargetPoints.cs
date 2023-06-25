@@ -34,8 +34,9 @@ namespace Mario.Game.Environment
             _lerper.GoalPosition = transform.position + Vector3.up * hight;
             _lerper.RunForward();
         }
-        public void ShowLabel(Sprite sprite, float time, float hight)
+        public void ShowLabel(Sprite sprite, float time, float hight, bool destroyOnCompleted)
         {
+            _destroyOnCompleted = destroyOnCompleted;
             _numberRenders[0].enabled = false;
             _numberRenders[1].sprite = sprite;
 

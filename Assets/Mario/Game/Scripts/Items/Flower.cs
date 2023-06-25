@@ -13,10 +13,6 @@ namespace Mario.Game.Items
         [SerializeField] protected FlowerProfile _profile;
         private bool isCollected;
 
-        private void Awake()
-        {
-            AllServices.SceneService.AddAsset(_profile.PowerUpFXReference);
-        }
         private void Start()
         {
             StartCoroutine(RiseFlower());
@@ -53,14 +49,7 @@ namespace Mario.Game.Items
             AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
 
             player.Buff();
-            PlayCollectSound();
             Destroy(gameObject);
-        }
-        private void PlayCollectSound()
-        {
-            var soundFX = AllServices.SceneService.GetAssetReference<GameObject>(_profile.PowerUpFXReference);
-            var soundFXObj = Instantiate(soundFX);
-            soundFXObj.transform.position = this.transform.position;
         }
     }
 }

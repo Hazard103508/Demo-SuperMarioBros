@@ -37,10 +37,6 @@ MonoBehaviour:
     m_Address: MushroomRed
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 76824b930fc80f347b83fc7084db0e83
-    m_Address: PowerUpSoundFX
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 3a86e29e462a63e42907418d9953dffe
     m_Address: CoinSoundFX
     m_ReadOnly: 0
