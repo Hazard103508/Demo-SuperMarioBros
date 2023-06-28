@@ -1,6 +1,5 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

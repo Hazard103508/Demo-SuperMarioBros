@@ -1,5 +1,4 @@
 using Mario.Application.Services;
-using Mario.Game.Enums;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
