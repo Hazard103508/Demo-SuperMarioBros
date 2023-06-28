@@ -42,7 +42,7 @@ namespace Mario.Application.Services
             _lifeUpSoundFX.Play();
             OnLivesAdded.Invoke();
         }
-        public void RemoveLife()
+        public void Kill()
         {
             this.Lives--;
             _deadSoundFX.Play();

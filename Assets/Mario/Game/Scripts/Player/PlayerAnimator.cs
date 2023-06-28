@@ -8,6 +8,8 @@ namespace Mario.Game.Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
+        [SerializeField] private SpriteRenderer _renderer;
+
         private Animator _animator;
         private Dictionary<PlayerModes, PlayerAnimationMode> _playerAnimationModes;
         private PlayerController _player;
@@ -64,14 +66,9 @@ namespace Mario.Game.Player
             AllServices.TimeService.StartTimer();
             AllServices.PlayerService.CanMove = true;
             State = PlayerAnimationStates.Idle;
-            StartCoroutine(RefreshPlayerCollider());
+            StartCoroutine(StartInvensible());
         }
 
-        private IEnumerator RefreshPlayerCollider()
-        {
-            yield return new WaitForEndOfFrame();
-            _player.RefreshCollider();
-        }
         private void UpdateAnimation()
         {
             if (_player == null) return;
@@ -141,6 +138,26 @@ namespace Mario.Game.Player
 
             if (_player.RawMovement.y > 0)
                 this.State = PlayerAnimationStates.Jumping;
+        }
+        private IEnumerator StartInvensible()
+        {
+            yield return new WaitForEndOfFrame();
+            _player.RefreshCollider();
+
+            Color visible = Color.white;
+            Color invisible = new Color(0, 0, 0, 0);
+
+            float _intervalTime = 0.05f;
+            float _intervalCount = 2.5f / _intervalTime;
+
+            for (int i = 0; i < _intervalCount; i++)
+            {
+                _renderer.color = i % 2 == 0 ? visible : invisible;
+                yield return new WaitForSeconds(_intervalTime);
+            }
+
+            _renderer.color = visible;
+            _player.IsInvensible = false;
         }
     }
 }

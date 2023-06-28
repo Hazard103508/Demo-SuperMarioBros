@@ -282,7 +282,7 @@ namespace Mario.Game.Player
                 return;
 
             gameObject.SetActive(false);
-            AllServices.PlayerService.RemoveLife();
+            AllServices.PlayerService.Kill();
         }
         private void OnTimeOut()
         {
@@ -312,7 +312,7 @@ namespace Mario.Game.Player
         {
             IsDead = true;
             enabled = false;
-            AllServices.PlayerService.RemoveLife();
+            AllServices.PlayerService.Kill();
             _render.sortingLayerName = "Dead";
         }
         public void Buff()
@@ -333,6 +333,7 @@ namespace Mario.Game.Player
             if (this.Mode == PlayerModes.Small)
                 return;
 
+            IsInvensible = true;
             _playerSoundFX.PlayNerf();
 
             AllServices.PlayerService.CanMove = false;

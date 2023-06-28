@@ -15,6 +15,6 @@ namespace Mario.Application.Interfaces
         UnityEvent OnLivesRemoved { get; }
 
         void AddLife();
-        void RemoveLife();
+        void Kill();
     }
 }
