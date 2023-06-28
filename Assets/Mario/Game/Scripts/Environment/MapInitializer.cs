@@ -15,6 +15,7 @@ namespace Mario.Game.Environment
         {
             AllServices.TimeService.ResetTimer();
             AllServices.GameDataService.IsGoalReached = false;
+            AllServices.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
 
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             LoadMapSection();
@@ -25,6 +26,7 @@ namespace Mario.Game.Environment
         {
             SetNextMap();
             AllServices.SceneService.ReleaseAllAssets();
+            AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
         }
         private void SetNextMap()
         {
@@ -83,6 +85,24 @@ namespace Mario.Game.Environment
 
             AllServices.PlayerService.CanMove = true;
             AllServices.TimeService.StartTimer();
+        }
+        private void OnLivesRemoved()
+        {
+            AllServices.TimeService.StopTimer();
+            AllServices.PlayerService.CanMove = false;
+
+            StartCoroutine(ReloadMap());
+        }
+        private IEnumerator ReloadMap()
+        {
+            yield return new WaitForSeconds(3.5f);
+
+            if (AllServices.PlayerService.Lives == 0)
+                AllServices.SceneService.LoadGameOverScene();
+            else if (AllServices.TimeService.Time == 0)
+                AllServices.SceneService.LoadTimeUpScene();
+            else
+                AllServices.SceneService.LoadStandByScene();
         }
     }
 }
