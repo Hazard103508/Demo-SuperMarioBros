@@ -11,6 +11,7 @@ namespace Mario.Application.Interfaces
         int Lives { get; }
         bool CanMove { get; set; }
 
+        UnityEvent OnCanMoveChanged { get; }
         UnityEvent OnLivesAdded { get; }
         UnityEvent OnLivesRemoved { get; }
 

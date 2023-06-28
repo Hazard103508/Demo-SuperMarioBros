@@ -310,6 +310,9 @@ namespace Mario.Game.Player
         }
         public void Kill()
         {
+            if (IsDead)
+                return;
+
             IsDead = true;
             enabled = false;
             AllServices.PlayerService.Kill();

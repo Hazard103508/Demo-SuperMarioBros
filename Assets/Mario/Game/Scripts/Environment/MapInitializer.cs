@@ -97,7 +97,7 @@ namespace Mario.Game.Environment
         {
             yield return new WaitForSeconds(3.5f);
 
-            if (AllServices.PlayerService.Lives == 0)
+            if (AllServices.PlayerService.Lives <= 0)
                 AllServices.SceneService.LoadGameOverScene();
             else if (AllServices.TimeService.Time == 0)
                 AllServices.SceneService.LoadTimeUpScene();

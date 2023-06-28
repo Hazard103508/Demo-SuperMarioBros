@@ -28,8 +28,14 @@ namespace Mario.Game.Npc
         #region Unity Methods
         private void Awake()
         {
+            AllServices.PlayerService.OnCanMoveChanged.AddListener(OnCanMoveChanged);
+
             _currentSpeed = Vector2.right * _goombaProfile.MoveSpeed;
-            Array.ForEach(_raycastRanges, r => r.SpriteSize = new Size2(0.9f, 1));
+            Array.ForEach(_raycastRanges, r => r.SpriteSize = new Size2(0.8f, 1));
+        }
+        private void OnDestroy()
+        {
+            AllServices.PlayerService.OnCanMoveChanged.RemoveListener(OnCanMoveChanged);
         }
         private void Update()
         {
@@ -117,8 +123,6 @@ namespace Mario.Game.Npc
             if (!enabled || _isKicked)
                 return;
 
-            _animator.speed = 0;
-            enabled = false;
             player.DamagePlayer();
         }
         private IEnumerator DestroyGoomba()
@@ -126,6 +130,10 @@ namespace Mario.Game.Npc
             yield return new WaitForSeconds(0.4f);
             Destroy(gameObject);
         }
+        #endregion
+
+        #region Service Events
+        private void OnCanMoveChanged() => _animator.speed = AllServices.PlayerService.CanMove ? 1 : 0;
         #endregion
 
         #region On Ray Range Hit

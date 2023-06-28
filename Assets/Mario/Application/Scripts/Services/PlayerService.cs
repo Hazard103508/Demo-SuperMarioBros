@@ -7,9 +7,10 @@ namespace Mario.Application.Services
 {
     public class PlayerService : MonoBehaviour, IPlayerService
     {
-        private Vector3 _playerPosition;
         [SerializeField] private AudioSource _lifeUpSoundFX;
         [SerializeField] private AudioSource _deadSoundFX;
+        private Vector3 _playerPosition;
+        private bool _canMove;
 
         public PlayerModes CurrentMode { get; set; }
         public Vector3 Position
@@ -23,18 +24,29 @@ namespace Mario.Application.Services
                 }
             }
         }
-        public bool CanMove { get; set; }
+        public bool CanMove 
+        {
+            get => _canMove;
+            set
+            {
+                _canMove = value;
+                OnCanMoveChanged.Invoke();
+            }
+        }
         public int Lives { get; private set; }
 
+        public UnityEvent OnCanMoveChanged { get; private set; }
         public UnityEvent OnLivesAdded { get; private set; }
         public UnityEvent OnLivesRemoved { get; private set; }
 
         public void LoadService()
         {
-            CanMove = true;
-            Lives = 3;
             OnLivesAdded = new UnityEvent();
             OnLivesRemoved = new UnityEvent();
+            OnCanMoveChanged = new UnityEvent();
+
+            CanMove = true;
+            Lives = 3;
         }
         public void AddLife()
         {
