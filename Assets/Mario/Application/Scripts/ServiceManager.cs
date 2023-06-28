@@ -6,6 +6,14 @@ namespace Mario.Application
 {
     public class ServiceManager : MonoBehaviour
     {
+        [SerializeField] private GameDataService _gameDataService;
+        [SerializeField] private CoinService _coinService;
+        [SerializeField] private ScoreService _scoreService;
+        [SerializeField] private TimeService _timeService;
+        [SerializeField] private PlayerService _playerService;
+        [SerializeField] private SceneService _sceneService;
+        [SerializeField] private MusicService _musicService;
+
         private void Awake()
         {
             DontDestroyOnLoad(this);
@@ -13,13 +21,13 @@ namespace Mario.Application
         private void Start()
         {
             ServiceLocator.Initiailze();
-            ServiceLocator.Current.Register<IGameDataService>(GetComponent<GameDataService>());
-            ServiceLocator.Current.Register<ICoinService>(GetComponent<CoinService>());
-            ServiceLocator.Current.Register<IScoreService>(GetComponent<ScoreService>());
-            ServiceLocator.Current.Register<ITimeService>(GetComponent<TimeService>());
-            ServiceLocator.Current.Register<IPlayerService>(GetComponent<PlayerService>());
-            ServiceLocator.Current.Register<ISceneService>(GetComponent<SceneService>());
-            ServiceLocator.Current.Register<IMusicService>(GetComponent<MusicService>());
+            ServiceLocator.Current.Register<IGameDataService>(_gameDataService);
+            ServiceLocator.Current.Register<ICoinService>(_coinService);
+            ServiceLocator.Current.Register<IScoreService>(_scoreService);
+            ServiceLocator.Current.Register<ITimeService>(_timeService);
+            ServiceLocator.Current.Register<IPlayerService>(_playerService);
+            ServiceLocator.Current.Register<ISceneService>(_sceneService);
+            ServiceLocator.Current.Register<IMusicService>(_musicService);
 
             AllServices.Load();
             AllServices.SceneService.LoadStandByScene();

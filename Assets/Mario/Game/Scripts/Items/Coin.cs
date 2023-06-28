@@ -11,11 +11,6 @@ namespace Mario.Game.Items
         [SerializeField] protected CoinProfile _profile;
         private bool isCollected;
 
-        private void Awake()
-        {
-            AllServices.SceneService.AddAsset(_profile.CoinSoundFXReference);
-        }
-
         #region On Player Hit
         public void OnHitFromTop(PlayerController player) => CollectCoin(player);
         public void OnHitFromBottom(PlayerController player) => CollectCoin(player);
@@ -31,15 +26,7 @@ namespace Mario.Game.Items
             isCollected = true;
             AllServices.ScoreService.Add(_profile.Points);
             AllServices.CoinService.Add();
-
-            PlayCollectSound();
             Destroy(gameObject);
-        }
-        private void PlayCollectSound()
-        {
-            var soundFX = AllServices.SceneService.GetAssetReference<GameObject>(_profile.CoinSoundFXReference);
-            var soundFXObj = Instantiate(soundFX);
-            soundFXObj.transform.position = this.transform.position;
         }
     }
 }

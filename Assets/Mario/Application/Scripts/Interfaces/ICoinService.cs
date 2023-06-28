@@ -6,7 +6,6 @@ namespace Mario.Application.Interfaces
     {
         int Coins { get; }
 
-
         UnityEvent OnCoinsChanged { get; set; }
         void Add();
     }

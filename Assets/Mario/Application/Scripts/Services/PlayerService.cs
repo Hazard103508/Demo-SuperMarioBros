@@ -8,6 +8,8 @@ namespace Mario.Application.Services
     public class PlayerService : MonoBehaviour, IPlayerService
     {
         private Vector3 _playerPosition;
+        [SerializeField] private AudioSource _lifeUpSoundFX;
+        [SerializeField] private AudioSource _deadSoundFX;
 
         public PlayerModes CurrentMode { get; set; }
         public Vector3 Position
@@ -37,11 +39,13 @@ namespace Mario.Application.Services
         public void AddLife()
         {
             this.Lives++;
+            _lifeUpSoundFX.Play();
             OnLivesAdded.Invoke();
         }
         public void RemoveLife()
         {
             this.Lives--;
+            _deadSoundFX.Play();
             OnLivesRemoved.Invoke();
             this.CurrentMode = PlayerModes.Small;
 

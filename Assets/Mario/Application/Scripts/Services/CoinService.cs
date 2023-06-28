@@ -6,6 +6,8 @@ namespace Mario.Application.Services
 {
     public class CoinService : MonoBehaviour, ICoinService
     {
+        [SerializeField] private AudioSource _coinSoundFX;
+
         public int Coins { get; private set; }
 
         public void LoadService()
@@ -18,6 +20,7 @@ namespace Mario.Application.Services
         public void Add()
         {
             this.Coins++;
+            _coinSoundFX.Play();
 
             if (this.Coins >= 100)
             {
