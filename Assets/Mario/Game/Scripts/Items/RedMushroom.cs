@@ -30,9 +30,7 @@ namespace Mario.Game.Items
             AllServices.ScoreService.Add(_redMushroomProfile.Points);
             AllServices.ScoreService.ShowPoint(_redMushroomProfile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
 
-            if (player.Mode == PlayerModes.Small)
-                player.Buff();
-
+            player.Buff();
             Destroy(gameObject);
         }
     }

@@ -1123,6 +1123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639f96b1a2483274a8a9c2da617a6e1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerSoundFX: {fileID: 5741188174714274726}
   _render: {fileID: 291091329395467555}
   raycastRanges:
   - {fileID: 291091329232359657}

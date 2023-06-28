@@ -9,8 +9,6 @@ namespace Mario.Game.Player
 {
     public class PlayerAnimator : MonoBehaviour
     {
-        [SerializeField] private PlayerSoundFX _playerSoundFX;
-
         private Animator _animator;
         private Dictionary<PlayerModes, PlayerAnimationMode> _playerAnimationModes;
         private PlayerController _player;
@@ -30,10 +28,6 @@ namespace Mario.Game.Player
                     return;
 
                 _playerAnimationModes[_mode].ChangeAnimation(_animator, value, _animationFrame);
-
-                if (_state != value)
-                    PlayAudioFX(value);
-
                 _previousState = _state;
                 _state = value;
             }
@@ -148,28 +142,6 @@ namespace Mario.Game.Player
 
             if (_player.RawMovement.y > 0)
                 this.State = PlayerAnimationStates.Jumping;
-        }
-        private void PlayAudioFX(PlayerAnimationStates state)
-        {
-            if (this.State == PlayerAnimationStates.Buff) 
-                return;
-
-            if (_player.IsAutoWalk)
-                return;
-
-            if(state == PlayerAnimationStates.Nerf && _previousState != state)
-                _playerSoundFX.PlayNerf();
-
-            if (state == PlayerAnimationStates.Buff && _previousState != state)
-                _playerSoundFX.PlayBuff();
-
-            if (state == PlayerAnimationStates.Jumping)
-            {
-                if (_player.Mode == PlayerModes.Small)
-                    _playerSoundFX.PlayJumpSmall();
-                else
-                    _playerSoundFX.PlayJumpBig();
-            }
         }
     }
 }

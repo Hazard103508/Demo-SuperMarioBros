@@ -14,6 +14,7 @@ namespace Mario.Game.Player
     public class PlayerController : MonoBehaviour
     {
         #region Variables
+        [SerializeField] private PlayerSoundFX _playerSoundFX;
         [SerializeField] private SpriteRenderer _render;
         [SerializeField] private RaycastRange[] raycastRanges = null;
 
@@ -139,10 +140,19 @@ namespace Mario.Game.Player
                 IsDucking = UnityEngine.Input.GetKey(KeyCode.DownArrow),
             };
 
-            if (IsGrounded && !_jumpDown && Input.JumpDown)
+            CalculateJump(_jumpDown);
+        }
+        private void CalculateJump(bool prevJumpState)
+        {
+            if (IsGrounded && !prevJumpState && Input.JumpDown)
             {
                 IsJumping = true;
                 _lastJumpPressed = Time.time;
+
+                if (this.Mode == PlayerModes.Small)
+                    _playerSoundFX.PlayJumpSmall();
+                else
+                    _playerSoundFX.PlayJumpBig();
             }
         }
         private void CalculateWalk()
@@ -310,6 +320,8 @@ namespace Mario.Game.Player
         }
         public void Buff()
         {
+            _playerSoundFX.PlayBuff();
+
             if (this.Mode == PlayerModes.Super)
                 return;
 
@@ -321,6 +333,11 @@ namespace Mario.Game.Player
         }
         public void Nerf()
         {
+            if (this.Mode == PlayerModes.Small)
+                return;
+
+            _playerSoundFX.PlayNerf();
+
             AllServices.PlayerService.CanMove = false;
             AllServices.TimeService.StopTimer();
 
