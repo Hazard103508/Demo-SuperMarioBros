@@ -310,6 +310,9 @@ namespace Mario.Game.Player
         }
         public void Buff()
         {
+            if (this.Mode == PlayerModes.Super)
+                return;
+
             AllServices.PlayerService.CanMove = false;
             AllServices.TimeService.StopTimer();
 

@@ -58,14 +58,14 @@ namespace Mario.Game.Player
         }
         void Update() => UpdateAnimation();
 
-        public void OnPowerUpCompleted()
+        public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
+        public void OnPlayerBuffCompleted()
         {
             AllServices.TimeService.StartTimer();
             AllServices.PlayerService.CanMove = true;
 
             State = _previousState;
         }
-        public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
         public void OnPlayerNerfComplete()
         {
             AllServices.TimeService.StartTimer();
@@ -151,6 +151,9 @@ namespace Mario.Game.Player
         }
         private void PlayAudioFX(PlayerAnimationStates state)
         {
+            if (this.State == PlayerAnimationStates.Buff) 
+                return;
+
             if (_player.IsAutoWalk)
                 return;
 
