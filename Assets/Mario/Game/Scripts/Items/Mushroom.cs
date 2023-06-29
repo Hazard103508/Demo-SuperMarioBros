@@ -6,7 +6,6 @@ using Mario.Game.ScriptableObjects.Items;
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
@@ -14,7 +13,6 @@ namespace Mario.Game.Items
     public class Mushroom : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable
     {
         [SerializeField] private MushroomProfile _mushroomProfile;
-        [SerializeField] private RaycastRange[] raycastRanges = null;
 
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityBlock = new();
@@ -27,7 +25,6 @@ namespace Mario.Game.Items
         {
             _isRising = true;
             _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(0.9f, 1));
         }
         private void Start()
         {

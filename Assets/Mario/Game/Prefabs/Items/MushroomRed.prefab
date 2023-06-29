@@ -43,7 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068909089117085197}
-  - component: {fileID: 1068909089117085194}
+  - component: {fileID: 8466497263259401725}
   m_Layer: 0
   m_Name: ProximityLeft
   m_TagString: Untagged
@@ -66,7 +66,7 @@ Transform:
   m_Father: {fileID: 1068909088853146836}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1068909089117085194
+--- !u!114 &8466497263259401725
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,7 +75,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068909089117085196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a64cfaa7d5844d41b6c273af4f347a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 1d6964241a2f49146a6658e86c29c0dc, type: 2}
@@ -194,9 +194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mushroomProfile: {fileID: 11400000, guid: 738220a4ab7a0c841938f2832313ea63, type: 2}
   raycastRanges:
-  - {fileID: 1068909089117085194}
-  - {fileID: 1068909089559928123}
-  - {fileID: 1068909090103427518}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _redMushroomProfile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
 --- !u!1 &1068909089559928125
 GameObject:
@@ -207,7 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068909089559928122}
-  - component: {fileID: 1068909089559928123}
+  - component: {fileID: 2617962527640650011}
   m_Layer: 0
   m_Name: ProximityRight
   m_TagString: Untagged
@@ -230,7 +230,7 @@ Transform:
   m_Father: {fileID: 1068909088853146836}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1068909089559928123
+--- !u!114 &2617962527640650011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068909089559928125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948a82aa65f2d6747b9b64d99ad42730, type: 3}
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 0f55032fafce7b742b06d17d8fa3e6ac, type: 2}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068909090103427489}
-  - component: {fileID: 1068909090103427518}
+  - component: {fileID: 3168351872246796587}
   m_Layer: 0
   m_Name: ProximityBottom
   m_TagString: Untagged
@@ -293,7 +293,7 @@ Transform:
   m_Father: {fileID: 1068909088853146836}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1068909090103427518
+--- !u!114 &3168351872246796587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1068909090103427488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6223d95e6d8ee7488bc8322b4544b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: d764ebb188295504490e601c5fd79f52, type: 2}

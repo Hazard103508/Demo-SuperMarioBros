@@ -19,12 +19,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   OffSet: 0.15
-  RayCount: 4
-  DetectionRayLength: 0.05
   Range:
     StartPoint: {x: -0.4, y: 0.35}
     EndPoint: {x: -0.4, y: -0.35}
-    Count: 0
+    Count: 4
   Ray:
     Direction: {x: -1, y: 0}
     Length: 0.05
