@@ -17,7 +17,7 @@ namespace Mario.Game.Npc
         [SerializeField] private GoombaProfile _goombaProfile;
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
-        [SerializeField] private RaycastRange[] _raycastRanges = null;
+        [SerializeField] private RaycastRangeSquare _raycastRanges;
         [SerializeField] private AudioSource _killSoundFX;
         [SerializeField] private AudioSource _kickSoundFX;
 
@@ -29,9 +29,7 @@ namespace Mario.Game.Npc
         private void Awake()
         {
             AllServices.PlayerService.OnCanMoveChanged.AddListener(OnCanMoveChanged);
-
             _currentSpeed = Vector2.right * _goombaProfile.MoveSpeed;
-            Array.ForEach(_raycastRanges, r => r.SpriteSize = new Size2(0.8f, 1));
         }
         private void OnDestroy()
         {
@@ -116,7 +114,7 @@ namespace Mario.Game.Npc
             _proximityBlock.left = false;
             _proximityBlock.right = false;
 
-            _raycastRanges.ForEach(r => Destroy(r.gameObject));
+            Destroy(_raycastRanges.gameObject);
         }
         private void DamagePlayer(PlayerController player)
         {

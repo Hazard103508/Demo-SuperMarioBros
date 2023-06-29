@@ -27,7 +27,7 @@ namespace Mario.Game.Items
         {
             _isRising = true;
             _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(0.9f, 1));
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(0.9f, 1));
         }
         private void Start()
         {

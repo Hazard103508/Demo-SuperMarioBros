@@ -19,7 +19,7 @@ namespace UnityShared.Extensions.Unity3D
         }
         public static void SetWidth(this RectTransform rt, float width) => rt.sizeDelta = new Vector2(width, rt.sizeDelta.y);
         public static void SetHeight(this RectTransform rt, float height) => rt.sizeDelta = new Vector2(rt.sizeDelta.x, height);
-        public static void SetSize(this RectTransform rt, Size2 size) => rt.SetSize(size.Width, size.Height);
+        public static void SetSize(this RectTransform rt, SizeFloat size) => rt.SetSize(size.Width, size.Height);
         public static void SetSize(this RectTransform rt, float width, float height) => rt.sizeDelta = new Vector2(width, height);
 
         public static float GetLeftMargin(this RectTransform rt) => rt.offsetMin.x;

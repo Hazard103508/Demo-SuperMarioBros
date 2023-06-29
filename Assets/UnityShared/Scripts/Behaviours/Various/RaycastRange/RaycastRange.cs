@@ -1,5 +1,7 @@
+using Mono.Cecil;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityShared.Commons.Structs;
@@ -7,10 +9,10 @@ using UnityShared.ScriptableObjects.GameObjects;
 
 namespace UnityShared.Behaviours.Various.RaycastRange
 {
-    public abstract class RaycastRange : MonoBehaviour
+    public class RaycastRange : MonoBehaviour
     {
         [SerializeField] protected RaycastRangeProfile _profile;
-        [HideInInspector] public Size2 SpriteSize;
+        [HideInInspector] public SizeFloat SpriteSize;
 
         public UnityEvent<RayHitInfo> onHit;
 
@@ -19,7 +21,12 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             CalculateCollision();
         }
 
-        protected abstract RayRange CalculateRayRange();
+        protected virtual RayRange CalculateRayRange() 
+        {
+            var start = (Vector2)transform.position + _profile.Range.StartPoint;
+            var end = (Vector2)transform.position + _profile.Range.EndPoint;
+            return new RayRange(start, end, _profile.Ray.Direction);
+        }
         private void CalculateCollision()
         {
             var rayBound = CalculateRayRange();

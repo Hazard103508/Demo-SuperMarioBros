@@ -252,19 +252,19 @@ namespace Mario.Game.Player
         {
             _render.transform.localPosition = _profile.SmallPlayer.SpritePosition;
             raycastRanges[0].transform.parent.localPosition = _profile.SmallPlayer.Collider.position;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.SmallPlayer.Collider.width, _profile.SmallPlayer.Collider.height));
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(_profile.SmallPlayer.Collider.width, _profile.SmallPlayer.Collider.height));
         }
         private void SetBigCollider()
         {
             _render.transform.localPosition = _profile.BigPlayer.SpritePosition;
             raycastRanges[0].transform.parent.localPosition = _profile.BigPlayer.Collider.position;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.BigPlayer.Collider.width, _profile.BigPlayer.Collider.height));
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(_profile.BigPlayer.Collider.width, _profile.BigPlayer.Collider.height));
         }
         private void SetDuckingCollider()
         {
             _render.transform.localPosition = _profile.DuckingPlayer.SpritePosition;
             raycastRanges[0].transform.parent.localPosition = _profile.DuckingPlayer.Collider.position;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new Size2(_profile.DuckingPlayer.Collider.width, _profile.DuckingPlayer.Collider.height));
+            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(_profile.DuckingPlayer.Collider.width, _profile.DuckingPlayer.Collider.height));
         }
         #endregion
 

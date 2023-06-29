@@ -4,7 +4,7 @@ using UnityShared.Commons.Structs;
 
 namespace UnityShared.Editor.PropertyDrawers.Structs
 {
-    [CustomPropertyDrawer(typeof(Size2))]
+    [CustomPropertyDrawer(typeof(SizeFloat))]
     [CustomPropertyDrawer(typeof(Size2Int))]
     public class Size2PropertyDrawer : BasePropertyDrawer
     {

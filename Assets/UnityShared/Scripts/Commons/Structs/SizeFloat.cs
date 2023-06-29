@@ -4,14 +4,14 @@ using UnityEngine;
 namespace UnityShared.Commons.Structs
 {
     [Serializable]
-    public class Size2
+    public class SizeFloat
     {
-        public static Size2 zero = new Size2();
+        public static SizeFloat zero = new SizeFloat();
 
-        public Size2()
+        public SizeFloat()
         {
         }
-        public Size2(float width, float height)
+        public SizeFloat(float width, float height)
         {
             this.Width = width;
             this.Height = height;
@@ -20,6 +20,6 @@ namespace UnityShared.Commons.Structs
         public float Width;
         public float Height;
 
-        public static implicit operator Vector3(Size2 size) => new Vector3(size.Width, size.Height);
+        public static implicit operator Vector3(SizeFloat size) => new Vector3(size.Width, size.Height);
     }
 }
