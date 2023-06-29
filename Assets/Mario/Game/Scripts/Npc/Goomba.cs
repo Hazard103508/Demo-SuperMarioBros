@@ -136,6 +136,10 @@ namespace Mario.Game.Npc
         private void OnCanMoveChanged() => _animator.speed = AllServices.PlayerService.CanMove ? 1 : 0;
         #endregion
 
+        #region External Events
+        public void OnFall() => Destroy(gameObject);
+        #endregion
+
         #region On Ray Range Hit
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
         public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;

@@ -107,6 +107,9 @@ namespace Mario.Game.Items
         }
         #endregion
 
+        #region External Events
+        public void OnFall() => Destroy(gameObject);
+        #endregion
 
         #region On Ray Range Hit
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;

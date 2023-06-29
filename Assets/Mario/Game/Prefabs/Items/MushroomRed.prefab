@@ -334,6 +334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5318484955524945586}
   - component: {fileID: 4309244486214422655}
+  - component: {fileID: 8655071108781541881}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -408,3 +409,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8655071108781541881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7477420782075438623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c52db694b28b74db1139fd8ddd0edd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onOut:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1696081485333169470}
+        m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
+        m_MethodName: OnFall
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
