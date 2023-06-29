@@ -12,8 +12,6 @@ namespace UnityShared.ScriptableObjects.GameObjects
         public LayerMask OtherLayers;
 
         public float OffSet;
-        [Range(1, 10)] public int RayCount;
-        public float DetectionRayLength;
 
         public RangeInfo Range;
         public RayInfo Ray;

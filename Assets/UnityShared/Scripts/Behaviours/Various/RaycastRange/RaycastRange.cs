@@ -1,7 +1,6 @@
 using Mono.Cecil;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityShared.Commons.Structs;
@@ -53,19 +52,19 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         private List<GameObject> GetHitGameObjects(RayRange range, LayerMask layerMask)
         {
             return EvaluateRayPositions(range)
-                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.DetectionRayLength, layerMask))
+                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.Ray.Length, layerMask))
                 .Where(hit => hit.collider != null)
                 .Select(hit => hit.collider.gameObject)
                 .ToList();
         }
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
         {
-            if (_profile.RayCount == 1)
+            if (_profile.Range.Count == 1)
                 yield return Vector2.Lerp(range.Start, range.End, 0.5f + _profile.OffSet);
             else
-                for (var i = 0; i < _profile.RayCount; i++)
+                for (var i = 0; i < _profile.Range.Count; i++)
                 {
-                    var t = (float)i / (_profile.RayCount - 1);
+                    var t = (float)i / (_profile.Range.Count - 1);
                     yield return Vector2.Lerp(range.Start, range.End, t);
                 }
         }
@@ -75,7 +74,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             var rayRange = CalculateRayRange();
             Gizmos.color = Color.blue;
             foreach (var point in EvaluateRayPositions(rayRange))
-                Gizmos.DrawRay(point, rayRange.Dir * _profile.DetectionRayLength);
+                Gizmos.DrawRay(point, rayRange.Dir * _profile.Ray.Length);
         }
     }
 }

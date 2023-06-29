@@ -21,3 +21,10 @@ MonoBehaviour:
   OffSet: 0.25
   RayCount: 2
   DetectionRayLength: 0.1
+  Range:
+    StartPoint: {x: 0, y: 0}
+    EndPoint: {x: 0, y: 0}
+    Count: 0
+  Ray:
+    Direction: {x: 0, y: 0}
+    Length: 0.1
