@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,7 +18,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             CalculateCollision();
         }
 
-        private RayRange CalculateRayRange() 
+        private RayRange CalculateRayRange()
         {
             var start = (Vector2)transform.position + _profile.Range.StartPoint;
             var end = (Vector2)transform.position + _profile.Range.EndPoint;

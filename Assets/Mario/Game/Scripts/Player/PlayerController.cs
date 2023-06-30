@@ -1,7 +1,6 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
-using System;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -252,12 +251,12 @@ namespace Mario.Game.Player
         private void SetSmallCollider()
         {
             _render.transform.localPosition = _profile.SpritePositions.Small;
-            EnableRaycastRange(enableSmall:true);
+            EnableRaycastRange(enableSmall: true);
         }
         private void SetBigCollider()
         {
             _render.transform.localPosition = _profile.SpritePositions.Big;
-            EnableRaycastRange(enableBig:true);
+            EnableRaycastRange(enableBig: true);
         }
         private void SetDuckingCollider()
         {

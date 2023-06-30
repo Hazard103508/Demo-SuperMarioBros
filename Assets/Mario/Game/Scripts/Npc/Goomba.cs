@@ -6,9 +6,7 @@ using Mario.Game.ScriptableObjects.Items;
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
-using UnityShared.Extensions.CSharp;
 
 namespace Mario.Game.Npc
 {

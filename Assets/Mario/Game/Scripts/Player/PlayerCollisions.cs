@@ -92,7 +92,7 @@ namespace Mario.Game.Player
         private bool HitObjectOnLeft(GameObject obj)
         {
             if (obj == null)
-                return false;   
+                return false;
 
             IRightHitable script = obj.GetComponent<IRightHitable>();
             if (script != null)

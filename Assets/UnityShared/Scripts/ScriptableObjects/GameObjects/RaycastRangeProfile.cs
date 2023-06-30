@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
-using UnityShared.Commons.Structs;
 
 namespace UnityShared.ScriptableObjects.GameObjects
 {

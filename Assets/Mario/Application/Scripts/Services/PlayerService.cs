@@ -24,7 +24,7 @@ namespace Mario.Application.Services
                 }
             }
         }
-        public bool CanMove 
+        public bool CanMove
         {
             get => _canMove;
             set
