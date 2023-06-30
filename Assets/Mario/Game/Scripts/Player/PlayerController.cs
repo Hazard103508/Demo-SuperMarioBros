@@ -3,7 +3,6 @@ using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using System;
 using UnityEngine;
-using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -13,7 +12,9 @@ namespace Mario.Game.Player
         #region Variables
         [SerializeField] private PlayerSoundFX _playerSoundFX;
         [SerializeField] private SpriteRenderer _render;
-        [SerializeField] private RaycastRange[] raycastRanges = null;
+        [Header("RayCast")]
+        [SerializeField] private GameObject raycastRangesBig;
+        [SerializeField] private GameObject raycastRangesSmall;
 
         private PlayerProfile _profile;
         private Bounds<bool> _proximityBlock = new Bounds<bool>();
@@ -250,21 +251,23 @@ namespace Mario.Game.Player
         }
         private void SetSmallCollider()
         {
-            _render.transform.localPosition = _profile.SmallPlayer.SpritePosition;
-            raycastRanges[0].transform.parent.localPosition = _profile.SmallPlayer.Collider.position;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(_profile.SmallPlayer.Collider.width, _profile.SmallPlayer.Collider.height));
+            _render.transform.localPosition = _profile.SpritePositions.Small;
+            EnableRaycastRange(enableSmall:true);
         }
         private void SetBigCollider()
         {
-            _render.transform.localPosition = _profile.BigPlayer.SpritePosition;
-            raycastRanges[0].transform.parent.localPosition = _profile.BigPlayer.Collider.position;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(_profile.BigPlayer.Collider.width, _profile.BigPlayer.Collider.height));
+            _render.transform.localPosition = _profile.SpritePositions.Big;
+            EnableRaycastRange(enableBig:true);
         }
         private void SetDuckingCollider()
         {
-            _render.transform.localPosition = _profile.DuckingPlayer.SpritePosition;
-            raycastRanges[0].transform.parent.localPosition = _profile.DuckingPlayer.Collider.position;
-            Array.ForEach(raycastRanges, r => r.SpriteSize = new SizeFloat(_profile.DuckingPlayer.Collider.width, _profile.DuckingPlayer.Collider.height));
+            _render.transform.localPosition = _profile.SpritePositions.Big;
+            EnableRaycastRange(enableSmall: true);
+        }
+        private void EnableRaycastRange(bool enableSmall = false, bool enableBig = false)
+        {
+            raycastRangesSmall.SetActive(enableSmall);
+            raycastRangesBig.SetActive(enableBig);
         }
         #endregion
 

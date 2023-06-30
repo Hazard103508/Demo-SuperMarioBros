@@ -17,7 +17,7 @@ namespace Mario.Game.Npc
         [SerializeField] private GoombaProfile _goombaProfile;
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
-        [SerializeField] private RaycastRangeSquare _raycastRanges;
+        [SerializeField] private GameObject _raycastRanges;
         [SerializeField] private AudioSource _killSoundFX;
         [SerializeField] private AudioSource _kickSoundFX;
 

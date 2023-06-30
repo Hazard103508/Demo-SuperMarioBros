@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291091329050638294}
-  - component: {fileID: 291091329050638295}
+  - component: {fileID: 344233053775216435}
   m_Layer: 0
   m_Name: ProximityBottom
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 291091329458579043}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &291091329050638295
+--- !u!114 &344233053775216435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,13 +41,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 291091329050638293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6223d95e6d8ee7488bc8322b4544b0a, type: 3}
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -84,7 +81,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291091329232359656}
-  - component: {fileID: 291091329232359657}
+  - component: {fileID: 6087204728031929745}
   m_Layer: 0
   m_Name: ProximityLeft
   m_TagString: Untagged
@@ -107,7 +104,7 @@ Transform:
   m_Father: {fileID: 291091329458579043}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &291091329232359657
+--- !u!114 &6087204728031929745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,13 +113,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 291091329232359671}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a64cfaa7d5844d41b6c273af4f347a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -159,7 +153,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291091329390003537}
-  - component: {fileID: 291091329390003538}
+  - component: {fileID: 8258127753590359651}
   m_Layer: 0
   m_Name: ProximityRight
   m_TagString: Untagged
@@ -182,7 +176,7 @@ Transform:
   m_Father: {fileID: 291091329458579043}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &291091329390003538
+--- !u!114 &8258127753590359651
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,13 +185,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 291091329390003536}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948a82aa65f2d6747b9b64d99ad42730, type: 3}
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -382,7 +373,7 @@ GameObject:
   m_Component:
   - component: {fileID: 291091329458579043}
   m_Layer: 0
-  m_Name: RayRanges
+  m_Name: RayRangesSmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,7 +407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291091330739600079}
-  - component: {fileID: 291091330739600064}
+  - component: {fileID: 2411017874059504791}
   m_Layer: 0
   m_Name: ProximityTop
   m_TagString: Untagged
@@ -439,7 +430,7 @@ Transform:
   m_Father: {fileID: 291091329458579043}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &291091330739600064
+--- !u!114 &2411017874059504791
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -448,13 +439,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 291091330739600078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0251167db07c314dad5917fee47edaa, type: 3}
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -644,7 +632,7 @@ Transform:
   - {fileID: 5149692677256435319}
   - {fileID: 2371093891635181606}
   m_Father: {fileID: 6723613195399038918}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2403486986423070893
 MonoBehaviour:
@@ -790,6 +778,257 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &4613325909591881052
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4149511023698226157}
+  - component: {fileID: 1254579488606277761}
+  m_Layer: 0
+  m_Name: ProximityLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4149511023698226157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613325909591881052}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1164293907729011702}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254579488606277761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613325909591881052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _profile: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723613195399038919}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6723613195399038971}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
+        m_MethodName: OnProximityRayHitLeft
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &5905267525398509206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4322621740309875764}
+  - component: {fileID: 6737024445801010869}
+  m_Layer: 0
+  m_Name: ProximityRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4322621740309875764
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905267525398509206}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1164293907729011702}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6737024445801010869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5905267525398509206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _profile: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723613195399038919}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6723613195399038971}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
+        m_MethodName: OnProximityRayHitRight
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &6085979776724558922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393685722830154545}
+  - component: {fileID: 5157173523578981362}
+  m_Layer: 0
+  m_Name: ProximityBottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &393685722830154545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085979776724558922}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1164293907729011702}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5157173523578981362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6085979776724558922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _profile: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723613195399038919}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitBottom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6723613195399038971}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
+        m_MethodName: OnProximityRayHitBottom
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &6182516471874506209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1164293907729011702}
+  m_Layer: 0
+  m_Name: RayRangesBig
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1164293907729011702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182516471874506209}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4149511023698226157}
+  - {fileID: 4322621740309875764}
+  - {fileID: 393685722830154545}
+  - {fileID: 5908856685963234928}
+  m_Father: {fileID: 6723613195399038918}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6264128962299356619
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,6 +1189,7 @@ Transform:
   m_Children:
   - {fileID: 291091329395467554}
   - {fileID: 291091329458579043}
+  - {fileID: 1164293907729011702}
   - {fileID: 3566945153305843588}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -980,11 +1220,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSoundFX: {fileID: 2403486986423070893}
   _render: {fileID: 291091329395467555}
-  raycastRanges:
-  - {fileID: 291091329232359657}
-  - {fileID: 291091329390003538}
-  - {fileID: 291091329050638295}
-  - {fileID: 291091330739600064}
+  raycastRangesBig: {fileID: 6182516471874506209}
+  raycastRangesSmall: {fileID: 291091329458579042}
+--- !u!1 &6739600964802990460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5908856685963234928}
+  - component: {fileID: 1160119396145581247}
+  m_Layer: 0
+  m_Name: ProximityTop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5908856685963234928
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739600964802990460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1164293907729011702}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1160119396145581247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6739600964802990460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 281643781a2634642a2ea0565331ef85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _profile: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723613195399038919}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerController, Assembly-CSharp
+        m_MethodName: OnProximityRayHitTop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6723613195399038971}
+        m_TargetAssemblyTypeName: Mario.Game.Player.PlayerCollisions, Assembly-CSharp
+        m_MethodName: OnProximityRayHitTop
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6762261028413883523
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,25 +36,10 @@ MonoBehaviour:
     HorizontalAdjustmentSpeed: 5
   SmallPlayer:
     SpritePosition: {x: 0.5, y: 0.5}
-    Collider:
-      serializedVersion: 2
-      x: 0.5
-      y: 0.4
-      width: 0.85
-      height: 0.8
   BigPlayer:
     SpritePosition: {x: 0.5, y: 1}
-    Collider:
-      serializedVersion: 2
-      x: 0.5
-      y: 0.8
-      width: 0.85
-      height: 1.6
   DuckingPlayer:
     SpritePosition: {x: 0.5, y: 1}
-    Collider:
-      serializedVersion: 2
-      x: 0.5
-      y: 0.4
-      width: 0.85
-      height: 0.8
+  SpritePositions:
+    Small: {x: 0.5, y: 0.5}
+    Big: {x: 0.5, y: 1}

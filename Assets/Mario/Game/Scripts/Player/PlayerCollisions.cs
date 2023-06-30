@@ -49,6 +49,9 @@ namespace Mario.Game.Player
         }
         private bool HitObjectOnTop(GameObject obj)
         {
+            if (obj == null)
+                return false;
+
             IBottomHitable script = obj.GetComponent<IBottomHitable>();
             if (script != null)
             {
@@ -60,6 +63,9 @@ namespace Mario.Game.Player
         }
         private bool HitObjectOnBottom(GameObject obj)
         {
+            if (obj == null)
+                return false;
+
             ITopHitable script = obj.GetComponent<ITopHitable>();
             if (script != null)
             {
@@ -71,6 +77,9 @@ namespace Mario.Game.Player
         }
         private bool HitObjectOnRight(GameObject obj)
         {
+            if (obj == null)
+                return false;
+
             ILeftHitable script = obj.GetComponent<ILeftHitable>();
             if (script != null)
             {
@@ -82,6 +91,9 @@ namespace Mario.Game.Player
         }
         private bool HitObjectOnLeft(GameObject obj)
         {
+            if (obj == null)
+                return false;   
+
             IRightHitable script = obj.GetComponent<IRightHitable>();
             if (script != null)
             {

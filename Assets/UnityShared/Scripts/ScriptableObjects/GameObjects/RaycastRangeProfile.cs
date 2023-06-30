@@ -11,8 +11,6 @@ namespace UnityShared.ScriptableObjects.GameObjects
         public LayerMask BlockLayers;
         public LayerMask OtherLayers;
 
-        public float OffSet;
-
         public RangeInfo Range;
         public RayInfo Ray;
 

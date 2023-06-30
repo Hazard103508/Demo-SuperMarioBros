@@ -11,7 +11,6 @@ namespace UnityShared.Behaviours.Various.RaycastRange
     public class RaycastRange : MonoBehaviour
     {
         [SerializeField] protected RaycastRangeProfile _profile;
-        [HideInInspector] public SizeFloat SpriteSize;
 
         public UnityEvent<RayHitInfo> onHit;
 
@@ -20,7 +19,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             CalculateCollision();
         }
 
-        protected virtual RayRange CalculateRayRange() 
+        private RayRange CalculateRayRange() 
         {
             var start = (Vector2)transform.position + _profile.Range.StartPoint;
             var end = (Vector2)transform.position + _profile.Range.EndPoint;
@@ -55,12 +54,13 @@ namespace UnityShared.Behaviours.Various.RaycastRange
                 .Select(point => Physics2D.Raycast(point, range.Dir, _profile.Ray.Length, layerMask))
                 .Where(hit => hit.collider != null)
                 .Select(hit => hit.collider.gameObject)
+                .Distinct()
                 .ToList();
         }
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)
         {
             if (_profile.Range.Count == 1)
-                yield return Vector2.Lerp(range.Start, range.End, 0.5f + _profile.OffSet);
+                yield return Vector2.Lerp(range.Start, range.End, 0.5f);
             else
                 for (var i = 0; i < _profile.Range.Count; i++)
                 {
