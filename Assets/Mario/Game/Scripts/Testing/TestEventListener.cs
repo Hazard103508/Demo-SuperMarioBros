@@ -7,6 +7,22 @@ namespace Mario.Game.Player
     {
         [SerializeField] private PlayerController player;
 
+        private void Update()
+        {
+            // TESTING----------------
+
+            if (Input.GetKeyDown(KeyCode.R))
+                AllServices.SceneService.LoadMapScene(0);
+
+            if (Input.GetKeyDown(KeyCode.KeypadPlus))
+                AllServices.PlayerService.AddLife();
+
+            if (Input.GetKeyDown(KeyCode.G))
+                AllServices.CoinService.Add();
+
+            // TESTING----------------
+        }
+
         public void OnEventListener_Buff() => player.Buff();
         public void OnEventListener_Nerf() => player.Nerf();
         public void OnEventListener_Kill() => player.Kill();

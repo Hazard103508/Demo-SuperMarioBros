@@ -28,6 +28,7 @@ namespace Mario.Game.Environment
             AllServices.SceneService.ReleaseAllAssets();
             AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
         }
+
         private void SetNextMap()
         {
             if (AllServices.GameDataService.NextMapProfile != null)
