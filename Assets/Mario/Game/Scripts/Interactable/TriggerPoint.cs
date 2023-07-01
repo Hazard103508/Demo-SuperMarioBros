@@ -8,6 +8,7 @@ namespace Mario.Game.Interactable
     public class TriggerPoint : MonoBehaviour, ILeftHitable, IRightHitable, IBottomHitable, ITopHitable
     {
         [SerializeField] private Color _gizmoColor;
+        [SerializeField] private bool _destroyOnTrigger;
         public UnityEvent onTriggerOn;
 
         public void OnHitFromLeft(PlayerController player) => OnHitCheckPoint(player);
@@ -15,7 +16,12 @@ namespace Mario.Game.Interactable
         public void OnHitFromBottom(PlayerController player) => OnHitCheckPoint(player);
         public void OnHitFromTop(PlayerController player) => OnHitCheckPoint(player);
 
-        protected virtual void OnHitCheckPoint(PlayerController player) => onTriggerOn.Invoke();
+        protected virtual void OnHitCheckPoint(PlayerController player)
+        {
+            onTriggerOn.Invoke();
+            if(_destroyOnTrigger)
+                Destroy(gameObject);
+        }
 
         private void OnDrawGizmos()
         {

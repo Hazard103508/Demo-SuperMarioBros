@@ -72,4 +72,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gizmoColor: {r: 1, g: 0, b: 0, a: 0.5019608}
+  _destroyOnTrigger: 1
+  onTriggerOn:
+    m_PersistentCalls:
+      m_Calls: []
   _checkPointIndex: 0
