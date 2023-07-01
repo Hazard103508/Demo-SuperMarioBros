@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlockLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 520
   OtherLayers:
     serializedVersion: 2
     m_Bits: 0
-  OffSet: 0.15
   Range:
-    StartPoint: {x: 0.4, y: 0.35}
-    EndPoint: {x: 0.4, y: -0.35}
+    StartPoint: {x: 0.45, y: 0.35}
+    EndPoint: {x: 0.45, y: -0.35}
     Count: 4
   Ray:
     Direction: {x: 1, y: 0}

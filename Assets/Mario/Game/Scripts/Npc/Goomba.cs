@@ -138,7 +138,10 @@ namespace Mario.Game.Npc
 
         #region On Ray Range Hit
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo)
+        {
+            _proximityBlock.right = hitInfo.IsBlock;
+        }
         public void OnProximityRayHitBottom(RayHitInfo hitInfo)
         {
             _proximityBlock.bottom = hitInfo.IsBlock;

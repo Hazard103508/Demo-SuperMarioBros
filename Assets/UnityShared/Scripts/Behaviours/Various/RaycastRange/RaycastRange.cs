@@ -51,7 +51,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         {
             return EvaluateRayPositions(range)
                 .Select(point => Physics2D.Raycast(point, range.Dir, _profile.Ray.Length, layerMask))
-                .Where(hit => hit.collider != null)
+                .Where(hit => hit.collider != null && hit.collider.gameObject.activeSelf)
                 .Select(hit => hit.collider.gameObject)
                 .Distinct()
                 .ToList();

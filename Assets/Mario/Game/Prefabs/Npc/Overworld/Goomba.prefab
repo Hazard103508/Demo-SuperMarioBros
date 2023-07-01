@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 5026628092654808966}
   - component: {fileID: 257622890496309219}
   - component: {fileID: 3895425941044523143}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Goomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.95}
+  m_Size: {x: 0.85, y: 0.95}
   m_EdgeRadius: 0
 --- !u!114 &3895425941044523143
 MonoBehaviour:
