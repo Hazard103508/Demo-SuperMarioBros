@@ -89,6 +89,7 @@ namespace Mario.Game.Interactable
         {
             var hitPoint = 1 - Mathf.InverseLerp(transform.position.y, transform.position.y + 10, player.transform.position.y);
             int index = Mathf.FloorToInt(Mathf.Clamp(hitPoint * _profile.Points.Length, 0, _profile.Points.Length));
+            index = Mathf.Clamp(index, 0, _profile.Points.Length-1);
             return _profile.Points[index];
         }
     }
