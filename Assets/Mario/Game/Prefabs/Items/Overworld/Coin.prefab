@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1102999271743858177}
   - component: {fileID: 5226399366014454746}
   m_Layer: 6
-  m_Name: OverworldCoin
+  m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 8943206586835598086}
   - component: {fileID: 4311601223084283613}
   m_Layer: 6
-  m_Name: UnderworldCoin
+  m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
