@@ -13,7 +13,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
 
         public UnityEvent<RayHitInfo> onHit;
 
-        void Update()
+        void LateUpdate()
         {
             CalculateCollision();
         }

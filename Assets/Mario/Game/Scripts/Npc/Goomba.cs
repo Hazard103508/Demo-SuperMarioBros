@@ -106,7 +106,8 @@ namespace Mario.Game.Npc
 
             if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - box.transform.position.x))
                 _currentSpeed.x *= -1;
-            _currentSpeed.y = _goombaProfile.JumpAcceleration * Time.deltaTime;
+
+            _currentSpeed.y = _goombaProfile.JumpAcceleration;
 
             _proximityBlock.bottom = false; // evito que colicione contra el suelo
             _proximityBlock.left = false;

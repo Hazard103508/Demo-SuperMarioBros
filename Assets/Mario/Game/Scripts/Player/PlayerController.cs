@@ -106,12 +106,6 @@ namespace Mario.Game.Player
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
-        }
-        private void LateUpdate()
-        {
-            if (!AllServices.PlayerService.CanMove)
-                return;
-
             MoveCharacter();
         }
         #endregion

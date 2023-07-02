@@ -99,7 +99,7 @@ namespace Mario.Game.Items
             if (!_isJumping)
             {
                 _isJumping = true;
-                _currentSpeed.y = _mushroomProfile.JumpAcceleration * Time.deltaTime;
+                _currentSpeed.y = _mushroomProfile.JumpAcceleration;
             }
         }
         #endregion

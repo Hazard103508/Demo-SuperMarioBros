@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Mario/Init/Init.unity
+    path: Assets/Mario/Init/Scenes/Init.unity
     guid: 4241874f842a1604794bbba843b8858c
   - enabled: 1
     path: Assets/Mario/StandBy/Scenes/StandBy.unity
