@@ -20,6 +20,10 @@ namespace Mario.Game.Player
             if (Input.GetKeyDown(KeyCode.G))
                 AllServices.CoinService.Add();
 
+
+            if (Input.GetKeyDown(KeyCode.Space))
+                Debug.Break();
+
             // TESTING----------------
         }
 

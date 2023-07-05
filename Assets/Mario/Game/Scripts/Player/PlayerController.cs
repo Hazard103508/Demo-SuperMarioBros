@@ -106,6 +106,13 @@ namespace Mario.Game.Player
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
+            
+        }
+        private void LateUpdate()
+        {
+            if (!AllServices.PlayerService.CanMove)
+                return;
+
             MoveCharacter();
         }
         #endregion
@@ -223,7 +230,7 @@ namespace Mario.Game.Player
                 nextPosition.y = Mathf.Round(nextPosition.y);
 
             // fuerzo ajuste de posicion en los lados de los bloques 
-            if (!IsGrounded || IsStuck)
+            //if (!IsGrounded || IsStuck)
                 nextPosition = AdjustHorizontalPosition(nextPosition);
 
             transform.position = nextPosition;

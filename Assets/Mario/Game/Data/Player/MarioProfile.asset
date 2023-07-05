@@ -33,13 +33,7 @@ MonoBehaviour:
     MinBufferTime: 0.05
     MaxWalkBufferTime: 0.27
     MaxRunBufferTime: 0.32
-    HorizontalAdjustmentSpeed: 5
-  SmallPlayer:
-    SpritePosition: {x: 0.5, y: 0.5}
-  BigPlayer:
-    SpritePosition: {x: 0.5, y: 1}
-  DuckingPlayer:
-    SpritePosition: {x: 0.5, y: 1}
+    HorizontalAdjustmentSpeed: 6
   SpritePositions:
     Small: {x: 0.5, y: 0.5}
     Big: {x: 0.5, y: 1}
