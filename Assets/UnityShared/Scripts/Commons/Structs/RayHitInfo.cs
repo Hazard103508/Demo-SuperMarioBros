@@ -12,5 +12,6 @@ namespace UnityShared.Commons.Structs
     {
         public GameObject Object { get; set; }
         public Vector2 Point { get; set; }
+        public Vector2 RelativePosition { get; set; }
     }
 }

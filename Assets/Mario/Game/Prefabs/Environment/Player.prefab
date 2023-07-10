@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
-  fixOnCollision: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -73,6 +72,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 0
 --- !u!1 &291091329232359671
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +118,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
-  fixOnCollision: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -146,6 +145,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 1
 --- !u!1 &291091329390003536
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
-  fixOnCollision: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -219,6 +218,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 0
 --- !u!1 &291091329395467553
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
-  fixOnCollision: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -474,6 +473,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 0
 --- !u!1 &499734114947593047
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,7 +827,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
-  fixOnCollision: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -855,6 +854,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 0
 --- !u!1 &5905267525398509206
 GameObject:
   m_ObjectHideFlags: 0
@@ -900,7 +900,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
-  fixOnCollision: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -928,6 +927,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 0
 --- !u!1 &6085979776724558922
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,7 +973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
-  fixOnCollision: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -1001,6 +1000,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 0
 --- !u!1 &6182516471874506209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,7 +1274,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
-  fixOnCollision: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -1302,6 +1301,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  aux: 0
 --- !u!1 &6762261028413883523
 GameObject:
   m_ObjectHideFlags: 0

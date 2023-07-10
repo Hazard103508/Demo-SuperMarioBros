@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
+using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -16,7 +17,7 @@ namespace Mario.Game.Player
         [SerializeField] private GameObject raycastRangesSmall;
 
         private PlayerProfile _profile;
-        private Bounds<bool> _proximityBlock = new Bounds<bool>();
+        private Bounds<RayHitInfo> _proximityBlock = new Bounds<RayHitInfo>();
         private Vector2 _currentSpeed;
         private float _lastJumpPressed = 0;
         private PlayerModes _mode;
@@ -39,7 +40,7 @@ namespace Mario.Game.Player
         }
 
         public float WalkSpeedFactor => Mathf.Abs(_currentSpeed.x) / _profile.Walk.MaxSpeed;
-        public bool IsGrounded => _proximityBlock.bottom;
+        public bool IsGrounded => _proximityBlock.bottom.IsBlock;
         public bool IsJumping { get; private set; }
         public bool IsDucking
         {
@@ -106,7 +107,7 @@ namespace Mario.Game.Player
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
-            
+
         }
         private void LateUpdate()
         {
@@ -172,7 +173,7 @@ namespace Mario.Game.Player
                 _currentSpeed.x = Mathf.MoveTowards(_currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
-            if (_currentSpeed.x > 0 && _proximityBlock.right || _currentSpeed.x < 0 && _proximityBlock.left)
+            if (_currentSpeed.x > 0 && _proximityBlock.right.IsBlock || _currentSpeed.x < 0 && _proximityBlock.left.IsBlock)
                 _currentSpeed.x = 0; // Don't walk through walls
         }
         private void CalculateGravity()
@@ -211,7 +212,7 @@ namespace Mario.Game.Player
             if (_currentSpeed.y > _profile.Jump.MaxSpeed)
                 _currentSpeed.y = _profile.Jump.MaxSpeed;
 
-            if (_proximityBlock.top)
+            if (_proximityBlock.top.IsBlock)
             {
                 if (_currentSpeed.y > 0)
                 {
@@ -231,7 +232,7 @@ namespace Mario.Game.Player
 
             // fuerzo ajuste de posicion en los lados de los bloques 
             //if (!IsGrounded || IsStuck)
-                nextPosition = AdjustHorizontalPosition(nextPosition);
+            nextPosition = AdjustHorizontalPosition(nextPosition);
 
             transform.position = nextPosition;
             IsStuck = false;
@@ -240,11 +241,17 @@ namespace Mario.Game.Player
         }
         private Vector3 AdjustHorizontalPosition(Vector3 position)
         {
-            if (!_proximityBlock.left && _proximityBlock.right)
-                position.x -= _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-            else if (!_proximityBlock.right && _proximityBlock.left)
-                position.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-            else if (_proximityBlock.right && _proximityBlock.left)
+            if (!_proximityBlock.left.IsBlock && _proximityBlock.right.IsBlock)
+            {
+                var hitObject = _proximityBlock.right.hitObjects.First();
+                position.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
+            else if (!_proximityBlock.right.IsBlock && _proximityBlock.left.IsBlock)
+            {
+                var hitObject = _proximityBlock.left.hitObjects.First();
+                position.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
+            else if (_proximityBlock.right.IsBlock && _proximityBlock.left.IsBlock)
                 position.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
 
             return position;
@@ -272,10 +279,10 @@ namespace Mario.Game.Player
         #endregion
 
         #region On Ray Range Hit
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityBlock.bottom = hitInfo.IsBlock;
-        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo.IsBlock;
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityBlock.bottom = hitInfo;
+        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo;
         #endregion
 
         #region On Events

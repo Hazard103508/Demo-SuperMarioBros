@@ -11,11 +11,9 @@ namespace UnityShared.Behaviours.Various.RaycastRange
     public class RaycastRange : MonoBehaviour
     {
         [SerializeField] protected RaycastRangeProfile _profile;
-        [SerializeField] protected bool fixOnCollision;
-
         public UnityEvent<RayHitInfo> onHit;
 
-        void Update()
+        private void Update()
         {
             CalculateCollision();
         }
@@ -43,7 +41,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
 
             var _block = GetHitObject(range, _profile.BlockLayers);
             hits.AddRange(_block);
-            
+
             var _noBlock = GetHitObject(range, _profile.OtherLayers);
             hits.AddRange(_noBlock);
 
@@ -52,13 +50,19 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         private List<HitObject> GetHitObject(RayRange range, LayerMask layerMask)
         {
             var hits = GetRaycastHit(range, layerMask);
-            
+
+            var relativePosition = new Vector2(
+                (_profile.Range.EndPoint.x + _profile.Range.StartPoint.x) / 2,
+                (_profile.Range.EndPoint.y + _profile.Range.StartPoint.y) / 2
+            ) + (_profile.Ray.Direction * (_profile.Ray.Length + 0.001f));
+
             return hits
                 .GroupBy(h => h.collider.gameObject)
                 .Select(h => new HitObject()
                 {
                     Object = h.Key,
-                    Point = new Vector2(h.Average(x => x.point.x), h.Average(x => x.point.y))
+                    Point = new Vector2(h.Average(x => x.point.x), h.Average(x => x.point.y)),
+                    RelativePosition = relativePosition
                 })
                 .ToList();
         }
@@ -80,7 +84,6 @@ namespace UnityShared.Behaviours.Various.RaycastRange
                     yield return Vector2.Lerp(range.Start, range.End, t);
                 }
         }
-
         private void OnDrawGizmos()
         {
             var rayRange = CalculateRayRange();
