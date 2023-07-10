@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityShared.Commons.Structs;
@@ -10,6 +11,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
     public class RaycastRange : MonoBehaviour
     {
         [SerializeField] protected RaycastRangeProfile _profile;
+        [SerializeField] protected bool fixOnCollision;
 
         public UnityEvent<RayHitInfo> onHit;
 
@@ -26,34 +28,45 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         }
         private void CalculateCollision()
         {
+
             var rayBound = CalculateRayRange();
             var hitInfo = new RayHitInfo()
             {
-                IsBlock = CalculateCollisionDetection(rayBound, out List<GameObject> hits)
+                IsBlock = CalculateCollisionDetection(rayBound, out List<HitObject> hits)
             };
             hitInfo.hitObjects = hits;
-
             onHit.Invoke(hitInfo);
         }
-        private bool CalculateCollisionDetection(RayRange range, out List<GameObject> hits)
+        private bool CalculateCollisionDetection(RayRange range, out List<HitObject> hits)
         {
-            hits = new List<GameObject>();
+            hits = new List<HitObject>();
 
-            var _block = GetHitGameObjects(range, _profile.BlockLayers);
+            var _block = GetHitObject(range, _profile.BlockLayers);
             hits.AddRange(_block);
-
-            var _noBlock = GetHitGameObjects(range, _profile.OtherLayers);
+            
+            var _noBlock = GetHitObject(range, _profile.OtherLayers);
             hits.AddRange(_noBlock);
 
             return _block.Any();
         }
-        private List<GameObject> GetHitGameObjects(RayRange range, LayerMask layerMask)
+        private List<HitObject> GetHitObject(RayRange range, LayerMask layerMask)
+        {
+            var hits = GetRaycastHit(range, layerMask);
+            
+            return hits
+                .GroupBy(h => h.collider.gameObject)
+                .Select(h => new HitObject()
+                {
+                    Object = h.Key,
+                    Point = new Vector2(h.Average(x => x.point.x), h.Average(x => x.point.y))
+                })
+                .ToList();
+        }
+        private List<RaycastHit2D> GetRaycastHit(RayRange range, LayerMask layerMask)
         {
             return EvaluateRayPositions(range)
                 .Select(point => Physics2D.Raycast(point, range.Dir, _profile.Ray.Length, layerMask))
                 .Where(hit => hit.collider != null && hit.collider.gameObject.activeSelf)
-                .Select(hit => hit.collider.gameObject)
-                .Distinct()
                 .ToList();
         }
         private IEnumerable<Vector2> EvaluateRayPositions(RayRange range)

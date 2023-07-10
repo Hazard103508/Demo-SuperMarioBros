@@ -115,18 +115,18 @@ namespace Mario.Game.Items
         {
             _proximityBlock.bottom = hitInfo.IsBlock;
 
-            foreach (var obj in hitInfo.hitObjects)
+            foreach (var hit in hitInfo.hitObjects)
             {
-                if (_hitBox != null && obj.Equals(_hitBox))
+                if (_hitBox != null && hit.Equals(_hitBox))
                     continue;
 
-                var box = obj.GetComponent<BottomHitableBox>();
+                var box = hit.Object.GetComponent<BottomHitableBox>();
                 if (box != null && box.IsJumping)
                 {
-                    _hitBox = obj;
+                    _hitBox = hit.Object;
                     Jump();
 
-                    if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - obj.transform.position.x))
+                    if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - hit.Object.transform.position.x))
                         _currentSpeed.x *= -1;
 
                     return;

@@ -144,12 +144,12 @@ namespace Mario.Game.Npc
         public void OnProximityRayHitBottom(RayHitInfo hitInfo)
         {
             _proximityBlock.bottom = hitInfo.IsBlock;
-            foreach (var obj in hitInfo.hitObjects)
+            foreach (var hit in hitInfo.hitObjects)
             {
-                var box = obj.GetComponent<BottomHitableBox>();
+                var box = hit.Object.GetComponent<BottomHitableBox>();
                 if (box != null && box.IsJumping)
                 {
-                    Kick(obj);
+                    Kick(hit.Object);
                     return;
                 }
             };

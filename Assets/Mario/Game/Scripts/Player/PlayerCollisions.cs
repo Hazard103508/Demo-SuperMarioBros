@@ -9,7 +9,7 @@ namespace Mario.Game.Player
     public class PlayerCollisions : MonoBehaviour
     {
         #region Variables
-        private Bounds<List<GameObject>> _proximityHit = new Bounds<List<GameObject>>();
+        private Bounds<List<HitObject>> _proximityHit = new Bounds<List<HitObject>>();
         private PlayerController _playerController;
         #endregion
 
@@ -32,27 +32,27 @@ namespace Mario.Game.Player
         public void EvaluateHit()
         {
             if (_proximityHit.top != null)
-                foreach (GameObject obj in _proximityHit.top)
-                    HitObjectOnTop(obj);
+                foreach (HitObject hit in _proximityHit.top)
+                    HitObjectOnTop(hit);
 
             if (_proximityHit.bottom != null)
-                foreach (GameObject obj in _proximityHit.bottom)
-                    HitObjectOnBottom(obj);
+                foreach (HitObject hit in _proximityHit.bottom)
+                    HitObjectOnBottom(hit);
 
             if (_proximityHit.left != null)
-                foreach (GameObject obj in _proximityHit.left)
-                    HitObjectOnLeft(obj);
+                foreach (HitObject hit in _proximityHit.left)
+                    HitObjectOnLeft(hit);
 
             if (_proximityHit.right != null)
-                foreach (GameObject obj in _proximityHit.right)
-                    HitObjectOnRight(obj);
+                foreach (HitObject hit in _proximityHit.right)
+                    HitObjectOnRight(hit);
         }
-        private bool HitObjectOnTop(GameObject obj)
+        private bool HitObjectOnTop(HitObject hit)
         {
-            if (obj == null)
+            if (hit == null)
                 return false;
 
-            IBottomHitable script = obj.GetComponent<IBottomHitable>();
+            IBottomHitable script = hit.Object.GetComponent<IBottomHitable>();
             if (script != null)
             {
                 script.OnHitFromBottom(_playerController);
@@ -61,12 +61,12 @@ namespace Mario.Game.Player
 
             return false;
         }
-        private bool HitObjectOnBottom(GameObject obj)
+        private bool HitObjectOnBottom(HitObject hit)
         {
-            if (obj == null)
+            if (hit == null)
                 return false;
 
-            ITopHitable script = obj.GetComponent<ITopHitable>();
+            ITopHitable script = hit.Object.GetComponent<ITopHitable>();
             if (script != null)
             {
                 script.OnHitFromTop(_playerController);
@@ -75,12 +75,12 @@ namespace Mario.Game.Player
 
             return false;
         }
-        private bool HitObjectOnRight(GameObject obj)
+        private bool HitObjectOnRight(HitObject hit)
         {
-            if (obj == null)
+            if (hit == null)
                 return false;
 
-            ILeftHitable script = obj.GetComponent<ILeftHitable>();
+            ILeftHitable script = hit.Object.GetComponent<ILeftHitable>();
             if (script != null)
             {
                 script.OnHitFromLeft(_playerController);
@@ -89,12 +89,12 @@ namespace Mario.Game.Player
 
             return false;
         }
-        private bool HitObjectOnLeft(GameObject obj)
+        private bool HitObjectOnLeft(HitObject hit)
         {
-            if (obj == null)
+            if (hit == null)
                 return false;
 
-            IRightHitable script = obj.GetComponent<IRightHitable>();
+            IRightHitable script = hit.Object.GetComponent<IRightHitable>();
             if (script != null)
             {
                 script.OnHitFromRight(_playerController);
