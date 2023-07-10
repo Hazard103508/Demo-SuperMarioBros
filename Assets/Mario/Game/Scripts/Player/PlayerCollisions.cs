@@ -1,4 +1,5 @@
 using Mario.Game.Interfaces;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -47,57 +48,19 @@ namespace Mario.Game.Player
                 foreach (HitObject hit in _proximityHit.right)
                     HitObjectOnRight(hit);
         }
-        private bool HitObjectOnTop(HitObject hit)
+        private bool HitObjectOnTop(HitObject hit) => HitObjectOn<IBottomHitable>(hit, script => script.OnHitFromBottom(_playerController));
+        private bool HitObjectOnBottom(HitObject hit) => HitObjectOn<ITopHitable>(hit, script => script.OnHitFromTop(_playerController));
+        private bool HitObjectOnRight(HitObject hit) => HitObjectOn<ILeftHitable>(hit, script => script.OnHitFromLeft(_playerController));
+        private bool HitObjectOnLeft(HitObject hit) => HitObjectOn<IRightHitable>(hit, script => script.OnHitFromRight(_playerController));
+        private bool HitObjectOn<T>(HitObject hit, Action<T> onHitFunc)
         {
-            if (hit == null)
+            if (hit == null || hit.Object == null)
                 return false;
 
-            IBottomHitable script = hit.Object.GetComponent<IBottomHitable>();
+            T script = hit.Object.GetComponent<T>();
             if (script != null)
             {
-                script.OnHitFromBottom(_playerController);
-                return true;
-            }
-
-            return false;
-        }
-        private bool HitObjectOnBottom(HitObject hit)
-        {
-            if (hit == null)
-                return false;
-
-            ITopHitable script = hit.Object.GetComponent<ITopHitable>();
-            if (script != null)
-            {
-                script.OnHitFromTop(_playerController);
-                return true;
-            }
-
-            return false;
-        }
-        private bool HitObjectOnRight(HitObject hit)
-        {
-            if (hit == null)
-                return false;
-
-            ILeftHitable script = hit.Object.GetComponent<ILeftHitable>();
-            if (script != null)
-            {
-                script.OnHitFromLeft(_playerController);
-                return true;
-            }
-
-            return false;
-        }
-        private bool HitObjectOnLeft(HitObject hit)
-        {
-            if (hit == null)
-                return false;
-
-            IRightHitable script = hit.Object.GetComponent<IRightHitable>();
-            if (script != null)
-            {
-                script.OnHitFromRight(_playerController);
+                onHitFunc.Invoke(script);
                 return true;
             }
 
