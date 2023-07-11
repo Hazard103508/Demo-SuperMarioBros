@@ -174,7 +174,7 @@ namespace Mario.Game.Player
             }
 
             if (_currentSpeed.x > 0 && _proximityBlock.right.IsBlock || _currentSpeed.x < 0 && _proximityBlock.left.IsBlock)
-                _currentSpeed.x = 0; // Don't walk through walls
+                _currentSpeed.x = 0; // se detiene si hay obstaculo
         }
         private void CalculateGravity()
         {
@@ -212,13 +212,10 @@ namespace Mario.Game.Player
             if (_currentSpeed.y > _profile.Jump.MaxSpeed)
                 _currentSpeed.y = _profile.Jump.MaxSpeed;
 
-            if (_proximityBlock.top.IsBlock)
+            if (_proximityBlock.top.IsBlock && _currentSpeed.y > 0)
             {
-                if (_currentSpeed.y > 0)
-                {
-                    _currentSpeed.y = 0;
-                    _lastJumpPressed = 0;
-                }
+                _currentSpeed.y = 0;
+                _lastJumpPressed = 0;
             }
         }
         private void MoveCharacter()
@@ -226,35 +223,28 @@ namespace Mario.Game.Player
             RawMovement = _currentSpeed;
             var nextPosition = transform.position + RawMovement * Time.deltaTime;
 
-            // ajusto posicion de contacto con el suelo
             if (IsGrounded && RawMovement.y == 0)
+            {
                 nextPosition.y = Mathf.Round(nextPosition.y);
+                //var hitObject = _proximityBlock.bottom.hitObjects.First();
+                //nextPosition.y = hitObject.Point.y - (0.5f + hitObject.RelativePosition.y) - 0.002f; // agrego valor fijo adicional para asegurarme que siga colicionando con el suelo
+            }
 
-            // fuerzo ajuste de posicion en los lados de los bloques 
-            //if (!IsGrounded || IsStuck)
-            nextPosition = AdjustHorizontalPosition(nextPosition);
+            if (_proximityBlock.right.IsBlock && !_proximityBlock.left.IsBlock)
+            {
+                var hitObject = _proximityBlock.right.hitObjects.First();
+                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
+            else if (_proximityBlock.right.IsBlock || _proximityBlock.left.IsBlock)
+            {
+                var hitObject = _proximityBlock.left.hitObjects.First();
+                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
 
             transform.position = nextPosition;
             IsStuck = false;
 
             AllServices.PlayerService.Position = transform.position;
-        }
-        private Vector3 AdjustHorizontalPosition(Vector3 position)
-        {
-            if (!_proximityBlock.left.IsBlock && _proximityBlock.right.IsBlock)
-            {
-                var hitObject = _proximityBlock.right.hitObjects.First();
-                position.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
-            }
-            else if (!_proximityBlock.right.IsBlock && _proximityBlock.left.IsBlock)
-            {
-                var hitObject = _proximityBlock.left.hitObjects.First();
-                position.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
-            }
-            else if (_proximityBlock.right.IsBlock && _proximityBlock.left.IsBlock)
-                position.x += _profile.Jump.HorizontalAdjustmentSpeed * Time.deltaTime;
-
-            return position;
         }
         private void SetSmallCollider()
         {

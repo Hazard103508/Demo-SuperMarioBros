@@ -35,7 +35,6 @@ namespace Mario.Game.ScriptableObjects.Map
             public float MinBufferTime;
             public float MaxWalkBufferTime;
             public float MaxRunBufferTime;
-            public float HorizontalAdjustmentSpeed;
         }
         [Serializable]
         public class PlayerSpritePositions
