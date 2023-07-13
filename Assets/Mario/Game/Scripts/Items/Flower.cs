@@ -11,6 +11,7 @@ namespace Mario.Game.Items
     {
         [SerializeField] protected FlowerProfile _profile;
         private bool isCollected;
+        private bool _isRising;
 
         private void Start()
         {
@@ -18,6 +19,7 @@ namespace Mario.Game.Items
         }
         private IEnumerator RiseFlower()
         {
+            _isRising = true;
             var _initPosition = transform.transform.position;
             var _targetPosition = _initPosition + Vector3.up;
             float _timer = 0;
@@ -29,6 +31,7 @@ namespace Mario.Game.Items
                 transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
                 yield return null;
             }
+            _isRising = false;
         }
 
         #region On Player Hit
@@ -40,7 +43,7 @@ namespace Mario.Game.Items
 
         private void CollectFlower(PlayerController player)
         {
-            if (isCollected)
+            if (isCollected || _isRising)
                 return;
 
             isCollected = true;

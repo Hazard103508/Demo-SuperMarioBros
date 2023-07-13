@@ -72,7 +72,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 0
 --- !u!1 &291091329232359671
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +144,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 1
 --- !u!1 &291091329390003536
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,7 +216,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 0
 --- !u!1 &291091329395467553
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +372,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 291091329458579043}
+  - component: {fileID: 8794066620887016072}
   m_Layer: 0
   m_Name: RayRangesSmall
   m_TagString: Untagged
@@ -401,6 +399,19 @@ Transform:
   m_Father: {fileID: 6723613195399038918}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8794066620887016072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291091329458579042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39f30715fc28514b9bca928d4f0ad08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bottomRayCast: {fileID: 344233053775216435}
 --- !u!1 &291091330739600078
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +484,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 0
 --- !u!1 &499734114947593047
 GameObject:
   m_ObjectHideFlags: 0
@@ -854,7 +864,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 0
 --- !u!1 &5905267525398509206
 GameObject:
   m_ObjectHideFlags: 0
@@ -927,7 +936,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 0
 --- !u!1 &6085979776724558922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1000,7 +1008,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 0
 --- !u!1 &6182516471874506209
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1017,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1164293907729011702}
+  - component: {fileID: 4980339478295077817}
   m_Layer: 0
   m_Name: RayRangesBig
   m_TagString: Untagged
@@ -1036,6 +1044,19 @@ Transform:
   m_Father: {fileID: 6723613195399038918}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4980339478295077817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182516471874506209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39f30715fc28514b9bca928d4f0ad08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bottomRayCast: {fileID: 5157173523578981362}
 --- !u!1 &6264128962299356619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,8 +1248,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerSoundFX: {fileID: 2403486986423070893}
   _render: {fileID: 291091329395467555}
-  raycastRangesBig: {fileID: 6182516471874506209}
-  raycastRangesSmall: {fileID: 291091329458579042}
+  raycastRangesBig: {fileID: 4980339478295077817}
+  raycastRangesSmall: {fileID: 8794066620887016072}
 --- !u!1 &6739600964802990460
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1322,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  aux: 0
 --- !u!1 &6762261028413883523
 GameObject:
   m_ObjectHideFlags: 0

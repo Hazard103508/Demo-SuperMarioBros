@@ -16,14 +16,15 @@ namespace Mario.Game.Items
 
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityBlock = new();
-        private bool _isRising;
         private bool _isJumping;
         private GameObject _hitBox;
+
+        protected bool IsRising { get; private set; }
 
         #region Unity Methods
         protected virtual void Awake()
         {
-            _isRising = true;
+            IsRising = true;
             _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
         }
         private void Start()
@@ -32,7 +33,7 @@ namespace Mario.Game.Items
         }
         private void Update()
         {
-            if (_isRising)
+            if (IsRising)
                 return;
 
             if (!AllServices.PlayerService.CanMove)
@@ -92,7 +93,7 @@ namespace Mario.Game.Items
                 yield return null;
             }
 
-            _isRising = false;
+            IsRising = false;
         }
         private void Jump()
         {

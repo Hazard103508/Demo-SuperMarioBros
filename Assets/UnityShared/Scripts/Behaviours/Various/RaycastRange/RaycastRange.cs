@@ -17,15 +17,8 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             CalculateCollision();
         }
 
-        private RayRange CalculateRayRange()
+        public void CalculateCollision()
         {
-            var start = (Vector2)transform.position + _profile.Range.StartPoint;
-            var end = (Vector2)transform.position + _profile.Range.EndPoint;
-            return new RayRange(start, end, _profile.Ray.Direction);
-        }
-        private void CalculateCollision()
-        {
-
             var rayBound = CalculateRayRange();
             var hitInfo = new RayHitInfo()
             {
@@ -33,6 +26,14 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             };
             hitInfo.hitObjects = hits;
             onHit.Invoke(hitInfo);
+        }
+
+        private RayRange CalculateRayRange()
+        {
+            var position = (Vector2)transform.position;
+            var start = position + _profile.Range.StartPoint;
+            var end = position + _profile.Range.EndPoint;
+            return new RayRange(start, end, _profile.Ray.Direction);
         }
         private bool CalculateCollisionDetection(RayRange range, out List<HitObject> hits)
         {

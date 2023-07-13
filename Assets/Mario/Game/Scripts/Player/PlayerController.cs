@@ -3,6 +3,7 @@ using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
 using System.Linq;
 using UnityEngine;
+using UnityShared.Behaviours.Various.RaycastRange;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -13,8 +14,8 @@ namespace Mario.Game.Player
         [SerializeField] private PlayerSoundFX _playerSoundFX;
         [SerializeField] private SpriteRenderer _render;
         [Header("RayCast")]
-        [SerializeField] private GameObject raycastRangesBig;
-        [SerializeField] private GameObject raycastRangesSmall;
+        [SerializeField] private PlayerRaycast raycastRangesBig;
+        [SerializeField] private PlayerRaycast raycastRangesSmall;
 
         private PlayerProfile _profile;
         private Bounds<RayHitInfo> _proximityBlock = new Bounds<RayHitInfo>();
@@ -40,7 +41,7 @@ namespace Mario.Game.Player
         }
 
         public float WalkSpeedFactor => Mathf.Abs(_currentSpeed.x) / _profile.Walk.MaxSpeed;
-        public bool IsGrounded => _proximityBlock.bottom.IsBlock;
+        public bool IsGrounded => _proximityBlock != null && _proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock;
         public bool IsJumping { get; private set; }
         public bool IsDucking
         {
@@ -57,7 +58,6 @@ namespace Mario.Game.Player
                     SetModeCollider(_mode);
             }
         }
-        public bool IsStuck { get; set; }
         public bool IsDead { get; private set; }
         public bool IsAutoWalk { get; set; }
         public bool IsInvensible { get; set; }
@@ -222,27 +222,11 @@ namespace Mario.Game.Player
         {
             RawMovement = _currentSpeed;
             var nextPosition = transform.position + RawMovement * Time.deltaTime;
-
-            if (IsGrounded && RawMovement.y == 0)
-            {
-                nextPosition.y = Mathf.Round(nextPosition.y);
-                //var hitObject = _proximityBlock.bottom.hitObjects.First();
-                //nextPosition.y = hitObject.Point.y - (0.5f + hitObject.RelativePosition.y) - 0.002f; // agrego valor fijo adicional para asegurarme que siga colicionando con el suelo
-            }
-
-            if (_proximityBlock.right.IsBlock && !_proximityBlock.left.IsBlock)
-            {
-                var hitObject = _proximityBlock.right.hitObjects.First();
-                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
-            }
-            else if (_proximityBlock.right.IsBlock || _proximityBlock.left.IsBlock)
-            {
-                var hitObject = _proximityBlock.left.hitObjects.First();
-                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
-            }
-
             transform.position = nextPosition;
-            IsStuck = false;
+
+            SetHorizontalAlignment(ref nextPosition);
+            SetVerticalAlignment(ref nextPosition);
+            transform.position = nextPosition;
 
             AllServices.PlayerService.Position = transform.position;
         }
@@ -263,8 +247,29 @@ namespace Mario.Game.Player
         }
         private void EnableRaycastRange(bool enableSmall = false, bool enableBig = false)
         {
-            raycastRangesSmall.SetActive(enableSmall);
-            raycastRangesBig.SetActive(enableBig);
+            raycastRangesSmall.gameObject.SetActive(enableSmall);
+            raycastRangesBig.gameObject.SetActive(enableBig);
+        }
+        private void SetHorizontalAlignment(ref Vector3 nextPosition)
+        {
+            if (_proximityBlock.right.IsBlock && !_proximityBlock.left.IsBlock)
+            {
+                var hitObject = _proximityBlock.right.hitObjects.First();
+                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
+            else if (_proximityBlock.right.IsBlock || _proximityBlock.left.IsBlock)
+            {
+                var hitObject = _proximityBlock.left.hitObjects.First();
+                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
+        }
+        private void SetVerticalAlignment(ref Vector3 nextPosition)
+        {
+            var playerRaycast = raycastRangesBig.gameObject.activeSelf ? raycastRangesBig : raycastRangesSmall;
+            playerRaycast.CalculateBottomCollision(); // valido colision con el suelo para nueva posision
+
+            if (IsGrounded && RawMovement.y <= 0)
+                nextPosition.y = Mathf.Round(nextPosition.y);
         }
         #endregion
 

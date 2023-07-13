@@ -29,8 +29,6 @@ namespace Mario.Game.Boxes
             {
                 if (player.IsDucking)
                     return;
-
-                player.IsStuck = true;
             }
         }
         private IEnumerator InstantiateBreakedBox()

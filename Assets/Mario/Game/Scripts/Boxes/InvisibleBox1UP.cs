@@ -27,7 +27,6 @@ namespace Mario.Game.Boxes
             if (_disabledTimer > 0) // me aseguro que el primer contacto sea desde abajo
                 return;
 
-
             if (!IsHitable)
                 return;
 

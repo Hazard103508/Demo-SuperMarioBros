@@ -17,7 +17,7 @@ namespace Mario.Game.Items
 
         private void CollectMushroom(PlayerController player)
         {
-            if (isCollected)
+            if (isCollected || IsRising)
                 return;
 
             isCollected = true;
