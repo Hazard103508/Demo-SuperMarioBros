@@ -10,11 +10,13 @@ namespace UnityShared.Behaviours.Various.RaycastRange
     public class RaycastRange : MonoBehaviour
     {
         [SerializeField] protected RaycastRangeProfile _profile;
+        public bool runAutomatically = true;
         public UnityEvent<RayHitInfo> onHit;
 
         private void Update()
         {
-            CalculateCollision();
+            if (runAutomatically)
+                CalculateCollision();
         }
 
         public void CalculateCollision()

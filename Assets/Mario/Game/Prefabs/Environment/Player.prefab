@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -117,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -189,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -412,6 +415,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bottomRayCast: {fileID: 344233053775216435}
+  _leftRayCast: {fileID: 6087204728031929745}
+  _rightRayCast: {fileID: 8258127753590359651}
+  _topRayCast: {fileID: 2411017874059504791}
 --- !u!1 &291091330739600078
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -837,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -909,6 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -981,6 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -1057,6 +1067,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bottomRayCast: {fileID: 5157173523578981362}
+  _leftRayCast: {fileID: 1254579488606277761}
+  _rightRayCast: {fileID: 6737024445801010869}
+  _topRayCast: {fileID: 1160119396145581247}
 --- !u!1 &6264128962299356619
 GameObject:
   m_ObjectHideFlags: 0
@@ -1295,6 +1308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:

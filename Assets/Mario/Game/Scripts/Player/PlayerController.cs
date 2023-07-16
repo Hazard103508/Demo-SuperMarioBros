@@ -224,6 +224,9 @@ namespace Mario.Game.Player
             var nextPosition = transform.position + RawMovement * Time.deltaTime;
             transform.position = nextPosition;
 
+            var playerRaycast = raycastRangesBig.gameObject.activeSelf ? raycastRangesBig : raycastRangesSmall;
+            playerRaycast.CalculateCollision(); // valido coliciones 
+
             SetHorizontalAlignment(ref nextPosition);
             SetVerticalAlignment(ref nextPosition);
             transform.position = nextPosition;
@@ -265,9 +268,6 @@ namespace Mario.Game.Player
         }
         private void SetVerticalAlignment(ref Vector3 nextPosition)
         {
-            var playerRaycast = raycastRangesBig.gameObject.activeSelf ? raycastRangesBig : raycastRangesSmall;
-            playerRaycast.CalculateBottomCollision(); // valido colision con el suelo para nueva posision
-
             if (IsGrounded && RawMovement.y <= 0)
                 nextPosition.y = Mathf.Round(nextPosition.y);
         }

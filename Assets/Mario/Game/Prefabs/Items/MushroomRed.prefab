@@ -79,9 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 1d6964241a2f49146a6658e86c29c0dc, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
+  runAutomatically: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -193,10 +191,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mushroomProfile: {fileID: 11400000, guid: 738220a4ab7a0c841938f2832313ea63, type: 2}
-  raycastRanges:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   _redMushroomProfile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
 --- !u!1 &1068909089559928125
 GameObject:
@@ -243,9 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 0f55032fafce7b742b06d17d8fa3e6ac, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
+  runAutomatically: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -306,9 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: d764ebb188295504490e601c5fd79f52, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
+  runAutomatically: 1
   onHit:
     m_PersistentCalls:
       m_Calls:

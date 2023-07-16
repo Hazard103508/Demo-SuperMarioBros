@@ -191,9 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 1d6964241a2f49146a6658e86c29c0dc, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
+  runAutomatically: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -351,9 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 0f55032fafce7b742b06d17d8fa3e6ac, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
+  runAutomatically: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -414,9 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: d764ebb188295504490e601c5fd79f52, type: 2}
-  SpriteSize:
-    Width: 0
-    Height: 0
+  runAutomatically: 1
   onHit:
     m_PersistentCalls:
       m_Calls:
