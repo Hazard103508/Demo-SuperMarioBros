@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
+  m_Name: KoopaRaycastRangeRightProfile
+  m_EditorClassIdentifier: 
+  BlockLayers:
+    serializedVersion: 2
+    m_Bits: 520
+  OtherLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  Range:
+    StartPoint: {x: 0.45, y: -0.2}
+    EndPoint: {x: 0.45, y: -0.9}
+    Count: 4
+  Ray:
+    Direction: {x: 1, y: 0}
+    Length: 0.05
