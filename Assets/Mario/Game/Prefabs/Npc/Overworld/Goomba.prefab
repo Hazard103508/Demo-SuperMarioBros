@@ -157,12 +157,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b859f79a5fe5a4c8226edc0b1789ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goombaProfile: {fileID: 11400000, guid: dff77bfa6ba01f1469cd5f038f586825, type: 2}
   _renderer: {fileID: 2705183971576495532}
-  _animator: {fileID: 8755595739624655819}
   _raycastRanges: {fileID: 7713057739221743936}
-  _killSoundFX: {fileID: 140150993567704026}
+  _hitSoundFX: {fileID: 140150993567704026}
   _kickSoundFX: {fileID: 3451042922612196846}
+  _animator: {fileID: 8755595739624655819}
+  _profile: {fileID: 11400000, guid: dff77bfa6ba01f1469cd5f038f586825, type: 2}
 --- !u!1 &3960439327849646874
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 7981322440568792584}
   - component: {fileID: 140150993567704026}
   m_Layer: 8
-  m_Name: KillSoundFX
+  m_Name: HitSoundFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
