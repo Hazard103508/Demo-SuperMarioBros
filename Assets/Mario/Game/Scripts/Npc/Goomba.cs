@@ -19,6 +19,7 @@ namespace Mario.Game.Npc
         protected override float Profile_FallSpeed => _profile.FallSpeed;
         protected override float Profile_MaxFallSpeed => _profile.MaxFallSpeed;
         protected override int Profile_PointsHit => _profile.Points;
+        protected override int Profile_PointsKill => _profile.Points;
         protected override float Profile_JumpAcceleration => _profile.JumpAcceleration;
         #endregion
     }

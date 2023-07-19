@@ -18,7 +18,7 @@ namespace Mario.Game.Npc
         [SerializeField] protected Animator _animator;
 
         protected Vector3 _currentSpeed;
-        protected bool _isKicked;
+        protected bool _isDead;
         protected Bounds<bool> _proximityBlock = new();
 
         #region Unity Methods
@@ -46,6 +46,7 @@ namespace Mario.Game.Npc
         protected virtual float Profile_FallSpeed => 0;
         protected virtual float Profile_MaxFallSpeed => 0;
         protected virtual int Profile_PointsHit => 0;
+        protected virtual int Profile_PointsKill => 0;
         protected virtual float Profile_JumpAcceleration => 0;
         #endregion
 
@@ -64,16 +65,16 @@ namespace Mario.Game.Npc
                     _currentSpeed.y = -Profile_MaxFallSpeed;
             }
         }
-        private void Kick(GameObject box)
+        private void Kill(GameObject box)
         {
-            _isKicked = true;
+            _isDead = true;
 
             _kickSoundFX.Play();
-            _animator.SetTrigger("Kicked");
+            _animator.SetTrigger("Kill");
             _renderer.sortingLayerName = "Dead";
 
-            AllServices.ScoreService.Add(Profile_PointsHit);
-            AllServices.ScoreService.ShowPoint(Profile_PointsHit, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
+            AllServices.ScoreService.Add(Profile_PointsKill);
+            AllServices.ScoreService.ShowPoint(Profile_PointsKill, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
 
             if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - box.transform.position.x))
                 _currentSpeed.x *= -1;
@@ -85,15 +86,21 @@ namespace Mario.Game.Npc
             _proximityBlock.right = false;
 
             Destroy(_raycastRanges.gameObject);
+
+            OnKill();
         }
         private void DamagePlayer(PlayerController player)
         {
-            if (!enabled || _isKicked)
+            if (!enabled || _isDead)
                 return;
 
             player.DamagePlayer();
         }
-
+        private IEnumerator OnHit()
+        {
+            yield return new WaitForSeconds(0.4f);
+            Destroy(gameObject);
+        }
         #endregion
 
         #region Protected Methods
@@ -116,7 +123,7 @@ namespace Mario.Game.Npc
         }
         protected virtual void Hit(PlayerController player)
         {
-            if (!enabled || _isKicked)
+            if (!enabled || _isDead)
                 return;
 
             _hitSoundFX.Play();
@@ -126,14 +133,12 @@ namespace Mario.Game.Npc
             AllServices.ScoreService.Add(Profile_PointsHit);
             AllServices.ScoreService.ShowPoint(Profile_PointsHit, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
 
-            StartCoroutine(OnKilled());
+            StartCoroutine(OnHit());
 
             player.BounceJump();
         }
-        protected virtual IEnumerator OnKilled()
-        {
-            yield return new WaitForSeconds(0.4f);
-            Destroy(gameObject);
+        protected virtual void OnKill()
+        { 
         }
         #endregion
 
@@ -157,7 +162,7 @@ namespace Mario.Game.Npc
                 var box = hit.Object.GetComponent<BottomHitableBox>();
                 if (box != null && box.IsJumping)
                 {
-                    Kick(hit.Object);
+                    Kill(hit.Object);
                     return;
                 }
             };

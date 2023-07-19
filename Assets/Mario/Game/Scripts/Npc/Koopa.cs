@@ -7,22 +7,23 @@ namespace Mario.Game.Npc
 {
     public class Koopa : NPC
     {
-        [SerializeField] private KoopaProfile _koopaProfile;
+        [SerializeField] private KoopaProfile _profile;
         private bool _isInsideShell;
 
         #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
-            _currentSpeed = Vector2.right * _koopaProfile.MoveSpeed;
+            _currentSpeed = Vector2.right * _profile.MoveSpeed;
         }
         #endregion
 
         #region Protected Properties
-        protected override float Profile_FallSpeed => _koopaProfile.FallSpeed;
-        protected override float Profile_MaxFallSpeed => _koopaProfile.MaxFallSpeed;
-        protected override int Profile_PointsHit => _koopaProfile.PointsHit;
-        protected override float Profile_JumpAcceleration => _koopaProfile.JumpAcceleration;
+        protected override float Profile_FallSpeed => _profile.FallSpeed;
+        protected override float Profile_MaxFallSpeed => _profile.MaxFallSpeed;
+        protected override int Profile_PointsHit => _profile.PointsHit;
+        protected override int Profile_PointsKill => _profile.PointsKill;
+        protected override float Profile_JumpAcceleration => _profile.JumpAcceleration;
         #endregion
 
         #region Protected Methods
@@ -48,8 +49,12 @@ namespace Mario.Game.Npc
         }
         protected override void Hit(PlayerController player)
         {
-            if (!enabled || _isKicked)
+            if (!enabled || _isDead)
                 return;
+
+            if (!_isInsideShell)
+                _isInsideShell = true;
+
 
             _hitSoundFX.Play();
             enabled = false;
@@ -59,6 +64,10 @@ namespace Mario.Game.Npc
             AllServices.ScoreService.ShowPoint(Profile_PointsHit, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
 
             player.BounceJump();
+        }
+        protected override void OnKill()
+        {
+            _renderer.transform.position -= Vector3.up * 0.5f;
         }
         #endregion
     }

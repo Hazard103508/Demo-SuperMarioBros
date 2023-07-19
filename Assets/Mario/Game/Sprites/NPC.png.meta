@@ -346,7 +346,7 @@ TextureImporter:
         y: 80
         width: 16
         height: 32
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -367,7 +367,7 @@ TextureImporter:
         y: 80
         width: 16
         height: 32
-      alignment: 0
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
@@ -559,9 +559,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPC_6: 1303413217
       NPC_13: -1986497150
       NPC_25: -664440163
+      NPC_29: 973238089
       NPC_1: -1236738634
       NPC_9: 1351487353
       NPC_24: -26237067
@@ -588,7 +588,7 @@ TextureImporter:
       NPC_3: -1392637762
       NPC_7: 1012417340
       NPC_10: 688096580
-      NPC_29: 973238089
+      NPC_6: 1303413217
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

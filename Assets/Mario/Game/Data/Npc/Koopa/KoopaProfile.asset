@@ -20,4 +20,4 @@ MonoBehaviour:
   MaxFallSpeed: 14.5
   JumpAcceleration: 15
   PointsHit: 100
-  PointsKill: 0
+  PointsKill: 400
