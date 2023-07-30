@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: a166d33b62008af4896ab6bd9d1f8051, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -121,7 +121,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.95}
+  m_Size: {x: 0.89, y: 0.95}
   m_EdgeRadius: 0
 --- !u!114 &3895425941044523143
 MonoBehaviour:
@@ -135,8 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b859f79a5fe5a4c8226edc0b1789ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _raycastRanges: {fileID: 7713057739221743936}
-  _rBody: {fileID: 0}
+  _raycastRanges: {fileID: 4816143696649562683}
   _renderer: {fileID: 2705183971576495532}
   _hitSoundFX: {fileID: 140150993567704026}
   _kickSoundFX: {fileID: 3451042922612196846}
@@ -187,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: ee3bf836f32af1e42a073465f4dd7f52, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -248,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 3f086a57b580dfa42a8d04cd22acba65, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
       m_Calls:
@@ -434,6 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379950002664443939}
+  - component: {fileID: 4816143696649562683}
   m_Layer: 0
   m_Name: RaycastRange
   m_TagString: Untagged
@@ -459,6 +459,22 @@ Transform:
   m_Father: {fileID: 1194221761650623209}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4816143696649562683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7713057739221743936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39f30715fc28514b9bca928d4f0ad08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bottomRayCast: {fileID: 230350645881943826}
+  _leftRayCast: {fileID: 1704425028959934956}
+  _rightRayCast: {fileID: 6314789516101829409}
+  _topRayCast: {fileID: 0}
 --- !u!1 &8190769873219546503
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,6 +60,35 @@ namespace Mario.Game.Npc
         protected virtual float Profile_JumpAcceleration => 0;
         #endregion
 
+        #region Public Methods
+        public void Kill(Vector3 hitPosition)
+        {
+            if (_isDead)
+                return;
+
+            _isDead = true;
+
+            _kickSoundFX.Play();
+            _animator.SetTrigger("Kill");
+            _renderer.sortingLayerName = "Dead";
+
+            AllServices.ScoreService.Add(Profile_PointsKill);
+            AllServices.ScoreService.ShowPoint(Profile_PointsKill, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
+
+            if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - hitPosition.x))
+                _currentSpeed.x *= -1;
+
+            _currentSpeed.y = Profile_JumpAcceleration;
+
+            _proximityBlock.bottom.IsBlock = false; // evito que colicione contra el suelo
+            _proximityBlock.left.IsBlock = false;
+            _proximityBlock.right.IsBlock = false;
+
+            Destroy(_raycastRanges.gameObject);
+            OnKill();
+        }
+        #endregion
+
         #region Private Methods
         private void CalculateGravity()
         {
@@ -74,29 +103,6 @@ namespace Mario.Game.Npc
                 if (_currentSpeed.y < -Profile_MaxFallSpeed)
                     _currentSpeed.y = -Profile_MaxFallSpeed;
             }
-        }
-        private void Kill(GameObject box)
-        {
-            _isDead = true;
-
-            _kickSoundFX.Play();
-            _animator.SetTrigger("Kill");
-            _renderer.sortingLayerName = "Dead";
-
-            AllServices.ScoreService.Add(Profile_PointsKill);
-            AllServices.ScoreService.ShowPoint(Profile_PointsKill, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
-
-            if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - box.transform.position.x))
-                _currentSpeed.x *= -1;
-
-            _currentSpeed.y = Profile_JumpAcceleration;
-
-            _proximityBlock.bottom.IsBlock = false; // evito que colicione contra el suelo
-            _proximityBlock.left.IsBlock = false;
-            _proximityBlock.right.IsBlock = false;
-
-            Destroy(_raycastRanges.gameObject);
-            OnKill();
         }
         private IEnumerator OnHit()
         {
@@ -126,6 +132,9 @@ namespace Mario.Game.Npc
         #region Protected Methods
         protected virtual void CalculateWalk()
         {
+            if (_isDead)
+                return;
+
             if (_proximityBlock.right.IsBlock)
                 _currentSpeed.x = -Mathf.Abs(_currentSpeed.x);
             else if (_proximityBlock.left.IsBlock)
@@ -179,10 +188,10 @@ namespace Mario.Game.Npc
         #endregion
 
         #region On Ray Range Hit
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo;
-        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo)
+        public virtual void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
+        public virtual void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo;
+        public virtual void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo;
+        public virtual void OnProximityRayHitBottom(RayHitInfo hitInfo)
         {
             _proximityBlock.bottom.IsBlock = hitInfo.IsBlock;
             foreach (var hit in hitInfo.hitObjects)
@@ -190,7 +199,7 @@ namespace Mario.Game.Npc
                 var box = hit.Object.GetComponent<BottomHitableBox>();
                 if (box != null && box.IsJumping)
                 {
-                    Kill(hit.Object);
+                    Kill(hit.Object.gameObject.transform.position);
                     return;
                 }
             };

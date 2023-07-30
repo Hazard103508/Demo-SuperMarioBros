@@ -11,7 +11,9 @@ namespace Mario.Game.ScriptableObjects.Items
         public float FallSpeed;
         public float MaxFallSpeed;
         public float JumpAcceleration;
-        public int PointsHit;
+        public int PointsHit1;
+        public int PointsHit2;
         public int PointsKill;
+
     }
 }

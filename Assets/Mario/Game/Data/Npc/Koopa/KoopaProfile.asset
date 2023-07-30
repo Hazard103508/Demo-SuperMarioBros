@@ -16,9 +16,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   MoveSpeed: -2.2
-  BouncingSpeed: 11
+  BouncingSpeed: -11
   FallSpeed: 60
   MaxFallSpeed: 14.5
   JumpAcceleration: 15
-  PointsHit: 100
-  PointsKill: 400
+  PointsHit1: 100
+  PointsHit2: 400
+  PointsKill: 200
