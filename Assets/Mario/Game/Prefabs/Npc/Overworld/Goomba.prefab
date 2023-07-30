@@ -70,7 +70,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1194221761650623209}
-  - component: {fileID: 5026628092654808966}
   - component: {fileID: 257622890496309219}
   - component: {fileID: 3895425941044523143}
   m_Layer: 9
@@ -98,27 +97,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &5026628092654808966
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1194221761650623214}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &257622890496309219
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -157,8 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b859f79a5fe5a4c8226edc0b1789ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 2705183971576495532}
   _raycastRanges: {fileID: 7713057739221743936}
+  _rBody: {fileID: 0}
+  _renderer: {fileID: 2705183971576495532}
   _hitSoundFX: {fileID: 140150993567704026}
   _kickSoundFX: {fileID: 3451042922612196846}
   _animator: {fileID: 8755595739624655819}

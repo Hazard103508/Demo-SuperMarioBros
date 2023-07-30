@@ -262,8 +262,8 @@ TextureImporter:
         y: 80
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -283,8 +283,8 @@ TextureImporter:
         y: 80
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -304,8 +304,8 @@ TextureImporter:
         y: 80
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -325,8 +325,8 @@ TextureImporter:
         y: 80
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -345,9 +345,9 @@ TextureImporter:
         x: 112
         y: 80
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -366,9 +366,9 @@ TextureImporter:
         x: 128
         y: 80
         width: 16
-        height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0.5}
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -561,7 +561,7 @@ TextureImporter:
     nameFileIdTable:
       NPC_13: -1986497150
       NPC_25: -664440163
-      NPC_29: 973238089
+      NPC_10: 688096580
       NPC_1: -1236738634
       NPC_9: 1351487353
       NPC_24: -26237067
@@ -587,7 +587,7 @@ TextureImporter:
       NPC_4: 1321762336
       NPC_3: -1392637762
       NPC_7: 1012417340
-      NPC_10: 688096580
+      NPC_29: 973238089
       NPC_6: 1303413217
   spritePackingTag: 
   pSDRemoveMatte: 0

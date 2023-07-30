@@ -7,6 +7,7 @@ namespace Mario.Game.ScriptableObjects.Items
     {
         public LayerMask GroundLayer;
         public float MoveSpeed;
+        public float BouncingSpeed;
         public float FallSpeed;
         public float MaxFallSpeed;
         public float JumpAcceleration;

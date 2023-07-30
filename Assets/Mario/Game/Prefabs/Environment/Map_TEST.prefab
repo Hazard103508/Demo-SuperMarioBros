@@ -2331,6 +2331,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goomba
       objectReference: {fileID: 0}
+    - target: {fileID: 1194221761650623214, guid: 7b2db476b7a34f54abf0f75a7ee9b317, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3895425941044523143, guid: 7b2db476b7a34f54abf0f75a7ee9b317, type: 3}
       propertyPath: m_Enabled
       value: 1

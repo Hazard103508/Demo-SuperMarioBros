@@ -14,8 +14,8 @@ namespace Mario.Game.Player
         [SerializeField] private PlayerSoundFX _playerSoundFX;
         [SerializeField] private SpriteRenderer _render;
         [Header("RayCast")]
-        [SerializeField] private PlayerRaycast raycastRangesBig;
-        [SerializeField] private PlayerRaycast raycastRangesSmall;
+        [SerializeField] private SquareRaycast raycastRangesBig;
+        [SerializeField] private SquareRaycast raycastRangesSmall;
 
         private PlayerProfile _profile;
         private Bounds<RayHitInfo> _proximityBlock = new Bounds<RayHitInfo>();
@@ -300,7 +300,7 @@ namespace Mario.Game.Player
         public void BounceJump()
         {
             IsJumping = true;
-            _lastJumpPressed = Time.time - _profile.Jump.MinBufferTime / 2f; // redusco a la mitad el buffer de salto minimo
+            _lastJumpPressed = Time.time - _profile.Jump.MinBufferTime / 1.5f; // redusco el buffer de salto minimo
             _currentSpeed.y = 0;
         }
         public void DamagePlayer()

@@ -3,7 +3,7 @@ using UnityShared.Behaviours.Various.RaycastRange;
 
 namespace Mario.Game.Player
 {
-    public class PlayerRaycast : MonoBehaviour
+    public class SquareRaycast : MonoBehaviour
     {
         [SerializeField] private RaycastRange _bottomRayCast;
         [SerializeField] private RaycastRange _leftRayCast;
@@ -12,10 +12,17 @@ namespace Mario.Game.Player
 
         public void CalculateCollision()
         {
-            _bottomRayCast.CalculateCollision();
-            _topRayCast.CalculateCollision();
-            _leftRayCast.CalculateCollision();
-            _rightRayCast.CalculateCollision();
+            if (_bottomRayCast != null)
+                _bottomRayCast.CalculateCollision();
+
+            if (_topRayCast != null)
+                _topRayCast.CalculateCollision();
+
+            if (_leftRayCast != null)
+                _leftRayCast.CalculateCollision();
+
+            if (_rightRayCast != null)
+                _rightRayCast.CalculateCollision();
         }
     }
 }
