@@ -30,7 +30,7 @@ namespace Mario.Application
             ServiceLocator.Current.Register<IMusicService>(_musicService);
 
             AllServices.Load();
-            AllServices.SceneService.LoadStandByScene();
+            AllServices.SceneService.LoadMainScene();
         }
         private void OnApplicationQuit()
         {

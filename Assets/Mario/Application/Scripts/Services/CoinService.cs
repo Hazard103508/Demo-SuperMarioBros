@@ -30,5 +30,10 @@ namespace Mario.Application.Services
 
             OnCoinsChanged.Invoke();
         }
+
+        public void Reset()
+        {
+            Coins = 0;
+        }
     }
 }

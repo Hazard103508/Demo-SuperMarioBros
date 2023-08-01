@@ -41,6 +41,7 @@ namespace Mario.Application.Services
             _references.Clear();
         }
         public void LoadMapScene(float minDelay) => StartCoroutine(LoadMapSceneCO(minDelay));
+        public void LoadMainScene() => SceneManager.LoadScene("Main");
         public void LoadStandByScene() => SceneManager.LoadScene("StandBy");
         public void LoadGameOverScene() => SceneManager.LoadScene("GameOver");
         public void LoadTimeUpScene() => SceneManager.LoadScene("TimeUp");

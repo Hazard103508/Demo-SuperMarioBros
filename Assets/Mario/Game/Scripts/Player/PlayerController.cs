@@ -230,8 +230,6 @@ namespace Mario.Game.Player
             SetHorizontalAlignment(ref nextPosition);
             SetVerticalAlignment(ref nextPosition);
             transform.position = nextPosition;
-
-            AllServices.PlayerService.Position = transform.position;
         }
         private void SetSmallCollider()
         {

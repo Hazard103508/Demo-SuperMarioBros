@@ -34,5 +34,10 @@ namespace Mario.Application.Services
             TargetPoints point = MonoBehaviour.Instantiate(_targetPointsPrefab, initPosition, Quaternion.identity);
             point.ShowLabel(label, time, hight, true);
         }
+
+        public void Reset()
+        {
+            Score = 0;
+        }
     }
 }

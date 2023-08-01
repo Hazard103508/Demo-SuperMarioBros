@@ -8,5 +8,6 @@ namespace Mario.Application.Interfaces
 
         UnityEvent OnCoinsChanged { get; set; }
         void Add();
+        void Reset();
     }
 }

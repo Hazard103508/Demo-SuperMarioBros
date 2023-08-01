@@ -9,21 +9,9 @@ namespace Mario.Application.Services
     {
         [SerializeField] private AudioSource _lifeUpSoundFX;
         [SerializeField] private AudioSource _deadSoundFX;
-        private Vector3 _playerPosition;
         private bool _canMove;
 
         public PlayerModes CurrentMode { get; set; }
-        public Vector3 Position
-        {
-            get => _playerPosition;
-            set
-            {
-                if (_playerPosition != value)
-                {
-                    _playerPosition = value;
-                }
-            }
-        }
         public bool CanMove
         {
             get => _canMove;
@@ -45,8 +33,7 @@ namespace Mario.Application.Services
             OnLivesRemoved = new UnityEvent();
             OnCanMoveChanged = new UnityEvent();
 
-            CanMove = true;
-            Lives = 3;
+            Reset();
         }
         public void AddLife()
         {
@@ -62,6 +49,12 @@ namespace Mario.Application.Services
             this.CurrentMode = PlayerModes.Small;
 
             AllServices.MusicService.Stop();
+        }
+        public void Reset()
+        {
+            CurrentMode = PlayerModes.Small;
+            Lives = 3;
+            CanMove = true;
         }
     }
 }

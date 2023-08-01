@@ -7,7 +7,6 @@ namespace Mario.Application.Interfaces
     public interface IPlayerService : IGameService
     {
         PlayerModes CurrentMode { get; set; }
-        Vector3 Position { get; set; }
         int Lives { get; }
         bool CanMove { get; set; }
 
@@ -17,5 +16,6 @@ namespace Mario.Application.Interfaces
 
         void AddLife();
         void Kill();
+        void Reset();
     }
 }
