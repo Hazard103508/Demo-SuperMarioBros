@@ -23,7 +23,9 @@ MonoBehaviour:
     StartTime: 0
   MapSectionReferences:
   - {fileID: 981654926499773033, guid: 317b8460021e2ce4d85764db25e4f653, type: 3}
-  PipesConnections: []
+  PipesConnections:
+  - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
+  - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
   CheckPoints: []
   NextMap: {fileID: 0}
   Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}

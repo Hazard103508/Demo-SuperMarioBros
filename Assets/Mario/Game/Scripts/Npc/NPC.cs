@@ -32,7 +32,7 @@ namespace Mario.Game.Npc
                 bottom = new(),
                 left = new(),
                 right = new(),
-                top= new()
+                top = new()
             };
         }
         private void OnDestroy()
@@ -146,7 +146,7 @@ namespace Mario.Game.Npc
             transform.position = nextPosition;
 
             _raycastRanges.CalculateCollision(); // valido coliciones 
-            
+
             SetHorizontalAlignment(ref nextPosition);
             SetVerticalAlignment(ref nextPosition);
             transform.position = nextPosition;
@@ -168,7 +168,7 @@ namespace Mario.Game.Npc
             player.BounceJump();
         }
         protected virtual void OnKill()
-        { 
+        {
         }
         protected void DamagePlayer(PlayerController player)
         {
@@ -193,6 +193,13 @@ namespace Mario.Game.Npc
         public virtual void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo;
         public virtual void OnProximityRayHitBottom(RayHitInfo hitInfo)
         {
+            if (_isDead)
+            {
+                _proximityBlock.bottom.hitObjects = new System.Collections.Generic.List<HitObject>();
+                _proximityBlock.bottom.IsBlock = false;
+                return;
+            }
+
             _proximityBlock.bottom.IsBlock = hitInfo.IsBlock;
             foreach (var hit in hitInfo.hitObjects)
             {
