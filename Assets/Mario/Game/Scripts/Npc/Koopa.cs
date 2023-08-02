@@ -49,16 +49,6 @@ namespace Mario.Game.Npc
         #region Protected Methods
         protected override void CalculateWalk()
         {
-            // BORRAR ------------------------------------------------------------------
-
-            if (Input.GetKeyDown(KeyCode.I))
-                Kill(transform.position - new Vector3(0.5f, 0, 0));
-            if (Input.GetKeyDown(KeyCode.U))
-                Kill(transform.position + new Vector3(0.5f, 0, 0));
-            if (Input.GetKeyDown(KeyCode.O))
-                HitFromTop(GameObject.FindObjectOfType<PlayerController>());
-            // BORRAR ------------------------------------------------------------------
-
             if (_proximityBlock.right.IsBlock)
             {
                 _renderer.flipX = false;

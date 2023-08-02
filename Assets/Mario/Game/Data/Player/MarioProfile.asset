@@ -30,10 +30,10 @@ MonoBehaviour:
   Jump:
     Acceleration: 300
     MaxSpeed: 12
+    BounceSpeed: 10
     MinBufferTime: 0.05
     MaxWalkBufferTime: 0.27
     MaxRunBufferTime: 0.32
-    HorizontalAdjustmentSpeed: 6
   SpritePositions:
     Small: {x: 0.5, y: 0.5}
     Big: {x: 0.5, y: 1}
