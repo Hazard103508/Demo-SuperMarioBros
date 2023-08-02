@@ -79,6 +79,10 @@ namespace Mario.Game.Npc
         }
         protected override void OnKill()
         {
+            if (_wakingUpCO != null)
+                StopCoroutine(_wakingUpCO);
+
+            State = KoopaStates.Idle;
             _renderer.transform.position += Vector3.up * 0.5f;
         }
         #endregion
@@ -129,6 +133,8 @@ namespace Mario.Game.Npc
 
             if (State == KoopaStates.InShell)
             {
+                _animator.SetTrigger("Hit");
+
                 if (_wakingUpCO != null)
                     StopCoroutine(_wakingUpCO);
 

@@ -32,6 +32,7 @@ namespace Mario.Game.ScriptableObjects.Map
         {
             public float Acceleration;
             public float MaxSpeed;
+            public float BounceSpeed;
             public float MinBufferTime;
             public float MaxWalkBufferTime;
             public float MaxRunBufferTime;

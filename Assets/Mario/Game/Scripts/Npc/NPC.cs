@@ -63,7 +63,7 @@ namespace Mario.Game.Npc
         #region Public Methods
         public void Kill(Vector3 hitPosition)
         {
-            if (_isDead)
+            if (!enabled || _isDead)
                 return;
 
             _isDead = true;

@@ -298,8 +298,8 @@ namespace Mario.Game.Player
         public void BounceJump()
         {
             IsJumping = true;
-            _lastJumpPressed = Time.time - _profile.Jump.MinBufferTime / 1.5f; // redusco el buffer de salto minimo
-            _currentSpeed.y = 0;
+            _lastJumpPressed = Time.time - _profile.Jump.MaxRunBufferTime;
+            _currentSpeed.y = _profile.Jump.BounceSpeed;
         }
         public void DamagePlayer()
         {
