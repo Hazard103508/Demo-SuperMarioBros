@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 817178179
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2060822350, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
+  m_Sprite: {fileID: -215981571, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -157,7 +157,7 @@ SpriteRenderer:
   m_SortingLayerID: 817178179
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 966777593, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
+  m_Sprite: {fileID: -1377685404, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -303,7 +303,7 @@ SpriteRenderer:
   m_SortingLayerID: 817178179
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -884697016, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
+  m_Sprite: {fileID: -1169250682, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 6663367400257538312}
   - component: {fileID: 2187863939528536952}
   m_Layer: 8
-  m_Name: PipeRight
+  m_Name: Underworld_PipeRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -590,7 +590,7 @@ SpriteRenderer:
   m_SortingLayerID: 817178179
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 734154847, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
+  m_Sprite: {fileID: 350922362, guid: f5c90262e23d22b4f99b0f0157d4bed6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
