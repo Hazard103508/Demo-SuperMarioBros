@@ -32,7 +32,7 @@ MonoBehaviour:
     MaxSpeed: 12
     BounceSpeed: 10
     MinBufferTime: 0.05
-    MaxWalkBufferTime: 0.27
+    MaxWalkBufferTime: 0.26
     MaxRunBufferTime: 0.32
   SpritePositions:
     Small: {x: 0.5, y: 0.5}

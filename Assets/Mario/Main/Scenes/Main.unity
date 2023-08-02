@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 1166347767}
   - component: {fileID: 1166347768}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Mario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,7 +279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7255854300219104043, guid: 3cd688a028af937419b77ffe8cfca63c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
