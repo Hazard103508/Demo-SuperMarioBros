@@ -2,6 +2,7 @@ using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes
 {
@@ -21,6 +22,12 @@ namespace Mario.Game.Boxes
 
             AllServices.SceneService.AddAsset(_coinBrickProfile.CoinReference);
         }
+        private void Update()
+        {
+            if (_limitTime > 0 && _firstHit)
+                _limitTime -= Time.deltaTime;
+        }
+
         public override void OnHitFromBottom(PlayerController player)
         {
             if (!IsHitable)
@@ -48,11 +55,6 @@ namespace Mario.Game.Boxes
             IsHitable = !_isEmpty;
 
             _spriteAnimator.SetTrigger(_isEmpty ? "Disable" : "Idle");
-        }
-        private void Update()
-        {
-            if (_limitTime > 0 && _firstHit)
-                _limitTime -= Time.deltaTime;
         }
     }
 }

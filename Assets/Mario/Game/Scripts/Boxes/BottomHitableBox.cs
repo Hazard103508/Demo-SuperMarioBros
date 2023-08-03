@@ -1,6 +1,8 @@
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
+using System.Linq;
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes
 {
@@ -39,5 +41,27 @@ namespace Mario.Game.Boxes
             if (!_hitSoundFX.isPlaying)
                 _hitSoundFX.Play();
         }
+
+        #region On Ray Range Hit
+        public void OnProximityRayHitTop(RayHitInfo hitInfo) => HitTopObjects(hitInfo);
+        #endregion
+
+        #region Private Methods
+        private void HitTopObjects(RayHitInfo hitInfo)
+        {
+            if (!IsJumping)
+                return;
+
+            if (hitInfo.hitObjects.Any())
+            {
+                foreach (var obj in hitInfo.hitObjects)
+                {
+                    var hitableObject = obj.Object.GetComponent<IBottomHitableByBox>();
+                    if (hitableObject != null)
+                        hitableObject.OnHitFromBottomByBox(this.gameObject);
+                }
+            }
+        }
+        #endregion
     }
 }

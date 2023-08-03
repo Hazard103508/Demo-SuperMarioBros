@@ -10,14 +10,13 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
-    public class Mushroom : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable
+    public class Mushroom : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable, IBottomHitableByBox
     {
         [SerializeField] private MushroomProfile _mushroomProfile;
 
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityBlock = new();
         private bool _isJumping;
-        private GameObject _hitBox;
 
         protected bool IsRising { get; private set; }
 
@@ -115,27 +114,7 @@ namespace Mario.Game.Items
         public void OnProximityRayHitBottom(RayHitInfo hitInfo)
         {
             _proximityBlock.bottom = hitInfo.IsBlock;
-
-            foreach (var hit in hitInfo.hitObjects)
-            {
-                if (_hitBox != null && hit.Equals(_hitBox))
-                    continue;
-
-                var box = hit.Object.GetComponent<BottomHitableBox>();
-                if (box != null && box.IsJumping)
-                {
-                    _hitBox = hit.Object;
-                    Jump();
-
-                    if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - hit.Object.transform.position.x))
-                        _currentSpeed.x *= -1;
-
-                    return;
-                }
-            };
-
-            _hitBox = null;
-            _isJumping = false;
+            _isJumping = !hitInfo.IsBlock;
         }
         #endregion
 
@@ -151,6 +130,20 @@ namespace Mario.Game.Items
         }
         public virtual void OnHitFromRight(PlayerController player)
         {
+        }
+        #endregion
+
+        #region On Box Hit
+
+        public void OnHitFromBottomByBox(GameObject box)
+        {
+            if (_isJumping)
+                return;
+
+            Jump();
+
+            if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - box.transform.position.x))
+                _currentSpeed.x *= -1;
         }
         #endregion
     }
