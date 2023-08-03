@@ -34,8 +34,10 @@ namespace Mario.Game.Boxes
             if (_limitTime < 0)
             {
                 _isEmpty = true;
-                _spriteAnimator.SetTrigger("Disable");
+                _spriteAnimator.SetTrigger("LastHit");
             }
+            else
+                _spriteAnimator.SetTrigger("Hit");
 
             var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_coinBrickProfile.CoinReference);
             base.InstantiateContent(prefab);
@@ -44,6 +46,8 @@ namespace Mario.Game.Boxes
         {
             base.OnJumpCompleted();
             IsHitable = !_isEmpty;
+
+            _spriteAnimator.SetTrigger(_isEmpty ? "Disable" : "Idle");
         }
         private void Update()
         {
