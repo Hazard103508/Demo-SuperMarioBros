@@ -1442,7 +1442,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1450,6 +1450,111 @@ TextureImporter:
       bones: []
       spriteID: fcf3fa31c5d11a143bfc867a6c550444
       internalID: 881755046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mario_51
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 328
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c91d421408a4064c9c0f4f2bca14fe7
+      internalID: -40870793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mario_52
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d10dd926d68f094d8f5f663fde94a1a
+      internalID: 1451525951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mario_53
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9710b9265f115314fb3d5a6f65b28361
+      internalID: -682159563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mario_54
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 128
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a746f3a38c607043898d66db300b486
+      internalID: 42413104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mario_55
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd4b6c2505704ee4d80f543a300b5108
+      internalID: -1951760223
       vertices: []
       indices: 
       edges: []
@@ -1465,15 +1570,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mario_50: 881755046
       Mario_19: 1756695824
       Mario_36: 1072193193
+      Mario_53: -682159563
       Mario_6: 1464335160
       Mario_30: -1135639354
       Mario_49: -1915492073
       Mario_34: -1654051652
       Players_2: -6127215198058392024
       Mario_17: 1810944573
+      Mario_54: 42413104
       Mario_40: 64393593
       Mario_42: -1589814043
       Mario_11: 603249684
@@ -1495,6 +1601,7 @@ TextureImporter:
       Mario_16: -1850356663
       Players_12: 4037833166851039263
       Mario_26: -387792783
+      Mario_52: 1451525951
       Mario_23: -180312731
       Mario_28: 317249874
       Mario_29: -1329209952
@@ -1503,6 +1610,7 @@ TextureImporter:
       Mario_8: 744540178
       Mario_41: -374583636
       Mario_22: -530901478
+      Mario_55: -1951760223
       Mario_48: 1246693342
       Mario_44: 958209098
       Players_6: 4873397878994576889
@@ -1515,14 +1623,16 @@ TextureImporter:
       Mario_45: -353386878
       Players_4: -4906125199742805290
       Players_13: 68067404465400748
+      Mario_51: -40870793
       Mario_38: 331575776
       Players_5: 6490518340326617606
       Mario_4: -1822327146
       Players_3: 5770437819054901188
       Players_0: 1757168063971477599
       Mario_43: -1167689521
-      Mario_15: -1673305801
+      Mario_50: 881755046
       Mario_20: -1831942647
+      Mario_15: -1673305801
       Mario_31: -407387864
       Mario_33: -225076644
       Mario_14: -1169620793
