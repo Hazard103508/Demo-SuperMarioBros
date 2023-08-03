@@ -56,3 +56,6 @@ TagManager:
   - name: Dead
     uniqueID: 32830929
     locked: 0
+  - name: ItemTop
+    uniqueID: 2446831589
+    locked: 0

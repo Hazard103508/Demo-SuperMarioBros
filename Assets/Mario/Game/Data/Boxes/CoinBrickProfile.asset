@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b024dabbbe73eb469380a5c51b0fc5f, type: 3}
-  m_Name: Overworld_CoinBoxProfile
+  m_Script: {fileID: 11500000, guid: 481fb5505f89e594d827912566d9bebf, type: 3}
+  m_Name: CoinBrickProfile
   m_EditorClassIdentifier: 
   CoinReference:
     m_AssetGUID: 11edffef54ef3e24cb397f4c763299ab
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  LimitTime: 3.25
