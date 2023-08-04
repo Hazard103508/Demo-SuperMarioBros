@@ -7,20 +7,17 @@ using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class FlagPole : MonoBehaviour, ILeftHitable
+    public class FlagPole : MonoBehaviour, IHitableByPlayerFromLeft
     {
+        #region Objects
         [SerializeField] private FlagPoleProfile _profile;
         [SerializeField] private GameObject _flag;
         [SerializeField] private AudioSource _audioSource;
-
         private bool _isLowering;
+        #endregion
 
-        public void OnHitFromLeft(PlayerController player)
-        {
-            ShowPoint(player);
-            LowerFlag(player);
-        }
-        public void ShowPoint(PlayerController player)
+        #region Private Methods
+        private void ShowPoint(PlayerController player)
         {
             if (!_isLowering)
             {
@@ -31,7 +28,7 @@ namespace Mario.Game.Interactable
                 AllServices.ScoreService.ShowPoint(point, position, 1, 8, false);
             }
         }
-        public void LowerFlag(PlayerController player)
+        private void LowerFlag(PlayerController player)
         {
             if (!_isLowering)
             {
@@ -92,5 +89,14 @@ namespace Mario.Game.Interactable
             index = Mathf.Clamp(index, 0, _profile.Points.Length-1);
             return _profile.Points[index];
         }
+        #endregion
+
+        #region On Player Hit
+        public void OnHitableByPlayerFromLeft(PlayerController player)
+        {
+            ShowPoint(player);
+            LowerFlag(player);
+        }
+        #endregion
     }
 }

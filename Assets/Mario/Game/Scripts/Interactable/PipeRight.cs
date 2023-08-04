@@ -6,21 +6,15 @@ using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class PipeRight : MonoBehaviour, ILeftHitable
+    public class PipeRight : MonoBehaviour, IHitableByPlayerFromLeft
     {
+        #region Objects
         [SerializeField] private int _pipeIndex;
         [SerializeField] private AudioSource _pipeInSoundFX;
         private bool _isInPipe;
+        #endregion
 
-        public void OnHitFromLeft(PlayerController player)
-        {
-            if (_isInPipe)
-                return;
-
-            if (player.IsGrounded && !player.Input.JumpDown)
-                StartCoroutine(MoveIntPipe(player));
-        }
-
+        #region Protected Methods
         private IEnumerator MoveIntPipe(PlayerController player)
         {
             AllServices.TimeService.StopTimer();
@@ -42,5 +36,17 @@ namespace Mario.Game.Interactable
             player.transform.position = new Vector3(Mathf.Round(player.transform.position.x), player.transform.position.y, player.transform.position.z);
             player.IsAutoWalk = false;
         }
+        #endregion
+
+        #region On Player Hit
+        public void OnHitableByPlayerFromLeft(PlayerController player)
+        {
+            if (_isInPipe)
+                return;
+
+            if (player.IsGrounded && !player.Input.JumpDown)
+                StartCoroutine(MoveIntPipe(player));
+        }
+        #endregion
     }
 }

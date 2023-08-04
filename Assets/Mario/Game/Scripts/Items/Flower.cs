@@ -7,16 +7,22 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Flower : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable
+    public class Flower : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight
     {
+        #region Objects
         [SerializeField] protected FlowerProfile _profile;
         private bool isCollected;
         private bool _isRising;
+        #endregion
 
+        #region Unity Methods
         private void Start()
         {
             StartCoroutine(RiseFlower());
         }
+        #endregion
+
+        #region Private Methods
         private IEnumerator RiseFlower()
         {
             _isRising = true;
@@ -33,14 +39,6 @@ namespace Mario.Game.Items
             }
             _isRising = false;
         }
-
-        #region On Player Hit
-        public void OnHitFromTop(PlayerController player) => CollectFlower(player);
-        public void OnHitFromBottom(PlayerController player) => CollectFlower(player);
-        public void OnHitFromLeft(PlayerController player) => CollectFlower(player);
-        public void OnHitFromRight(PlayerController player) => CollectFlower(player);
-        #endregion
-
         private void CollectFlower(PlayerController player)
         {
             if (isCollected || _isRising)
@@ -53,5 +51,13 @@ namespace Mario.Game.Items
             player.Buff();
             Destroy(gameObject);
         }
+        #endregion
+
+        #region On Player Hit
+        public void OnHitableByPlayerFromTop(PlayerController player) => CollectFlower(player);
+        public void OnHitableByPlayerFromBottom(PlayerController player) => CollectFlower(player);
+        public void OnHitableByPlayerFromLeft(PlayerController player) => CollectFlower(player);
+        public void OnHitableByPlayerFromRight(PlayerController player) => CollectFlower(player);
+        #endregion
     }
 }

@@ -7,26 +7,33 @@ namespace Mario.Game.Boxes
 {
     public class MysteryBoxCoin : BottomHitableBox
     {
+        #region Objects
         [SerializeField] protected MysteryBoxCoinProfile _mysteryBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
+        #endregion
 
+        #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
             AllServices.SceneService.AddAsset(_mysteryBoxProfile.CoinReference);
         }
-        public override void OnHitFromBottom(PlayerController player)
+        #endregion
+
+        #region On Player Hit
+        public override void OnHitableByPlayerFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
             PlayHitSoundFX();
 
-            base.OnHitFromBottom(player);
+            base.OnHitableByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
             var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_mysteryBoxProfile.CoinReference);
             base.InstantiateContent(prefab);
         }
+        #endregion
     }
 }

@@ -10,8 +10,9 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc
 {
-    public class NPC : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable
+    public class NPC : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight
     {
+        #region Objects
         [SerializeField] private SquareRaycast _raycastRanges;
         [SerializeField] protected SpriteRenderer _renderer;
         [SerializeField] protected AudioSource _hitSoundFX;
@@ -21,6 +22,7 @@ namespace Mario.Game.Npc
         protected Vector3 _currentSpeed;
         protected bool _isDead;
         protected Bounds<RayHitInfo> _proximityBlock = new();
+        #endregion
 
         #region Unity Methods
         protected virtual void Awake()
@@ -51,7 +53,7 @@ namespace Mario.Game.Npc
         }
         #endregion
 
-        #region Protected Properties
+        #region Properties
         public bool IsGrounded => _proximityBlock != null && _proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock;
         protected virtual float Profile_FallSpeed => 0;
         protected virtual float Profile_MaxFallSpeed => 0;
@@ -87,6 +89,7 @@ namespace Mario.Game.Npc
             Destroy(_raycastRanges.gameObject);
             OnKill();
         }
+        public void OnFall() => Destroy(gameObject);
         #endregion
 
         #region Private Methods
@@ -183,11 +186,7 @@ namespace Mario.Game.Npc
         private void OnCanMoveChanged() => _animator.speed = AllServices.PlayerService.CanMove ? 1 : 0;
         #endregion
 
-        #region External Events
-        public void OnFall() => Destroy(gameObject);
-        #endregion
-
-        #region On Ray Range Hit
+        #region On local Ray Range Hit
         public virtual void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
         public virtual void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo;
         public virtual void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo;
@@ -214,10 +213,10 @@ namespace Mario.Game.Npc
         #endregion
 
         #region On Player Hit
-        public virtual void OnHitFromTop(PlayerController player) => Hit(player);
-        public virtual void OnHitFromBottom(PlayerController player) => DamagePlayer(player);
-        public virtual void OnHitFromLeft(PlayerController player) => DamagePlayer(player);
-        public virtual void OnHitFromRight(PlayerController player) => DamagePlayer(player);
+        public virtual void OnHitableByPlayerFromTop(PlayerController player) => Hit(player);
+        public virtual void OnHitableByPlayerFromBottom(PlayerController player) => DamagePlayer(player);
+        public virtual void OnHitableByPlayerFromLeft(PlayerController player) => DamagePlayer(player);
+        public virtual void OnHitableByPlayerFromRight(PlayerController player) => DamagePlayer(player);
         #endregion
     }
 }

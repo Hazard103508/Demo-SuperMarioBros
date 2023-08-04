@@ -6,28 +6,29 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes
 {
-    public class BottomHitableBox : MonoBehaviour, IBottomHitable
+    public class BottomHitableBox : MonoBehaviour, IHitableByPlayerFromBottom
     {
+        #region Objects
         [SerializeField] private AudioSource _hitSoundFX;
         private Animator _boxAnimator;
+        #endregion
+
+        #region Properties
         protected bool IsHitable { get; set; }
         public bool IsJumping { get; private set; }
+        #endregion
 
+        #region Unity Methods
         protected virtual void Awake()
         {
             _boxAnimator = GetComponent<Animator>();
             IsHitable = true;
         }
-        public virtual void OnHitFromBottom(PlayerController player)
-        {
-            if (!IsHitable)
-                return;
+        #endregion
 
-            IsJumping = true;
-            _boxAnimator.SetTrigger("Jump");
-            IsHitable = false;
-        }
-        public virtual void OnJumpCompleted()
+
+        #region Protected Methods
+        protected virtual void OnJumpCompleted()
         {
             IsJumping = false;
         }
@@ -41,13 +42,10 @@ namespace Mario.Game.Boxes
             if (!_hitSoundFX.isPlaying)
                 _hitSoundFX.Play();
         }
-
-        #region On Ray Range Hit
-        public void OnProximityRayHitTop(RayHitInfo hitInfo) => HitTopObjects(hitInfo);
         #endregion
 
         #region Private Methods
-        private void HitTopObjects(RayHitInfo hitInfo)
+        private void HitObjectOnTop(RayHitInfo hitInfo)
         {
             if (!IsJumping)
                 return;
@@ -56,12 +54,30 @@ namespace Mario.Game.Boxes
             {
                 foreach (var obj in hitInfo.hitObjects)
                 {
-                    var hitableObject = obj.Object.GetComponent<IBottomHitableByBox>();
+                    var hitableObject = obj.Object.GetComponent<IHitableByBoxFromBottom>();
                     if (hitableObject != null)
-                        hitableObject.OnHitFromBottomByBox(this.gameObject);
+                        hitableObject.OnIHitableByBoxFromBottom(this.gameObject);
                 }
             }
         }
         #endregion
+
+        #region On local Ray Range Hit
+        public void OnProximityRayHitTop(RayHitInfo hitInfo) => HitObjectOnTop(hitInfo);
+        #endregion
+
+        #region On Player Hit
+        public virtual void OnHitableByPlayerFromBottom(PlayerController player)
+        {
+            if (!IsHitable)
+                return;
+
+            IsJumping = true;
+            _boxAnimator.SetTrigger("Jump");
+            IsHitable = false;
+        }
+        #endregion
+
+
     }
 }

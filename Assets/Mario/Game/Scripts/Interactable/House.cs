@@ -6,9 +6,18 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class House : MonoBehaviour, ILeftHitable
+    public class House : MonoBehaviour, IHitableByPlayerFromLeft
     {
-        public void OnHitFromLeft(PlayerController player)
+        #region Private Methods
+        private IEnumerator CloseMap()
+        {
+            yield return new WaitForSeconds(6);
+            AllServices.SceneService.LoadStandByScene();
+        }
+        #endregion
+
+        #region On Player Hit
+        public void OnHitableByPlayerFromLeft(PlayerController player)
         {
             player.gameObject.SetActive(false);
 
@@ -18,11 +27,6 @@ namespace Mario.Game.Items
 
             StartCoroutine(CloseMap());
         }
-
-        public IEnumerator CloseMap()
-        {
-            yield return new WaitForSeconds(6);
-            AllServices.SceneService.LoadStandByScene();
-        }
+        #endregion
     }
 }

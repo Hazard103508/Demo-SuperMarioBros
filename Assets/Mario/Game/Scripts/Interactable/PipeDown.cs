@@ -6,21 +6,15 @@ using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class PipeDown : MonoBehaviour, ITopHitable
+    public class PipeDown : MonoBehaviour, IHitableByPlayerFromTop
     {
+        #region Objects
         [SerializeField] private int _pipeIndex;
         [SerializeField] private AudioSource _pipeInSoundFX;
         private bool _isInPipe;
+        #endregion
 
-        public void OnHitFromTop(PlayerController player)
-        {
-            if (_isInPipe)
-                return;
-
-            if (player.Input.IsDucking)
-                StartCoroutine(MoveIntPipe(player));
-        }
-
+        #region Private Methods
         private IEnumerator MoveIntPipe(PlayerController player)
         {
             AllServices.TimeService.StopTimer();
@@ -39,5 +33,17 @@ namespace Mario.Game.Interactable
 
             player.transform.position = new Vector3(player.transform.position.x, Mathf.Round(player.transform.position.y), player.transform.position.z);
         }
+        #endregion
+
+        #region On Player Hit
+        public void OnHitableByPlayerFromTop(PlayerController player)
+        {
+            if (_isInPipe)
+                return;
+
+            if (player.Input.IsDucking)
+                StartCoroutine(MoveIntPipe(player));
+        }
+        #endregion
     }
 }

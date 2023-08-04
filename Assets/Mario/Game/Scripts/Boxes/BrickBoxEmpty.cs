@@ -8,29 +8,27 @@ namespace Mario.Game.Boxes
 {
     public class BrickBoxEmpty : BottomHitableBox
     {
+        #region Objects
         [SerializeField] private BrickBoxEmptyProfile _brickProfile;
+        #endregion
 
+        #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
             AllServices.SceneService.AddAsset(_brickProfile.BrokenBrickReference);
         }
-        public override void OnHitFromBottom(PlayerController player)
-        {
-            PlayHitSoundFX();
+        #endregion
 
-            if (player.RawMovement.y > 0 || player.Input.JumpDown)
-            {
-                base.OnHitFromBottom(player);
-                if (player.Mode != Enums.PlayerModes.Small)
-                    StartCoroutine(InstantiateBreakedBox());
-            }
-            else
-            {
-                if (player.IsDucking)
-                    return;
-            }
+        #region Protected Methods
+        protected override void OnJumpCompleted()
+        {
+            base.OnJumpCompleted();
+            IsHitable = true;
         }
+        #endregion
+
+        #region Private Methods
         private IEnumerator InstantiateBreakedBox()
         {
             yield return new WaitForEndOfFrame();
@@ -40,11 +38,25 @@ namespace Mario.Game.Boxes
             AllServices.ScoreService.Add(_brickProfile.Points);
             Destroy(gameObject);
         }
+        #endregion
 
-        public override void OnJumpCompleted()
+        #region On Player Hit
+        public override void OnHitableByPlayerFromBottom(PlayerController player)
         {
-            base.OnJumpCompleted();
-            IsHitable = true;
+            PlayHitSoundFX();
+
+            if (player.RawMovement.y > 0 || player.Input.JumpDown)
+            {
+                base.OnHitableByPlayerFromBottom(player);
+                if (player.Mode != Enums.PlayerModes.Small)
+                    StartCoroutine(InstantiateBreakedBox());
+            }
+            else
+            {
+                if (player.IsDucking)
+                    return;
+            }
         }
+        #endregion
     }
 }

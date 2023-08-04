@@ -7,26 +7,39 @@ namespace Mario.Game.Boxes
 {
     public class MysteryBoxPowerUp : BottomHitableBox
     {
-        private GameObject _itemPrefab;
-
+        #region Objects
         [SerializeField] private AudioSource _risingSoundFX;
         [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
+        private GameObject _itemPrefab;
+        #endregion
 
+        #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
             AllServices.SceneService.AddAsset(_powerUpBoxProfile.RedMushroomReference);
             AllServices.SceneService.AddAsset(_powerUpBoxProfile.FlowerReference);
         }
-        public override void OnHitFromBottom(PlayerController player)
+        #endregion
+
+        #region Protected Methods
+        protected override void OnJumpCompleted()
+        {
+            base.OnJumpCompleted();
+            base.InstantiateContent(_itemPrefab);
+        }
+        #endregion
+
+        #region On Player Hit
+        public override void OnHitableByPlayerFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
             PlayHitSoundFX();
 
-            base.OnHitFromBottom(player);
+            base.OnHitableByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
 
@@ -34,10 +47,6 @@ namespace Mario.Game.Boxes
                 AllServices.SceneService.GetAssetReference<GameObject>(_powerUpBoxProfile.RedMushroomReference) :
                 AllServices.SceneService.GetAssetReference<GameObject>(_powerUpBoxProfile.FlowerReference);
         }
-        public override void OnJumpCompleted()
-        {
-            base.OnJumpCompleted();
-            base.InstantiateContent(_itemPrefab);
-        }
+        #endregion
     }
 }

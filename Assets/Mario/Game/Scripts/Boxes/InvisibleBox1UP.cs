@@ -6,13 +6,16 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class InvisibleBox1UP : BottomHitableBox, ITopHitable, ILeftHitable, IRightHitable
+    public class InvisibleBox1UP : BottomHitableBox, IHitableByPlayerFromTop, IHitableByPlayerFromLeft, IHitableByPlayerFromRight
     {
+        #region Objects
         [SerializeField] private AudioSource _risingSoundFX;
         [SerializeField] protected InvisibleBox1UPProfile _invisibleBox1UPProfile;
         [SerializeField] private Animator _spriteAnimator;
         float _disabledTimer;
+        #endregion
 
+        #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
@@ -22,7 +25,19 @@ namespace Mario.Game.Boxes
         {
             _disabledTimer = Mathf.Max(0, _disabledTimer - Time.deltaTime);
         }
-        public override void OnHitFromBottom(PlayerController player)
+        #endregion
+
+        #region Protected Methods
+        protected override void OnJumpCompleted()
+        {
+            base.OnJumpCompleted();
+            var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_invisibleBox1UPProfile.GreenMushroomReference);
+            base.InstantiateContent(prefab);
+        }
+        #endregion
+
+        #region On Player Hit
+        public override void OnHitableByPlayerFromBottom(PlayerController player)
         {
             if (_disabledTimer > 0) // me aseguro que el primer contacto sea desde abajo
                 return;
@@ -33,20 +48,13 @@ namespace Mario.Game.Boxes
             PlayHitSoundFX();
 
             gameObject.layer = LayerMask.NameToLayer("Ground");
-            base.OnHitFromBottom(player);
+            base.OnHitableByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
         }
-
-        public void OnHitFromTop(PlayerController player) => _disabledTimer = 0.5f;
-        public void OnHitFromLeft(PlayerController player) => _disabledTimer = 0.5f;
-        public void OnHitFromRight(PlayerController player) => _disabledTimer = 0.5f;
-
-        public override void OnJumpCompleted()
-        {
-            base.OnJumpCompleted();
-            var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_invisibleBox1UPProfile.GreenMushroomReference);
-            base.InstantiateContent(prefab);
-        }
+        public void OnHitableByPlayerFromTop(PlayerController player) => _disabledTimer = 0.5f;
+        public void OnHitableByPlayerFromLeft(PlayerController player) => _disabledTimer = 0.5f;
+        public void OnHitableByPlayerFromRight(PlayerController player) => _disabledTimer = 0.5f;
+        #endregion
     }
 }

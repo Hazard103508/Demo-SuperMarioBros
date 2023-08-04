@@ -2,19 +2,21 @@ using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes
 {
     public class BrickBoxCoin : BottomHitableBox
     {
+        #region Objects
         [SerializeField] private BrickBoxCoinProfile _coinBrickProfile;
         [SerializeField] private Animator _spriteAnimator;
         private float _limitTime;
 
         private bool _firstHit;
         private bool _isEmpty;
+        #endregion
 
+        #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
@@ -27,8 +29,20 @@ namespace Mario.Game.Boxes
             if (_limitTime > 0 && _firstHit)
                 _limitTime -= Time.deltaTime;
         }
+        #endregion
 
-        public override void OnHitFromBottom(PlayerController player)
+        #region Protected Methods
+        protected override void OnJumpCompleted()
+        {
+            base.OnJumpCompleted();
+            IsHitable = !_isEmpty;
+
+            _spriteAnimator.SetTrigger(_isEmpty ? "Disable" : "Idle");
+        }
+        #endregion
+
+        #region On Player Hit
+        public override void OnHitableByPlayerFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
@@ -36,7 +50,7 @@ namespace Mario.Game.Boxes
             PlayHitSoundFX();
             _firstHit = true;
 
-            base.OnHitFromBottom(player);
+            base.OnHitableByPlayerFromBottom(player);
 
             if (_limitTime < 0)
             {
@@ -49,12 +63,6 @@ namespace Mario.Game.Boxes
             var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_coinBrickProfile.CoinReference);
             base.InstantiateContent(prefab);
         }
-        public override void OnJumpCompleted()
-        {
-            base.OnJumpCompleted();
-            IsHitable = !_isEmpty;
-
-            _spriteAnimator.SetTrigger(_isEmpty ? "Disable" : "Idle");
-        }
+        #endregion
     }
 }

@@ -11,9 +11,11 @@ namespace Mario.Game.Npc
 {
     public class Koopa : NPC
     {
+        #region Objects
         [SerializeField] private KoopaProfile _profile;
         private Coroutine _wakingUpCO;
         private bool _hitCoolDown;
+        #endregion
 
         #region Unity Methods
         protected override void Awake()
@@ -25,25 +27,11 @@ namespace Mario.Game.Npc
         #endregion
 
         #region Public Properties
-        public KoopaStates State { get; private set; }
-        #endregion
-
-        #region Protected Properties
         protected override float Profile_FallSpeed => _profile.FallSpeed;
         protected override float Profile_MaxFallSpeed => _profile.MaxFallSpeed;
         protected override int Profile_PointsKill => _profile.PointsKill;
         protected override float Profile_JumpAcceleration => _profile.JumpAcceleration;
-        #endregion
-
-        #region On Player Hit
-        public override void OnHitFromTop(PlayerController player) => HitFromTop(player);
-        public override void OnHitFromLeft(PlayerController player) => HitFromSide(player);
-        public override void OnHitFromRight(PlayerController player) => HitFromSide(player);
-        #endregion
-
-        #region On Ray Range Hit
-        public override void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitToLeft(hitInfo);
-        public override void OnProximityRayHitRight(RayHitInfo hitInfo) => HitToRight(hitInfo);
+        private KoopaStates State { get; set; }
         #endregion
 
         #region Protected Methods
@@ -204,6 +192,17 @@ namespace Mario.Game.Npc
                     }
             }
         }
+        #endregion
+
+        #region On local Ray Range Hit
+        public override void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitToLeft(hitInfo);
+        public override void OnProximityRayHitRight(RayHitInfo hitInfo) => HitToRight(hitInfo);
+        #endregion
+
+        #region On Player Hit
+        public override void OnHitableByPlayerFromTop(PlayerController player) => HitFromTop(player);
+        public override void OnHitableByPlayerFromLeft(PlayerController player) => HitFromSide(player);
+        public override void OnHitableByPlayerFromRight(PlayerController player) => HitFromSide(player);
         #endregion
 
         #region Structures

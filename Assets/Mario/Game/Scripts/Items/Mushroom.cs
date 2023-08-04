@@ -10,15 +10,19 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
-    public class Mushroom : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable, IBottomHitableByBox
+    public class Mushroom : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom
     {
+        #region Objects
         [SerializeField] private MushroomProfile _mushroomProfile;
 
         private Vector3 _currentSpeed;
         private Bounds<bool> _proximityBlock = new();
         private bool _isJumping;
+        #endregion
 
+        #region Properties
         protected bool IsRising { get; private set; }
+        #endregion
 
         #region Unity Methods
         protected virtual void Awake()
@@ -43,6 +47,10 @@ namespace Mario.Game.Items
 
             Move();
         }
+        #endregion
+
+        #region Public Methods
+        public void OnFall() => Destroy(gameObject);
         #endregion
 
         #region Private Methods
@@ -104,10 +112,6 @@ namespace Mario.Game.Items
         }
         #endregion
 
-        #region External Events
-        public void OnFall() => Destroy(gameObject);
-        #endregion
-
         #region On Ray Range Hit
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
         public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
@@ -119,23 +123,22 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public virtual void OnHitFromTop(PlayerController player)
+        public virtual void OnHitableByPlayerFromTop(PlayerController player)
         {
         }
-        public virtual void OnHitFromBottom(PlayerController player)
+        public virtual void OnHitableByPlayerFromBottom(PlayerController player)
         {
         }
-        public virtual void OnHitFromLeft(PlayerController player)
+        public virtual void OnHitableByPlayerFromLeft(PlayerController player)
         {
         }
-        public virtual void OnHitFromRight(PlayerController player)
+        public virtual void OnHitableByPlayerFromRight(PlayerController player)
         {
         }
         #endregion
 
         #region On Box Hit
-
-        public void OnHitFromBottomByBox(GameObject box)
+        public void OnIHitableByBoxFromBottom(GameObject box)
         {
             if (_isJumping)
                 return;

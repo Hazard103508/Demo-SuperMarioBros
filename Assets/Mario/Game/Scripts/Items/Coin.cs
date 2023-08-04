@@ -6,20 +6,11 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Coin : MonoBehaviour, ITopHitable, IBottomHitable, ILeftHitable, IRightHitable, IBottomHitableByBox
+    public class Coin : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom
     {
+        #region Objects
         [SerializeField] protected CoinProfile _profile;
         private bool isCollected;
-
-        #region On Player Hit
-        public void OnHitFromTop(PlayerController player) => CollectCoin();
-        public void OnHitFromBottom(PlayerController player) => CollectCoin();
-        public void OnHitFromLeft(PlayerController player) => CollectCoin();
-        public void OnHitFromRight(PlayerController player) => CollectCoin();
-        #endregion
-
-        #region On Box Hit
-        public void OnHitFromBottomByBox(GameObject box) => CollectCoin();
         #endregion
 
         #region Private Methods
@@ -33,6 +24,17 @@ namespace Mario.Game.Items
             AllServices.CoinService.Add();
             Destroy(gameObject);
         }
+        #endregion
+
+        #region On Player Hit
+        public void OnHitableByPlayerFromTop(PlayerController player) => CollectCoin();
+        public void OnHitableByPlayerFromBottom(PlayerController player) => CollectCoin();
+        public void OnHitableByPlayerFromLeft(PlayerController player) => CollectCoin();
+        public void OnHitableByPlayerFromRight(PlayerController player) => CollectCoin();
+        #endregion
+
+        #region On Box Hit
+        public void OnIHitableByBoxFromBottom(GameObject box) => CollectCoin();
         #endregion
     }
 }
