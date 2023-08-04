@@ -1,4 +1,6 @@
 using Mario.Application.Services;
+using Mario.Game.Boxes;
+using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System;
@@ -9,33 +11,128 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc
 {
-    public class Koopa : NPC
+    public class Koopa : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom, IHitableByKoppa
     {
         #region Objects
         [SerializeField] private KoopaProfile _profile;
+        [SerializeField] private SquareRaycast _raycastRanges;
+        [SerializeField] private SpriteRenderer _renderer;
+        [SerializeField] private AudioSource _hitSoundFX;
+        [SerializeField] private AudioSource _kickSoundFX;
+        [SerializeField] private Animator _animator;
+
+        private Vector3 _currentSpeed;
+        private bool _isDead;
+        private Bounds<RayHitInfo> _proximityBlock = new();
         private Coroutine _wakingUpCO;
         private bool _hitCoolDown;
         #endregion
 
-        #region Unity Methods
-        protected override void Awake()
-        {
-            base.Awake();
-            State = KoopaStates.Idle;
-            SetSpeed();
-        }
-        #endregion
-
-        #region Public Properties
-        protected override float Profile_FallSpeed => _profile.FallSpeed;
-        protected override float Profile_MaxFallSpeed => _profile.MaxFallSpeed;
-        protected override int Profile_PointsKill => _profile.PointsKill;
-        protected override float Profile_JumpAcceleration => _profile.JumpAcceleration;
+        #region Properties
+        private bool IsGrounded => _proximityBlock != null && _proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock;
         private KoopaStates State { get; set; }
         #endregion
 
-        #region Protected Methods
-        protected override void CalculateWalk()
+        #region Unity Methods
+        private void Awake()
+        {
+            State = KoopaStates.Idle;
+            SetSpeed();
+            AllServices.PlayerService.OnCanMoveChanged.AddListener(OnCanMoveChanged);
+
+            _proximityBlock = new()
+            {
+                bottom = new(),
+                left = new(),
+                right = new(),
+                top = new()
+            };
+        }
+        private void OnDestroy()
+        {
+            AllServices.PlayerService.OnCanMoveChanged.RemoveListener(OnCanMoveChanged);
+        }
+        private void Update()
+        {
+            if (!AllServices.PlayerService.CanMove)
+                return;
+
+            CalculateWalk();
+            CalculateGravity();
+
+            Move();
+        }
+        #endregion
+
+        #region Public Methods
+        public void OnFall() => Destroy(gameObject);
+        #endregion
+
+        #region Private Methods
+        private void Kill(Vector3 hitPosition)
+        {
+            if (!enabled || _isDead)
+                return;
+
+            _isDead = true;
+
+            _kickSoundFX.Play();
+            _animator.SetTrigger("Kill");
+            _renderer.sortingLayerName = "Dead";
+
+            AllServices.ScoreService.Add(_profile.PointsHit1);
+            AllServices.ScoreService.ShowPoint(_profile.PointsHit1, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
+
+            if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - hitPosition.x))
+                _currentSpeed.x *= -1;
+
+            _currentSpeed.y = _profile.JumpAcceleration;
+
+            _proximityBlock.bottom.IsBlock = false; // evito que colicione contra el suelo
+            _proximityBlock.left.IsBlock = false;
+            _proximityBlock.right.IsBlock = false;
+
+            Destroy(_raycastRanges.gameObject);
+
+            if (_wakingUpCO != null)
+                StopCoroutine(_wakingUpCO);
+
+            State = KoopaStates.Idle;
+            _renderer.transform.position += Vector3.up * 0.5f;
+        }
+        private void CalculateGravity()
+        {
+            _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
+            if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
+            {
+                if (_currentSpeed.y < 0)
+                    _currentSpeed.y = 0;
+            }
+            else
+            {
+                if (_currentSpeed.y < -_profile.MaxFallSpeed)
+                    _currentSpeed.y = -_profile.MaxFallSpeed;
+            }
+        }
+        private void SetHorizontalAlignment(ref Vector3 nextPosition)
+        {
+            if (_proximityBlock.right.IsBlock && !_proximityBlock.left.IsBlock)
+            {
+                var hitObject = _proximityBlock.right.hitObjects.First();
+                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
+            else if (_proximityBlock.right.IsBlock || _proximityBlock.left.IsBlock)
+            {
+                var hitObject = _proximityBlock.left.hitObjects.First();
+                nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
+            }
+        }
+        private void SetVerticalAlignment(ref Vector3 nextPosition)
+        {
+            if (IsGrounded && _currentSpeed.y <= 0)
+                nextPosition.y = Mathf.Round(nextPosition.y);
+        }
+        private void CalculateWalk()
         {
             if (_proximityBlock.right.IsBlock)
             {
@@ -48,24 +145,27 @@ namespace Mario.Game.Npc
                 _currentSpeed.x = Mathf.Abs(_currentSpeed.x);
             }
         }
-        protected override void Move()
+        private void Move()
         {
             if (State == KoopaStates.InShell)
                 return;
 
-            base.Move();
+            var nextPosition = transform.position + _currentSpeed * Time.deltaTime;
+            transform.position = nextPosition;
+
+            _raycastRanges.CalculateCollision(); // valido coliciones 
+
+            SetHorizontalAlignment(ref nextPosition);
+            SetVerticalAlignment(ref nextPosition);
+            transform.position = nextPosition;
         }
-        protected override void OnKill()
+        private void DamagePlayer(PlayerController player)
         {
-            if (_wakingUpCO != null)
-                StopCoroutine(_wakingUpCO);
+            if (!enabled || _isDead)
+                return;
 
-            State = KoopaStates.Idle;
-            _renderer.transform.position += Vector3.up * 0.5f;
+            player.DamagePlayer();
         }
-        #endregion
-
-        #region Private Methods
         private void HitFromTop(PlayerController player)
         {
             if (_hitCoolDown)
@@ -164,45 +264,73 @@ namespace Mario.Game.Npc
         {
             if (State == KoopaStates.Bouncing)
             {
-                if (!hitInfo.IsBlock)
-                    return;
-
-                var hitObj = hitInfo.hitObjects.Select(hit => new
-                {
-                    hit,
-                    npc = hit.Object.GetComponent<NPC>()
-                })
-                .ToList();
-
-                hitInfo.hitObjects = hitObj.Where(hit => hit.npc == null).Select(hit => hit.hit).ToList();
-                hitInfo.IsBlock = hitInfo.hitObjects.Any();
-
-                var npcHit = hitObj.Where(hit => hit.npc != null).Select(hit => hit).ToList();
-                if (npcHit != null && npcHit.Any())
-                    foreach (var hit in npcHit)
-                    {
-                        Vector3 hitPosition = hit.hit.Point;
-                        if (hit.npc is Koopa && ((Koopa)hit.npc).State == KoopaStates.Bouncing)
-                        {
-                            hitPosition = new Vector3((hit.npc.transform.position.x + transform.position.x) / 2, hit.hit.Point.y);
-                            this.Kill(hitPosition);
-                        }
-
-                        hit.npc.Kill(hitPosition);
-                    }
+                //if (!hitInfo.IsBlock)
+                //    return;
+                //
+                //var hitObj = hitInfo.hitObjects.Select(hit => new
+                //{
+                //    hit,
+                //    npc = hit.Object.GetComponent<NPC>()
+                //})
+                //.ToList();
+                //
+                //hitInfo.hitObjects = hitObj.Where(hit => hit.npc == null).Select(hit => hit.hit).ToList();
+                //hitInfo.IsBlock = hitInfo.hitObjects.Any();
+                //
+                //var npcHit = hitObj.Where(hit => hit.npc != null).Select(hit => hit).ToList();
+                //if (npcHit != null && npcHit.Any())
+                //    foreach (var hit in npcHit)
+                //    {
+                //        Vector3 hitPosition = hit.hit.Point;
+                //        if (hit.npc is Koopa && ((Koopa)hit.npc).State == KoopaStates.Bouncing)
+                //        {
+                //            hitPosition = new Vector3((hit.npc.transform.position.x + transform.position.x) / 2, hit.hit.Point.y);
+                //            this.Kill(hitPosition);
+                //        }
+                //
+                //        hit.npc.Kill(hitPosition);
+                //    }
             }
         }
         #endregion
 
+        #region Service Events
+        private void OnCanMoveChanged() => _animator.speed = AllServices.PlayerService.CanMove ? 1 : 0;
+        #endregion
+
         #region On local Ray Range Hit
-        public override void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitToLeft(hitInfo);
-        public override void OnProximityRayHitRight(RayHitInfo hitInfo) => HitToRight(hitInfo);
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitToLeft(hitInfo);
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => HitToRight(hitInfo);
+        public void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo)
+        {
+            if (_isDead)
+            {
+                _proximityBlock.bottom.hitObjects = new System.Collections.Generic.List<HitObject>();
+                _proximityBlock.bottom.IsBlock = false;
+                return;
+            }
+
+            _proximityBlock.bottom.IsBlock = hitInfo.IsBlock;
+        }
         #endregion
 
         #region On Player Hit
-        public override void OnHitableByPlayerFromTop(PlayerController player) => HitFromTop(player);
-        public override void OnHitableByPlayerFromLeft(PlayerController player) => HitFromSide(player);
-        public override void OnHitableByPlayerFromRight(PlayerController player) => HitFromSide(player);
+        public void OnHitableByPlayerFromTop(PlayerController player) => HitFromTop(player);
+        public void OnHitableByPlayerFromLeft(PlayerController player) => HitFromSide(player);
+        public void OnHitableByPlayerFromRight(PlayerController player) => HitFromSide(player);
+        public void OnHitableByPlayerFromBottom(PlayerController player) => DamagePlayer(player);
+        #endregion
+
+        #region On Box Hit
+        public void OnIHitableByBoxFromBottom(GameObject box) => Kill(box.transform.position);
+        #endregion
+
+        #region On Koopa Hit
+        public void OnIHitableByKoppa(GameObject koopa)
+        {
+
+        }
         #endregion
 
         #region Structures

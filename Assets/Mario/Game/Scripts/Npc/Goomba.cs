@@ -11,7 +11,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc
 {
-    public class Goomba : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom
+    public class Goomba : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom, IHitableByKoppa
     {
         #region Objects
         [SerializeField] private GoombaProfile _profile;
@@ -24,6 +24,10 @@ namespace Mario.Game.Npc
         private Vector3 _currentSpeed;
         private bool _isDead;
         private Bounds<RayHitInfo> _proximityBlock = new();
+        #endregion
+
+        #region Properties
+        private bool IsGrounded => _proximityBlock != null && _proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock;
         #endregion
 
         #region Unity Methods
@@ -56,10 +60,6 @@ namespace Mario.Game.Npc
         }
         #endregion
 
-        #region Properties
-        private bool IsGrounded => _proximityBlock != null && _proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock;
-        #endregion
-
         #region Public Methods
         public void OnFall() => Destroy(gameObject);
         #endregion
@@ -78,11 +78,6 @@ namespace Mario.Game.Npc
                 if (_currentSpeed.y < -_profile.MaxFallSpeed)
                     _currentSpeed.y = -_profile.MaxFallSpeed;
             }
-        }
-        private IEnumerator OnHit()
-        {
-            yield return new WaitForSeconds(0.4f);
-            Destroy(gameObject);
         }
         private void Kill(Vector3 hitPosition)
         {
@@ -160,8 +155,6 @@ namespace Mario.Game.Npc
             AllServices.ScoreService.Add(_profile.Points);
             AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
 
-            StartCoroutine(OnHit());
-
             player.BounceJump();
         }
         private void DamagePlayer(PlayerController player)
@@ -203,6 +196,10 @@ namespace Mario.Game.Npc
 
         #region On Box Hit
         public void OnIHitableByBoxFromBottom(GameObject box) => Kill(box.transform.position);
+        #endregion
+
+        #region On Koopa Hit
+        public void OnIHitableByKoppa(GameObject koopa) => Kill(koopa.transform.position);
         #endregion
     }
 }
