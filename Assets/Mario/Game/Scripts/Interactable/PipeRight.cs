@@ -15,7 +15,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region Protected Methods
-        private IEnumerator MoveIntPipe(PlayerController player)
+        private IEnumerator MoveIntoPipe(PlayerController player)
         {
             AllServices.TimeService.StopTimer();
             AllServices.PlayerService.CanMove = false;
@@ -29,7 +29,7 @@ namespace Mario.Game.Interactable
             Destroy(player.GetComponent<PlayerCollisions>());
             while (player.transform.position.x < transform.position.x)
             {
-                player.transform.Translate(Vector3.right * Time.deltaTime * 2f);
+                player.transform.Translate(2f * Time.deltaTime * Vector3.right);
                 yield return null;
             }
 
@@ -45,7 +45,7 @@ namespace Mario.Game.Interactable
                 return;
 
             if (player.IsGrounded && !player.Input.JumpDown)
-                StartCoroutine(MoveIntPipe(player));
+                StartCoroutine(MoveIntoPipe(player));
         }
         #endregion
     }

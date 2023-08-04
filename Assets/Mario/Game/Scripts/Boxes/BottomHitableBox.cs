@@ -55,8 +55,7 @@ namespace Mario.Game.Boxes
                 foreach (var obj in hitInfo.hitObjects)
                 {
                     var hitableObject = obj.Object.GetComponent<IHitableByBoxFromBottom>();
-                    if (hitableObject != null)
-                        hitableObject.OnIHitableByBoxFromBottom(this.gameObject);
+                    hitableObject?.OnIHitableByBoxFromBottom(this.gameObject);
                 }
             }
         }

@@ -12,7 +12,7 @@ namespace Mario.Game.Interactable
         {
             if (AllServices.GameDataService.CurrentMapProfile.CheckPoints.Length > _checkPointIndex)
                 AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.CheckPoints[_checkPointIndex];
-            
+
             base.OnHitCheckPoint(player);
         }
     }

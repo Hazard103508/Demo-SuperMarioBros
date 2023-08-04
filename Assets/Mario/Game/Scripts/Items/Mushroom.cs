@@ -1,5 +1,4 @@
 using Mario.Application.Services;
-using Mario.Game.Boxes;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
@@ -16,7 +15,7 @@ namespace Mario.Game.Items
         [SerializeField] private MushroomProfile _mushroomProfile;
 
         private Vector3 _currentSpeed;
-        private Bounds<bool> _proximityBlock = new();
+        private readonly Bounds<bool> _proximityBlock = new();
         private bool _isJumping;
         #endregion
 
@@ -55,7 +54,7 @@ namespace Mario.Game.Items
 
         #region Protected Methods
         protected virtual void CollectMushroom(PlayerController player)
-        { 
+        {
         }
         #endregion
 
@@ -118,7 +117,7 @@ namespace Mario.Game.Items
         }
         #endregion
 
-        #region On Ray Range Hit
+        #region On local Ray Range Hit
         public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
         public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
         public void OnProximityRayHitBottom(RayHitInfo hitInfo)

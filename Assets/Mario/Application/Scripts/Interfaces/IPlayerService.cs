@@ -1,5 +1,4 @@
 using Mario.Game.Enums;
-using UnityEngine;
 using UnityEngine.Events;
 
 namespace Mario.Application.Interfaces

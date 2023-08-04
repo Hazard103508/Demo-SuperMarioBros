@@ -15,7 +15,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region Private Methods
-        private IEnumerator MoveIntPipe(PlayerController player)
+        private IEnumerator MoveIntoPipe(PlayerController player)
         {
             AllServices.TimeService.StopTimer();
             AllServices.PlayerService.CanMove = false;
@@ -27,7 +27,7 @@ namespace Mario.Game.Interactable
 
             while (player.transform.position.y > transform.position.y)
             {
-                player.transform.Translate(Vector3.down * Time.deltaTime * 4f);
+                player.transform.Translate(4f * Time.deltaTime * Vector3.down);
                 yield return null;
             }
 
@@ -42,7 +42,7 @@ namespace Mario.Game.Interactable
                 return;
 
             if (player.Input.IsDucking)
-                StartCoroutine(MoveIntPipe(player));
+                StartCoroutine(MoveIntoPipe(player));
         }
         #endregion
     }

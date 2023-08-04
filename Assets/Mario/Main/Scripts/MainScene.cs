@@ -12,7 +12,7 @@ namespace Mario.Main
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return))
                 AllServices.SceneService.LoadStandByScene();
         }
         private void ResetPlayerData()

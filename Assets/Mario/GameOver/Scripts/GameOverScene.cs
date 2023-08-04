@@ -12,7 +12,7 @@ namespace Mario.Main
         }
 
         private IEnumerator LoadMainScene()
-        { 
+        {
             yield return new WaitForSeconds(7);
             AllServices.SceneService.LoadMainScene();
         }
