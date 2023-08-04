@@ -13,7 +13,7 @@ namespace Mario.Game.Items
         #endregion
 
         #region Private Methods
-        private void CollectMushroom(PlayerController player)
+        protected override void CollectMushroom(PlayerController player)
         {
             if (isCollected || IsRising)
                 return;
@@ -24,13 +24,6 @@ namespace Mario.Game.Items
 
             Destroy(gameObject);
         }
-        #endregion
-
-        #region On Player Hit
-        public override void OnHitableByPlayerFromLeft(PlayerController player) => CollectMushroom(player);
-        public override void OnHitableByPlayerFromBottom(PlayerController player) => CollectMushroom(player);
-        public override void OnHitableByPlayerFromRight(PlayerController player) => CollectMushroom(player);
-        public override void OnHitableByPlayerFromTop(PlayerController player) => CollectMushroom(player);
         #endregion
     }
 }

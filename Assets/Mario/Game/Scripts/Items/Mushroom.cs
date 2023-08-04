@@ -53,6 +53,12 @@ namespace Mario.Game.Items
         public void OnFall() => Destroy(gameObject);
         #endregion
 
+        #region Protected Methods
+        protected virtual void CollectMushroom(PlayerController player)
+        { 
+        }
+        #endregion
+
         #region Private Methods
         private void CalculateWalk()
         {
@@ -123,18 +129,10 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public virtual void OnHitableByPlayerFromTop(PlayerController player)
-        {
-        }
-        public virtual void OnHitableByPlayerFromBottom(PlayerController player)
-        {
-        }
-        public virtual void OnHitableByPlayerFromLeft(PlayerController player)
-        {
-        }
-        public virtual void OnHitableByPlayerFromRight(PlayerController player)
-        {
-        }
+        public void OnHitableByPlayerFromLeft(PlayerController player) => CollectMushroom(player);
+        public void OnHitableByPlayerFromBottom(PlayerController player) => CollectMushroom(player);
+        public void OnHitableByPlayerFromRight(PlayerController player) => CollectMushroom(player);
+        public void OnHitableByPlayerFromTop(PlayerController player) => CollectMushroom(player);
         #endregion
 
         #region On Box Hit
