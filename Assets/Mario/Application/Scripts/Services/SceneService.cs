@@ -10,36 +10,10 @@ namespace Mario.Application.Services
 {
     public class SceneService : MonoBehaviour, ISceneService
     {
-        private Dictionary<AssetReference, AsyncOperationHandle> _references;
-
         public void LoadService()
         {
-            _references = new Dictionary<AssetReference, AsyncOperationHandle>();
         }
-        public void AddAsset(AssetReference assetReference)
-        {
-            if (_references.ContainsKey(assetReference))
-                return;
 
-            _references.Add(assetReference, default);
-
-            var asyncOperationHandle = assetReference.LoadAssetAsync<GameObject>();
-            asyncOperationHandle.Completed += handle => _references[assetReference] = handle;
-        }
-        public T GetAssetReference<T>(AssetReference assetReference)
-        {
-            if (_references.ContainsKey(assetReference))
-                return (T)_references[assetReference].Result;
-
-            return default;
-        }
-        public void ReleaseAllAssets()
-        {
-            foreach (var item in _references)
-                item.Key.ReleaseAsset();
-
-            _references.Clear();
-        }
         public void LoadMapScene(float minDelay) => StartCoroutine(LoadMapSceneCO(minDelay));
         public void LoadMainScene() => SceneManager.LoadScene("Main");
         public void LoadStandByScene() => SceneManager.LoadScene("StandBy");

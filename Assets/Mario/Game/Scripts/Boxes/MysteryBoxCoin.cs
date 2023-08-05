@@ -16,7 +16,7 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.SceneService.AddAsset(_mysteryBoxProfile.CoinReference);
+            AllServices.AddressablesService.AddAsset(_mysteryBoxProfile.CoinReference);
         }
         #endregion
 
@@ -31,7 +31,7 @@ namespace Mario.Game.Boxes
             base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_mysteryBoxProfile.CoinReference);
+            var prefab = AllServices.AddressablesService.GetAssetReference<GameObject>(_mysteryBoxProfile.CoinReference);
             base.InstantiateContent(prefab);
         }
         #endregion

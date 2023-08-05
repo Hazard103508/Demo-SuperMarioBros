@@ -13,6 +13,8 @@ namespace Mario.Application
         private void Start()
         {
             ServiceLocator.Initiailze();
+            RegisterServicer<IAddressablesService>();
+            RegisterServicer<IPoolService>();
             RegisterServicer<IGameDataService>();
             RegisterServicer<ICoinService>();
             RegisterServicer<IScoreService>();
@@ -20,13 +22,14 @@ namespace Mario.Application
             RegisterServicer<IPlayerService>();
             RegisterServicer<ISceneService>();
             RegisterServicer<IMusicService>();
-            RegisterServicer<IPoolService>();
 
             AllServices.Load();
             AllServices.SceneService.LoadMainScene();
         }
         private void OnApplicationQuit()
         {
+            UnregisterService<IAddressablesService>();
+            UnregisterService<IPoolService>();
             UnregisterService<IGameDataService>();
             UnregisterService<ICoinService>();
             UnregisterService<IScoreService>();
@@ -34,7 +37,6 @@ namespace Mario.Application
             UnregisterService<IPlayerService>();
             UnregisterService<ISceneService>();
             UnregisterService<IMusicService>();
-            UnregisterService<IPoolService>();
 
             Destroy(gameObject);
         }

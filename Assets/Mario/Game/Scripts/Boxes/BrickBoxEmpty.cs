@@ -16,7 +16,7 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.SceneService.AddAsset(_brickProfile.BrokenBrickReference);
+            AllServices.AddressablesService.AddAsset(_brickProfile.BrokenBrickReference);
         }
         #endregion
 
@@ -33,7 +33,7 @@ namespace Mario.Game.Boxes
         {
             yield return new WaitForEndOfFrame();
 
-            var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_brickProfile.BrokenBrickReference);
+            var prefab = AllServices.AddressablesService.GetAssetReference<GameObject>(_brickProfile.BrokenBrickReference);
             InstantiateContent(prefab);
             AllServices.ScoreService.Add(_brickProfile.Points);
             Destroy(gameObject);

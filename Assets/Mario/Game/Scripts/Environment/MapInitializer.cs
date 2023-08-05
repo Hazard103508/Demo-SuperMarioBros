@@ -25,7 +25,7 @@ namespace Mario.Game.Environment
         private void OnDestroy()
         {
             SetNextMap();
-            AllServices.SceneService.ReleaseAllAssets();
+            AllServices.AddressablesService.ReleaseAllAssets();
             AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
         }
 

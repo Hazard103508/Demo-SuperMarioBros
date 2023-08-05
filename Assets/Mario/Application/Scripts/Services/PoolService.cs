@@ -10,6 +10,7 @@ namespace Mario.Application.Services
     {
         [SerializeField] private ObjectPoolProfile _profile;
 
+
         public void LoadService()
         {
             
@@ -24,5 +25,14 @@ namespace Mario.Application.Services
         {
             throw new NotImplementedException();
         }
+
+        //private void LoadAssets()
+        //{
+        //    foreach (ObjectPoolItem poolItem in _profile.PoolObjects)
+        //    {
+        //        AllServices.AddressablesService.AddAsset()
+        //
+        //    }
+        //}
     }
 }

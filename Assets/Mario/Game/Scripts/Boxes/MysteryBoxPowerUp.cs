@@ -18,8 +18,8 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.SceneService.AddAsset(_powerUpBoxProfile.RedMushroomReference);
-            AllServices.SceneService.AddAsset(_powerUpBoxProfile.FlowerReference);
+            AllServices.AddressablesService.AddAsset(_powerUpBoxProfile.RedMushroomReference);
+            AllServices.AddressablesService.AddAsset(_powerUpBoxProfile.FlowerReference);
         }
         #endregion
 
@@ -44,8 +44,8 @@ namespace Mario.Game.Boxes
             _risingSoundFX.Play();
 
             _itemPrefab = player.Mode == Enums.PlayerModes.Small ?
-                AllServices.SceneService.GetAssetReference<GameObject>(_powerUpBoxProfile.RedMushroomReference) :
-                AllServices.SceneService.GetAssetReference<GameObject>(_powerUpBoxProfile.FlowerReference);
+                AllServices.AddressablesService.GetAssetReference<GameObject>(_powerUpBoxProfile.RedMushroomReference) :
+                AllServices.AddressablesService.GetAssetReference<GameObject>(_powerUpBoxProfile.FlowerReference);
         }
         #endregion
     }
