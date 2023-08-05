@@ -17,7 +17,7 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromLeft(PlayerController player)
+        public void OnHittedByPlayerFromLeft(PlayerController player)
         {
             player.gameObject.SetActive(false);
 

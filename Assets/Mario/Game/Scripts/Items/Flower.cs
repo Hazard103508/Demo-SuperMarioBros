@@ -54,10 +54,10 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromTop(PlayerController player) => CollectFlower(player);
-        public void OnHitableByPlayerFromBottom(PlayerController player) => CollectFlower(player);
-        public void OnHitableByPlayerFromLeft(PlayerController player) => CollectFlower(player);
-        public void OnHitableByPlayerFromRight(PlayerController player) => CollectFlower(player);
+        public void OnHittedByPlayerFromTop(PlayerController player) => CollectFlower(player);
+        public void OnHittedByPlayerFromBottom(PlayerController player) => CollectFlower(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player) => CollectFlower(player);
+        public void OnHittedByPlayerFromRight(PlayerController player) => CollectFlower(player);
         #endregion
     }
 }

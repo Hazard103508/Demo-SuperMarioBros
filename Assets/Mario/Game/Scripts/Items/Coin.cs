@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Coin : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom
+    public class Coin : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBox
     {
         #region Objects
         [SerializeField] protected CoinProfile _profile;
@@ -27,14 +27,14 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromTop(PlayerController player) => CollectCoin();
-        public void OnHitableByPlayerFromBottom(PlayerController player) => CollectCoin();
-        public void OnHitableByPlayerFromLeft(PlayerController player) => CollectCoin();
-        public void OnHitableByPlayerFromRight(PlayerController player) => CollectCoin();
+        public void OnHittedByPlayerFromTop(PlayerController player) => CollectCoin();
+        public void OnHittedByPlayerFromBottom(PlayerController player) => CollectCoin();
+        public void OnHittedByPlayerFromLeft(PlayerController player) => CollectCoin();
+        public void OnHittedByPlayerFromRight(PlayerController player) => CollectCoin();
         #endregion
 
         #region On Box Hit
-        public void OnIHitableByBoxFromBottom(GameObject box) => CollectCoin();
+        public void OnHittedByBox(GameObject box) => CollectCoin();
         #endregion
     }
 }

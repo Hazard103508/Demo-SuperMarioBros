@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class InvisibleBox1UP : BottomHitableBox, IHitableByPlayerFromTop, IHitableByPlayerFromLeft, IHitableByPlayerFromRight
+    public class InvisibleBox1UP : Box, IHitableByPlayerFromTop, IHitableByPlayerFromLeft, IHitableByPlayerFromRight
     {
         #region Objects
         [SerializeField] private AudioSource _risingSoundFX;
@@ -37,7 +37,7 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public override void OnHitableByPlayerFromBottom(PlayerController player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (_disabledTimer > 0) // me aseguro que el primer contacto sea desde abajo
                 return;
@@ -48,13 +48,13 @@ namespace Mario.Game.Boxes
             PlayHitSoundFX();
 
             gameObject.layer = LayerMask.NameToLayer("Ground");
-            base.OnHitableByPlayerFromBottom(player);
+            base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
         }
-        public void OnHitableByPlayerFromTop(PlayerController player) => _disabledTimer = 0.5f;
-        public void OnHitableByPlayerFromLeft(PlayerController player) => _disabledTimer = 0.5f;
-        public void OnHitableByPlayerFromRight(PlayerController player) => _disabledTimer = 0.5f;
+        public void OnHittedByPlayerFromTop(PlayerController player) => _disabledTimer = 0.5f;
+        public void OnHittedByPlayerFromLeft(PlayerController player) => _disabledTimer = 0.5f;
+        public void OnHittedByPlayerFromRight(PlayerController player) => _disabledTimer = 0.5f;
         #endregion
     }
 }

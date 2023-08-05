@@ -6,7 +6,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes
 {
-    public class BottomHitableBox : MonoBehaviour, IHitableByPlayerFromBottom
+    public class Box : MonoBehaviour, IHitableByPlayerFromBottom
     {
         #region Objects
         [SerializeField] private AudioSource _hitSoundFX;
@@ -25,7 +25,6 @@ namespace Mario.Game.Boxes
             IsHitable = true;
         }
         #endregion
-
 
         #region Protected Methods
         protected virtual void OnJumpCompleted()
@@ -54,8 +53,8 @@ namespace Mario.Game.Boxes
             {
                 foreach (var obj in hitInfo.hitObjects)
                 {
-                    var hitableObject = obj.Object.GetComponent<IHitableByBoxFromBottom>();
-                    hitableObject?.OnIHitableByBoxFromBottom(this.gameObject);
+                    var hitableObject = obj.Object.GetComponent<IHitableByBox>();
+                    hitableObject?.OnHittedByBox(this.gameObject);
                 }
             }
         }
@@ -66,7 +65,7 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public virtual void OnHitableByPlayerFromBottom(PlayerController player)
+        public virtual void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
@@ -76,7 +75,5 @@ namespace Mario.Game.Boxes
             IsHitable = false;
         }
         #endregion
-
-
     }
 }

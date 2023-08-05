@@ -33,10 +33,10 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromLeft(PlayerController player) => OnHitCheckPoint(player);
-        public void OnHitableByPlayerFromRight(PlayerController player) => OnHitCheckPoint(player);
-        public void OnHitableByPlayerFromBottom(PlayerController player) => OnHitCheckPoint(player);
-        public void OnHitableByPlayerFromTop(PlayerController player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromRight(PlayerController player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromBottom(PlayerController player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromTop(PlayerController player) => OnHitCheckPoint(player);
         #endregion
     }
 }

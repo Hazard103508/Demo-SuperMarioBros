@@ -36,7 +36,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromTop(PlayerController player)
+        public void OnHittedByPlayerFromTop(PlayerController player)
         {
             if (_isInPipe)
                 return;

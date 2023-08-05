@@ -1,5 +1,4 @@
 using Mario.Application.Services;
-using Mario.Game.Boxes;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
@@ -11,7 +10,13 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc
 {
-    public class Koopa : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom, IHitableByKoppa
+    public class Koopa : MonoBehaviour,
+        IHitableByPlayerFromTop,
+        IHitableByPlayerFromBottom,
+        IHitableByPlayerFromLeft,
+        IHitableByPlayerFromRight,
+        IHitableByBox,
+        IHitableByKoppa
     {
         #region Objects
         [SerializeField] private KoopaProfile _profile;
@@ -56,6 +61,9 @@ namespace Mario.Game.Npc
         {
             if (!AllServices.PlayerService.CanMove)
                 return;
+
+            if (Input.GetKeyDown(KeyCode.O))
+                HitFromTop(GameObject.Find("Player").GetComponent<Player.PlayerController>());
 
             CalculateWalk();
             CalculateGravity();
@@ -252,44 +260,33 @@ namespace Mario.Game.Npc
         }
         private void HitToLeft(RayHitInfo hitInfo)
         {
-            KillNPC(hitInfo);
+            HitNPC(hitInfo);
             _proximityBlock.left = hitInfo;
         }
         private void HitToRight(RayHitInfo hitInfo)
         {
-            KillNPC(hitInfo);
+            HitNPC(hitInfo);
             _proximityBlock.right = hitInfo;
         }
-        private void KillNPC(RayHitInfo hitInfo)
+        private void HitNPC(RayHitInfo hitInfo)
         {
+            if (!hitInfo.IsBlock)
+                return;
+
             if (State == KoopaStates.Bouncing)
             {
-                //if (!hitInfo.IsBlock)
-                //    return;
-                //
-                //var hitObj = hitInfo.hitObjects.Select(hit => new
-                //{
-                //    hit,
-                //    npc = hit.Object.GetComponent<NPC>()
-                //})
-                //.ToList();
-                //
-                //hitInfo.hitObjects = hitObj.Where(hit => hit.npc == null).Select(hit => hit.hit).ToList();
-                //hitInfo.IsBlock = hitInfo.hitObjects.Any();
-                //
-                //var npcHit = hitObj.Where(hit => hit.npc != null).Select(hit => hit).ToList();
-                //if (npcHit != null && npcHit.Any())
-                //    foreach (var hit in npcHit)
-                //    {
-                //        Vector3 hitPosition = hit.hit.Point;
-                //        if (hit.npc is Koopa && ((Koopa)hit.npc).State == KoopaStates.Bouncing)
-                //        {
-                //            hitPosition = new Vector3((hit.npc.transform.position.x + transform.position.x) / 2, hit.hit.Point.y);
-                //            this.Kill(hitPosition);
-                //        }
-                //
-                //        hit.npc.Kill(hitPosition);
-                //    }
+                if (hitInfo.hitObjects.Any())
+                {
+                    var hitObj = hitInfo.hitObjects.Select(hit => new
+                    {
+                        HitInfo = hit,
+                        HittedObject = hit.Object.GetComponent<IHitableByKoppa>()
+                    })
+                    .ToList();
+
+                    hitInfo.IsBlock = hitInfo.IsBlock && hitObj.Any(hit => hit.HittedObject == null); // golpeo algo que no es un npc
+                    hitObj.ForEach(hit => hit.HittedObject?.OnHittedByKoppa(this));
+                }
             }
         }
         #endregion
@@ -316,20 +313,23 @@ namespace Mario.Game.Npc
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromTop(PlayerController player) => HitFromTop(player);
-        public void OnHitableByPlayerFromLeft(PlayerController player) => HitFromSide(player);
-        public void OnHitableByPlayerFromRight(PlayerController player) => HitFromSide(player);
-        public void OnHitableByPlayerFromBottom(PlayerController player) => DamagePlayer(player);
+        public void OnHittedByPlayerFromTop(PlayerController player) => HitFromTop(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player) => HitFromSide(player);
+        public void OnHittedByPlayerFromRight(PlayerController player) => HitFromSide(player);
+        public void OnHittedByPlayerFromBottom(PlayerController player) => DamagePlayer(player);
         #endregion
 
         #region On Box Hit
-        public void OnIHitableByBoxFromBottom(GameObject box) => Kill(box.transform.position);
+        public void OnHittedByBox(GameObject box) => Kill(box.transform.position);
         #endregion
 
         #region On Koopa Hit
-        public void OnIHitableByKoppa(GameObject koopa)
+        public void OnHittedByKoppa(Koopa koopa)
         {
+            if (this.State == KoopaStates.Bouncing)
+                koopa.Kill(this.transform.position);
 
+            this.Kill(koopa.transform.position);
         }
         #endregion
 

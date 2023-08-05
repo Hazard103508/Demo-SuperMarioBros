@@ -1,5 +1,4 @@
 using Mario.Application.Services;
-using Mario.Game.Boxes;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
@@ -11,7 +10,13 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc
 {
-    public class Goomba : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom, IHitableByKoppa
+    public class Goomba : MonoBehaviour,
+        IHitableByPlayerFromTop,
+        IHitableByPlayerFromBottom,
+        IHitableByPlayerFromLeft,
+        IHitableByPlayerFromRight,
+        IHitableByBox,
+        IHitableByKoppa
     {
         #region Objects
         [SerializeField] private GoombaProfile _profile;
@@ -156,6 +161,12 @@ namespace Mario.Game.Npc
             AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
 
             player.BounceJump();
+            StartCoroutine(DestroyAfterHit());
+        }
+        private IEnumerator DestroyAfterHit()
+        {
+            yield return new WaitForSeconds(0.4f);
+            Destroy(gameObject);
         }
         private void DamagePlayer(PlayerController player)
         {
@@ -188,18 +199,18 @@ namespace Mario.Game.Npc
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromTop(PlayerController player) => Hit(player);
-        public void OnHitableByPlayerFromBottom(PlayerController player) => DamagePlayer(player);
-        public void OnHitableByPlayerFromLeft(PlayerController player) => DamagePlayer(player);
-        public void OnHitableByPlayerFromRight(PlayerController player) => DamagePlayer(player);
+        public void OnHittedByPlayerFromTop(PlayerController player) => Hit(player);
+        public void OnHittedByPlayerFromBottom(PlayerController player) => DamagePlayer(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player) => DamagePlayer(player);
+        public void OnHittedByPlayerFromRight(PlayerController player) => DamagePlayer(player);
         #endregion
 
         #region On Box Hit
-        public void OnIHitableByBoxFromBottom(GameObject box) => Kill(box.transform.position);
+        public void OnHittedByBox(GameObject box) => Kill(box.transform.position);
         #endregion
 
         #region On Koopa Hit
-        public void OnIHitableByKoppa(GameObject koopa) => Kill(koopa.transform.position);
+        public void OnHittedByKoppa(Koopa koopa) => Kill(koopa.transform.position);
         #endregion
     }
 }

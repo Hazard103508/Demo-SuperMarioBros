@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class BrickBoxCoin : BottomHitableBox
+    public class BrickBoxCoin : Box
     {
         #region Objects
         [SerializeField] private BrickBoxCoinProfile _coinBrickProfile;
@@ -42,7 +42,7 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public override void OnHitableByPlayerFromBottom(PlayerController player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
@@ -50,7 +50,7 @@ namespace Mario.Game.Boxes
             PlayHitSoundFX();
             _firstHit = true;
 
-            base.OnHitableByPlayerFromBottom(player);
+            base.OnHittedByPlayerFromBottom(player);
 
             if (_limitTime < 0)
             {

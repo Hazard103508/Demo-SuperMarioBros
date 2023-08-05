@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class MysteryBoxPowerUp : BottomHitableBox
+    public class MysteryBoxPowerUp : Box
     {
         #region Objects
         [SerializeField] private AudioSource _risingSoundFX;
@@ -32,14 +32,14 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public override void OnHitableByPlayerFromBottom(PlayerController player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
             PlayHitSoundFX();
 
-            base.OnHitableByPlayerFromBottom(player);
+            base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
 

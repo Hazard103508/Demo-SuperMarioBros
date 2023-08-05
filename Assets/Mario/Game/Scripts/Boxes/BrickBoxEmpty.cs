@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class BrickBoxEmpty : BottomHitableBox
+    public class BrickBoxEmpty : Box
     {
         #region Objects
         [SerializeField] private BrickBoxEmptyProfile _brickProfile;
@@ -41,13 +41,13 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public override void OnHitableByPlayerFromBottom(PlayerController player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             PlayHitSoundFX();
 
             if (player.RawMovement.y > 0 || player.Input.JumpDown)
             {
-                base.OnHitableByPlayerFromBottom(player);
+                base.OnHittedByPlayerFromBottom(player);
                 if (player.Mode != Enums.PlayerModes.Small)
                     StartCoroutine(InstantiateBreakedBox());
             }

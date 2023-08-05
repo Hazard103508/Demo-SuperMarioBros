@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class MysteryBoxCoin : BottomHitableBox
+    public class MysteryBoxCoin : Box
     {
         #region Objects
         [SerializeField] protected MysteryBoxCoinProfile _mysteryBoxProfile;
@@ -21,14 +21,14 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public override void OnHitableByPlayerFromBottom(PlayerController player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (!IsHitable)
                 return;
 
             PlayHitSoundFX();
 
-            base.OnHitableByPlayerFromBottom(player);
+            base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
             var prefab = AllServices.SceneService.GetAssetReference<GameObject>(_mysteryBoxProfile.CoinReference);

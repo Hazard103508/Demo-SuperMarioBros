@@ -3,6 +3,6 @@ namespace Mario.Game.Interfaces
 {
     public interface IHitableByPlayerFromRight
     {
-        void OnHitableByPlayerFromRight(PlayerController player);
+        void OnHittedByPlayerFromRight(PlayerController player);
     }
 }

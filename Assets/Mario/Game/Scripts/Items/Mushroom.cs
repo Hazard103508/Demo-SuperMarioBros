@@ -9,7 +9,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
-    public class Mushroom : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBoxFromBottom
+    public class Mushroom : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBox
     {
         #region Objects
         [SerializeField] private MushroomProfile _mushroomProfile;
@@ -128,14 +128,14 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public void OnHitableByPlayerFromLeft(PlayerController player) => CollectMushroom(player);
-        public void OnHitableByPlayerFromBottom(PlayerController player) => CollectMushroom(player);
-        public void OnHitableByPlayerFromRight(PlayerController player) => CollectMushroom(player);
-        public void OnHitableByPlayerFromTop(PlayerController player) => CollectMushroom(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player) => CollectMushroom(player);
+        public void OnHittedByPlayerFromBottom(PlayerController player) => CollectMushroom(player);
+        public void OnHittedByPlayerFromRight(PlayerController player) => CollectMushroom(player);
+        public void OnHittedByPlayerFromTop(PlayerController player) => CollectMushroom(player);
         #endregion
 
         #region On Box Hit
-        public void OnIHitableByBoxFromBottom(GameObject box)
+        public void OnHittedByBox(GameObject box)
         {
             if (_isJumping)
                 return;
