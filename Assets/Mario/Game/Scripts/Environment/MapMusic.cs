@@ -11,10 +11,10 @@ namespace Mario.Game.Environment
         private void Awake()
         {
             AllServices.TimeService.OnHurryUpTimeStart.AddListener(OnHurryUpTimeStart);
-            LoadThemeSong();
         }
         private void Start()
         {
+            LoadThemeSong();
             AllServices.MusicService.Play();
         }
         private void OnDestroy()

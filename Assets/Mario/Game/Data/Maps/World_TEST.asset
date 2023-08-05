@@ -19,8 +19,8 @@ MonoBehaviour:
     StartLocation: 0
     BlackScreenTime: 0
   Time:
-    Type: 0
-    StartTime: 0
+    Type: 1
+    StartTime: 999
   MapSectionReferences:
   - {fileID: 981654926499773033, guid: 2227a808dfe2c664daa7632fc5abdace, type: 3}
   PipesConnections: []
