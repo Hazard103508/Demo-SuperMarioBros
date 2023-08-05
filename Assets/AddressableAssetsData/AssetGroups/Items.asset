@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 0654d3842bda4ed4bbed8e1b1ee45c7e
   m_SerializeEntries:
   - m_GUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
-    m_Address: BrokenBrick
+    m_Address: Overworld_BrokenBrick
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 11edffef54ef3e24cb397f4c763299ab

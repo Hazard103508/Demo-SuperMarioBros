@@ -71,7 +71,7 @@ namespace Mario.Game.Environment
         }
         private void LoadObjectsPool()
         {
-            LoadObjectsPool(AllServices.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjects);
+            LoadObjectsPool(AllServices.GameDataService.CurrentMapProfile.ObjectsPool.ItemsPool);
         }
         private void LoadObjectsPool(ObjectPoolItem[] poolItems) => Array.ForEach(poolItems, item => AllServices.AddressablesService.AddAsset(item.Reference));
         private IEnumerator StartGame()

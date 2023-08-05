@@ -9,7 +9,7 @@ namespace Mario.Application.Components
     public class ObjectPoolGroup : MonoBehaviour
     {
         #region Objects
-        public ObjectPoolTypes Type;
+        public string Type;
         private Queue<GameObject> _poolReady;
         private Queue<GameObject> _poolBussy;
         #endregion

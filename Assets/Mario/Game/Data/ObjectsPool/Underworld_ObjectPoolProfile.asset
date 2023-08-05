@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Underworld_ObjectPoolProfile
   m_EditorClassIdentifier: 
   PoolObjects:
-  - Type: 0
+  - Type: Coin
     Reference:
       m_AssetGUID: 11edffef54ef3e24cb397f4c763299ab
       m_SubObjectName: 

@@ -1,9 +1,9 @@
-using UnityEngine;
+using Mario.Application.Components;
 
 namespace Mario.Game.Items
 {
-    public class BrokenBrick : MonoBehaviour
+    public class BrokenBrick : ObjectPool
     {
-        public void OnAnimationCompleted() => Destroy(gameObject);
+        public void OnAnimationCompleted() => gameObject.SetActive(false);
     }
 }

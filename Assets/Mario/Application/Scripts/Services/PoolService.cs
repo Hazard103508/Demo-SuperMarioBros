@@ -9,25 +9,25 @@ namespace Mario.Application.Services
 {
     public class PoolService : MonoBehaviour, IPoolService
     {
-        private Dictionary<ObjectPoolTypes, ObjectPoolGroup> _poolGroups;
+        private Dictionary<string, ObjectPoolGroup> _poolGroups;
 
         public void LoadService()
         {
-            _poolGroups = new Dictionary<ObjectPoolTypes, ObjectPoolGroup>();
+            _poolGroups = new Dictionary<string, ObjectPoolGroup>();
         }
 
-        public GameObject GetObjectFromPool(ObjectPoolTypes type)
+        public GameObject GetObjectFromPool(string type)
         {
             var poolGroup = GetPoolGroup(type);
             return poolGroup.GetPoolObject();
         }
 
-        public T GetObjectFromPool<T>(ObjectPoolTypes type) where T : MonoBehaviour
+        public T GetObjectFromPool<T>(string type) where T : MonoBehaviour
         {
             return GetObjectFromPool(type).GetComponent<T>();
         }
 
-        private ObjectPoolGroup GetPoolGroup(ObjectPoolTypes type)
+        private ObjectPoolGroup GetPoolGroup(string type)
         {
             if (!_poolGroups.ContainsKey(type))
             {

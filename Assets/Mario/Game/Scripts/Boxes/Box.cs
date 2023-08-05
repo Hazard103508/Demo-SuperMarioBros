@@ -1,3 +1,5 @@
+using Mario.Application.Services;
+using Mario.Game.Enums;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using System.Linq;
@@ -35,6 +37,11 @@ namespace Mario.Game.Boxes
         {
             var content = Instantiate(item);
             content.transform.position = this.transform.position;
+        }
+        protected void InstantiateContent(string type)
+        {
+            var obj = AllServices.PoolService.GetObjectFromPool(type);
+            obj.transform.position = this.transform.position;
         }
         protected void PlayHitSoundFX()
         {

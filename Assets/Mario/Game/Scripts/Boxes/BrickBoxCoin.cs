@@ -21,8 +21,6 @@ namespace Mario.Game.Boxes
         {
             base.Awake();
             _limitTime = _coinBrickProfile.LimitTime;
-
-            AllServices.AddressablesService.AddAsset(_coinBrickProfile.CoinReference);
         }
         private void Update()
         {
@@ -60,8 +58,7 @@ namespace Mario.Game.Boxes
             else
                 _spriteAnimator.SetTrigger("Hit");
 
-            var prefab = AllServices.AddressablesService.GetAssetReference(_coinBrickProfile.CoinReference);
-            base.InstantiateContent(prefab);
+            base.InstantiateContent(_coinBrickProfile.PoolReference);
         }
         #endregion
     }

@@ -5,7 +5,7 @@ namespace Mario.Application.Interfaces
 {
     public interface IPoolService : IGameService
     {
-        GameObject GetObjectFromPool(ObjectPoolTypes type);
-        T GetObjectFromPool<T>(ObjectPoolTypes type) where T : MonoBehaviour;
+        GameObject GetObjectFromPool(string type);
+        T GetObjectFromPool<T>(string type) where T : MonoBehaviour;
     }
 }

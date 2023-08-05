@@ -12,10 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d472e218d13a4f4f967f25e5b19d8ac, type: 3}
   m_Name: Overworld_ObjectPoolProfile
   m_EditorClassIdentifier: 
-  PoolObjects:
-  - Type: 0
+  ItemsPool:
+  - Type: JumpingCoin
     Reference:
       m_AssetGUID: 11edffef54ef3e24cb397f4c763299ab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: 
+    Reference:
+      m_AssetGUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

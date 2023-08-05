@@ -1,4 +1,3 @@
-using Mario.Game.Enums;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,14 +8,14 @@ namespace Mario.Game.ScriptableObjects.Map
     [CreateAssetMenu(fileName = "ObjectPoolProfile", menuName = "ScriptableObjects/Game/Map/ObjectPoolProfile", order = 3)]
     public class ObjectPoolProfile : ScriptableObject
     {
-        public ObjectPoolItem[] PoolObjects;
+        public ObjectPoolItem[] ItemsPool;
 
-        public Dictionary<ObjectPoolTypes, ObjectPoolItem> PoolObjectsDic { get; private set; }
+        public Dictionary<string, ObjectPoolItem> PoolObjectsDic { get; private set; }
 
         private void OnEnable()
         {
-            PoolObjectsDic = new Dictionary<ObjectPoolTypes, ObjectPoolItem>();
-            foreach (var item in PoolObjects)
+            PoolObjectsDic = new Dictionary<string, ObjectPoolItem>();
+            foreach (var item in ItemsPool)
                 PoolObjectsDic.Add(item.Type, item);
         }
 
@@ -24,7 +23,7 @@ namespace Mario.Game.ScriptableObjects.Map
     [Serializable]
     public class ObjectPoolItem
     {
-        public ObjectPoolTypes Type;
+        public string Type;
         public AssetReferenceGameObject Reference;
     }
 }
