@@ -7,10 +7,10 @@ namespace Mario.Game.Environment
 {
     public class MapMusic : MonoBehaviour
     {
+        #region Unity Methods
         private void Awake()
         {
             AllServices.TimeService.OnHurryUpTimeStart.AddListener(OnHurryUpTimeStart);
-
             LoadThemeSong();
         }
         private void Start()
@@ -22,7 +22,9 @@ namespace Mario.Game.Environment
             AllServices.MusicService.Stop();
             AllServices.TimeService.OnHurryUpTimeStart.RemoveListener(OnHurryUpTimeStart);
         }
+        #endregion
 
+        #region Private Methods
         private void OnHurryUpTimeStart()
         {
             AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.HurryFX;
@@ -30,7 +32,6 @@ namespace Mario.Game.Environment
 
             StartCoroutine(PlayHurryTheme());
         }
-
         private void LoadThemeSong()
         {
             switch (AllServices.GameDataService.CurrentMapProfile.Time.Type)
@@ -65,5 +66,6 @@ namespace Mario.Game.Environment
             AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
             AllServices.MusicService.Play();
         }
+        #endregion
     }
 }
