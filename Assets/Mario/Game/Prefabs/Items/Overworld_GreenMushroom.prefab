@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 9157481705733638241}
   - component: {fileID: 4126564096216567813}
   m_Layer: 6
-  m_Name: Overworld_MushroomGreen
+  m_Name: Overworld_GreenMushroom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

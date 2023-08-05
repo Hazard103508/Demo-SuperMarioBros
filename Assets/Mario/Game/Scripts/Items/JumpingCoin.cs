@@ -12,7 +12,7 @@ namespace Mario.Game.Items
         #endregion
 
         #region Unity Methods
-        protected void OnEnable()
+        protected override void OnEnable()
         {
             base.OnEnable();
             AllServices.ScoreService.Add(_profile.Points);

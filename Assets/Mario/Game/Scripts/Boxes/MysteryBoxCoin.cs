@@ -12,14 +12,6 @@ namespace Mario.Game.Boxes
         [SerializeField] private Animator _spriteAnimator;
         #endregion
 
-        #region Unity Methods
-        protected override void Awake()
-        {
-            base.Awake();
-            AllServices.AddressablesService.AddAsset(_mysteryBoxProfile.CoinReference);
-        }
-        #endregion
-
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
@@ -31,8 +23,7 @@ namespace Mario.Game.Boxes
             base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            var prefab = AllServices.AddressablesService.GetAssetReference(_mysteryBoxProfile.CoinReference);
-            base.InstantiateContent(prefab);
+            base.InstantiateContent(_mysteryBoxProfile.CoinPoolReference);
         }
         #endregion
     }

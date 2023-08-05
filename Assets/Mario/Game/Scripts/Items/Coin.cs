@@ -34,7 +34,13 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Box Hit
-        public void OnHittedByBox(GameObject box) => CollectCoin();
+        public void OnHittedByBox(GameObject box)
+        {
+            CollectCoin();
+
+            var jumpingCoin = AllServices.PoolService.GetObjectFromPool(_profile.CoinPoolReference);
+            jumpingCoin.transform.position = box.transform.position;
+        }
         #endregion
     }
 }

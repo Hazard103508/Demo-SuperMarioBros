@@ -19,7 +19,6 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.AddressablesService.AddAsset(_invisibleBox1UPProfile.GreenMushroomReference);
         }
         private void Update()
         {
@@ -31,8 +30,7 @@ namespace Mario.Game.Boxes
         protected override void OnJumpCompleted()
         {
             base.OnJumpCompleted();
-            var prefab = AllServices.AddressablesService.GetAssetReference(_invisibleBox1UPProfile.GreenMushroomReference);
-            base.InstantiateContent(prefab);
+            base.InstantiateContent(_invisibleBox1UPProfile.GreenMushroomPoolReference);
         }
         #endregion
 

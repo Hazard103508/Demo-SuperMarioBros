@@ -33,11 +33,6 @@ namespace Mario.Game.Boxes
         {
             IsJumping = false;
         }
-        protected void InstantiateContent(GameObject item)
-        {
-            var content = Instantiate(item);
-            content.transform.position = this.transform.position;
-        }
         protected void InstantiateContent(string type)
         {
             var obj = AllServices.PoolService.GetObjectFromPool(type);

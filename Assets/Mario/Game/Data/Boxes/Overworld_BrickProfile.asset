@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
   m_Name: Overworld_BrickProfile
   m_EditorClassIdentifier: 
-  PoolReference: Overworld_BrokenBrick
+  BroknBrickPoolReference: Overworld_BrokenBrick
   Points: 50

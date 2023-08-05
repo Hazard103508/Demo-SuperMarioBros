@@ -18,8 +18,6 @@ namespace Mario.Game.Boxes
         protected override void Awake()
         {
             base.Awake();
-            AllServices.AddressablesService.AddAsset(_powerUpBoxProfile.RedMushroomReference);
-            AllServices.AddressablesService.AddAsset(_powerUpBoxProfile.FlowerReference);
         }
         #endregion
 
@@ -27,7 +25,7 @@ namespace Mario.Game.Boxes
         protected override void OnJumpCompleted()
         {
             base.OnJumpCompleted();
-            base.InstantiateContent(_itemPrefab);
+            base.InstantiateContent(_powerUpBoxProfile.RedMushroomPoolReference);
         }
         #endregion
 
@@ -43,9 +41,9 @@ namespace Mario.Game.Boxes
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
 
-            _itemPrefab = player.Mode == Enums.PlayerModes.Small ?
-                AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.RedMushroomReference) :
-                AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.FlowerReference);
+            //_itemPrefab = player.Mode == Enums.PlayerModes.Small ?
+            //    AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.RedMushroomPoolReference) :
+            //    AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.FlowerPoolReference);
         }
         #endregion
     }

@@ -6,7 +6,7 @@ namespace Mario.Game.ScriptableObjects.Boxes
     [CreateAssetMenu(fileName = "BrickBoxEmptyProfile", menuName = "ScriptableObjects/Game/Boxes/BrickBoxEmptyProfile", order = 0)]
     public class BrickBoxEmptyProfile : ScriptableObject
     {
-        public string PoolReference;
+        public string BroknBrickPoolReference;
         public int Points;
     }
 }

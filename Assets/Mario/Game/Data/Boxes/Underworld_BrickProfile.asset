@@ -12,9 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
   m_Name: Underworld_BrickProfile
   m_EditorClassIdentifier: 
-  BrokenBrickReference:
-    m_AssetGUID: 56e9151935fd98b438a3a6d79b458f99
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  BroknBrickPoolReference: Underworld_BrokenBrick
   Points: 50

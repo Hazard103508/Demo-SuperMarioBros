@@ -58,7 +58,7 @@ namespace Mario.Game.Boxes
             else
                 _spriteAnimator.SetTrigger("Hit");
 
-            base.InstantiateContent(_coinBrickProfile.PoolReference);
+            base.InstantiateContent(_coinBrickProfile.CoinPoolReference);
         }
         #endregion
     }

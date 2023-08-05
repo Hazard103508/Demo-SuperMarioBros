@@ -1,3 +1,4 @@
+using Mario.Application.Components;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -7,7 +8,11 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Flower : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight
+    public class Flower : ObjectPool, 
+        IHitableByPlayerFromTop, 
+        IHitableByPlayerFromBottom, 
+        IHitableByPlayerFromLeft, 
+        IHitableByPlayerFromRight
     {
         #region Objects
         [SerializeField] protected FlowerProfile _profile;
@@ -49,7 +54,7 @@ namespace Mario.Game.Items
             AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
 
             player.Buff();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         #endregion
 
