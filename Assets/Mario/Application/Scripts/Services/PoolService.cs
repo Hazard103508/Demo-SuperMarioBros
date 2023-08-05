@@ -1,38 +1,44 @@
+using Mario.Application.Components;
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
-using Mario.Game.ScriptableObjects.Map;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Mario.Application.Services
 {
     public class PoolService : MonoBehaviour, IPoolService
     {
-        [SerializeField] private ObjectPoolProfile _profile;
-
+        private Dictionary<ObjectPoolTypes, ObjectPoolGroup> _poolGroups;
 
         public void LoadService()
         {
-            
+            _poolGroups = new Dictionary<ObjectPoolTypes, ObjectPoolGroup>();
         }
 
         public GameObject GetObjectFromPool(ObjectPoolTypes type)
         {
-            throw new System.NotImplementedException();
+            var poolGroup = GetPoolGroup(type);
+            return poolGroup.GetPoolObject();
         }
 
         public T GetObjectFromPool<T>(ObjectPoolTypes type) where T : MonoBehaviour
         {
-            throw new NotImplementedException();
+            return GetObjectFromPool(type).GetComponent<T>();
         }
 
-        //private void LoadAssets()
-        //{
-        //    foreach (ObjectPoolItem poolItem in _profile.PoolObjects)
-        //    {
-        //        AllServices.AddressablesService.AddAsset()
-        //
-        //    }
-        //}
+        private ObjectPoolGroup GetPoolGroup(ObjectPoolTypes type)
+        {
+            if (!_poolGroups.ContainsKey(type))
+            {
+                var obj = new GameObject(type.ToString() + "Pool");
+                obj.transform.parent = transform;
+                var group = obj.AddComponent<ObjectPoolGroup>();
+                group.Type = type;
+                _poolGroups.Add(type, group);
+            }
+
+            return _poolGroups[type];
+        }
     }
 }

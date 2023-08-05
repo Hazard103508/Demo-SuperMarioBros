@@ -23,10 +23,10 @@ namespace Mario.Application.Services
             var asyncOperationHandle = assetReference.LoadAssetAsync<GameObject>();
             asyncOperationHandle.Completed += handle => _references[assetReference] = handle;
         }
-        public T GetAssetReference<T>(AssetReference assetReference)
+        public GameObject GetAssetReference(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))
-                return (T)_references[assetReference].Result;
+                return (GameObject)_references[assetReference].Result;
 
             return default;
         }

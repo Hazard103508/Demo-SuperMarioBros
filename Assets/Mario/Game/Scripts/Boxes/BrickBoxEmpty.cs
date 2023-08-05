@@ -33,7 +33,7 @@ namespace Mario.Game.Boxes
         {
             yield return new WaitForEndOfFrame();
 
-            var prefab = AllServices.AddressablesService.GetAssetReference<GameObject>(_brickProfile.BrokenBrickReference);
+            var prefab = AllServices.AddressablesService.GetAssetReference(_brickProfile.BrokenBrickReference);
             InstantiateContent(prefab);
             AllServices.ScoreService.Add(_brickProfile.Points);
             Destroy(gameObject);

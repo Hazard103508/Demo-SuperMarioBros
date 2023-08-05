@@ -44,8 +44,8 @@ namespace Mario.Game.Boxes
             _risingSoundFX.Play();
 
             _itemPrefab = player.Mode == Enums.PlayerModes.Small ?
-                AllServices.AddressablesService.GetAssetReference<GameObject>(_powerUpBoxProfile.RedMushroomReference) :
-                AllServices.AddressablesService.GetAssetReference<GameObject>(_powerUpBoxProfile.FlowerReference);
+                AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.RedMushroomReference) :
+                AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.FlowerReference);
         }
         #endregion
     }

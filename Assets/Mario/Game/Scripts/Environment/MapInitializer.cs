@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,9 +9,12 @@ namespace Mario.Game.Environment
 {
     public class MapInitializer : MonoBehaviour
     {
+        #region Objects
         [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
+        #endregion
 
+        #region Unity Methods
         private void Awake()
         {
             AllServices.TimeService.ResetTimer();
@@ -19,6 +23,7 @@ namespace Mario.Game.Environment
 
             Camera.main.backgroundColor = AllServices.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             LoadMapSection();
+            LoadObjectsPool();
 
             StartCoroutine(StartGame());
         }
@@ -28,7 +33,9 @@ namespace Mario.Game.Environment
             AllServices.AddressablesService.ReleaseAllAssets();
             AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
         }
+        #endregion
 
+        #region Private Methods
         private void SetNextMap()
         {
             if (AllServices.GameDataService.NextMapProfile != null)
@@ -62,6 +69,11 @@ namespace Mario.Game.Environment
 
             positionX += mapSection.Size.Width;
         }
+        private void LoadObjectsPool()
+        {
+            LoadObjectsPool(AllServices.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjects);
+        }
+        private void LoadObjectsPool(ObjectPoolItem[] poolItems) => Array.ForEach(poolItems, item => AllServices.AddressablesService.AddAsset(item.Reference));
         private IEnumerator StartGame()
         {
             _blackScreen.SetActive(true);
@@ -87,13 +99,6 @@ namespace Mario.Game.Environment
             AllServices.PlayerService.CanMove = true;
             AllServices.TimeService.StartTimer();
         }
-        private void OnLivesRemoved()
-        {
-            AllServices.TimeService.StopTimer();
-            AllServices.PlayerService.CanMove = false;
-
-            StartCoroutine(ReloadMap());
-        }
         private IEnumerator ReloadMap()
         {
             yield return new WaitForSeconds(3.5f);
@@ -105,5 +110,16 @@ namespace Mario.Game.Environment
             else
                 AllServices.SceneService.LoadStandByScene();
         }
+        #endregion
+
+        #region Service Events	
+        private void OnLivesRemoved()
+        {
+            AllServices.TimeService.StopTimer();
+            AllServices.PlayerService.CanMove = false;
+
+            StartCoroutine(ReloadMap());
+        }
+        #endregion
     }
 }

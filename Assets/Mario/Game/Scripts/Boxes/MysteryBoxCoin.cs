@@ -31,7 +31,7 @@ namespace Mario.Game.Boxes
             base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            var prefab = AllServices.AddressablesService.GetAssetReference<GameObject>(_mysteryBoxProfile.CoinReference);
+            var prefab = AllServices.AddressablesService.GetAssetReference(_mysteryBoxProfile.CoinReference);
             base.InstantiateContent(prefab);
         }
         #endregion

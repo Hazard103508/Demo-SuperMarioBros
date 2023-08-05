@@ -23,7 +23,6 @@ namespace Mario.Game.Player
 
             if (Input.GetKeyDown(KeyCode.Space))
                 Debug.Break();
-
             // TESTING----------------
         }
 
