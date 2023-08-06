@@ -19,12 +19,12 @@ MonoBehaviour:
     StartLocation: 0
     BlackScreenTime: 0
   Time:
-    Type: 1
-    StartTime: 999
+    Type: 0
+    StartTime: 0
   MapSectionReferences:
   - {fileID: 981654926499773033, guid: 2227a808dfe2c664daa7632fc5abdace, type: 3}
   PipesConnections: []
   CheckPoints: []
   NextMap: {fileID: 0}
   Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
-  ObjectsPool: {fileID: 11400000, guid: dfc678d114b94d54692da97595736ef2, type: 2}
+  ObjectsPool: {fileID: 11400000, guid: e66928cabb0da6e4dbac7d768f224afd, type: 2}

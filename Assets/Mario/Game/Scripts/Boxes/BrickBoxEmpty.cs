@@ -28,11 +28,11 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region Private Methods
-        private IEnumerator InstantiateBreakedBox()
+        private IEnumerator ShowBreakedBox()
         {
             yield return new WaitForEndOfFrame();
 
-            InstantiateContent(_brickProfile.BroknBrickPoolReference);
+            ShowContent(_brickProfile.BroknBrickPoolReference);
             Services.ScoreService.Add(_brickProfile.Points);
             Destroy(gameObject);
         }
@@ -47,7 +47,7 @@ namespace Mario.Game.Boxes
             {
                 base.OnHittedByPlayerFromBottom(player);
                 if (player.Mode != Enums.PlayerModes.Small)
-                    StartCoroutine(InstantiateBreakedBox());
+                    StartCoroutine(ShowBreakedBox());
             }
             else
             {

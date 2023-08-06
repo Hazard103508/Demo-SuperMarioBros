@@ -43,3 +43,9 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - Type: TargetPoints
+    Reference:
+      m_AssetGUID: b9526c839700feb4bbea32f156771724
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

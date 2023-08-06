@@ -25,7 +25,7 @@ namespace Mario.Game.Boxes
         protected override void OnJumpCompleted()
         {
             base.OnJumpCompleted();
-            base.InstantiateContent(_buffReference);
+            base.ShowContent(_buffReference);
         }
         #endregion
 

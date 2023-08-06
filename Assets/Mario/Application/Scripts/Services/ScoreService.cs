@@ -7,8 +7,6 @@ namespace Mario.Application.Services
 {
     public class ScoreService : MonoBehaviour, IScoreService
     {
-        [SerializeField] private TargetPoints _targetPointsPrefab;
-
         public int Score { get; private set; }
 
         public UnityEvent OnScoreChanged { get; set; }
@@ -24,14 +22,21 @@ namespace Mario.Application.Services
 
         }
         public void ShowPoint(int value, Vector3 initPosition, float time, float hight) => ShowPoint(value, initPosition, time, hight, true);
-        public void ShowPoint(int value, Vector3 initPosition, float time, float hight, bool destroyOnCompleted)
+        public void ShowPoint(int value, Vector3 initPosition, float time, float hight, bool deactivateOnCompleted)
         {
-            TargetPoints point = MonoBehaviour.Instantiate(_targetPointsPrefab, initPosition, Quaternion.identity);
-            point.ShowPoints(value, time, hight, destroyOnCompleted);
+
+            TargetPoints point = Services.PoolService.GetObjectFromPool<TargetPoints>("TargetPoints");
+            point.transform.position = initPosition;
+            point.gameObject.SetActive(true);
+
+            point.ShowPoints(value, time, hight, deactivateOnCompleted);
         }
         public void ShowLabel(Sprite label, Vector3 initPosition, float time, float hight)
         {
-            TargetPoints point = MonoBehaviour.Instantiate(_targetPointsPrefab, initPosition, Quaternion.identity);
+            TargetPoints point = Services.PoolService.GetObjectFromPool<TargetPoints>("TargetPoints");
+            point.transform.position = initPosition;
+            point.gameObject.SetActive(true);
+
             point.ShowLabel(label, time, hight, true);
         }
 

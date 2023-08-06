@@ -17,7 +17,7 @@ MonoBehaviour:
     m_Bits: 520
   OtherLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   Range:
     StartPoint: {x: -0.45, y: -0.2}
     EndPoint: {x: -0.45, y: -0.9}

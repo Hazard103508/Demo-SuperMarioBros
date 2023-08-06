@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2035694832352201164}
   - component: {fileID: 2035694832352201171}
-  - component: {fileID: 1253545595182618755}
   m_Layer: 0
   m_Name: TargetPoints
   m_TagString: Untagged
@@ -46,50 +45,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f71097d706d587a44b6cc6929c3f4ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskCompleted:
+    m_PersistentCalls:
+      m_Calls: []
   profile: {fileID: 11400000, guid: e4ba77442c1aae849858199ab58582a1, type: 2}
   _numberRenders:
   - {fileID: 2035694833108766539}
   - {fileID: 2035694833099341482}
   - {fileID: 2035694833819823992}
   - {fileID: 2035694832385282918}
---- !u!114 &1253545595182618755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035694832352201165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 468b8fd5f9ddec94eb5c6120cfab963e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _curve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _speed: 0
-  _goalPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2035694832385282912
 GameObject:
   m_ObjectHideFlags: 0

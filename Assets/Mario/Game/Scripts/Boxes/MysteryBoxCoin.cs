@@ -23,7 +23,7 @@ namespace Mario.Game.Boxes
             base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");
 
-            base.InstantiateContent(_mysteryBoxProfile.CoinPoolReference);
+            base.ShowContent(_mysteryBoxProfile.CoinPoolReference);
         }
         #endregion
     }
