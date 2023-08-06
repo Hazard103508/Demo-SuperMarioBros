@@ -31,6 +31,7 @@ namespace Mario.Game.Environment
         {
             SetNextMap();
             AllServices.AddressablesService.ReleaseAllAssets();
+            AllServices.PoolService.ClearPool();
             AllServices.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
         }
         #endregion

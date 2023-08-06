@@ -7,5 +7,6 @@ namespace Mario.Application.Interfaces
     {
         GameObject GetObjectFromPool(string type);
         T GetObjectFromPool<T>(string type) where T : MonoBehaviour;
+        void ClearPool();
     }
 }

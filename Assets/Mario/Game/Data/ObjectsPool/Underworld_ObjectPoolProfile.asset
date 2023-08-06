@@ -12,10 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d472e218d13a4f4f967f25e5b19d8ac, type: 3}
   m_Name: Underworld_ObjectPoolProfile
   m_EditorClassIdentifier: 
-  PoolObjects:
-  - Type: Coin
+  ItemsPool:
+  - Type: JumpingCoin
     Reference:
       m_AssetGUID: 11edffef54ef3e24cb397f4c763299ab
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: RedMushroom
+    Reference:
+      m_AssetGUID: e3a5b4b0351280c45a9fa635d777580b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: Overworld_Flower
+    Reference:
+      m_AssetGUID: b6de99f027f1088479950fb4b50f96da
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: Overworld_GreenMushroom
+    Reference:
+      m_AssetGUID: 3dc86bf01a9156e44a09dc9ec612d79b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: Underworld_BrokenBrick
+    Reference:
+      m_AssetGUID: 56e9151935fd98b438a3a6d79b458f99
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0

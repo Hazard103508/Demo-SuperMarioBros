@@ -40,5 +40,16 @@ namespace Mario.Application.Services
 
             return _poolGroups[type];
         }
+
+        public void ClearPool()
+        {
+            foreach (var item in _poolGroups)
+            {
+                var group = item.Value;
+                Destroy(group.gameObject);
+            }
+
+            _poolGroups.Clear();
+        }
     }
 }

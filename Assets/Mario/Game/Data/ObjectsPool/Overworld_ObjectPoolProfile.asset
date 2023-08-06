@@ -25,3 +25,21 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - Type: RedMushroom
+    Reference:
+      m_AssetGUID: e3a5b4b0351280c45a9fa635d777580b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: Overworld_Flower
+    Reference:
+      m_AssetGUID: b6de99f027f1088479950fb4b50f96da
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+  - Type: Overworld_GreenMushroom
+    Reference:
+      m_AssetGUID: 3dc86bf01a9156e44a09dc9ec612d79b
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
