@@ -24,6 +24,7 @@ namespace Mario.Game.Npc
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private AudioSource _hitSoundFX;
         [SerializeField] private AudioSource _kickSoundFX;
+        [SerializeField] private AudioSource _blockSoundFX;
         [SerializeField] private Animator _animator;
 
         private Vector3 _currentSpeed;
@@ -61,9 +62,6 @@ namespace Mario.Game.Npc
         {
             if (!AllServices.PlayerService.CanMove)
                 return;
-
-            if (Input.GetKeyDown(KeyCode.O))
-                HitFromTop(GameObject.Find("Player").GetComponent<Player.PlayerController>());
 
             CalculateWalk();
             CalculateGravity();
@@ -260,19 +258,18 @@ namespace Mario.Game.Npc
         }
         private void HitToLeft(RayHitInfo hitInfo)
         {
-            HitNPC(hitInfo);
+            HitObject(hitInfo);
             _proximityBlock.left = hitInfo;
+            PlayBlockSoundFX(_proximityBlock.left);
         }
         private void HitToRight(RayHitInfo hitInfo)
         {
-            HitNPC(hitInfo);
+            HitObject(hitInfo);
             _proximityBlock.right = hitInfo;
+            PlayBlockSoundFX(_proximityBlock.right);
         }
-        private void HitNPC(RayHitInfo hitInfo)
+        private void HitObject(RayHitInfo hitInfo)
         {
-            if (!hitInfo.IsBlock)
-                return;
-
             if (State == KoopaStates.Bouncing)
             {
                 if (hitInfo.hitObjects.Any())
@@ -284,10 +281,15 @@ namespace Mario.Game.Npc
                     })
                     .ToList();
 
-                    hitInfo.IsBlock = hitInfo.IsBlock && hitObj.Any(hit => hit.HittedObject == null); // golpeo algo que no es un npc
+                    hitInfo.IsBlock = hitInfo.IsBlock && hitObj.Any(hit => hit.HittedObject == null);
                     hitObj.ForEach(hit => hit.HittedObject?.OnHittedByKoppa(this));
                 }
             }
+        }
+        private void PlayBlockSoundFX(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock && this.State == KoopaStates.Bouncing)
+                _blockSoundFX.Play();
         }
         #endregion
 

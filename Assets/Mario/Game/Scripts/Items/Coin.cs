@@ -1,12 +1,19 @@
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
+using Mario.Game.Npc;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Coin : MonoBehaviour, IHitableByPlayerFromTop, IHitableByPlayerFromBottom, IHitableByPlayerFromLeft, IHitableByPlayerFromRight, IHitableByBox
+    public class Coin : MonoBehaviour, 
+        IHitableByPlayerFromTop, 
+        IHitableByPlayerFromBottom, 
+        IHitableByPlayerFromLeft, 
+        IHitableByPlayerFromRight, 
+        IHitableByBox,
+        IHitableByKoppa
     {
         #region Objects
         [SerializeField] protected CoinProfile _profile;
@@ -24,6 +31,12 @@ namespace Mario.Game.Items
             AllServices.CoinService.Add();
             Destroy(gameObject);
         }
+        private void CollectJumpingCoin()
+        {
+            CollectCoin();
+            var jumpingCoin = AllServices.PoolService.GetObjectFromPool(_profile.CoinPoolReference);
+            jumpingCoin.transform.position = this.transform.position + Vector3.down;
+        }
         #endregion
 
         #region On Player Hit
@@ -34,13 +47,11 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Box Hit
-        public void OnHittedByBox(GameObject box)
-        {
-            CollectCoin();
+        public void OnHittedByBox(GameObject box) => CollectJumpingCoin();
+        #endregion
 
-            var jumpingCoin = AllServices.PoolService.GetObjectFromPool(_profile.CoinPoolReference);
-            jumpingCoin.transform.position = box.transform.position;
-        }
+        #region On Koopa Hit
+        public void OnHittedByKoppa(Koopa koopa) => CollectJumpingCoin();
         #endregion
     }
 }
