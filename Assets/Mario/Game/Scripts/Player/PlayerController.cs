@@ -211,7 +211,7 @@ namespace Mario.Game.Player
             if (_currentSpeed.y > _profile.Jump.MaxSpeed)
                 _currentSpeed.y = _profile.Jump.MaxSpeed;
 
-            if (_proximityBlock != null && _proximityBlock.top.IsBlock && _currentSpeed.y > 0)
+            if (_proximityBlock != null && _proximityBlock.top != null && _proximityBlock.top.IsBlock && _currentSpeed.y > 0)
             {
                 _currentSpeed.y = 0;
                 _lastJumpPressed = 0;

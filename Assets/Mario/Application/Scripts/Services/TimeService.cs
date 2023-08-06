@@ -51,7 +51,7 @@ namespace Mario.Application.Services
             TimeSpeed = 2.5f;
             this.Time = this.StartTime;
             _timer = 0;
-            IsHurry = this.StartTime <= _hurryTime;
+            IsHurry = false;
         }
         public void StopTimer() => Enabled = false;
         public void StartTimer()
@@ -73,6 +73,9 @@ namespace Mario.Application.Services
         }
         private void ValidHurryUpTime()
         {
+            if (AllServices.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
+                return;
+
             if (!IsHurry && AllServices.TimeService.Time <= _hurryTime && !AllServices.GameDataService.IsGoalReached)
                 IsHurry = true;
         }
