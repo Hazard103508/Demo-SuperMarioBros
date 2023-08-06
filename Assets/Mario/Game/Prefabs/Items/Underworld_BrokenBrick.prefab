@@ -71,6 +71,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6eea5a066489942b4dc50a1f1f7b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TaskCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  _hitFXAudioSource: {fileID: 6720723624719929293}
+  _brickFXAudioSource: {fileID: 9039354029148416849}
 --- !u!1 &2024378923925025643
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +455,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7927c84e8d087c04681ddaaa71d831f1, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -578,7 +583,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 814656e9773071d40b9269fea56eb76e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

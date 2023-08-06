@@ -40,7 +40,7 @@ namespace Mario.Game.Boxes
         }
         protected void PlayHitSoundFX()
         {
-            if (!_hitSoundFX.isPlaying)
+            if (_hitSoundFX.enabled && !_hitSoundFX.isPlaying)
                 _hitSoundFX.Play();
         }
         #endregion
