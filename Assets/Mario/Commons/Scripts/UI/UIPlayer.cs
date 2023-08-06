@@ -9,7 +9,7 @@ namespace Mario.Commons.UI
 
         private void Awake()
         {
-            label.Text = AllServices.GameDataService.PlayerProfile.PlayerName;
+            label.Text = Services.GameDataService.PlayerProfile.PlayerName;
         }
     }
 }

@@ -9,10 +9,10 @@ namespace Mario.Commons.UI
 
         private void Awake()
         {
-            AllServices.ScoreService.OnScoreChanged.AddListener(OnScoreChanged);
+            Services.ScoreService.OnScoreChanged.AddListener(OnScoreChanged);
             OnScoreChanged();
         }
-        private void OnDestroy() => AllServices.ScoreService.OnScoreChanged.RemoveListener(OnScoreChanged);
-        private void OnScoreChanged() => label.Text = AllServices.ScoreService.Score.ToString("D6");
+        private void OnDestroy() => Services.ScoreService.OnScoreChanged.RemoveListener(OnScoreChanged);
+        private void OnScoreChanged() => label.Text = Services.ScoreService.Score.ToString("D6");
     }
 }

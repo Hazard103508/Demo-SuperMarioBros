@@ -17,10 +17,10 @@ namespace Mario.Game.Interactable
         #region Private Methods
         private IEnumerator MoveIntoPipe(PlayerController player)
         {
-            AllServices.TimeService.StopTimer();
-            AllServices.PlayerService.CanMove = false;
-            AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.PipesConnections[_pipeIndex];
-            AllServices.SceneService.LoadMapScene(0.8f);
+            Services.TimeService.StopTimer();
+            Services.PlayerService.CanMove = false;
+            Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.PipesConnections[_pipeIndex];
+            Services.SceneService.LoadMapScene(0.8f);
 
             _isInPipe = true;
             _pipeInSoundFX.Play();

@@ -27,14 +27,14 @@ namespace Mario.Game.Items
                 return;
 
             isCollected = true;
-            AllServices.ScoreService.Add(_profile.Points);
-            AllServices.CoinService.Add();
+            Services.ScoreService.Add(_profile.Points);
+            Services.CoinService.Add();
             Destroy(gameObject);
         }
         private void CollectJumpingCoin()
         {
             CollectCoin();
-            var jumpingCoin = AllServices.PoolService.GetObjectFromPool(_profile.CoinPoolReference);
+            var jumpingCoin = Services.PoolService.GetObjectFromPool(_profile.CoinPoolReference);
             jumpingCoin.transform.position = this.transform.position + Vector3.down;
         }
         #endregion

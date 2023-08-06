@@ -22,10 +22,10 @@ namespace Mario.Game.Interactable
             if (!_isLowering)
             {
                 int point = GetFlagPoints(player);
-                AllServices.ScoreService.Add(point);
+                Services.ScoreService.Add(point);
 
                 var position = transform.position + new Vector3(0.75f, 0, 0);
-                AllServices.ScoreService.ShowPoint(point, position, 1, 8, false);
+                Services.ScoreService.ShowPoint(point, position, 1, 8, false);
             }
         }
         private void LowerFlag(PlayerController player)
@@ -33,7 +33,7 @@ namespace Mario.Game.Interactable
             if (!_isLowering)
             {
                 _isLowering = true;
-                AllServices.TimeService.StopTimer();
+                Services.TimeService.StopTimer();
 
 
                 player.transform.localScale = Vector3.one;
@@ -45,13 +45,13 @@ namespace Mario.Game.Interactable
                 StartCoroutine(DownPlayerPole(player, _playerAnimator));
                 StartCoroutine(DownFlagPole(player, _playerAnimator));
 
-                AllServices.GameDataService.IsGoalReached = true;
+                Services.GameDataService.IsGoalReached = true;
             }
         }
         private IEnumerator DownFlagPole(PlayerController player, PlayerAnimator animator)
         {
-            AllServices.MusicService.Stop();
-            AllServices.PlayerService.CanMove = false;
+            Services.MusicService.Stop();
+            Services.PlayerService.CanMove = false;
 
             while (_flag.transform.position.y > transform.position.y + 0.5f)
             {
@@ -66,10 +66,10 @@ namespace Mario.Game.Interactable
             animator.IsInFlagPole = false;
             player.IsAutoWalk = true;
 
-            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.VictoryTheme.Clip;
-            AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.VictoryTheme.StartTime;
-            AllServices.MusicService.Play();
-            AllServices.PlayerService.CanMove = true;
+            Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.VictoryTheme.Clip;
+            Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.VictoryTheme.StartTime;
+            Services.MusicService.Play();
+            Services.PlayerService.CanMove = true;
         }
         private IEnumerator DownPlayerPole(PlayerController player, PlayerAnimator animator)
         {

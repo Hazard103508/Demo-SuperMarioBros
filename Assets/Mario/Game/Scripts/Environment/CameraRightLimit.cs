@@ -9,7 +9,7 @@ namespace Mario.Game.Environment
 
         private void Start()
         {
-            limitXPosition = AllServices.GameDataService.CurrentMapProfile.Width;
+            limitXPosition = Services.GameDataService.CurrentMapProfile.Width;
         }
         private void LateUpdate()
         {

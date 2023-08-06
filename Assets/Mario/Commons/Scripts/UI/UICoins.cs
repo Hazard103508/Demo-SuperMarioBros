@@ -9,10 +9,10 @@ namespace Mario.Commons.UI
 
         private void Awake()
         {
-            AllServices.CoinService.OnCoinsChanged.AddListener(OnCoinsChanged);
+            Services.CoinService.OnCoinsChanged.AddListener(OnCoinsChanged);
             OnCoinsChanged();
         }
-        private void OnDestroy() => AllServices.CoinService.OnCoinsChanged.RemoveListener(OnCoinsChanged);
-        private void OnCoinsChanged() => label.Text = "x" + AllServices.CoinService.Coins.ToString("D2");
+        private void OnDestroy() => Services.CoinService.OnCoinsChanged.RemoveListener(OnCoinsChanged);
+        private void OnCoinsChanged() => label.Text = "x" + Services.CoinService.Coins.ToString("D2");
     }
 }

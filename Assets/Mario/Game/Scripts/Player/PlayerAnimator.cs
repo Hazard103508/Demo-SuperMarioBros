@@ -56,15 +56,15 @@ namespace Mario.Game.Player
         public void OnPlayerAnimationFramesChanged(PlayerAnimationFrames frame) => _animationFrame = frame;
         public void OnPlayerBuffCompleted()
         {
-            AllServices.TimeService.StartTimer();
-            AllServices.PlayerService.CanMove = true;
+            Services.TimeService.StartTimer();
+            Services.PlayerService.CanMove = true;
 
             State = _previousState;
         }
         public void OnPlayerNerfComplete()
         {
-            AllServices.TimeService.StartTimer();
-            AllServices.PlayerService.CanMove = true;
+            Services.TimeService.StartTimer();
+            Services.PlayerService.CanMove = true;
             State = PlayerAnimationStates.Idle;
             StartCoroutine(StartInvensible());
         }

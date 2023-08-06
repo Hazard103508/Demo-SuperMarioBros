@@ -38,8 +38,8 @@ namespace Mario.Application.Components
         #region Private Methods
         private void IncreasePool()
         {
-            var poolItem = AllServices.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjectsDic[this.Type];
-            var itemReference = AllServices.AddressablesService.GetAssetReference(poolItem.Reference);
+            var poolItem = Services.Services.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjectsDic[this.Type];
+            var itemReference = Services.Services.AddressablesService.GetAssetReference(poolItem.Reference);
 
             var instance = Instantiate(itemReference, transform);
             var poolObject = instance.GetComponent<ObjectPool>();

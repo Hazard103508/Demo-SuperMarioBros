@@ -24,7 +24,7 @@ namespace Mario.Application.Services
 
             if (this.Coins >= 100)
             {
-                AllServices.PlayerService.AddLife();
+                Services.PlayerService.AddLife();
                 this.Coins = 0;
             }
 

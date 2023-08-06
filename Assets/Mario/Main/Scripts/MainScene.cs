@@ -13,13 +13,13 @@ namespace Mario.Main
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Return))
-                AllServices.SceneService.LoadStandByScene();
+                Services.SceneService.LoadStandByScene();
         }
         private void ResetPlayerData()
         {
-            AllServices.CoinService.Reset();
-            AllServices.PlayerService.Reset();
-            AllServices.ScoreService.Reset();
+            Services.CoinService.Reset();
+            Services.PlayerService.Reset();
+            Services.ScoreService.Reset();
         }
     }
 }

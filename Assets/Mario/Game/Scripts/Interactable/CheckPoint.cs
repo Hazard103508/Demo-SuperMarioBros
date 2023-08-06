@@ -10,8 +10,8 @@ namespace Mario.Game.Interactable
 
         protected override void OnHitCheckPoint(PlayerController player)
         {
-            if (AllServices.GameDataService.CurrentMapProfile.CheckPoints.Length > _checkPointIndex)
-                AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.CheckPoints[_checkPointIndex];
+            if (Services.GameDataService.CurrentMapProfile.CheckPoints.Length > _checkPointIndex)
+                Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.CheckPoints[_checkPointIndex];
 
             base.OnHitCheckPoint(player);
         }

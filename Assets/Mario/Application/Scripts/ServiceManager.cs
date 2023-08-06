@@ -23,8 +23,8 @@ namespace Mario.Application
             RegisterServicer<ISceneService>();
             RegisterServicer<IMusicService>();
 
-            AllServices.Load();
-            AllServices.SceneService.LoadMainScene();
+            Services.Services.Load();
+            Services.Services.SceneService.LoadMainScene();
         }
         private void OnApplicationQuit()
         {

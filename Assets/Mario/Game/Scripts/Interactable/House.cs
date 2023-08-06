@@ -12,7 +12,7 @@ namespace Mario.Game.Items
         private IEnumerator CloseMap()
         {
             yield return new WaitForSeconds(6);
-            AllServices.SceneService.LoadStandByScene();
+            Services.SceneService.LoadStandByScene();
         }
         #endregion
 
@@ -21,9 +21,9 @@ namespace Mario.Game.Items
         {
             player.gameObject.SetActive(false);
 
-            AllServices.PlayerService.CanMove = false;
-            AllServices.GameDataService.NextMapProfile = AllServices.GameDataService.CurrentMapProfile.NextMap;
-            AllServices.TimeService.StartTimer();
+            Services.PlayerService.CanMove = false;
+            Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.NextMap;
+            Services.TimeService.StartTimer();
 
             StartCoroutine(CloseMap());
         }

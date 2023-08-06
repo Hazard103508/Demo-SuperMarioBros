@@ -35,7 +35,7 @@ namespace Mario.Game.Boxes
         }
         protected void InstantiateContent(string type)
         {
-            var obj = AllServices.PoolService.GetObjectFromPool(type);
+            var obj = Services.PoolService.GetObjectFromPool(type);
             obj.transform.position = this.transform.position;
         }
         protected void PlayHitSoundFX()

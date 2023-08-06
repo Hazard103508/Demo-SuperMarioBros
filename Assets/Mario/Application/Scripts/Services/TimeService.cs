@@ -73,10 +73,10 @@ namespace Mario.Application.Services
         }
         private void ValidHurryUpTime()
         {
-            if (AllServices.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
+            if (Services.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 return;
 
-            if (!IsHurry && AllServices.TimeService.Time <= _hurryTime && !AllServices.GameDataService.IsGoalReached)
+            if (!IsHurry && Services.TimeService.Time <= _hurryTime && !Services.GameDataService.IsGoalReached)
                 IsHurry = true;
         }
     }

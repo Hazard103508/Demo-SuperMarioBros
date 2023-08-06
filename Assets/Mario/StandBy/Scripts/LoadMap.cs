@@ -7,7 +7,7 @@ namespace Mario.StandBy
     {
         private void Start()
         {
-            AllServices.SceneService.LoadMapScene(2.5f);
+            Services.SceneService.LoadMapScene(2.5f);
         }
     }
 }

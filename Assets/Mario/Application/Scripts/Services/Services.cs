@@ -2,7 +2,7 @@ using Mario.Application.Interfaces;
 
 namespace Mario.Application.Services
 {
-    public static class AllServices
+    public static class Services
     {
         public static IAddressablesService AddressablesService { get; private set; }
         public static IPoolService PoolService { get; private set; }

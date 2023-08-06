@@ -15,15 +15,15 @@ namespace Mario.Game.Items
         protected override void OnEnable()
         {
             base.OnEnable();
-            AllServices.ScoreService.Add(_profile.Points);
-            AllServices.CoinService.Add();
+            Services.ScoreService.Add(_profile.Points);
+            Services.CoinService.Add();
         }
         #endregion
 
         #region Public Methods
         public void OnJumpCompleted()
         {
-            AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
+            Services.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
             gameObject.SetActive(false);
         }
         #endregion

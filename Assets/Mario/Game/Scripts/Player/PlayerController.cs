@@ -35,7 +35,7 @@ namespace Mario.Game.Player
                 if (_mode == value)
                     return;
 
-                AllServices.PlayerService.CurrentMode = _mode = value;
+                Services.PlayerService.CurrentMode = _mode = value;
             }
         }
 
@@ -82,23 +82,23 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
-            AllServices.TimeService.OnTimeOut.AddListener(OnTimeOut);
-            AllServices.PlayerService.CanMove = false;
+            Services.TimeService.OnTimeOut.AddListener(OnTimeOut);
+            Services.PlayerService.CanMove = false;
 
-            _profile = AllServices.GameDataService.PlayerProfile;
+            _profile = Services.GameDataService.PlayerProfile;
             Input = new PlayerInput();
-            transform.position = AllServices.GameDataService.CurrentMapProfile.MapInit.StartPosition;
+            transform.position = Services.GameDataService.CurrentMapProfile.MapInit.StartPosition;
 
-            _mode = AllServices.PlayerService.CurrentMode;
+            _mode = Services.PlayerService.CurrentMode;
             SetModeCollider(_mode);
         }
         private void OnDestroy()
         {
-            AllServices.TimeService.OnTimeOut.RemoveListener(OnTimeOut);
+            Services.TimeService.OnTimeOut.RemoveListener(OnTimeOut);
         }
         private void Update()
         {
-            if (!AllServices.PlayerService.CanMove)
+            if (!Services.PlayerService.CanMove)
                 return;
 
             GatherInput();
@@ -110,7 +110,7 @@ namespace Mario.Game.Player
         }
         private void LateUpdate()
         {
-            if (!AllServices.PlayerService.CanMove)
+            if (!Services.PlayerService.CanMove)
                 return;
 
             MoveCharacter();
@@ -284,11 +284,11 @@ namespace Mario.Game.Player
                 return;
 
             gameObject.SetActive(false);
-            AllServices.PlayerService.Kill();
+            Services.PlayerService.Kill();
         }
         private void OnTimeOut()
         {
-            if (!AllServices.GameDataService.IsGoalReached)
+            if (!Services.GameDataService.IsGoalReached)
                 Kill();
         }
         #endregion
@@ -317,7 +317,7 @@ namespace Mario.Game.Player
 
             IsDead = true;
             enabled = false;
-            AllServices.PlayerService.Kill();
+            Services.PlayerService.Kill();
             _render.sortingLayerName = "Dead";
         }
         public void Buff()
@@ -327,8 +327,8 @@ namespace Mario.Game.Player
             if (this.Mode == PlayerModes.Super)
                 return;
 
-            AllServices.PlayerService.CanMove = false;
-            AllServices.TimeService.StopTimer();
+            Services.PlayerService.CanMove = false;
+            Services.TimeService.StopTimer();
 
             this.Mode = this.Mode == PlayerModes.Small ? PlayerModes.Big : PlayerModes.Super;
             SetBigCollider();
@@ -341,8 +341,8 @@ namespace Mario.Game.Player
             IsInvensible = true;
             _playerSoundFX.PlayNerf();
 
-            AllServices.PlayerService.CanMove = false;
-            AllServices.TimeService.StopTimer();
+            Services.PlayerService.CanMove = false;
+            Services.TimeService.StopTimer();
 
             this.Mode = PlayerModes.Small;
         }

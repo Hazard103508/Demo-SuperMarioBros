@@ -39,7 +39,7 @@ namespace Mario.Game.Npc
         private void Awake()
         {
             _currentSpeed = Vector2.right * _profile.MoveSpeed;
-            AllServices.PlayerService.OnCanMoveChanged.AddListener(OnCanMoveChanged);
+            Services.PlayerService.OnCanMoveChanged.AddListener(OnCanMoveChanged);
 
             _proximityBlock = new()
             {
@@ -51,11 +51,11 @@ namespace Mario.Game.Npc
         }
         private void OnDestroy()
         {
-            AllServices.PlayerService.OnCanMoveChanged.RemoveListener(OnCanMoveChanged);
+            Services.PlayerService.OnCanMoveChanged.RemoveListener(OnCanMoveChanged);
         }
         private void Update()
         {
-            if (!AllServices.PlayerService.CanMove)
+            if (!Services.PlayerService.CanMove)
                 return;
 
             CalculateWalk();
@@ -95,8 +95,8 @@ namespace Mario.Game.Npc
             _animator.SetTrigger("Kill");
             _renderer.sortingLayerName = "Dead";
 
-            AllServices.ScoreService.Add(_profile.Points);
-            AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
+            Services.ScoreService.Add(_profile.Points);
+            Services.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
 
             if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - hitPosition.x))
                 _currentSpeed.x *= -1;
@@ -157,8 +157,8 @@ namespace Mario.Game.Npc
             enabled = false;
             _animator.SetTrigger("Hit");
 
-            AllServices.ScoreService.Add(_profile.Points);
-            AllServices.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
+            Services.ScoreService.Add(_profile.Points);
+            Services.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
 
             player.BounceJump();
             StartCoroutine(DestroyAfterHit());
@@ -178,7 +178,7 @@ namespace Mario.Game.Npc
         #endregion
 
         #region Service Events
-        private void OnCanMoveChanged() => _animator.speed = AllServices.PlayerService.CanMove ? 1 : 0;
+        private void OnCanMoveChanged() => _animator.speed = Services.PlayerService.CanMove ? 1 : 0;
         #endregion
 
         #region On local Ray Range Hit

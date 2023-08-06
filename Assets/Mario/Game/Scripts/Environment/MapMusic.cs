@@ -10,47 +10,47 @@ namespace Mario.Game.Environment
         #region Unity Methods
         private void Awake()
         {
-            AllServices.TimeService.OnHurryUpTimeStart.AddListener(OnHurryUpTimeStart);
+            Services.TimeService.OnHurryUpTimeStart.AddListener(OnHurryUpTimeStart);
         }
         private void Start()
         {
             LoadThemeSong();
-            AllServices.MusicService.Play();
+            Services.MusicService.Play();
         }
         private void OnDestroy()
         {
-            AllServices.MusicService.Stop();
-            AllServices.TimeService.OnHurryUpTimeStart.RemoveListener(OnHurryUpTimeStart);
+            Services.MusicService.Stop();
+            Services.TimeService.OnHurryUpTimeStart.RemoveListener(OnHurryUpTimeStart);
         }
         #endregion
 
         #region Private Methods
         private void OnHurryUpTimeStart()
         {
-            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.HurryFX;
-            AllServices.MusicService.Play();
+            Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryFX;
+            Services.MusicService.Play();
 
             StartCoroutine(PlayHurryTheme());
         }
         private void LoadThemeSong()
         {
-            switch (AllServices.GameDataService.CurrentMapProfile.Time.Type)
+            switch (Services.GameDataService.CurrentMapProfile.Time.Type)
             {
                 case MapTimeType.None:
-                    AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
-                    AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
+                    Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
+                    Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
                     break;
                 case MapTimeType.Beginning:
                 case MapTimeType.Continuated:
-                    if (AllServices.TimeService.IsHurry)
+                    if (Services.TimeService.IsHurry)
                     {
-                        AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.HurryTheme.Clip;
-                        AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.HurryTheme.StartTime;
+                        Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.Clip;
+                        Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.StartTime;
                     }
                     else
                     {
-                        AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
-                        AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
+                        Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
+                        Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
                     }
                     break;
             }
@@ -59,12 +59,12 @@ namespace Mario.Game.Environment
         {
             yield return new WaitForSeconds(3.5f);
 
-            while (!AllServices.TimeService.Enabled)
+            while (!Services.TimeService.Enabled)
                 yield return null;
 
-            AllServices.MusicService.Clip = AllServices.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;
-            AllServices.MusicService.Time = AllServices.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
-            AllServices.MusicService.Play();
+            Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;
+            Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
+            Services.MusicService.Play();
         }
         #endregion
     }

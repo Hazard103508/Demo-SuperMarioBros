@@ -27,8 +27,8 @@ namespace Mario.Game.Items
                 return;
 
             isCollected = true;
-            AllServices.ScoreService.Add(_redMushroomProfile.Points);
-            AllServices.ScoreService.ShowPoint(_redMushroomProfile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
+            Services.ScoreService.Add(_redMushroomProfile.Points);
+            Services.ScoreService.ShowPoint(_redMushroomProfile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
 
             player.Buff();
             gameObject.SetActive(false);
