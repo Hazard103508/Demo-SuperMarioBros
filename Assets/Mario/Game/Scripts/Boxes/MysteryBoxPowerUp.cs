@@ -11,7 +11,7 @@ namespace Mario.Game.Boxes
         [SerializeField] private AudioSource _risingSoundFX;
         [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
-        private GameObject _itemPrefab;
+        private string _buffReference;
         #endregion
 
         #region Unity Methods
@@ -25,7 +25,7 @@ namespace Mario.Game.Boxes
         protected override void OnJumpCompleted()
         {
             base.OnJumpCompleted();
-            base.InstantiateContent(_powerUpBoxProfile.RedMushroomPoolReference);
+            base.InstantiateContent(_buffReference);
         }
         #endregion
 
@@ -41,9 +41,7 @@ namespace Mario.Game.Boxes
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
 
-            //_itemPrefab = player.Mode == Enums.PlayerModes.Small ?
-            //    AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.RedMushroomPoolReference) :
-            //    AllServices.AddressablesService.GetAssetReference(_powerUpBoxProfile.FlowerPoolReference);
+            _buffReference = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroomPoolReference : _powerUpBoxProfile.FlowerPoolReference;
         }
         #endregion
     }

@@ -12,6 +12,14 @@ namespace Mario.Game.Items
         private bool isCollected;
         #endregion
 
+        #region Protected Methods
+        protected override void OnPoolObjectReseted()
+        {
+            isCollected = false;
+            base.OnPoolObjectReseted();
+        }
+        #endregion
+
         #region Private Methods
         protected override void CollectMushroom(PlayerController player)
         {

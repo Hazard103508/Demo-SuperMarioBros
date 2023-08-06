@@ -21,8 +21,9 @@ namespace Mario.Game.Items
         #endregion
 
         #region Unity Methods
-        private void Start()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             StartCoroutine(RiseFlower());
         }
         #endregion
@@ -30,6 +31,9 @@ namespace Mario.Game.Items
         #region Private Methods
         private IEnumerator RiseFlower()
         {
+            yield return new WaitForEndOfFrame();
+
+            isCollected = false;
             _isRising = true;
             var _initPosition = transform.transform.position;
             var _targetPosition = _initPosition + Vector3.up;

@@ -30,13 +30,13 @@ namespace Mario.Game.Items
         #endregion
 
         #region Unity Methods
-        protected virtual void Awake()
+        protected override void Awake()
         {
-            IsRising = true;
             _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
         }
-        private void Start()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             StartCoroutine(RiseMushroom());
         }
         private void Update()
@@ -55,12 +55,16 @@ namespace Mario.Game.Items
         #endregion
 
         #region Public Methods
-        public void OnFall() => Destroy(gameObject);
+        public void OnFall() => gameObject.SetActive(false);
         #endregion
 
         #region Protected Methods
         protected virtual void CollectMushroom(PlayerController player)
         {
+        }
+        protected override void OnPoolObjectReseted()
+        {
+            IsRising = false;
         }
         #endregion
 
@@ -99,6 +103,9 @@ namespace Mario.Game.Items
 
         private IEnumerator RiseMushroom()
         {
+            yield return new WaitForEndOfFrame();
+
+            IsRising = true;
             var _initPosition = transform.transform.position;
             var _targetPosition = _initPosition + Vector3.up;
             float _timer = 0;
