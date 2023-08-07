@@ -31,7 +31,8 @@ namespace Mario.Game.UI
             while (_timer < 1)
             {
                 float delta = _distance * _timer;
-                transform.position = Vector3.MoveTowards(_initPosition, goalPosition, delta);
+                float y = Mathf.MoveTowards(_initPosition.y, goalPosition.y, delta);
+                transform.position = new Vector3(transform.position.x, y);
                 _timer += (Time.deltaTime / time);
                 yield return null;
             }
