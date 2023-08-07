@@ -8,7 +8,6 @@ namespace Mario.Game.Items
     public class GreenMushroom : Mushroom
     {
         #region Objects
-        [SerializeField] private GreenMushroomProfile _greenMushroomProfile;
         private bool isCollected;
         #endregion
 
