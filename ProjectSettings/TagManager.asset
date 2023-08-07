@@ -47,6 +47,9 @@ TagManager:
   - name: Blocks
     uniqueID: 3103266777
     locked: 0
+  - name: Points
+    uniqueID: 3582960459
+    locked: 0
   - name: Player
     uniqueID: 1418808743
     locked: 0

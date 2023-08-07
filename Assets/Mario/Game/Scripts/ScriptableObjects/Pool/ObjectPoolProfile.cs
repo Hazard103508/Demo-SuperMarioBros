@@ -7,8 +7,8 @@ namespace Mario.Game.ScriptableObjects.Pool
     public class ObjectPoolProfile : ScriptableObject
     {
         public string Type;
-        public bool RequireCanvas;
         public AssetReferenceGameObject Reference;
-
+        public bool RequireCanvas;
+        public string CanvasSortingLayer;
     }
 }

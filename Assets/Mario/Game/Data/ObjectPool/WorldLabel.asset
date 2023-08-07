@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: WorldLabel
   m_EditorClassIdentifier: 
   Type: WorldLabel
-  RequireCanvas: 1
   Reference:
     m_AssetGUID: 951928b2ac7bde241afd1bd736b0398d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  RequireCanvas: 1
+  CanvasSortingLayer: Points

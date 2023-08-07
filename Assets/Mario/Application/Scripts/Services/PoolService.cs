@@ -43,6 +43,7 @@ namespace Mario.Application.Services
                     var canvas = obj.AddComponent<Canvas>();
                     canvas.renderMode = RenderMode.ScreenSpaceCamera;
                     canvas.worldCamera = Camera.main;
+                    canvas.sortingLayerName = poolItem.CanvasSortingLayer;
                 }
 
                 _poolGroups.Add(type, group);
