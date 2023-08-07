@@ -32,7 +32,7 @@ namespace Mario.Game.Boxes
         {
             yield return new WaitForEndOfFrame();
 
-            ShowContent(_brickProfile.BroknBrickPoolReference);
+            ShowContent(_brickProfile.BrokenBrickPoolReference.name);
             Services.ScoreService.Add(_brickProfile.Points);
             Destroy(gameObject);
         }

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b024dabbbe73eb469380a5c51b0fc5f, type: 3}
   m_Name: CoinBoxProfile
   m_EditorClassIdentifier: 
-  CoinPoolReference: JumpingCoin
+  CoinPoolReference: {fileID: 11400000, guid: 6ff576011a12e6e4f81c7c35ebad7920, type: 2}

@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Pool;
 using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Items
@@ -5,7 +6,7 @@ namespace Mario.Game.ScriptableObjects.Items
     [CreateAssetMenu(fileName = "CoinProfile", menuName = "ScriptableObjects/Game/Items/CoinProfile", order = 0)]
     public class CoinProfile : ScriptableObject
     {
-        public string CoinPoolReference;
+        public ObjectPoolProfile CoinPoolReference;
         public int Points;
     }
 }

@@ -41,7 +41,7 @@ namespace Mario.Game.Boxes
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
 
-            _buffReference = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroomPoolReference : _powerUpBoxProfile.FlowerPoolReference;
+            _buffReference = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroomPoolReference.name : _powerUpBoxProfile.FlowerPoolReference.name;
         }
         #endregion
     }
