@@ -23,9 +23,7 @@ namespace Mario.Game.Items
         #region Public Methods
         public void OnJumpCompleted()
         {
-            Services.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 1.5f);
             Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 2f, 0.8f, 1.5f);
-
             gameObject.SetActive(false);
         }
         #endregion

@@ -44,8 +44,9 @@ namespace Mario.Application.Services
             var label = Services.PoolService.GetObjectFromPool<WorldLabel>("WorldLabel");
             //label.transform.position = Camera.main.WorldToScreenPoint(initPosition);
             label.transform.position = initPosition;
+            label.Show(points.ToString().PadLeft(4), time, hight);
             //label.gameObject.SetActive(true);
-            label.Text = points.ToString().PadLeft(4);
+            //label.Text = points.ToString().PadLeft(4);
             //point.ShowLabel(label, time, hight, true);
         }
 
