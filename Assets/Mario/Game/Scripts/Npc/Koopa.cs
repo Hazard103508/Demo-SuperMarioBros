@@ -87,7 +87,7 @@ namespace Mario.Game.Npc
             _renderer.sortingLayerName = "Dead";
 
             Services.ScoreService.Add(_profile.PointsHit1);
-            Services.ScoreService.ShowPoint(_profile.PointsHit1, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
+            Services.ScoreService.ShowPoints(_profile.PointsHit1, transform.position + Vector3.up * 2f, 0.8f, 3f);
 
             if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - hitPosition.x))
                 _currentSpeed.x *= -1;
@@ -201,7 +201,7 @@ namespace Mario.Game.Npc
             _animator.SetTrigger("Hit");
 
             Services.ScoreService.Add(_profile.PointsHit1);
-            Services.ScoreService.ShowPoint(_profile.PointsHit1, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
+            Services.ScoreService.ShowPoints(_profile.PointsHit1, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
 
             State = KoopaStates.InShell;
             SetSpeed();
@@ -224,7 +224,7 @@ namespace Mario.Game.Npc
 
                 _kickSoundFX.Play();
                 Services.ScoreService.Add(_profile.PointsHit2);
-                Services.ScoreService.ShowPoint(_profile.PointsHit2, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
+                Services.ScoreService.ShowPoints(_profile.PointsHit2, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
 
                 State = KoopaStates.Bouncing;
                 SetSpeed();

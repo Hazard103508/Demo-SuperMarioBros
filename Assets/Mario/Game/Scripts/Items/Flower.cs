@@ -55,7 +55,7 @@ namespace Mario.Game.Items
 
             isCollected = true;
             Services.ScoreService.Add(_profile.Points);
-            Services.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
+            Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 1.75f, 0.8f, 3f);
 
             player.Buff();
             gameObject.SetActive(false);

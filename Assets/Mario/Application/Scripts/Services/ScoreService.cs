@@ -22,7 +22,6 @@ namespace Mario.Application.Services
             OnScoreChanged.Invoke();
 
         }
-        public void ShowPoint(int value, Vector3 initPosition, float time, float hight) => ShowPoint(value, initPosition, time, hight, true);
         public void ShowPoint(int value, Vector3 initPosition, float time, float hight, bool deactivateOnCompleted)
         {
             TargetPoints point = Services.PoolService.GetObjectFromPool<TargetPoints>("TargetPoints");
@@ -31,28 +30,23 @@ namespace Mario.Application.Services
 
             point.ShowPoints(value, time, hight, deactivateOnCompleted);
         }
-        public void ShowLabel(Sprite label, Vector3 initPosition, float time, float hight)
-        {
-            TargetPoints point = Services.PoolService.GetObjectFromPool<TargetPoints>("TargetPoints");
-            point.transform.position = initPosition;
-            point.gameObject.SetActive(true);
-
-            point.ShowLabel(label, time, hight, true);
-        }
         public void ShowPoints(int points, Vector3 initPosition, float time, float hight)
         {
             var label = Services.PoolService.GetObjectFromPool<WorldLabel>("WorldLabel");
-            //label.transform.position = Camera.main.WorldToScreenPoint(initPosition);
             label.transform.position = initPosition;
             label.Show(points.ToString().PadLeft(4), time, hight);
-            //label.gameObject.SetActive(true);
-            //label.Text = points.ToString().PadLeft(4);
-            //point.ShowLabel(label, time, hight, true);
+        }
+        public void Show1UP(Vector3 initPosition, float time, float hight)
+        {
+            var label = Services.PoolService.GetObjectFromPool<WorldLabel>("WorldLabel");
+            label.transform.position = initPosition;
+            label.Show("+", time, hight);
         }
 
         public void Reset()
         {
             Score = 0;
         }
+
     }
 }

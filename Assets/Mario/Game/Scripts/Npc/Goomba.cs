@@ -96,7 +96,7 @@ namespace Mario.Game.Npc
             _renderer.sortingLayerName = "Dead";
 
             Services.ScoreService.Add(_profile.Points);
-            Services.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.8f, 3f);
+            Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 2f, 0.8f, 3f);
 
             if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - hitPosition.x))
                 _currentSpeed.x *= -1;
@@ -158,7 +158,7 @@ namespace Mario.Game.Npc
             _animator.SetTrigger("Hit");
 
             Services.ScoreService.Add(_profile.Points);
-            Services.ScoreService.ShowPoint(_profile.Points, transform.position + Vector3.up * 1.5f, 0.5f, 1.5f);
+            Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
 
             player.BounceJump();
             StartCoroutine(DestroyAfterHit());

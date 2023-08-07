@@ -28,7 +28,7 @@ namespace Mario.Game.Items
 
             isCollected = true;
             Services.PlayerService.AddLife();
-            Services.ScoreService.ShowLabel(_greenMushroomProfile.Sprite1UP, transform.position + Vector3.up * 1.25f, 0.8f, 3f);
+            Services.ScoreService.Show1UP(transform.position + Vector3.up * 1.70f, 0.8f, 3f);
 
             gameObject.SetActive(false);
         }
