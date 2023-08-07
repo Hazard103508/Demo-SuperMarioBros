@@ -1,6 +1,7 @@
 using Mario.Application.Components;
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +17,15 @@ namespace Mario.Application.Services
             _poolGroups = new Dictionary<string, ObjectPoolGroup>();
         }
 
-        public GameObject GetObjectFromPool(string type)
+        public GameObject GetObjectFromPool(ObjectPoolProfile profile)
         {
-            var poolGroup = GetPoolGroup(type);
+            var poolGroup = GetPoolGroup(profile.name);
             return poolGroup.GetPoolObject();
         }
 
-        public T GetObjectFromPool<T>(string type) where T : MonoBehaviour
+        public T GetObjectFromPool<T>(ObjectPoolProfile profile) where T : MonoBehaviour
         {
-            return GetObjectFromPool(type).GetComponent<T>();
+            return GetObjectFromPool(profile).GetComponent<T>();
         }
 
         private ObjectPoolGroup GetPoolGroup(string type)

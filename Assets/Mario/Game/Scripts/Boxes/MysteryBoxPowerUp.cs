@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
+using Mario.Game.ScriptableObjects.Pool;
 using UnityEngine;
 
 namespace Mario.Game.Boxes
@@ -11,7 +12,7 @@ namespace Mario.Game.Boxes
         [SerializeField] private AudioSource _risingSoundFX;
         [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
-        private string _buffReference;
+        private ObjectPoolProfile _buffReference;
         #endregion
 
         #region Unity Methods
@@ -41,7 +42,7 @@ namespace Mario.Game.Boxes
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
 
-            _buffReference = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroomPoolReference.name : _powerUpBoxProfile.FlowerPoolReference.name;
+            _buffReference = player.Mode == Enums.PlayerModes.Small ? _powerUpBoxProfile.RedMushroomPoolReference : _powerUpBoxProfile.FlowerPoolReference;
         }
         #endregion
     }

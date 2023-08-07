@@ -2,6 +2,7 @@ using Mario.Application.Services;
 using Mario.Game.Enums;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
+using Mario.Game.ScriptableObjects.Pool;
 using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -33,9 +34,9 @@ namespace Mario.Game.Boxes
         {
             IsJumping = false;
         }
-        protected void ShowContent(string type)
+        protected void ShowContent(ObjectPoolProfile profile)
         {
-            var obj = Services.PoolService.GetObjectFromPool(type);
+            var obj = Services.PoolService.GetObjectFromPool(profile);
             obj.transform.position = this.transform.position;
         }
         protected void PlayHitSoundFX()

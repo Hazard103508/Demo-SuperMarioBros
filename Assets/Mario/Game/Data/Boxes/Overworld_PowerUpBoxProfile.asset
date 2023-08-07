@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fec195161cd50e4d89aa767318c9674, type: 3}
   m_Name: Overworld_PowerUpBoxProfile
   m_EditorClassIdentifier: 
-  RedMushroomPoolReference: RedMushroom
-  FlowerPoolReference: Overworld_Flower
+  RedMushroomPoolReference: {fileID: 11400000, guid: 1522160af6c20304ea615b6a2d26d164, type: 2}
+  FlowerPoolReference: {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}

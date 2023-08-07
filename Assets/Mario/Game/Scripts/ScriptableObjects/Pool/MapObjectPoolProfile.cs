@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Mario.Game.ScriptableObjects.Pool
 {
@@ -16,7 +14,7 @@ namespace Mario.Game.ScriptableObjects.Pool
         {
             PoolObjectsDic = new Dictionary<string, ObjectPoolProfile>();
             foreach (var item in ItemsPool)
-                PoolObjectsDic.Add(item.Type, item);
+                PoolObjectsDic.Add(item.name, item);
         }
 
     }

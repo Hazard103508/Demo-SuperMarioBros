@@ -30,7 +30,7 @@ namespace Mario.Game.Boxes
         protected override void OnJumpCompleted()
         {
             base.OnJumpCompleted();
-            base.ShowContent(_invisibleBox1UPProfile.GreenMushroomPoolReference.name);
+            base.ShowContent(_invisibleBox1UPProfile.GreenMushroomPoolReference);
         }
         #endregion
 

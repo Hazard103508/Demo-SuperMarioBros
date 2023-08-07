@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using Mario.Game.ScriptableObjects.Pool;
 using Mario.Game.UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,6 +8,10 @@ namespace Mario.Application.Services
 {
     public class ScoreService : MonoBehaviour, IScoreService
     {
+        #region Objects
+        [SerializeField] private ObjectPoolProfile scoreLabelPoolProfile;
+        #endregion
+
         #region Properties
         public int Score { get; private set; }
         public UnityEvent OnScoreChanged { get; set; }
@@ -35,7 +40,7 @@ namespace Mario.Application.Services
         #region Private Methods
         private void ShowLabel(string text, Vector3 initPosition, float time, float hight, bool isPerfament)
         {
-            var label = Services.PoolService.GetObjectFromPool<WorldLabel>("WorldLabel");
+            var label = Services.PoolService.GetObjectFromPool<WorldLabel>(scoreLabelPoolProfile);
             label.transform.position = initPosition;
             label.Show(text, time, hight, isPerfament);
         }

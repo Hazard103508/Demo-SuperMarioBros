@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <PlayerProfile>k__BackingField: {fileID: 11400000, guid: 629a99770e243da45a5c7163e52df944, type: 2}
-  <CurrentMapProfile>k__BackingField: {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
+  <CurrentMapProfile>k__BackingField: {fileID: 11400000, guid: 6ef5b6ef43bc5564191f919bc67b025f, type: 2}
 --- !u!1 &593922594
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,6 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d9c070684068a40af1d770986a16bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scoreLabelPoolProfile: {fileID: 11400000, guid: 4c16985896ba4c94d90e21168809a192, type: 2}
 --- !u!1 &1031187689
 GameObject:
   m_ObjectHideFlags: 0
