@@ -2,6 +2,7 @@ using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
+using Mario.Game.UI;
 using System.Collections;
 using UnityEngine;
 
@@ -24,8 +25,8 @@ namespace Mario.Game.Interactable
                 int point = GetFlagPoints(player);
                 Services.ScoreService.Add(point);
 
-                var position = transform.position + new Vector3(0.75f, 0, 0);
-                Services.ScoreService.ShowPoint(point, position, 1, 8, false);
+                var position = transform.position + new Vector3(0.75f, 0.5f, 0);
+                Services.ScoreService.ShowPoints(point, position, 1, 8, true);
             }
         }
         private void LowerFlag(PlayerController player)

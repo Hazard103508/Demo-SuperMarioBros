@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 5207533758068693650}
   - component: {fileID: 7693271397758076017}
   - component: {fileID: 9183706983943275722}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlagPole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,6 +348,7 @@ MonoBehaviour:
   _profile: {fileID: 11400000, guid: bffd7e492bb792f4db6b8c7e52f6d553, type: 2}
   _flag: {fileID: 376512778981076783}
   _audioSource: {fileID: 5599963882567957536}
+  _scoreLabel: {fileID: 0}
 --- !u!61 &9183706983943275722
 BoxCollider2D:
   m_ObjectHideFlags: 0

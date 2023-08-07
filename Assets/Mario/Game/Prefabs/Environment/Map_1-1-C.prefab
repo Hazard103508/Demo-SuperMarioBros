@@ -3519,10 +3519,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: FlagPole
       objectReference: {fileID: 0}
-    - target: {fileID: 3707476724326963612, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
       propertyPath: m_RootOrder
       value: 0

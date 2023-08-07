@@ -167,3 +167,4 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _label: {fileID: 7184248554920332007}
+  disableOnRise: 1

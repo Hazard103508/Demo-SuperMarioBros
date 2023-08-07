@@ -31,7 +31,7 @@ Transform:
   - {fileID: 7030227916442132844}
   - {fileID: 2312645033574784031}
   m_Father: {fileID: 981654926499773032}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &981654926008202599
 GameObject:
@@ -859,7 +859,7 @@ Transform:
   - {fileID: 981654926502408871}
   - {fileID: 981654926008202598}
   m_Father: {fileID: 981654926499773032}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &981654926380467894
 Grid:
@@ -902,6 +902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 9006152755213387031}
   - {fileID: 981654926380467889}
   - {fileID: 3011348824091693778}
   - {fileID: 981654926729295115}
@@ -1187,7 +1188,7 @@ Transform:
   - {fileID: 8610891778555617765}
   - {fileID: 8797517113684375348}
   m_Father: {fileID: 981654926499773032}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1391714337743945992
 GameObject:
@@ -1219,7 +1220,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 981654926499773032}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1279,7 +1280,7 @@ Transform:
   - {fileID: 4797535673121892278}
   - {fileID: 4482895533239073518}
   m_Father: {fileID: 981654926499773032}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6069833152930128516
 SpriteRenderer:
@@ -1534,7 +1535,7 @@ Transform:
   - {fileID: 7929428860615489105}
   - {fileID: 8974301790934346930}
   m_Father: {fileID: 981654926499773032}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &373575988666035781
 PrefabInstance:
@@ -1590,6 +1591,10 @@ PrefabInstance:
     - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
       propertyPath: m_Name
       value: Overworld_MysteryBoxCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1458048380701218530, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d6dce87c461ea24dbcd4a0ba363a50b, type: 3}
@@ -1749,6 +1754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Overworld_MysteryBoxPowerUp
       objectReference: {fileID: 0}
+    - target: {fileID: 5764129421368389409, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5764129421368389410, guid: 2f913d6c0ae419b4a999f39d913a2da3, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1862,6 +1871,68 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1473827579115512315, guid: 7e55a7e652babc74fa39c4e7f24ef6b5, type: 3}
   m_PrefabInstance: {fileID: 3777460400091659748}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3798971460700888965
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 981654926499773032}
+    m_Modifications:
+    - target: {fileID: 3707476724326963612, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_Name
+      value: FlagPole
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+--- !u!4 &9006152755213387031 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
+  m_PrefabInstance: {fileID: 3798971460700888965}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5288772474015637028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1916,6 +1987,10 @@ PrefabInstance:
     - target: {fileID: 40360478236427875, guid: 13d7ac6ad14f4ac458e88da86c3431af, type: 3}
       propertyPath: m_Name
       value: Underworld_BrickBoxCoin
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427875, guid: 13d7ac6ad14f4ac458e88da86c3431af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d7ac6ad14f4ac458e88da86c3431af, type: 3}
@@ -1979,6 +2054,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Overworld_BrickBoxEmpty
       objectReference: {fileID: 0}
+    - target: {fileID: 4159430047776393570, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83dbaaced9e10264b970e52a8a765383, type: 3}
 --- !u!4 &8318022509473048538 stripped
@@ -1999,11 +2078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393569, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393569, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4159430047776393569, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2040,6 +2119,10 @@ PrefabInstance:
     - target: {fileID: 4159430047776393570, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
       propertyPath: m_Name
       value: Underworld_BrickBoxEmpty (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4159430047776393570, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
@@ -2173,6 +2256,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Underworld_BrickBoxEmpty
       objectReference: {fileID: 0}
+    - target: {fileID: 4159430047776393570, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
 --- !u!4 &7154638844396209186 stripped
@@ -2235,6 +2322,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Underworld_MysteryBoxCoin
       objectReference: {fileID: 0}
+    - target: {fileID: 1458048380701218530, guid: 9cdccd16b69bb8f41bc9e81b65300a9d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cdccd16b69bb8f41bc9e81b65300a9d, type: 3}
 --- !u!4 &8642827285301194651 stripped
@@ -2255,7 +2346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder
