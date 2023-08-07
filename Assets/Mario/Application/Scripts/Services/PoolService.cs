@@ -33,8 +33,18 @@ namespace Mario.Application.Services
             {
                 var obj = new GameObject(type.ToString() + "Pool");
                 obj.transform.parent = transform;
+                
                 var group = obj.AddComponent<ObjectPoolGroup>();
                 group.Type = type;
+
+                var poolItem = Services.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjectsDic[type];
+                if (poolItem.RequireCanvas)
+                {
+                    var canvas = obj.AddComponent<Canvas>();
+                    canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                    canvas.worldCamera = Camera.main;
+                }
+
                 _poolGroups.Add(type, group);
             }
 

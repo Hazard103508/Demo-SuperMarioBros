@@ -49,3 +49,9 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - Type: WorldLabel
+    Reference:
+      m_AssetGUID: 951928b2ac7bde241afd1bd736b0398d
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

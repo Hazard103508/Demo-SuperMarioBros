@@ -24,7 +24,7 @@ namespace Mario.Application.Components
 
         #region Protected Methods
         protected virtual void OnPoolObjectReseted()
-        { 
+        {
         }
         #endregion
     }

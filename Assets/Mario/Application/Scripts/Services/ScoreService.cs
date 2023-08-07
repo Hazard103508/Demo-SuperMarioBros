@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Game.Environment;
+using Mario.Game.UI;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -24,7 +25,6 @@ namespace Mario.Application.Services
         public void ShowPoint(int value, Vector3 initPosition, float time, float hight) => ShowPoint(value, initPosition, time, hight, true);
         public void ShowPoint(int value, Vector3 initPosition, float time, float hight, bool deactivateOnCompleted)
         {
-
             TargetPoints point = Services.PoolService.GetObjectFromPool<TargetPoints>("TargetPoints");
             point.transform.position = initPosition;
             point.gameObject.SetActive(true);
@@ -38,6 +38,15 @@ namespace Mario.Application.Services
             point.gameObject.SetActive(true);
 
             point.ShowLabel(label, time, hight, true);
+        }
+        public void ShowPoints(int points, Vector3 initPosition, float time, float hight)
+        {
+            var label = Services.PoolService.GetObjectFromPool<WorldLabel>("WorldLabel");
+            //label.transform.position = Camera.main.WorldToScreenPoint(initPosition);
+            label.transform.position = initPosition;
+            //label.gameObject.SetActive(true);
+            label.Text = points.ToString().PadLeft(4);
+            //point.ShowLabel(label, time, hight, true);
         }
 
         public void Reset()

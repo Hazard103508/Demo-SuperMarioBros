@@ -24,6 +24,7 @@ namespace Mario.Game.ScriptableObjects.Map
     public class ObjectPoolItem
     {
         public string Type;
+        public bool RequireCanvas;
         public AssetReferenceGameObject Reference;
     }
 }
