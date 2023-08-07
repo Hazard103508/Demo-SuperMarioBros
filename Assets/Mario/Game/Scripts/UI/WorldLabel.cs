@@ -9,14 +9,12 @@ namespace Mario.Game.UI
     {
         #region Objects
         [SerializeField] private IconText _label;
-        private bool _isPerfament;
         #endregion
 
         #region Public Methods
-        public void Show(string text, float time, float hight, bool isPerfament)
+        public void Show(string text, float time, float hight)
         {
             _label.Text = text;
-            _isPerfament = isPerfament;
             Vector3 goalPosition = transform.position + Vector3.up * hight;
             StartCoroutine(RiseLabel(goalPosition, time));
         }
@@ -37,8 +35,7 @@ namespace Mario.Game.UI
                 yield return null;
             }
 
-            if (!_isPerfament)
-                gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
         #endregion
     }

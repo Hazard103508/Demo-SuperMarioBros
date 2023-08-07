@@ -14,6 +14,7 @@ namespace Mario.Game.Interactable
         [SerializeField] private FlagPoleProfile _profile;
         [SerializeField] private GameObject _flag;
         [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private FlagScoreLabel _scoreLabel;
         private bool _isLowering;
         #endregion
 
@@ -24,9 +25,7 @@ namespace Mario.Game.Interactable
             {
                 int point = GetFlagPoints(player);
                 Services.ScoreService.Add(point);
-
-                var position = transform.position + new Vector3(0.75f, 0.5f, 0);
-                Services.ScoreService.ShowPoints(point, position, 1, 8, true);
+                _scoreLabel.ShowPoint(point);
             }
         }
         private void LowerFlag(PlayerController player)
