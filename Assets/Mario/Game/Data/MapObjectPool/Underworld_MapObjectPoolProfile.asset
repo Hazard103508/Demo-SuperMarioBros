@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d472e218d13a4f4f967f25e5b19d8ac, type: 3}
+  m_Name: Underworld_MapObjectPoolProfile
+  m_EditorClassIdentifier: 
+  ItemsPool:
+  - {fileID: 11400000, guid: 6ff576011a12e6e4f81c7c35ebad7920, type: 2}
+  - {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
+  - {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}
+  - {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
+  - {fileID: 11400000, guid: 1522160af6c20304ea615b6a2d26d164, type: 2}
+  - {fileID: 11400000, guid: 4c16985896ba4c94d90e21168809a192, type: 2}

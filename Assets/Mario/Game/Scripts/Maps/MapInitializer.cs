@@ -1,6 +1,7 @@
 using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -74,7 +75,7 @@ namespace Mario.Game.Maps
         {
             LoadObjectsPool(Services.GameDataService.CurrentMapProfile.ObjectsPool.ItemsPool);
         }
-        private void LoadObjectsPool(ObjectPoolItem[] poolItems) => Array.ForEach(poolItems, item => Services.AddressablesService.AddAsset(item.Reference));
+        private void LoadObjectsPool(ObjectPoolProfile[] poolItems) => Array.ForEach(poolItems, item => Services.AddressablesService.AddAsset(item.Reference));
         private IEnumerator StartGame()
         {
             _blackScreen.SetActive(true);

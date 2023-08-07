@@ -1,4 +1,5 @@
 using Mario.Game.Enums;
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
 
@@ -15,7 +16,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public MapProfile[] CheckPoints;
         public MapProfile NextMap;
         public MusicProfile Music;
-        public ObjectPoolProfile ObjectsPool;
+        public MapObjectPoolProfile ObjectsPool;
 
         [NonSerialized] public int Width;
     }
