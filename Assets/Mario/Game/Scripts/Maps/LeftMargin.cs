@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Mario.Game.Environment
+namespace Mario.Game.Maps
 {
     public class LeftMargin : MonoBehaviour
     {

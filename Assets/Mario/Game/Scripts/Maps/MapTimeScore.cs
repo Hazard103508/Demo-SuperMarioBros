@@ -2,7 +2,7 @@ using Mario.Application.Services;
 using Mario.Game.ScriptableObjects.Map;
 using UnityEngine;
 
-namespace Mario.Game.Environment
+namespace Mario.Game.Maps
 {
     public class MapTimeScore : MonoBehaviour
     {

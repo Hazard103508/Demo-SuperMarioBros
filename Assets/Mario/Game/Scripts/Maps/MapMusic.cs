@@ -3,7 +3,7 @@ using Mario.Game.ScriptableObjects.Map;
 using System.Collections;
 using UnityEngine;
 
-namespace Mario.Game.Environment
+namespace Mario.Game.Maps
 {
     public class MapMusic : MonoBehaviour
     {

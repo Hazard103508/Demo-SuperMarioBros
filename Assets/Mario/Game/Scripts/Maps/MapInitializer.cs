@@ -5,7 +5,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Mario.Game.Environment
+namespace Mario.Game.Maps
 {
     public class MapInitializer : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
-namespace Mario.Game.Environment
+namespace Mario.Game.Maps
 {
     public class MapSection : MonoBehaviour
     {

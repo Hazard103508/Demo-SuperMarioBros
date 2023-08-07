@@ -1,7 +1,7 @@
 using Mario.Application.Services;
 using UnityEngine;
 
-namespace Mario.Game.Environment
+namespace Mario.Game.Maps
 {
     public class CameraRightLimit : MonoBehaviour
     {
