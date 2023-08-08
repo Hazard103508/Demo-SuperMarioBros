@@ -1,4 +1,5 @@
 using Mario.Application.Components;
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -10,12 +11,13 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
-    public class Mushroom : ObjectPool, 
+    public class Mushroom : MonoBehaviour, 
         IHitableByPlayerFromTop, 
         IHitableByPlayerFromBottom, 
         IHitableByPlayerFromLeft, 
         IHitableByPlayerFromRight, 
-        IHitableByBox
+        IHitableByBox,
+        ITakenFromPool
     {
         #region Objects
         [SerializeField] private MushroomProfile _mushroomProfile;
@@ -30,13 +32,12 @@ namespace Mario.Game.Items
         #endregion
 
         #region Unity Methods
-        protected override void Awake()
+        private void Awake()
         {
             _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
         }
-        protected override void OnEnable()
+        private void OnEnable()
         {
-            base.OnEnable();
             StartCoroutine(RiseMushroom());
         }
         private void Update()
@@ -56,16 +57,14 @@ namespace Mario.Game.Items
 
         #region Public Methods
         public void OnFall() => gameObject.SetActive(false);
+
         #endregion
 
         #region Protected Methods
         protected virtual void CollectMushroom(PlayerController player)
         {
         }
-        protected override void OnPoolObjectReseted()
-        {
-            IsRising = false;
-        }
+        protected virtual void ResetMushroom() => IsRising = false;
         #endregion
 
         #region Private Methods
@@ -158,6 +157,10 @@ namespace Mario.Game.Items
             if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - box.transform.position.x))
                 _currentSpeed.x *= -1;
         }
+        #endregion
+
+        #region Pool Service
+        public void OnTakenFromPool() => ResetMushroom();
         #endregion
     }
 }

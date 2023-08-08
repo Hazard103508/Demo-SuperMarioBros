@@ -40,7 +40,7 @@ namespace Mario.Application.Components
             var itemReference = Services.Services.AddressablesService.GetAssetReference(poolItem.Reference);
 
             var instance = Instantiate(itemReference, transform);
-            var poolObject = instance.GetComponent<ObjectPool>();
+            var poolObject = instance.AddComponent<ObjectPool>();
             poolObject.TaskCompleted.AddListener(() => _poolReady.Enqueue(instance));
             _poolReady.Enqueue(instance);
         }

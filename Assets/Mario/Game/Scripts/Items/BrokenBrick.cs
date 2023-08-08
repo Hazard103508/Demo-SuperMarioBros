@@ -4,14 +4,13 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class BrokenBrick : ObjectPool
+    public class BrokenBrick : MonoBehaviour
     {
         [SerializeField] private AudioSource _hitFXAudioSource;
         [SerializeField] private AudioSource _brickFXAudioSource;
 
-        protected override void OnEnable()
+        private void OnEnable()
         {
-            base.OnEnable();
             _hitFXAudioSource.Play();
             _brickFXAudioSource.Play();
         }

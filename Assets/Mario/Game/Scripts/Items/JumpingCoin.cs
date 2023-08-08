@@ -5,16 +5,15 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class JumpingCoin : ObjectPool
+    public class JumpingCoin : MonoBehaviour
     {
         #region Objects
         [SerializeField] private CoinProfile _profile;
         #endregion
 
         #region Unity Methods
-        protected override void OnEnable()
+        private void OnEnable()
         {
-            base.OnEnable();
             Services.ScoreService.Add(_profile.Points);
             Services.CoinService.Add();
         }

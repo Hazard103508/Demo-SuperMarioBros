@@ -1,6 +1,5 @@
 using Mario.Application.Services;
 using Mario.Game.Player;
-using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;
 
 namespace Mario.Game.Items
@@ -12,10 +11,10 @@ namespace Mario.Game.Items
         #endregion
 
         #region Protected Methods
-        protected override void OnPoolObjectReseted()
+        protected override void ResetMushroom()
         {
             isCollected = false;
-            base.OnPoolObjectReseted();
+            base.ResetMushroom();
         }
         #endregion
 

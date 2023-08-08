@@ -13,10 +13,10 @@ namespace Mario.Game.Items
         #endregion
 
         #region Protected Methods
-        protected override void OnPoolObjectReseted()
+        protected override void ResetMushroom()
         {
             isCollected = false;
-            base.OnPoolObjectReseted();
+            base.ResetMushroom();
         }
         #endregion
 

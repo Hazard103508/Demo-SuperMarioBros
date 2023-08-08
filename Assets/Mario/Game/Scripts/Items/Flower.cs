@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Flower : ObjectPool, 
+    public class Flower : MonoBehaviour, 
         IHitableByPlayerFromTop, 
         IHitableByPlayerFromBottom, 
         IHitableByPlayerFromLeft, 
@@ -21,9 +21,8 @@ namespace Mario.Game.Items
         #endregion
 
         #region Unity Methods
-        protected override void OnEnable()
+        private void OnEnable()
         {
-            base.OnEnable();
             StartCoroutine(RiseFlower());
         }
         #endregion

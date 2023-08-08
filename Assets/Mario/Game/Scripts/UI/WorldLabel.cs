@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Game.UI
 {
-    public class WorldLabel : ObjectPool
+    public class WorldLabel : MonoBehaviour
     {
         #region Objects
         [SerializeField] private IconText _label;
