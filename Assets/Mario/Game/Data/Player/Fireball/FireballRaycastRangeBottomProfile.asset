@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
-  m_Name: PlayerRaycastRangeSmallBottomProfile
+  m_Name: FireballRaycastRangeBottomProfile
   m_EditorClassIdentifier: 
   BlockLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 520
   OtherLayers:
     serializedVersion: 2
-    m_Bits: 832
+    m_Bits: 0
   Range:
     StartPoint: {x: -0.3, y: -0.5}
     EndPoint: {x: 0.3, y: -0.5}
-    Count: 6
+    Count: 3
   Ray:
     Direction: {x: 0, y: -1}
     Length: 0.1
