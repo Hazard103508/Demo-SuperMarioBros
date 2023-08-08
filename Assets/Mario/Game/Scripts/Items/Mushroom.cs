@@ -16,8 +16,7 @@ namespace Mario.Game.Items
         IHitableByPlayerFromBottom, 
         IHitableByPlayerFromLeft, 
         IHitableByPlayerFromRight, 
-        IHitableByBox,
-        ITakenFromPool
+        IHitableByBox
     {
         #region Objects
         [SerializeField] private MushroomProfile _mushroomProfile;
@@ -38,6 +37,7 @@ namespace Mario.Game.Items
         }
         private void OnEnable()
         {
+            ResetMushroom();
             StartCoroutine(RiseMushroom());
         }
         private void Update()
@@ -157,10 +157,6 @@ namespace Mario.Game.Items
             if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - box.transform.position.x))
                 _currentSpeed.x *= -1;
         }
-        #endregion
-
-        #region Pool Service
-        public void OnTakenFromPool() => ResetMushroom();
         #endregion
     }
 }
