@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Map;
+using Mario.Game.ScriptableObjects.Player;
 using UnityEngine;
 using UnityEngine.Events;
 

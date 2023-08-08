@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Player;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -5,14 +6,15 @@ namespace Mario.Game.Player
 {
     public class Fireball : MonoBehaviour
     {
-        //public Vector2 _direction;
-        public Vector3 _currentSpeed;
-        public float _bounceForce;
-        public float _fallSpeed;
-        public float _maxFallSpeed;
+        [SerializeField] private FireballProfile _profile;
+        private Vector3 _currentSpeed;
 
 
         #region Unity Methods
+        private void Awake()
+        {
+            _currentSpeed = _profile.Speed * Vector3.right;
+        }
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.L))
@@ -21,25 +23,28 @@ namespace Mario.Game.Player
                 transform.localPosition = Vector3.up * 4.2f;
             }
 
-            _currentSpeed.y -= _fallSpeed * Time.deltaTime;
-            if (_currentSpeed.y < -_maxFallSpeed)
-                _currentSpeed.y = -_maxFallSpeed;
+            _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
+            if (_currentSpeed.y < -_profile.MaxFallSpeed)
+                _currentSpeed.y = -_profile.MaxFallSpeed;
 
             transform.Translate(_currentSpeed * Time.deltaTime, Space.World);
         }
         #endregion
 
         #region Private Methods
-        private void Bounce()
+        private void Bounce(RayHitInfo hitInfo)
         {
-            print("REBOTE");
-            _currentSpeed.y = _bounceForce;
+            if (hitInfo.IsBlock)
+            {
+                print("REBOTE");
+                _currentSpeed.y = _profile.BounceSpeed;
+            }
         }
         #endregion
 
         #region On local Ray Range Hit
         //public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => Bounce();
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => Bounce(hitInfo);
         #endregion
     }
 }

@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 
-namespace Mario.Game.ScriptableObjects.Map
+namespace Mario.Game.ScriptableObjects.Player
 {
-    [CreateAssetMenu(fileName = "PlayerProfile", menuName = "ScriptableObjects/Game/Map/PlayerProfile", order = 1)]
+    [CreateAssetMenu(fileName = "PlayerProfile", menuName = "ScriptableObjects/Game/Player/PlayerProfile", order = 0)]
     public class PlayerProfile : ScriptableObject
     {
         public string PlayerName;
