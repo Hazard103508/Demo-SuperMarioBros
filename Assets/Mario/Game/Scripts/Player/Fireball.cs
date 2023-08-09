@@ -9,6 +9,7 @@ namespace Mario.Game.Player
     {
         #region Objects
         [SerializeField] private FireballProfile _profile;
+        private readonly Bounds<RayHitInfo> _proximityBlock = new();
         private Vector3 _currentSpeed;
         private float _direction;
         #endregion
@@ -32,11 +33,12 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
-            if (_currentSpeed.y < -_profile.MaxFallSpeed)
-                _currentSpeed.y = -_profile.MaxFallSpeed;
-
-            transform.Translate(_currentSpeed * Time.deltaTime, Space.World);
+            Bounce();
+            HitTarget();
+        }
+        private void LateUpdate()
+        {
+            Move();
         }
         private void OnEnable()
         {
@@ -45,14 +47,28 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private Methods
-        private void Bounce(RayHitInfo hitInfo)
+        private void Move()
         {
-            if (hitInfo.IsBlock)
+            _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
+            if (_currentSpeed.y < -_profile.MaxFallSpeed)
+                _currentSpeed.y = -_profile.MaxFallSpeed;
+
+            transform.Translate(_currentSpeed * Time.deltaTime, Space.World);
+        }
+        private void Bounce()
+        {
+            if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
                 _currentSpeed.y = _profile.BounceSpeed;
         }
-        private void HitTarget(RayHitInfo hitInfo)
+        private void HitTarget()
         {
-            if (hitInfo.IsBlock)
+            if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
+                return;
+
+            bool _isLeft = _proximityBlock.left != null && _proximityBlock.left.IsBlock;
+            bool _isRight = _proximityBlock.right != null && _proximityBlock.right.IsBlock;
+
+            if (_isLeft || _isRight)
             {
                 var explotion = Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference);
                 explotion.transform.position = this.transform.position;
@@ -62,9 +78,9 @@ namespace Mario.Game.Player
         #endregion
 
         #region On local Ray Range Hit
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => HitTarget(hitInfo);
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitTarget(hitInfo);
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => Bounce(hitInfo);
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo;
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityBlock.bottom = hitInfo;
         #endregion
     }
 }
