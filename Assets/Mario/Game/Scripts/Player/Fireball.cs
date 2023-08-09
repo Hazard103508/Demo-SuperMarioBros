@@ -1,4 +1,4 @@
-using Mario.Game.ScriptableObjects.Player;
+using Mario.Game.ScriptableObjects.Interactable;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -6,9 +6,23 @@ namespace Mario.Game.Player
 {
     public class Fireball : MonoBehaviour
     {
+        #region Objects
         [SerializeField] private FireballProfile _profile;
         private Vector3 _currentSpeed;
+        private float _direction;
+        #endregion
 
+        #region Properties
+        public float Direction 
+        {
+            get => _direction;
+            set
+            {
+                _direction = value;
+                _currentSpeed.x = _direction * Mathf.Abs(_currentSpeed.x);
+            }
+        }
+        #endregion
 
         #region Unity Methods
         private void Awake()
@@ -17,12 +31,6 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                _currentSpeed.y = 0;
-                transform.localPosition = Vector3.up * 4.2f;
-            }
-
             _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
             if (_currentSpeed.y < -_profile.MaxFallSpeed)
                 _currentSpeed.y = -_profile.MaxFallSpeed;
@@ -35,10 +43,7 @@ namespace Mario.Game.Player
         private void Bounce(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-            {
-                print("REBOTE");
                 _currentSpeed.y = _profile.BounceSpeed;
-            }
         }
         #endregion
 

@@ -44,7 +44,7 @@ namespace Mario.Game.Interactable
             if (_isInPipe)
                 return;
 
-            if (player.IsGrounded && !player.Input.JumpDown)
+            if (player.IsGrounded && !player.Input.Jump)
                 StartCoroutine(MoveIntoPipe(player));
         }
         #endregion

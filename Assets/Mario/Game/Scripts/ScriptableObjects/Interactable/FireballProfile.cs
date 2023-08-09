@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace Mario.Game.ScriptableObjects.Player
+namespace Mario.Game.ScriptableObjects.Interactable
 {
-    [CreateAssetMenu(fileName = "FireballProfile", menuName = "ScriptableObjects/Game/Player/FireballProfile", order = 1)]
+    [CreateAssetMenu(fileName = "FireballProfile", menuName = "ScriptableObjects/Game/Interactable/FireballProfile", order = 0)]
     public class FireballProfile : ScriptableObject
     {
         public float Speed;

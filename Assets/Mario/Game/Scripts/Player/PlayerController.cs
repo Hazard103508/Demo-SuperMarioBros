@@ -18,7 +18,7 @@ namespace Mario.Game.Player
         [SerializeField] private SquareRaycast raycastRangesSmall;
 
         private PlayerProfile _profile;
-        private Bounds<RayHitInfo> _proximityBlock = new Bounds<RayHitInfo>();
+        private readonly Bounds<RayHitInfo> _proximityBlock = new();
         private Vector2 _currentSpeed;
         private float _lastJumpPressed = 0;
         private PlayerModes _mode;
@@ -107,7 +107,7 @@ namespace Mario.Game.Player
             CalculateWalk();
             CalculateGravity();
             CalculateJump();
-
+            Shoot();
         }
         private void LateUpdate()
         {
@@ -130,20 +130,21 @@ namespace Mario.Game.Player
                 return;
             }
 
-            var _jumpDown = Input.JumpDown;
+            var _jumpDown = Input.Jump;
             Input = new PlayerInput
             {
-                JumpDown = UnityEngine.Input.GetKey(KeyCode.X),
+                Jump = UnityEngine.Input.GetKey(KeyCode.X),
                 X = UnityEngine.Input.GetAxisRaw("Horizontal"),
                 Run = UnityEngine.Input.GetKey(KeyCode.Z),
                 IsDucking = UnityEngine.Input.GetKey(KeyCode.DownArrow),
+                Shoot = UnityEngine.Input.GetKeyDown(KeyCode.Z),
             };
 
             CalculateJump(_jumpDown);
         }
         private void CalculateJump(bool prevJumpState)
         {
-            if (IsGrounded && !prevJumpState && Input.JumpDown)
+            if (IsGrounded && !prevJumpState && Input.Jump)
             {
                 IsJumping = true;
                 _lastJumpPressed = Time.time;
@@ -203,7 +204,7 @@ namespace Mario.Game.Player
 
             if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
             {
-                if (JumpMinBuffered || (Input.JumpDown && JumpMaxBuffered))
+                if (JumpMinBuffered || (Input.Jump && JumpMaxBuffered))
                     _currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
                 else
                     IsJumping = false;
@@ -268,6 +269,15 @@ namespace Mario.Game.Player
         {
             if (IsGrounded && RawMovement.y <= 0)
                 nextPosition.y = Mathf.Round(nextPosition.y);
+        }
+        private void Shoot()
+        {
+            if (Mode == PlayerModes.Super && this.Input.Shoot)
+            {
+                var fireBall = Services.PoolService.GetObjectFromPool<Fireball>(_profile.Fireball.FireballPoolProfile);
+                fireBall.transform.position = this.transform.position + (Vector3)_profile.Fireball.StartLocalPosition;
+                fireBall.Direction = Mathf.Sign(_render.transform.localScale.x);
+            }
         }
         #endregion
 

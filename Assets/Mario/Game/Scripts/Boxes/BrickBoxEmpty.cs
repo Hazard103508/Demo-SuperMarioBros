@@ -43,7 +43,7 @@ namespace Mario.Game.Boxes
         {
             PlayHitSoundFX();
 
-            if (player.RawMovement.y > 0 || player.Input.JumpDown)
+            if (player.RawMovement.y > 0 || player.Input.Jump)
             {
                 base.OnHittedByPlayerFromBottom(player);
                 if (player.Mode != Enums.PlayerModes.Small)

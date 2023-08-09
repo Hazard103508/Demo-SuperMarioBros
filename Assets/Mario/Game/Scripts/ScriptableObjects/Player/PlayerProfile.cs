@@ -1,3 +1,5 @@
+using Mario.Game.ScriptableObjects.Interactable;
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
 
@@ -13,6 +15,7 @@ namespace Mario.Game.ScriptableObjects.Player
         public VerticalMovement Fall;
         public JumpMovement Jump;
         public PlayerSpritePositions SpritePositions;
+        public PlayerFireball Fireball;
 
         [Serializable]
         public class HorizontalMovement
@@ -42,6 +45,12 @@ namespace Mario.Game.ScriptableObjects.Player
         {
             public Vector2 Small;
             public Vector2 Big;
+        }
+        [Serializable]
+        public class PlayerFireball
+        {
+            public Vector2 StartLocalPosition;
+            public ObjectPoolProfile FireballPoolProfile;
         }
     }
 }
