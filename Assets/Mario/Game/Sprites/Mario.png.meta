@@ -1455,27 +1455,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mario_51
-      rect:
-        serializedVersion: 2
-        x: 175
-        y: 328
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c91d421408a4064c9c0f4f2bca14fe7
-      internalID: -40870793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Mario_52
       rect:
         serializedVersion: 2
@@ -1484,7 +1463,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1505,7 +1484,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1526,7 +1505,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1547,7 +1526,7 @@ TextureImporter:
         width: 16
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1570,6 +1549,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Mario_18: 767370444
       Mario_19: 1756695824
       Mario_36: 1072193193
       Mario_53: -682159563
@@ -1579,7 +1559,6 @@ TextureImporter:
       Mario_34: -1654051652
       Players_2: -6127215198058392024
       Mario_17: 1810944573
-      Mario_54: 42413104
       Mario_40: 64393593
       Mario_42: -1589814043
       Mario_11: 603249684
@@ -1631,15 +1610,15 @@ TextureImporter:
       Players_0: 1757168063971477599
       Mario_43: -1167689521
       Mario_50: 881755046
-      Mario_20: -1831942647
+      Mario_54: 42413104
       Mario_15: -1673305801
-      Mario_31: -407387864
-      Mario_33: -225076644
       Mario_14: -1169620793
+      Mario_33: -225076644
+      Mario_20: -1831942647
       Players_11: -3733097830291599174
       Mario_13: -986314831
-      Mario_18: 767370444
       Mario_46: 259806154
+      Mario_31: -407387864
       Mario_37: 726597478
   spritePackingTag: 
   pSDRemoveMatte: 0

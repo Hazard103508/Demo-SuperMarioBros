@@ -37,3 +37,6 @@ MonoBehaviour:
   SpritePositions:
     Small: {x: 0.5, y: 0.5}
     Big: {x: 0.5, y: 1}
+  Fireball:
+    StartLocalPosition: {x: 0.5, y: 1.5}
+    FireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
