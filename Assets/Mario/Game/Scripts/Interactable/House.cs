@@ -4,7 +4,7 @@ using Mario.Game.Player;
 using System.Collections;
 using UnityEngine;
 
-namespace Mario.Game.Items
+namespace Mario.Game.Interactable
 {
     public class House : MonoBehaviour, IHitableByPlayerFromLeft
     {

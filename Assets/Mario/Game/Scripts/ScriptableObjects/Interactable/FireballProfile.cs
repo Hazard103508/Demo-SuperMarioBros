@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Pool;
 using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Interactable
@@ -9,5 +10,6 @@ namespace Mario.Game.ScriptableObjects.Interactable
         public float BounceSpeed;
         public float FallSpeed;
         public float MaxFallSpeed;
+        public ObjectPoolProfile ExplotionPoolReference;
     }
 }

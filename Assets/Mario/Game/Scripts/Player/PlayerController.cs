@@ -272,7 +272,7 @@ namespace Mario.Game.Player
         }
         private void Shoot()
         {
-            if (Mode == PlayerModes.Super && this.Input.Shoot)
+            if (/*Mode == PlayerModes.Super &&*/ this.Input.Shoot)
             {
                 var fireBall = Services.PoolService.GetObjectFromPool<Fireball>(_profile.Fireball.FireballPoolProfile);
                 fireBall.transform.position = this.transform.position + (Vector3)_profile.Fireball.StartLocalPosition;

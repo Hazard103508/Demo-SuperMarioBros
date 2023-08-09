@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using Mario.Game.ScriptableObjects.Interactable;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -37,6 +38,10 @@ namespace Mario.Game.Player
 
             transform.Translate(_currentSpeed * Time.deltaTime, Space.World);
         }
+        private void OnEnable()
+        {
+            _currentSpeed.y = 0;
+        }
         #endregion
 
         #region Private Methods
@@ -45,10 +50,20 @@ namespace Mario.Game.Player
             if (hitInfo.IsBlock)
                 _currentSpeed.y = _profile.BounceSpeed;
         }
+        private void HitTarget(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+            {
+                var explotion = Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference);
+                explotion.transform.position = this.transform.position;
+                gameObject.SetActive(false);
+            }
+        }
         #endregion
 
         #region On local Ray Range Hit
-        //public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => HitTarget(hitInfo);
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitTarget(hitInfo);
         public void OnProximityRayHitBottom(RayHitInfo hitInfo) => Bounce(hitInfo);
         #endregion
     }
