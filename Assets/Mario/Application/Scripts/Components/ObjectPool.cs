@@ -1,22 +1,50 @@
-using Mario.Application.Interfaces;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Pool;
 
 namespace Mario.Application.Components
 {
     public class ObjectPool : MonoBehaviour
     {
-        [HideInInspector] public UnityEvent TaskCompleted;
+        [HideInInspector] public GameObject PrefabReference;
 
-        #region Unity Methods
-        protected virtual void Awake()
+        private IObjectPool<PooledObject> objectPool;
+        
+        // -- REVISAR ESTA MIERDA ---
+        [SerializeField] private bool collectionCheck = true;
+        [SerializeField] private int defaultCapacity = 20;
+        [SerializeField] private int maxSize = 100;
+
+        private void Awake()
         {
-            TaskCompleted = new UnityEvent();
+            objectPool = new ObjectPool<PooledObject>(
+                CreateInstance,
+                OnGetFromPool, 
+                OnReleaseToPool, 
+                OnDestroyPooledObject,
+                collectionCheck, 
+                defaultCapacity, 
+                maxSize);
+
         }
-        protected virtual void OnDisable()
+        public PooledObject Get() => objectPool.Get();
+        private PooledObject CreateInstance()
         {
-            TaskCompleted.Invoke();
+            var obj = Instantiate(PrefabReference, transform);
+            PooledObject pooledObject = obj.AddComponent<PooledObject>();
+            pooledObject.ObjectPool = objectPool;
+            return pooledObject;
         }
-        #endregion
+        private void OnReleaseToPool(PooledObject pooledObject)
+        {
+            pooledObject.gameObject.SetActive(false);
+        }
+        private void OnGetFromPool(PooledObject pooledObject)
+        {
+            pooledObject.gameObject.SetActive(true);
+        }
+        private void OnDestroyPooledObject(PooledObject pooledObject)
+        {
+            Destroy(pooledObject.gameObject);
+        }
     }
 }

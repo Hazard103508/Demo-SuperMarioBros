@@ -1,8 +1,6 @@
 using Mario.Application.Components;
 using Mario.Application.Interfaces;
-using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Pool;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,17 +8,17 @@ namespace Mario.Application.Services
 {
     public class PoolService : MonoBehaviour, IPoolService
     {
-        private Dictionary<string, ObjectPoolGroup> _poolGroups;
+        private Dictionary<string, ObjectPool> _poolGroups;
 
         public void LoadService()
         {
-            _poolGroups = new Dictionary<string, ObjectPoolGroup>();
+            _poolGroups = new Dictionary<string, ObjectPool>();
         }
 
-        public GameObject GetObjectFromPool(ObjectPoolProfile profile)
+        public PooledObject GetObjectFromPool(ObjectPoolProfile profile)
         {
             var poolGroup = GetPoolGroup(profile.name);
-            return poolGroup.GetPoolObject();
+            return poolGroup.Get();
         }
 
         public T GetObjectFromPool<T>(ObjectPoolProfile profile) where T : MonoBehaviour
@@ -28,17 +26,19 @@ namespace Mario.Application.Services
             return GetObjectFromPool(profile).GetComponent<T>();
         }
 
-        private ObjectPoolGroup GetPoolGroup(string type)
+        private ObjectPool GetPoolGroup(string type)
         {
             if (!_poolGroups.ContainsKey(type))
             {
                 var obj = new GameObject(type.ToString() + "Pool");
                 obj.transform.parent = transform;
-                
-                var group = obj.AddComponent<ObjectPoolGroup>();
-                group.Type = type;
 
                 var poolItem = Services.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjectsDic[type];
+                var itemReference = Services.AddressablesService.GetAssetReference(poolItem.Reference);
+
+                var pool = obj.AddComponent<ObjectPool>();
+                pool.PrefabReference = itemReference;
+
                 if (poolItem.RequireCanvas)
                 {
                     var canvas = obj.AddComponent<Canvas>();
@@ -47,7 +47,7 @@ namespace Mario.Application.Services
                     canvas.sortingLayerName = poolItem.CanvasSortingLayer;
                 }
 
-                _poolGroups.Add(type, group);
+                _poolGroups.Add(type, pool);
             }
 
             return _poolGroups[type];
