@@ -7,8 +7,8 @@ namespace Mario.Application.Interfaces
 {
     public interface IPoolService : IGameService
     {
-        PooledObject GetObjectFromPool(PooledObjectProfile profile);
-        T GetObjectFromPool<T>(PooledObjectProfile profile) where T : MonoBehaviour;
+        PooledObject GetObjectFromPool(BasePooledObjectProfile profile);
+        T GetObjectFromPool<T>(BasePooledObjectProfile profile) where T : MonoBehaviour;
         void ClearPool();
     }
 }

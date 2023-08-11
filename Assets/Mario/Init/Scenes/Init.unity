@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6d9c070684068a40af1d770986a16bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreLabelPoolProfile: {fileID: 11400000, guid: 4c16985896ba4c94d90e21168809a192, type: 2}
+  scoreLabelPoolProfile: {fileID: 11400000, guid: 321bfb91385fa494aa1678c86106335c, type: 2}
 --- !u!1 &1031187689
 GameObject:
   m_ObjectHideFlags: 0

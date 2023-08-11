@@ -9,7 +9,7 @@ namespace Mario.Application.Services
     public class ScoreService : MonoBehaviour, IScoreService
     {
         #region Objects
-        [SerializeField] private PooledObjectProfile scoreLabelPoolProfile;
+        [SerializeField] private PooledUIProfile scoreLabelPoolProfile;
         #endregion
 
         #region Properties
