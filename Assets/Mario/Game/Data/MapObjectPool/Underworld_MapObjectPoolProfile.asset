@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d472e218d13a4f4f967f25e5b19d8ac, type: 3}
   m_Name: Underworld_MapObjectPoolProfile
   m_EditorClassIdentifier: 
-  ItemsPool:
+  ObjectPool:
   - {fileID: 11400000, guid: 6ff576011a12e6e4f81c7c35ebad7920, type: 2}
   - {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
   - {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}
   - {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
   - {fileID: 11400000, guid: 1522160af6c20304ea615b6a2d26d164, type: 2}
-  - {fileID: 11400000, guid: 4c16985896ba4c94d90e21168809a192, type: 2}
   - {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
   - {fileID: 11400000, guid: 4a1933c96519e3d4e9e323e7656992a1, type: 2}
+  UIPool:
+  - {fileID: 11400000, guid: 321bfb91385fa494aa1678c86106335c, type: 2}
