@@ -50,7 +50,7 @@ namespace Mario.Game.ScriptableObjects.Player
         public class PlayerFireball
         {
             public Vector2 StartLocalPosition;
-            public ObjectPoolProfile FireballPoolProfile;
+            public PooledObjectProfile FireballPoolProfile;
         }
     }
 }

@@ -10,6 +10,6 @@ namespace Mario.Game.ScriptableObjects.Interactable
         public float BounceSpeed;
         public float FallSpeed;
         public float MaxFallSpeed;
-        public ObjectPoolProfile ExplotionPoolReference;
+        public PooledObjectProfile ExplotionPoolReference;
     }
 }

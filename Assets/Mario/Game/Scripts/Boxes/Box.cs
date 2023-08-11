@@ -34,7 +34,7 @@ namespace Mario.Game.Boxes
         {
             IsJumping = false;
         }
-        protected void ShowContent(ObjectPoolProfile profile)
+        protected void ShowContent(PooledObjectProfile profile)
         {
             var obj = Services.PoolService.GetObjectFromPool(profile);
             obj.transform.position = this.transform.position;

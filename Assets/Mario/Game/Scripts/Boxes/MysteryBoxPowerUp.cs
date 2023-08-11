@@ -12,7 +12,7 @@ namespace Mario.Game.Boxes
         [SerializeField] private AudioSource _risingSoundFX;
         [SerializeField] protected MysteryBoxPowerUpProfile _powerUpBoxProfile;
         [SerializeField] private Animator _spriteAnimator;
-        private ObjectPoolProfile _buffReference;
+        private PooledObjectProfile _buffReference;
         #endregion
 
         #region Unity Methods

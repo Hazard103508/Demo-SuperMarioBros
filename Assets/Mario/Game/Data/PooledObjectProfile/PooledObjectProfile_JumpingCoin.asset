@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
-  m_Name: Explotion
+  m_Name: PooledObjectProfile_JumpingCoin
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 567d6973883c2d94b8c2fc753ad046db
+    m_AssetGUID: 11edffef54ef3e24cb397f4c763299ab
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  RequireCanvas: 0
+  CollectionCheck: 1
+  DefaultCapacity: 1
+  MaxSize: 3
+  IsCanvasPool: 0
   CanvasSortingLayer: 

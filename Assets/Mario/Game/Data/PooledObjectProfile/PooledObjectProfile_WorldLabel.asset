@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
-  m_Name: Fireball
+  m_Name: PooledObjectProfile_WorldLabel
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: fc31e6bc99978ab4aa5379b65cb11d1a
+    m_AssetGUID: 951928b2ac7bde241afd1bd736b0398d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  RequireCanvas: 0
-  CanvasSortingLayer: 
+  CollectionCheck: 1
+  DefaultCapacity: 1
+  MaxSize: 5
+  IsCanvasPool: 1
+  CanvasSortingLayer: Points

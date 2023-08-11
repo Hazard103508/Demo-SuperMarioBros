@@ -8,25 +8,25 @@ namespace Mario.Application.Services
 {
     public class PoolService : MonoBehaviour, IPoolService
     {
-        private Dictionary<string, ObjectPool> _poolGroups;
+        private Dictionary<string, Pool> _poolGroups;
 
         public void LoadService()
         {
-            _poolGroups = new Dictionary<string, ObjectPool>();
+            _poolGroups = new Dictionary<string, Pool>();
         }
 
-        public PooledObject GetObjectFromPool(ObjectPoolProfile profile)
+        public PooledObject GetObjectFromPool(PooledObjectProfile profile)
         {
             var poolGroup = GetPoolGroup(profile.name);
             return poolGroup.Get();
         }
 
-        public T GetObjectFromPool<T>(ObjectPoolProfile profile) where T : MonoBehaviour
+        public T GetObjectFromPool<T>(PooledObjectProfile profile) where T : MonoBehaviour
         {
             return GetObjectFromPool(profile).GetComponent<T>();
         }
 
-        private ObjectPool GetPoolGroup(string type)
+        private Pool GetPoolGroup(string type)
         {
             if (!_poolGroups.ContainsKey(type))
             {
@@ -36,10 +36,14 @@ namespace Mario.Application.Services
                 var poolItem = Services.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjectsDic[type];
                 var itemReference = Services.AddressablesService.GetAssetReference(poolItem.Reference);
 
-                var pool = obj.AddComponent<ObjectPool>();
+                var pool = obj.AddComponent<Pool>();
                 pool.PrefabReference = itemReference;
+                pool.CollectionCheck = poolItem.CollectionCheck;
+                pool.DefaultCapacity= poolItem.DefaultCapacity;
+                pool.MaxSize = poolItem.MaxSize;
+                pool.Load();
 
-                if (poolItem.RequireCanvas)
+                if (poolItem.IsCanvasPool)
                 {
                     var canvas = obj.AddComponent<Canvas>();
                     canvas.renderMode = RenderMode.ScreenSpaceCamera;
