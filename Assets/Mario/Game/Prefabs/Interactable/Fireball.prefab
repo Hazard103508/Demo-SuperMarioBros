@@ -118,8 +118,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1559953691
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 844410745, guid: fd3a428495061d042a7272e9d77cecaa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -359,7 +359,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2877727374266941682}
         m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
-        m_MethodName: OnProximityRayHitBottom
+        m_MethodName: OnProximityRayHitRight
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

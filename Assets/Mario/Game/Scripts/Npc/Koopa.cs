@@ -16,7 +16,8 @@ namespace Mario.Game.Npc
         IHitableByPlayerFromLeft,
         IHitableByPlayerFromRight,
         IHitableByBox,
-        IHitableByKoppa
+        IHitableByKoppa,
+        IHitableByFireBall
     {
         #region Objects
         [SerializeField] private KoopaProfile _profile;
@@ -81,6 +82,7 @@ namespace Mario.Game.Npc
                 return;
 
             _isDead = true;
+            gameObject.layer = 0;
 
             _kickSoundFX.Play();
             _animator.SetTrigger("Kill");
@@ -333,6 +335,10 @@ namespace Mario.Game.Npc
 
             this.Kill(koopa.transform.position);
         }
+        #endregion
+
+        #region On Fireball Hit
+        public void OnHittedByFireBall(Fireball fireball) => Kill(fireball.transform.position);
         #endregion
 
         #region Structures

@@ -1,5 +1,7 @@
 using Mario.Application.Services;
+using Mario.Game.Interfaces;
 using Mario.Game.ScriptableObjects.Interactable;
+using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -43,6 +45,9 @@ namespace Mario.Game.Player
         private void OnEnable()
         {
             _currentSpeed.y = 0;
+            _proximityBlock.left = new();
+            _proximityBlock.right = new();
+            _proximityBlock.bottom = new();
         }
         #endregion
 
@@ -62,8 +67,8 @@ namespace Mario.Game.Player
         }
         private void HitTarget()
         {
-            if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
-                return;
+            //if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
+            //    return;
 
             bool _isLeft = _proximityBlock.left != null && _proximityBlock.left.IsBlock;
             bool _isRight = _proximityBlock.right != null && _proximityBlock.right.IsBlock;
@@ -73,6 +78,20 @@ namespace Mario.Game.Player
                 var explotion = Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference);
                 explotion.transform.position = this.transform.position;
                 gameObject.SetActive(false);
+
+                HitObject(_proximityBlock.left);
+                HitObject(_proximityBlock.right);
+            }
+        }
+        private void HitObject(RayHitInfo hitInfo)
+        {
+            if (hitInfo.hitObjects.Any())
+            {
+                foreach (var obj in hitInfo.hitObjects)
+                {
+                    var hitableObject = obj.Object.GetComponent<IHitableByFireBall>();
+                    hitableObject?.OnHittedByFireBall(this);
+                }
             }
         }
         #endregion

@@ -51,6 +51,9 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         }
         private List<HitObject> GetHitObject(RayRange range, LayerMask layerMask)
         {
+            if (layerMask.value == 0)
+                return new List<HitObject>();
+
             var hits = GetRaycastHit(range, layerMask);
 
             var relativePosition = new Vector2(
