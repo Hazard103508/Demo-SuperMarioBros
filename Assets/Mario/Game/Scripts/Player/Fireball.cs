@@ -33,13 +33,10 @@ namespace Mario.Game.Player
         {
             _currentSpeed = _profile.Speed * Vector3.right;
         }
-        private void Update()
+        private void LateUpdate()
         {
             Bounce();
             HitTarget();
-        }
-        private void LateUpdate()
-        {
             Move();
         }
         private void OnEnable()
