@@ -1,6 +1,5 @@
 using Mario.Application.Services;
 using Mario.Game.Enums;
-using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Player;
 using System.Linq;
 using UnityEngine;

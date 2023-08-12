@@ -4,8 +4,11 @@ namespace Mario.Game.Maps
 {
     public class LeftMargin : MonoBehaviour
     {
+        #region Objects
         private float withMargin = 0.5f;
+        #endregion
 
+        #region Unity Methods
         void Update()
         {
             var cam = Camera.main;
@@ -13,5 +16,6 @@ namespace Mario.Game.Maps
 
             this.transform.position = new Vector3(downLeft.x - withMargin, this.transform.position.y, this.transform.position.z);
         }
+        #endregion
     }
 }

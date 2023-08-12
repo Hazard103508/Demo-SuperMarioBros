@@ -6,11 +6,16 @@ namespace Mario.Game.Items
     [RequireComponent(typeof(SpriteRenderer))]
     public class ItemOutMapTrigger : MonoBehaviour
     {
+        #region Objects
         private float bottomBorder;
         private SpriteRenderer spriteRenderer;
+        #endregion
 
+        #region Events
         public UnityEvent onOut;
+        #endregion
 
+        #region Unity Methods
         void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
@@ -27,5 +32,6 @@ namespace Mario.Game.Items
             if (pos.y < bottomBorder)
                 onOut.Invoke();
         }
+        #endregion
     }
 }

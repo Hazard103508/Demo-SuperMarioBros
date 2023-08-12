@@ -2,7 +2,6 @@ using Mario.Application.Interfaces;
 using Mario.Game.Enums;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
@@ -22,7 +21,7 @@ namespace Mario.Application.Services
             set
             {
                 _canMove = value;
-                CanMoveChanged.Invoke();
+                CanMoveChanged?.Invoke();
             }
         }
         public int Lives { get; private set; }
@@ -43,13 +42,13 @@ namespace Mario.Application.Services
         {
             this.Lives++;
             _lifeUpSoundFX.Play();
-            LivesAdded.Invoke();
+            LivesAdded?.Invoke();
         }
         public void Kill()
         {
             this.Lives--;
             _deadSoundFX.Play();
-            LivesRemoved.Invoke();
+            LivesRemoved?.Invoke();
             this.CurrentMode = PlayerModes.Small;
 
             Services.MusicService.Stop();

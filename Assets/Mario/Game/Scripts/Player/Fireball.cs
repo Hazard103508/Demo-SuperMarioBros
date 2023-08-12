@@ -15,7 +15,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Properties
-        public float Direction 
+        public float Direction
         {
             get => _direction;
             set

@@ -7,11 +7,11 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Coin : MonoBehaviour, 
-        IHitableByPlayerFromTop, 
-        IHitableByPlayerFromBottom, 
-        IHitableByPlayerFromLeft, 
-        IHitableByPlayerFromRight, 
+    public class Coin : MonoBehaviour,
+        IHitableByPlayerFromTop,
+        IHitableByPlayerFromBottom,
+        IHitableByPlayerFromLeft,
+        IHitableByPlayerFromRight,
         IHitableByBox,
         IHitableByKoppa
     {

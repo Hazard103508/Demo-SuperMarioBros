@@ -1,5 +1,4 @@
 using Mario.Application.Components;
-using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Pool;
 using UnityEngine;
 

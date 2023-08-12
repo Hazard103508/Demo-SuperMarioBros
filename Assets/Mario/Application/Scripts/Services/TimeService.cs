@@ -1,7 +1,6 @@
 using Mario.Application.Interfaces;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
@@ -25,7 +24,7 @@ namespace Mario.Application.Services
             {
                 _isHurry = value;
                 if (value)
-                    HurryUpTimeStarted.Invoke();
+                    HurryUpTimeStarted?.Invoke();
             }
         }
         #endregion
@@ -60,7 +59,7 @@ namespace Mario.Application.Services
         public void StopTimer() => Enabled = false;
         public void StartTimer()
         {
-            TimeStarted.Invoke();
+            TimeStarted?.Invoke();
             Enabled = true;
         }
         #endregion
@@ -72,10 +71,10 @@ namespace Mario.Application.Services
             {
                 _timer += UnityEngine.Time.deltaTime * TimeSpeed;
                 this.Time = Mathf.Max(0, this.StartTime - (int)_timer);
-                TimeChangeded.Invoke();
+                TimeChangeded?.Invoke();
 
                 if (this.Time == 0)
-                    TimeOut.Invoke();
+                    TimeOut?.Invoke();
             }
         }
         private void ValidHurryUpTime()

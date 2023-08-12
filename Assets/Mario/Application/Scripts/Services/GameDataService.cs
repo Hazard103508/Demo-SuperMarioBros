@@ -3,7 +3,6 @@ using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Player;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
@@ -24,7 +23,7 @@ namespace Mario.Application.Services
             {
                 _isGoalReached = value;
                 if (value)
-                    GoalReached.Invoke();
+                    GoalReached?.Invoke();
             }
         }
         #endregion

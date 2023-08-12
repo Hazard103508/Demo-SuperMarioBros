@@ -1,4 +1,3 @@
-using Mario.Application.Components;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -8,10 +7,10 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class Flower : MonoBehaviour, 
-        IHitableByPlayerFromTop, 
-        IHitableByPlayerFromBottom, 
-        IHitableByPlayerFromLeft, 
+    public class Flower : MonoBehaviour,
+        IHitableByPlayerFromTop,
+        IHitableByPlayerFromBottom,
+        IHitableByPlayerFromLeft,
         IHitableByPlayerFromRight
     {
         #region Objects

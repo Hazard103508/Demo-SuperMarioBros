@@ -1,5 +1,3 @@
-using Mario.Application.Components;
-using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -11,11 +9,11 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
-    public class Mushroom : MonoBehaviour, 
-        IHitableByPlayerFromTop, 
-        IHitableByPlayerFromBottom, 
-        IHitableByPlayerFromLeft, 
-        IHitableByPlayerFromRight, 
+    public class Mushroom : MonoBehaviour,
+        IHitableByPlayerFromTop,
+        IHitableByPlayerFromBottom,
+        IHitableByPlayerFromLeft,
+        IHitableByPlayerFromRight,
         IHitableByBox
     {
         #region Objects

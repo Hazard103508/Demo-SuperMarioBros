@@ -1,7 +1,6 @@
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Player;
 using System;
-using UnityEngine.Events;
 
 namespace Mario.Application.Interfaces
 {

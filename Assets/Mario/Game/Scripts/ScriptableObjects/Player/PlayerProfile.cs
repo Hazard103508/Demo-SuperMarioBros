@@ -1,4 +1,3 @@
-using Mario.Game.ScriptableObjects.Interactable;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;

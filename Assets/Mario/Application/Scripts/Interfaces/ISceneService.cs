@@ -1,5 +1,3 @@
-using UnityEngine.AddressableAssets;
-
 namespace Mario.Application.Interfaces
 {
     public interface ISceneService : IGameService

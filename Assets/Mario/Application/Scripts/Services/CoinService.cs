@@ -1,7 +1,6 @@
 using Mario.Application.Interfaces;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
@@ -34,7 +33,7 @@ namespace Mario.Application.Services
                 this.Coins = 0;
             }
 
-            CoinsChanged.Invoke();
+            CoinsChanged?.Invoke();
         }
         public void Reset()
         {

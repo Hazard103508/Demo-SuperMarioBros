@@ -3,7 +3,6 @@ using Mario.Game.ScriptableObjects.Pool;
 using Mario.Game.UI;
 using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Mario.Application.Services
 {
@@ -24,12 +23,12 @@ namespace Mario.Application.Services
         #region Public Methods
         public void LoadService()
         {
-            
+
         }
         public void Add(int points)
         {
             this.Score += points;
-            ScoreChanged.Invoke();
+            ScoreChanged?.Invoke();
 
         }
         public void ShowPoints(int points, Vector3 initPosition, float time, float hight) => ShowLabel(points.ToString().PadLeft(4), initPosition, time, hight);

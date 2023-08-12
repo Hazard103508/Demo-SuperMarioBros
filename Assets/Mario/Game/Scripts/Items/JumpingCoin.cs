@@ -1,4 +1,3 @@
-using Mario.Application.Components;
 using Mario.Application.Services;
 using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;

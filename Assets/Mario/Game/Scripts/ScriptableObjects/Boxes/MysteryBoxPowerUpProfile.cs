@@ -1,6 +1,5 @@
 using Mario.Game.ScriptableObjects.Pool;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Mario.Game.ScriptableObjects.Boxes
 {

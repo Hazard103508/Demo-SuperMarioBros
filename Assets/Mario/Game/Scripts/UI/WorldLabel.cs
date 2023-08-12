@@ -1,4 +1,3 @@
-using Mario.Application.Components;
 using Mario.Commons.UI;
 using System.Collections;
 using UnityEngine;
