@@ -1,4 +1,5 @@
 using Mario.Game.Enums;
+using System;
 using UnityEngine.Events;
 
 namespace Mario.Application.Interfaces
@@ -9,9 +10,9 @@ namespace Mario.Application.Interfaces
         int Lives { get; }
         bool CanMove { get; set; }
 
-        UnityEvent OnCanMoveChanged { get; }
-        UnityEvent OnLivesAdded { get; }
-        UnityEvent OnLivesRemoved { get; }
+        event Action CanMoveChanged;
+        event Action LivesAdded;
+        event Action LivesRemoved;
 
         void AddLife();
         void Kill();

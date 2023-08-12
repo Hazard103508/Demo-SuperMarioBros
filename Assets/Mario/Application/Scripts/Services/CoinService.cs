@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,17 +7,22 @@ namespace Mario.Application.Services
 {
     public class CoinService : MonoBehaviour, ICoinService
     {
+        #region Objects
         [SerializeField] private AudioSource _coinSoundFX;
+        #endregion
 
+        #region Properties
+        public event Action CoinsChanged;
+        #endregion
+
+        #region Events
         public int Coins { get; private set; }
+        #endregion
 
+        #region Public Methods
         public void LoadService()
         {
-            OnCoinsChanged = new UnityEvent();
         }
-
-        public UnityEvent OnCoinsChanged { get; set; }
-
         public void Add()
         {
             this.Coins++;
@@ -28,12 +34,12 @@ namespace Mario.Application.Services
                 this.Coins = 0;
             }
 
-            OnCoinsChanged.Invoke();
+            CoinsChanged.Invoke();
         }
-
         public void Reset()
         {
             Coins = 0;
         }
+        #endregion
     }
 }

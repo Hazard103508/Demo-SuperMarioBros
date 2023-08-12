@@ -83,7 +83,7 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
-            Services.TimeService.OnTimeOut.AddListener(OnTimeOut);
+            Services.TimeService.TimeOut += OnTimeOut;
             Services.PlayerService.CanMove = false;
 
             _profile = Services.GameDataService.PlayerProfile;
@@ -95,7 +95,7 @@ namespace Mario.Game.Player
         }
         private void OnDestroy()
         {
-            Services.TimeService.OnTimeOut.RemoveListener(OnTimeOut);
+            Services.TimeService.TimeOut -= OnTimeOut;
         }
         private void Update()
         {

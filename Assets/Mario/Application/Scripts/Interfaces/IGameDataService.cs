@@ -1,5 +1,6 @@
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Player;
+using System;
 using UnityEngine.Events;
 
 namespace Mario.Application.Interfaces
@@ -12,6 +13,6 @@ namespace Mario.Application.Interfaces
 
         bool IsGoalReached { get; set; }
 
-        UnityEvent OnGoalReached { get; }
+        event Action GoalReached;
     }
 }

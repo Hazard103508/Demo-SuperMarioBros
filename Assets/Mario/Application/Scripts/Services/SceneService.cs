@@ -10,16 +10,18 @@ namespace Mario.Application.Services
 {
     public class SceneService : MonoBehaviour, ISceneService
     {
+        #region Public Methods
         public void LoadService()
         {
         }
-
         public void LoadMapScene(float minDelay) => StartCoroutine(LoadMapSceneCO(minDelay));
         public void LoadMainScene() => SceneManager.LoadScene("Main");
         public void LoadStandByScene() => SceneManager.LoadScene("StandBy");
         public void LoadGameOverScene() => SceneManager.LoadScene("GameOver");
         public void LoadTimeUpScene() => SceneManager.LoadScene("TimeUp");
+        #endregion
 
+        #region Private Methods
         private IEnumerator LoadMapSceneCO(float minDelay)
         {
             yield return null;
@@ -38,5 +40,6 @@ namespace Mario.Application.Services
                 yield return null;
             }
         }
+        #endregion
     }
 }

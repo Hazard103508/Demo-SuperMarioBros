@@ -7,11 +7,19 @@ namespace Mario.Application.Services
 {
     public class ServiceLocator
     {
-        private ServiceLocator() { }
-
+        #region Objects
         private readonly Dictionary<Type, IGameService> services = new Dictionary<Type, IGameService>();
-        public static ServiceLocator Current { get; private set; }
+        #endregion
 
+        #region Properties
+        public static ServiceLocator Current { get; private set; }
+        #endregion
+
+        #region Constructor
+        private ServiceLocator() { }
+        #endregion
+
+        #region Public Methods
         /// <summary>
         /// Initalizes the service locator with a new instance.
         /// </summary>
@@ -70,5 +78,6 @@ namespace Mario.Application.Services
 
             services.Remove(key);
         }
+        #endregion
     }
 }

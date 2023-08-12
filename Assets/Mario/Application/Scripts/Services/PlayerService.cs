@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,10 +8,13 @@ namespace Mario.Application.Services
 {
     public class PlayerService : MonoBehaviour, IPlayerService
     {
+        #region Objects
         [SerializeField] private AudioSource _lifeUpSoundFX;
         [SerializeField] private AudioSource _deadSoundFX;
         private bool _canMove;
+        #endregion
 
+        #region Properties
         public PlayerModes CurrentMode { get; set; }
         public bool CanMove
         {
@@ -18,34 +22,34 @@ namespace Mario.Application.Services
             set
             {
                 _canMove = value;
-                OnCanMoveChanged.Invoke();
+                CanMoveChanged.Invoke();
             }
         }
         public int Lives { get; private set; }
+        #endregion
 
-        public UnityEvent OnCanMoveChanged { get; private set; }
-        public UnityEvent OnLivesAdded { get; private set; }
-        public UnityEvent OnLivesRemoved { get; private set; }
+        #region Events
+        public event Action CanMoveChanged;
+        public event Action LivesAdded;
+        public event Action LivesRemoved;
+        #endregion
 
+        #region Public Methods
         public void LoadService()
         {
-            OnLivesAdded = new UnityEvent();
-            OnLivesRemoved = new UnityEvent();
-            OnCanMoveChanged = new UnityEvent();
-
             Reset();
         }
         public void AddLife()
         {
             this.Lives++;
             _lifeUpSoundFX.Play();
-            OnLivesAdded.Invoke();
+            LivesAdded.Invoke();
         }
         public void Kill()
         {
             this.Lives--;
             _deadSoundFX.Play();
-            OnLivesRemoved.Invoke();
+            LivesRemoved.Invoke();
             this.CurrentMode = PlayerModes.Small;
 
             Services.MusicService.Stop();
@@ -56,5 +60,6 @@ namespace Mario.Application.Services
             Lives = 3;
             CanMove = true;
         }
+        #endregion
     }
 }

@@ -5,7 +5,11 @@ namespace Mario.Application.Services
 {
     public class MusicService : MonoBehaviour, IMusicService
     {
+        #region Objects
         [SerializeField] private AudioSource _audioSource;
+        #endregion
+
+        #region Properties
         public AudioClip Clip
         {
             get => _audioSource.clip;
@@ -16,11 +20,12 @@ namespace Mario.Application.Services
             }
         }
         public float Time { get => _audioSource.time; set => _audioSource.time = value; }
+        #endregion
 
+        #region Public Methods
         public void LoadService()
         {
         }
-
         public void Play() => _audioSource.Play();
         public void Pause() => _audioSource.Pause();
         public void Stop()
@@ -28,5 +33,6 @@ namespace Mario.Application.Services
             if (_audioSource != null)
                 _audioSource.Stop();
         }
+        #endregion
     }
 }

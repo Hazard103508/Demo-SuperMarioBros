@@ -20,7 +20,7 @@ namespace Mario.Game.Maps
         {
             Services.TimeService.ResetTimer();
             Services.GameDataService.IsGoalReached = false;
-            Services.PlayerService.OnLivesRemoved.AddListener(OnLivesRemoved);
+            Services.PlayerService.LivesRemoved += OnLivesRemoved;
 
             Camera.main.backgroundColor = Services.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             LoadMapSection();
@@ -33,7 +33,7 @@ namespace Mario.Game.Maps
             SetNextMap();
             Services.AddressablesService.ReleaseAllAssets();
             Services.PoolService.ClearPool();
-            Services.PlayerService.OnLivesRemoved.RemoveListener(OnLivesRemoved);
+            Services.PlayerService.LivesRemoved -= OnLivesRemoved;
         }
         #endregion
 

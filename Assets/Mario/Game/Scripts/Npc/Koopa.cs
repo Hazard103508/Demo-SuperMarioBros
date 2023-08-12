@@ -44,7 +44,7 @@ namespace Mario.Game.Npc
         {
             State = KoopaStates.Idle;
             SetSpeed();
-            Services.PlayerService.OnCanMoveChanged.AddListener(OnCanMoveChanged);
+            Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
 
             _proximityBlock = new()
             {
@@ -56,7 +56,7 @@ namespace Mario.Game.Npc
         }
         private void OnDestroy()
         {
-            Services.PlayerService.OnCanMoveChanged.RemoveListener(OnCanMoveChanged);
+            Services.PlayerService.CanMoveChanged -= OnCanMoveChanged;
         }
         private void Update()
         {
@@ -254,7 +254,7 @@ namespace Mario.Game.Npc
         private void SetSpeed()
         {
             float _direction = _renderer.flipX ? 1 : -1;
-            _currentSpeed = Vector2.right * _direction * (State == KoopaStates.Bouncing ? Math.Abs(_profile.BouncingSpeed) : Math.Abs(_profile.MoveSpeed));
+            _currentSpeed = (State == KoopaStates.Bouncing ? Math.Abs(_profile.BouncingSpeed) : Math.Abs(_profile.MoveSpeed)) * _direction * Vector2.right;
         }
         private void HitToLeft(RayHitInfo hitInfo)
         {

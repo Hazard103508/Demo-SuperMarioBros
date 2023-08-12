@@ -39,7 +39,7 @@ namespace Mario.Game.Npc
         private void Awake()
         {
             _currentSpeed = Vector2.right * _profile.MoveSpeed;
-            Services.PlayerService.OnCanMoveChanged.AddListener(OnCanMoveChanged);
+            Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
 
             _proximityBlock = new()
             {
@@ -51,7 +51,7 @@ namespace Mario.Game.Npc
         }
         private void OnDestroy()
         {
-            Services.PlayerService.OnCanMoveChanged.RemoveListener(OnCanMoveChanged);
+            Services.PlayerService.CanMoveChanged -= OnCanMoveChanged;
         }
         private void Update()
         {

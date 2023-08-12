@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,10 +7,13 @@ namespace Mario.Application.Services
 {
     public class TimeService : MonoBehaviour, ITimeService
     {
+        #region Objects
         private float _timer;
         private bool _isHurry;
         private int _hurryTime = 100;
+        #endregion
 
+        #region Properties
         public float TimeSpeed { get; set; }
         public int StartTime { get; set; }
         public int Time { get; private set; }
@@ -21,31 +25,31 @@ namespace Mario.Application.Services
             {
                 _isHurry = value;
                 if (value)
-                    OnHurryUpTimeStart.Invoke();
+                    HurryUpTimeStarted.Invoke();
             }
         }
+        #endregion
 
-        public UnityEvent OnTimeStart { get; private set; }
-        public UnityEvent OnTimeChanged { get; private set; }
-        public UnityEvent OnHurryUpTimeStart { get; private set; }
-        public UnityEvent OnTimeOut { get; private set; }
+        #region Events
+        public event Action TimeStarted;
+        public event Action TimeChangeded;
+        public event Action HurryUpTimeStarted;
+        public event Action TimeOut;
+        #endregion
 
-
-        public void LoadService()
-        {
-            OnTimeStart = new UnityEvent();
-            OnTimeChanged = new UnityEvent();
-            OnHurryUpTimeStart = new UnityEvent();
-            OnTimeOut = new UnityEvent();
-
-            this.StartTime = ServiceLocator.Current.Get<IGameDataService>().CurrentMapProfile.Time.StartTime;
-        }
+        #region Unity Methods
         private void Update()
         {
             UpdateTimer();
             ValidHurryUpTime();
         }
+        #endregion
 
+        #region Public Methods
+        public void LoadService()
+        {
+            this.StartTime = ServiceLocator.Current.Get<IGameDataService>().CurrentMapProfile.Time.StartTime;
+        }
         public void ResetTimer()
         {
             TimeSpeed = 2.5f;
@@ -56,19 +60,22 @@ namespace Mario.Application.Services
         public void StopTimer() => Enabled = false;
         public void StartTimer()
         {
-            OnTimeStart.Invoke();
+            TimeStarted.Invoke();
             Enabled = true;
         }
+        #endregion
+
+        #region Private Methods
         private void UpdateTimer()
         {
             if (Enabled && this.Time > 0)
             {
                 _timer += UnityEngine.Time.deltaTime * TimeSpeed;
                 this.Time = Mathf.Max(0, this.StartTime - (int)_timer);
-                OnTimeChanged.Invoke();
+                TimeChangeded.Invoke();
 
                 if (this.Time == 0)
-                    OnTimeOut.Invoke();
+                    TimeOut.Invoke();
             }
         }
         private void ValidHurryUpTime()
@@ -79,5 +86,6 @@ namespace Mario.Application.Services
             if (!IsHurry && Services.TimeService.Time <= _hurryTime && !Services.GameDataService.IsGoalReached)
                 IsHurry = true;
         }
+        #endregion
     }
 }

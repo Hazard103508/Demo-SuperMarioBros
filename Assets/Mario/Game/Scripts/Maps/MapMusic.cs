@@ -10,7 +10,7 @@ namespace Mario.Game.Maps
         #region Unity Methods
         private void Awake()
         {
-            Services.TimeService.OnHurryUpTimeStart.AddListener(OnHurryUpTimeStart);
+            Services.TimeService.HurryUpTimeStarted += OnHurryUpTimeStart;
         }
         private void Start()
         {
@@ -20,7 +20,7 @@ namespace Mario.Game.Maps
         private void OnDestroy()
         {
             Services.MusicService.Stop();
-            Services.TimeService.OnHurryUpTimeStart.RemoveListener(OnHurryUpTimeStart);
+            Services.TimeService.HurryUpTimeStarted -= OnHurryUpTimeStart;
         }
         #endregion
 

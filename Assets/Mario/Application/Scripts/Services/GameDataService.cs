@@ -1,6 +1,7 @@
 using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Player;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -8,12 +9,14 @@ namespace Mario.Application.Services
 {
     public class GameDataService : MonoBehaviour, IGameDataService
     {
+        #region Objects
         private bool _isGoalReached;
+        #endregion
 
+        #region Properties
         [field: SerializeField] public PlayerProfile PlayerProfile { get; set; }
         [field: SerializeField] public MapProfile CurrentMapProfile { get; set; }
         public MapProfile NextMapProfile { get; set; }
-
         public bool IsGoalReached
         {
             get => _isGoalReached;
@@ -21,15 +24,19 @@ namespace Mario.Application.Services
             {
                 _isGoalReached = value;
                 if (value)
-                    OnGoalReached.Invoke();
+                    GoalReached.Invoke();
             }
         }
+        #endregion
 
-        public UnityEvent OnGoalReached { get; private set; }
+        #region Events
+        public event Action GoalReached;
+        #endregion
 
+        #region Public Methods
         public void LoadService()
         {
-            OnGoalReached = new UnityEvent();
         }
+        #endregion
     }
 }

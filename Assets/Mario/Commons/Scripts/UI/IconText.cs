@@ -6,9 +6,12 @@ namespace Mario.Commons.UI
 {
     public class IconText : MonoBehaviour
     {
+        #region Objects
         [SerializeField] private TextMeshProUGUI label;
         [SerializeField] private string _text;
+        #endregion
 
+        #region Properties
         public string Text
         {
             get => _text;
@@ -18,9 +21,13 @@ namespace Mario.Commons.UI
                 WriteText();
             }
         }
+        #endregion
 
+        #region Unity Methods
         private void OnValidate() => WriteText();
+        #endregion
 
+        #region Private Methods
         private void WriteText()
         {
             StringBuilder sb = new StringBuilder();
@@ -29,5 +36,6 @@ namespace Mario.Commons.UI
 
             label.text = sb.ToString();
         }
+        #endregion
     }
 }

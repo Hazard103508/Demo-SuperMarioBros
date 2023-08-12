@@ -5,12 +5,15 @@ namespace Mario.Commons.UI
 {
     public class UITime : MonoBehaviour
     {
+        #region Objects
         [SerializeField] private IconText label;
+        #endregion
 
+        #region Unity Methods
         private void Awake()
         {
-            Services.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
-            Services.TimeService.OnTimeStart.AddListener(OnTimeStart);
+            Services.TimeService.TimeChangeded += OnTimeChanged;
+            Services.TimeService.TimeStarted += OnTimeStart;
 
             label.gameObject.SetActive(false);
             OnTimeChanged();
@@ -20,11 +23,14 @@ namespace Mario.Commons.UI
         }
         private void OnDestroy()
         {
-            Services.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);
-            Services.TimeService.OnTimeStart.RemoveListener(OnTimeStart);
+            Services.TimeService.TimeChangeded -= OnTimeChanged;
+            Services.TimeService.TimeStarted -= OnTimeStart;
         }
+        #endregion
 
+        #region Service Events
         private void OnTimeChanged() => label.Text = Services.TimeService.Time.ToString("D3");
         private void OnTimeStart() => label.gameObject.SetActive(true);
+        #endregion
     }
 }

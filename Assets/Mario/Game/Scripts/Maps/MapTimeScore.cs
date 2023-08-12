@@ -15,16 +15,16 @@ namespace Mario.Game.Maps
         #region Unity Methods
         private void Awake()
         {
-            Services.TimeService.OnTimeChanged.AddListener(OnTimeChanged);
-            Services.GameDataService.OnGoalReached.AddListener(OnGoalReached);
+            Services.TimeService.TimeChangeded += OnTimeChanged;
+            Services.GameDataService.GoalReached += OnGoalReached;
 
             if (Services.GameDataService.CurrentMapProfile.Time.Type == MapTimeType.None)
                 Destroy(this);
         }
         private void OnDestroy()
         {
-            Services.TimeService.OnTimeChanged.RemoveListener(OnTimeChanged);
-            Services.GameDataService.OnGoalReached.RemoveListener(OnGoalReached);
+            Services.TimeService.TimeChangeded -= OnTimeChanged;
+            Services.GameDataService.GoalReached -= OnGoalReached;
         }
         #endregion
 

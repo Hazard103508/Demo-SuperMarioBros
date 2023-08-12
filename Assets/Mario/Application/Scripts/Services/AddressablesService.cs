@@ -8,7 +8,11 @@ namespace Mario.Application.Services
 {
     public class AddressablesService : MonoBehaviour, IAddressablesService
     {
+        #region Objects
         private Dictionary<AssetReference, AsyncOperationHandle> _references;
+        #endregion
+
+        #region Public Methods
         public void LoadService()
         {
             _references = new Dictionary<AssetReference, AsyncOperationHandle>();
@@ -37,5 +41,6 @@ namespace Mario.Application.Services
 
             _references.Clear();
         }
+        #endregion
     }
 }

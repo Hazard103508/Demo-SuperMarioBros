@@ -1,3 +1,4 @@
+using System;
 using UnityEngine.Events;
 
 namespace Mario.Application.Interfaces
@@ -10,10 +11,10 @@ namespace Mario.Application.Interfaces
         bool Enabled { get; }
         bool IsHurry { get; }
 
-        UnityEvent OnTimeStart { get; }
-        UnityEvent OnTimeChanged { get; }
-        UnityEvent OnHurryUpTimeStart { get; }
-        UnityEvent OnTimeOut { get; }
+        event Action TimeStarted;
+        event Action TimeChangeded;
+        event Action HurryUpTimeStarted;
+        event Action TimeOut;
 
         void ResetTimer();
         void StopTimer();
