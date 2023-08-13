@@ -35,8 +35,6 @@ namespace Mario.Game.Player
         }
         private void LateUpdate()
         {
-            Bounce();
-            HitTarget();
             Move();
         }
         private void OnEnable()
@@ -57,28 +55,44 @@ namespace Mario.Game.Player
 
             transform.Translate(_currentSpeed * Time.deltaTime, Space.World);
         }
+        private void HitFromLeft(RayHitInfo hitInfo)
+        {
+            _proximityBlock.left = hitInfo;
+            HitFromSide(hitInfo);
+        }
+        private void HitFromRight(RayHitInfo hitInfo)
+        {
+            _proximityBlock.right = hitInfo;
+            HitFromSide(hitInfo);
+        }
+        private void HitFromSide(RayHitInfo hitInfo)
+        {
+            HitObject(hitInfo);
+
+            if (hitInfo != null & hitInfo.IsBlock && gameObject.activeSelf)
+            {
+                Explode(hitInfo);
+                PlayHitSound();
+            }
+        }
+        private void HitFromBottom(RayHitInfo hitInfo)
+        {
+            _proximityBlock.bottom = hitInfo;
+            HitObject(hitInfo);
+
+            if (gameObject.activeSelf)
+                Bounce();
+        }
         private void Bounce()
         {
             if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
                 _currentSpeed.y = _profile.BounceSpeed;
         }
-        private void HitTarget()
+        private void Explode(RayHitInfo hitInfo)
         {
-            //if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
-            //    return;
-
-            bool _isLeft = _proximityBlock.left != null && _proximityBlock.left.IsBlock;
-            bool _isRight = _proximityBlock.right != null && _proximityBlock.right.IsBlock;
-
-            if (_isLeft || _isRight)
-            {
-                var explotion = Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference);
-                explotion.transform.position = this.transform.position;
-                gameObject.SetActive(false);
-
-                HitObject(_proximityBlock.left);
-                HitObject(_proximityBlock.right);
-            }
+            var explotion = Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference);
+            explotion.transform.position = hitInfo.hitObjects.First().Point;
+            gameObject.SetActive(false);
         }
         private void HitObject(RayHitInfo hitInfo)
         {
@@ -87,16 +101,23 @@ namespace Mario.Game.Player
                 foreach (var obj in hitInfo.hitObjects)
                 {
                     var hitableObject = obj.Object.GetComponent<IHitableByFireBall>();
-                    hitableObject?.OnHittedByFireBall(this);
+                    if (hitableObject != null)
+                    {
+                        hitableObject.OnHittedByFireBall(this);
+                        Explode(hitInfo);
+
+                        return;
+                    }
                 }
             }
         }
+        private void PlayHitSound() => Services.PoolService.GetObjectFromPool(_profile.HitSoundFXPoolReference);
         #endregion
 
         #region On local Ray Range Hit
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo;
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => _proximityBlock.bottom = hitInfo;
+        public void OnProximityRayHitRight(RayHitInfo hitInfo) => HitFromRight(hitInfo);
+        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitFromLeft(hitInfo);
+        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => HitFromBottom(hitInfo);
         #endregion
     }
 }

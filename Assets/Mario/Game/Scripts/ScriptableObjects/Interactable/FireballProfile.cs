@@ -11,5 +11,6 @@ namespace Mario.Game.ScriptableObjects.Interactable
         public float FallSpeed;
         public float MaxFallSpeed;
         public PooledObjectProfile ExplotionPoolReference;
+        public PooledObjectProfile HitSoundFXPoolReference;
     }
 }

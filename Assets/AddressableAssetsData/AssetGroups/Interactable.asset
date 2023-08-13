@@ -25,6 +25,10 @@ MonoBehaviour:
     m_Address: Explotion
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: ea9a9e0c70f5b694d8551ec0f14366fc
+    m_Address: FireBallHitSoundFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
   m_SchemaSet:

@@ -17,3 +17,4 @@ MonoBehaviour:
   FallSpeed: 45
   MaxFallSpeed: 12
   ExplotionPoolReference: {fileID: 11400000, guid: 4a1933c96519e3d4e9e323e7656992a1, type: 2}
+  HitSoundFXPoolReference: {fileID: 11400000, guid: 484c1ed2a30c41d40a266ddbcbe4368c, type: 2}
