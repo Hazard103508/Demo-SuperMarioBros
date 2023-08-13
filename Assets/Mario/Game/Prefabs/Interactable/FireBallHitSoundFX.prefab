@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3223553198491868157}
   - component: {fileID: 8760439549157681314}
+  - component: {fileID: 4883122440313008117}
   m_Layer: 0
   m_Name: FireBallHitSoundFX
   m_TagString: Untagged
@@ -128,3 +129,16 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4883122440313008117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284783491196354873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6273bc129d4bf4fbd1aafd45743fb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioSource: {fileID: 8760439549157681314}
