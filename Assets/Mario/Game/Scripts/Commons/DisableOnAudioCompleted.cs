@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Mario.Game.Interactable
+namespace Mario.Game.Commons
 {
     public class DisableOnAudioCompleted : MonoBehaviour
     {
