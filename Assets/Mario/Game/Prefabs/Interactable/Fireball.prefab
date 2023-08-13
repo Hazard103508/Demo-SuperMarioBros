@@ -48,6 +48,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _renderer: {fileID: 1906459356826221167}
+  _bottomCollision:
+    FixPositionOnCollide: 1
+    RayCast: {fileID: 7169429508905059888}
+    PositionFixed:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2877727374266941682}
+          m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
+          m_MethodName: OnBottomPositionFixed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2877727374266941682}
+          m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
+          m_MethodName: OnBottomCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _leftCollision:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 4122782267108889364}
+    PositionFixed:
+      m_PersistentCalls:
+        m_Calls: []
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2877727374266941682}
+          m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
+          m_MethodName: OnLeftCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  _rightCollision:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 3897985657079979746}
+    PositionFixed:
+      m_PersistentCalls:
+        m_Calls: []
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2877727374266941682}
+          m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
+          m_MethodName: OnRightCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2877727374266941682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,8 +208,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1559953691
-  m_SortingLayer: 1
+  m_SortingLayerID: -1908451925
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 844410745, guid: fd3a428495061d042a7272e9d77cecaa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -196,7 +272,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 51058741075706050}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4122782267108889364
 MonoBehaviour:
@@ -211,22 +287,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 28c21150fcec466448139e63a2eba621, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2877727374266941682}
-        m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
-        m_MethodName: OnProximityRayHitLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2081893326295991426
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +321,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 51058741075706050}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7169429508905059888
 MonoBehaviour:
@@ -272,22 +336,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 439ddad28ef39d444826d05d65393c5f, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2877727374266941682}
-        m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
-        m_MethodName: OnProximityRayHitBottom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2619289745262756177
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,9 +368,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7521606823092636995}
   - {fileID: 6492388972715322647}
   - {fileID: 4025303203511805517}
-  - {fileID: 7521606823092636995}
   m_Father: {fileID: 8638948164826162372}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -480,7 +532,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 51058741075706050}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3897985657079979746
 MonoBehaviour:
@@ -495,19 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 56415a8e88cee1a43911a2a218a441d9, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2877727374266941682}
-        m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
-        m_MethodName: OnProximityRayHitRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

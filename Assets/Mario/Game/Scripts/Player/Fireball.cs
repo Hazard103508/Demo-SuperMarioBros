@@ -14,7 +14,6 @@ namespace Mario.Game.Player
         #region Objects
         [SerializeField] private FireballProfile _profile;
         private Movable _movable;
-        private readonly Bounds<RayHitInfo> _proximityBlock = new();
         #endregion
 
         #region Unity Methods
@@ -25,52 +24,44 @@ namespace Mario.Game.Player
             _movable.Gravity = _profile.FallSpeed;
             _movable.MaxFallSpeed = _profile.MaxFallSpeed;
         }
-        private void OnEnable()
-        {
-            _proximityBlock.left = new();
-            _proximityBlock.right = new();
-            _proximityBlock.bottom = new();
-        }
         #endregion
 
         #region Public Methods
         public void ChangeDirectionToRight() => _movable.Speed = math.abs(_movable.Speed);
         public void ChangeDirectionToLeft() => _movable.Speed = -math.abs(_movable.Speed);
+        public void OnBottomCollided(RayHitInfo hitInfo) => HitBottomObject(hitInfo);
+        public void OnLeftCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
+        public void OnRightCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
         #endregion
 
         #region Private Methods
-        private void HitFromLeft(RayHitInfo hitInfo)
-        {
-            _proximityBlock.left = hitInfo;
-            HitFromSide(hitInfo);
-        }
-        private void HitFromRight(RayHitInfo hitInfo)
-        {
-            _proximityBlock.right = hitInfo;
-            HitFromSide(hitInfo);
-        }
-        private void HitFromSide(RayHitInfo hitInfo)
+        private void HitBottomObject(RayHitInfo hitInfo)
         {
             HitObject(hitInfo);
-
-            if (hitInfo != null & hitInfo.IsBlock && gameObject.activeSelf)
+            if (gameObject.activeSelf && hitInfo.IsBlock)
+                _movable.AddJumpForce(_profile.BounceSpeed);
+        }
+        private void HitSideObject(RayHitInfo hitInfo)
+        {
+            HitObject(hitInfo);
+            if (gameObject.activeSelf && hitInfo.IsBlock)
             {
                 Explode(hitInfo);
                 PlayHitSound();
             }
         }
-        private void HitFromBottom(RayHitInfo hitInfo)
+        private void HitObject(RayHitInfo hitInfo)
         {
-            _proximityBlock.bottom = hitInfo;
-            HitObject(hitInfo);
-
-            if (gameObject.activeSelf)
-                Bounce();
-        }
-        private void Bounce()
-        {
-            if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
-                _movable.AddJumpForce(_profile.BounceSpeed);
+            foreach (var obj in hitInfo.hitObjects)
+            {
+                var hitableObject = obj.Object.GetComponent<IHitableByFireBall>();
+                if (hitableObject != null)
+                {
+                    hitableObject.OnHittedByFireBall(this);
+                    Explode(hitInfo);
+                    return;
+                }
+            }
         }
         private void Explode(RayHitInfo hitInfo)
         {
@@ -78,30 +69,8 @@ namespace Mario.Game.Player
             explotion.transform.position = hitInfo.hitObjects.First().Point;
             gameObject.SetActive(false);
         }
-        private void HitObject(RayHitInfo hitInfo)
-        {
-            if (hitInfo.hitObjects.Any())
-            {
-                foreach (var obj in hitInfo.hitObjects)
-                {
-                    var hitableObject = obj.Object.GetComponent<IHitableByFireBall>();
-                    if (hitableObject != null)
-                    {
-                        hitableObject.OnHittedByFireBall(this);
-                        Explode(hitInfo);
 
-                        return;
-                    }
-                }
-            }
-        }
         private void PlayHitSound() => Services.PoolService.GetObjectFromPool(_profile.HitSoundFXPoolReference);
-        #endregion
-
-        #region On local Ray Range Hit
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => HitFromRight(hitInfo);
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitFromLeft(hitInfo);
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo) => HitFromBottom(hitInfo);
         #endregion
     }
 }

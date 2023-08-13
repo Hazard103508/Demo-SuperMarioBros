@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
                 CalculateCollision();
         }
 
+        [Obsolete("Method1 is deprecated")]
         public void CalculateCollision()
         {
             var rayBound = CalculateRayRange();
@@ -28,6 +30,17 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             };
             hitInfo.hitObjects = hits;
             onHit.Invoke(hitInfo);
+        }
+        public RayHitInfo CalculateCollision(float rayLength)
+        {
+            _profile.Ray.Length = rayLength;
+            var rayBound = CalculateRayRange();
+            var hitInfo = new RayHitInfo()
+            {
+                IsBlock = CalculateCollisionDetection(rayBound, out List<HitObject> hits)
+            };
+            hitInfo.hitObjects = hits;
+            return hitInfo;
         }
 
         private RayRange CalculateRayRange()
