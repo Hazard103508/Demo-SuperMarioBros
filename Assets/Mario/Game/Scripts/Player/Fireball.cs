@@ -1,7 +1,9 @@
 using Mario.Application.Services;
+using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.ScriptableObjects.Interactable;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -11,50 +13,32 @@ namespace Mario.Game.Player
     {
         #region Objects
         [SerializeField] private FireballProfile _profile;
+        private Movable _movable;
         private readonly Bounds<RayHitInfo> _proximityBlock = new();
-        private Vector3 _currentSpeed;
-        private float _direction;
-        #endregion
-
-        #region Properties
-        public float Direction
-        {
-            get => _direction;
-            set
-            {
-                _direction = value;
-                _currentSpeed.x = _direction * Mathf.Abs(_currentSpeed.x);
-            }
-        }
         #endregion
 
         #region Unity Methods
         private void Awake()
         {
-            _currentSpeed = _profile.Speed * Vector3.right;
-        }
-        private void LateUpdate()
-        {
-            Move();
+            _movable = GetComponent<Movable>();
+            _movable.Speed = _profile.Speed;
+            _movable.Gravity = _profile.FallSpeed;
+            _movable.MaxFallSpeed = _profile.MaxFallSpeed;
         }
         private void OnEnable()
         {
-            _currentSpeed.y = 0;
             _proximityBlock.left = new();
             _proximityBlock.right = new();
             _proximityBlock.bottom = new();
         }
         #endregion
 
-        #region Private Methods
-        private void Move()
-        {
-            _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
-            if (_currentSpeed.y < -_profile.MaxFallSpeed)
-                _currentSpeed.y = -_profile.MaxFallSpeed;
+        #region Public Methods
+        public void ChangeDirectionToRight() => _movable.Speed = math.abs(_movable.Speed);
+        public void ChangeDirectionToLeft() => _movable.Speed = -math.abs(_movable.Speed);
+        #endregion
 
-            transform.Translate(_currentSpeed * Time.deltaTime, Space.World);
-        }
+        #region Private Methods
         private void HitFromLeft(RayHitInfo hitInfo)
         {
             _proximityBlock.left = hitInfo;
@@ -86,7 +70,7 @@ namespace Mario.Game.Player
         private void Bounce()
         {
             if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
-                _currentSpeed.y = _profile.BounceSpeed;
+                _movable.AddJumpForce(_profile.BounceSpeed);
         }
         private void Explode(RayHitInfo hitInfo)
         {

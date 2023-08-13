@@ -6,26 +6,19 @@ namespace Mario.Game.Commons
     {
         #region Objects
         private Vector2 _currentSpeed;
-        private float _direction;
         #endregion
 
         #region Properties
         public float Gravity { get; set; }
-        public float XSpeed
+        public float Speed
         {
             get => _currentSpeed.x;
-            private set => _currentSpeed.x = value;
-        }
-        public float MaxFallSpeed { get; set; }
-        public float Direction
-        {
-            get => _direction;
             set
             {
-                _direction = value;
-                _currentSpeed.x = _direction * Mathf.Abs(_currentSpeed.x);
+                _currentSpeed.x = value;
             }
         }
+        public float MaxFallSpeed { get; set; }
         #endregion
 
         #region Unity Methods
@@ -44,10 +37,11 @@ namespace Mario.Game.Commons
         private void OnEnable()
         {
             _currentSpeed.y = 0;
-            //_proximityBlock.left = new();
-            //_proximityBlock.right = new();
-            //_proximityBlock.bottom = new();
         }
+        #endregion
+
+        #region Public
+        public void AddJumpForce(float force) => _currentSpeed.y = force;
         #endregion
 
         #region Private Methods

@@ -275,7 +275,11 @@ namespace Mario.Game.Player
             {
                 var fireBall = Services.PoolService.GetObjectFromPool<Fireball>(_profile.Fireball.FireballPoolProfile);
                 fireBall.transform.position = this.transform.position + (Vector3)_profile.Fireball.StartLocalPosition;
-                fireBall.Direction = Mathf.Sign(_render.transform.localScale.x);
+
+                if (Mathf.Sign(_render.transform.localScale.x) == 1)
+                    fireBall.ChangeDirectionToRight();
+                else
+                    fireBall.ChangeDirectionToLeft();
             }
         }
         #endregion
