@@ -28,9 +28,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1068909090103427489}
   - {fileID: 1068909089117085197}
   - {fileID: 1068909089559928122}
-  - {fileID: 1068909090103427489}
   m_Father: {fileID: 1068909089230204730}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -64,7 +64,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1068909088853146836}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8466497263259401725
 MonoBehaviour:
@@ -79,22 +79,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 1d6964241a2f49146a6658e86c29c0dc, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1696081485333169470}
-        m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-        m_MethodName: OnProximityRayHitLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1068909089230204733
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1068909089230204730}
   - component: {fileID: 2149483510483655216}
+  - component: {fileID: 8072059675776694914}
   - component: {fileID: 1696081485333169470}
   m_Layer: 6
   m_Name: RedMushroom
@@ -156,6 +145,73 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8072059675776694914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068909089230204733}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 4309244486214422655}
+  Bottom:
+    FixPositionOnCollide: 1
+    RayCast: {fileID: 3168351872246796587}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1696081485333169470}
+          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
+          m_MethodName: OnBottomCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  Left:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 8466497263259401725}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1696081485333169470}
+          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
+          m_MethodName: OnLeftCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  Right:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 2617962527640650011}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1696081485333169470}
+          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
+          m_MethodName: OnRightCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1696081485333169470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +256,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1068909088853146836}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2617962527640650011
 MonoBehaviour:
@@ -215,22 +271,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 0f55032fafce7b742b06d17d8fa3e6ac, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1696081485333169470}
-        m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-        m_MethodName: OnProximityRayHitRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1068909090103427488
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,7 +305,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1068909088853146836}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3168351872246796587
 MonoBehaviour:
@@ -276,22 +320,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: d764ebb188295504490e601c5fd79f52, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1696081485333169470}
-        m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-        m_MethodName: OnProximityRayHitBottom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7477420782075438623
 GameObject:
   m_ObjectHideFlags: 0

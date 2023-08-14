@@ -1,4 +1,5 @@
 using Mario.Application.Services;
+using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
@@ -18,9 +19,7 @@ namespace Mario.Game.Items
     {
         #region Objects
         [SerializeField] private MushroomProfile _mushroomProfile;
-
-        private Vector3 _currentSpeed;
-        private readonly Bounds<bool> _proximityBlock = new();
+        private Movable _movable;
         private bool _isJumping;
         #endregion
 
@@ -31,25 +30,15 @@ namespace Mario.Game.Items
         #region Unity Methods
         private void Awake()
         {
-            _currentSpeed = Vector2.right * _mushroomProfile.MoveSpeed;
+            _movable = GetComponent<Movable>();
+            _movable.Speed = _mushroomProfile.MoveSpeed;
+            _movable.Gravity = _mushroomProfile.FallSpeed;
+            _movable.MaxFallSpeed = _mushroomProfile.MaxFallSpeed;
         }
         private void OnEnable()
         {
             ResetMushroom();
             StartCoroutine(RiseMushroom());
-        }
-        private void Update()
-        {
-            if (IsRising)
-                return;
-
-            if (!Services.PlayerService.CanMove)
-                return;
-
-            CalculateWalk();
-            CalculateGravity();
-
-            Move();
         }
         #endregion
 
@@ -66,38 +55,6 @@ namespace Mario.Game.Items
         #endregion
 
         #region Private Methods
-        private void CalculateWalk()
-        {
-            if (_proximityBlock.right)
-                _currentSpeed.x = -Mathf.Abs(_currentSpeed.x);
-            else if (_proximityBlock.left)
-                _currentSpeed.x = Mathf.Abs(_currentSpeed.x);
-        }
-        private void CalculateGravity()
-        {
-            _currentSpeed.y -= _mushroomProfile.FallSpeed * Time.deltaTime;
-            if (_proximityBlock.bottom)
-            {
-                if (_currentSpeed.y < 0)
-                    _currentSpeed.y = 0;
-            }
-            else
-            {
-                if (_currentSpeed.y < -_mushroomProfile.MaxFallSpeed)
-                    _currentSpeed.y = -_mushroomProfile.MaxFallSpeed;
-            }
-        }
-        private void Move()
-        {
-            var nextPosition = transform.position + _currentSpeed * Time.deltaTime;
-
-            // ajusto posicion de contacto con el suelo
-            if (_proximityBlock.bottom && _currentSpeed.y == 0)
-                nextPosition.y = Mathf.Round(nextPosition.y);
-
-            transform.position = nextPosition;
-        }
-
         private IEnumerator RiseMushroom()
         {
             yield return new WaitForEndOfFrame();
@@ -115,26 +72,17 @@ namespace Mario.Game.Items
                 yield return null;
             }
 
+            _movable.enabled = true;
             IsRising = false;
         }
-        private void Jump()
-        {
-            if (!_isJumping)
-            {
-                _isJumping = true;
-                _currentSpeed.y = _mushroomProfile.JumpAcceleration;
-            }
-        }
+        private void ChangeDirectionToRight() => _movable.Speed = Mathf.Abs(_movable.Speed);
+        private void ChangeDirectionToLeft() => _movable.Speed = -Mathf.Abs(_movable.Speed);
         #endregion
 
         #region On local Ray Range Hit
-        public void OnProximityRayHitLeft(RayHitInfo hitInfo) => _proximityBlock.left = hitInfo.IsBlock;
-        public void OnProximityRayHitRight(RayHitInfo hitInfo) => _proximityBlock.right = hitInfo.IsBlock;
-        public void OnProximityRayHitBottom(RayHitInfo hitInfo)
-        {
-            _proximityBlock.bottom = hitInfo.IsBlock;
-            _isJumping = !hitInfo.IsBlock;
-        }
+        public void OnBottomCollided(RayHitInfo hitInfo) => _isJumping = false;
+        public void OnLeftCollided(RayHitInfo hitInfo) => ChangeDirectionToRight();
+        public void OnRightCollided(RayHitInfo hitInfo) => ChangeDirectionToLeft();
         #endregion
 
         #region On Player Hit
@@ -150,10 +98,11 @@ namespace Mario.Game.Items
             if (_isJumping)
                 return;
 
-            Jump();
+            _isJumping = true;
+            _movable.AddJumpForce(_mushroomProfile.JumpAcceleration);
 
-            if (Math.Sign(_currentSpeed.x) != Math.Sign(this.transform.position.x - box.transform.position.x))
-                _currentSpeed.x *= -1;
+            if (Math.Sign(_movable.Speed) != Math.Sign(this.transform.position.x - box.transform.position.x))
+                _movable.Speed *= -1;
         }
         #endregion
     }

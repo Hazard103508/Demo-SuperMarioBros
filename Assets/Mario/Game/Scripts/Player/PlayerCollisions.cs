@@ -33,20 +33,32 @@ namespace Mario.Game.Player
         public void EvaluateHit()
         {
             if (_proximityHit.top != null)
+            {
                 foreach (HitObject hit in _proximityHit.top)
                     HitObjectOnTop(hit);
+                _proximityHit.top.Clear();
+            }
 
             if (_proximityHit.bottom != null)
+            {
                 foreach (HitObject hit in _proximityHit.bottom)
                     HitObjectOnBottom(hit);
+                _proximityHit.bottom.Clear();
+            }
 
             if (_proximityHit.left != null)
+            {
                 foreach (HitObject hit in _proximityHit.left)
                     HitObjectOnLeft(hit);
+                _proximityHit.left.Clear();
+            }
 
             if (_proximityHit.right != null)
+            {
                 foreach (HitObject hit in _proximityHit.right)
                     HitObjectOnRight(hit);
+                _proximityHit.right.Clear();
+            }
         }
         private bool HitObjectOnTop(HitObject hit) => HitObjectOn<IHitableByPlayerFromBottom>(hit, script => script.OnHittedByPlayerFromBottom(_playerController));
         private bool HitObjectOnBottom(HitObject hit) => HitObjectOn<IHitableByPlayerFromTop>(hit, script => script.OnHittedByPlayerFromTop(_playerController));

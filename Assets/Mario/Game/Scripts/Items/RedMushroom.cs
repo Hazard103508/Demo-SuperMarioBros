@@ -9,24 +9,12 @@ namespace Mario.Game.Items
     {
         #region Objects
         [SerializeField] private RedMushroomProfile _redMushroomProfile;
-        private bool isCollected;
-        #endregion
-
-        #region Protected Methods
-        protected override void ResetMushroom()
-        {
-            isCollected = false;
-            base.ResetMushroom();
-        }
         #endregion
 
         #region Private Methods
         protected override void CollectMushroom(PlayerController player)
         {
-            if (isCollected || IsRising)
-                return;
-
-            isCollected = true;
+            gameObject.layer = 0;
             Services.ScoreService.Add(_redMushroomProfile.Points);
             Services.ScoreService.ShowPoints(_redMushroomProfile.Points, transform.position + Vector3.up * 1.75f, 0.8f, 3f);
 
