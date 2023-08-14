@@ -13,6 +13,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         [SerializeField] protected RaycastRangeProfile _profile;
         public bool runAutomatically = true;
         public UnityEvent<RayHitInfo> onHit;
+        private float _rayExtraLength;
 
         private void Update()
         {
@@ -31,9 +32,9 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             hitInfo.hitObjects = hits;
             onHit.Invoke(hitInfo);
         }
-        public RayHitInfo CalculateCollision(float rayLength)
+        public RayHitInfo CalculateCollision(float rayExtraLength)
         {
-            _profile.Ray.Length = rayLength;
+            _rayExtraLength = rayExtraLength;
             var rayBound = CalculateRayRange();
             var hitInfo = new RayHitInfo()
             {
@@ -87,7 +88,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         private List<RaycastHit2D> GetRaycastHit(RayRange range, LayerMask layerMask)
         {
             return EvaluateRayPositions(range)
-                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.Ray.Length, layerMask))
+                .Select(point => Physics2D.Raycast(point, range.Dir, _profile.Ray.Length + _rayExtraLength, layerMask))
                 .Where(hit => hit.collider != null && hit.collider.gameObject.activeSelf)
                 .ToList();
         }

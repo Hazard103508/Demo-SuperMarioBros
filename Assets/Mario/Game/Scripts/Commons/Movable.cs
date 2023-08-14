@@ -1,3 +1,4 @@
+using Mario.Application.Services;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -11,9 +12,10 @@ namespace Mario.Game.Commons
     {
         #region Objects
         [SerializeField] private SpriteRenderer _renderer;
-        [SerializeField] private CollitionInfo _bottomCollision;
-        [SerializeField] private CollitionInfo _leftCollision;
-        [SerializeField] private CollitionInfo _rightCollision;
+        public CollitionInfo Bottom;
+        public CollitionInfo Left;
+        public CollitionInfo Right;
+
         private Vector2 _currentSpeed;
         private Vector2 _spriteSize = Vector2.zero;
         #endregion
@@ -41,6 +43,9 @@ namespace Mario.Game.Commons
         }
         private void Update()
         {
+            if (!Services.PlayerService.CanMove)
+                return;
+
             ApplyGravity();
 
             var nextPosition = (Vector2)transform.position + _currentSpeed * Time.deltaTime;
@@ -69,50 +74,50 @@ namespace Mario.Game.Commons
         }
         private void CalculateCollision_Bottom(ref Vector2 nextPosition)
         {
-            float rayLength = transform.position.y - nextPosition.y;
-            if (rayLength > 0)
+            float rayExtraLength = transform.position.y - nextPosition.y;
+            if (rayExtraLength > 0)
             {
-                var hitInfo = _bottomCollision.RayCast.CalculateCollision(rayLength);
-                if (hitInfo.IsBlock && _bottomCollision.FixPositionOnCollide)
+                var hitInfo = Bottom.RayCast.CalculateCollision(rayExtraLength);
+                if (hitInfo.IsBlock && Bottom.FixPositionOnCollide)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.y = hitObject.Point.y + _spriteSize.y;
+                    nextPosition.y = hitObject.Point.y + _spriteSize.y - _renderer.transform.localPosition.y;
                 }
 
                 if (hitInfo.hitObjects.Any())
-                    _bottomCollision.Collided.Invoke(hitInfo);
+                    Bottom.Collided.Invoke(hitInfo);
             }
         }
         private void CalculateCollision_Right(ref Vector2 nextPosition)
         {
-            float rayLength = nextPosition.x - transform.position.x;
-            if (rayLength > 0)
+            float rayExtraLength = nextPosition.x - transform.position.x;
+            if (rayExtraLength > 0)
             {
-                var hitInfo = _rightCollision.RayCast.CalculateCollision(rayLength);
-                if (hitInfo.IsBlock && _rightCollision.FixPositionOnCollide)
+                var hitInfo = Right.RayCast.CalculateCollision(rayExtraLength);
+                if (hitInfo.IsBlock && Right.FixPositionOnCollide)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.x = hitObject.Point.x - _spriteSize.x;
+                    nextPosition.x = hitObject.Point.x - _spriteSize.x - _renderer.transform.localPosition.x;
                 }
 
                 if (hitInfo.hitObjects.Any())
-                    _rightCollision.Collided.Invoke(hitInfo);
+                    Right.Collided.Invoke(hitInfo);
             }
         }
         private void CalculateCollision_Left(ref Vector2 nextPosition)
         {
-            float rayLength = transform.position.x - nextPosition.x;
-            if (rayLength > 0)
+            float rayExtraLength = transform.position.x - nextPosition.x;
+            if (rayExtraLength > 0)
             {
-                var hitInfo = _leftCollision.RayCast.CalculateCollision(rayLength);
-                if (hitInfo.IsBlock && _leftCollision.FixPositionOnCollide)
+                var hitInfo = Left.RayCast.CalculateCollision(rayExtraLength);
+                if (hitInfo.IsBlock && Left.FixPositionOnCollide)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.x = hitObject.Point.x + _spriteSize.x;
+                    nextPosition.x = hitObject.Point.x + _spriteSize.x - _renderer.transform.localPosition.x;
                 }
 
                 if (hitInfo.hitObjects.Any())
-                    _leftCollision.Collided.Invoke(hitInfo);
+                    Left.Collided.Invoke(hitInfo);
             }
         }
         private void Move(Vector2 nextPosition)

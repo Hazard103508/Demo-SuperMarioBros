@@ -1164,6 +1164,7 @@ Transform:
   - {fileID: 7154638844396209186}
   - {fileID: 8642827285301194651}
   - {fileID: 8797517113684375348}
+  - {fileID: 6862157533627807769}
   m_Father: {fileID: 981654926499773032}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1240,7 +1241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3684936033642406808
 Transform:
   m_ObjectHideFlags: 0
@@ -1387,7 +1388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8151661868066420750, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
@@ -1861,6 +1862,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4159430047776393569, guid: a6bcf50cf5c5b354484ef656c9e822c4, type: 3}
   m_PrefabInstance: {fileID: 6553618750782754115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6896176852350058105
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 981654926729295115}
+    m_Modifications:
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427875, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_Name
+      value: Overworld_BrickBoxCoin (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427875, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+--- !u!4 &6862157533627807769 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 40360478236427872, guid: 196e48d1d5ad3c94583a4ddce3f6157a, type: 3}
+  m_PrefabInstance: {fileID: 6896176852350058105}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7191539253051521402
 PrefabInstance:

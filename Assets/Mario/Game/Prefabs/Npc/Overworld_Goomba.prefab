@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1379950002664443939}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &230350645881943826
 MonoBehaviour:
@@ -48,19 +48,7 @@ MonoBehaviour:
   runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3895425941044523143}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba, Assembly-CSharp
-        m_MethodName: OnProximityRayHitBottom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1194221761650623214
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,6 +59,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1194221761650623209}
   - component: {fileID: 257622890496309219}
+  - component: {fileID: 1857737800226872132}
   - component: {fileID: 3895425941044523143}
   m_Layer: 9
   m_Name: Overworld_Goomba
@@ -123,6 +112,61 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.89, y: 0.6}
   m_EdgeRadius: 0
+--- !u!114 &1857737800226872132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1194221761650623214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 2705183971576495532}
+  Bottom:
+    FixPositionOnCollide: 1
+    RayCast: {fileID: 230350645881943826}
+    Collided:
+      m_PersistentCalls:
+        m_Calls: []
+  Left:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 1704425028959934956}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3895425941044523143}
+          m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba, Assembly-CSharp
+          m_MethodName: OnLeftCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  Right:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 6314789516101829409}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3895425941044523143}
+          m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba, Assembly-CSharp
+          m_MethodName: OnRightCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &3895425941044523143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: dff77bfa6ba01f1469cd5f038f586825, type: 2}
-  _raycastRanges: {fileID: 4816143696649562683}
   _renderer: {fileID: 2705183971576495532}
   _hitSoundFX: {fileID: 140150993567704026}
   _kickSoundFX: {fileID: 3451042922612196846}
@@ -171,7 +214,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1379950002664443939}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6314789516101829409
 MonoBehaviour:
@@ -189,19 +232,7 @@ MonoBehaviour:
   runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3895425941044523143}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba, Assembly-CSharp
-        m_MethodName: OnProximityRayHitRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &4961795176834928817
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +263,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1379950002664443939}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1704425028959934956
 MonoBehaviour:
@@ -250,19 +281,7 @@ MonoBehaviour:
   runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3895425941044523143}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba, Assembly-CSharp
-        m_MethodName: OnProximityRayHitLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &5433362369292570791
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +452,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379950002664443939}
-  - component: {fileID: 4816143696649562683}
   m_Layer: 0
   m_Name: RaycastRange
   m_TagString: Untagged
@@ -453,28 +471,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5690807715616396351}
   - {fileID: 4416463711461286757}
   - {fileID: 4701346700429848002}
-  - {fileID: 5690807715616396351}
   m_Father: {fileID: 1194221761650623209}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4816143696649562683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7713057739221743936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39f30715fc28514b9bca928d4f0ad08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bottomRayCast: {fileID: 230350645881943826}
-  _leftRayCast: {fileID: 1704425028959934956}
-  _rightRayCast: {fileID: 6314789516101829409}
-  _topRayCast: {fileID: 0}
 --- !u!1 &8190769873219546503
 GameObject:
   m_ObjectHideFlags: 0

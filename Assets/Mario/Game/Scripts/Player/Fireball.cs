@@ -3,7 +3,6 @@ using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.ScriptableObjects.Interactable;
 using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -27,11 +26,9 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public void ChangeDirectionToRight() => _movable.Speed = math.abs(_movable.Speed);
-        public void ChangeDirectionToLeft() => _movable.Speed = -math.abs(_movable.Speed);
-        public void OnBottomCollided(RayHitInfo hitInfo) => HitBottomObject(hitInfo);
-        public void OnLeftCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
-        public void OnRightCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
+        public void ChangeDirectionToRight() => _movable.Speed = Mathf.Abs(_movable.Speed);
+        public void ChangeDirectionToLeft() => _movable.Speed = -Mathf.Abs(_movable.Speed);
+
         #endregion
 
         #region Private Methods
@@ -69,8 +66,13 @@ namespace Mario.Game.Player
             explotion.transform.position = hitInfo.hitObjects.First().Point;
             gameObject.SetActive(false);
         }
-
         private void PlayHitSound() => Services.PoolService.GetObjectFromPool(_profile.HitSoundFXPoolReference);
+        #endregion
+
+        #region On local Ray Range Hit
+        public void OnBottomCollided(RayHitInfo hitInfo) => HitBottomObject(hitInfo);
+        public void OnLeftCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
+        public void OnRightCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
         #endregion
     }
 }

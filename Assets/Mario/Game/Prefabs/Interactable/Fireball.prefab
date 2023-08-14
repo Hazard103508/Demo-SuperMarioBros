@@ -49,24 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1906459356826221167}
-  _bottomCollision:
+  Bottom:
     FixPositionOnCollide: 1
     RayCast: {fileID: 7169429508905059888}
-    PositionFixed:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2877727374266941682}
-          m_TargetAssemblyTypeName: Mario.Game.Player.Fireball, Assembly-CSharp
-          m_MethodName: OnBottomPositionFixed
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
     Collided:
       m_PersistentCalls:
         m_Calls:
@@ -82,12 +67,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  _leftCollision:
+  Left:
     FixPositionOnCollide: 0
     RayCast: {fileID: 4122782267108889364}
-    PositionFixed:
-      m_PersistentCalls:
-        m_Calls: []
     Collided:
       m_PersistentCalls:
         m_Calls:
@@ -103,12 +85,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  _rightCollision:
+  Right:
     FixPositionOnCollide: 0
     RayCast: {fileID: 3897985657079979746}
-    PositionFixed:
-      m_PersistentCalls:
-        m_Calls: []
     Collided:
       m_PersistentCalls:
         m_Calls:
