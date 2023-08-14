@@ -15,8 +15,6 @@ namespace Mario.Game.Items
     {
         #region Objects
         [SerializeField] protected FlowerProfile _profile;
-        private bool isCollected;
-        private bool _isRising;
         #endregion
 
         #region Unity Methods
@@ -31,8 +29,6 @@ namespace Mario.Game.Items
         {
             yield return new WaitForEndOfFrame();
 
-            isCollected = false;
-            _isRising = true;
             var _initPosition = transform.transform.position;
             var _targetPosition = _initPosition + Vector3.up;
             float _timer = 0;
@@ -44,14 +40,10 @@ namespace Mario.Game.Items
                 transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
                 yield return null;
             }
-            _isRising = false;
         }
         private void CollectFlower(PlayerController player)
         {
-            if (isCollected || _isRising)
-                return;
-
-            isCollected = true;
+            gameObject.layer = 0;
             Services.ScoreService.Add(_profile.Points);
             Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 1.75f, 0.8f, 3f);
 
