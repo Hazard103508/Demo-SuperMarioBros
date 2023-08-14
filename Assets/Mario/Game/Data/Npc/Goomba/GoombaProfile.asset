@@ -15,7 +15,7 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  MoveSpeed: 2.2
+  MoveSpeed: -2.2
   FallSpeed: 60
   MaxFallSpeed: 14.5
   JumpAcceleration: 15
