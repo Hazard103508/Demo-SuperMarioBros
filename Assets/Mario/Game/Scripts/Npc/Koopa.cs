@@ -108,65 +108,6 @@ namespace Mario.Game.Npc
             State = KoopaStates.Idle;
             _renderer.transform.position += Vector3.up * 0.5f;
         }
-        //private void CalculateGravity()
-        //{
-        //    _currentSpeed.y -= _profile.FallSpeed * Time.deltaTime;
-        //    if (_proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock)
-        //    {
-        //        if (_currentSpeed.y < 0)
-        //            _currentSpeed.y = 0;
-        //    }
-        //    else
-        //    {
-        //        if (_currentSpeed.y < -_profile.MaxFallSpeed)
-        //            _currentSpeed.y = -_profile.MaxFallSpeed;
-        //    }
-        //}
-        //private void SetHorizontalAlignment(ref Vector3 nextPosition)
-        //{
-        //    if (_proximityBlock.right.IsBlock && !_proximityBlock.left.IsBlock)
-        //    {
-        //        var hitObject = _proximityBlock.right.hitObjects.First();
-        //        nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
-        //    }
-        //    else if (_proximityBlock.right.IsBlock || _proximityBlock.left.IsBlock)
-        //    {
-        //        var hitObject = _proximityBlock.left.hitObjects.First();
-        //        nextPosition.x = hitObject.Point.x - (0.5f + hitObject.RelativePosition.x);
-        //    }
-        //}
-        //private void SetVerticalAlignment(ref Vector3 nextPosition)
-        //{
-        //    if (IsGrounded && _currentSpeed.y <= 0)
-        //        nextPosition.y = Mathf.Round(nextPosition.y);
-        //}
-        //private void CalculateWalk()
-        //{
-        //    if (_proximityBlock.right.IsBlock)
-        //    {
-        //        _renderer.flipX = false;
-        //        _currentSpeed.x = -Mathf.Abs(_currentSpeed.x);
-        //    }
-        //    else if (_proximityBlock.left.IsBlock)
-        //    {
-        //        _renderer.flipX = true;
-        //        _currentSpeed.x = Mathf.Abs(_currentSpeed.x);
-        //    }
-        //}
-        //private void Move()
-        //{
-        //    if (State == KoopaStates.InShell)
-        //        return;
-        //
-        //    var nextPosition = transform.position + _currentSpeed * Time.deltaTime;
-        //    transform.position = nextPosition;
-        //
-        //    _raycastRanges.CalculateCollision(); // valido coliciones 
-        //
-        //    SetHorizontalAlignment(ref nextPosition);
-        //    SetVerticalAlignment(ref nextPosition);
-        //    transform.position = nextPosition;
-        //}
         private void DamagePlayer(PlayerController player)
         {
             //if (!enabled || _isDead)
@@ -255,7 +196,7 @@ namespace Mario.Game.Npc
         }
         private void SetSpeed()
         {
-            float _direction = _renderer.flipX ? 1 : -1;
+            float _direction = Mathf.Sign(_movable.Speed);
             _movable.Speed = (State == KoopaStates.Bouncing ? Math.Abs(_profile.BouncingSpeed) : Math.Abs(_profile.MoveSpeed)) * _direction;
         }
         private void HitToLeft(RayHitInfo hitInfo)
@@ -293,8 +234,22 @@ namespace Mario.Game.Npc
             if (hitInfo.IsBlock && this.State == KoopaStates.Bouncing)
                 _blockSoundFX.Play();
         }
-        private void ChangeDirectionToRight() => _movable.Speed = Mathf.Abs(_movable.Speed);
-        private void ChangeDirectionToLeft() => _movable.Speed = -Mathf.Abs(_movable.Speed);
+        private void ChangeDirectionToRight(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+            {
+                _renderer.flipX = true;
+                _movable.Speed = Mathf.Abs(_movable.Speed);
+            }
+        }
+        private void ChangeDirectionToLeft(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+            {
+                _renderer.flipX = false;
+                _movable.Speed = -Mathf.Abs(_movable.Speed);
+            }
+        }
         #endregion
 
         #region Service Events
@@ -318,8 +273,8 @@ namespace Mario.Game.Npc
         //}
         //#endregion
         #region On local Ray Range Hit
-        public void OnLeftCollided(RayHitInfo hitInfo) => ChangeDirectionToRight();
-        public void OnRightCollided(RayHitInfo hitInfo) => ChangeDirectionToLeft();
+        public void OnLeftCollided(RayHitInfo hitInfo) => ChangeDirectionToRight(hitInfo);
+        public void OnRightCollided(RayHitInfo hitInfo) => ChangeDirectionToLeft(hitInfo);
         #endregion
 
         #region On Player Hit
