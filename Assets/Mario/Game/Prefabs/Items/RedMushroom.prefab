@@ -143,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &8072059675776694914
 MonoBehaviour:
@@ -177,7 +177,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   Left:
-    FixPositionOnCollide: 0
+    FixPositionOnCollide: 1
     RayCast: {fileID: 8466497263259401725}
     Collided:
       m_PersistentCalls:
@@ -195,7 +195,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   Right:
-    FixPositionOnCollide: 0
+    FixPositionOnCollide: 1
     RayCast: {fileID: 2617962527640650011}
     Collided:
       m_PersistentCalls:

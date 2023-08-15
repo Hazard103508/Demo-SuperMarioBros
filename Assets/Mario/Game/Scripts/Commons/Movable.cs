@@ -18,6 +18,7 @@ namespace Mario.Game.Commons
 
         private Vector2 _currentSpeed;
         private Vector2 _spriteSize = Vector2.zero;
+        private Vector2 _pivot = Vector2.zero;
         #endregion
 
         #region Properties
@@ -39,7 +40,8 @@ namespace Mario.Game.Commons
             _currentSpeed = Vector2.zero;
 
             var scale = transform.localScale;
-            _spriteSize = new Vector2(_renderer.sprite.bounds.size.x * scale.x, _renderer.sprite.bounds.size.y * scale.y) / 2.0f;
+            _spriteSize = new Vector2(_renderer.sprite.bounds.size.x * scale.x, _renderer.sprite.bounds.size.y * scale.y);
+            _pivot = new Vector2(_renderer.sprite.pivot.x / _renderer.sprite.rect.width, _renderer.sprite.pivot.y / _renderer.sprite.rect.height);
         }
         private void Update()
         {
@@ -81,7 +83,7 @@ namespace Mario.Game.Commons
                 if (hitInfo.IsBlock && Bottom.FixPositionOnCollide)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.y = hitObject.Point.y + _spriteSize.y - _renderer.transform.localPosition.y;
+                    nextPosition.y = hitObject.Point.y + _spriteSize.y * _pivot.y - _renderer.transform.localPosition.y;
                 }
 
                 if (hitInfo.hitObjects.Any())
@@ -97,7 +99,7 @@ namespace Mario.Game.Commons
                 if (hitInfo.IsBlock && Right.FixPositionOnCollide)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.x = hitObject.Point.x - _spriteSize.x - _renderer.transform.localPosition.x;
+                    nextPosition.x = hitObject.Point.x - _spriteSize.x * _pivot.x - _renderer.transform.localPosition.x;
                 }
 
                 if (hitInfo.hitObjects.Any())
@@ -113,7 +115,7 @@ namespace Mario.Game.Commons
                 if (hitInfo.IsBlock && Left.FixPositionOnCollide)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.x = hitObject.Point.x + _spriteSize.x - _renderer.transform.localPosition.x;
+                    nextPosition.x = hitObject.Point.x + _spriteSize.x * _pivot.x - _renderer.transform.localPosition.x;
                 }
 
                 if (hitInfo.hitObjects.Any())

@@ -140,9 +140,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7787869369452286960}
   - {fileID: 7787869368281910364}
   - {fileID: 7787869368925523819}
-  - {fileID: 7787869369452286960}
   m_Father: {fileID: 7787869368713805163}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -176,7 +176,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7787869368017448581}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5973475578513448817
 MonoBehaviour:
@@ -191,22 +191,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 1d6964241a2f49146a6658e86c29c0dc, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4126564096216567813}
-        m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-        m_MethodName: OnProximityRayHitLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7787869368713805164
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7787869368713805163}
   - component: {fileID: 9157481705733638241}
+  - component: {fileID: 7678126169026046642}
   - component: {fileID: 4126564096216567813}
   m_Layer: 6
   m_Name: Overworld_GreenMushroom
@@ -266,8 +255,75 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7678126169026046642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7787869368713805164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 6416527543277142574}
+  Bottom:
+    FixPositionOnCollide: 1
+    RayCast: {fileID: 482626821218211423}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4126564096216567813}
+          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
+          m_MethodName: OnBottomCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  Left:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 5973475578513448817}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4126564096216567813}
+          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
+          m_MethodName: OnLeftCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  Right:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 8372391406385823904}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4126564096216567813}
+          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
+          m_MethodName: OnRightCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &4126564096216567813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +337,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mushroomProfile: {fileID: 11400000, guid: 738220a4ab7a0c841938f2832313ea63, type: 2}
-  _greenMushroomProfile: {fileID: 11400000, guid: 95a209b990d88e645aaa978458efaf30, type: 2}
 --- !u!1 &7787869368925523820
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +367,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7787869368017448581}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8372391406385823904
 MonoBehaviour:
@@ -327,22 +382,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 0f55032fafce7b742b06d17d8fa3e6ac, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4126564096216567813}
-        m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-        m_MethodName: OnProximityRayHitRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &7787869369452286961
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +416,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7787869368017448581}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &482626821218211423
 MonoBehaviour:
@@ -388,19 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: d764ebb188295504490e601c5fd79f52, type: 2}
-  runAutomatically: 1
+  runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4126564096216567813}
-        m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-        m_MethodName: OnProximityRayHitBottom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

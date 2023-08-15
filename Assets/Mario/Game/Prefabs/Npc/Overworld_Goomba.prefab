@@ -132,7 +132,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   Left:
-    FixPositionOnCollide: 0
+    FixPositionOnCollide: 1
     RayCast: {fileID: 1704425028959934956}
     Collided:
       m_PersistentCalls:
@@ -150,7 +150,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   Right:
-    FixPositionOnCollide: 0
+    FixPositionOnCollide: 1
     RayCast: {fileID: 6314789516101829409}
     Collided:
       m_PersistentCalls:

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8256415528085957315}
-  - component: {fileID: 2033673227806755279}
   m_Layer: 0
   m_Name: RaycastRange
   m_TagString: Untagged
@@ -29,28 +28,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3408081896919674591}
   - {fileID: 6699193791301392773}
   - {fileID: 2345450650883282722}
-  - {fileID: 3408081896919674591}
   m_Father: {fileID: 8151661868066420745}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2033673227806755279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772497349307761568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e39f30715fc28514b9bca928d4f0ad08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bottomRayCast: {fileID: 7097780403504352754}
-  _leftRayCast: {fileID: 8508824248238285580}
-  _rightRayCast: {fileID: 3895785757345085889}
-  _topRayCast: {fileID: 0}
 --- !u!1 &1160040667967182695
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +325,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8256415528085957315}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8508824248238285580
 MonoBehaviour:
@@ -360,19 +343,7 @@ MonoBehaviour:
   runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5294001676903830261}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa, Assembly-CSharp
-        m_MethodName: OnProximityRayHitLeft
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &3086392169366334023
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +536,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8256415528085957315}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3895785757345085889
 MonoBehaviour:
@@ -583,19 +554,7 @@ MonoBehaviour:
   runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5294001676903830261}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa, Assembly-CSharp
-        m_MethodName: OnProximityRayHitRight
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &6464403039233504236
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +713,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8256415528085957315}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7097780403504352754
 MonoBehaviour:
@@ -772,19 +731,7 @@ MonoBehaviour:
   runAutomatically: 0
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5294001676903830261}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa, Assembly-CSharp
-        m_MethodName: OnProximityRayHitBottom
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &8151661868066420750
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,6 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8151661868066420745}
   - component: {fileID: 7071071143117098243}
+  - component: {fileID: 5030047841044185704}
   - component: {fileID: 5294001676903830261}
   m_Layer: 9
   m_Name: Overworld_Koopa
@@ -847,6 +795,61 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &5030047841044185704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8151661868066420750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 4915821275691976524}
+  Bottom:
+    FixPositionOnCollide: 1
+    RayCast: {fileID: 7097780403504352754}
+    Collided:
+      m_PersistentCalls:
+        m_Calls: []
+  Left:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 8508824248238285580}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5294001676903830261}
+          m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa, Assembly-CSharp
+          m_MethodName: OnLeftCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  Right:
+    FixPositionOnCollide: 0
+    RayCast: {fileID: 3895785757345085889}
+    Collided:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5294001676903830261}
+          m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa, Assembly-CSharp
+          m_MethodName: OnRightCollided
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &5294001676903830261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +863,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 30fcac4af5cbc9b47a9ca1037c858378, type: 2}
-  _raycastRanges: {fileID: 2033673227806755279}
   _renderer: {fileID: 4915821275691976524}
   _hitSoundFX: {fileID: 6936622652438960442}
   _kickSoundFX: {fileID: 5644890884725358350}
