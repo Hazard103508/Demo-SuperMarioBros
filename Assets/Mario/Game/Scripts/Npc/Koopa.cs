@@ -64,6 +64,7 @@ namespace Mario.Game.Npc
         private void Kill(Vector3 hitPosition)
         {
             _movable.ChekCollisions = false;
+            _movable.enabled = true;
             gameObject.layer = 0;
 
             _kickSoundFX.Play();
@@ -83,14 +84,9 @@ namespace Mario.Game.Npc
 
             State = KoopaStates.Idle;
             _renderer.transform.position += Vector3.up * 0.5f;
+            SetSpeed();
         }
-        private void DamagePlayer(PlayerController player)
-        {
-            //if (!enabled || _isDead)
-            //    return;
-
-            player.DamagePlayer();
-        }
+        private void DamagePlayer(PlayerController player) => player.DamagePlayer();
         private void HitFromTop(PlayerController player)
         {
             if (_hitCoolDown)
@@ -120,6 +116,8 @@ namespace Mario.Game.Npc
             Services.ScoreService.ShowPoints(_profile.PointsHit1, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
 
             State = KoopaStates.InShell;
+            _movable.enabled = false;
+
             SetSpeed();
             _wakingUpCO = StartCoroutine(WakingUP());
 
@@ -131,6 +129,7 @@ namespace Mario.Game.Npc
             if (State == KoopaStates.InShell)
             {
                 _animator.SetTrigger("Hit");
+                _movable.enabled = true;
 
                 if (_wakingUpCO != null)
                     StopCoroutine(_wakingUpCO);
@@ -157,6 +156,7 @@ namespace Mario.Game.Npc
             _animator.SetTrigger("Idle");
 
             State = KoopaStates.Idle;
+            _movable.enabled = true;
         }
         private IEnumerator Cooldown()
         {
@@ -171,15 +171,15 @@ namespace Mario.Game.Npc
         }
         private void HitToLeft(RayHitInfo hitInfo)
         {
-            //HitObject(hitInfo);
-            //_proximityBlock.left = hitInfo;
-            //PlayBlockSoundFX(_proximityBlock.left);
+            HitObject(hitInfo);
+            PlayBlockSoundFX(hitInfo);
+            ChangeDirectionToRight(hitInfo);
         }
         private void HitToRight(RayHitInfo hitInfo)
         {
-            //HitObject(hitInfo);
-            //_proximityBlock.right = hitInfo;
-            //PlayBlockSoundFX(_proximityBlock.right);
+            HitObject(hitInfo);
+            PlayBlockSoundFX(hitInfo);
+            ChangeDirectionToLeft(hitInfo);
         }
         private void HitObject(RayHitInfo hitInfo)
         {
@@ -206,9 +206,6 @@ namespace Mario.Game.Npc
         }
         private void ChangeDirectionToRight(RayHitInfo hitInfo)
         {
-            if (gameObject.layer == 0)
-                return;
-
             if (hitInfo.IsBlock)
             {
                 _renderer.flipX = true;
@@ -217,9 +214,6 @@ namespace Mario.Game.Npc
         }
         private void ChangeDirectionToLeft(RayHitInfo hitInfo)
         {
-            if (gameObject.layer == 0)
-                return;
-
             if (hitInfo.IsBlock)
             {
                 _renderer.flipX = false;
@@ -233,8 +227,8 @@ namespace Mario.Game.Npc
         #endregion
 
         #region On local Ray Range Hit
-        public void OnLeftCollided(RayHitInfo hitInfo) => ChangeDirectionToRight(hitInfo);
-        public void OnRightCollided(RayHitInfo hitInfo) => ChangeDirectionToLeft(hitInfo);
+        public void OnLeftCollided(RayHitInfo hitInfo) => HitToLeft(hitInfo);
+        public void OnRightCollided(RayHitInfo hitInfo) => HitToRight(hitInfo);
         #endregion
 
         #region On Player Hit
