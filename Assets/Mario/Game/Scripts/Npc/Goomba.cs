@@ -53,8 +53,8 @@ namespace Mario.Game.Npc
         #region Private Methods
         private void Kill(Vector3 hitPosition)
         {
-            gameObject.layer = 0; // Deshabilitado para otra colision
-            _movable.Bottom.FixPositionOnCollide = false;
+            _movable.ChekCollisions = false;
+            gameObject.layer = 0; 
 
             _kickSoundFX.Play();
             _animator.SetTrigger("Kill");

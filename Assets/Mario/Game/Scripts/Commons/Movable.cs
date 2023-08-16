@@ -12,6 +12,7 @@ namespace Mario.Game.Commons
     {
         #region Objects
         [SerializeField] private SpriteRenderer _renderer;
+        public bool ChekCollisions;
         public CollitionInfo Bottom;
         public CollitionInfo Left;
         public CollitionInfo Right;
@@ -51,9 +52,12 @@ namespace Mario.Game.Commons
             ApplyGravity();
 
             var nextPosition = (Vector2)transform.position + _currentSpeed * Time.deltaTime;
-            CalculateCollision_Bottom(ref nextPosition);
-            CalculateCollision_Right(ref nextPosition);
-            CalculateCollision_Left(ref nextPosition);
+            if (ChekCollisions)
+            {
+                CalculateCollision_Bottom(ref nextPosition);
+                CalculateCollision_Right(ref nextPosition);
+                CalculateCollision_Left(ref nextPosition);
+            }
 
             Move(nextPosition);
         }

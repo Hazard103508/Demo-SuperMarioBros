@@ -1404,18 +1404,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3684936033642406808}
     m_Modifications:
-    - target: {fileID: 5030047841044185704, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
-      propertyPath: Left.FixPositionOnCollide
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5030047841044185704, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
-      propertyPath: Right.FixPositionOnCollide
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5294001676903830261, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8151661868066420745, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1466,7 +1454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8151661868066420750, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
@@ -1790,15 +1778,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goomba
       objectReference: {fileID: 0}
-    - target: {fileID: 1194221761650623214, guid: 7b2db476b7a34f54abf0f75a7ee9b317, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1857737800226872132, guid: 7b2db476b7a34f54abf0f75a7ee9b317, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3895425941044523143, guid: 7b2db476b7a34f54abf0f75a7ee9b317, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}

@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 2705183971576495532}
+  ChekCollisions: 1
   Bottom:
     FixPositionOnCollide: 1
     RayCast: {fileID: 230350645881943826}
@@ -132,7 +133,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
   Left:
-    FixPositionOnCollide: 1
+    FixPositionOnCollide: 0
     RayCast: {fileID: 1704425028959934956}
     Collided:
       m_PersistentCalls:
@@ -150,7 +151,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   Right:
-    FixPositionOnCollide: 1
+    FixPositionOnCollide: 0
     RayCast: {fileID: 6314789516101829409}
     Collided:
       m_PersistentCalls:

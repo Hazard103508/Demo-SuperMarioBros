@@ -22,23 +22,18 @@ namespace Mario.Game.Npc
     {
         #region Objects
         [SerializeField] private KoopaProfile _profile;
-        //[SerializeField] private SquareRaycast _raycastRanges;
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private AudioSource _hitSoundFX;
         [SerializeField] private AudioSource _kickSoundFX;
         [SerializeField] private AudioSource _blockSoundFX;
         [SerializeField] private Animator _animator;
 
-        //private Vector3 _currentSpeed;
-        //private bool _isDead;
-        //private Bounds<RayHitInfo> _proximityBlock = new();
         private Movable _movable;
         private Coroutine _wakingUpCO;
         private bool _hitCoolDown;
         #endregion
 
         #region Properties
-        //private bool IsGrounded => _proximityBlock != null && _proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock;
         private KoopaStates State { get; set; }
         #endregion
 
@@ -59,16 +54,6 @@ namespace Mario.Game.Npc
         {
             Services.PlayerService.CanMoveChanged -= OnCanMoveChanged;
         }
-        //private void Update()
-        //{
-        //    if (!Services.PlayerService.CanMove)
-        //        return;
-        //
-        //    CalculateWalk();
-        //    CalculateGravity();
-        //
-        //    Move();
-        //}
         #endregion
 
         #region Public Methods
@@ -78,10 +63,7 @@ namespace Mario.Game.Npc
         #region Private Methods
         private void Kill(Vector3 hitPosition)
         {
-            //if (!enabled || _isDead)
-            //    return;
-
-            //_isDead = true;
+            _movable.ChekCollisions = false;
             gameObject.layer = 0;
 
             _kickSoundFX.Play();
@@ -94,13 +76,7 @@ namespace Mario.Game.Npc
             if (Math.Sign(_movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
                 _movable.Speed *= -1;
 
-            //_currentSpeed.y = _profile.JumpAcceleration;
-            //
-            //_proximityBlock.bottom.IsBlock = false; // evito que colicione contra el suelo
-            //_proximityBlock.left.IsBlock = false;
-            //_proximityBlock.right.IsBlock = false;
-            //
-            //Destroy(_raycastRanges.gameObject);
+            _movable.AddJumpForce(_profile.JumpAcceleration);
 
             if (_wakingUpCO != null)
                 StopCoroutine(_wakingUpCO);
@@ -137,9 +113,6 @@ namespace Mario.Game.Npc
         }
         private void FirstHit(PlayerController player)
         {
-            //if (_isDead)
-            //    return;
-
             _hitSoundFX.Play();
             _animator.SetTrigger("Hit");
 
@@ -155,9 +128,6 @@ namespace Mario.Game.Npc
         }
         private void SecondHit(PlayerController player)
         {
-            //if (_isDead)
-            //    return;
-
             if (State == KoopaStates.InShell)
             {
                 _animator.SetTrigger("Hit");
@@ -236,6 +206,9 @@ namespace Mario.Game.Npc
         }
         private void ChangeDirectionToRight(RayHitInfo hitInfo)
         {
+            if (gameObject.layer == 0)
+                return;
+
             if (hitInfo.IsBlock)
             {
                 _renderer.flipX = true;
@@ -244,6 +217,9 @@ namespace Mario.Game.Npc
         }
         private void ChangeDirectionToLeft(RayHitInfo hitInfo)
         {
+            if (gameObject.layer == 0)
+                return;
+
             if (hitInfo.IsBlock)
             {
                 _renderer.flipX = false;
@@ -256,22 +232,6 @@ namespace Mario.Game.Npc
         private void OnCanMoveChanged() => _animator.speed = Services.PlayerService.CanMove ? 1 : 0;
         #endregion
 
-        //#region On local Ray Range Hit
-        //public void OnProximityRayHitLeft(RayHitInfo hitInfo) => HitToLeft(hitInfo);
-        //public void OnProximityRayHitRight(RayHitInfo hitInfo) => HitToRight(hitInfo);
-        //public void OnProximityRayHitTop(RayHitInfo hitInfo) => _proximityBlock.top = hitInfo;
-        //public void OnProximityRayHitBottom(RayHitInfo hitInfo)
-        //{
-        //    if (_isDead)
-        //    {
-        //        _proximityBlock.bottom.hitObjects = new System.Collections.Generic.List<HitObject>();
-        //        _proximityBlock.bottom.IsBlock = false;
-        //        return;
-        //    }
-        //
-        //    _proximityBlock.bottom.IsBlock = hitInfo.IsBlock;
-        //}
-        //#endregion
         #region On local Ray Range Hit
         public void OnLeftCollided(RayHitInfo hitInfo) => ChangeDirectionToRight(hitInfo);
         public void OnRightCollided(RayHitInfo hitInfo) => ChangeDirectionToLeft(hitInfo);

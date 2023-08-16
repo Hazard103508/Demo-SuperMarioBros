@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 1906459356826221167}
+  ChekCollisions: 1
   Bottom:
     FixPositionOnCollide: 1
     RayCast: {fileID: 7169429508905059888}
