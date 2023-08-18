@@ -1,6 +1,6 @@
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
-using Mario.Game.Npc;
+using Mario.Game.Npc.Koopa;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;

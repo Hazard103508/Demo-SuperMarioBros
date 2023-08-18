@@ -1,4 +1,4 @@
-using Mario.Game.Npc;
+using Mario.Game.Npc.Koopa;
 
 namespace Mario.Game.Interfaces
 {

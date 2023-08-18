@@ -1,12 +1,11 @@
 using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
+using Mario.Game.Npc.Koopa;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System;
 using System.Collections;
-using System.Linq;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -117,7 +116,7 @@ namespace Mario.Game.Npc
         #endregion
 
         #region On Koopa Hit
-        public void OnHittedByKoppa(Koopa koopa) => Kill(koopa.transform.position);
+        public void OnHittedByKoppa(Koopa.Koopa koopa) => Kill(koopa.transform.position);
         #endregion
 
         #region On Fireball Hit
