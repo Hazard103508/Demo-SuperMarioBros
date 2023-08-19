@@ -28,7 +28,6 @@ namespace Mario.Game.Npc.Goomba
         [SerializeField] private Animator _animator;
         #endregion
 
-
         #region Properties
         public GoombaStateMachine StateMachine { get; private set; }
         public Movable Movable { get; private set; }
@@ -80,52 +79,6 @@ namespace Mario.Game.Npc.Goomba
         }
         public void PlayHitSoundFX() => _hitSoundFX.Play();
         public void PlayKickSoundFX() => _kickSoundFX.Play();
-        #endregion
-
-        #region Private Methods
-        //private void Kill(Vector3 hitPosition)
-        //{
-        //    _movable.ChekCollisions = false;
-        //    gameObject.layer = 0;
-        //
-        //    _kickSoundFX.Play();
-        //    _animator.SetTrigger("Kill");
-        //    _renderer.sortingLayerName = "Dead";
-        //
-        //    Services.ScoreService.Add(_profile.Points);
-        //    Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 2f, 0.8f, 3f);
-        //
-        //    if (Math.Sign(_movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
-        //        _movable.Speed *= -1;
-        //
-        //    _movable.AddJumpForce(_profile.JumpAcceleration);
-        //}
-        //private void Hit(PlayerController player)
-        //{
-        //    gameObject.layer = 0; // Deshabilitado para otra colision
-        //    _movable.enabled = false;
-        //
-        //    _hitSoundFX.Play();
-        //    enabled = false;
-        //    _animator.SetTrigger("Hit");
-        //
-        //    Services.ScoreService.Add(_profile.Points);
-        //    Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
-        //
-        //    player.BounceJump();
-        //    StartCoroutine(DestroyAfterHit());
-        //}
-        //private IEnumerator DestroyAfterHit()
-        //{
-        //    yield return new WaitForSeconds(0.4f);
-        //    Destroy(gameObject);
-        //}
-        //private void DamagePlayer(PlayerController player)
-        //{
-        //    player.DamagePlayer();
-        //}
-        //private void ChangeDirectionToRight() => _movable.Speed = Mathf.Abs(_movable.Speed);
-        //private void ChangeDirectionToLeft() => _movable.Speed = -Mathf.Abs(_movable.Speed);
         #endregion
 
         #region Service Events

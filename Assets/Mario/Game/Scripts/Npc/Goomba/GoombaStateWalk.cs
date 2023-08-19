@@ -50,7 +50,7 @@ namespace Mario.Game.Npc.Goomba
         #region On Player Hit
         public override void OnHittedByPlayerFromTop(PlayerController player)
         {
-            //_goomba.StateMachine.TransitionTo(_goomba.StateMachine.StateInShell);
+            _goomba.StateMachine.TransitionTo(_goomba.StateMachine.StateHit);
             player.BounceJump();
         }
         public override void OnHittedByPlayerFromLeft(PlayerController player) => player.DamagePlayer();
