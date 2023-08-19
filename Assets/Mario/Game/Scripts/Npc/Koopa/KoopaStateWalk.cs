@@ -4,7 +4,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc.Koopa
 {
-    public class KoopaStateWalk : IKoopaState
+    public class KoopaStateWalk : KoopaState
     {
         #region Objects
         private readonly Koopa _koopa;
@@ -18,17 +18,11 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region IState Methods
-        public void Enter()
+        public override void Enter()
         {
             _koopa.Movable.enabled = true;
             _koopa.Movable.Speed = _koopa.Profile.MoveSpeed;
             _koopa.Animator.SetTrigger("Idle");
-        }
-        public void Exit()
-        {
-        }
-        public void Update()
-        {
         }
         #endregion
 
@@ -41,12 +35,12 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Movable Hit
-        public void OnHittedByMovingToLeft(RayHitInfo hitInfo)
+        public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
                 _koopa.ChangeDirectionToRight(hitInfo);
         }
-        public void OnHittedByMovingToRight(RayHitInfo hitInfo)
+        public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
                 _koopa.ChangeDirectionToLeft(hitInfo);
@@ -54,26 +48,26 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController player)
+        public override void OnHittedByPlayerFromTop(PlayerController player)
         {
             _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateInShell);
             player.BounceJump();
         }
-        public void OnHittedByPlayerFromLeft(PlayerController player) => player.DamagePlayer();
-        public void OnHittedByPlayerFromRight(PlayerController player) => player.DamagePlayer();
-        public void OnHittedByPlayerFromBottom(PlayerController player) => player.DamagePlayer();
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => player.DamagePlayer();
+        public override void OnHittedByPlayerFromRight(PlayerController player) => player.DamagePlayer();
+        public override void OnHittedByPlayerFromBottom(PlayerController player) => player.DamagePlayer();
         #endregion
 
         #region On Box Hit
-        public void OnHittedByBox(GameObject box) => KillKoopa(box.transform.position);
+        public override void OnHittedByBox(GameObject box) => KillKoopa(box.transform.position);
         #endregion
 
         #region On Koopa Hit
-        public void OnHittedByKoppa(Koopa koopa) => KillKoopa(koopa.transform.position);
+        public override void OnHittedByKoppa(Koopa koopa) => KillKoopa(koopa.transform.position);
         #endregion
 
         #region On Fireball Hit
-        public void OnHittedByFireBall(Fireball fireball) => KillKoopa(fireball.transform.position);
+        public override void OnHittedByFireBall(Fireball fireball) => KillKoopa(fireball.transform.position);
         #endregion
     }
 }

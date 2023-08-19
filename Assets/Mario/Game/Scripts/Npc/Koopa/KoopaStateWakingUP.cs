@@ -6,7 +6,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc.Koopa
 {
-    public class KoopaStateWakingUp : IKoopaState
+    public class KoopaStateWakingUp : KoopaState
     {
         #region Objects
         private readonly Koopa _koopa;
@@ -21,15 +21,12 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region IState Methods
-        public void Enter()
+        public override void Enter()
         {
             _timer = 0;
             _koopa.Animator.SetTrigger("WakeUp");
         }
-        public void Exit()
-        {
-        }
-        public void Update()
+        public override void Update()
         {
             _timer += Time.deltaTime;
             if (_timer >= 1.5f)
@@ -53,28 +50,22 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
-        #region On Movable Hit
-        public void OnHittedByMovingToLeft(RayHitInfo hitInfo) { }
-        public void OnHittedByMovingToRight(RayHitInfo hitInfo) { }
-        #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController player) { }
-        public void OnHittedByPlayerFromLeft(PlayerController player) => OnHittedByPlayerFromSide(player);
-        public void OnHittedByPlayerFromRight(PlayerController player) => OnHittedByPlayerFromSide(player);
-        public void OnHittedByPlayerFromBottom(PlayerController player) { }
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => OnHittedByPlayerFromSide(player);
+        public override void OnHittedByPlayerFromRight(PlayerController player) => OnHittedByPlayerFromSide(player);
         #endregion
 
         #region On Box Hit
-        public void OnHittedByBox(GameObject box) => KillKoopa(box.transform.position);
+        public override void OnHittedByBox(GameObject box) => KillKoopa(box.transform.position);
         #endregion
 
         #region On Koopa Hit
-        public void OnHittedByKoppa(Koopa koopa) => KillKoopa(koopa.transform.position);
+        public override void OnHittedByKoppa(Koopa koopa) => KillKoopa(koopa.transform.position);
         #endregion
 
         #region On Fireball Hit
-        public void OnHittedByFireBall(Fireball fireball) => KillKoopa(fireball.transform.position);
+        public override void OnHittedByFireBall(Fireball fireball) => KillKoopa(fireball.transform.position);
         #endregion
     }
 }

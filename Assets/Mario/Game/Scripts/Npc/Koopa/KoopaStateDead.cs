@@ -5,7 +5,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc.Koopa
 {
-    public class KoopaStateDead : IKoopaState
+    public class KoopaStateDead : KoopaState
     {
         #region Objects
         private readonly Koopa _koopa;
@@ -19,7 +19,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region IState Methods
-        public void Enter()
+        public override void Enter()
         {
             _koopa.Movable.ChekCollisions = false;
             _koopa.Movable.enabled = true;
@@ -34,36 +34,6 @@ namespace Mario.Game.Npc.Koopa
             _koopa.Movable.AddJumpForce(_koopa.Profile.JumpAcceleration);
             _koopa.Renderer.transform.position += Vector3.up * 0.5f;
         }
-        public void Exit()
-        {
-        }
-        public void Update()
-        {
-        }
-        #endregion
-
-        #region On Movable Hit
-        public void OnHittedByMovingToLeft(RayHitInfo hitInfo) { }
-        public void OnHittedByMovingToRight(RayHitInfo hitInfo) { }
-        #endregion
-
-        #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController player) { }
-        public void OnHittedByPlayerFromLeft(PlayerController player) { }
-        public void OnHittedByPlayerFromRight(PlayerController player) { }
-        public void OnHittedByPlayerFromBottom(PlayerController player) { }
-        #endregion
-
-        #region On Box Hit
-        public void OnHittedByBox(GameObject box) { }
-        #endregion
-
-        #region On Koopa Hit
-        public void OnHittedByKoppa(Koopa koopa) { }
-        #endregion
-
-        #region On Fireball Hit
-        public void OnHittedByFireBall(Fireball fireball) { }
         #endregion
     }
 }
