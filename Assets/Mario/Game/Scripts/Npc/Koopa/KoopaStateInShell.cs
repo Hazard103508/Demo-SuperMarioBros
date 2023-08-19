@@ -56,7 +56,6 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
-
         #region On Player Hit
         public override void OnHittedByPlayerFromLeft(PlayerController player) => OnHittedByPlayerFromSide(player);
         public override void OnHittedByPlayerFromRight(PlayerController player) => OnHittedByPlayerFromSide(player);

@@ -38,12 +38,12 @@ namespace Mario.Game.Npc.Koopa
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                _koopa.ChangeDirectionToRight(hitInfo);
+                _koopa.ChangeDirectionToRight();
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                _koopa.ChangeDirectionToLeft(hitInfo);
+                _koopa.ChangeDirectionToLeft();
         }
         #endregion
 

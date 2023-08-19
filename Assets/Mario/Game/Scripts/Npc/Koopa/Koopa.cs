@@ -67,15 +67,15 @@ namespace Mario.Game.Npc.Koopa
 
         #region Public Methods
         public void OnFall() => Destroy(gameObject);
-        public void ChangeDirectionToRight(RayHitInfo hitInfo)
+        public void ChangeDirectionToRight()
         {
-                _renderer.flipX = true;
-                Movable.Speed = Mathf.Abs(Movable.Speed);
+            _renderer.flipX = true;
+            Movable.Speed = Mathf.Abs(Movable.Speed);
         }
-        public void ChangeDirectionToLeft(RayHitInfo hitInfo)
+        public void ChangeDirectionToLeft()
         {
-                _renderer.flipX = false;
-                Movable.Speed = -Mathf.Abs(Movable.Speed);
+            _renderer.flipX = false;
+            Movable.Speed = -Mathf.Abs(Movable.Speed);
         }
         public void ChangeSpeedAfferHit(Vector3 hitPosition)
         {
@@ -92,8 +92,7 @@ namespace Mario.Game.Npc.Koopa
                 var removeHits = new List<HitObject>();
                 foreach (var obj in hitInfo.hitObjects)
                 {
-                    var hitableObject = obj.Object.GetComponent<IHittableByKoppa>();
-                    if (hitableObject != null)
+                    if (obj.Object.TryGetComponent<IHittableByKoppa>(out var hitableObject))
                     {
                         removeHits.Add(obj);
                         hitableObject?.OnHittedByKoppa(this);

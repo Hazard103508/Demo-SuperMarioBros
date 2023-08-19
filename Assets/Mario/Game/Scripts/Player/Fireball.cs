@@ -8,7 +8,10 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class Fireball : MonoBehaviour
+    public class Fireball : MonoBehaviour,
+        IHittableByMovingToBottom,
+        IHittableByMovingToLeft,
+        IHittableByMovingToRight
     {
         #region Objects
         [SerializeField] private FireballProfile _profile;
@@ -51,8 +54,7 @@ namespace Mario.Game.Player
         {
             foreach (var obj in hitInfo.hitObjects)
             {
-                var hitableObject = obj.Object.GetComponent<IHittableByFireBall>();
-                if (hitableObject != null)
+                if (obj.Object.TryGetComponent<IHittableByFireBall>(out var hitableObject))
                 {
                     hitableObject.OnHittedByFireBall(this);
                     Explode(hitInfo);
@@ -69,10 +71,11 @@ namespace Mario.Game.Player
         private void PlayHitSound() => Services.PoolService.GetObjectFromPool(_profile.HitSoundFXPoolReference);
         #endregion
 
-        #region On local Ray Range Hit
-        public void OnBottomCollided(RayHitInfo hitInfo) => HitBottomObject(hitInfo);
-        public void OnLeftCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
-        public void OnRightCollided(RayHitInfo hitInfo) => HitSideObject(hitInfo);
+        #region On Movable Hit
+        public void OnHittedByMovingToBottom(RayHitInfo hitInfo) => HitBottomObject(hitInfo);
+        public void OnHittedByMovingToLeft(RayHitInfo hitInfo) => HitSideObject(hitInfo);
+        public void OnHittedByMovingToRight(RayHitInfo hitInfo) => HitSideObject(hitInfo);
         #endregion
+
     }
 }

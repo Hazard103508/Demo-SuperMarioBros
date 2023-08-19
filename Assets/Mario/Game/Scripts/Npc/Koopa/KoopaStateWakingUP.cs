@@ -30,7 +30,13 @@ namespace Mario.Game.Npc.Koopa
         {
             _timer += Time.deltaTime;
             if (_timer >= 1.5f)
+            {
                 _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateWalk);
+                if (_koopa.Renderer.flipX)
+                    _koopa.ChangeDirectionToRight();
+                else
+                    _koopa.ChangeDirectionToLeft();
+            }
         }
         #endregion
 

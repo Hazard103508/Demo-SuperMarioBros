@@ -62,7 +62,7 @@ namespace Mario.Game.Npc.Koopa
             HitObject(hitInfo);
             if (hitInfo.IsBlock)
             {
-                _koopa.ChangeDirectionToRight(hitInfo);
+                _koopa.ChangeDirectionToRight();
                 _koopa.PlayBlockSoundFX();
             }
         }
@@ -71,7 +71,7 @@ namespace Mario.Game.Npc.Koopa
             HitObject(hitInfo);
             if (hitInfo.IsBlock)
             {
-                _koopa.ChangeDirectionToLeft(hitInfo);
+                _koopa.ChangeDirectionToLeft();
                 _koopa.PlayBlockSoundFX();
             }
         }
