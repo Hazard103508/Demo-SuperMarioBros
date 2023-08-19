@@ -8,7 +8,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes
 {
-    public class Box : MonoBehaviour, IHitableByPlayerFromBottom
+    public class Box : MonoBehaviour, IHittableByPlayerFromBottom
     {
         #region Objects
         [SerializeField] private AudioSource _hitSoundFX;
@@ -55,7 +55,7 @@ namespace Mario.Game.Boxes
             {
                 foreach (var obj in hitInfo.hitObjects)
                 {
-                    var hitableObject = obj.Object.GetComponent<IHitableByBox>();
+                    var hitableObject = obj.Object.GetComponent<IHittableByBox>();
                     hitableObject?.OnHittedByBox(this.gameObject);
                 }
             }

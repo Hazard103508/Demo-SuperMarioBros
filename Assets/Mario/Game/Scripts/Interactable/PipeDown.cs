@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class PipeDown : MonoBehaviour, IHitableByPlayerFromTop
+    public class PipeDown : MonoBehaviour, IHittableByPlayerFromTop
     {
         #region Objects
         [SerializeField] private int _pipeIndex;

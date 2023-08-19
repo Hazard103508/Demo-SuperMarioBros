@@ -13,13 +13,13 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Npc.Koopa
 {
     public class Koopa : MonoBehaviour,
-        IHitableByPlayerFromTop,
-        IHitableByPlayerFromBottom,
-        IHitableByPlayerFromLeft,
-        IHitableByPlayerFromRight,
-        IHitableByBox,
-        IHitableByKoppa,
-        IHitableByFireBall
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight,
+        IHittableByBox,
+        IHittableByKoppa,
+        IHittableByFireBall
     {
         #region Objects
         [SerializeField] private KoopaProfile _profile;
@@ -90,7 +90,7 @@ namespace Mario.Game.Npc.Koopa
                 var removeHits = new List<HitObject>();
                 foreach (var obj in hitInfo.hitObjects)
                 {
-                    var hitableObject = obj.Object.GetComponent<IHitableByKoppa>();
+                    var hitableObject = obj.Object.GetComponent<IHittableByKoppa>();
                     if (hitableObject != null)
                     {
                         removeHits.Add(obj);

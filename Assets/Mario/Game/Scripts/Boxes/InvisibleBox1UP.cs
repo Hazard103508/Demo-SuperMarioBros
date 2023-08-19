@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class InvisibleBox1UP : Box, IHitableByPlayerFromTop, IHitableByPlayerFromLeft, IHitableByPlayerFromRight
+    public class InvisibleBox1UP : Box, IHittableByPlayerFromTop, IHittableByPlayerFromLeft, IHittableByPlayerFromRight
     {
         #region Objects
         [SerializeField] private AudioSource _risingSoundFX;

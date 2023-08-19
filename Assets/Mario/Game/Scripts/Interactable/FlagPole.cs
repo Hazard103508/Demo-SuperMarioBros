@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class FlagPole : MonoBehaviour, IHitableByPlayerFromLeft
+    public class FlagPole : MonoBehaviour, IHittableByPlayerFromLeft
     {
         #region Objects
         [SerializeField] private FlagPoleProfile _profile;

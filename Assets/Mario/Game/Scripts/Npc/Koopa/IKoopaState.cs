@@ -5,13 +5,13 @@ namespace Mario.Game.Npc.Koopa
 {
     public interface IKoopaState : 
         IState,
-        IHitableByPlayerFromTop,
-        IHitableByPlayerFromBottom,
-        IHitableByPlayerFromLeft,
-        IHitableByPlayerFromRight,
-        IHitableByBox,
-        IHitableByKoppa,
-        IHitableByFireBall
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight,
+        IHittableByBox,
+        IHittableByKoppa,
+        IHittableByFireBall
     {
         void OnLeftCollided(RayHitInfo hitInfo);
         void OnRightCollided(RayHitInfo hitInfo);

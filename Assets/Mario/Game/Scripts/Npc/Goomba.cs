@@ -12,13 +12,13 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Npc
 {
     public class Goomba : MonoBehaviour,
-        IHitableByPlayerFromTop,
-        IHitableByPlayerFromBottom,
-        IHitableByPlayerFromLeft,
-        IHitableByPlayerFromRight,
-        IHitableByBox,
-        IHitableByKoppa,
-        IHitableByFireBall
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight,
+        IHittableByBox,
+        IHittableByKoppa,
+        IHittableByFireBall
     {
         #region Objects
         [SerializeField] private GoombaProfile _profile;

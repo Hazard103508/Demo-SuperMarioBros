@@ -2,7 +2,7 @@ using Mario.Game.Player;
 
 namespace Mario.Game.Interfaces
 {
-    public interface IHitableByFireBall
+    public interface IHittableByFireBall
     {
         void OnHittedByFireBall(Fireball fireball);
     }

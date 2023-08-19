@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class PipeRight : MonoBehaviour, IHitableByPlayerFromLeft
+    public class PipeRight : MonoBehaviour, IHittableByPlayerFromLeft
     {
         #region Objects
         [SerializeField] private int _pipeIndex;

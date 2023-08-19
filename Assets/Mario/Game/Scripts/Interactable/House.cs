@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class House : MonoBehaviour, IHitableByPlayerFromLeft
+    public class House : MonoBehaviour, IHittableByPlayerFromLeft
     {
         #region Private Methods
         private IEnumerator CloseMap()

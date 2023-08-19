@@ -8,12 +8,12 @@ using UnityEngine;
 namespace Mario.Game.Items
 {
     public class Coin : MonoBehaviour,
-        IHitableByPlayerFromTop,
-        IHitableByPlayerFromBottom,
-        IHitableByPlayerFromLeft,
-        IHitableByPlayerFromRight,
-        IHitableByBox,
-        IHitableByKoppa
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight,
+        IHittableByBox,
+        IHittableByKoppa
     {
         #region Objects
         [SerializeField] protected CoinProfile _profile;

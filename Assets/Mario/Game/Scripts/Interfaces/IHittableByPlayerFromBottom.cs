@@ -2,7 +2,7 @@ using Mario.Game.Player;
 
 namespace Mario.Game.Interfaces
 {
-    public interface IHitableByPlayerFromBottom
+    public interface IHittableByPlayerFromBottom
     {
         void OnHittedByPlayerFromBottom(PlayerController player);
     }

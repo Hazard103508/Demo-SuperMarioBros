@@ -8,10 +8,10 @@ using UnityEngine;
 namespace Mario.Game.Items
 {
     public class Flower : MonoBehaviour,
-        IHitableByPlayerFromTop,
-        IHitableByPlayerFromBottom,
-        IHitableByPlayerFromLeft,
-        IHitableByPlayerFromRight
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight
     {
         #region Objects
         [SerializeField] protected FlowerProfile _profile;

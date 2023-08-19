@@ -60,10 +60,10 @@ namespace Mario.Game.Player
                 _proximityHit.right.Clear();
             }
         }
-        private bool HitObjectOnTop(HitObject hit) => HitObjectOn<IHitableByPlayerFromBottom>(hit, script => script.OnHittedByPlayerFromBottom(_playerController));
-        private bool HitObjectOnBottom(HitObject hit) => HitObjectOn<IHitableByPlayerFromTop>(hit, script => script.OnHittedByPlayerFromTop(_playerController));
-        private bool HitObjectOnRight(HitObject hit) => HitObjectOn<IHitableByPlayerFromLeft>(hit, script => script.OnHittedByPlayerFromLeft(_playerController));
-        private bool HitObjectOnLeft(HitObject hit) => HitObjectOn<IHitableByPlayerFromRight>(hit, script => script.OnHittedByPlayerFromRight(_playerController));
+        private bool HitObjectOnTop(HitObject hit) => HitObjectOn<IHittableByPlayerFromBottom>(hit, script => script.OnHittedByPlayerFromBottom(_playerController));
+        private bool HitObjectOnBottom(HitObject hit) => HitObjectOn<IHittableByPlayerFromTop>(hit, script => script.OnHittedByPlayerFromTop(_playerController));
+        private bool HitObjectOnRight(HitObject hit) => HitObjectOn<IHittableByPlayerFromLeft>(hit, script => script.OnHittedByPlayerFromLeft(_playerController));
+        private bool HitObjectOnLeft(HitObject hit) => HitObjectOn<IHittableByPlayerFromRight>(hit, script => script.OnHittedByPlayerFromRight(_playerController));
         private bool HitObjectOn<T>(HitObject hit, Action<T> onHitFunc)
         {
             if (hit == null || hit.Object == null)

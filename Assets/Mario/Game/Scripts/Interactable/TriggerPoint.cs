@@ -6,10 +6,10 @@ using UnityEngine.Events;
 namespace Mario.Game.Interactable
 {
     public class TriggerPoint : MonoBehaviour,
-        IHitableByPlayerFromLeft,
-        IHitableByPlayerFromRight,
-        IHitableByPlayerFromBottom,
-        IHitableByPlayerFromTop
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromTop
     {
         #region Objects
         public UnityEvent onTriggerOn;

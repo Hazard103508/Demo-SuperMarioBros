@@ -51,7 +51,7 @@ namespace Mario.Game.Player
         {
             foreach (var obj in hitInfo.hitObjects)
             {
-                var hitableObject = obj.Object.GetComponent<IHitableByFireBall>();
+                var hitableObject = obj.Object.GetComponent<IHittableByFireBall>();
                 if (hitableObject != null)
                 {
                     hitableObject.OnHittedByFireBall(this);

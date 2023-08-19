@@ -11,11 +11,11 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Items
 {
     public class Mushroom : MonoBehaviour,
-        IHitableByPlayerFromTop,
-        IHitableByPlayerFromBottom,
-        IHitableByPlayerFromLeft,
-        IHitableByPlayerFromRight,
-        IHitableByBox
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight,
+        IHittableByBox
     {
         #region Objects
         [SerializeField] private MushroomProfile _mushroomProfile;
