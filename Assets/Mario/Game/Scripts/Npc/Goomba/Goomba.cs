@@ -4,14 +4,12 @@ using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
-namespace Mario.Game.Npc.Koopa
+namespace Mario.Game.Npc.Goomba
 {
-    public class Koopa : MonoBehaviour,
+    public class Goomba : MonoBehaviour,
         IHittableByMovingToLeft,
         IHittableByMovingToRight,
         IHittableByPlayerFromTop,
@@ -23,26 +21,26 @@ namespace Mario.Game.Npc.Koopa
         IHittableByFireBall
     {
         #region Objects
-        [SerializeField] private KoopaProfile _profile;
+        [SerializeField] private GoombaProfile _profile;
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private AudioSource _hitSoundFX;
         [SerializeField] private AudioSource _kickSoundFX;
-        [SerializeField] private AudioSource _blockSoundFX;
         [SerializeField] private Animator _animator;
         #endregion
 
+
         #region Properties
-        public KoopaStateMachine StateMachine { get; private set; }
+        public GoombaStateMachine StateMachine { get; private set; }
         public Movable Movable { get; private set; }
         public Animator Animator => _animator;
-        public KoopaProfile Profile => _profile;
+        public GoombaProfile Profile => _profile;
         public SpriteRenderer Renderer => _renderer;
         #endregion
 
         #region Unity Methods
         private void Awake()
         {
-            this.StateMachine = new KoopaStateMachine(this);
+            this.StateMachine = new GoombaStateMachine(this);
             Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
 
             Movable = GetComponent<Movable>();
@@ -82,24 +80,52 @@ namespace Mario.Game.Npc.Koopa
         }
         public void PlayHitSoundFX() => _hitSoundFX.Play();
         public void PlayKickSoundFX() => _kickSoundFX.Play();
-        public void PlayBlockSoundFX() => _blockSoundFX.Play();
-        public void HitObject(RayHitInfo hitInfo)
-        {
-            if (hitInfo.hitObjects.Any())
-            {
-                var removeHits = new List<HitObject>();
-                foreach (var obj in hitInfo.hitObjects)
-                {
-                    if (obj.Object.TryGetComponent<IHittableByKoppa>(out var hitableObject))
-                    {
-                        removeHits.Add(obj);
-                        hitableObject?.OnHittedByKoppa(this);
-                    }
-                }
+        #endregion
 
-                removeHits.ForEach(obj => hitInfo.hitObjects.Remove(obj));
-            }
-        }
+        #region Private Methods
+        //private void Kill(Vector3 hitPosition)
+        //{
+        //    _movable.ChekCollisions = false;
+        //    gameObject.layer = 0;
+        //
+        //    _kickSoundFX.Play();
+        //    _animator.SetTrigger("Kill");
+        //    _renderer.sortingLayerName = "Dead";
+        //
+        //    Services.ScoreService.Add(_profile.Points);
+        //    Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 2f, 0.8f, 3f);
+        //
+        //    if (Math.Sign(_movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
+        //        _movable.Speed *= -1;
+        //
+        //    _movable.AddJumpForce(_profile.JumpAcceleration);
+        //}
+        //private void Hit(PlayerController player)
+        //{
+        //    gameObject.layer = 0; // Deshabilitado para otra colision
+        //    _movable.enabled = false;
+        //
+        //    _hitSoundFX.Play();
+        //    enabled = false;
+        //    _animator.SetTrigger("Hit");
+        //
+        //    Services.ScoreService.Add(_profile.Points);
+        //    Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
+        //
+        //    player.BounceJump();
+        //    StartCoroutine(DestroyAfterHit());
+        //}
+        //private IEnumerator DestroyAfterHit()
+        //{
+        //    yield return new WaitForSeconds(0.4f);
+        //    Destroy(gameObject);
+        //}
+        //private void DamagePlayer(PlayerController player)
+        //{
+        //    player.DamagePlayer();
+        //}
+        //private void ChangeDirectionToRight() => _movable.Speed = Mathf.Abs(_movable.Speed);
+        //private void ChangeDirectionToLeft() => _movable.Speed = -Mathf.Abs(_movable.Speed);
         #endregion
 
         #region Service Events
@@ -123,7 +149,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Koopa Hit
-        public void OnHittedByKoppa(Koopa koopa) => this.StateMachine.CurrentState.OnHittedByKoppa(koopa);
+        public void OnHittedByKoppa(Koopa.Koopa koopa) => this.StateMachine.CurrentState.OnHittedByKoppa(koopa);
         #endregion
 
         #region On Fireball Hit
