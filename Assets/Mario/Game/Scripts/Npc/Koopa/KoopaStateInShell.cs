@@ -1,8 +1,6 @@
 using Mario.Application.Services;
-using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc.Koopa
 {

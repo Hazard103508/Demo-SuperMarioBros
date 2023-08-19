@@ -3,9 +3,7 @@ using Mario.Game.Interfaces;
 using System;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityShared.Behaviours.Various.RaycastRange;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Commons
 {

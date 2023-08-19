@@ -28,7 +28,7 @@ namespace Mario.Game.Npc.Koopa
             _koopa.Movable.enabled = true;
             _koopa.Movable.Speed = _koopa.Profile.BouncingSpeed;
             _koopa.PlayKickSoundFX();
-            
+
             Services.ScoreService.Add(_koopa.Profile.PointsHit2);
             Services.ScoreService.ShowPoints(_koopa.Profile.PointsHit2, _koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
         }

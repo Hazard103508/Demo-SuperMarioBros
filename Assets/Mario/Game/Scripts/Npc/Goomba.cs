@@ -1,7 +1,6 @@
 using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
-using Mario.Game.Npc.Koopa;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System;
@@ -53,7 +52,7 @@ namespace Mario.Game.Npc
         private void Kill(Vector3 hitPosition)
         {
             _movable.ChekCollisions = false;
-            gameObject.layer = 0; 
+            gameObject.layer = 0;
 
             _kickSoundFX.Play();
             _animator.SetTrigger("Kill");
