@@ -1,10 +1,11 @@
 using Mario.Game.Interfaces;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc.Koopa
 {
-    public interface IKoopaState : 
+    public interface IKoopaState :
         IState,
+        IHittableByMovingToLeft,
+        IHittableByMovingToRight,
         IHittableByPlayerFromTop,
         IHittableByPlayerFromBottom,
         IHittableByPlayerFromLeft,
@@ -13,7 +14,6 @@ namespace Mario.Game.Npc.Koopa
         IHittableByKoppa,
         IHittableByFireBall
     {
-        void OnLeftCollided(RayHitInfo hitInfo);
-        void OnRightCollided(RayHitInfo hitInfo);
+
     }
 }

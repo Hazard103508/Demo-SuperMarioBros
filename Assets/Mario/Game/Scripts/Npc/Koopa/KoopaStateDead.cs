@@ -42,9 +42,9 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
-        #region IKoopaState Methods
-        public void OnLeftCollided(RayHitInfo hitInfo) { }
-        public void OnRightCollided(RayHitInfo hitInfo) { }
+        #region On Movable Hit
+        public void OnHittedByMovingToLeft(RayHitInfo hitInfo) { }
+        public void OnHittedByMovingToRight(RayHitInfo hitInfo) { }
         #endregion
 
         #region On Player Hit

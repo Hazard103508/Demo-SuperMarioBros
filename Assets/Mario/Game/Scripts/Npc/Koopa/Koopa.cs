@@ -13,6 +13,8 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Npc.Koopa
 {
     public class Koopa : MonoBehaviour,
+        IHittableByMovingToLeft,
+        IHittableByMovingToRight,
         IHittableByPlayerFromTop,
         IHittableByPlayerFromBottom,
         IHittableByPlayerFromLeft,
@@ -103,14 +105,13 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
-
         #region Service Events
         private void OnCanMoveChanged() => _animator.speed = Services.PlayerService.CanMove ? 1 : 0;
         #endregion
 
-        #region On local Ray Range Hit
-        public void OnLeftCollided(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnLeftCollided(hitInfo);
-        public void OnRightCollided(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnRightCollided(hitInfo);
+        #region On Movable Hit
+        public void OnHittedByMovingToLeft(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToLeft(hitInfo);
+        public void OnHittedByMovingToRight(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToRight(hitInfo);
         #endregion
 
         #region On Player Hit

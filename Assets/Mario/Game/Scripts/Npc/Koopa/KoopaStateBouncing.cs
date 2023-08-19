@@ -59,8 +59,8 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
-        #region IKoopaState Methods
-        public void OnLeftCollided(RayHitInfo hitInfo)
+        #region On Movable Hit
+        public void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             HitObject(hitInfo);
             if (hitInfo.IsBlock)
@@ -69,7 +69,7 @@ namespace Mario.Game.Npc.Koopa
                 _koopa.PlayBlockSoundFX();
             }
         }
-        public void OnRightCollided(RayHitInfo hitInfo)
+        public void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             HitObject(hitInfo);
             if (hitInfo.IsBlock)

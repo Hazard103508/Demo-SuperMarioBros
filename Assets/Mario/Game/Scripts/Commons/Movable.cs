@@ -1,4 +1,5 @@
 using Mario.Application.Services;
+using Mario.Game.Interfaces;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -20,6 +21,9 @@ namespace Mario.Game.Commons
         private Vector2 _currentSpeed;
         private Vector2 _spriteSize = Vector2.zero;
         private Vector2 _pivot = Vector2.zero;
+        private IHittableByMovingToBottom hittableByMovingToBottom;
+        private IHittableByMovingToLeft hittableByMovingToLeft;
+        private IHittableByMovingToRight hittableByMovingToRight;
         #endregion
 
         #region Properties
@@ -39,6 +43,9 @@ namespace Mario.Game.Commons
         private void Awake()
         {
             _currentSpeed = Vector2.zero;
+            hittableByMovingToBottom = GetComponent<IHittableByMovingToBottom>();
+            hittableByMovingToLeft = GetComponent<IHittableByMovingToLeft>();
+            hittableByMovingToRight = GetComponent<IHittableByMovingToRight>();
 
             var scale = transform.localScale;
             _spriteSize = new Vector2(_renderer.sprite.bounds.size.x * scale.x, _renderer.sprite.bounds.size.y * scale.y);
@@ -90,8 +97,8 @@ namespace Mario.Game.Commons
                     nextPosition.y = hitObject.Point.y + _spriteSize.y * _pivot.y - _renderer.transform.localPosition.y;
                 }
 
-                if (hitInfo.hitObjects.Any())
-                    Bottom.Collided.Invoke(hitInfo);
+                if (hittableByMovingToBottom != null && hitInfo.hitObjects.Any())
+                    hittableByMovingToBottom.OnHittedByMovingToBottom(hitInfo);
             }
         }
         private void CalculateCollision_Right(ref Vector2 nextPosition)
@@ -106,8 +113,8 @@ namespace Mario.Game.Commons
                     nextPosition.x = hitObject.Point.x - _spriteSize.x * _pivot.x - _renderer.transform.localPosition.x;
                 }
 
-                if (hitInfo.hitObjects.Any())
-                    Right.Collided.Invoke(hitInfo);
+                if (hittableByMovingToRight != null && hitInfo.hitObjects.Any())
+                    hittableByMovingToRight.OnHittedByMovingToRight(hitInfo);
             }
         }
         private void CalculateCollision_Left(ref Vector2 nextPosition)
@@ -122,8 +129,8 @@ namespace Mario.Game.Commons
                     nextPosition.x = hitObject.Point.x + _spriteSize.x * _pivot.x - _renderer.transform.localPosition.x;
                 }
 
-                if (hitInfo.hitObjects.Any())
-                    Left.Collided.Invoke(hitInfo);
+                if (hittableByMovingToLeft != null && hitInfo.hitObjects.Any())
+                    hittableByMovingToLeft.OnHittedByMovingToLeft(hitInfo);
             }
         }
         private void Move(Vector2 nextPosition)
@@ -138,7 +145,6 @@ namespace Mario.Game.Commons
         {
             public bool FixPositionOnCollide;
             public RaycastRange RayCast;
-            public UnityEvent<RayHitInfo> Collided;
         }
         #endregion
     }
