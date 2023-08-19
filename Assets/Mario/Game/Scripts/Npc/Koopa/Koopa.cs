@@ -27,23 +27,19 @@ namespace Mario.Game.Npc.Koopa
         [SerializeField] private AudioSource _kickSoundFX;
         [SerializeField] private AudioSource _blockSoundFX;
         [SerializeField] private Animator _animator;
-
-        private Coroutine _wakingUpCO;
-        private bool _hitCoolDown;
         #endregion
 
         #region Properties
-        //private KoopaStates State { get; set; }
         public KoopaStateMachine StateMachine { get; private set; }
         public Movable Movable { get; private set; }
         public Animator Animator => _animator;
         public KoopaProfile Profile => _profile;
+        public SpriteRenderer Renderer => _renderer;
         #endregion
 
         #region Unity Methods
         private void Awake()
         {
-            //State = KoopaStates.Idle;
             this.StateMachine = new KoopaStateMachine(this);
 
             Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
@@ -51,8 +47,6 @@ namespace Mario.Game.Npc.Koopa
             Movable = GetComponent<Movable>();
             Movable.Gravity = _profile.FallSpeed;
             Movable.MaxFallSpeed = _profile.MaxFallSpeed;
-
-            //SetSpeed();
         }
         private void Start()
         {
@@ -70,11 +64,6 @@ namespace Mario.Game.Npc.Koopa
 
         #region Public Methods
         public void OnFall() => Destroy(gameObject);
-        public void PlayBlockSoundFX(RayHitInfo hitInfo)
-        {
-            //if (hitInfo.IsBlock && this.State == KoopaStates.Bouncing)
-            //    _blockSoundFX.Play();
-        }
         public void ChangeDirectionToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
@@ -91,151 +80,34 @@ namespace Mario.Game.Npc.Koopa
                 Movable.Speed = -Mathf.Abs(Movable.Speed);
             }
         }
-        public void Kill(Vector3 hitPosition)
+        public void ChangeSpeedAfferHit(Vector3 hitPosition)
         {
-            Movable.ChekCollisions = false;
-            Movable.enabled = true;
-            gameObject.layer = 0;
-
-            _kickSoundFX.Play();
-            _animator.SetTrigger("Kill");
-            _renderer.sortingLayerName = "Dead";
-
-            Services.ScoreService.Add(_profile.PointsHit1);
-            Services.ScoreService.ShowPoints(_profile.PointsHit1, transform.position + Vector3.up * 2f, 0.8f, 3f);
-
             if (Math.Sign(Movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
                 Movable.Speed *= -1;
-
-            Movable.AddJumpForce(_profile.JumpAcceleration);
-
-            if (_wakingUpCO != null)
-                StopCoroutine(_wakingUpCO);
-
-            //State = KoopaStates.Idle;
-            _renderer.transform.position += Vector3.up * 0.5f;
-            //SetSpeed();
         }
         public void PlayHitSoundFX() => _hitSoundFX.Play();
-        //public void FirstHit(PlayerController player)
-        //{
-        //    if (_hitCoolDown)
-        //        return;
-        //
-        //    _hitSoundFX.Play();
-        //    _animator.SetTrigger("Hit");
-        //
-        //    Services.ScoreService.Add(_profile.PointsHit1);
-        //    Services.ScoreService.ShowPoints(_profile.PointsHit1, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
-        //
-        //    //State = KoopaStates.InShell;
-        //    Movable.enabled = false;
-        //
-        //    //SetSpeed();
-        //    _wakingUpCO = StartCoroutine(WakingUP());
-        //
-        //    player.BounceJump();
-        //    StartCoroutine(Cooldown());
-        //}
+        public void PlayKickSoundFX() => _kickSoundFX.Play();
+        public void PlayBlockSoundFX() => _blockSoundFX.Play();
+        public void HitObject(RayHitInfo hitInfo)
+        {
+            if (hitInfo.hitObjects.Any())
+            {
+                var hitObj = hitInfo.hitObjects.Select(hit => new
+                {
+                    HitInfo = hit,
+                    HittedObject = hit.Object.GetComponent<IHitableByKoppa>()
+                })
+                .ToList();
+
+                // -----------------------------------------------------------------------------------------------
+                // MOVER ESTA LOGICA AL STATE CLASS
+                // -----------------------------------------------------------------------------------------------
+                hitInfo.IsBlock = hitInfo.IsBlock && hitObj.Any(hit => hit.HittedObject == null);
+                hitObj.ForEach(hit => hit.HittedObject?.OnHittedByKoppa(this));
+            }
+        }
         #endregion
 
-        #region Private Methods
-        private void HitFromTop(PlayerController player)
-        {
-            //if (_hitCoolDown)
-            //    return;
-            //
-            //if (State == KoopaStates.InShell)
-            //    SecondHit(player);
-            //else
-            //    FirstHit(player);
-        }
-        private void HitFromSide(PlayerController player)
-        {
-            //if (_hitCoolDown)
-            //    return;
-            //
-            //if (State == KoopaStates.InShell)
-            //    SecondHit(player);
-            //else
-            //    DamagePlayer(player);
-        }
-        private void SecondHit(PlayerController player)
-        {
-            //if (State == KoopaStates.InShell)
-            //{
-            //    _animator.SetTrigger("Hit");
-            //    Movable.enabled = true;
-            //
-            //    if (_wakingUpCO != null)
-            //        StopCoroutine(_wakingUpCO);
-            //
-            //    _kickSoundFX.Play();
-            //    Services.ScoreService.Add(_profile.PointsHit2);
-            //    Services.ScoreService.ShowPoints(_profile.PointsHit2, transform.position + Vector3.up * 2f, 0.5f, 1.5f);
-            //
-            //    State = KoopaStates.Bouncing;
-            //    SetSpeed();
-            //    if (this.transform.position.x - player.transform.position.x < 0)
-            //        Movable.Speed = -Mathf.Abs(Movable.Speed);
-            //    else
-            //        Movable.Speed = Mathf.Abs(Movable.Speed);
-            //
-            //    StartCoroutine(Cooldown());
-            //}
-        }
-        //private IEnumerator WakingUP()
-        //{
-        //    yield return new WaitForSeconds(4f);
-        //    _animator.SetTrigger("WakeUp");
-        //    yield return new WaitForSeconds(1.5f);
-        //    _animator.SetTrigger("Idle");
-        //
-        //    //State = KoopaStates.Idle;
-        //    Movable.enabled = true;
-        //}
-        private IEnumerator Cooldown()
-        {
-            _hitCoolDown = true;
-            yield return new WaitForSeconds(.1f);
-            _hitCoolDown = false;
-        }
-        //private void SetSpeed()
-        //{
-        //    float _direction = Mathf.Sign(Movable.Speed);
-        //    //Movable.Speed = (State == KoopaStates.Bouncing ? Math.Abs(_profile.BouncingSpeed) : Math.Abs(_profile.MoveSpeed)) * _direction;
-        //}
-        private void HitToLeft(RayHitInfo hitInfo)
-        {
-            HitObject(hitInfo);
-            PlayBlockSoundFX(hitInfo);
-            //ChangeDirectionToRight(hitInfo);
-        }
-        private void HitToRight(RayHitInfo hitInfo)
-        {
-            HitObject(hitInfo);
-            PlayBlockSoundFX(hitInfo);
-            //ChangeDirectionToLeft(hitInfo);
-        }
-        private void HitObject(RayHitInfo hitInfo)
-        {
-            //if (State == KoopaStates.Bouncing)
-            //{
-            //    if (hitInfo.hitObjects.Any())
-            //    {
-            //        var hitObj = hitInfo.hitObjects.Select(hit => new
-            //        {
-            //            HitInfo = hit,
-            //            HittedObject = hit.Object.GetComponent<IHitableByKoppa>()
-            //        })
-            //        .ToList();
-            //
-            //        hitInfo.IsBlock = hitInfo.IsBlock && hitObj.Any(hit => hit.HittedObject == null);
-            //        hitObj.ForEach(hit => hit.HittedObject?.OnHittedByKoppa(this));
-            //    }
-            //}
-        }
-        #endregion
 
         #region Service Events
         private void OnCanMoveChanged() => _animator.speed = Services.PlayerService.CanMove ? 1 : 0;
@@ -258,26 +130,11 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Koopa Hit
-        public void OnHittedByKoppa(Koopa koopa)
-        {
-            //if (this.State == KoopaStates.Bouncing)
-            //    koopa.Kill(this.transform.position);
-            //
-            //this.Kill(koopa.transform.position);
-        }
+        public void OnHittedByKoppa(Koopa koopa) => this.StateMachine.CurrentState.OnHittedByKoppa(koopa);
         #endregion
 
         #region On Fireball Hit
-        public void OnHittedByFireBall(Fireball fireball) => Kill(fireball.transform.position);
+        public void OnHittedByFireBall(Fireball fireball) => this.StateMachine.CurrentState.OnHittedByFireBall(fireball);
         #endregion
-
-        //#region Structures
-        //public enum KoopaStates
-        //{
-        //    Idle,
-        //    InShell,
-        //    Bouncing,
-        //}
-        //#endregion
     }
 }

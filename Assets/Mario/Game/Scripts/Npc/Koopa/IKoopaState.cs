@@ -9,7 +9,9 @@ namespace Mario.Game.Npc.Koopa
         IHitableByPlayerFromBottom,
         IHitableByPlayerFromLeft,
         IHitableByPlayerFromRight,
-        IHitableByBox
+        IHitableByBox,
+        IHitableByKoppa,
+        IHitableByFireBall
     {
         void OnLeftCollided(RayHitInfo hitInfo);
         void OnRightCollided(RayHitInfo hitInfo);
