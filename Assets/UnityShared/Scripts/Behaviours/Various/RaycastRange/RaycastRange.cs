@@ -25,22 +25,22 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         public void CalculateCollision()
         {
             var rayBound = CalculateRayRange();
-            var hitInfo = new RayHitInfo()
-            {
-                IsBlock = CalculateCollisionDetection(rayBound, out List<HitObject> hits)
-            };
+            CalculateCollisionDetection(rayBound, out List<HitObject> hits);
+
+            var hitInfo = new RayHitInfo();
             hitInfo.hitObjects = hits;
+            hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
             onHit.Invoke(hitInfo);
         }
         public RayHitInfo CalculateCollision(float rayExtraLength)
         {
             _rayExtraLength = rayExtraLength;
             var rayBound = CalculateRayRange();
-            var hitInfo = new RayHitInfo()
-            {
-                IsBlock = CalculateCollisionDetection(rayBound, out List<HitObject> hits)
-            };
+            CalculateCollisionDetection(rayBound, out List<HitObject> hits);
+
+            var hitInfo = new RayHitInfo();
             hitInfo.hitObjects = hits;
+            hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
             return hitInfo;
         }
 
@@ -51,19 +51,13 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             var end = position + _profile.Range.EndPoint;
             return new RayRange(start, end, _profile.Ray.Direction);
         }
-        private bool CalculateCollisionDetection(RayRange range, out List<HitObject> hits)
+        private void CalculateCollisionDetection(RayRange range, out List<HitObject> hits)
         {
-            hits = new List<HitObject>();
-
-            var _block = GetHitObject(range, _profile.BlockLayers);
-            hits.AddRange(_block);
-
-            var _noBlock = GetHitObject(range, _profile.OtherLayers);
-            hits.AddRange(_noBlock);
-
-            return _block.Any();
+            hits = new();
+            hits.AddRange(GetHitObject(range, _profile.BlockLayers, true));
+            hits.AddRange(GetHitObject(range, _profile.OtherLayers, false));
         }
-        private List<HitObject> GetHitObject(RayRange range, LayerMask layerMask)
+        private List<HitObject> GetHitObject(RayRange range, LayerMask layerMask, bool isBlock)
         {
             if (layerMask.value == 0)
                 return new List<HitObject>();
@@ -79,6 +73,7 @@ namespace UnityShared.Behaviours.Various.RaycastRange
                 .GroupBy(h => h.collider.gameObject)
                 .Select(h => new HitObject()
                 {
+                    IsBlock = isBlock,
                     Object = h.Key,
                     Point = new Vector2(h.Average(x => x.point.x), h.Average(x => x.point.y)),
                     RelativePosition = relativePosition

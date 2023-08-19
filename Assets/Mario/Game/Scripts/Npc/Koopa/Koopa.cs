@@ -5,6 +5,7 @@ using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -66,19 +67,13 @@ namespace Mario.Game.Npc.Koopa
         public void OnFall() => Destroy(gameObject);
         public void ChangeDirectionToRight(RayHitInfo hitInfo)
         {
-            if (hitInfo.IsBlock)
-            {
                 _renderer.flipX = true;
                 Movable.Speed = Mathf.Abs(Movable.Speed);
-            }
         }
         public void ChangeDirectionToLeft(RayHitInfo hitInfo)
         {
-            if (hitInfo.IsBlock)
-            {
                 _renderer.flipX = false;
                 Movable.Speed = -Mathf.Abs(Movable.Speed);
-            }
         }
         public void ChangeSpeedAfferHit(Vector3 hitPosition)
         {
@@ -92,18 +87,18 @@ namespace Mario.Game.Npc.Koopa
         {
             if (hitInfo.hitObjects.Any())
             {
-                var hitObj = hitInfo.hitObjects.Select(hit => new
+                var removeHits = new List<HitObject>();
+                foreach (var obj in hitInfo.hitObjects)
                 {
-                    HitInfo = hit,
-                    HittedObject = hit.Object.GetComponent<IHitableByKoppa>()
-                })
-                .ToList();
+                    var hitableObject = obj.Object.GetComponent<IHitableByKoppa>();
+                    if (hitableObject != null)
+                    {
+                        removeHits.Add(obj);
+                        hitableObject?.OnHittedByKoppa(this);
+                    }
+                }
 
-                // -----------------------------------------------------------------------------------------------
-                // MOVER ESTA LOGICA AL STATE CLASS
-                // -----------------------------------------------------------------------------------------------
-                hitInfo.IsBlock = hitInfo.IsBlock && hitObj.Any(hit => hit.HittedObject == null);
-                hitObj.ForEach(hit => hit.HittedObject?.OnHittedByKoppa(this));
+                removeHits.ForEach(obj => hitInfo.hitObjects.Remove(obj));
             }
         }
         #endregion

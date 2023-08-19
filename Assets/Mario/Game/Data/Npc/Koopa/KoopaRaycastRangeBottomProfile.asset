@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BlockLayers:
     serializedVersion: 2
-    m_Bits: 520
+    m_Bits: 8
   OtherLayers:
     serializedVersion: 2
     m_Bits: 0

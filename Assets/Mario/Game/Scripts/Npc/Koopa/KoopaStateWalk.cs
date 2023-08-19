@@ -41,8 +41,16 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region IKoopaState Methods
-        public void OnLeftCollided(RayHitInfo hitInfo) => _koopa.ChangeDirectionToRight(hitInfo);
-        public void OnRightCollided(RayHitInfo hitInfo) => _koopa.ChangeDirectionToLeft(hitInfo);
+        public void OnLeftCollided(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                _koopa.ChangeDirectionToRight(hitInfo);
+        }
+        public void OnRightCollided(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                _koopa.ChangeDirectionToLeft(hitInfo);
+        }
         #endregion
 
         #region On Player Hit

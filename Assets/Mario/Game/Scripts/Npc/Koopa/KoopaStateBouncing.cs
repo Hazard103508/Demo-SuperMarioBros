@@ -1,5 +1,6 @@
 using Mario.Application.Services;
 using Mario.Game.Player;
+using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -51,20 +52,31 @@ namespace Mario.Game.Npc.Koopa
             _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
             _koopa.ChangeSpeedAfferHit(hitPosition);
         }
+        private void HitObject(RayHitInfo hitInfo)
+        {
+            _koopa.HitObject(hitInfo);
+            hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
+        }
         #endregion
 
         #region IKoopaState Methods
         public void OnLeftCollided(RayHitInfo hitInfo)
         {
-            _koopa.HitObject(hitInfo);
-            _koopa.ChangeDirectionToRight(hitInfo);
-            _koopa.PlayBlockSoundFX(); // EVALUAR ESTO
+            HitObject(hitInfo);
+            if (hitInfo.IsBlock)
+            {
+                _koopa.ChangeDirectionToRight(hitInfo);
+                _koopa.PlayBlockSoundFX();
+            }
         }
         public void OnRightCollided(RayHitInfo hitInfo)
         {
-            _koopa.HitObject(hitInfo);
-            _koopa.ChangeDirectionToLeft(hitInfo);
-            _koopa.PlayBlockSoundFX(); // EVALUAR ESTO
+            HitObject(hitInfo);
+            if (hitInfo.IsBlock)
+            {
+                _koopa.ChangeDirectionToLeft(hitInfo);
+                _koopa.PlayBlockSoundFX();
+            }
         }
         #endregion
 

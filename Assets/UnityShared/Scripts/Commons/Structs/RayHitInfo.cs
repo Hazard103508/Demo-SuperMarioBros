@@ -10,6 +10,7 @@ namespace UnityShared.Commons.Structs
     }
     public class HitObject
     {
+        public bool IsBlock { get; set; }
         public GameObject Object { get; set; }
         public Vector2 Point { get; set; }
         public Vector2 RelativePosition { get; set; }
