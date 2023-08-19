@@ -20,24 +20,6 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
-        #region IState Methods
-        public override void Enter()
-        {
-            _timer = 0;
-            _koopa.Animator.SetTrigger("Hit");
-            _koopa.Movable.enabled = true;
-            _koopa.Movable.Speed = _koopa.Profile.BouncingSpeed;
-            _koopa.PlayKickSoundFX();
-
-            Services.ScoreService.Add(_koopa.Profile.PointsHit2);
-            Services.ScoreService.ShowPoints(_koopa.Profile.PointsHit2, _koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
-        }
-        public override void Update()
-        {
-            _timer += Time.deltaTime;
-        }
-        #endregion
-
         #region Private Methods
         private void DamagePlayer(PlayerController player)
         {
@@ -53,6 +35,24 @@ namespace Mario.Game.Npc.Koopa
         {
             _koopa.HitObject(hitInfo);
             hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
+        }
+        #endregion
+
+        #region IState Methods
+        public override void Enter()
+        {
+            _timer = 0;
+            _koopa.Animator.SetTrigger("Hit");
+            _koopa.Movable.enabled = true;
+            _koopa.Movable.Speed = _koopa.Profile.BouncingSpeed;
+            _koopa.PlayKickSoundFX();
+
+            Services.ScoreService.Add(_koopa.Profile.PointsHit2);
+            Services.ScoreService.ShowPoints(_koopa.Profile.PointsHit2, _koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
+        }
+        public override void Update()
+        {
+            _timer += Time.deltaTime;
         }
         #endregion
 

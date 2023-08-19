@@ -17,6 +17,22 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
+        #region Private Methods
+        private void OnHittedByPlayerFromSide(PlayerController player)
+        {
+            if (_timer > 0.1f)
+            {
+                _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateBouncing);
+                _koopa.ChangeSpeedAfferHit(player.transform.position);
+            }
+        }
+        private void KillKoopa(Vector3 hitPosition)
+        {
+            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
+            _koopa.ChangeSpeedAfferHit(hitPosition);
+        }
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
@@ -34,22 +50,6 @@ namespace Mario.Game.Npc.Koopa
                 else
                     _koopa.ChangeDirectionToLeft();
             }
-        }
-        #endregion
-
-        #region Private Methods
-        private void OnHittedByPlayerFromSide(PlayerController player)
-        {
-            if (_timer > 0.1f)
-            {
-                _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateBouncing);
-                _koopa.ChangeSpeedAfferHit(player.transform.position);
-            }
-        }
-        private void KillKoopa(Vector3 hitPosition)
-        {
-            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
-            _koopa.ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 

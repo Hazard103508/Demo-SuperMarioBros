@@ -17,20 +17,20 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
+        #region Private Methods
+        private void KillKoopa(Vector3 hitPosition)
+        {
+            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
+            _koopa.ChangeSpeedAfferHit(hitPosition);
+        }
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
             _koopa.Movable.enabled = true;
             _koopa.Movable.Speed = _koopa.Profile.MoveSpeed;
             _koopa.Animator.SetTrigger("Idle");
-        }
-        #endregion
-
-        #region Private Methods
-        private void KillKoopa(Vector3 hitPosition)
-        {
-            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
-            _koopa.ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
