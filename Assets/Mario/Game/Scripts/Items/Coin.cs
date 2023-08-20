@@ -40,10 +40,10 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController player) => CollectCoin();
-        public void OnHittedByPlayerFromBottom(PlayerController player) => CollectCoin();
-        public void OnHittedByPlayerFromLeft(PlayerController player) => CollectCoin();
-        public void OnHittedByPlayerFromRight(PlayerController player) => CollectCoin();
+        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => CollectCoin();
+        public void OnHittedByPlayerFromBottom(PlayerController_OLD player) => CollectCoin();
+        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => CollectCoin();
+        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => CollectCoin();
         #endregion
 
         #region On Box Hit

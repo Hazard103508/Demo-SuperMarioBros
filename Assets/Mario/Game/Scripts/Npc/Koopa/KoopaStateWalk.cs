@@ -45,14 +45,14 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController player)
+        public override void OnHittedByPlayerFromTop(PlayerController_OLD player)
         {
             Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateInShell);
             player.BounceJump();
         }
-        public override void OnHittedByPlayerFromLeft(PlayerController player) => player.DamagePlayer();
-        public override void OnHittedByPlayerFromRight(PlayerController player) => player.DamagePlayer();
-        public override void OnHittedByPlayerFromBottom(PlayerController player) => player.DamagePlayer();
+        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => player.DamagePlayer();
+        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => player.DamagePlayer();
+        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player) => player.DamagePlayer();
         #endregion
 
         #region On Box Hit

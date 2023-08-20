@@ -6,17 +6,17 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    [RequireComponent(typeof(PlayerController))]
-    public class PlayerCollisions : MonoBehaviour
+    [RequireComponent(typeof(PlayerController_OLD))]
+    public class PlayerCollisions_OLD : MonoBehaviour
     {
         #region Variables
         private Bounds<List<HitObject>> _proximityHit = new Bounds<List<HitObject>>();
-        private PlayerController _playerController;
+        private PlayerController_OLD _playerController;
         #endregion
 
         private void Awake()
         {
-            _playerController = GetComponent<PlayerController>();
+            _playerController = GetComponent<PlayerController_OLD>();
         }
         private void Update()
         {

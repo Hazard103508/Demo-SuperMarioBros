@@ -30,7 +30,7 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromBottom(PlayerController player)
+        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
             if (!IsHitable)
                 return;

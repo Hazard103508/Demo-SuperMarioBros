@@ -11,7 +11,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region Protected Methods
-        protected override void OnHitCheckPoint(PlayerController player)
+        protected override void OnHitCheckPoint(PlayerController_OLD player)
         {
             if (Services.GameDataService.CurrentMapProfile.CheckPoints.Length > _checkPointIndex)
                 Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.CheckPoints[_checkPointIndex];

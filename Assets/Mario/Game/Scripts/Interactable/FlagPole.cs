@@ -18,7 +18,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region Private Methods
-        private void ShowPoint(PlayerController player)
+        private void ShowPoint(PlayerController_OLD player)
         {
             if (!_isLowering)
             {
@@ -27,7 +27,7 @@ namespace Mario.Game.Interactable
                 _scoreLabel.ShowPoint(point);
             }
         }
-        private void LowerFlag(PlayerController player)
+        private void LowerFlag(PlayerController_OLD player)
         {
             if (!_isLowering)
             {
@@ -47,7 +47,7 @@ namespace Mario.Game.Interactable
                 Services.GameDataService.IsGoalReached = true;
             }
         }
-        private IEnumerator DownFlagPole(PlayerController player, PlayerAnimator animator)
+        private IEnumerator DownFlagPole(PlayerController_OLD player, PlayerAnimator animator)
         {
             Services.MusicService.Stop();
             Services.PlayerService.CanMove = false;
@@ -70,7 +70,7 @@ namespace Mario.Game.Interactable
             Services.MusicService.Play();
             Services.PlayerService.CanMove = true;
         }
-        private IEnumerator DownPlayerPole(PlayerController player, PlayerAnimator animator)
+        private IEnumerator DownPlayerPole(PlayerController_OLD player, PlayerAnimator animator)
         {
             animator.IsInFlagPole = true;
             while (player.transform.position.y > transform.position.y)
@@ -81,7 +81,7 @@ namespace Mario.Game.Interactable
 
             animator.IsInFlagBase = true;
         }
-        private int GetFlagPoints(PlayerController player)
+        private int GetFlagPoints(PlayerController_OLD player)
         {
             var hitPoint = 1 - Mathf.InverseLerp(transform.position.y, transform.position.y + 10, player.transform.position.y);
             int index = Mathf.FloorToInt(Mathf.Clamp(hitPoint * _profile.Points.Length, 0, _profile.Points.Length));
@@ -91,7 +91,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromLeft(PlayerController player)
+        public void OnHittedByPlayerFromLeft(PlayerController_OLD player)
         {
             ShowPoint(player);
             LowerFlag(player);

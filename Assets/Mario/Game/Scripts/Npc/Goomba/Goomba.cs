@@ -88,10 +88,10 @@ namespace Mario.Game.Npc.Goomba
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController player) => this.StateMachine.CurrentState.OnHittedByPlayerFromTop(player);
-        public void OnHittedByPlayerFromLeft(PlayerController player) => this.StateMachine.CurrentState.OnHittedByPlayerFromLeft(player);
-        public void OnHittedByPlayerFromRight(PlayerController player) => this.StateMachine.CurrentState.OnHittedByPlayerFromRight(player);
-        public void OnHittedByPlayerFromBottom(PlayerController player) => this.StateMachine.CurrentState.OnHittedByPlayerFromBottom(player);
+        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromTop(player);
+        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromLeft(player);
+        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromRight(player);
+        public void OnHittedByPlayerFromBottom(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromBottom(player);
         #endregion
 
         #region On Box Hit

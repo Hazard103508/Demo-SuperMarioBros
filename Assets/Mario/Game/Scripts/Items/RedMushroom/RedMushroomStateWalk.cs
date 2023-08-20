@@ -19,7 +19,7 @@ namespace Mario.Game.Items.RedMushroom
         #endregion
 
         #region Private Methods
-        public void CollectMushroom(PlayerController player)
+        public void CollectMushroom(PlayerController_OLD player)
         {
             if (!Mushroom.gameObject.activeSelf)
                 return;
@@ -34,10 +34,10 @@ namespace Mario.Game.Items.RedMushroom
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController player) => CollectMushroom(player);
-        public override void OnHittedByPlayerFromBottom(PlayerController player) => CollectMushroom(player);
-        public override void OnHittedByPlayerFromLeft(PlayerController player) => CollectMushroom(player);
-        public override void OnHittedByPlayerFromRight(PlayerController player) => CollectMushroom(player);
+        public override void OnHittedByPlayerFromTop(PlayerController_OLD player) => CollectMushroom(player);
+        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player) => CollectMushroom(player);
+        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => CollectMushroom(player);
+        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => CollectMushroom(player);
         #endregion
     }
 }

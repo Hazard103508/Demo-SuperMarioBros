@@ -11,7 +11,7 @@ namespace Mario.Game.Maps
     public class MapInitializer : MonoBehaviour
     {
         #region Objects
-        [SerializeField] private PlayerController _player;
+        [SerializeField] private PlayerController_OLD _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
         #endregion
 

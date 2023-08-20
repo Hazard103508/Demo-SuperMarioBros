@@ -67,7 +67,7 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public virtual void OnHittedByPlayerFromBottom(PlayerController player)
+        public virtual void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
             if (!IsHitable)
                 return;

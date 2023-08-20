@@ -12,7 +12,7 @@ namespace Mario.Game.Player
 
         private Animator _animator;
         private Dictionary<PlayerModes, PlayerAnimationMode> _playerAnimationModes;
-        private PlayerController _player;
+        private PlayerController_OLD _player;
         private PlayerAnimationStates _state;
         private PlayerAnimationStates _previousState;
         private PlayerModes _mode;
@@ -43,7 +43,7 @@ namespace Mario.Game.Player
                 [PlayerModes.Super] = new PlayerAnimationModeSuper()
             };
 
-            _player = GetComponentInParent<PlayerController>();
+            _player = GetComponentInParent<PlayerController_OLD>();
             _animator = GetComponent<Animator>();
         }
         private void Start()

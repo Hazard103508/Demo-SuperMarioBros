@@ -34,7 +34,7 @@ namespace Mario.Game.Boxes
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromBottom(PlayerController player)
+        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
             if (_disabledTimer > 0) // me aseguro que el primer contacto sea desde abajo
                 return;
@@ -49,9 +49,9 @@ namespace Mario.Game.Boxes
             _spriteAnimator.SetTrigger("Disable");
             _risingSoundFX.Play();
         }
-        public void OnHittedByPlayerFromTop(PlayerController player) => _disabledTimer = 0.5f;
-        public void OnHittedByPlayerFromLeft(PlayerController player) => _disabledTimer = 0.5f;
-        public void OnHittedByPlayerFromRight(PlayerController player) => _disabledTimer = 0.5f;
+        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => _disabledTimer = 0.5f;
+        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => _disabledTimer = 0.5f;
+        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => _disabledTimer = 0.5f;
         #endregion
     }
 }

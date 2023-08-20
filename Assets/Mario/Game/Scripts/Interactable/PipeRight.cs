@@ -15,7 +15,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region Protected Methods
-        private IEnumerator MoveIntoPipe(PlayerController player)
+        private IEnumerator MoveIntoPipe(PlayerController_OLD player)
         {
             Services.TimeService.StopTimer();
             Services.PlayerService.CanMove = false;
@@ -26,7 +26,7 @@ namespace Mario.Game.Interactable
             _pipeInSoundFX.Play();
 
             player.IsAutoWalk = true;
-            Destroy(player.GetComponent<PlayerCollisions>());
+            Destroy(player.GetComponent<PlayerCollisions_OLD>());
             while (player.transform.position.x < transform.position.x)
             {
                 player.transform.Translate(2f * Time.deltaTime * Vector3.right);
@@ -39,7 +39,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromLeft(PlayerController player)
+        public void OnHittedByPlayerFromLeft(PlayerController_OLD player)
         {
             if (_isInPipe)
                 return;

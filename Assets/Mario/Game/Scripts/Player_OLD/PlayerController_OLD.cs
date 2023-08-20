@@ -7,7 +7,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController_OLD : MonoBehaviour
     {
         #region Variables
         [SerializeField] private PlayerSoundFX _playerSoundFX;
