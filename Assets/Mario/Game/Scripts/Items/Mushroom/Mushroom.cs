@@ -21,21 +21,21 @@ namespace Mario.Game.Items.Mushroom
     {
         #region Objects
         [SerializeField] private MushroomProfile _profile;
-        private bool _isJumping;
+        //private bool _isJumping;
         #endregion
 
-        #region Properties
-        protected bool IsRising { get; private set; }
-        #endregion
+        //#region Properties
+        //protected bool IsRising { get; private set; }
+        //#endregion
 
         #region Properties
-        public MushroomStateMachine StateMachine { get; private set; }
+        public MushroomStateMachine StateMachine { get; protected set; }
         public Movable Movable { get; private set; }
         public MushroomProfile Profile => _profile;
         #endregion
 
         #region Unity Methods
-        private void Awake()
+        protected virtual void Awake()
         {
             this.StateMachine = new MushroomStateMachine(this);
             Movable = GetComponent<Movable>();
@@ -62,10 +62,10 @@ namespace Mario.Game.Items.Mushroom
         #endregion
 
         #region Protected Methods
-        protected virtual void CollectMushroom(PlayerController player)
+        public virtual void CollectMushroom(PlayerController player)
         {
         }
-        protected virtual void ResetMushroom() => IsRising = false;
+        //protected virtual void ResetMushroom() => IsRising = false;
         #endregion
 
         #region Private Methods

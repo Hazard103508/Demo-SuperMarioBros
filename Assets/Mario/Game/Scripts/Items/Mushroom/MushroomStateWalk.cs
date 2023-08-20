@@ -22,14 +22,6 @@ namespace Mario.Game.Items.Mushroom
         }
         #endregion
 
-        //#region Private Methods
-        //private void KillGoomba(Vector3 hitPosition)
-        //{
-        //    Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateDead);
-        //    Mushroom.ChangeSpeedAfferHit(hitPosition);
-        //}
-        //#endregion
-
         #region On Movable Hit
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
@@ -41,17 +33,6 @@ namespace Mario.Game.Items.Mushroom
             if (hitInfo.IsBlock)
                 Mushroom.ChangeDirectionToLeft();
         }
-        #endregion
-
-        #region On Player Hit
-        //public override void OnHittedByPlayerFromTop(PlayerController player)
-        //{
-        //    Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateHit);
-        //    player.BounceJump();
-        //}
-        //public override void OnHittedByPlayerFromLeft(PlayerController player) => player.DamagePlayer();
-        //public override void OnHittedByPlayerFromRight(PlayerController player) => player.DamagePlayer();
-        //public override void OnHittedByPlayerFromBottom(PlayerController player) => player.DamagePlayer();
         #endregion
 
         #region On Box Hit

@@ -6,13 +6,17 @@ namespace Mario.Game.Items.Mushroom
     {
         #region Properties
         new public MushroomState CurrentState => (MushroomState)base.CurrentState;
-        public MushroomStateWalk StateWalk { get; private set; }
+        public MushroomStateRising StateRising { get; private set; }
+        public MushroomStateWalk StateWalk { get; set; }
+        public MushroomStateJump StateJump { get; private set; }
         #endregion
 
         #region Constructor
         public MushroomStateMachine(Mushroom mushroom)
         {
+            this.StateRising = new MushroomStateRising(mushroom);
             this.StateWalk = new MushroomStateWalk(mushroom);
+            this.StateJump = new MushroomStateJump(mushroom);
         }
         #endregion
     }
