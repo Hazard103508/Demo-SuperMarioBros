@@ -274,57 +274,12 @@ MonoBehaviour:
   Bottom:
     FixPositionOnCollide: 1
     RayCast: {fileID: 482626821218211423}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4126564096216567813}
-          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-          m_MethodName: OnBottomCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   Left:
     FixPositionOnCollide: 0
     RayCast: {fileID: 5973475578513448817}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4126564096216567813}
-          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-          m_MethodName: OnLeftCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   Right:
     FixPositionOnCollide: 0
     RayCast: {fileID: 8372391406385823904}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 4126564096216567813}
-          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-          m_MethodName: OnRightCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &4126564096216567813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -337,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3003765c3afe14981b3220a95b3a19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomProfile: {fileID: 11400000, guid: 738220a4ab7a0c841938f2832313ea63, type: 2}
+  _profile: {fileID: 11400000, guid: 738220a4ab7a0c841938f2832313ea63, type: 2}
 --- !u!1 &7787869368925523820
 GameObject:
   m_ObjectHideFlags: 0

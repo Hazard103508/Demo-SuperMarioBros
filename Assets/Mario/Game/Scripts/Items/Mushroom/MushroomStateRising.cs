@@ -34,6 +34,7 @@ namespace Mario.Game.Items.Mushroom
         {
             _timer = 0;
             Mushroom.Movable.enabled = false;
+            Mushroom.gameObject.layer = LayerMask.NameToLayer("Item");
             _initPosition = Mushroom.transform.transform.position;
             _targetPosition = _initPosition + Vector3.up;
         }
