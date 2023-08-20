@@ -163,10 +163,10 @@ MonoBehaviour:
     FixPositionOnCollide: 1
     RayCast: {fileID: 3168351872246796587}
   Left:
-    FixPositionOnCollide: 1
+    FixPositionOnCollide: 0
     RayCast: {fileID: 8466497263259401725}
   Right:
-    FixPositionOnCollide: 1
+    FixPositionOnCollide: 0
     RayCast: {fileID: 2617962527640650011}
 --- !u!114 &1696081485333169470
 MonoBehaviour:
@@ -181,7 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
-  _redMushroomProfile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
 --- !u!1 &1068909089559928125
 GameObject:
   m_ObjectHideFlags: 0

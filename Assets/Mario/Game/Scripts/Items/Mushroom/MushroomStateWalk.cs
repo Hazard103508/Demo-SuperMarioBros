@@ -7,7 +7,7 @@ namespace Mario.Game.Items.Mushroom
     public class MushroomStateWalk : MushroomState
     {
         #region Constructor
-        public MushroomStateWalk(Mushroom mushroom) :base(mushroom)
+        public MushroomStateWalk(Mushroom mushroom) : base(mushroom)
         {
         }
         #endregion
@@ -36,7 +36,11 @@ namespace Mario.Game.Items.Mushroom
         #endregion
 
         #region On Box Hit
-        //public override void OnHittedByBox(GameObject box) => KillGoomba(box.transform.position);
+        public override void OnHittedByBox(GameObject box)
+        {
+            Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateJump);
+            Mushroom.ChangeSpeedAfferHit(box.transform.position);
+        }
         #endregion
     }
 }

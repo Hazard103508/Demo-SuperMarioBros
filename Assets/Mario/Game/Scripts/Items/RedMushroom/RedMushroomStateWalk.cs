@@ -21,6 +21,9 @@ namespace Mario.Game.Items.RedMushroom
         #region Private Methods
         public void CollectMushroom(PlayerController player)
         {
+            if (!Mushroom.gameObject.activeSelf)
+                return;
+
             Mushroom.gameObject.layer = 0;
             Services.ScoreService.Add(Mushroom.Profile.Points);
             Services.ScoreService.ShowPoints(Mushroom.Profile.Points, Mushroom.transform.position + Vector3.up * 1.75f, 0.8f, 3f);

@@ -21,12 +21,7 @@ namespace Mario.Game.Items.Mushroom
     {
         #region Objects
         [SerializeField] private MushroomProfile _profile;
-        //private bool _isJumping;
         #endregion
-
-        //#region Properties
-        //protected bool IsRising { get; private set; }
-        //#endregion
 
         #region Properties
         public MushroomStateMachine StateMachine { get; protected set; }
@@ -42,7 +37,7 @@ namespace Mario.Game.Items.Mushroom
         }
         private void Start()
         {
-            this.StateMachine.Initialize(this.StateMachine.StateWalk);
+            this.StateMachine.Initialize(this.StateMachine.StateRising);
         }
         private void Update()
         {
@@ -50,8 +45,7 @@ namespace Mario.Game.Items.Mushroom
         }
         private void OnEnable()
         {
-            //ResetMushroom();
-            //StartCoroutine(RiseMushroom());
+            StartCoroutine(ResetMushroom());
         }
         #endregion
 
@@ -59,44 +53,20 @@ namespace Mario.Game.Items.Mushroom
         public void OnFall() => gameObject.SetActive(false);
         public void ChangeDirectionToRight() => Movable.Speed = Mathf.Abs(Movable.Speed);
         public void ChangeDirectionToLeft() => Movable.Speed = -Mathf.Abs(Movable.Speed);
-        #endregion
-
-        #region Protected Methods
-        public virtual void CollectMushroom(PlayerController player)
+        public void ChangeSpeedAfferHit(Vector3 hitPosition)
         {
+            if (Math.Sign(Movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
+                Movable.Speed *= -1;
         }
-        //protected virtual void ResetMushroom() => IsRising = false;
         #endregion
 
         #region Private Methods
-        //private IEnumerator RiseMushroom()
-        //{
-        //    yield return new WaitForEndOfFrame();
-        //
-        //    IsRising = true;
-        //    var _initPosition = transform.transform.position;
-        //    var _targetPosition = _initPosition + Vector3.up;
-        //    float _timer = 0;
-        //    float _maxTime = 0.8f;
-        //    while (_timer < _maxTime)
-        //    {
-        //        _timer += Time.deltaTime;
-        //        var t = Mathf.InverseLerp(0, _maxTime, _timer);
-        //        transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
-        //        yield return null;
-        //    }
-        //
-        //    _movable.enabled = true;
-        //    IsRising = false;
-        //}
+        private IEnumerator ResetMushroom()
+        { 
+            yield return new WaitForEndOfFrame();
+            this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+        }
         #endregion
-
-        //#region On local Ray Range Hit
-        //public void OnBottomCollided(RayHitInfo hitInfo) => _isJumping = false;
-        //public void OnLeftCollided(RayHitInfo hitInfo) => ChangeDirectionToRight();
-        //public void OnRightCollided(RayHitInfo hitInfo) => ChangeDirectionToLeft();
-        //#endregion
-
 
         #region On Movable Hit
         public void OnHittedByMovingToBottom(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToBottom(hitInfo);
@@ -112,17 +82,7 @@ namespace Mario.Game.Items.Mushroom
         #endregion
 
         #region On Box Hit
-        public void OnHittedByBox(GameObject box)
-        {
-            //if (_isJumping)
-            //    return;
-            //
-            //_isJumping = true;
-            //_movable.AddJumpForce(_profile.JumpAcceleration);
-            //
-            //if (Math.Sign(_movable.Speed) != Math.Sign(this.transform.position.x - box.transform.position.x))
-            //    _movable.Speed *= -1;
-        }
+        public void OnHittedByBox(GameObject box) => this.StateMachine.CurrentState.OnHittedByBox(box);
         #endregion
     }
 }
