@@ -16,7 +16,7 @@ namespace Mario.Game.Player
         [SerializeField] private SquareRaycast raycastRangesBig;
         [SerializeField] private SquareRaycast raycastRangesSmall;
 
-        private PlayerProfile _profile;
+        [SerializeField] private PlayerProfile _profile;
         private readonly Bounds<RayHitInfo> _proximityBlock = new();
         private Vector2 _currentSpeed;
         private float _lastJumpPressed = 0;

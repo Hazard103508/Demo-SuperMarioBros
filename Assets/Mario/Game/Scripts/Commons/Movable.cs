@@ -51,7 +51,7 @@ namespace Mario.Game.Commons
         }
         private void Update()
         {
-            if (!Services.PlayerService.CanMove)
+            if (Services.PlayerService != null && !Services.PlayerService.CanMove)
                 return;
 
             ApplyGravity();
