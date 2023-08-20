@@ -29,6 +29,17 @@ namespace Mario.Game.Npc.Goomba
         }
         #endregion
 
+        #region Properties
+        protected Goomba Goomba { get; private set; }
+        #endregion
+
+        #region Constructor
+        public GoombaState(Goomba goomba)
+        {
+            Goomba = goomba;
+        }
+        #endregion
+
         #region On Movable Hit
         public virtual void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {

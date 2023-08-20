@@ -6,14 +6,12 @@ namespace Mario.Game.Npc.Koopa
     public class KoopaStateWakingUp : KoopaState
     {
         #region Objects
-        private readonly Koopa _koopa;
         private float _timer = 0;
         #endregion
 
         #region Constructor
-        public KoopaStateWakingUp(Koopa koopa)
+        public KoopaStateWakingUp(Koopa koopa) : base(koopa)
         {
-            _koopa = koopa;
         }
         #endregion
 
@@ -22,14 +20,14 @@ namespace Mario.Game.Npc.Koopa
         {
             if (_timer > 0.1f)
             {
-                _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateBouncing);
-                _koopa.ChangeSpeedAfferHit(player.transform.position);
+                Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateBouncing);
+                Koopa.ChangeSpeedAfferHit(player.transform.position);
             }
         }
         private void KillKoopa(Vector3 hitPosition)
         {
-            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
-            _koopa.ChangeSpeedAfferHit(hitPosition);
+            Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
+            Koopa.ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -37,18 +35,18 @@ namespace Mario.Game.Npc.Koopa
         public override void Enter()
         {
             _timer = 0;
-            _koopa.Animator.SetTrigger("WakeUp");
+            Koopa.Animator.SetTrigger("WakeUp");
         }
         public override void Update()
         {
             _timer += Time.deltaTime;
             if (_timer >= 1.5f)
             {
-                _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateWalk);
-                if (_koopa.Renderer.flipX)
-                    _koopa.ChangeDirectionToRight();
+                Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateWalk);
+                if (Koopa.Renderer.flipX)
+                    Koopa.ChangeDirectionToRight();
                 else
-                    _koopa.ChangeDirectionToLeft();
+                    Koopa.ChangeDirectionToLeft();
             }
         }
         #endregion

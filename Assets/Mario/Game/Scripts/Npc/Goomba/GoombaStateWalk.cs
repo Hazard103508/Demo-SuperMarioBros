@@ -6,31 +6,28 @@ namespace Mario.Game.Npc.Goomba
 {
     public class GoombaStateWalk : GoombaState
     {
-        #region Objects
-        private readonly Goomba _goomba;
-        #endregion
-
         #region Constructor
-        public GoombaStateWalk(Goomba goomba)
+        public GoombaStateWalk(Goomba goomba) : base(goomba) 
         {
-            _goomba = goomba;
         }
         #endregion
 
         #region IState Methods
         public override void Enter()
         {
-            _goomba.Movable.enabled = true;
-            _goomba.Movable.Speed = _goomba.Profile.MoveSpeed;
-            _goomba.Animator.SetTrigger("Idle");
+            Goomba.Movable.enabled = true;
+            Goomba.Movable.Speed = Goomba.Profile.MoveSpeed;
+            Goomba.Movable.Gravity = Goomba.Profile.FallSpeed;
+            Goomba.Movable.MaxFallSpeed = Goomba.Profile.MaxFallSpeed;
+            Goomba.Animator.SetTrigger("Idle");
         }
         #endregion
 
         #region Private Methods
         private void KillGoomba(Vector3 hitPosition)
         {
-            _goomba.StateMachine.TransitionTo(_goomba.StateMachine.StateDead);
-            _goomba.ChangeSpeedAfferHit(hitPosition);
+            Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateDead);
+            Goomba.ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -38,19 +35,19 @@ namespace Mario.Game.Npc.Goomba
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                _goomba.ChangeDirectionToRight();
+                Goomba.ChangeDirectionToRight();
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                _goomba.ChangeDirectionToLeft();
+                Goomba.ChangeDirectionToLeft();
         }
         #endregion
 
         #region On Player Hit
         public override void OnHittedByPlayerFromTop(PlayerController player)
         {
-            _goomba.StateMachine.TransitionTo(_goomba.StateMachine.StateHit);
+            Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateHit);
             player.BounceJump();
         }
         public override void OnHittedByPlayerFromLeft(PlayerController player) => player.DamagePlayer();

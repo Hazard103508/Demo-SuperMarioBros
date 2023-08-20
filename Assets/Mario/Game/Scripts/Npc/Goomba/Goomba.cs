@@ -41,10 +41,7 @@ namespace Mario.Game.Npc.Goomba
         {
             this.StateMachine = new GoombaStateMachine(this);
             Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
-
             Movable = GetComponent<Movable>();
-            Movable.Gravity = _profile.FallSpeed;
-            Movable.MaxFallSpeed = _profile.MaxFallSpeed;
         }
         private void Start()
         {

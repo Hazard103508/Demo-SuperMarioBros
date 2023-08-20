@@ -17,6 +17,17 @@ namespace Mario.Game.Npc.Koopa
         IHittableByKoppa,
         IHittableByFireBall
     {
+        #region Properties
+        protected Koopa Koopa { get; private set; }
+        #endregion
+
+        #region Constructor
+        public KoopaState(Koopa koopa)
+        {
+            this.Koopa = koopa;
+        }
+        #endregion
+
         #region State Machine
         public virtual void Enter()
         {

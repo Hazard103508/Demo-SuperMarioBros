@@ -7,14 +7,12 @@ namespace Mario.Game.Npc.Koopa
     public class KoopaStateInShell : KoopaState
     {
         #region Objects
-        private readonly Koopa _koopa;
         private float _timer = 0;
         #endregion
 
         #region Constructor
-        public KoopaStateInShell(Koopa koopa)
+        public KoopaStateInShell(Koopa koopa) : base(koopa)
         {
-            _koopa = koopa;
         }
         #endregion
 
@@ -23,14 +21,14 @@ namespace Mario.Game.Npc.Koopa
         {
             if (_timer > 0.1f)
             {
-                _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateBouncing);
-                _koopa.ChangeSpeedAfferHit(player.transform.position);
+                Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateBouncing);
+                Koopa.ChangeSpeedAfferHit(player.transform.position);
             }
         }
         private void KillKoopa(Vector3 hitPosition)
         {
-            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
-            _koopa.ChangeSpeedAfferHit(hitPosition);
+            Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
+            Koopa.ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -38,19 +36,19 @@ namespace Mario.Game.Npc.Koopa
         public override void Enter()
         {
             _timer = 0;
-            _koopa.Movable.Speed = 0;
-            _koopa.Animator.SetTrigger("Hit");
+            Koopa.Movable.Speed = 0;
+            Koopa.Animator.SetTrigger("Hit");
 
-            Services.ScoreService.Add(_koopa.Profile.PointsHit1);
-            Services.ScoreService.ShowPoints(_koopa.Profile.PointsHit1, _koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
+            Services.ScoreService.Add(Koopa.Profile.PointsHit1);
+            Services.ScoreService.ShowPoints(Koopa.Profile.PointsHit1, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
 
-            _koopa.PlayHitSoundFX();
+            Koopa.PlayHitSoundFX();
         }
         public override void Update()
         {
             _timer += Time.deltaTime;
             if (_timer >= 4f)
-                _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateWakingUp);
+                Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateWakingUp);
         }
         #endregion
 

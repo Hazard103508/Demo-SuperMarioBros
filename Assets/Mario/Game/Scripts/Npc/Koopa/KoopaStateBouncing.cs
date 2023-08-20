@@ -9,14 +9,12 @@ namespace Mario.Game.Npc.Koopa
     public class KoopaStateBouncing : KoopaState
     {
         #region Objects
-        private readonly Koopa _koopa;
         private float _timer = 0;
         #endregion
 
         #region Constructor
-        public KoopaStateBouncing(Koopa koopa)
+        public KoopaStateBouncing(Koopa koopa) : base(koopa)
         {
-            _koopa = koopa;
         }
         #endregion
 
@@ -28,12 +26,12 @@ namespace Mario.Game.Npc.Koopa
         }
         private void KillKoopa(Vector3 hitPosition)
         {
-            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
-            _koopa.ChangeSpeedAfferHit(hitPosition);
+            Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
+            Koopa.ChangeSpeedAfferHit(hitPosition);
         }
         private void HitObject(RayHitInfo hitInfo)
         {
-            _koopa.HitObject(hitInfo);
+            Koopa.HitObject(hitInfo);
             hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
         }
         #endregion
@@ -42,13 +40,13 @@ namespace Mario.Game.Npc.Koopa
         public override void Enter()
         {
             _timer = 0;
-            _koopa.Animator.SetTrigger("Hit");
-            _koopa.Movable.enabled = true;
-            _koopa.Movable.Speed = _koopa.Profile.BouncingSpeed;
-            _koopa.PlayKickSoundFX();
+            Koopa.Animator.SetTrigger("Hit");
+            Koopa.Movable.enabled = true;
+            Koopa.Movable.Speed = Koopa.Profile.BouncingSpeed;
+            Koopa.PlayKickSoundFX();
 
-            Services.ScoreService.Add(_koopa.Profile.PointsHit2);
-            Services.ScoreService.ShowPoints(_koopa.Profile.PointsHit2, _koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
+            Services.ScoreService.Add(Koopa.Profile.PointsHit2);
+            Services.ScoreService.ShowPoints(Koopa.Profile.PointsHit2, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
         }
         public override void Update()
         {
@@ -62,8 +60,8 @@ namespace Mario.Game.Npc.Koopa
             HitObject(hitInfo);
             if (hitInfo.IsBlock)
             {
-                _koopa.ChangeDirectionToRight();
-                _koopa.PlayBlockSoundFX();
+                Koopa.ChangeDirectionToRight();
+                Koopa.PlayBlockSoundFX();
             }
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
@@ -71,8 +69,8 @@ namespace Mario.Game.Npc.Koopa
             HitObject(hitInfo);
             if (hitInfo.IsBlock)
             {
-                _koopa.ChangeDirectionToLeft();
-                _koopa.PlayBlockSoundFX();
+                Koopa.ChangeDirectionToLeft();
+                Koopa.PlayBlockSoundFX();
             }
         }
         #endregion
@@ -82,7 +80,7 @@ namespace Mario.Game.Npc.Koopa
         {
             if (_timer > 0.1f)
             {
-                _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateInShell);
+                Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateInShell);
                 player.BounceJump();
             }
         }

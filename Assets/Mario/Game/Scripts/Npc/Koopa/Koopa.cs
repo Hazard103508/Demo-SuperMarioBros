@@ -44,10 +44,7 @@ namespace Mario.Game.Npc.Koopa
         {
             this.StateMachine = new KoopaStateMachine(this);
             Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
-
             Movable = GetComponent<Movable>();
-            Movable.Gravity = _profile.FallSpeed;
-            Movable.MaxFallSpeed = _profile.MaxFallSpeed;
         }
         private void Start()
         {

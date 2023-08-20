@@ -6,31 +6,28 @@ namespace Mario.Game.Npc.Koopa
 {
     public class KoopaStateWalk : KoopaState
     {
-        #region Objects
-        private readonly Koopa _koopa;
-        #endregion
-
         #region Constructor
-        public KoopaStateWalk(Koopa koopa)
+        public KoopaStateWalk(Koopa koopa) : base(koopa)
         {
-            _koopa = koopa;
         }
         #endregion
 
         #region Private Methods
         private void KillKoopa(Vector3 hitPosition)
         {
-            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateDead);
-            _koopa.ChangeSpeedAfferHit(hitPosition);
+            Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
+            Koopa.ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
         #region IState Methods
         public override void Enter()
         {
-            _koopa.Movable.enabled = true;
-            _koopa.Movable.Speed = _koopa.Profile.MoveSpeed;
-            _koopa.Animator.SetTrigger("Idle");
+            Koopa.Movable.enabled = true;
+            Koopa.Movable.Speed = Koopa.Profile.MoveSpeed;
+            Koopa.Movable.Gravity = Koopa.Profile.FallSpeed;
+            Koopa.Movable.MaxFallSpeed = Koopa.Profile.MaxFallSpeed;
+            Koopa.Animator.SetTrigger("Idle");
         }
         #endregion
 
@@ -38,19 +35,19 @@ namespace Mario.Game.Npc.Koopa
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                _koopa.ChangeDirectionToRight();
+                Koopa.ChangeDirectionToRight();
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                _koopa.ChangeDirectionToLeft();
+                Koopa.ChangeDirectionToLeft();
         }
         #endregion
 
         #region On Player Hit
         public override void OnHittedByPlayerFromTop(PlayerController player)
         {
-            _koopa.StateMachine.TransitionTo(_koopa.StateMachine.StateInShell);
+            Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateInShell);
             player.BounceJump();
         }
         public override void OnHittedByPlayerFromLeft(PlayerController player) => player.DamagePlayer();
