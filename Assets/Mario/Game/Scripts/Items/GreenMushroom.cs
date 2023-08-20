@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class GreenMushroom : Mushroom
+    public class GreenMushroom : Mushroom.Mushroom
     {
         #region Private Methods
         protected override void CollectMushroom(PlayerController player)

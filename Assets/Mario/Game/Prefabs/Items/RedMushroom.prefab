@@ -152,7 +152,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1068909089230204733}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
   m_Name: 
@@ -162,57 +162,12 @@ MonoBehaviour:
   Bottom:
     FixPositionOnCollide: 1
     RayCast: {fileID: 3168351872246796587}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1696081485333169470}
-          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-          m_MethodName: OnBottomCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   Left:
     FixPositionOnCollide: 1
     RayCast: {fileID: 8466497263259401725}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1696081485333169470}
-          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-          m_MethodName: OnLeftCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   Right:
     FixPositionOnCollide: 1
     RayCast: {fileID: 2617962527640650011}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1696081485333169470}
-          m_TargetAssemblyTypeName: Mario.Game.Items.Mushroom, Assembly-CSharp
-          m_MethodName: OnRightCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &1696081485333169470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91665cc5f99afd64abf1261723513f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mushroomProfile: {fileID: 11400000, guid: 738220a4ab7a0c841938f2832313ea63, type: 2}
+  _profile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
   _redMushroomProfile: {fileID: 11400000, guid: 8d0a31d053a0034498f3c8b7a0dacae5, type: 2}
 --- !u!1 &1068909089559928125
 GameObject:

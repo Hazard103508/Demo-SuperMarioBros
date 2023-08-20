@@ -5,18 +5,18 @@ using UnityEngine;
 
 namespace Mario.Game.Items
 {
-    public class RedMushroom : Mushroom
+    public class RedMushroom : Mushroom.Mushroom
     {
         #region Objects
-        [SerializeField] private RedMushroomProfile _redMushroomProfile;
+        new private RedMushroomProfile Profile => (RedMushroomProfile)Profile;
         #endregion
 
         #region Private Methods
         protected override void CollectMushroom(PlayerController player)
         {
             gameObject.layer = 0;
-            Services.ScoreService.Add(_redMushroomProfile.Points);
-            Services.ScoreService.ShowPoints(_redMushroomProfile.Points, transform.position + Vector3.up * 1.75f, 0.8f, 3f);
+            Services.ScoreService.Add(Profile.Points);
+            Services.ScoreService.ShowPoints(Profile.Points, transform.position + Vector3.up * 1.75f, 0.8f, 3f);
 
             player.Buff();
             gameObject.SetActive(false);
