@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace Mario.Game.Items.RedMushroom
 {
-    public class RedMushroomStateWalk : MushroomStateWalk
+    public class MushroomRedStateWalk : MushroomStateWalk
     {
         #region Properties
-        private new RedMushroom Mushroom => (RedMushroom)base.Mushroom;
+        private new MushroomRed Mushroom => (MushroomRed)base.Mushroom;
         #endregion
 
         #region Constructor
-        public RedMushroomStateWalk(RedMushroom mushroom) : base(mushroom)
+        public MushroomRedStateWalk(MushroomRed mushroom) : base(mushroom)
         {
         }
         #endregion

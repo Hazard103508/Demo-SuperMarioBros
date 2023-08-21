@@ -3,7 +3,7 @@ using Mario.Game.ScriptableObjects.Items;
 
 namespace Mario.Game.Items.RedMushroom
 {
-    public class RedMushroom : Mushroom.Mushroom
+    public class MushroomRed : Mushroom.Mushroom
     {
         #region Properties
         new public RedMushroomProfile Profile => (RedMushroomProfile)base.Profile;
@@ -13,7 +13,7 @@ namespace Mario.Game.Items.RedMushroom
         protected override void Awake()
         {
             base.Awake();
-            base.StateMachine.StateWalk = new RedMushroomStateWalk(this);
+            base.StateMachine.StateWalk = new MushroomRedStateWalk(this);
         }
         #endregion
     }

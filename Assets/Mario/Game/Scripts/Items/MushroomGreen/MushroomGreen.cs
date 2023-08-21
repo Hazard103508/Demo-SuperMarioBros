@@ -1,12 +1,12 @@
 namespace Mario.Game.Items.GreenMushroom
 {
-    public class GreenMushroom : Mushroom.Mushroom
+    public class MushroomGreen : Mushroom.Mushroom
     {
         #region Unity Methods
         protected override void Awake()
         {
             base.Awake();
-            base.StateMachine.StateWalk = new GreenMushroomStateWalk(this);
+            base.StateMachine.StateWalk = new MushroomGreenStateWalk(this);
         }
         #endregion
     }

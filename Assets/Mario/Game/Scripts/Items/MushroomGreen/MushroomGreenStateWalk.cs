@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace Mario.Game.Items.GreenMushroom
 {
-    public class GreenMushroomStateWalk : MushroomStateWalk
+    public class MushroomGreenStateWalk : MushroomStateWalk
     {
         #region Properties
-        private new GreenMushroom Mushroom => (GreenMushroom)base.Mushroom;
+        private new MushroomGreen Mushroom => (MushroomGreen)base.Mushroom;
         #endregion
 
         #region Constructor
-        public GreenMushroomStateWalk(GreenMushroom mushroom) : base(mushroom)
+        public MushroomGreenStateWalk(MushroomGreen mushroom) : base(mushroom)
         {
         }
         #endregion
