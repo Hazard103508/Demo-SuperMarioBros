@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallIdle : PlayerState
+    public class PlayerStateSmallWalk : PlayerState
     {
         #region Constructor
-        public PlayerStateSmallIdle(PlayerController player) : base(player)
+        public PlayerStateSmallWalk(PlayerController player) : base(player)
         {
         }
         #endregion
@@ -14,12 +14,12 @@ namespace Mario.Game.Player
         #region IState Methods
         public override void Enter()
         {
-            Player.Animator.CrossFade("Small_Idle", 0);
+            Player.Animator.CrossFade("Small_Run", 0);
         }
         public override void Update()
         {
-            if (Player.InputActions.Move.x != 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallWalk);
+            if (Player.InputActions.Move.x == 0)
+                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallIdle);
         }
         #endregion
     }

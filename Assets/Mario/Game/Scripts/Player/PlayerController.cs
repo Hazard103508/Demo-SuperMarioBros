@@ -14,6 +14,7 @@ namespace Mario.Game.Player
 
         #region Properties
         public PlayerStateMachine StateMachine { get; private set; }
+        public PlayerInputActions InputActions { get; private set; }
         public Movable Movable { get; private set; }
         public Animator Animator => _animator;
         public PlayerProfile Profile => _profile;
@@ -24,7 +25,8 @@ namespace Mario.Game.Player
         private void Awake()
         {
             this.StateMachine = new PlayerStateMachine(this);
-            Movable = GetComponent<Movable>();
+            this.InputActions = GetComponent<PlayerInputActions>();
+            this.Movable = GetComponent<Movable>();
         }
         private void Start()
         {
