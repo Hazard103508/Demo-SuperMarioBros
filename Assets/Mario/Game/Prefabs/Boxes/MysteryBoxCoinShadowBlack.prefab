@@ -47,19 +47,7 @@ MonoBehaviour:
   _profile: {fileID: 11400000, guid: 3b899ecd78ba08e46b8888fdd756767d, type: 2}
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6872637405630037415}
-        m_TargetAssemblyTypeName: Mario.Game.Boxes.BottomHitableBox, Assembly-CSharp
-        m_MethodName: OnProximityRayHitTop
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1458048380701218530
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,6 +58,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1458048380701218529}
   - component: {fileID: 6798383232044092296}
+  - component: {fileID: 6721831557472108171}
   - component: {fileID: 6872637405630037415}
   m_Layer: 3
   m_Name: MysteryBoxCoinShadowBlack
@@ -121,6 +110,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6721831557472108171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458048380701218530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChekCollisions: 1
+  RaycastTop: {fileID: 6222153251867614851}
+  RaycastBottom: {fileID: 0}
+  RaycastLeft: {fileID: 0}
+  RaycastRight: {fileID: 0}
 --- !u!114 &6872637405630037415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,10 +139,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5dd83a5f83d214894ef90f562358ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _profile: {fileID: 0}
-  _animator: {fileID: 0}
-  _mysteryBoxProfile: {fileID: 11400000, guid: c211a313d2239c34194e28ddcb84e03d, type: 2}
-  _spriteAnimator: {fileID: 1458048380726434528}
+  _profile: {fileID: 11400000, guid: c211a313d2239c34194e28ddcb84e03d, type: 2}
+  _animator: {fileID: 1458048380726434528}
 --- !u!1 &1458048380726434535
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,8 +150,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1458048380726434534}
-  - component: {fileID: 1458048380726434532}
   - component: {fileID: 1458048380726434528}
+  - component: {fileID: 1458048380726434532}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -170,6 +174,26 @@ Transform:
   m_Father: {fileID: 1458048380701218529}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1458048380726434528
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1458048380726434535}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 734dc4add70bb1f49a060f4280a5c4a6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!212 &1458048380726434532
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -222,26 +246,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1458048380726434528
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1458048380726434535}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 276a5a104454a5f408cad5d390d4c76f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4074581453718353816
 GameObject:
   m_ObjectHideFlags: 0
