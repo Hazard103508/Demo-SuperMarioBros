@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: BrickBoxCoinTealAnimatorOverrideController
+  m_Controller: {fileID: 9100000, guid: 3ff884e73b7f450498ccaa5a0fc43a27, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 683a54df416711c47bf6945d0da2e9ae, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 90abe28cdf29680479ea1f140e2085d7, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c9e5c41efc37b73428badf99cfd95d2c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 56f9592e733c59a4982846a3259c196a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ca8283ddcba30384383d02a00486010a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 300cff3ee054cc44e90e412fda33a093, type: 2}
