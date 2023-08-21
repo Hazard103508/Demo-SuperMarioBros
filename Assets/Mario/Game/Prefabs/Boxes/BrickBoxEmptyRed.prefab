@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8349094636089644040}
   - component: {fileID: 775714200620282614}
   m_Layer: 3
-  m_Name: Overworld_BrickBoxEmpty
+  m_Name: BrickBoxEmptyRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

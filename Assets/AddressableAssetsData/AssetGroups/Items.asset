@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 0654d3842bda4ed4bbed8e1b1ee45c7e
   m_SerializeEntries:
   - m_GUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
-    m_Address: Overworld_BrokenBrick
+    m_Address: BrokenBrickRed
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 11edffef54ef3e24cb397f4c763299ab
@@ -38,7 +38,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 56e9151935fd98b438a3a6d79b458f99
-    m_Address: Underworld_BrokenBrick
+    m_Address: BrokenBrickTeal
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

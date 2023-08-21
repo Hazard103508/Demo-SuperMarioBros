@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5398638811897731849}
   - component: {fileID: 40360478236427874}
   m_Layer: 3
-  m_Name: Overworld_BrickBoxCoin
+  m_Name: BrickBoxCoinRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

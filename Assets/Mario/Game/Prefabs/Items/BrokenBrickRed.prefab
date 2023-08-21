@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 6232061758759707141}
   - component: {fileID: 9054223969215871584}
   m_Layer: 3
-  m_Name: Overworld_BrokenBrick
+  m_Name: BrokenBrickRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
