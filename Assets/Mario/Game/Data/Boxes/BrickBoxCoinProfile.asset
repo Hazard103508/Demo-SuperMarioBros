@@ -12,5 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 481fb5505f89e594d827912566d9bebf, type: 3}
   m_Name: BrickBoxCoinProfile
   m_EditorClassIdentifier: 
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 576
+  FallSpeed: 60
+  MaxFallSpeed: 14.5
+  JumpAcceleration: 15
   CoinPoolReference: {fileID: 11400000, guid: 6ff576011a12e6e4f81c7c35ebad7920, type: 2}
   LimitTime: 3.25

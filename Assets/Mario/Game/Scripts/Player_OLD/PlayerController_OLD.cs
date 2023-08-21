@@ -271,16 +271,16 @@ namespace Mario.Game.Player
         }
         private void Shoot()
         {
-            if (/*Mode == PlayerModes.Super &&*/ this.Input.Shoot)
-            {
-                var position = this.transform.position + (Vector3)_profile.Fireball.StartLocalPosition;
-                var fireBall = Services.PoolService.GetObjectFromPool<Fireball>(_profile.Fireball.FireballPoolProfile, position);
-
-                if (Mathf.Sign(_render.transform.localScale.x) == 1)
-                    fireBall.ChangeDirectionToRight();
-                else
-                    fireBall.ChangeDirectionToLeft();
-            }
+            //if (/*Mode == PlayerModes.Super &&*/ this.Input.Shoot)
+            //{
+            //    var position = this.transform.position + (Vector3)_profile.Fireball.StartLocalPosition;
+            //    var fireBall = Services.PoolService.GetObjectFromPool<Fireball>(_profile.Fireball.FireballPoolProfile, position);
+            //
+            //    if (Mathf.Sign(_render.transform.localScale.x) == 1)
+            //        fireBall.ChangeDirectionToRight();
+            //    else
+            //        fireBall.ChangeDirectionToLeft();
+            //}
         }
         #endregion
 

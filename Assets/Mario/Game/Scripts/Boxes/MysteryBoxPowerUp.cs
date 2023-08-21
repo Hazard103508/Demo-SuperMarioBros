@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class MysteryBoxPowerUp : Box
+    public class MysteryBoxPowerUp : Box.Box
     {
         #region Objects
         [SerializeField] private AudioSource _risingSoundFX;

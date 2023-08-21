@@ -10,13 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
-  m_Name: BrickBoxEmptyRedProfile
+  m_Name: BrickBoxEmptyTealProfile
   m_EditorClassIdentifier: 
-  TargetLayer:
-    serializedVersion: 2
-    m_Bits: 576
-  FallSpeed: 60
-  MaxFallSpeed: 14.5
-  JumpAcceleration: 15
-  BrokenBrickPoolReference: {fileID: 11400000, guid: d6a62de408a4d22419774db8e7e5126b, type: 2}
+  BrokenBrickPoolReference: {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
   Points: 50

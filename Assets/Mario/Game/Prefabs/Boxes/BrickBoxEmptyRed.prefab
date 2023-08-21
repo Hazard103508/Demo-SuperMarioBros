@@ -41,9 +41,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4159430047776393569}
-  - component: {fileID: 624099026641136557}
   - component: {fileID: 8349094636089644040}
   - component: {fileID: 775714200620282614}
+  - component: {fileID: 4904142531660964208}
   m_Layer: 3
   m_Name: BrickBoxEmptyRed
   m_TagString: Untagged
@@ -69,26 +69,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &624099026641136557
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4159430047776393570}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6a96f6a7d6432c743aa2513c0ff19234, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!61 &8349094636089644040
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -128,7 +108,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitSoundFX: {fileID: 7286787548163656139}
-  _brickProfile: {fileID: 11400000, guid: 555031ff12707e84a91fd5a889d3c489, type: 2}
+  _profile: {fileID: 11400000, guid: 555031ff12707e84a91fd5a889d3c489, type: 2}
+  _animator: {fileID: 0}
+--- !u!114 &4904142531660964208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4159430047776393570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChekCollisions: 1
+  RaycastTop: {fileID: 1169339749612981761}
+  RaycastBottom: {fileID: 0}
+  RaycastLeft: {fileID: 0}
+  RaycastRight: {fileID: 0}
 --- !u!1 &4159430047784207719
 GameObject:
   m_ObjectHideFlags: 0
@@ -224,7 +222,7 @@ GameObject:
   - component: {fileID: 2941610170448956086}
   - component: {fileID: 1169339749612981761}
   m_Layer: 0
-  m_Name: ProximityTop
+  m_Name: RaycastTop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

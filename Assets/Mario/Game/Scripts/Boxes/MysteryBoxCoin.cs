@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class MysteryBoxCoin : Box
+    public class MysteryBoxCoin : Box.Box
     {
         #region Objects
         [SerializeField] protected MysteryBoxCoinProfile _mysteryBoxProfile;

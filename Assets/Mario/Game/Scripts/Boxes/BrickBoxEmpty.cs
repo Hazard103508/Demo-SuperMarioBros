@@ -6,10 +6,10 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes
 {
-    public class BrickBoxEmpty : Box
+    public class BrickBoxEmpty : Box.Box
     {
-        #region Objects
-        [SerializeField] private BrickBoxEmptyProfile _brickProfile;
+        #region Properties
+        new public BrickBoxEmptyProfile Profile => (BrickBoxEmptyProfile)base.Profile;
         #endregion
 
         #region Unity Methods
@@ -32,8 +32,8 @@ namespace Mario.Game.Boxes
         {
             yield return new WaitForEndOfFrame();
 
-            ShowContent(_brickProfile.BrokenBrickPoolReference);
-            Services.ScoreService.Add(_brickProfile.Points);
+            ShowContent(Profile.BrokenBrickPoolReference);
+            Services.ScoreService.Add(Profile.Points);
             Destroy(gameObject);
         }
         #endregion
