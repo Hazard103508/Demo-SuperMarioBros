@@ -42,8 +42,7 @@ namespace Mario.Application.Services
         #region Private Methods
         private void ShowLabel(string text, Vector3 initPosition, float time, float hight)
         {
-            var label = Services.PoolService.GetObjectFromPool<WorldLabel>(scoreLabelPoolProfile);
-            label.transform.position = initPosition;
+            var label = Services.PoolService.GetObjectFromPool<WorldLabel>(scoreLabelPoolProfile, initPosition);
             label.Show(text, time, hight);
         }
         #endregion

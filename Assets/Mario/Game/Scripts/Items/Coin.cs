@@ -34,8 +34,7 @@ namespace Mario.Game.Items
         private void CollectJumpingCoin()
         {
             CollectCoin();
-            var jumpingCoin = Services.PoolService.GetObjectFromPool(_profile.CoinPoolReference);
-            jumpingCoin.transform.position = this.transform.position + Vector3.down;
+            Services.PoolService.GetObjectFromPool(_profile.CoinPoolReference, this.transform.position + Vector3.down);
         }
         #endregion
 

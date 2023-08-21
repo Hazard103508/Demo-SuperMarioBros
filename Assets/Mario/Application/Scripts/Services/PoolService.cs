@@ -17,14 +17,14 @@ namespace Mario.Application.Services
         {
             _poolGroups = new Dictionary<string, Pool>();
         }
-        public PooledObject GetObjectFromPool(BasePooledObjectProfile profile)
+        public PooledObject GetObjectFromPool(BasePooledObjectProfile profile, Vector3 position)
         {
             var poolGroup = GetPoolGroup(profile.name);
-            return poolGroup.Get();
+            return poolGroup.Get(position);
         }
-        public T GetObjectFromPool<T>(BasePooledObjectProfile profile) where T : MonoBehaviour
+        public T GetObjectFromPool<T>(BasePooledObjectProfile profile, Vector3 position) where T : MonoBehaviour
         {
-            return GetObjectFromPool(profile).GetComponent<T>();
+            return GetObjectFromPool(profile, position).GetComponent<T>();
         }
         public void ClearPool()
         {

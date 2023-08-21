@@ -39,7 +39,6 @@ namespace Mario.Game.Commons
         private void Awake()
         {
             _currentSpeed = Vector2.zero;
-            nextPosition = transform.position;
             hittableByMovingToBottom = GetComponent<IHittableByMovingToBottom>();
             hittableByMovingToLeft = GetComponent<IHittableByMovingToLeft>();
             hittableByMovingToRight = GetComponent<IHittableByMovingToRight>();
@@ -68,6 +67,7 @@ namespace Mario.Game.Commons
         }
         private void OnEnable()
         {
+            nextPosition = transform.position;
             _currentSpeed.y = 0;
         }
         #endregion

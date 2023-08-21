@@ -33,11 +33,7 @@ namespace Mario.Game.Boxes
         {
             IsJumping = false;
         }
-        protected void ShowContent(PooledObjectProfile profile)
-        {
-            var obj = Services.PoolService.GetObjectFromPool(profile);
-            obj.transform.position = this.transform.position;
-        }
+        protected void ShowContent(PooledObjectProfile profile) => Services.PoolService.GetObjectFromPool(profile, this.transform.position);
         protected void PlayHitSoundFX()
         {
             if (_hitSoundFX.enabled && !_hitSoundFX.isPlaying)

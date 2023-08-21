@@ -273,8 +273,8 @@ namespace Mario.Game.Player
         {
             if (/*Mode == PlayerModes.Super &&*/ this.Input.Shoot)
             {
-                var fireBall = Services.PoolService.GetObjectFromPool<Fireball>(_profile.Fireball.FireballPoolProfile);
-                fireBall.transform.position = this.transform.position + (Vector3)_profile.Fireball.StartLocalPosition;
+                var position = this.transform.position + (Vector3)_profile.Fireball.StartLocalPosition;
+                var fireBall = Services.PoolService.GetObjectFromPool<Fireball>(_profile.Fireball.FireballPoolProfile, position);
 
                 if (Mathf.Sign(_render.transform.localScale.x) == 1)
                     fireBall.ChangeDirectionToRight();

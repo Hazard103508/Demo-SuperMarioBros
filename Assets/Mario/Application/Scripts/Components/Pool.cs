@@ -7,6 +7,7 @@ namespace Mario.Application.Components
     {
         #region Objects
         private IObjectPool<PooledObject> objectPool;
+        private Vector3 _nextObjectPosition;
         #endregion
 
         #region Properties
@@ -28,19 +29,27 @@ namespace Mario.Application.Components
                 DefaultCapacity,
                 MaxSize);
         }
-        public PooledObject Get() => objectPool.Get();
+        public PooledObject Get(Vector3 position)
+        {
+            _nextObjectPosition = position;
+            return objectPool.Get();
+        }
         #endregion
 
         #region Private Methods
         private PooledObject CreateInstance()
         {
-            var obj = Instantiate(PrefabReference, transform);
+            var obj = Instantiate(PrefabReference, _nextObjectPosition, Quaternion.identity, transform);
             PooledObject pooledObject = obj.AddComponent<PooledObject>();
             pooledObject.ObjectPool = objectPool;
             return pooledObject;
         }
         private void OnReleaseToPool(PooledObject pooledObject) => pooledObject.gameObject.SetActive(false);
-        private void OnGetFromPool(PooledObject pooledObject) => pooledObject.gameObject.SetActive(true);
+        private void OnGetFromPool(PooledObject pooledObject)
+        {
+            pooledObject.gameObject.transform.position = _nextObjectPosition;
+            pooledObject.gameObject.SetActive(true);
+        }
         private void OnDestroyPooledObject(PooledObject pooledObject) => Destroy(pooledObject.gameObject);
         #endregion
     }

@@ -26,6 +26,10 @@ namespace Mario.Game.Player
             _movable.Gravity = _profile.FallSpeed;
             _movable.MaxFallSpeed = _profile.MaxFallSpeed;
         }
+        private void OnEnable()
+        {
+            _movable.ChekCollisions = true;
+        }
         #endregion
 
         #region Public Methods
@@ -64,11 +68,11 @@ namespace Mario.Game.Player
         }
         private void Explode(RayHitInfo hitInfo)
         {
-            var explotion = Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference);
-            explotion.transform.position = hitInfo.hitObjects.First().Point;
+            Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference, hitInfo.hitObjects.First().Point);
+            _movable.ChekCollisions = false;
             gameObject.SetActive(false);
         }
-        private void PlayHitSound() => Services.PoolService.GetObjectFromPool(_profile.HitSoundFXPoolReference);
+        private void PlayHitSound() => Services.PoolService.GetObjectFromPool(_profile.HitSoundFXPoolReference, this.transform.position);
         #endregion
 
         #region On Movable Hit
