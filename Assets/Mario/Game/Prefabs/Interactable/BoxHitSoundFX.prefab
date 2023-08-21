@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8760439549157681314}
   - component: {fileID: 4883122440313008117}
   m_Layer: 0
-  m_Name: FireBallHitSoundFX
+  m_Name: BoxHitSoundFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

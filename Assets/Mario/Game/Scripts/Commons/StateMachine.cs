@@ -23,6 +23,7 @@ namespace Mario.Game.Commons
         }
         public void TransitionTo(IState nextState)
         {
+            UnityEngine.Debug.Log(nextState);
             CurrentState.Exit();
             CurrentState = nextState;
             nextState.Enter();

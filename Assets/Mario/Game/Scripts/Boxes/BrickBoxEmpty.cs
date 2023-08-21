@@ -41,7 +41,7 @@ namespace Mario.Game.Boxes
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
-            PlayHitSoundFX();
+            //PlayHitSoundFX();
 
             if (player.RawMovement.y > 0 || player.Input.Jump)
             {

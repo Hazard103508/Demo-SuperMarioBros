@@ -45,7 +45,7 @@ namespace Mario.Game.Boxes
             if (!IsHitable)
                 return;
 
-            PlayHitSoundFX();
+            //PlayHitSoundFX();
 
             gameObject.layer = LayerMask.NameToLayer("Ground");
             base.OnHittedByPlayerFromBottom(player);

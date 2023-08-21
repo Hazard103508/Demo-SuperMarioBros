@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Pool;
 using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Boxes
@@ -6,6 +7,7 @@ namespace Mario.Game.ScriptableObjects.Boxes
     public class BoxProfile : ScriptableObject
     {
         public LayerMask TargetLayer;
+        public PooledObjectProfile HitSoundFXPoolReference;
         public float FallSpeed;
         public float MaxFallSpeed;
         public float JumpAcceleration;

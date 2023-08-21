@@ -35,7 +35,7 @@ namespace Mario.Game.Boxes
             if (!IsHitable)
                 return;
 
-            PlayHitSoundFX();
+            //PlayHitSoundFX();
 
             base.OnHittedByPlayerFromBottom(player);
             _spriteAnimator.SetTrigger("Disable");

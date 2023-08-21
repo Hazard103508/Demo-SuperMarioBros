@@ -15,19 +15,9 @@ namespace Mario.Game.Boxes.Box
         IHittableByPlayerFromBottom
     {
         #region Objects
-        [SerializeField] private AudioSource _hitSoundFX;
-        //private Animator _boxAnimator;
-        //private Movable _movable;
-        //private float _yPosition;
-        #endregion
-
-        //#region Objects
         [SerializeField] private BoxProfile _profile;
         [SerializeField] private Animator _animator;
-        //[SerializeField] private SpriteRenderer _renderer;
-        //[SerializeField] private AudioSource _hitSoundFX;
-        //[SerializeField] private AudioSource _kickSoundFX;
-        //#endregion
+        #endregion
 
         #region Properties
         public BoxStateMachine StateMachine { get; private set; }
@@ -37,7 +27,7 @@ namespace Mario.Game.Boxes.Box
         #endregion
 
         #region Properties
-        public bool IsLastJump { get; protected set; }
+        public bool IsLastJump { get; set; }
         protected bool IsHitable { get; set; }
         public bool IsJumping { get; private set; }
         #endregion
@@ -47,9 +37,7 @@ namespace Mario.Game.Boxes.Box
         {
             this.StateMachine = new BoxStateMachine(this);
             this.Movable = GetComponent<Movable>();
-            this.IsLastJump = true;
-            //IsHitable = true;
-            //_yPosition = transform.position.y;
+            this.IsLastJump = false;
         }
         private void Start()
         {
@@ -67,11 +55,6 @@ namespace Mario.Game.Boxes.Box
             IsJumping = false;
         }
         protected void ShowContent(PooledObjectProfile profile) => Services.PoolService.GetObjectFromPool(profile, this.transform.position);
-        protected void PlayHitSoundFX()
-        {
-            if (_hitSoundFX.enabled && !_hitSoundFX.isPlaying)
-                _hitSoundFX.Play();
-        }
         #endregion
 
         #region Private Methods

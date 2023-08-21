@@ -10,24 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Interactable
+  m_Name: SoundFX
   m_EditorClassIdentifier: 
-  m_GroupName: Interactable
+  m_GroupName: SoundFX
   m_Data:
     m_SerializedData: []
-  m_GUID: d9c074d731055504cab38f976745c5ad
+  m_GUID: 87df5f74a7aefe9409c368ba6b1aab96
   m_SerializeEntries:
-  - m_GUID: fc31e6bc99978ab4aa5379b65cb11d1a
-    m_Address: Fireball
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 567d6973883c2d94b8c2fc753ad046db
-    m_Address: Explotion
+  - m_GUID: ea9a9e0c70f5b694d8551ec0f14366fc
+    m_Address: BoxHitSoundFX
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
   m_SchemaSet:
     m_Schemas:
-    - {fileID: 11400000, guid: 662efd61bae3c044eaeb1ab67ad20485, type: 2}
-    - {fileID: 11400000, guid: 06ddf299e72b97e49bced2a0edf55888, type: 2}
+    - {fileID: 11400000, guid: b9efd9d177dba724aa6fe9fbca200020, type: 2}
+    - {fileID: 11400000, guid: d46b2b8d6ba7fe84c9d5e8f511376296, type: 2}
