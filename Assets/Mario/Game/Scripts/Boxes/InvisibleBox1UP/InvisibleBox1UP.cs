@@ -8,7 +8,6 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
         new public InvisibleBox1UPProfile Profile => (InvisibleBox1UPProfile)base.Profile;
         #endregion
 
-
         #region Unity Methods
         protected override void Awake()
         {

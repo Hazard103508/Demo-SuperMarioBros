@@ -18,17 +18,6 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         }
         #endregion
 
-        #region Private Methods
-        private IEnumerator InstancePoweUp(PlayerController_OLD player)
-        {
-            yield return new WaitForSeconds(0.2f);
-            if (player.Mode == Enums.PlayerModes.Small)
-                Services.PoolService.GetObjectFromPool(Box.Profile.MushroomPoolReference, Box.transform.position);
-            else
-                Services.PoolService.GetObjectFromPool(Box.Profile.FlowerPoolReference, Box.transform.position);
-        }
-        #endregion
-
         #region IState Methods
         public override void Enter()
         {
@@ -40,8 +29,11 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
-            Services.PoolService.GetObjectFromPool(Box.Profile.RiseItemSoundFXPoolReference, Box.transform.position);
-            Box.StartCoroutine(InstancePoweUp(player));
+            if (player.Mode == Enums.PlayerModes.Small)
+                Box.StateMachine.StateLastJump = new MysteryBoxPowerUpStateLastJumpMushroom(Box);
+            else
+                Box.StateMachine.StateLastJump = new MysteryBoxPowerUpStateLastJumpFlower(Box);
+
             base.OnHittedByPlayerFromBottom(player);
         }
         #endregion
