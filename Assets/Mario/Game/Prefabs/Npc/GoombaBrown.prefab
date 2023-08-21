@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 1857737800226872132}
   - component: {fileID: 3895425941044523143}
   m_Layer: 9
-  m_Name: Overworld_Goomba
+  m_Name: GoombaBrown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

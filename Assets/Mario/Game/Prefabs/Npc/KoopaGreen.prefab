@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 5030047841044185704}
   - component: {fileID: 5294001676903830261}
   m_Layer: 9
-  m_Name: Overworld_Koopa
+  m_Name: KoopaGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

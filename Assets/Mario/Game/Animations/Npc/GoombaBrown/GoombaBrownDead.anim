@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Overworld_KoopaDead
+  m_Name: GoombaBrownDead
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -39,7 +39,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -547860458, guid: 56d5a2a7be71fa04f915704d301d09d3, type: 3}
+      value: {fileID: -52697177, guid: 56d5a2a7be71fa04f915704d301d09d3, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -66,7 +66,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -547860458, guid: 56d5a2a7be71fa04f915704d301d09d3, type: 3}
+    - {fileID: -52697177, guid: 56d5a2a7be71fa04f915704d301d09d3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
