@@ -71,9 +71,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e6eea5a066489942b4dc50a1f1f7b93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TaskCompleted:
-    m_PersistentCalls:
-      m_Calls: []
   _hitFXAudioSource: {fileID: 6720723624719929293}
   _brickFXAudioSource: {fileID: 9039354029148416849}
 --- !u!1 &2024378923925025643
@@ -146,8 +143,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1191700519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1908451925
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 2069112767, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -230,8 +227,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1191700519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1908451925
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 2069112767, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -314,8 +311,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1191700519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1908451925
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 2069112767, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -398,8 +395,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1191700519
-  m_SortingLayer: 2
+  m_SortingLayerID: -1908451925
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: 2069112767, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
