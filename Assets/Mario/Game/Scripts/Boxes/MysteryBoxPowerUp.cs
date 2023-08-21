@@ -21,19 +21,11 @@ namespace Mario.Game.Boxes
         }
         #endregion
 
-        #region Protected Methods
-        protected override void OnJumpCompleted()
-        {
-            base.OnJumpCompleted();
-            base.ShowContent(_buffReference);
-        }
-        #endregion
-
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
-            if (!IsHitable)
-                return;
+            //if (!IsHitable)
+            //    return;
 
             //PlayHitSoundFX();
 

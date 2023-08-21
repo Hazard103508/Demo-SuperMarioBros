@@ -28,8 +28,6 @@ namespace Mario.Game.Boxes.Box
 
         #region Properties
         public bool IsLastJump { get; set; }
-        protected bool IsHitable { get; set; }
-        public bool IsJumping { get; private set; }
         #endregion
 
         #region Unity Methods
@@ -49,45 +47,27 @@ namespace Mario.Game.Boxes.Box
         }
         #endregion
 
-        #region Protected Methods
-        protected virtual void OnJumpCompleted()
+        #region Public Methods
+        public void HitObjects(RayHitInfo hitInfo)
         {
-            IsJumping = false;
-        }
-        protected void ShowContent(PooledObjectProfile profile) => Services.PoolService.GetObjectFromPool(profile, this.transform.position);
-        #endregion
-
-        #region Private Methods
-        private void HitObjectOnTop(RayHitInfo hitInfo)
-        {
-            if (!IsJumping)
-                return;
-
-            if (hitInfo.hitObjects.Any())
+            foreach (var obj in hitInfo.hitObjects)
             {
-                foreach (var obj in hitInfo.hitObjects)
-                {
-                    var hitableObject = obj.Object.GetComponent<IHittableByBox>();
-                    hitableObject?.OnHittedByBox(this.gameObject);
-                }
+                var hitableObject = obj.Object.GetComponent<IHittableByBox>();
+                hitableObject?.OnHittedByBox(this.gameObject);
             }
         }
         #endregion
 
+        #region Protected Methods
+        protected void ShowContent(PooledObjectProfile profile) => Services.PoolService.GetObjectFromPool(profile, this.transform.position);
+        #endregion
+
         #region On Movable Hit
-        public void OnHittedByMovingToTop(RayHitInfo hitInfo) { }
+        public void OnHittedByMovingToTop(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToTop(hitInfo);
         #endregion
 
         #region On Player Hit
         public virtual void OnHittedByPlayerFromBottom(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromBottom(player);
-        //{
-        //    if (!IsHitable)
-        //        return;
-        //
-        //    IsJumping = true;
-        //    //_boxAnimator.SetTrigger("Jump");
-        //    IsHitable = false;
-        //}
         #endregion
     }
 }

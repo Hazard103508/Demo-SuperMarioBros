@@ -28,22 +28,14 @@ namespace Mario.Game.Boxes
         }
         #endregion
 
-        #region Protected Methods
-        protected override void OnJumpCompleted()
-        {
-            base.OnJumpCompleted();
-            base.ShowContent(_invisibleBox1UPProfile.GreenMushroomPoolReference);
-        }
-        #endregion
-
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
             if (_disabledTimer > 0) // me aseguro que el primer contacto sea desde abajo
                 return;
 
-            if (!IsHitable)
-                return;
+            //if (!IsHitable)
+            //    return;
 
             //PlayHitSoundFX();
 

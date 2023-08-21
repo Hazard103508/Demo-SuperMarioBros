@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes.Box
 {
@@ -31,6 +32,10 @@ namespace Mario.Game.Boxes.Box
                 Box.StateMachine.TransitionTo(Box.StateMachine.StateDisable);
             }
         }
+        #endregion
+
+        #region On Movable Hit
+        public override void OnHittedByMovingToTop(RayHitInfo hitInfo) => Box.HitObjects(hitInfo);
         #endregion
     }
 }

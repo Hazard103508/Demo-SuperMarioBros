@@ -19,13 +19,13 @@ namespace Mario.Game.Boxes
         }
         #endregion
 
-        #region Protected Methods
-        protected override void OnJumpCompleted()
-        {
-            base.OnJumpCompleted();
-            IsHitable = true;
-        }
-        #endregion
+        //#region Protected Methods
+        //protected override void OnJumpCompleted()
+        //{
+        //    base.OnJumpCompleted();
+        //    IsHitable = true;
+        //}
+        //#endregion
 
         #region Private Methods
         private IEnumerator ShowBreakedBox()

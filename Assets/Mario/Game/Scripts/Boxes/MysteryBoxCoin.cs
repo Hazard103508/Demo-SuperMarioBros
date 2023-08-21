@@ -14,8 +14,8 @@ namespace Mario.Game.Boxes
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
-            if (!IsHitable)
-                return;
+            //if (!IsHitable)
+            //    return;
 
             //PlayHitSoundFX();
 

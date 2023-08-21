@@ -82,20 +82,17 @@ namespace Mario.Game.Npc.Koopa
         public void PlayBlockSoundFX() => _blockSoundFX.Play();
         public void HitObject(RayHitInfo hitInfo)
         {
-            if (hitInfo.hitObjects.Any())
+            var removeHits = new List<HitObject>();
+            foreach (var obj in hitInfo.hitObjects)
             {
-                var removeHits = new List<HitObject>();
-                foreach (var obj in hitInfo.hitObjects)
+                if (obj.Object.TryGetComponent<IHittableByKoppa>(out var hitableObject))
                 {
-                    if (obj.Object.TryGetComponent<IHittableByKoppa>(out var hitableObject))
-                    {
-                        removeHits.Add(obj);
-                        hitableObject?.OnHittedByKoppa(this);
-                    }
+                    removeHits.Add(obj);
+                    hitableObject?.OnHittedByKoppa(this);
                 }
-
-                removeHits.ForEach(obj => hitInfo.hitObjects.Remove(obj));
             }
+
+            removeHits.ForEach(obj => hitInfo.hitObjects.Remove(obj));
         }
         #endregion
 
