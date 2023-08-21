@@ -8,4 +8,12 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: BrickBoxCoinRedAnimatorOverrideController
   m_Controller: {fileID: 9100000, guid: 3ff884e73b7f450498ccaa5a0fc43a27, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 683a54df416711c47bf6945d0da2e9ae, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 89e4cee0dbd2b444c9f354effb4eb272, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e48aae8648a59e24db5de0420f1b7282, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5715940d80fb92a4ea65327eeec13c6b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ca8283ddcba30384383d02a00486010a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: ac06133d88233db44824eb677089da78, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c9e5c41efc37b73428badf99cfd95d2c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 94de74c88f3088d49b6cfe5e9ecb0a16, type: 2}

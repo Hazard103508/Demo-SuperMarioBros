@@ -113,7 +113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: e211d387cabb3c44bbd1fd3e1683e6cd, type: 2}
-  _hitSoundFX: {fileID: 0}
   _animator: {fileID: 40360478294182497}
 --- !u!1 &40360478294182502
 GameObject:
@@ -210,7 +209,7 @@ Animator:
   m_GameObject: {fileID: 40360478294182502}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3ff884e73b7f450498ccaa5a0fc43a27, type: 2}
+  m_Controller: {fileID: 22100000, guid: e64615e4657f8fc4a94be1c1330044fc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

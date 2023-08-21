@@ -58,10 +58,6 @@ namespace Mario.Game.Boxes.Box
         }
         #endregion
 
-        #region Protected Methods
-        protected void ShowContent(PooledObjectProfile profile) => Services.PoolService.GetObjectFromPool(profile, this.transform.position);
-        #endregion
-
         #region On Movable Hit
         public void OnHittedByMovingToTop(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToTop(hitInfo);
         #endregion

@@ -6,7 +6,7 @@ namespace Mario.Game.Items.RedMushroom
     public class MushroomRed : Mushroom.Mushroom
     {
         #region Properties
-        new public RedMushroomProfile Profile => (RedMushroomProfile)base.Profile;
+        new public MushroomRedProfile Profile => (MushroomRedProfile)base.Profile;
         #endregion
 
         #region Unity Methods
