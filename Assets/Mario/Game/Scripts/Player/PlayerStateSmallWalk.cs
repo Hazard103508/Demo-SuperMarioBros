@@ -1,4 +1,3 @@
-using Mario.Application.Services;
 using UnityEngine;
 
 namespace Mario.Game.Player
@@ -25,7 +24,7 @@ namespace Mario.Game.Player
             }
 
             Player.Movable.Speed += Player.InputActions.Move.x * Player.Profile.Walk.Acceleration * Time.deltaTime;
-            if(Mathf.Abs(Player.Movable.Speed) > Player.Profile.Walk.MaxSpeed)
+            if (Mathf.Abs(Player.Movable.Speed) > Player.Profile.Walk.MaxSpeed)
                 Player.Movable.Speed = Mathf.Clamp(Player.Movable.Speed, -Player.Profile.Walk.MaxSpeed, Player.Profile.Walk.MaxSpeed);
         }
         #endregion

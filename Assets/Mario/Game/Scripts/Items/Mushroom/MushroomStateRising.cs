@@ -1,5 +1,3 @@
-using Mario.Application.Services;
-using Mario.Game.Commons;
 using Mario.Game.Player;
 using UnityEngine;
 

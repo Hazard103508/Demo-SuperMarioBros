@@ -62,7 +62,7 @@ namespace Mario.Game.Items.Mushroom
 
         #region Private Methods
         private IEnumerator ResetMushroom()
-        { 
+        {
             yield return new WaitForEndOfFrame();
             this.StateMachine.TransitionTo(this.StateMachine.StateRising);
         }

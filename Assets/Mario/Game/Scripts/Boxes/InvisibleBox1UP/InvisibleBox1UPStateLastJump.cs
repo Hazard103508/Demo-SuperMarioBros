@@ -1,6 +1,5 @@
 using Mario.Application.Services;
 using Mario.Game.Boxes.Box;
-using Mario.Game.Player;
 
 namespace Mario.Game.Boxes.InvisibleBox1UP
 {

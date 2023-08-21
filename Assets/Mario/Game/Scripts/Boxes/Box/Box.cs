@@ -1,10 +1,7 @@
-using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
-using Mario.Game.ScriptableObjects.Pool;
-using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 

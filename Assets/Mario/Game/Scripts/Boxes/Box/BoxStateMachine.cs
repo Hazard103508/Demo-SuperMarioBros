@@ -17,7 +17,7 @@ namespace Mario.Game.Boxes.Box
         {
             this.StateIdle = new BoxStateIdle(box);
             this.StateJump = new BoxStateJump(box);
-            this.StateLastJump = new BoxStateLastJump(box);  
+            this.StateLastJump = new BoxStateLastJump(box);
             this.StateDisable = new BoxStateDisable(box);
         }
         #endregion

@@ -1,6 +1,4 @@
-using Mario.Game.Boxes.Box;
 using Mario.Game.Player;
-using UnityEngine;
 
 namespace Mario.Game.Boxes.Box
 {

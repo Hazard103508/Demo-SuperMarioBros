@@ -1,7 +1,6 @@
 using Mario.Application.Services;
 using Mario.Game.Items.Mushroom;
 using Mario.Game.Player;
-using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;
 
 namespace Mario.Game.Items.RedMushroom

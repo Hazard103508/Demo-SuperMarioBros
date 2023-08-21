@@ -1,4 +1,3 @@
-using Mario.Game.Items.Mushroom;
 using Mario.Game.ScriptableObjects.Items;
 
 namespace Mario.Game.Items.RedMushroom

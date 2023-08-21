@@ -1,7 +1,7 @@
 using Mario.Game.Commons;
 
 namespace Mario.Game.Items.Mushroom
-{ 
+{
     public class MushroomStateMachine : StateMachine
     {
         #region Properties

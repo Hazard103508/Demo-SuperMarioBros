@@ -1,5 +1,4 @@
 using Mario.Application.Services;
-using Mario.Game.Player;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -19,7 +18,7 @@ namespace Mario.Game.Boxes.Box
 
         #region Protected Methods
         protected virtual void OnJumpCompleted()
-        { 
+        {
         }
         #endregion
 

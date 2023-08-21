@@ -1,6 +1,3 @@
-using Mario.Application.Services;
-using UnityEngine;
-
 namespace Mario.Game.Player
 {
     public class PlayerStateSmallIdle : PlayerState

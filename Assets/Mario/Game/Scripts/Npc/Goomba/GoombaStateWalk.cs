@@ -7,7 +7,7 @@ namespace Mario.Game.Npc.Goomba
     public class GoombaStateWalk : GoombaState
     {
         #region Constructor
-        public GoombaStateWalk(Goomba goomba) : base(goomba) 
+        public GoombaStateWalk(Goomba goomba) : base(goomba)
         {
         }
         #endregion
