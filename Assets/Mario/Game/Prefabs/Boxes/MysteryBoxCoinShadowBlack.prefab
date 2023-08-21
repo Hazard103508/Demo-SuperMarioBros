@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 6798383232044092296}
   - component: {fileID: 6872637405630037415}
   m_Layer: 3
-  m_Name: Overworld_MysteryBoxCoin
+  m_Name: MysteryBoxCoinShadowBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -31,7 +31,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Underworld_MisteryBoxAnimatorController
+  m_Name: MysteryBoxShadowBlackAnimatorController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Disable
@@ -39,7 +39,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -74,7 +74,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b8c3ecce470fce04886ead47f4548253, type: 2}
+  m_Motion: {fileID: 7400000, guid: 92bf25faabc5bd1498bf01e40ec14e74, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -100,7 +100,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8b7df1c26937f6b478e82494d642b627, type: 2}
+  m_Motion: {fileID: 7400000, guid: 80e0c260353c6e249ac1b78f9033ba0e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

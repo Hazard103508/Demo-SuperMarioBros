@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 403916497190662731}
   - component: {fileID: 920537186043033023}
   m_Layer: 3
-  m_Name: Overworld_MysteryBoxPowerUp
+  m_Name: MysteryBoxPowerUpShadowBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
