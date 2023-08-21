@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldName: 1-2
   MapInit:
-    BackgroundColor: {r: 0, g: 0.6415094, b: 0.38344556, a: 1}
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
     StartPosition: {x: 2, y: 2}
     StartLocation: 0
     BlackScreenTime: 0

@@ -8,8 +8,8 @@ namespace Mario.Game.Boxes.Box
         new public BoxState CurrentState => (BoxState)base.CurrentState;
         public BoxStateIdle StateIdle { get; set; }
         public BoxStateJump StateJump { get; set; }
-        public BoxStateLastJump StateLastJump { get; set; }
-        public BoxStateDisable StateDisable { get; set; }
+        public BoxStateLastJump StateLastJump { get; private set; }
+        public BoxStateDisable StateDisable { get; private set; }
         #endregion
 
         #region Constructor
