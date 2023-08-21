@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fec195161cd50e4d89aa767318c9674, type: 3}
   m_Name: MysteryBoxPowerUpShadowBlackProfile
   m_EditorClassIdentifier: 
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 576
+  HitSoundFXPoolReference: {fileID: 11400000, guid: 484c1ed2a30c41d40a266ddbcbe4368c, type: 2}
+  FallSpeed: 100
+  MaxFallSpeed: 100
+  JumpAcceleration: 10
   RedMushroomPoolReference: {fileID: 11400000, guid: 1522160af6c20304ea615b6a2d26d164, type: 2}
   FlowerPoolReference: {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}

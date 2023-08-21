@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
   m_Name: BrickBoxEmptyTealProfile
   m_EditorClassIdentifier: 
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 576
+  HitSoundFXPoolReference: {fileID: 11400000, guid: 484c1ed2a30c41d40a266ddbcbe4368c, type: 2}
+  FallSpeed: 100
+  MaxFallSpeed: 100
+  JumpAcceleration: 10
   BrokenBrickPoolReference: {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
   Points: 50

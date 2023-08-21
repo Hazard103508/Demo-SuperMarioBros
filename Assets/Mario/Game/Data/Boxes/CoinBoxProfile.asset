@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b024dabbbe73eb469380a5c51b0fc5f, type: 3}
   m_Name: CoinBoxProfile
   m_EditorClassIdentifier: 
+  TargetLayer:
+    serializedVersion: 2
+    m_Bits: 576
+  HitSoundFXPoolReference: {fileID: 11400000, guid: 484c1ed2a30c41d40a266ddbcbe4368c, type: 2}
+  FallSpeed: 100
+  MaxFallSpeed: 100
+  JumpAcceleration: 10
   CoinPoolReference: {fileID: 11400000, guid: 6ff576011a12e6e4f81c7c35ebad7920, type: 2}

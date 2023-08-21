@@ -15,8 +15,9 @@ MonoBehaviour:
   TargetLayer:
     serializedVersion: 2
     m_Bits: 576
-  FallSpeed: 60
-  MaxFallSpeed: 14.5
-  JumpAcceleration: 15
+  HitSoundFXPoolReference: {fileID: 11400000, guid: 484c1ed2a30c41d40a266ddbcbe4368c, type: 2}
+  FallSpeed: 100
+  MaxFallSpeed: 100
+  JumpAcceleration: 10
   BrokenBrickPoolReference: {fileID: 11400000, guid: d6a62de408a4d22419774db8e7e5126b, type: 2}
   Points: 50

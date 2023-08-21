@@ -12,21 +12,12 @@ namespace UnityShared.Behaviours.Various.RaycastRange
     {
         #region Objects
         [SerializeField] protected RaycastRangeProfile _profile;
-        public bool runAutomatically = true;
         public UnityEvent<RayHitInfo> onHit;
         private float _rayExtraLength;
         #endregion
 
         #region Properties
         public RaycastRangeProfile Profile => _profile;
-        #endregion
-
-        #region Constructor
-        private void Update()
-        {
-            if (runAutomatically)
-                CalculateCollision();
-        }
         #endregion
 
         #region Public Methods
