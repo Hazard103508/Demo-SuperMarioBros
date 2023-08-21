@@ -10,17 +10,26 @@ namespace UnityShared.Behaviours.Various.RaycastRange
 {
     public class RaycastRange : MonoBehaviour
     {
+        #region Objects
         [SerializeField] protected RaycastRangeProfile _profile;
         public bool runAutomatically = true;
         public UnityEvent<RayHitInfo> onHit;
         private float _rayExtraLength;
+        #endregion
 
+        #region Properties
+        public RaycastRangeProfile Profile => _profile;
+        #endregion
+
+        #region Constructor
         private void Update()
         {
             if (runAutomatically)
                 CalculateCollision();
         }
+        #endregion
 
+        #region Public Methods
         [Obsolete("Method1 is deprecated")]
         public void CalculateCollision()
         {
@@ -43,7 +52,9 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
             return hitInfo;
         }
+        #endregion
 
+        #region Private Methods
         private RayRange CalculateRayRange()
         {
             var position = (Vector2)transform.position;
@@ -105,5 +116,6 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             foreach (var point in EvaluateRayPositions(rayRange))
                 Gizmos.DrawRay(point, rayRange.Dir * _profile.Ray.Length);
         }
+        #endregion
     }
 }

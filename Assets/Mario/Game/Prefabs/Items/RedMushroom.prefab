@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1068909089117085197}
   - component: {fileID: 8466497263259401725}
   m_Layer: 0
-  m_Name: ProximityLeft
+  m_Name: RaycastLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,17 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderer: {fileID: 4309244486214422655}
   ChekCollisions: 1
-  Bottom:
-    FixPositionOnCollide: 1
-    RayCast: {fileID: 3168351872246796587}
-  Left:
-    FixPositionOnCollide: 0
-    RayCast: {fileID: 8466497263259401725}
-  Right:
-    FixPositionOnCollide: 0
-    RayCast: {fileID: 2617962527640650011}
+  RaycastBottom: {fileID: 3168351872246796587}
+  RaycastLeft: {fileID: 8466497263259401725}
+  RaycastRight: {fileID: 2617962527640650011}
 --- !u!114 &1696081485333169470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +185,7 @@ GameObject:
   - component: {fileID: 1068909089559928122}
   - component: {fileID: 2617962527640650011}
   m_Layer: 0
-  m_Name: ProximityRight
+  m_Name: RaycastRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,7 +234,7 @@ GameObject:
   - component: {fileID: 1068909090103427489}
   - component: {fileID: 3168351872246796587}
   m_Layer: 0
-  m_Name: ProximityBottom
+  m_Name: RaycastBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

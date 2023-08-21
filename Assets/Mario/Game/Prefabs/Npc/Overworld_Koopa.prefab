@@ -306,7 +306,7 @@ GameObject:
   - component: {fileID: 6699193791301392773}
   - component: {fileID: 8508824248238285580}
   m_Layer: 0
-  m_Name: ProximityLeft
+  m_Name: RaycastLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 2345450650883282722}
   - component: {fileID: 3895785757345085889}
   m_Layer: 0
-  m_Name: ProximityRight
+  m_Name: RaycastRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -694,7 +694,7 @@ GameObject:
   - component: {fileID: 3408081896919674591}
   - component: {fileID: 7097780403504352754}
   m_Layer: 0
-  m_Name: ProximityBottom
+  m_Name: RaycastBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -793,7 +793,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.85, y: 1}
+  m_Size: {x: 0.89, y: 0.99}
   m_EdgeRadius: 0
 --- !u!114 &5030047841044185704
 MonoBehaviour:
@@ -809,15 +809,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 4915821275691976524}
   ChekCollisions: 1
-  Bottom:
-    FixPositionOnCollide: 1
-    RayCast: {fileID: 7097780403504352754}
-  Left:
-    FixPositionOnCollide: 0
-    RayCast: {fileID: 8508824248238285580}
-  Right:
-    FixPositionOnCollide: 0
-    RayCast: {fileID: 3895785757345085889}
+  RaycastBottom: {fileID: 7097780403504352754}
+  RaycastLeft: {fileID: 8508824248238285580}
+  RaycastRight: {fileID: 3895785757345085889}
 --- !u!114 &5294001676903830261
 MonoBehaviour:
   m_ObjectHideFlags: 0

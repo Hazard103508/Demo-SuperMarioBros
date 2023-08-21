@@ -19,9 +19,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   Range:
-    StartPoint: {x: 0, y: -0.25}
-    EndPoint: {x: 0, y: -0.25}
+    StartPoint: {x: 0, y: -0.2}
+    EndPoint: {x: 0, y: -0.2}
     Count: 1
   Ray:
     Direction: {x: 0, y: -1}
-    Length: 0.1
+    Length: 0.05

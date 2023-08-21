@@ -19,7 +19,14 @@ namespace Mario.Game.Player
         public override void Update()
         {
             if (Player.InputActions.Move.x == 0)
+            {
                 Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallIdle);
+                return;
+            }
+
+            Player.Movable.Speed += Player.InputActions.Move.x * Player.Profile.Walk.Acceleration * Time.deltaTime;
+            if(Mathf.Abs(Player.Movable.Speed) > Player.Profile.Walk.MaxSpeed)
+                Player.Movable.Speed = Mathf.Clamp(Player.Movable.Speed, -Player.Profile.Walk.MaxSpeed, Player.Profile.Walk.MaxSpeed);
         }
         #endregion
     }

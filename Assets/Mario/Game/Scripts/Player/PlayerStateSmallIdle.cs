@@ -15,6 +15,8 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             Player.Animator.CrossFade("Small_Idle", 0);
+            Player.Movable.Gravity = Player.Profile.Fall.FallSpeed;
+            Player.Movable.MaxFallSpeed = Player.Profile.Fall.MaxFallSpeed;
         }
         public override void Update()
         {

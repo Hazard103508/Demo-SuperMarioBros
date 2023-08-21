@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5690807715616396351}
   - component: {fileID: 230350645881943826}
   m_Layer: 0
-  m_Name: ProximityBottom
+  m_Name: RaycastBottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 0.35}
+  m_Offset: {x: 0.5, y: 0.4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -110,7 +110,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.89, y: 0.6}
+  m_Size: {x: 0.89, y: 0.69}
   m_EdgeRadius: 0
 --- !u!114 &1857737800226872132
 MonoBehaviour:
@@ -119,55 +119,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194221761650623214}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 2705183971576495532}
   ChekCollisions: 1
-  Bottom:
-    FixPositionOnCollide: 1
-    RayCast: {fileID: 230350645881943826}
-    Collided:
-      m_PersistentCalls:
-        m_Calls: []
-  Left:
-    FixPositionOnCollide: 0
-    RayCast: {fileID: 1704425028959934956}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3895425941044523143}
-          m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba, Assembly-CSharp
-          m_MethodName: OnLeftCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  Right:
-    FixPositionOnCollide: 0
-    RayCast: {fileID: 6314789516101829409}
-    Collided:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3895425941044523143}
-          m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba, Assembly-CSharp
-          m_MethodName: OnRightCollided
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  RaycastBottom: {fileID: 230350645881943826}
+  RaycastLeft: {fileID: 1704425028959934956}
+  RaycastRight: {fileID: 6314789516101829409}
 --- !u!114 &3895425941044523143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194221761650623214}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 82b859f79a5fe5a4c8226edc0b1789ee, type: 3}
   m_Name: 
@@ -196,7 +157,7 @@ GameObject:
   - component: {fileID: 4701346700429848002}
   - component: {fileID: 6314789516101829409}
   m_Layer: 0
-  m_Name: ProximityRight
+  m_Name: RaycastRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +206,7 @@ GameObject:
   - component: {fileID: 4416463711461286757}
   - component: {fileID: 1704425028959934956}
   m_Layer: 0
-  m_Name: ProximityLeft
+  m_Name: RaycastLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

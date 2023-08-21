@@ -10,15 +10,13 @@ namespace Mario.Game.Commons
     public class Movable : MonoBehaviour
     {
         #region Objects
-        [SerializeField] private SpriteRenderer _renderer;
         public bool ChekCollisions;
-        public CollitionInfo Bottom;
-        public CollitionInfo Left;
-        public CollitionInfo Right;
+        public RaycastRange RaycastBottom;
+        public RaycastRange RaycastLeft;
+        public RaycastRange RaycastRight;
 
+        private Vector2 nextPosition;
         private Vector2 _currentSpeed;
-        private Vector2 _spriteSize = Vector2.zero;
-        private Vector2 _pivot = Vector2.zero;
         private IHittableByMovingToBottom hittableByMovingToBottom;
         private IHittableByMovingToLeft hittableByMovingToLeft;
         private IHittableByMovingToRight hittableByMovingToRight;
@@ -41,13 +39,10 @@ namespace Mario.Game.Commons
         private void Awake()
         {
             _currentSpeed = Vector2.zero;
+            nextPosition = transform.position;
             hittableByMovingToBottom = GetComponent<IHittableByMovingToBottom>();
             hittableByMovingToLeft = GetComponent<IHittableByMovingToLeft>();
             hittableByMovingToRight = GetComponent<IHittableByMovingToRight>();
-
-            var scale = transform.localScale;
-            _spriteSize = new Vector2(_renderer.sprite.bounds.size.x * scale.x, _renderer.sprite.bounds.size.y * scale.y);
-            _pivot = new Vector2(_renderer.sprite.pivot.x / _renderer.sprite.rect.width, _renderer.sprite.pivot.y / _renderer.sprite.rect.height);
         }
         private void Update()
         {
@@ -56,13 +51,18 @@ namespace Mario.Game.Commons
 
             ApplyGravity();
 
-            var nextPosition = (Vector2)transform.position + _currentSpeed * Time.deltaTime;
+            nextPosition = (Vector2)transform.position + _currentSpeed * Time.deltaTime;
             if (ChekCollisions)
             {
                 CalculateCollision_Bottom(ref nextPosition);
                 CalculateCollision_Right(ref nextPosition);
                 CalculateCollision_Left(ref nextPosition);
             }
+        }
+        private void LateUpdate()
+        {
+            if (Services.PlayerService != null && !Services.PlayerService.CanMove)
+                return;
 
             Move(nextPosition);
         }
@@ -88,11 +88,11 @@ namespace Mario.Game.Commons
             float rayExtraLength = transform.position.y - nextPosition.y;
             if (rayExtraLength > 0)
             {
-                var hitInfo = Bottom.RayCast.CalculateCollision(rayExtraLength);
-                if (hitInfo.IsBlock && Bottom.FixPositionOnCollide)
+                var hitInfo = RaycastBottom.CalculateCollision(rayExtraLength);
+                if (hitInfo.IsBlock)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.y = hitObject.Point.y + _spriteSize.y * _pivot.y - _renderer.transform.localPosition.y;
+                    nextPosition.y = GetFixedPositionY(hitObject.Point, RaycastBottom);
                 }
 
                 if (hittableByMovingToBottom != null && hitInfo.hitObjects.Any())
@@ -104,11 +104,11 @@ namespace Mario.Game.Commons
             float rayExtraLength = nextPosition.x - transform.position.x;
             if (rayExtraLength > 0)
             {
-                var hitInfo = Right.RayCast.CalculateCollision(rayExtraLength);
-                if (hitInfo.IsBlock && Right.FixPositionOnCollide)
+                var hitInfo = RaycastRight.CalculateCollision(rayExtraLength);
+                if (hitInfo.IsBlock)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.x = hitObject.Point.x - _spriteSize.x * _pivot.x - _renderer.transform.localPosition.x;
+                    nextPosition.x = GetFixedPositionX(hitObject.Point, RaycastRight);
                 }
 
                 if (hittableByMovingToRight != null && hitInfo.hitObjects.Any())
@@ -120,29 +120,30 @@ namespace Mario.Game.Commons
             float rayExtraLength = transform.position.x - nextPosition.x;
             if (rayExtraLength > 0)
             {
-                var hitInfo = Left.RayCast.CalculateCollision(rayExtraLength);
-                if (hitInfo.IsBlock && Left.FixPositionOnCollide)
+                var hitInfo = RaycastLeft.CalculateCollision(rayExtraLength);
+                if (hitInfo.IsBlock)
                 {
                     var hitObject = hitInfo.hitObjects.First();
-                    nextPosition.x = hitObject.Point.x + _spriteSize.x * _pivot.x - _renderer.transform.localPosition.x;
+                    nextPosition.x = GetFixedPositionX(hitObject.Point, RaycastLeft);
                 }
 
                 if (hittableByMovingToLeft != null && hitInfo.hitObjects.Any())
                     hittableByMovingToLeft.OnHittedByMovingToLeft(hitInfo);
             }
         }
+        private float GetFixedPositionX(Vector2 hitPoint, RaycastRange raycast)
+        {
+            var rayLocalPos = transform.position.x - raycast.transform.position.x;
+            return hitPoint.x + rayLocalPos - raycast.Profile.Range.EndPoint.x - (raycast.Profile.Ray.Length * raycast.Profile.Ray.Direction.x);
+        }
+        private float GetFixedPositionY(Vector2 hitPoint, RaycastRange raycast)
+        {
+            var rayLocalPos = transform.position.y - raycast.transform.position.y;
+            return hitPoint.y + rayLocalPos - raycast.Profile.Range.EndPoint.y - (raycast.Profile.Ray.Length * raycast.Profile.Ray.Direction.y);
+        }
         private void Move(Vector2 nextPosition)
         {
             transform.position = nextPosition;
-        }
-        #endregion
-
-        #region Structures
-        [Serializable]
-        public class CollitionInfo
-        {
-            public bool FixPositionOnCollide;
-            public RaycastRange RayCast;
         }
         #endregion
     }
