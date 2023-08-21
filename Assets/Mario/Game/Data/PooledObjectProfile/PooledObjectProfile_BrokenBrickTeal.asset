@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
-  m_Name: PooledObjectProfile_RedMushroom
+  m_Name: PooledObjectProfile_BrokenBrickTeal
   m_EditorClassIdentifier: 
-  Type: RedMushroom
-  RequireCanvas: 0
   Reference:
-    m_AssetGUID: e3a5b4b0351280c45a9fa635d777580b
+    m_AssetGUID: 56e9151935fd98b438a3a6d79b458f99
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  CollectionCheck: 1
+  DefaultCapacity: 1
+  MaxSize: 5

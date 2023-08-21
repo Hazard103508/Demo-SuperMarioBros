@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f46b97501013ddf48b3b41691f185c43, type: 3}
-  m_Name: Overworld_InvisibleBox1UPProfile
+  m_Name: InvisibleBox1UpRedProfile
   m_EditorClassIdentifier: 
   GreenMushroomPoolReference: {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
