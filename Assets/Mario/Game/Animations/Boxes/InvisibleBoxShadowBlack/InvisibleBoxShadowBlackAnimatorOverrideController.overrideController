@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: InvisibleBoxShadowBlackAnimatorOverrideController
+  m_Controller: {fileID: 9100000, guid: 3ff884e73b7f450498ccaa5a0fc43a27, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 683a54df416711c47bf6945d0da2e9ae, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3540301f4b448e846b6d8b1cd6e168fd, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: c9e5c41efc37b73428badf99cfd95d2c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: c1bd908ee9c64c249a6b665c6c548fc0, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e48aae8648a59e24db5de0420f1b7282, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d9a7d00adc1d466498e5121d34d3afb4, type: 2}

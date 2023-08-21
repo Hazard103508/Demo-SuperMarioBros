@@ -255,7 +255,7 @@ Animator:
   m_GameObject: {fileID: 3418527106288031101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4c0b93acab61a9d43a60a8b84d87a3d0, type: 2}
+  m_Controller: {fileID: 22100000, guid: 0d6b4fc7f8e77354d8b642b4c10c404b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -275,8 +275,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3418527106313247099}
   - component: {fileID: 7283937480027014162}
+  - component: {fileID: 481320246661266089}
   - component: {fileID: 3418527106313247100}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: InvisibleBox1UpRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -327,6 +328,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &481320246661266089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3418527106313247096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChekCollisions: 1
+  RaycastTop: {fileID: 3767049576151582466}
+  RaycastBottom: {fileID: 0}
+  RaycastLeft: {fileID: 0}
+  RaycastRight: {fileID: 0}
 --- !u!114 &3418527106313247100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,11 +357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a1ab0fa8a38acd42a093b25fbeeb7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _profile: {fileID: 0}
-  _animator: {fileID: 0}
-  _risingSoundFX: {fileID: 2433495116797272959}
-  _invisibleBox1UPProfile: {fileID: 11400000, guid: 8730e7b24c095e8409fcdb99e6bb973d, type: 2}
-  _spriteAnimator: {fileID: 3418527106288031098}
+  _profile: {fileID: 11400000, guid: 8730e7b24c095e8409fcdb99e6bb973d, type: 2}
+  _animator: {fileID: 3418527106288031098}
 --- !u!1 &6219394611419897158
 GameObject:
   m_ObjectHideFlags: 0
@@ -391,16 +406,4 @@ MonoBehaviour:
   _profile: {fileID: 11400000, guid: 3b899ecd78ba08e46b8888fdd756767d, type: 2}
   onHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3418527106313247100}
-        m_TargetAssemblyTypeName: Mario.Game.Boxes.BottomHitableBox, Assembly-CSharp
-        m_MethodName: OnProximityRayHitTop
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []

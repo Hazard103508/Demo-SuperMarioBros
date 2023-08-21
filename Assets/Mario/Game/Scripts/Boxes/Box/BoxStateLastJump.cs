@@ -15,6 +15,12 @@ namespace Mario.Game.Boxes.Box
         }
         #endregion
 
+        #region Protected Methods
+        protected virtual void OnJumpCompleted()
+        {
+        }
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
@@ -30,6 +36,7 @@ namespace Mario.Game.Boxes.Box
             {
                 Box.transform.position = _initPosition;
                 Box.StateMachine.TransitionTo(Box.StateMachine.StateDisable);
+                OnJumpCompleted();
             }
         }
         #endregion

@@ -19,4 +19,5 @@ MonoBehaviour:
   FallSpeed: 100
   MaxFallSpeed: 100
   JumpAcceleration: 10
-  GreenMushroomPoolReference: {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
+  RiseItemSoundFXPoolReference: {fileID: 11400000, guid: 3d90ea05b136ea74c99ac5c5dd82da66, type: 2}
+  MushroomPoolReference: {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
