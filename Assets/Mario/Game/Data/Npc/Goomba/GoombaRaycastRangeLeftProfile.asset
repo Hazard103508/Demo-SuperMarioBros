@@ -20,8 +20,8 @@ MonoBehaviour:
     m_Bits: 0
   Range:
     StartPoint: {x: -0.45, y: 0.1}
-    EndPoint: {x: -0.45, y: -0.4}
-    Count: 4
+    EndPoint: {x: -0.45, y: -0.05}
+    Count: 2
   Ray:
     Direction: {x: -1, y: 0}
     Length: 0.05
