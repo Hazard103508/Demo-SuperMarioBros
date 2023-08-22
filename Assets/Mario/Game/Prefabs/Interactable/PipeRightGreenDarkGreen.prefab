@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 6663367400257538312}
   - component: {fileID: 2187863939528536952}
   m_Layer: 8
-  m_Name: Underworld_PipeRight
+  m_Name: PipeRightGreenDarkGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

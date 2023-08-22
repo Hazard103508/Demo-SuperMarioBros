@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 8313384275948260686}
   - component: {fileID: 8089644844695665983}
   m_Layer: 8
-  m_Name: Overworld_PipeDown
+  m_Name: PipeDownGreenBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
