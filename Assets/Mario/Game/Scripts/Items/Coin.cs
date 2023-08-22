@@ -21,28 +21,31 @@ namespace Mario.Game.Items
         #endregion
 
         #region Private Methods
-        private void CollectCoin()
+        private void CollectCoin(bool addPoint)
         {
             if (isCollected)
                 return;
 
             isCollected = true;
-            Services.ScoreService.Add(_profile.Points);
-            Services.CoinService.Add();
+            if (addPoint)
+            {
+                Services.ScoreService.Add(_profile.Points);
+                Services.CoinService.Add();
+            }
             Destroy(gameObject);
         }
         private void CollectJumpingCoin()
         {
-            CollectCoin();
+            CollectCoin(false);
             Services.PoolService.GetObjectFromPool(_profile.CoinPoolReference, this.transform.position + Vector3.down);
         }
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => CollectCoin();
-        public void OnHittedByPlayerFromBottom(PlayerController_OLD player) => CollectCoin();
-        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => CollectCoin();
-        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => CollectCoin();
+        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => CollectCoin(true);
+        public void OnHittedByPlayerFromBottom(PlayerController_OLD player) => CollectCoin(true);
+        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => CollectCoin(true);
+        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => CollectCoin(true);
         #endregion
 
         #region On Box Hit
