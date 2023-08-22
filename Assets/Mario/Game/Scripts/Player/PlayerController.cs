@@ -1,10 +1,16 @@
 using Mario.Game.Commons;
+using Mario.Game.Interfaces;
 using Mario.Game.ScriptableObjects.Player;
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour,
+        IHittableByMovingToTop,
+        IHittableByMovingToBottom,
+        IHittableByMovingToLeft,
+        IHittableByMovingToRight
     {
         #region Objects
         [SerializeField] private PlayerProfile _profile;
@@ -36,6 +42,13 @@ namespace Mario.Game.Player
         {
             this.StateMachine.Update();
         }
+        #endregion
+
+        #region On Movable Hit
+        public void OnHittedByMovingToTop(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToTop(hitInfo);
+        public void OnHittedByMovingToBottom(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToBottom(hitInfo);
+        public void OnHittedByMovingToLeft(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToLeft(hitInfo);
+        public void OnHittedByMovingToRight(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToRight(hitInfo);
         #endregion
     }
 }

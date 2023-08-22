@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
@@ -26,6 +27,23 @@ namespace Mario.Game.Player
             Player.Movable.Speed += Player.InputActions.Move.x * Player.Profile.Walk.Acceleration * Time.deltaTime;
             if (Mathf.Abs(Player.Movable.Speed) > Player.Profile.Walk.MaxSpeed)
                 Player.Movable.Speed = Mathf.Clamp(Player.Movable.Speed, -Player.Profile.Walk.MaxSpeed, Player.Profile.Walk.MaxSpeed);
+        }
+        #endregion
+
+        #region On Movable Hit
+        //public override void OnHittedByMovingToTop(RayHitInfo hitInfo)
+        //{
+        //}
+        //public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
+        //{
+        //}
+        public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
+        {
+            Player.Movable.Speed = 0;
+        }
+        public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
+        {
+            Player.Movable.Speed = 0;
         }
         #endregion
     }

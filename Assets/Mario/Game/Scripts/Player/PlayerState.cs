@@ -5,6 +5,7 @@ namespace Mario.Game.Player
 {
     public abstract class PlayerState :
         IState,
+        IHittableByMovingToTop,
         IHittableByMovingToBottom,
         IHittableByMovingToLeft,
         IHittableByMovingToRight
@@ -33,6 +34,9 @@ namespace Mario.Game.Player
         #endregion
 
         #region On Movable Hit
+        public virtual void OnHittedByMovingToTop(RayHitInfo hitInfo)
+        {
+        }
         public virtual void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
         }
