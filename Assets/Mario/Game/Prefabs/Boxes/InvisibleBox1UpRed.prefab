@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7283937480027014162}
   - component: {fileID: 481320246661266089}
   - component: {fileID: 3418527106313247100}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: InvisibleBox1UpRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}

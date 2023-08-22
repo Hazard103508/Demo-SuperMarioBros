@@ -46,7 +46,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &83929125650951714
 Transform:
   m_ObjectHideFlags: 0
@@ -1464,7 +1464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6510892315810445787
 Transform:
   m_ObjectHideFlags: 0
@@ -1841,6 +1841,10 @@ PrefabInstance:
     - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_Name
       value: InvisibleBox1UpRed (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder
@@ -2516,7 +2520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8151661868066420750, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe2e89d2a813ff4ea4080934230c31a, type: 3}
@@ -2722,6 +2726,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvisibleBox1UpRed (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -2846,6 +2854,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvisibleBox1UpRed (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2969,6 +2981,10 @@ PrefabInstance:
     - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_Name
       value: InvisibleBox1UpRed (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder
@@ -4350,6 +4366,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvisibleBox1UpRed (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -4784,6 +4804,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvisibleBox1UpRed
       objectReference: {fileID: 0}
+    - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -4845,6 +4869,10 @@ PrefabInstance:
     - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_Name
       value: InvisibleBox1UpRed (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3418527106313247096, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3418527106313247099, guid: e4997c78edc4dc34ab3de8c22c1e9b22, type: 3}
       propertyPath: m_RootOrder

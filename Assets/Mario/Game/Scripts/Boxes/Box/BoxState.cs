@@ -7,7 +7,10 @@ namespace Mario.Game.Boxes.Box
     public abstract class BoxState :
         IState,
         IHittableByMovingToTop,
-        IHittableByPlayerFromBottom
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight
     {
         #region State Machine
         public virtual void Enter()
@@ -39,8 +42,17 @@ namespace Mario.Game.Boxes.Box
         #endregion
 
         #region On Player Hit
+        public virtual void OnHittedByPlayerFromTop(PlayerController_OLD player)
+        {
+        }
         public virtual void OnHittedByPlayerFromBottom(PlayerController_OLD player)
         {
+        }
+        public virtual void OnHittedByPlayerFromLeft(PlayerController_OLD player)
+        { 
+        }
+        public virtual void OnHittedByPlayerFromRight(PlayerController_OLD player)
+        { 
         }
         #endregion
     }

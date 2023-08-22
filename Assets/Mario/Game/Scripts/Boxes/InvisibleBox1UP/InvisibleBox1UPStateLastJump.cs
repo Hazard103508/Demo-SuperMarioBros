@@ -1,5 +1,6 @@
 using Mario.Application.Services;
 using Mario.Game.Boxes.Box;
+using UnityEngine;
 
 namespace Mario.Game.Boxes.InvisibleBox1UP
 {
@@ -19,6 +20,7 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
         public override void Enter()
         {
             base.Enter();
+            Box.gameObject.layer = LayerMask.NameToLayer("Ground");
             Services.PoolService.GetObjectFromPool(Box.Profile.RiseItemSoundFXPoolReference, Box.transform.position);
         }
         #endregion

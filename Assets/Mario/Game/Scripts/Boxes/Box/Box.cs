@@ -9,7 +9,10 @@ namespace Mario.Game.Boxes.Box
 {
     public class Box : MonoBehaviour,
         IHittableByMovingToTop,
-        IHittableByPlayerFromBottom
+        IHittableByPlayerFromTop,
+        IHittableByPlayerFromBottom,
+        IHittableByPlayerFromLeft,
+        IHittableByPlayerFromRight
     {
         #region Objects
         [SerializeField] private BoxProfile _profile;
@@ -60,7 +63,10 @@ namespace Mario.Game.Boxes.Box
         #endregion
 
         #region On Player Hit
-        public virtual void OnHittedByPlayerFromBottom(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromBottom(player);
+        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromTop(player);
+        public void OnHittedByPlayerFromBottom(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromBottom(player);
+        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromLeft(player);
+        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => this.StateMachine.CurrentState.OnHittedByPlayerFromRight(player);
         #endregion
     }
 }
