@@ -1,4 +1,5 @@
 using Mario.Application.Services;
+using Mario.Game.Interactable;
 using Mario.Game.Player;
 using UnityEngine;
 

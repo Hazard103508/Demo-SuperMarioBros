@@ -1,3 +1,4 @@
+using Mario.Game.Interactable;
 using Mario.Game.Player;
 using UnityEngine;
 using UnityShared.Commons.Structs;

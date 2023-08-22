@@ -1,3 +1,4 @@
+using Mario.Game.Interactable;
 using Mario.Game.Player;
 
 namespace Mario.Game.Interfaces

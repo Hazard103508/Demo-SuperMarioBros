@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
-namespace Mario.Game.Player
+namespace Mario.Game.Interactable
 {
     public class Fireball : MonoBehaviour,
         IHittableByMovingToBottom,
