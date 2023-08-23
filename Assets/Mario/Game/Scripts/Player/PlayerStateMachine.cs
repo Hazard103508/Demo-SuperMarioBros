@@ -7,14 +7,14 @@ namespace Mario.Game.Player
         #region Properties
         new public PlayerState CurrentState => (PlayerState)base.CurrentState;
         public PlayerStateSmallIdle StateSmallIdle { get; private set; }
-        public PlayerStateSmallWalk StateSmallWalk { get; private set; }
+        public PlayerStateSmallRun StateSmallRun { get; private set; }
         #endregion
 
         #region Constructor
         public PlayerStateMachine(PlayerController Player)
         {
             StateSmallIdle = new PlayerStateSmallIdle(Player);
-            StateSmallWalk = new PlayerStateSmallWalk(Player);
+            StateSmallRun = new PlayerStateSmallRun(Player);
         }
         #endregion
     }

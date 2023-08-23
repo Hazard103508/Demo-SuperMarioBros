@@ -18,7 +18,7 @@ namespace Mario.Game.Player
         public override void Update()
         {
             if (Player.InputActions.Move.x != 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallWalk);
+                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
         }
         #endregion
     }
