@@ -1,33 +1,32 @@
-using UnityEngine;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallRun : PlayerState
+    public class PlayerStateSmallStop : PlayerState
     {
         #region Constructor
-        public PlayerStateSmallRun(PlayerController player) : base(player)
+        public PlayerStateSmallStop(PlayerController player) : base(player)
         {
         }
+        #endregion
+
+        #region Private Methods
+        protected void SetStopSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
         #endregion
 
         #region IState Methods
         public override void Enter()
         {
-            Player.Animator.CrossFade("Small_Run", 0);
+            Player.Animator.CrossFade("Small_Stop", 0);
         }
         public override void Update()
         {
-            SpeedUp();
             SpeedDown();
 
             if (TransitionToIdle())
                 return;
 
-            SetAnimationSpeed();
-            SetSpriteDirection();
-
-            TransitionToStop();
+            SetStopSpriteDirection();
         }
         #endregion
 

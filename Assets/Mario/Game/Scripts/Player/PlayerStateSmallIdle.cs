@@ -8,7 +8,15 @@ namespace Mario.Game.Player
         }
         #endregion
 
-        #region IState Methods
+        #region Private Methods
+        private void TransitionToIdle()
+        {
+            if (Player.InputActions.Move.x != 0)
+                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
+        }
+        #endregion
+
+            #region IState Methods
         public override void Enter()
         {
             Player.Animator.CrossFade("Small_Idle", 0);
@@ -17,8 +25,7 @@ namespace Mario.Game.Player
         }
         public override void Update()
         {
-            if (Player.InputActions.Move.x != 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
+            TransitionToIdle();
         }
         #endregion
     }
