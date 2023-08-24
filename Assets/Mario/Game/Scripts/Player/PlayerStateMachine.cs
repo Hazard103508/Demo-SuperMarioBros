@@ -10,6 +10,7 @@ namespace Mario.Game.Player
         public PlayerStateSmallRun StateSmallRun { get; private set; }
         public PlayerStateSmallStop StateSmallStop { get; private set; }
         public PlayerStateSmallJump StateSmallJump { get; private set; }
+        public PlayerStateSmallFall StateSmallFall { get; private set; }
         #endregion
 
         #region Constructor
@@ -19,6 +20,7 @@ namespace Mario.Game.Player
             StateSmallRun = new PlayerStateSmallRun(Player);
             StateSmallStop = new PlayerStateSmallStop(Player);
             StateSmallJump = new PlayerStateSmallJump(Player);
+            StateSmallFall = new PlayerStateSmallFall(Player);
         }
         #endregion
     }

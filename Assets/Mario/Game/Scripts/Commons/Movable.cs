@@ -34,6 +34,7 @@ namespace Mario.Game.Commons
                 _currentSpeed.x = value;
             }
         }
+        public float JumpForce => _currentSpeed.y;
         #endregion
 
         #region Unity Methods

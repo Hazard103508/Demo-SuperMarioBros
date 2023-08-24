@@ -107,6 +107,8 @@ namespace Mario.Game.Player
             CalculateGravity();
             CalculateJump();
             Shoot();
+
+            Debug.Log(_currentSpeed.y);
         }
         private void LateUpdate()
         {
@@ -203,7 +205,7 @@ namespace Mario.Game.Player
 
             if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
             {
-                if (JumpMinBuffered || (Input.Jump && JumpMaxBuffered))
+                if (JumpMinBuffered /*|| (Input.Jump && JumpMaxBuffered)*/)
                     _currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
                 else
                     IsJumping = false;

@@ -8,10 +8,11 @@ namespace Mario.Game.Player
         }
         #endregion
 
-            #region IState Methods
+        #region IState Methods
         public override void Enter()
         {
             Player.Animator.CrossFade("Small_Idle", 0);
+            Player.Movable.Speed = 0;
             Player.Movable.Gravity = Player.Profile.Fall.FallSpeed;
             Player.Movable.MaxFallSpeed = Player.Profile.Fall.MaxFallSpeed;
             ResetAnimationSpeed();

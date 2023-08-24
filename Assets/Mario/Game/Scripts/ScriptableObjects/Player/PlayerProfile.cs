@@ -38,6 +38,9 @@ namespace Mario.Game.ScriptableObjects.Player
             public float MinBufferTime;
             public float MaxWalkBufferTime;
             public float MaxRunBufferTime;
+            public float MinHeight;
+            public float MaxIdleHeight;
+            public float MaxRunHeight;
         }
         [Serializable]
         public class PlayerSpritePositions
