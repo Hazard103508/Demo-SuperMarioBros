@@ -9,6 +9,7 @@ namespace Mario.Game.Player
         public PlayerStateSmallIdle StateSmallIdle { get; private set; }
         public PlayerStateSmallRun StateSmallRun { get; private set; }
         public PlayerStateSmallStop StateSmallStop { get; private set; }
+        public PlayerStateSmallJump StateSmallJump { get; private set; }
         #endregion
 
         #region Constructor
@@ -17,6 +18,7 @@ namespace Mario.Game.Player
             StateSmallIdle = new PlayerStateSmallIdle(Player);
             StateSmallRun = new PlayerStateSmallRun(Player);
             StateSmallStop = new PlayerStateSmallStop(Player);
+            StateSmallJump = new PlayerStateSmallJump(Player);
         }
         #endregion
     }

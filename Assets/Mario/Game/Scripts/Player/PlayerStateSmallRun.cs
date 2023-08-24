@@ -3,7 +3,7 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallRun : PlayerState
+    public class PlayerStateSmallRun : PlayerStateSmall
     {
         #region Constructor
         public PlayerStateSmallRun(PlayerController player) : base(player)
@@ -21,13 +21,13 @@ namespace Mario.Game.Player
             SpeedUp();
             SpeedDown();
 
-            if (TransitionToIdle())
+            if (SetTransitionToIdle())
                 return;
 
             SetAnimationSpeed();
             SetSpriteDirection();
 
-            TransitionToStop();
+            SetTransitionToStop();
         }
         #endregion
 

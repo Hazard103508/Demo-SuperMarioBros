@@ -37,9 +37,11 @@ namespace Mario.Game.Player
         #region Protected Methods
         protected void SpeedUp()
         {
-            Player.Movable.Speed += Player.InputActions.Move.x * Player.Profile.Walk.Acceleration * Time.deltaTime;
-            if (Mathf.Abs(Player.Movable.Speed) > Player.Profile.Walk.MaxSpeed)
+            if (Player.InputActions.Move.x != 0)
             {
+                float currentAcceleration = Player.InputActions.Sprint ? Player.Profile.Run.Acceleration : Player.Profile.Walk.Acceleration;
+                Player.Movable.Speed += Player.InputActions.Move.x * currentAcceleration * Time.deltaTime;
+
                 float _speed = Player.InputActions.Sprint ? Player.Profile.Run.MaxSpeed : Player.Profile.Walk.MaxSpeed;
                 Player.Movable.Speed = Mathf.Clamp(Player.Movable.Speed, -_speed, _speed);
             }
@@ -57,21 +59,12 @@ namespace Mario.Game.Player
             float walkSpeedFactor = Mathf.Abs(Player.Movable.Speed) / Player.Profile.Walk.MaxSpeed;
             Player.Animator.speed = Mathf.Clamp(walkSpeedFactor, 0.5f, 1.5f);
         }
-        protected void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
-        protected bool TransitionToIdle()
-        {
-            if (Player.Movable.Speed == 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallIdle);
-                return true;
-            }
-            return false;
-        }
-        protected void TransitionToStop()
-        {
-            if (Player.InputActions.Move.x != 0 && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallStop);
-        }
+        protected void ResetAnimationSpeed() => Player.Animator.speed = 1;
+        protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
+        protected abstract bool SetTransitionToIdle();
+        protected abstract void SetTransitionToRun();
+        protected abstract void SetTransitionToStop();
+        protected abstract void SetTransitionToJump();
         #endregion
 
         #region On Movable Hit

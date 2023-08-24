@@ -1,8 +1,9 @@
+using UnityEngine;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallStop : PlayerState
+    public class PlayerStateSmallStop : PlayerStateSmall
     {
         #region Constructor
         public PlayerStateSmallStop(PlayerController player) : base(player)
@@ -10,8 +11,13 @@ namespace Mario.Game.Player
         }
         #endregion
 
-        #region Private Methods
-        protected void SetStopSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
+        #region protected Methods
+        protected override void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
+        protected override void SetTransitionToRun()
+        {
+            if (Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
+                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
+        }
         #endregion
 
         #region IState Methods
@@ -23,10 +29,11 @@ namespace Mario.Game.Player
         {
             SpeedDown();
 
-            if (TransitionToIdle())
+            if (SetTransitionToIdle())
                 return;
 
-            SetStopSpriteDirection();
+            SetSpriteDirection();
+            //SetTransitionToRun();
         }
         #endregion
 

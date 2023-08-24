@@ -1,18 +1,10 @@
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallIdle : PlayerState
+    public class PlayerStateSmallIdle : PlayerStateSmall
     {
         #region Constructor
         public PlayerStateSmallIdle(PlayerController player) : base(player)
         {
-        }
-        #endregion
-
-        #region Private Methods
-        private void TransitionToIdle()
-        {
-            if (Player.InputActions.Move.x != 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
         }
         #endregion
 
@@ -22,10 +14,12 @@ namespace Mario.Game.Player
             Player.Animator.CrossFade("Small_Idle", 0);
             Player.Movable.Gravity = Player.Profile.Fall.FallSpeed;
             Player.Movable.MaxFallSpeed = Player.Profile.Fall.MaxFallSpeed;
+            ResetAnimationSpeed();
         }
         public override void Update()
         {
-            TransitionToIdle();
+            SetTransitionToRun();
+            SetTransitionToJump();
         }
         #endregion
     }
