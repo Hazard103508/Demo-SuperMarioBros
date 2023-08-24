@@ -15,7 +15,7 @@ namespace Mario.Game.Player
         protected override void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
         protected override void SetTransitionToRun()
         {
-            if (Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
+            if (Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x))
                 Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
         }
         #endregion
@@ -33,7 +33,7 @@ namespace Mario.Game.Player
                 return;
 
             SetSpriteDirection();
-            //SetTransitionToRun();
+            SetTransitionToRun();
         }
         #endregion
 
