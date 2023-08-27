@@ -10,6 +10,13 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region IState Methods
+        public override void Update()
+        {
+            SpeedUp();
+        }
+        #endregion
+
         #region On Movable Hit
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {

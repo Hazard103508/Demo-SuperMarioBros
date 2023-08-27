@@ -30,10 +30,14 @@ namespace Mario.Game.Player
             }
             return false;
         }
-        private void SetTransitionToRun()
+        private bool SetTransitionToRun()
         {
             if (Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x))
+            {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+                return true;
+            }
+            return false;
         }
         private void SetTransitionToJump()
         {
@@ -51,13 +55,17 @@ namespace Mario.Game.Player
         }
         public override void Update()
         {
+            SpeedUp();
             SpeedDown();
 
             if (SetTransitionToIdle())
                 return;
 
             SetSpriteDirection();
-            SetTransitionToRun();
+
+            if (SetTransitionToRun())
+                return;
+
             SetTransitionToJump();
         }
         #endregion
