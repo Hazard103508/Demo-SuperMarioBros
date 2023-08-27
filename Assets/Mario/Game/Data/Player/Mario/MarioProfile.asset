@@ -34,7 +34,7 @@ MonoBehaviour:
     MinBufferTime: 0.05
     MaxWalkBufferTime: 0.26
     MaxRunBufferTime: 0.32
-    MinHeight: 1.5
+    MinHeight: 1.8
     MaxIdleHeight: 4
     MaxRunHeight: 5
   SpritePositions:

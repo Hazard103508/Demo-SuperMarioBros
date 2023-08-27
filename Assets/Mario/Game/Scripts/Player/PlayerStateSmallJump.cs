@@ -5,26 +5,9 @@ namespace Mario.Game.Player
     public class PlayerStateSmallJump : PlayerStateSmall
     {
         #region Objects
-        private float _lastJumpPressed = 0;
-        #endregion
-
-        #region Properties
-        private bool JumpMinBuffered => _lastJumpPressed + Player.Profile.Jump.MinBufferTime > Time.time;
-        private bool JumpMaxBuffered
-        {
-            get
-            {
-                float absCurrentSpeed = Mathf.Abs(Player.Movable.Speed);
-                if (absCurrentSpeed > Player.Profile.Walk.MaxSpeed)
-                {
-                    float speedFactor = Mathf.InverseLerp(Player.Profile.Walk.MaxSpeed, Player.Profile.Run.MaxSpeed, absCurrentSpeed);
-                    float finalBufferTime = Mathf.Lerp(Player.Profile.Jump.MaxWalkBufferTime, Player.Profile.Jump.MaxRunBufferTime, speedFactor);
-                    return _lastJumpPressed + finalBufferTime > Time.time;
-                }
-                else
-                    return _lastJumpPressed + Player.Profile.Jump.MaxWalkBufferTime > Time.time;
-            }
-        }
+        private float _jumpForce;
+        private float _initYPos;
+        private float _maxHeight;
         #endregion
 
         #region Constructor
@@ -36,43 +19,33 @@ namespace Mario.Game.Player
         #region Private Methods
         private void Jump()
         {
-            if (JumpMinBuffered || (Player.InputActions.Jump && JumpMaxBuffered))
-            {
-                float jumpForce = Player.Movable.JumpForce + Player.Profile.Jump.Acceleration * Time.deltaTime;
-                jumpForce = Mathf.Clamp(jumpForce, 0, Player.Profile.Jump.MaxSpeed);
-                Player.Movable.AddJumpForce(jumpForce);
-
-                UnityEngine.Debug.Log(jumpForce);
-            }
+            var jumpHeight = UnityShared.Helpers.MathEquations.Trajectory.GetHeight(_jumpForce, -Player.Movable.Gravity);
+            var jumpedHeight = Player.transform.position.y - _initYPos;
+            var currentJump = jumpHeight + jumpedHeight;
+            if (currentJump < _maxHeight)
+                Player.Movable.AddJumpForce(_jumpForce);
             else
                 Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
         }
-        //private void Jump()
-        //{
-        //    //    if (JumpMinBuffered || (Player.InputActions.Jump && JumpMaxBuffered))
-        //    //    {
-        //    float jumpForce = Player.Movable.JumpForce + Player.Profile.Jump.Acceleration * Time.deltaTime;
-        //    jumpForce = Mathf.Clamp(jumpForce, 0, Player.Profile.Jump.MaxSpeed);
-        //    Player.Movable.AddJumpForce(jumpForce);
-        //
-        //    // calcualar altura maxima que tendra el salto para la fuerza y gravedad actuales
-        //
-        //    //    }
-        //    //    else
-        //    //        Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
-        //}
         #endregion
 
         #region IState Methods
         public override void Enter()
         {
-            _lastJumpPressed = 0;
             Player.Animator.CrossFade("Small_Jump", 0);
+
+            _initYPos = Player.transform.position.y;
+            _maxHeight = Player.Profile.Jump.MaxIdleHeight;
+            _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(Player.Profile.Jump.MinHeight, -Player.Movable.Gravity);
+            Player.Movable.AddJumpForce(_jumpForce);
         }
         public override void Update()
         {
-            if(_lastJumpPressed == 0)
-                _lastJumpPressed = Time.time;
+            if (!Player.InputActions.Jump)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
+                return;
+            }
 
             Jump();
         }

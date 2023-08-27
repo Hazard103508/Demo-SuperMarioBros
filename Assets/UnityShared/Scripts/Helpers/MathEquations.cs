@@ -1,3 +1,4 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace UnityShared.Helpers
@@ -13,6 +14,13 @@ namespace UnityShared.Helpers
             /// <param name="G">Gravedad</param>
             /// <returns></returns>
             public static float GetVelocity(float H, float G) => Mathf.Sqrt(H * -2f * G);
+            /// <summary>
+            /// Obtiene la altura que tendra el objeto en la trayectoria
+            /// </summary>
+            /// <param name="F">fuerza de salto</param>
+            /// <param name="G">Gravedad</param>
+            /// <returns></returns>
+            public static float GetHeight(float F, float G) => Mathf.Pow(F, 2) / (-2f * G);
             /// <summary>
             /// 
             /// </summary>
