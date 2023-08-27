@@ -1,9 +1,9 @@
 namespace Mario.Game.Player
 {
-    public class _PlayerStateTEMPLATE : PlayerState
+    public class PlayerStateSmallStop : PlayerStateStop
     {
         #region Constructor
-        public _PlayerStateTEMPLATE(PlayerController player) : base(player)
+        public PlayerStateSmallStop(PlayerController player) : base(player)
         {
         }
         #endregion
@@ -11,7 +11,7 @@ namespace Mario.Game.Player
         #region IState Methods
         public override void Enter()
         {
-
+            Player.Animator.CrossFade("Small_Stop", 0);
         }
         #endregion
     }

@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallJump : PlayerStateSmall
+    public abstract class PlayerStateJump : PlayerState
     {
         #region Objects
         private float _jumpForce;
@@ -11,7 +12,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Constructor
-        public PlayerStateSmallJump(PlayerController player) : base(player)
+        public PlayerStateJump(PlayerController player) : base(player)
         {
         }
         #endregion
@@ -33,13 +34,16 @@ namespace Mario.Game.Player
             float speedFactor = Mathf.InverseLerp(Player.Profile.Walk.MaxSpeed, Player.Profile.Run.MaxSpeed, absCurrentSpeed);
             return Mathf.Lerp(Player.Profile.Jump.MaxIdleHeight, Player.Profile.Jump.MaxRunHeight, speedFactor);
         }
+        private void SetTransitionToFall()
+        {
+            if (!Player.InputActions.Jump)
+                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
+        }
         #endregion
 
         #region IState Methods
         public override void Enter()
         {
-            Player.Animator.CrossFade("Small_Jump", 0);
-
             _initYPos = Player.transform.position.y;
             _maxHeight = GetMaxHeight();
             _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(Player.Profile.Jump.MinHeight, -Player.Movable.Gravity);
@@ -47,13 +51,22 @@ namespace Mario.Game.Player
         }
         public override void Update()
         {
-            if (!Player.InputActions.Jump)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
-                return;
-            }
-
+            SpeedUp();
             Jump();
+            SetTransitionToFall();
+        }
+        #endregion
+
+        #region On Movable Hit
+        public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                Player.Movable.Speed = 0;
+        }
+        public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                Player.Movable.Speed = 0;
         }
         #endregion
     }

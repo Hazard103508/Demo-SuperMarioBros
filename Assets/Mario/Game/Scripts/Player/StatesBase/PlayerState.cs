@@ -61,10 +61,7 @@ namespace Mario.Game.Player
         }
         protected void ResetAnimationSpeed() => Player.Animator.speed = 1;
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
-        protected abstract bool SetTransitionToIdle();
-        protected abstract void SetTransitionToRun();
-        protected abstract void SetTransitionToStop();
-        protected abstract void SetTransitionToJump();
+
         #endregion
 
         #region On Movable Hit
