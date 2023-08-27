@@ -27,6 +27,12 @@ namespace Mario.Game.Player
             else
                 Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
         }
+        private float GetMaxHeight()
+        {
+            float absCurrentSpeed = Mathf.Abs(Player.Movable.Speed);
+            float speedFactor = Mathf.InverseLerp(Player.Profile.Walk.MaxSpeed, Player.Profile.Run.MaxSpeed, absCurrentSpeed);
+            return Mathf.Lerp(Player.Profile.Jump.MaxIdleHeight, Player.Profile.Jump.MaxRunHeight, speedFactor);
+        }
         #endregion
 
         #region IState Methods
@@ -35,7 +41,7 @@ namespace Mario.Game.Player
             Player.Animator.CrossFade("Small_Jump", 0);
 
             _initYPos = Player.transform.position.y;
-            _maxHeight = Player.Profile.Jump.MaxIdleHeight;
+            _maxHeight = GetMaxHeight();
             _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(Player.Profile.Jump.MinHeight, -Player.Movable.Gravity);
             Player.Movable.AddJumpForce(_jumpForce);
         }

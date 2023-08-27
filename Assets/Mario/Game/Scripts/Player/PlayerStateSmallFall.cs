@@ -10,6 +10,14 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Protected Methods
+        protected override bool SetTransitionToIdle()
+        {
+            Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallIdle);
+            return true;
+        }
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {

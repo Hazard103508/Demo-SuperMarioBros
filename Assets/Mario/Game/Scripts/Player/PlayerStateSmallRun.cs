@@ -5,9 +5,23 @@ namespace Mario.Game.Player
 {
     public class PlayerStateSmallRun : PlayerStateSmall
     {
+        #region Objects
+        private bool _jumpWasPressed;
+        #endregion
+
         #region Constructor
         public PlayerStateSmallRun(PlayerController player) : base(player)
         {
+        }
+        #endregion
+
+        #region Protected Methods
+        protected override void SetTransitionToJump()
+        {
+            if (!_jumpWasPressed)
+                base.SetTransitionToJump();
+
+            _jumpWasPressed = Player.InputActions.Jump;
         }
         #endregion
 
@@ -15,6 +29,7 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             Player.Animator.CrossFade("Small_Run", 0);
+            _jumpWasPressed = Player.InputActions.Jump;
         }
         public override void Update()
         {
@@ -28,6 +43,7 @@ namespace Mario.Game.Player
             SetSpriteDirection();
 
             SetTransitionToStop();
+            SetTransitionToJump();
         }
         #endregion
 

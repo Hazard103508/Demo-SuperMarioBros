@@ -12,11 +12,20 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Protected Methods
+        protected override void SetTransitionToJump()
+        {
+            if (!_jumpWasPressed)
+                base.SetTransitionToJump();
+
+            _jumpWasPressed = Player.InputActions.Jump;
+        }
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
             Player.Animator.CrossFade("Small_Idle", 0);
-            Player.Movable.Speed = 0;
             Player.Movable.Gravity = Player.Profile.Fall.FallSpeed;
             Player.Movable.MaxFallSpeed = Player.Profile.Fall.MaxFallSpeed;
             ResetAnimationSpeed();
@@ -26,11 +35,7 @@ namespace Mario.Game.Player
         public override void Update()
         {
             SetTransitionToRun();
-
-            if (!_jumpWasPressed)
-                SetTransitionToJump();
-
-            _jumpWasPressed = Player.InputActions.Jump;
+            SetTransitionToJump();
         }
         #endregion
     }

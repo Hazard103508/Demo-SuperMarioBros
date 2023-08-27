@@ -34,6 +34,7 @@ namespace Mario.Game.Player
 
             SetSpriteDirection();
             SetTransitionToRun();
+            SetTransitionToJump();
         }
         #endregion
 

@@ -26,7 +26,7 @@ MonoBehaviour:
     Deacceleration: 15
   Fall:
     FallSpeed: 60
-    MaxFallSpeed: 14.5
+    MaxFallSpeed: 16
   Jump:
     Acceleration: 300
     MaxSpeed: 12
@@ -34,7 +34,7 @@ MonoBehaviour:
     MinBufferTime: 0.05
     MaxWalkBufferTime: 0.26
     MaxRunBufferTime: 0.32
-    MinHeight: 1.8
+    MinHeight: 1.2
     MaxIdleHeight: 4
     MaxRunHeight: 5
   SpritePositions:
