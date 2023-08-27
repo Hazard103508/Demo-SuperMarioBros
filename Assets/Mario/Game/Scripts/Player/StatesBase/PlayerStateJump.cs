@@ -26,7 +26,7 @@ namespace Mario.Game.Player
             if (currentJump < _maxHeight)
                 Player.Movable.AddJumpForce(_jumpForce);
             else
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
         }
         private float GetMaxHeight()
         {
@@ -37,7 +37,7 @@ namespace Mario.Game.Player
         private void SetTransitionToFall()
         {
             if (!Player.InputActions.Jump)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallFall);
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
         }
         #endregion
 

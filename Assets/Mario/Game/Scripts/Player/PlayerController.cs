@@ -36,7 +36,7 @@ namespace Mario.Game.Player
         }
         private void Start()
         {
-            this.StateMachine.Initialize(this.StateMachine.StateSmallIdle);
+            this.StateMachine.Initialize(this.StateMachine.CurrentMode.StateIdle);
         }
         private void Update()
         {

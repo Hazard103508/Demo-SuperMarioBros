@@ -16,12 +16,12 @@ namespace Mario.Game.Player
         private void SetTransitionToRun()
         {
             if (Player.InputActions.Move.x != 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
         }
         private void SetTransitionToJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallJump);
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateJump);
 
             _jumpWasPressed = Player.InputActions.Jump;
         }

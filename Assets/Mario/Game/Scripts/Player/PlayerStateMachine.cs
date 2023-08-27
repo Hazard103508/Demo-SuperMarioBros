@@ -5,22 +5,22 @@ namespace Mario.Game.Player
     public class PlayerStateMachine : StateMachine
     {
         #region Properties
+        public PlayerMode CurrentMode { get; set; }
+        public PlayerMode ModeIdle { get; private set; }
+        public PlayerMode ModeBig { get; private set; }
+        public PlayerMode ModeSuper { get; private set; }
+
         new public PlayerState CurrentState => (PlayerState)base.CurrentState;
-        public PlayerStateSmallIdle StateSmallIdle { get; private set; }
-        public PlayerStateSmallRun StateSmallRun { get; private set; }
-        public PlayerStateSmallStop StateSmallStop { get; private set; }
-        public PlayerStateSmallJump StateSmallJump { get; private set; }
-        public PlayerStateSmallFall StateSmallFall { get; private set; }
         #endregion
 
         #region Constructor
         public PlayerStateMachine(PlayerController Player)
         {
-            StateSmallIdle = new PlayerStateSmallIdle(Player);
-            StateSmallRun = new PlayerStateSmallRun(Player);
-            StateSmallStop = new PlayerStateSmallStop(Player);
-            StateSmallJump = new PlayerStateSmallJump(Player);
-            StateSmallFall = new PlayerStateSmallFall(Player);
+            ModeIdle = new PlayerModeSmall(Player);
+            ModeBig = new PlayerModeBig(Player);
+            //ModeSuper = new PlayerModeSuper(Player);
+
+            CurrentMode = ModeIdle;
         }
         #endregion
     }

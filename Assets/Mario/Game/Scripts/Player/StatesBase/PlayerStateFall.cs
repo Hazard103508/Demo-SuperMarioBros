@@ -2,10 +2,10 @@ using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallFall : PlayerState
+    public class PlayerStateFall : PlayerState
     {
         #region Constructor
-        public PlayerStateSmallFall(PlayerController player) : base(player)
+        public PlayerStateFall(PlayerController player) : base(player)
         {
         }
         #endregion
@@ -14,9 +14,9 @@ namespace Mario.Game.Player
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
             if (Player.InputActions.Move.x == 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallIdle);
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
             else
-                Player.StateMachine.TransitionTo(Player.StateMachine.StateSmallRun);
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
         }
         #endregion
     }
