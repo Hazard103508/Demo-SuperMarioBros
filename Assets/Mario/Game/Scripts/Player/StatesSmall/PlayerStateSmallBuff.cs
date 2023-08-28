@@ -26,7 +26,6 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            Player.Movable.enabled = false;
             _timer = 0;
         }
         public override void Update()

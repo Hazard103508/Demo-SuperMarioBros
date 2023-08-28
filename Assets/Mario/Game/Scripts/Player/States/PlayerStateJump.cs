@@ -36,16 +36,12 @@ namespace Mario.Game.Player
             float speedFactor = Mathf.InverseLerp(Player.Profile.Walk.MaxSpeed, Player.Profile.Run.MaxSpeed, absCurrentSpeed);
             return Mathf.Lerp(Player.Profile.Jump.MaxIdleHeight, Player.Profile.Jump.MaxRunHeight, speedFactor);
         }
-        private void SetTransitionToFall()
-        {
-            if (!Player.InputActions.Jump || Player.Movable.JumpForce < 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
-        }
         #endregion
 
         #region IState Methods
         public override void Enter()
         {
+            base.Enter();
             Player.Animator.CrossFade("Jump", 0);
             _initYPos = Player.transform.position.y;
             _maxHeight = GetMaxHeight();

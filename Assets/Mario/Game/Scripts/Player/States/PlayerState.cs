@@ -11,26 +11,33 @@ namespace Mario.Game.Player
         IHittableByMovingToLeft,
         IHittableByMovingToRight
     {
-        #region State Machine
-        public virtual void Enter()
-        {
-        }
-        public virtual void Exit()
-        {
-        }
-        public virtual void Update()
-        {
-        }
+
+        #region Objects
+        private bool _jumpWasPressed;
         #endregion
 
         #region Properties
         protected PlayerController Player { get; private set; }
         #endregion
 
+
         #region Constructor
         public PlayerState(PlayerController player)
         {
             Player = player;
+        }
+        #endregion
+
+        #region State Machine
+        public virtual void Enter()
+        {
+            _jumpWasPressed = Player.InputActions.Jump;
+        }
+        public virtual void Exit()
+        {
+        }
+        public virtual void Update()
+        {
         }
         #endregion
 
@@ -96,6 +103,27 @@ namespace Mario.Game.Player
             if (Player.InputActions.Move.x != 0 && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
             {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
+                return true;
+            }
+
+            return false;
+        }
+        protected virtual bool SetTransitionToJump()
+        {
+            if (!_jumpWasPressed && Player.InputActions.Jump)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateJump);
+                return true;
+            }
+
+            _jumpWasPressed = Player.InputActions.Jump;
+            return false;
+        }
+        protected virtual bool SetTransitionToFall()
+        {
+            if (!Player.InputActions.Jump || Player.Movable.JumpForce < 0)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
                 return true;
             }
 

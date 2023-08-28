@@ -13,6 +13,11 @@ namespace Mario.Game.Player
 
         #region Public Methods
         public override void OnBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
+        protected override bool SetTransitionToRun()
+        {
+            Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+            return true;
+        }
         #endregion
 
         #region IState Methods

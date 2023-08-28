@@ -6,10 +6,6 @@ namespace Mario.Game.Player
 {
     public class PlayerStateStop : PlayerState
     {
-        #region Objects
-        private bool _jumpWasPressed;
-        #endregion
-
         #region Constructor
         public PlayerStateStop(PlayerController player) : base(player)
         {
@@ -34,25 +30,11 @@ namespace Mario.Game.Player
 
         #endregion
 
-        #region Private Methods
-        private bool SetTransitionToJump()
-        {
-            if (!_jumpWasPressed && Player.InputActions.Jump)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateJump);
-                return true;
-            }
-
-            _jumpWasPressed = Player.InputActions.Jump;
-            return false;
-        }
-        #endregion
-
         #region IState Methods
         public override void Enter()
         {
+            base.Enter();
             Player.Animator.CrossFade("Stop", 0);
-            _jumpWasPressed = Player.InputActions.Jump;
         }
         public override void Update()
         {
