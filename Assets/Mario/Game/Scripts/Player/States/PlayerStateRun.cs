@@ -1,4 +1,3 @@
-using UnityEngine;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -9,10 +8,6 @@ namespace Mario.Game.Player
         public PlayerStateRun(PlayerController player) : base(player)
         {
         }
-        #endregion
-
-        #region Public Methods
-        public override void OnBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
         #endregion
 
         #region IState Methods

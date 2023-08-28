@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Mario.Game.Player
 {
     public abstract class PlayerStateBuff : PlayerState

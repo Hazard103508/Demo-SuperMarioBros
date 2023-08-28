@@ -49,10 +49,10 @@ namespace Mario.Game.Boxes.Box
         {
         }
         public virtual void OnHittedByPlayerFromLeft(PlayerController_OLD player)
-        { 
+        {
         }
         public virtual void OnHittedByPlayerFromRight(PlayerController_OLD player)
-        { 
+        {
         }
         #endregion
     }

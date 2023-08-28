@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -10,10 +9,6 @@ namespace Mario.Game.Player
         public PlayerStateStop(PlayerController player) : base(player)
         {
         }
-        #endregion
-
-        #region Public Methods
-        public override void OnBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
         #endregion
 
         #region protected Methods

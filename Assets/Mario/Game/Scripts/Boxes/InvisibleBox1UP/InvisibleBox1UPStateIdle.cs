@@ -1,6 +1,5 @@
 using Mario.Game.Boxes.Box;
 using Mario.Game.Player;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Game.Boxes.InvisibleBox1UP

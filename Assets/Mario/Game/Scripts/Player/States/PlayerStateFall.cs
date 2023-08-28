@@ -1,4 +1,3 @@
-using Mono.Cecil;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -12,7 +11,6 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public override void OnBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
         protected override bool SetTransitionToRun()
         {
             Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);

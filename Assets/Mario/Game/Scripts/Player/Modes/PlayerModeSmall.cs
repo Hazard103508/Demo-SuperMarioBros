@@ -1,6 +1,6 @@
 namespace Mario.Game.Player
 {
-    public class PlayerModeSmall: PlayerMode
+    public class PlayerModeSmall : PlayerMode
     {
         public PlayerModeSmall(PlayerController player)
         {

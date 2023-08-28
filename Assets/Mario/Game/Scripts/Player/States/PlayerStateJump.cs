@@ -17,10 +17,6 @@ namespace Mario.Game.Player
         }
         #endregion
 
-        #region Public Methods
-        public override void OnBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
-        #endregion
-
         #region Private Methods
         private void Jump()
         {

@@ -1,8 +1,5 @@
-using Mario.Application.Services;
 using Mario.Game.Boxes.Box;
 using Mario.Game.Player;
-using System.Collections;
-using UnityEngine;
 
 namespace Mario.Game.Boxes.MysteryBoxPowerUp
 {
