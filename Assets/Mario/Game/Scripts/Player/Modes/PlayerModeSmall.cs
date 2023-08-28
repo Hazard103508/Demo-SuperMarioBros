@@ -4,11 +4,12 @@ namespace Mario.Game.Player
     {
         public PlayerModeSmall(PlayerController player)
         {
-            base.StateIdle = new PlayerStateSmallIdle(player);
-            base.StateRun = new PlayerStateSmallRun(player);
-            base.StateStop = new PlayerStateSmallStop(player);
-            base.StateJump = new PlayerStateSmallJump(player);
+            base.StateIdle = new PlayerStateIdle(player);
+            base.StateRun = new PlayerStateRun(player);
+            base.StateStop = new PlayerStateStop(player);
+            base.StateJump = new PlayerStateJump(player);
             base.StateFall = new PlayerStateFall(player);
+            base.StateBuff = new PlayerStateSmallBuff(player);
         }
     }
 }

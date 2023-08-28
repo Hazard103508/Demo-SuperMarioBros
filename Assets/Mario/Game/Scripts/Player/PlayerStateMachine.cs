@@ -5,8 +5,8 @@ namespace Mario.Game.Player
     public class PlayerStateMachine : StateMachine
     {
         #region Properties
-        public PlayerMode CurrentMode { get; private set; }
-        public PlayerMode ModeIdle { get; private set; }
+        public PlayerMode CurrentMode { get; set; }
+        public PlayerMode ModeSmall { get; private set; }
         public PlayerMode ModeBig { get; private set; }
         public PlayerMode ModeSuper { get; private set; }
 
@@ -16,12 +16,40 @@ namespace Mario.Game.Player
         #region Constructor
         public PlayerStateMachine(PlayerController Player)
         {
-            ModeIdle = new PlayerModeSmall(Player);
+            ModeSmall = new PlayerModeSmall(Player);
             ModeBig = new PlayerModeBig(Player);
             //ModeSuper = new PlayerModeSuper(Player);
 
-            //CurrentMode = ModeIdle;
+            CurrentMode = ModeSmall;
+        }
+        #endregion
+
+        #region Public Methods
+        public void ChangeModeToSmall(PlayerController player)
+        {
+            ChangeMode(player, player.Profile.ModeSmall);
+            CurrentMode = ModeSmall;
+        }
+        public void ChangeModeToBig(PlayerController player)
+        {
+            ChangeMode(player, player.Profile.ModeBig);
             CurrentMode = ModeBig;
+        }
+        public void ChangeModeToSuper(PlayerController player)
+        {
+            ChangeMode(player, player.Profile.ModeSuper);
+            CurrentMode = ModeSuper;
+        }
+        #endregion
+
+        #region Private
+        private void ChangeMode(PlayerController Player, ScriptableObjects.Player.PlayerProfile.PlayerMode playerMode)
+        {
+            Player.Animator.runtimeAnimatorController = playerMode.AnimatorController;
+            Player.Movable.RaycastTop.Profile = playerMode.RaycastRange.Top;
+            Player.Movable.RaycastBottom.Profile = playerMode.RaycastRange.Bottom;
+            Player.Movable.RaycastLeft.Profile = playerMode.RaycastRange.Left;
+            Player.Movable.RaycastRight.Profile = playerMode.RaycastRange.Right;
         }
         #endregion
     }

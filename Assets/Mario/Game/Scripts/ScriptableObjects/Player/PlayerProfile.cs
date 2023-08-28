@@ -1,5 +1,6 @@
 using Mario.Game.ScriptableObjects.Pool;
 using System;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityShared.ScriptableObjects.GameObjects;
 
@@ -14,13 +15,12 @@ namespace Mario.Game.ScriptableObjects.Player
         public HorizontalMovement Run;
         public VerticalMovement Fall;
         public JumpMovement Jump;
-        public PlayerSpritePositions SpritePositions;
         public PlayerFireball Fireball;
 
-        [Header("Raycast")]
-        public ModeRaycastRange RaycastSmall;
-        public ModeRaycastRange RaycastBig;
-
+        [Header("Modes")]
+        public PlayerMode ModeSmall;
+        public PlayerMode ModeBig;
+        public PlayerMode ModeSuper;
 
         [Serializable]
         public class HorizontalMovement
@@ -53,6 +53,12 @@ namespace Mario.Game.ScriptableObjects.Player
         {
             public Vector2 StartLocalPosition;
             public PooledObjectProfile FireballPoolProfile;
+        }
+        [Serializable]
+        public class PlayerMode
+        {
+            public AnimatorController AnimatorController;
+            public ModeRaycastRange RaycastRange;
         }
         [Serializable]
         public class ModeRaycastRange

@@ -17,7 +17,11 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         #endregion
 
         #region Properties
-        public RaycastRangeProfile Profile => _profile;
+        public RaycastRangeProfile Profile
+        {
+            get => _profile;
+            set => _profile = value;
+        }
         #endregion
 
         #region Public Methods

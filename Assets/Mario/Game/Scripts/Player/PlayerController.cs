@@ -44,6 +44,10 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Public Methods
+        public void Buff() => this.StateMachine.CurrentState.OnBuff();
+        #endregion
+
         #region On Movable Hit
         public void OnHittedByMovingToTop(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToTop(hitInfo);
         public void OnHittedByMovingToBottom(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToBottom(hitInfo);

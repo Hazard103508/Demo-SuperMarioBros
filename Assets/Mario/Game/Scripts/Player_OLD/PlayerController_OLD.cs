@@ -236,17 +236,17 @@ namespace Mario.Game.Player
         }
         private void SetSmallCollider()
         {
-            _render.transform.localPosition = _profile.SpritePositions.Small;
+            //_render.transform.localPosition = _profile.SpritePositions.Small;
             EnableRaycastRange(enableSmall: true);
         }
         private void SetBigCollider()
         {
-            _render.transform.localPosition = _profile.SpritePositions.Big;
+            //_render.transform.localPosition = _profile.SpritePositions.Big;
             EnableRaycastRange(enableBig: true);
         }
         private void SetDuckingCollider()
         {
-            _render.transform.localPosition = _profile.SpritePositions.Big;
+            //_render.transform.localPosition = _profile.SpritePositions.Big;
             EnableRaycastRange(enableSmall: true);
         }
         private void EnableRaycastRange(bool enableSmall = false, bool enableBig = false)
