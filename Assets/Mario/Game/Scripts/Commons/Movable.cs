@@ -125,6 +125,7 @@ namespace Mario.Game.Commons
                 {
                     var hitObject = hitInfo.hitObjects.First();
                     nextPosition.y = GetFixedPositionY(hitObject.Point, RaycastBottom);
+                    _currentSpeed.y = 0;
                 }
 
                 if (hittableByMovingToBottom != null && hitInfo.hitObjects.Any())

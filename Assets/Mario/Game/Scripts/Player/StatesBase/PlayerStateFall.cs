@@ -18,12 +18,27 @@ namespace Mario.Game.Player
         #endregion
 
         #region On Movable Hit
+        public override void OnHittedByMovingToTop(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                Player.Movable.AddJumpForce(0);
+        }
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
-            if (Player.InputActions.Move.x == 0)
+            if (Player.Movable.Speed == 0)
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
             else
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+        }
+        public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                Player.Movable.Speed = 0;
+        }
+        public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                Player.Movable.Speed = 0;
         }
         #endregion
     }

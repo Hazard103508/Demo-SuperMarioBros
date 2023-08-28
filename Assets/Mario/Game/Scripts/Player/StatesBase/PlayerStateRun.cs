@@ -25,12 +25,16 @@ namespace Mario.Game.Player
             }
             return false;
         }
-        private void SetTransitionToJump()
+        private bool SetTransitionToJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)
+            {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateJump);
+                return true;
+            }
 
             _jumpWasPressed = Player.InputActions.Jump;
+            return false;
         }
         private bool SetTransitionToStop()
         {
@@ -60,10 +64,10 @@ namespace Mario.Game.Player
             SetAnimationSpeed();
             SetSpriteDirection();
 
-            if (SetTransitionToStop())
+            if (SetTransitionToJump())
                 return;
 
-            SetTransitionToJump();
+            SetTransitionToStop();
         }
         #endregion
 

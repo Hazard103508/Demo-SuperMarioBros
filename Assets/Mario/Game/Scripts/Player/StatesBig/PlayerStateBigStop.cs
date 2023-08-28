@@ -11,6 +11,7 @@ namespace Mario.Game.Player
         #region IState Methods
         public override void Enter()
         {
+            base.Enter();
             Player.Animator.CrossFade("Big_Stop", 0);
         }
         #endregion

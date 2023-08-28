@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -39,12 +40,16 @@ namespace Mario.Game.Player
             }
             return false;
         }
-        private void SetTransitionToJump()
+        private bool SetTransitionToJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)
+            {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateJump);
+                return true;
+            }
 
             _jumpWasPressed = Player.InputActions.Jump;
+            return false;
         }
         #endregion
 
@@ -63,10 +68,10 @@ namespace Mario.Game.Player
 
             SetSpriteDirection();
 
-            if (SetTransitionToRun())
+            if (SetTransitionToJump())
                 return;
 
-            SetTransitionToJump();
+            SetTransitionToRun();
         }
         #endregion
 

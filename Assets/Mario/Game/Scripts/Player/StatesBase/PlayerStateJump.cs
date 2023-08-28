@@ -25,8 +25,6 @@ namespace Mario.Game.Player
             var currentJump = jumpHeight + jumpedHeight;
             if (currentJump < _maxHeight)
                 Player.Movable.AddJumpForce(_jumpForce);
-            else
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
         }
         private float GetMaxHeight()
         {
@@ -36,7 +34,7 @@ namespace Mario.Game.Player
         }
         private void SetTransitionToFall()
         {
-            if (!Player.InputActions.Jump)
+            if (!Player.InputActions.Jump || Player.Movable.JumpForce < 0)
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
         }
         #endregion
@@ -58,6 +56,14 @@ namespace Mario.Game.Player
         #endregion
 
         #region On Movable Hit
+        public override void OnHittedByMovingToTop(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+            {
+                Player.Movable.AddJumpForce(0);
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
+            }
+        }
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
