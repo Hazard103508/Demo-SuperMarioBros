@@ -73,6 +73,34 @@ namespace Mario.Game.Player
         }
         protected void ResetAnimationSpeed() => Player.Animator.speed = 1;
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
+        protected virtual bool SetTransitionToIdle()
+        {
+            if (Player.Movable.Speed == 0)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
+                return true;
+            }
+            return false;
+        }
+        protected virtual bool SetTransitionToRun()
+        {
+            if (Player.InputActions.Move.x != 0)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+                return true;
+            }
+            return false;
+        }
+        protected virtual bool SetTransitionToStop()
+        {
+            if (Player.InputActions.Move.x != 0 && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
+                return true;
+            }
+
+            return false;
+        }
         #endregion
 
         #region On Movable Hit

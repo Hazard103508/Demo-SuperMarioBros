@@ -20,15 +20,6 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private Methods
-        private bool SetTransitionToIdle()
-        {
-            if (Player.Movable.Speed == 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
-                return true;
-            }
-            return false;
-        }
         private bool SetTransitionToJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)
@@ -38,16 +29,6 @@ namespace Mario.Game.Player
             }
 
             _jumpWasPressed = Player.InputActions.Jump;
-            return false;
-        }
-        private bool SetTransitionToStop()
-        {
-            if (Player.InputActions.Move.x != 0 && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
-                return true;
-            }
-
             return false;
         }
         #endregion

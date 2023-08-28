@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -29,10 +30,10 @@ namespace Mario.Game.Player
         }
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
-            if (Player.Movable.Speed == 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
-            else
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+            if (SetTransitionToIdle())
+                return;
+
+            SetTransitionToRun();
         }
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {

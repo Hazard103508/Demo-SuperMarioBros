@@ -17,15 +17,6 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private Methods
-        private bool SetTransitionToRun()
-        {
-            if (Player.InputActions.Move.x != 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
-                return true;
-            }
-            return false;
-        }
         private void SetTransitionToJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)

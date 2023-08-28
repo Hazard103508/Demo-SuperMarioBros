@@ -15,15 +15,10 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private Methods
-        private void SetTransitionToNextState()
+        private void ChangePlayerMode()
         {
             Player.StateMachine.ChangeModeToBig(Player);
             Player.Movable.enabled = true;
-
-            if (Player.Movable.Speed == 0)
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
-            else
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
         }
         #endregion
 
@@ -38,7 +33,10 @@ namespace Mario.Game.Player
         {
             base.Update();
             if (_timer >= 0.5f)
-                SetTransitionToNextState();
+            {
+                ChangePlayerMode();
+                SetNextState();
+            }
 
             _timer += Time.deltaTime;
         }

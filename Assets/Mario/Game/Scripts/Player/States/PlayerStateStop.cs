@@ -22,20 +22,7 @@ namespace Mario.Game.Player
 
         #region protected Methods
         protected override void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
-
-        #endregion
-
-        #region Private Methods
-        private bool SetTransitionToIdle()
-        {
-            if (Player.Movable.Speed == 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
-                return true;
-            }
-            return false;
-        }
-        private bool SetTransitionToRun()
+        protected override bool SetTransitionToRun()
         {
             if (Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x))
             {
@@ -44,6 +31,10 @@ namespace Mario.Game.Player
             }
             return false;
         }
+
+        #endregion
+
+        #region Private Methods
         private bool SetTransitionToJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)
