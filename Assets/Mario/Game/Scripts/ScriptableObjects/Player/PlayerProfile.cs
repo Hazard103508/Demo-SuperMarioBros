@@ -1,6 +1,7 @@
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
+using UnityShared.ScriptableObjects.GameObjects;
 
 namespace Mario.Game.ScriptableObjects.Player
 {
@@ -15,6 +16,11 @@ namespace Mario.Game.ScriptableObjects.Player
         public JumpMovement Jump;
         public PlayerSpritePositions SpritePositions;
         public PlayerFireball Fireball;
+
+        [Header("Raycast")]
+        public ModeRaycastRange RaycastSmall;
+        public ModeRaycastRange RaycastBig;
+
 
         [Serializable]
         public class HorizontalMovement
@@ -32,12 +38,6 @@ namespace Mario.Game.ScriptableObjects.Player
         [Serializable]
         public class JumpMovement
         {
-            public float Acceleration;
-            public float MaxSpeed;
-            public float BounceSpeed;
-            public float MinBufferTime;
-            public float MaxWalkBufferTime;
-            public float MaxRunBufferTime;
             public float MinHeight;
             public float MaxIdleHeight;
             public float MaxRunHeight;
@@ -53,6 +53,14 @@ namespace Mario.Game.ScriptableObjects.Player
         {
             public Vector2 StartLocalPosition;
             public PooledObjectProfile FireballPoolProfile;
+        }
+        [Serializable]
+        public class ModeRaycastRange
+        {
+            public RaycastRangeProfile Top;
+            public RaycastRangeProfile Bottom;
+            public RaycastRangeProfile Left;
+            public RaycastRangeProfile Right;
         }
     }
 }

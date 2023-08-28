@@ -5,7 +5,7 @@ namespace Mario.Game.Player
     public class PlayerStateMachine : StateMachine
     {
         #region Properties
-        public PlayerMode CurrentMode { get; set; }
+        public PlayerMode CurrentMode { get; private set; }
         public PlayerMode ModeIdle { get; private set; }
         public PlayerMode ModeBig { get; private set; }
         public PlayerMode ModeSuper { get; private set; }
@@ -20,7 +20,8 @@ namespace Mario.Game.Player
             ModeBig = new PlayerModeBig(Player);
             //ModeSuper = new PlayerModeSuper(Player);
 
-            CurrentMode = ModeIdle;
+            //CurrentMode = ModeIdle;
+            CurrentMode = ModeBig;
         }
         #endregion
     }

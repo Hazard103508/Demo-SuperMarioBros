@@ -61,20 +61,21 @@ namespace Mario.Game.Player
         public bool IsAutoWalk { get; set; }
         public bool IsInvensible { get; set; }
 
-        private bool JumpMinBuffered => _lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
+        private bool JumpMinBuffered => false;//_lastJumpPressed + _profile.Jump.MinBufferTime > Time.time;
         private bool JumpMaxBuffered
         {
             get
             {
-                float absCurrentSpeed = Mathf.Abs(_currentSpeed.x);
-                if (absCurrentSpeed > _profile.Walk.MaxSpeed)
-                {
-                    float speedFactor = Mathf.InverseLerp(_profile.Walk.MaxSpeed, _profile.Run.MaxSpeed, absCurrentSpeed);
-                    float finalBufferTime = Mathf.Lerp(_profile.Jump.MaxWalkBufferTime, _profile.Jump.MaxRunBufferTime, speedFactor);
-                    return _lastJumpPressed + finalBufferTime > Time.time;
-                }
-                else
-                    return _lastJumpPressed + _profile.Jump.MaxWalkBufferTime > Time.time;
+                return false;
+                //float absCurrentSpeed = Mathf.Abs(_currentSpeed.x);
+                //if (absCurrentSpeed > _profile.Walk.MaxSpeed)
+                //{
+                //    float speedFactor = Mathf.InverseLerp(_profile.Walk.MaxSpeed, _profile.Run.MaxSpeed, absCurrentSpeed);
+                //    float finalBufferTime = Mathf.Lerp(_profile.Jump.MaxWalkBufferTime, _profile.Jump.MaxRunBufferTime, speedFactor);
+                //    return _lastJumpPressed + finalBufferTime > Time.time;
+                //}
+                //else
+                //    return _lastJumpPressed + _profile.Jump.MaxWalkBufferTime > Time.time;
             }
         }
         #endregion
@@ -203,16 +204,16 @@ namespace Mario.Game.Player
                 return;
             }
 
-            if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
-            {
-                if (JumpMinBuffered /*|| (Input.Jump && JumpMaxBuffered)*/)
-                    _currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
-                else
-                    IsJumping = false;
-            }
+            //if (IsJumping) // evita retomar la aceleracion del salto despues que este empezo a caer
+            //{
+            //    if (JumpMinBuffered /*|| (Input.Jump && JumpMaxBuffered)*/)
+            //        _currentSpeed.y += _profile.Jump.Acceleration * Time.deltaTime;
+            //    else
+            //        IsJumping = false;
+            //}
 
-            if (_currentSpeed.y > _profile.Jump.MaxSpeed)
-                _currentSpeed.y = _profile.Jump.MaxSpeed;
+            //if (_currentSpeed.y > _profile.Jump.MaxSpeed)
+            //    _currentSpeed.y = _profile.Jump.MaxSpeed;
 
             if (_proximityBlock != null && _proximityBlock.top != null && _proximityBlock.top.IsBlock && _currentSpeed.y > 0)
             {
@@ -313,8 +314,8 @@ namespace Mario.Game.Player
         public void BounceJump()
         {
             IsJumping = true;
-            _lastJumpPressed = Time.time - _profile.Jump.MaxRunBufferTime;
-            _currentSpeed.y = _profile.Jump.BounceSpeed;
+            //_lastJumpPressed = Time.time - _profile.Jump.MaxRunBufferTime;
+            //_currentSpeed.y = _profile.Jump.BounceSpeed;
         }
         public void DamagePlayer()
         {
