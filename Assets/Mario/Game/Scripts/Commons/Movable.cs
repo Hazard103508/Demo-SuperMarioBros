@@ -72,7 +72,6 @@ namespace Mario.Game.Commons
         private void OnEnable()
         {
             nextPosition = transform.position;
-            _currentSpeed.y = 0;
         }
         #endregion
 

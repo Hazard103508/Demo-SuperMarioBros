@@ -19,9 +19,19 @@ namespace Mario.Game.Player
         #endregion
 
         #region IState Methods
+        public override void Enter()
+        {
+            base.Enter();
+            Player.Animator.speed = 0;
+        }
         public override void Update()
         {
             SpeedUp();
+        }
+        public override void Exit()
+        {
+            base.Exit();
+            Player.Animator.speed = 1;
         }
         #endregion
 

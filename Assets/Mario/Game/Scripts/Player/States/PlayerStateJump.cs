@@ -17,6 +17,19 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Protected
+        protected override bool SetTransitionToFall()
+        {
+            if (!Player.InputActions.Jump || Player.Movable.JumpForce < 0)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
+                return true;
+            }
+
+            return false;
+        }
+        #endregion
+
         #region Private Methods
         private void Jump()
         {

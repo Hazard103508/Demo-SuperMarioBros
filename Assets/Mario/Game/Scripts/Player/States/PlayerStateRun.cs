@@ -20,17 +20,21 @@ namespace Mario.Game.Player
         {
             SpeedUp();
             SpeedDown();
-
-            if (SetTransitionToIdle())
-                return;
-
             SetAnimationSpeed();
-            SetSpriteDirection();
 
             if (SetTransitionToJump())
                 return;
 
-            SetTransitionToStop();
+            if (SetTransitionToFall())
+                return;
+
+            if (SetTransitionToStop())
+                return;
+
+            if (SetTransitionToIdle())
+                return;
+
+            SetSpriteDirection();
         }
         #endregion
 

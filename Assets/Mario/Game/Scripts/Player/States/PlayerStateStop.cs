@@ -13,15 +13,7 @@ namespace Mario.Game.Player
 
         #region protected Methods
         protected override void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
-        protected override bool SetTransitionToRun()
-        {
-            if (Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x))
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
-                return true;
-            }
-            return false;
-        }
+        protected override bool SetTransitionToRun() => Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x) && base.SetTransitionToRun();
 
         #endregion
 
