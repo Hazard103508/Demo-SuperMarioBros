@@ -9,6 +9,7 @@ namespace Mario.Game.Player
         public PlayerStateJump StateJump { get; protected set; }
         public PlayerStateFall StateFall { get; protected set; }
         public PlayerStateBuff StateBuff { get; protected set; }
+        public PlayerStateNerf StateNerf { get; protected set; }
         #endregion
     }
 }

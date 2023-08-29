@@ -43,10 +43,8 @@ namespace Mario.Game.Player
 
         #region Public Methods
         public void OnBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
-        public virtual void OnNerf()
-        {
-        }
-        public virtual void OnDeath()
+        public void OnNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
+        public void OnDeath()
         {
         }
         #endregion
