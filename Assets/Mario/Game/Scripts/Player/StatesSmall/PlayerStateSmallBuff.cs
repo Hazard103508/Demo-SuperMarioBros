@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 namespace Mario.Game.Player
@@ -46,8 +47,13 @@ namespace Mario.Game.Player
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
                 return true;
             }
-        
+
             return false;
+        }
+        protected override bool SetTransitionToFall()
+        {
+            Player.Animator.CrossFade("Jump", 0);
+            return base.SetTransitionToFall();
         }
         #endregion
 

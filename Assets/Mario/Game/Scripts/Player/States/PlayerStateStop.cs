@@ -11,10 +11,15 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Public Methods
+        public override void OnBuff() => SetTransitionToBuff();
+        public override void OnNerf() => SetTransitionToNerf();
+        public override void OnDeath() => SetTransitionToDeath();
+        #endregion
+
         #region protected Methods
         protected override void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
         protected override bool SetTransitionToRun() => Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x) && base.SetTransitionToRun();
-
         #endregion
 
         #region IState Methods

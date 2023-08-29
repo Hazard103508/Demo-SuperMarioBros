@@ -50,6 +50,11 @@ namespace Mario.Game.Player
         
             return false;
         }
+        protected override bool SetTransitionToFall()
+        {
+            Player.Animator.CrossFade("Jump", 0);
+            return base.SetTransitionToFall();
+        }
         #endregion
 
         #region Private Methods

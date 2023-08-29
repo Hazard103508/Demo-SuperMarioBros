@@ -43,11 +43,9 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public void OnBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
-        public void OnNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
-        public void OnDeath()
-        {
-        }
+        public virtual void OnBuff() { }
+        public virtual void OnNerf() { }
+        public virtual void OnDeath() { }
         #endregion
 
         #region Protected Methods
@@ -126,21 +124,16 @@ namespace Mario.Game.Player
 
             return false;
         }
+        protected virtual void SetTransitionToBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
+        protected virtual void SetTransitionToNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
+        protected virtual void SetTransitionToDeath() { }//=> Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
         #endregion
 
         #region On Movable Hit
-        public virtual void OnHittedByMovingToTop(RayHitInfo hitInfo)
-        {
-        }
-        public virtual void OnHittedByMovingToBottom(RayHitInfo hitInfo)
-        {
-        }
-        public virtual void OnHittedByMovingToLeft(RayHitInfo hitInfo)
-        {
-        }
-        public virtual void OnHittedByMovingToRight(RayHitInfo hitInfo)
-        {
-        }
+        public virtual void OnHittedByMovingToTop(RayHitInfo hitInfo) { }
+        public virtual void OnHittedByMovingToBottom(RayHitInfo hitInfo) { }
+        public virtual void OnHittedByMovingToLeft(RayHitInfo hitInfo) { }
+        public virtual void OnHittedByMovingToRight(RayHitInfo hitInfo) { }
         #endregion
     }
 }

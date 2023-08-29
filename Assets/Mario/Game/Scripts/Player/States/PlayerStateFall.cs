@@ -11,6 +11,12 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
+        public override void OnBuff() => SetTransitionToBuff();
+        public override void OnNerf() => SetTransitionToNerf();
+        public override void OnDeath() => SetTransitionToDeath();
+        #endregion
+
+        #region Protected Methods
         protected override bool SetTransitionToRun()
         {
             Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
