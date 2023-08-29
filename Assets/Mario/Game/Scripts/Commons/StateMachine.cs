@@ -26,6 +26,9 @@ namespace Mario.Game.Commons
             if (nextState == null)
                 return;
 
+            if (nextState == CurrentState)
+                return;
+
             UnityEngine.Debug.Log(nextState);
             CurrentState.Exit();
             CurrentState = nextState;

@@ -25,6 +25,7 @@ namespace Mario.Game.Player
         public Animator Animator => _animator;
         public PlayerProfile Profile => _profile;
         public SpriteRenderer Renderer => _renderer;
+        public bool IsInvincible { get; set; }
         #endregion
 
         #region Unity Methods
@@ -46,6 +47,8 @@ namespace Mario.Game.Player
 
         #region Public Methods
         public void Buff() => this.StateMachine.CurrentState.OnBuff();
+        public void Nerf() => this.StateMachine.CurrentState.OnNerf();
+        public void Kill() => this.StateMachine.CurrentState.OnDeath();
         #endregion
 
         #region On Movable Hit
