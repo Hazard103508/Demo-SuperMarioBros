@@ -26,11 +26,13 @@ MonoBehaviour:
     Deacceleration: 15
   Fall:
     FallSpeed: 60
+    DeathFallSpeed: 35
     MaxFallSpeed: 16
   Jump:
     MinHeight: 1.2
     MaxIdleHeight: 4
     MaxRunHeight: 5
+    DeathHeight: 3.5
   Fireball:
     StartLocalPosition: {x: 0.5, y: 1.5}
     FireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}

@@ -126,7 +126,7 @@ namespace Mario.Game.Player
         }
         protected virtual void SetTransitionToBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
         protected virtual void SetTransitionToNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
-        protected virtual void SetTransitionToDeath() { }//=> Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
+        protected virtual void SetTransitionToDeath() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
         #endregion
 
         #region On Movable Hit

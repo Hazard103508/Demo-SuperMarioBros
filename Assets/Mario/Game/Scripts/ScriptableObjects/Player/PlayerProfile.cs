@@ -33,6 +33,7 @@ namespace Mario.Game.ScriptableObjects.Player
         public class VerticalMovement
         {
             public float FallSpeed;
+            public float DeathFallSpeed;
             public float MaxFallSpeed;
         }
         [Serializable]
@@ -41,12 +42,7 @@ namespace Mario.Game.ScriptableObjects.Player
             public float MinHeight;
             public float MaxIdleHeight;
             public float MaxRunHeight;
-        }
-        [Serializable]
-        public class PlayerSpritePositions
-        {
-            public Vector2 Small;
-            public Vector2 Big;
+            public float DeathHeight;
         }
         [Serializable]
         public class PlayerFireball
