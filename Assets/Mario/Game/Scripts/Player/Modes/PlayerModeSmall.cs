@@ -10,6 +10,7 @@ namespace Mario.Game.Player
             base.StateJump = new PlayerStateJump(player);
             base.StateFall = new PlayerStateFall(player);
             base.StateBuff = new PlayerStateSmallBuff(player);
+            base.StateDeath = new PlayerStateDeath(player);
         }
     }
 }
