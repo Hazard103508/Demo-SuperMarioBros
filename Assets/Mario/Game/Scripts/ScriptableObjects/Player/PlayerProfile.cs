@@ -16,11 +16,7 @@ namespace Mario.Game.ScriptableObjects.Player
         public VerticalMovement Fall;
         public JumpMovement Jump;
         public PlayerFireball Fireball;
-
-        [Header("Modes")]
-        public PlayerMode ModeSmall;
-        public PlayerMode ModeBig;
-        public PlayerMode ModeSuper;
+        public PlayerModes Modes;
 
         [Serializable]
         public class HorizontalMovement
@@ -51,18 +47,11 @@ namespace Mario.Game.ScriptableObjects.Player
             public PooledObjectProfile FireballPoolProfile;
         }
         [Serializable]
-        public class PlayerMode
+        public class PlayerModes
         {
-            public AnimatorController AnimatorController;
-            public ModeRaycastRange RaycastRange;
-        }
-        [Serializable]
-        public class ModeRaycastRange
-        {
-            public RaycastRangeProfile Top;
-            public RaycastRangeProfile Bottom;
-            public RaycastRangeProfile Left;
-            public RaycastRangeProfile Right;
+            public PlayerMode Small;
+            public PlayerMode Big;
+            public PlayerMode Super;
         }
     }
 }

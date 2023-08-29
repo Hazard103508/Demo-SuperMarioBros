@@ -27,23 +27,23 @@ namespace Mario.Game.Player
         #region Public Methods
         public void ChangeModeToSmall(PlayerController player)
         {
-            ChangeMode(player, player.Profile.ModeSmall);
+            ChangeMode(player, player.Profile.Modes.Small);
             CurrentMode = ModeSmall;
         }
         public void ChangeModeToBig(PlayerController player)
         {
-            ChangeMode(player, player.Profile.ModeBig);
+            ChangeMode(player, player.Profile.Modes.Big);
             CurrentMode = ModeBig;
         }
         public void ChangeModeToSuper(PlayerController player)
         {
-            ChangeMode(player, player.Profile.ModeSuper);
+            ChangeMode(player, player.Profile.Modes.Small);
             CurrentMode = ModeSuper;
         }
         #endregion
 
         #region Private
-        private void ChangeMode(PlayerController Player, ScriptableObjects.Player.PlayerProfile.PlayerMode playerMode)
+        private void ChangeMode(PlayerController Player, ScriptableObjects.Player.PlayerMode playerMode)
         {
             Player.Animator.runtimeAnimatorController = playerMode.AnimatorController;
             Player.Movable.RaycastTop.Profile = playerMode.RaycastRange.Top;

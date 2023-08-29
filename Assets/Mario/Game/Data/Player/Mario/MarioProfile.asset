@@ -36,24 +36,7 @@ MonoBehaviour:
   Fireball:
     StartLocalPosition: {x: 0.5, y: 1.5}
     FireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
-  ModeSmall:
-    AnimatorController: {fileID: 9100000, guid: 5be6658bcee870349b926d77836ebcf1, type: 2}
-    RaycastRange:
-      Top: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
-      Bottom: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
-      Left: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
-      Right: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
-  ModeBig:
-    AnimatorController: {fileID: 9100000, guid: 4ccac5ba58bacc3438ed8fe3a8d9b512, type: 2}
-    RaycastRange:
-      Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
-      Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
-      Left: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
-      Right: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
-  ModeSuper:
-    AnimatorController: {fileID: 0}
-    RaycastRange:
-      Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
-      Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
-      Left: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
-      Right: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
+  Modes:
+    Small: {fileID: 11400000, guid: 7ae9649b0173ad14189c39ae9d3cb3da, type: 2}
+    Big: {fileID: 11400000, guid: ec62a4551b5c2e049ae5b4ae146a1cd7, type: 2}
+    Super: {fileID: 0}
