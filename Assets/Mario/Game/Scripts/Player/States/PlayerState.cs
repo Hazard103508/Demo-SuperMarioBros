@@ -53,10 +53,10 @@ namespace Mario.Game.Player
         {
             if (Player.InputActions.Move.x != 0)
             {
-                float currentAcceleration = Player.InputActions.Sprint ? Player.Profile.Run.Acceleration : Player.Profile.Walk.Acceleration;
+                float currentAcceleration = Player.InputActions.Sprint ? Player.StateMachine.CurrentMode.ModeProfile.Run.Acceleration : Player.StateMachine.CurrentMode.ModeProfile.Walk.Acceleration;
                 Player.Movable.Speed += Player.InputActions.Move.x * currentAcceleration * Time.deltaTime;
 
-                float _speed = Player.InputActions.Sprint ? Player.Profile.Run.MaxSpeed : Player.Profile.Walk.MaxSpeed;
+                float _speed = Player.InputActions.Sprint ? Player.StateMachine.CurrentMode.ModeProfile.Run.MaxSpeed : Player.StateMachine.CurrentMode.ModeProfile.Walk.MaxSpeed;
                 Player.Movable.Speed = Mathf.Clamp(Player.Movable.Speed, -_speed, _speed);
             }
         }
@@ -64,13 +64,13 @@ namespace Mario.Game.Player
         {
             if (Player.InputActions.Move.x == 0 || Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
             {
-                float currentDeacceleration = Player.InputActions.Sprint ? Player.Profile.Run.Deacceleration : Player.Profile.Walk.Deacceleration;
+                float currentDeacceleration = Player.InputActions.Sprint ? Player.StateMachine.CurrentMode.ModeProfile.Run.Deacceleration : Player.StateMachine.CurrentMode.ModeProfile.Walk.Deacceleration;
                 Player.Movable.Speed = Mathf.MoveTowards(Player.Movable.Speed, 0, currentDeacceleration * Time.deltaTime);
             }
         }
         protected void SetAnimationSpeed()
         {
-            float walkSpeedFactor = Mathf.Abs(Player.Movable.Speed) / Player.Profile.Walk.MaxSpeed;
+            float walkSpeedFactor = Mathf.Abs(Player.Movable.Speed) / Player.StateMachine.CurrentMode.ModeProfile.Walk.MaxSpeed;
             Player.Animator.speed = Mathf.Clamp(walkSpeedFactor, 0.5f, 1.5f);
         }
         protected void ResetAnimationSpeed() => Player.Animator.speed = 1;

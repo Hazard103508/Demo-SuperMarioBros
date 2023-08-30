@@ -43,7 +43,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private
-        private void ChangeMode(PlayerController Player, ScriptableObjects.Player.PlayerMode playerMode)
+        private void ChangeMode(PlayerController Player, ScriptableObjects.Player.PlayerModeProfile playerMode)
         {
             Player.Animator.runtimeAnimatorController = playerMode.AnimatorController;
             Player.Movable.RaycastTop.Profile = playerMode.RaycastRange.Top;

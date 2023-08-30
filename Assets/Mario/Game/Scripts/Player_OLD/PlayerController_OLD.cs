@@ -39,7 +39,7 @@ namespace Mario.Game.Player
             }
         }
 
-        public float WalkSpeedFactor => Mathf.Abs(_currentSpeed.x) / _profile.Walk.MaxSpeed;
+        public float WalkSpeedFactor => Mathf.Abs(_currentSpeed.x) / _profile.Modes.Super.Walk.MaxSpeed;
         public bool IsGrounded => _proximityBlock != null && _proximityBlock.bottom != null && _proximityBlock.bottom.IsBlock;
         public bool IsJumping { get; private set; }
         public bool IsDucking
@@ -163,16 +163,16 @@ namespace Mario.Game.Player
 
             if (Input.X != 0 && !Input.IsDucking)
             {
-                float currentAcceleration = Input.Run ? _profile.Run.Acceleration : _profile.Walk.Acceleration;
+                float currentAcceleration = Input.Run ? _profile.Modes.Super.Run.Acceleration : _profile.Modes.Super.Walk.Acceleration;
                 _currentSpeed.x += Input.X * currentAcceleration * Time.deltaTime;
 
-                float _speed = Input.Run ? _profile.Run.MaxSpeed : _profile.Walk.MaxSpeed;
+                float _speed = Input.Run ? _profile.Modes.Super.Run.MaxSpeed : _profile.Modes.Super.Walk.MaxSpeed;
                 _currentSpeed.x = Mathf.Clamp(_currentSpeed.x, -_speed, _speed);
             }
 
             if (RawMovement.x != 0 && (Input.X == 0 || Mathf.Sign(RawMovement.x) != Mathf.Sign(Input.X) || Input.IsDucking))
             {
-                float currentDeacceleration = Input.Run ? _profile.Run.Deacceleration : _profile.Walk.Deacceleration;
+                float currentDeacceleration = Input.Run ? _profile.Modes.Super.Run.Deacceleration : _profile.Modes.Super.Walk.Deacceleration;
                 _currentSpeed.x = Mathf.MoveTowards(_currentSpeed.x, 0, currentDeacceleration * Time.deltaTime);
             }
 
@@ -181,7 +181,7 @@ namespace Mario.Game.Player
         }
         private void CalculateGravity()
         {
-            _currentSpeed.y -= _profile.Fall.FallSpeed * Time.deltaTime;
+            _currentSpeed.y -= _profile.Modes.Super.Fall.FallSpeed * Time.deltaTime;
             if (IsGrounded)
             {
                 if (_currentSpeed.y < 0)
@@ -189,8 +189,8 @@ namespace Mario.Game.Player
             }
             else
             {
-                if (_currentSpeed.y < -_profile.Fall.MaxFallSpeed)
-                    _currentSpeed.y = -_profile.Fall.MaxFallSpeed;
+                if (_currentSpeed.y < -_profile.Modes.Super.Fall.MaxFallSpeed)
+                    _currentSpeed.y = -_profile.Modes.Super.Fall.MaxFallSpeed;
             }
         }
         private void CalculateJump()

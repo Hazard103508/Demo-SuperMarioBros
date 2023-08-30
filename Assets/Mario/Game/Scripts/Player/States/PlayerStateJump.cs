@@ -48,8 +48,8 @@ namespace Mario.Game.Player
         private float GetMaxHeight()
         {
             float absCurrentSpeed = Mathf.Abs(Player.Movable.Speed);
-            float speedFactor = Mathf.InverseLerp(Player.Profile.Walk.MaxSpeed, Player.Profile.Run.MaxSpeed, absCurrentSpeed);
-            return Mathf.Lerp(Player.Profile.Jump.MaxIdleHeight, Player.Profile.Jump.MaxRunHeight, speedFactor);
+            float speedFactor = Mathf.InverseLerp(Player.StateMachine.CurrentMode.ModeProfile.Walk.MaxSpeed, Player.StateMachine.CurrentMode.ModeProfile.Run.MaxSpeed, absCurrentSpeed);
+            return Mathf.Lerp(Player.StateMachine.CurrentMode.ModeProfile.Jump.MaxIdleHeight, Player.StateMachine.CurrentMode.ModeProfile.Jump.MaxRunHeight, speedFactor);
         }
         #endregion
 
@@ -60,7 +60,7 @@ namespace Mario.Game.Player
             Player.Animator.CrossFade("Jump", 0);
             _initYPos = Player.transform.position.y;
             _maxHeight = GetMaxHeight();
-            _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(Player.Profile.Jump.MinHeight, -Player.Movable.Gravity);
+            _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(Player.StateMachine.CurrentMode.ModeProfile.Jump.MinHeight, -Player.Movable.Gravity);
             Player.Movable.AddJumpForce(_jumpForce);
         }
         public override void Update()

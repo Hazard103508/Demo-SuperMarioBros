@@ -16,9 +16,9 @@ namespace Mario.Game.Player
         {
             Player.Movable.enabled = false;
             Player.Movable.Speed = 0;
-            Player.Movable.Gravity = Player.Profile.Fall.DeathFallSpeed;
+            Player.Movable.Gravity = Player.StateMachine.CurrentMode.ModeProfile.Fall.DeathFallSpeed;
             yield return new WaitForSeconds(0.25f);
-            var _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(Player.Profile.Jump.DeathHeight, -Player.Movable.Gravity);
+            var _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(Player.StateMachine.CurrentMode.ModeProfile.Jump.DeathHeight, -Player.Movable.Gravity);
             Player.Movable.ChekCollisions = false;
             Player.Movable.AddJumpForce(_jumpForce);
             Player.Movable.enabled = true;

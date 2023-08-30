@@ -137,7 +137,7 @@ namespace Mario.Game.Commons
                 return;
 
             float rayExtraLength = nextPosition.x - transform.position.x;
-            if (rayExtraLength > 0)
+            if (rayExtraLength >= 0)
             {
                 var hitInfo = RaycastRight.CalculateCollision(rayExtraLength);
                 if (hitInfo.IsBlock)
@@ -156,7 +156,7 @@ namespace Mario.Game.Commons
                 return;
 
             float rayExtraLength = transform.position.x - nextPosition.x;
-            if (rayExtraLength > 0)
+            if (rayExtraLength >= 0)
             {
                 var hitInfo = RaycastLeft.CalculateCollision(rayExtraLength);
                 if (hitInfo.IsBlock)

@@ -1,8 +1,11 @@
+using Mario.Game.ScriptableObjects.Player;
+
 namespace Mario.Game.Player
 {
     public abstract class PlayerMode
     {
         #region Properties
+        public PlayerModeProfile ModeProfile { get; set; }
         public PlayerStateIdle StateIdle { get; protected set; }
         public PlayerStateRun StateRun { get; protected set; }
         public PlayerStateStop StateStop { get; protected set; }
