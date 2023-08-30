@@ -47,7 +47,7 @@ namespace Mario.Game.Player
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
                 return true;
             }
-        
+
             return false;
         }
         protected override bool SetTransitionToFall()
@@ -64,9 +64,9 @@ namespace Mario.Game.Player
         #region Private Methods
         private void ChangePlayerMode()
         {
+            Player.StartCoroutine(SetInvincible());
             Player.StateMachine.ChangeModeToSmall(Player);
             Player.Movable.enabled = true;
-            Player.StartCoroutine(SetInvincible());
         }
         private void SetNextState()
         {
@@ -92,13 +92,15 @@ namespace Mario.Game.Player
             float _intervalTime = 0.05f;
             float _intervalCount = 2.5f / _intervalTime;
 
+            var _colorEnabled = Color.white;
+            var _colorDisable = new Color(0, 0, 0, 0);
             for (int i = 0; i < _intervalCount; i++)
             {
-                Player.Renderer.enabled = i % 2 == 0;
+                Player.Renderer.color = i % 2 == 0 ? _colorEnabled : _colorDisable;
                 yield return new WaitForSeconds(_intervalTime);
             }
 
-            Player.Renderer.enabled = true;
+            Player.Renderer.color = _colorEnabled;
             Player.IsInvincible = false;
         }
         #endregion
