@@ -36,7 +36,7 @@ namespace Mario.Game.Player
         {
             SpeedDown();
 
-            if (Player.InputActions.Duck)
+            if (Player.InputActions.Ducking)
                 return;
 
             if (SetTransitionToRun())

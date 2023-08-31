@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimatorController: {fileID: 9100000, guid: 5be6658bcee870349b926d77836ebcf1, type: 2}
   Walk:
-    Acceleration: 7.9
+    Acceleration: 28
     MaxSpeed: 5.8
     Deacceleration: 20
   Run:
-    Acceleration: 13
+    Acceleration: 30
     MaxSpeed: 9.5
     Deacceleration: 15
   Fall:
@@ -33,17 +33,12 @@ MonoBehaviour:
       Min: 1.2
       Max: 5
     DeathHeight: 3.5
-  RaycastRange:
-    Top: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
-    Bottom: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
-    Left: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
-    Right: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
   NormalRaycastRange:
     Top: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
     Bottom: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
     Left: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
     Right: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
-  DuckRaycastRange:
+  DuckingRaycastRange:
     Top: {fileID: 0}
     Bottom: {fileID: 0}
     Left: {fileID: 0}

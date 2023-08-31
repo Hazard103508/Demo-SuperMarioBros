@@ -69,6 +69,7 @@ namespace Mario.Game.Player
         public override void Update()
         {
             SpeedUp();
+            SpeedDown();
             Jump();
             SetTransitionToFall();
         }

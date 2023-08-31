@@ -9,14 +9,14 @@ namespace Mario.Game.Player
         public Vector2 Move { get; private set; }
         public bool Jump { get; private set; }
         public bool Sprint { get; private set; }
-        public bool Duck { get; private set; }
+        public bool Ducking { get; private set; }
         #endregion
 
         #region Input System Methods
         public void OnMove(InputValue value) => Move = value.Get<Vector2>();
         public void OnJump(InputValue value) => Jump = value.isPressed;
         public void OnSprint(InputValue value) => Sprint = value.isPressed;
-        public void OnDuck(InputValue value) => Duck = value.isPressed;
+        public void OnDuck(InputValue value) => Ducking = value.isPressed;
         #endregion
     }
 }

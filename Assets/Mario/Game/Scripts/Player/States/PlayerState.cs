@@ -52,7 +52,7 @@ namespace Mario.Game.Player
         #region Protected Methods
         protected void SpeedUp()
         {
-            if (Player.InputActions.Move.x != 0)
+            if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking)
             {
                 float currentAcceleration = Player.InputActions.Sprint ? Player.StateMachine.CurrentMode.ModeProfile.Run.Acceleration : Player.StateMachine.CurrentMode.ModeProfile.Walk.Acceleration;
                 Player.Movable.Speed += Player.InputActions.Move.x * currentAcceleration * Time.deltaTime;
@@ -63,7 +63,7 @@ namespace Mario.Game.Player
         }
         protected void SpeedDown()
         {
-            if (Player.InputActions.Move.x == 0 || Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
+            if (Player.Movable.Speed != 0)
             {
                 float currentDeacceleration = Player.InputActions.Sprint ? Player.StateMachine.CurrentMode.ModeProfile.Run.Deacceleration : Player.StateMachine.CurrentMode.ModeProfile.Walk.Deacceleration;
                 Player.Movable.Speed = Mathf.MoveTowards(Player.Movable.Speed, 0, currentDeacceleration * Time.deltaTime);
@@ -90,7 +90,7 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToRun()
         {
-            if (Player.InputActions.Move.x != 0)
+            if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking)
             {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
                 return true;
@@ -99,7 +99,7 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToStop()
         {
-            if (Player.InputActions.Move.x != 0 && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
+            if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
             {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
                 return true;
@@ -130,7 +130,7 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToDuck()
         {
-            if (Player.InputActions.Duck && Player.InputActions.Move.x == 0)
+            if (Player.InputActions.Ducking && Player.InputActions.Move.x == 0)
             {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
                 return true;

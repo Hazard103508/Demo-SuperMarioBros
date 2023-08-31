@@ -34,6 +34,7 @@ namespace Mario.Game.Player
         public override void Update()
         {
             SpeedUp();
+            SpeedDown();
         }
         public override void Exit()
         {

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AnimatorController: {fileID: 9100000, guid: 4ccac5ba58bacc3438ed8fe3a8d9b512, type: 2}
   Walk:
-    Acceleration: 7.9
+    Acceleration: 28
     MaxSpeed: 5.8
     Deacceleration: 20
   Run:
-    Acceleration: 13
+    Acceleration: 30
     MaxSpeed: 9.5
     Deacceleration: 15
   Fall:
