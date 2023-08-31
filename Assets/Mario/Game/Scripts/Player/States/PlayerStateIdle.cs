@@ -20,7 +20,7 @@ namespace Mario.Game.Player
             base.Enter();
             Player.Animator.CrossFade("Idle", 0);
             Player.Movable.Speed = 0;
-            Player.Movable.Gravity = Player.StateMachine.CurrentMode.ModeProfile.Fall.FallSpeed;
+            Player.Movable.Gravity = Player.StateMachine.CurrentMode.ModeProfile.Fall.NormalSpeed;
             Player.Movable.MaxFallSpeed = Player.StateMachine.CurrentMode.ModeProfile.Fall.MaxFallSpeed;
             ResetAnimationSpeed();
         }

@@ -181,7 +181,7 @@ namespace Mario.Game.Player
         }
         private void CalculateGravity()
         {
-            _currentSpeed.y -= _profile.Modes.Super.Fall.FallSpeed * Time.deltaTime;
+            _currentSpeed.y -= _profile.Modes.Super.Fall.NormalSpeed * Time.deltaTime;
             if (IsGrounded)
             {
                 if (_currentSpeed.y < 0)

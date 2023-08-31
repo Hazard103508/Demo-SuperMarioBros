@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551ef53d1e6b8624b8fb91a6906b1a14, type: 3}
   m_Name: MarioModeBig
   m_EditorClassIdentifier: 
+  AnimatorController: {fileID: 9100000, guid: 4ccac5ba58bacc3438ed8fe3a8d9b512, type: 2}
   Walk:
     Acceleration: 7.9
     MaxSpeed: 5.8
@@ -21,17 +22,29 @@ MonoBehaviour:
     MaxSpeed: 9.5
     Deacceleration: 15
   Fall:
-    FallSpeed: 60
+    NormalSpeed: 60
     DeathFallSpeed: 35
     MaxFallSpeed: 16
   Jump:
-    MinHeight: 1.2
-    MaxIdleHeight: 4
-    MaxRunHeight: 5
+    WalkHeight:
+      Min: 1.2
+      Max: 4
+    RunHeight:
+      Min: 1.2
+      Max: 5
     DeathHeight: 3.5
-  AnimatorController: {fileID: 9100000, guid: 4ccac5ba58bacc3438ed8fe3a8d9b512, type: 2}
   RaycastRange:
     Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
     Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
     Left: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
     Right: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
+  NormalRaycastRange:
+    Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
+    Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
+    Left: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
+    Right: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
+  DuckRaycastRange:
+    Top: {fileID: 0}
+    Bottom: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}

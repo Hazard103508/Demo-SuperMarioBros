@@ -46,10 +46,10 @@ namespace Mario.Game.Player
         private void ChangeMode(PlayerController Player, ScriptableObjects.Player.PlayerModeProfile playerMode)
         {
             Player.Animator.runtimeAnimatorController = playerMode.AnimatorController;
-            Player.Movable.RaycastTop.Profile = playerMode.RaycastRange.Top;
-            Player.Movable.RaycastBottom.Profile = playerMode.RaycastRange.Bottom;
-            Player.Movable.RaycastLeft.Profile = playerMode.RaycastRange.Left;
-            Player.Movable.RaycastRight.Profile = playerMode.RaycastRange.Right;
+            Player.Movable.RaycastTop.Profile = playerMode.NormalRaycastRange.Top;
+            Player.Movable.RaycastBottom.Profile = playerMode.NormalRaycastRange.Bottom;
+            Player.Movable.RaycastLeft.Profile = playerMode.NormalRaycastRange.Left;
+            Player.Movable.RaycastRight.Profile = playerMode.NormalRaycastRange.Right;
         }
         #endregion
     }

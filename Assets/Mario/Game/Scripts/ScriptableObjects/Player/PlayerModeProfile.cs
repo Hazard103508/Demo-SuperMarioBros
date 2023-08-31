@@ -1,6 +1,7 @@
 using System;
 using UnityEditor.Animations;
 using UnityEngine;
+using UnityShared.Commons.Structs;
 using UnityShared.ScriptableObjects.GameObjects;
 
 namespace Mario.Game.ScriptableObjects.Player
@@ -13,7 +14,8 @@ namespace Mario.Game.ScriptableObjects.Player
         public HorizontalMovement Run;
         public VerticalMovement Fall;
         public JumpMovement Jump;
-        public ModeRaycastRange RaycastRange;
+        public ModeRaycastRange NormalRaycastRange;
+        public ModeRaycastRange DuckRaycastRange;
 
         [Serializable]
         public class HorizontalMovement
@@ -25,16 +27,15 @@ namespace Mario.Game.ScriptableObjects.Player
         [Serializable]
         public class VerticalMovement
         {
-            public float FallSpeed;
+            public float NormalSpeed;
             public float DeathFallSpeed;
             public float MaxFallSpeed;
         }
         [Serializable]
         public class JumpMovement
         {
-            public float MinHeight;
-            public float MaxIdleHeight;
-            public float MaxRunHeight;
+            public RangeNumber<float> WalkHeight;
+            public RangeNumber<float> RunHeight;
             public float DeathHeight;
         }
         [Serializable]
