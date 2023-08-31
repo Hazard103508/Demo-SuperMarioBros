@@ -15,7 +15,7 @@ namespace Mario.Game.ScriptableObjects.Player
         public VerticalMovement Fall;
         public JumpMovement Jump;
         public ModeRaycastRange NormalRaycastRange;
-        public ModeRaycastRange DuckRaycastRange;
+        public ModeRaycastRange DuckingRaycastRange;
 
         [Serializable]
         public class HorizontalMovement

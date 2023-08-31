@@ -46,6 +46,7 @@ namespace Mario.Game.Player
         public virtual void OnBuff() { }
         public virtual void OnNerf() { }
         public virtual void OnDeath() { }
+        public virtual void OnTouchFlag() { }
         #endregion
 
         #region Protected Methods
@@ -74,6 +75,9 @@ namespace Mario.Game.Player
             Player.Animator.speed = Mathf.Clamp(walkSpeedFactor, 0.5f, 1.5f);
         }
         protected void ResetAnimationSpeed() => Player.Animator.speed = 1;
+        protected void SetRaycastDucking() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.DuckingRaycastRange);
+        protected void SetRaycastNormal() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.NormalRaycastRange);
+
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
         protected virtual bool SetTransitionToIdle()
         {
@@ -124,9 +128,50 @@ namespace Mario.Game.Player
 
             return false;
         }
+        protected virtual bool SetTransitionToDuck()
+        {
+            if (Player.InputActions.Duck)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
+                return true;
+            }
+            return false;
+        }
         protected virtual void SetTransitionToBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
         protected virtual void SetTransitionToNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
         protected virtual void SetTransitionToDeath() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
+        protected virtual void SetTransitionToFlag() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFlag);
+
+        protected void ChangeModeToSmall(PlayerController player)
+        {
+            Player.StateMachine.CurrentMode = Player.StateMachine.ModeSmall;
+            ChangeMode(player);
+        }
+        protected void ChangeModeToBig(PlayerController player)
+        {
+            Player.StateMachine.CurrentMode = Player.StateMachine.ModeBig;
+            ChangeMode(player);
+        }
+        protected void ChangeModeToSuper(PlayerController player)
+        {
+            Player.StateMachine.CurrentMode = Player.StateMachine.ModeSuper;
+            ChangeMode(player);
+        }
+        #endregion
+
+        #region Private Methods
+        private void ChangeMode(PlayerController player)
+        {
+            player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.AnimatorController;
+            SetRaycastNormal();
+        }
+        private void SetRaycast(ScriptableObjects.Player.PlayerModeProfile.ModeRaycastRange modeRaycastRange)
+        {
+            Player.Movable.RaycastTop.Profile = modeRaycastRange.Top;
+            Player.Movable.RaycastBottom.Profile = modeRaycastRange.Bottom;
+            Player.Movable.RaycastLeft.Profile = modeRaycastRange.Left;
+            Player.Movable.RaycastRight.Profile = modeRaycastRange.Right;
+        }
         #endregion
 
         #region On Movable Hit

@@ -64,8 +64,8 @@ namespace Mario.Game.Player
         #region Private Methods
         private void ChangePlayerMode()
         {
-            Player.StateMachine.ChangeModeToBig(Player);
             Player.Movable.enabled = true;
+            base.ChangeModeToBig(Player);
         }
         private void SetNextState()
         {

@@ -12,6 +12,7 @@ namespace Mario.Game.Player
         public override void OnBuff() => SetTransitionToBuff();
         public override void OnNerf() => SetTransitionToNerf();
         public override void OnDeath() => SetTransitionToDeath();
+        public override void OnTouchFlag() => SetTransitionToFlag();
         #endregion
 
         #region IState Methods

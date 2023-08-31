@@ -65,8 +65,8 @@ namespace Mario.Game.Player
         private void ChangePlayerMode()
         {
             Player.StartCoroutine(SetInvincible());
-            Player.StateMachine.ChangeModeToSmall(Player);
             Player.Movable.enabled = true;
+            base.ChangeModeToSmall(Player);
         }
         private void SetNextState()
         {

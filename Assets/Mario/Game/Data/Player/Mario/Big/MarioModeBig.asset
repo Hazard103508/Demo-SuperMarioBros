@@ -33,18 +33,13 @@ MonoBehaviour:
       Min: 1.2
       Max: 5
     DeathHeight: 3.5
-  RaycastRange:
-    Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
-    Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
-    Left: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
-    Right: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
   NormalRaycastRange:
     Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
     Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
     Left: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
     Right: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
-  DuckRaycastRange:
-    Top: {fileID: 0}
-    Bottom: {fileID: 0}
-    Left: {fileID: 0}
-    Right: {fileID: 0}
+  DuckingRaycastRange:
+    Top: {fileID: 11400000, guid: 8d2a630eb62b4854b8a80392f3c65553, type: 2}
+    Bottom: {fileID: 11400000, guid: bef7d345bf044f14394c33a776569fa1, type: 2}
+    Left: {fileID: 11400000, guid: a9ef4b14f1beb9e4a98b34fd2365e3c1, type: 2}
+    Right: {fileID: 11400000, guid: 48f5e057a0d448a46a1e948baa4a1b6b, type: 2}

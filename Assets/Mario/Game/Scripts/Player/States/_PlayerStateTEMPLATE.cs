@@ -11,7 +11,7 @@ namespace Mario.Game.Player
         #region IState Methods
         public override void Enter()
         {
-
+            base.Enter();
         }
         #endregion
     }

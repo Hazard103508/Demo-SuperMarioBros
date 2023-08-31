@@ -5,7 +5,7 @@ namespace Mario.Game.Player
         public PlayerModeBig(PlayerController player)
         {
             base.ModeProfile = player.Profile.Modes.Big;
-            base.StateIdle = new PlayerStateIdle(player);
+            base.StateIdle = new PlayerStateBigIdle(player);
             base.StateRun = new PlayerStateRun(player);
             base.StateStop = new PlayerStateStop(player);
             base.StateJump = new PlayerStateJump(player);
@@ -13,6 +13,8 @@ namespace Mario.Game.Player
             //base.StateBuff= new PlayerStateBuff(player);
             base.StateNerf = new PlayerStateBigNerf(player);
             base.StateDeath = new PlayerStateDeath(player);
+            base.StateFlag = new PlayerStateFlag(player);
+            base.StateDucking = new PlayerStateDucking(player);
         }
     }
 }
