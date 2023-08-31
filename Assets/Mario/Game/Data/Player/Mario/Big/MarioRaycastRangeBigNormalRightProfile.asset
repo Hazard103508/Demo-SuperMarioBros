@@ -21,7 +21,7 @@ MonoBehaviour:
   Range:
     StartPoint: {x: 0.4, y: 1}
     EndPoint: {x: 0.4, y: -0.2}
-    Count: 4
+    Count: 6
   Ray:
     Direction: {x: 1, y: 0}
     Length: 0.05

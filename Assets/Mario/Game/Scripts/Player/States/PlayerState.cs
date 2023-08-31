@@ -130,7 +130,7 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToDuck()
         {
-            if (Player.InputActions.Duck)
+            if (Player.InputActions.Duck && Player.InputActions.Move.x == 0)
             {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
                 return true;

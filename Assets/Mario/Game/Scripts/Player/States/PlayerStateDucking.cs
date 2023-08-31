@@ -30,10 +30,12 @@ namespace Mario.Game.Player
         {
             base.Enter();
             Player.Animator.CrossFade("Ducking", 0);
-            base.SetRaycastDucking();
+            SetRaycastDucking();
         }
         public override void Update()
         {
+            SpeedDown();
+
             if (Player.InputActions.Duck)
                 return;
 
@@ -45,7 +47,7 @@ namespace Mario.Game.Player
         public override void Exit()
         {
             base.Exit();
-            base.SetRaycastNormal();
+            SetRaycastNormal();
         }
         #endregion
     }

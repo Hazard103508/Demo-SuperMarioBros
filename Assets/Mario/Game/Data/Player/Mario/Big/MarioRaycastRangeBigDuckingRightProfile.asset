@@ -19,7 +19,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 832
   Range:
-    StartPoint: {x: 0.4, y: 1}
+    StartPoint: {x: 0.4, y: 0.5}
     EndPoint: {x: 0.4, y: -0.2}
     Count: 4
   Ray:

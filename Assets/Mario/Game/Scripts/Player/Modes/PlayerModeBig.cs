@@ -6,7 +6,7 @@ namespace Mario.Game.Player
         {
             base.ModeProfile = player.Profile.Modes.Big;
             base.StateIdle = new PlayerStateBigIdle(player);
-            base.StateRun = new PlayerStateRun(player);
+            base.StateRun = new PlayerStateBigRun(player);
             base.StateStop = new PlayerStateStop(player);
             base.StateJump = new PlayerStateJump(player);
             base.StateFall = new PlayerStateFall(player);
