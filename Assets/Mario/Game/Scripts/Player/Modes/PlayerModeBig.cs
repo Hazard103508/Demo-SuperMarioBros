@@ -15,6 +15,7 @@ namespace Mario.Game.Player
             base.StateDeath = new PlayerStateDeath(player);
             base.StateFlag = new PlayerStateFlag(player);
             base.StateDucking = new PlayerStateDucking(player);
+            base.StateDuckingJump = new PlayerStateDuckingJump(player);
         }
     }
 }

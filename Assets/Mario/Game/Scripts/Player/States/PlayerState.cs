@@ -32,6 +32,10 @@ namespace Mario.Game.Player
         #region State Machine
         public virtual void Enter()
         {
+            string newAnimatorState = GetAnimatorState();
+            if (!string.IsNullOrWhiteSpace(newAnimatorState))
+                Player.Animator.CrossFade(newAnimatorState, 0);
+
             _jumpWasPressed = Player.InputActions.Jump;
         }
         public virtual void Exit()
@@ -78,6 +82,8 @@ namespace Mario.Game.Player
         protected void SetRaycastDucking() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.DuckingRaycastRange);
         protected void SetRaycastNormal() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.NormalRaycastRange);
 
+        //protected virtual void SetAnimatorState(string stateName) => Player.Animator.CrossFade(stateName, 0);
+        protected virtual string GetAnimatorState() => string.Empty;
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
         protected virtual bool SetTransitionToIdle()
         {
@@ -118,6 +124,17 @@ namespace Mario.Game.Player
             _jumpWasPressed = Player.InputActions.Jump;
             return false;
         }
+        protected virtual bool SetTransitionToDuckingJump()
+        {
+            if (!_jumpWasPressed && Player.InputActions.Jump)
+            {
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDuckingJump);
+                return true;
+            }
+
+            _jumpWasPressed = Player.InputActions.Jump;
+            return false;
+        }
         protected virtual bool SetTransitionToFall()
         {
             if (Player.Movable.JumpForce < 0)
@@ -128,7 +145,7 @@ namespace Mario.Game.Player
 
             return false;
         }
-        protected virtual bool SetTransitionToDuck()
+        protected virtual bool SetTransitionToDucking()
         {
             if (Player.InputActions.Ducking && Player.InputActions.Move.x == 0)
             {

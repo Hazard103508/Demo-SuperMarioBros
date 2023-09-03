@@ -13,7 +13,7 @@ namespace Mario.Game.Player
         {
             base.Enter();
             Player.Movable.enabled = false;
-            Player.Animator.CrossFade("Buff", 0);
+            SetAnimatorState("Buff");
         }
         #endregion
     }

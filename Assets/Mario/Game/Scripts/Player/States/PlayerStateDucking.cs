@@ -36,14 +36,17 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            Player.Animator.CrossFade("Ducking", 0);
+            SetAnimatorState("Ducking");
             SetRaycastDucking();
         }
         public override void Update()
         {
             SpeedDown();
 
-            if (Player.InputActions.Ducking)
+            if (SetTransitionToDuckingJump())
+                return;
+
+            if (Player.InputActions.Ducking && Player.InputActions.Move.x == 0)
                 return;
 
             if (SetTransitionToRun())

@@ -29,7 +29,7 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            Player.Animator.CrossFade("Death", 0);
+            SetAnimatorState("Death");
             Player.StartCoroutine(PlayFall());
         }
         #endregion

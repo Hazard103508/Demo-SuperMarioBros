@@ -16,7 +16,7 @@ namespace Mario.Game.Player
         #region IState Methods
         public override void Update()
         {
-            if (SetTransitionToDuck())
+            if (SetTransitionToDucking())
                 return;
 
             base.Update();

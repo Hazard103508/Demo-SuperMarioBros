@@ -58,7 +58,7 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            Player.Animator.CrossFade("Jump", 0);
+            this.SetAnimatorState("Jump");
             _initYPos = Player.transform.position.y;
             _maxHeight = GetMaxHeight();
 

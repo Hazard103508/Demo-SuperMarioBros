@@ -16,6 +16,7 @@ namespace Mario.Game.Player
         public PlayerStateDeath StateDeath { get; protected set; }
         public PlayerStateFlag StateFlag { get; protected set; }
         public PlayerStateDucking StateDucking { get; protected set; }
+        public PlayerStateDuckingJump StateDuckingJump { get; protected set; }
         #endregion
     }
 }

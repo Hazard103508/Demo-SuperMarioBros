@@ -46,7 +46,7 @@ namespace Mario.Game.Commons
             hittableByMovingToLeft = GetComponent<IHittableByMovingToLeft>();
             hittableByMovingToRight = GetComponent<IHittableByMovingToRight>();
         }
-        private void Update()
+        private void FixedUpdate()
         {
             if (Services.PlayerService != null && !Services.PlayerService.CanMove)
                 return;
