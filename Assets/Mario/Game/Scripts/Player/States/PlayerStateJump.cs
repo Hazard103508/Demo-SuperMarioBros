@@ -29,10 +29,7 @@ namespace Mario.Game.Player
         protected override bool SetTransitionToFall()
         {
             if (!Player.InputActions.Jump || Player.Movable.JumpForce < 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
 
             return false;
         }

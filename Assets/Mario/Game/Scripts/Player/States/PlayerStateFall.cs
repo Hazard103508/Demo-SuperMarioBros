@@ -18,11 +18,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Protected Methods
-        protected override bool SetTransitionToRun()
-        {
-            Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
-            return true;
-        }
+        protected override bool SetTransitionToRun() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
         #endregion
 
         #region IState Methods
@@ -40,6 +36,7 @@ namespace Mario.Game.Player
         {
             base.Exit();
             Player.Animator.speed = 1;
+            SetRaycastNormal();
         }
         #endregion
 
@@ -51,6 +48,9 @@ namespace Mario.Game.Player
         }
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
+            if (SetTransitionToDucking())
+                return;
+
             if (SetTransitionToIdle())
                 return;
 

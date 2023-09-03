@@ -20,17 +20,11 @@ namespace Mario.Game.Player
         protected override bool SetTransitionToRun()
         {
             if (Player.Movable.Speed != 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+
             return false;
         }
-        protected override bool SetTransitionToIdle()
-        {
-            Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
-            return true;
-        }
+        protected override bool SetTransitionToIdle() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
         #endregion
 
         #region IState Methods

@@ -21,13 +21,13 @@ namespace Mario.Game.Commons
 
             StateChanged?.Invoke(state);
         }
-        public void TransitionTo(IState nextState)
+        public bool TransitionTo(IState nextState)
         {
             if (nextState == null)
-                return;
+                return false;
 
             if (nextState == CurrentState)
-                return;
+                return false;
 
             UnityEngine.Debug.Log(nextState);
             CurrentState.Exit();
@@ -35,6 +35,7 @@ namespace Mario.Game.Commons
             nextState.Enter();
 
             StateChanged?.Invoke(nextState);
+            return true;
         }
         public void Update()
         {

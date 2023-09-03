@@ -18,11 +18,6 @@ namespace Mario.Game.Player
             base.Enter();
             SetRaycastDucking();
         }
-        public override void Exit()
-        {
-            base.Exit();
-            SetRaycastNormal();
-        }
         #endregion
     }
 }

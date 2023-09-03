@@ -87,38 +87,28 @@ namespace Mario.Game.Player
         protected virtual bool SetTransitionToIdle()
         {
             if (Player.Movable.Speed == 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateIdle);
+
             return false;
         }
         protected virtual bool SetTransitionToRun()
         {
             if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+
             return false;
         }
         protected virtual bool SetTransitionToStop()
         {
             if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
 
             return false;
         }
         protected virtual bool SetTransitionToJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateJump);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateJump);
 
             _jumpWasPressed = Player.InputActions.Jump;
             return false;
@@ -126,10 +116,7 @@ namespace Mario.Game.Player
         protected virtual bool SetTransitionToDuckingJump()
         {
             if (!_jumpWasPressed && Player.InputActions.Jump)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDuckingJump);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDuckingJump);
 
             _jumpWasPressed = Player.InputActions.Jump;
             return false;
@@ -137,20 +124,15 @@ namespace Mario.Game.Player
         protected virtual bool SetTransitionToFall()
         {
             if (Player.Movable.JumpForce < 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
 
             return false;
         }
         protected virtual bool SetTransitionToDucking()
         {
             if (Player.InputActions.Ducking && Player.InputActions.Move.x == 0)
-            {
-                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
-                return true;
-            }
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
+
             return false;
         }
         protected virtual void SetTransitionToBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
