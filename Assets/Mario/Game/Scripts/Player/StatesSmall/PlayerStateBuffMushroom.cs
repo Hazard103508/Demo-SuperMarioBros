@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace Mario.Game.Player
 {
-    public class PlayerStateSmallBuff : PlayerStateBuff
+    public class PlayerStateBuffMushroom : PlayerStateBuff
     {
         #region Objects
         private float _timer;
         #endregion
 
         #region Constructor
-        public PlayerStateSmallBuff(PlayerController player) : base(player)
+        public PlayerStateBuffMushroom(PlayerController player) : base(player)
         {
         }
         #endregion
