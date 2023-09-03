@@ -8,11 +8,14 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Protected Methods
+        protected override string GetAnimatorState() => "Flag";
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
             base.Enter();
-            Player.Animator.CrossFade("Flag", 0);
             Player.Movable.enabled = false;
         }
         public override void Exit()

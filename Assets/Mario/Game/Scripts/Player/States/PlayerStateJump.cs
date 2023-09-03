@@ -24,7 +24,8 @@ namespace Mario.Game.Player
         public override void OnTouchFlag() => SetTransitionToFlag();
         #endregion
 
-        #region Protected
+        #region Protected Methods
+        protected override string GetAnimatorState() => "Jump";
         protected override bool SetTransitionToFall()
         {
             if (!Player.InputActions.Jump || Player.Movable.JumpForce < 0)
@@ -58,7 +59,6 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            this.SetAnimatorState("Jump");
             _initYPos = Player.transform.position.y;
             _maxHeight = GetMaxHeight();
 

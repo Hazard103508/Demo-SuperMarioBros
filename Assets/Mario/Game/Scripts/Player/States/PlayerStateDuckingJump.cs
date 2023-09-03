@@ -9,7 +9,20 @@ namespace Mario.Game.Player
         #endregion
 
         #region Protected Methods
-        protected override void SetAnimatorState(string stateName) => base.SetAnimatorState("Ducking");
+        protected override string GetAnimatorState() => "Ducking";
+        #endregion
+
+        #region IState Methods
+        public override void Enter()
+        {
+            base.Enter();
+            SetRaycastDucking();
+        }
+        public override void Exit()
+        {
+            base.Exit();
+            SetRaycastNormal();
+        }
         #endregion
     }
 }

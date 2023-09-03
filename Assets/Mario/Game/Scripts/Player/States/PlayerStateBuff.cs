@@ -8,12 +8,15 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Protected Methods
+        protected override string GetAnimatorState() => "Buff";
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
             base.Enter();
             Player.Movable.enabled = false;
-            SetAnimatorState("Buff");
         }
         #endregion
     }

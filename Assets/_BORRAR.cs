@@ -8,6 +8,9 @@ public class _BORRAR : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
+            Debug.Break();
+
+        if (Input.GetKeyDown(KeyCode.Keypad2))
             playerController.Buff();
 
         if (Input.GetKeyDown(KeyCode.Keypad0))

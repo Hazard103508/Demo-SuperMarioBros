@@ -19,16 +19,12 @@ namespace Mario.Game.Player
         #endregion
 
         #region protected Methods
+        protected override string GetAnimatorState() => "Stop";
         protected override void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
         protected override bool SetTransitionToRun() => Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x) && base.SetTransitionToRun();
         #endregion
 
         #region IState Methods
-        public override void Enter()
-        {
-            base.Enter();
-            Player.Animator.CrossFade("Stop", 0);
-        }
         public override void Update()
         {
             SpeedUp();

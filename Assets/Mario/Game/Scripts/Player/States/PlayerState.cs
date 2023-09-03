@@ -82,7 +82,6 @@ namespace Mario.Game.Player
         protected void SetRaycastDucking() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.DuckingRaycastRange);
         protected void SetRaycastNormal() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.NormalRaycastRange);
 
-        //protected virtual void SetAnimatorState(string stateName) => Player.Animator.CrossFade(stateName, 0);
         protected virtual string GetAnimatorState() => string.Empty;
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
         protected virtual bool SetTransitionToIdle()

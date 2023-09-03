@@ -8,12 +8,15 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Protected Methods
+        protected override string GetAnimatorState() => "Nerf";
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
             base.Enter();
             Player.Movable.enabled = false;
-            Player.Animator.CrossFade("Nerf", 0);
         }
         #endregion
     }

@@ -11,6 +11,10 @@ namespace Mario.Game.Player
         }
         #endregion
 
+        #region Protected Methods
+        protected override string GetAnimatorState() => "Death";
+        #endregion
+
         #region Private Methods
         private IEnumerator PlayFall()
         {
@@ -29,7 +33,6 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            SetAnimatorState("Death");
             Player.StartCoroutine(PlayFall());
         }
         #endregion

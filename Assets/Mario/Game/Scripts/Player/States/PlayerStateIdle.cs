@@ -15,11 +15,14 @@ namespace Mario.Game.Player
         public override void OnTouchFlag() => SetTransitionToFlag();
         #endregion
 
+        #region Protected Methods
+        protected override string GetAnimatorState() => "Idle";
+        #endregion
+
         #region IState Methods
         public override void Enter()
         {
             base.Enter();
-            Player.Animator.CrossFade("Idle", 0);
             Player.Movable.Speed = 0;
             Player.Movable.Gravity = Player.StateMachine.CurrentMode.ModeProfile.Fall.NormalSpeed;
             Player.Movable.MaxFallSpeed = Player.StateMachine.CurrentMode.ModeProfile.Fall.MaxFallSpeed;

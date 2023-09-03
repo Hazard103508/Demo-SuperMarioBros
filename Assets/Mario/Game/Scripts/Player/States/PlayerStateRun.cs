@@ -17,12 +17,11 @@ namespace Mario.Game.Player
         public override void OnTouchFlag() => SetTransitionToFlag();
         #endregion
 
+        #region Protected Methods
+        protected override string GetAnimatorState() => "Run";
+        #endregion
+
         #region IState Methods
-        public override void Enter()
-        {
-            base.Enter();
-            Player.Animator.CrossFade("Run", 0);
-        }
         public override void Update()
         {
             SpeedUp();

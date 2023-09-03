@@ -16,6 +16,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region protected Methods
+        protected override string GetAnimatorState() => "Ducking";
         protected override bool SetTransitionToRun()
         {
             if (Player.Movable.Speed != 0)
@@ -36,7 +37,6 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            SetAnimatorState("Ducking");
             SetRaycastDucking();
         }
         public override void Update()
