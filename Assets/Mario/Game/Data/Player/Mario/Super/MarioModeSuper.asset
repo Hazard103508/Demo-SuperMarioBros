@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ef53d1e6b8624b8fb91a6906b1a14, type: 3}
+  m_Name: MarioModeSuper
+  m_EditorClassIdentifier: 
+  AnimatorController: {fileID: 9100000, guid: 36ffea62a1536d64dbe67dbae9b3d487, type: 2}
+  Walk:
+    Acceleration: 28
+    MaxSpeed: 5.8
+    Deacceleration: 20
+  Run:
+    Acceleration: 30
+    MaxSpeed: 9.5
+    Deacceleration: 15
+  Fall:
+    NormalSpeed: 60
+    DeathFallSpeed: 35
+    MaxFallSpeed: 16
+  Jump:
+    WalkHeight:
+      Min: 1.2
+      Max: 4
+    RunHeight:
+      Min: 1.2
+      Max: 5
+    DeathHeight: 3.5
+  NormalRaycastRange:
+    Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
+    Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}
+    Left: {fileID: 11400000, guid: d106cca8b4ae9c14db219652487d0038, type: 2}
+    Right: {fileID: 11400000, guid: 070a5713e761d35468d31e69127cc101, type: 2}
+  DuckingRaycastRange:
+    Top: {fileID: 11400000, guid: 8d2a630eb62b4854b8a80392f3c65553, type: 2}
+    Bottom: {fileID: 11400000, guid: bef7d345bf044f14394c33a776569fa1, type: 2}
+    Left: {fileID: 11400000, guid: a9ef4b14f1beb9e4a98b34fd2365e3c1, type: 2}
+    Right: {fileID: 11400000, guid: 48f5e057a0d448a46a1e948baa4a1b6b, type: 2}

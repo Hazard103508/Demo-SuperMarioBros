@@ -18,7 +18,7 @@ namespace Mario.Game.Player
         {
             ModeSmall = new PlayerModeSmall(Player);
             ModeBig = new PlayerModeBig(Player);
-            //ModeSuper = new PlayerModeSuper(Player);
+            ModeSuper = new PlayerModeSuper(Player);
 
             CurrentMode = ModeSmall;
         }

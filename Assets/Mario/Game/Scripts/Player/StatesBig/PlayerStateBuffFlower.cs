@@ -53,7 +53,7 @@ namespace Mario.Game.Player
         private void ChangePlayerMode()
         {
             Player.Movable.enabled = true;
-            base.ChangeModeToBig(Player);
+            base.ChangeModeToSuper(Player);
         }
         private void SetNextState()
         {
@@ -82,7 +82,7 @@ namespace Mario.Game.Player
         public override void Update()
         {
             base.Update();
-            if (_timer >= 0.5f)
+            if (_timer >= 1f)
             {
                 ChangePlayerMode();
                 SetNextState();
