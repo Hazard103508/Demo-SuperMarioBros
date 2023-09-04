@@ -1,5 +1,4 @@
 using Mario.Game.Interfaces;
-using System.Collections;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 

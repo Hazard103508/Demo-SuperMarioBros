@@ -1,9 +1,6 @@
 using Mario.Game.ScriptableObjects.Pool;
 using System;
-using UnityEditor.Animations;
 using UnityEngine;
-using UnityShared.ScriptableObjects.GameObjects;
-using static Mario.Game.ScriptableObjects.Player.PlayerModeProfile;
 
 namespace Mario.Game.ScriptableObjects.Player
 {

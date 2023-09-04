@@ -21,7 +21,7 @@ namespace Mario.Game.Player
         {
             if (Player.Movable.Speed != 0)
                 return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
- 
+
             return false;
         }
         protected override bool SetTransitionToJump()
