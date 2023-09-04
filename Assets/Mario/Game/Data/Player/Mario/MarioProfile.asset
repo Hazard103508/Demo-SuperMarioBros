@@ -16,27 +16,10 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  Walk:
-    Acceleration: 7.9
-    MaxSpeed: 5.8
-    Deacceleration: 20
-  Run:
-    Acceleration: 13
-    MaxSpeed: 9.5
-    Deacceleration: 15
-  Fall:
-    FallSpeed: 60
-    DeathFallSpeed: 35
-    MaxFallSpeed: 16
-  Jump:
-    MinHeight: 1.2
-    MaxIdleHeight: 4
-    MaxRunHeight: 5
-    DeathHeight: 3.5
   Fireball:
     StartLocalPosition: {x: 0.5, y: 1.5}
     FireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
   Modes:
     Small: {fileID: 11400000, guid: 7ae9649b0173ad14189c39ae9d3cb3da, type: 2}
     Big: {fileID: 11400000, guid: ec62a4551b5c2e049ae5b4ae146a1cd7, type: 2}
-    Super: {fileID: 0}
+    Super: {fileID: 11400000, guid: 65d241b1d2ac3764091c10e3d55961aa, type: 2}
