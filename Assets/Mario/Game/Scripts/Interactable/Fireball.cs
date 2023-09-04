@@ -43,7 +43,7 @@ namespace Mario.Game.Interactable
         {
             HitObject(hitInfo);
             if (gameObject.activeSelf && hitInfo.IsBlock)
-                _movable.AddJumpForce(_profile.BounceSpeed);
+                _movable.SetJumpForce(_profile.BounceSpeed);
         }
         private void HitSideObject(RayHitInfo hitInfo)
         {

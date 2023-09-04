@@ -28,7 +28,7 @@ namespace Mario.Game.Boxes.Box
             Box.Animator.SetTrigger("LastJump");
             Box.Movable.Gravity = Box.Profile.FallSpeed;
             Box.Movable.MaxFallSpeed = Box.Profile.MaxFallSpeed;
-            Box.Movable.AddJumpForce(Box.Profile.JumpAcceleration);
+            Box.Movable.SetJumpForce(Box.Profile.JumpAcceleration);
         }
         public override void Update()
         {

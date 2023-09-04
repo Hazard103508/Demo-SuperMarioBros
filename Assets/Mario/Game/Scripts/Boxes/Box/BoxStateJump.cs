@@ -29,7 +29,7 @@ namespace Mario.Game.Boxes.Box
             Box.Animator.SetTrigger("Jump");
             Box.Movable.Gravity = Box.Profile.FallSpeed;
             Box.Movable.MaxFallSpeed = Box.Profile.MaxFallSpeed;
-            Box.Movable.AddJumpForce(Box.Profile.JumpAcceleration);
+            Box.Movable.SetJumpForce(Box.Profile.JumpAcceleration);
             Services.PoolService.GetObjectFromPool(Box.Profile.HitSoundFXPoolReference, Box.transform.position);
         }
         public override void Update()

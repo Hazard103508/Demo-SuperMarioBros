@@ -42,7 +42,7 @@ namespace Mario.Game.Player
             var jumpedHeight = Player.transform.position.y - _initYPos;
             var currentJump = jumpHeight + jumpedHeight;
             if (currentJump < _maxHeight)
-                Player.Movable.AddJumpForce(_jumpForce);
+                Player.Movable.SetJumpForce(_jumpForce);
         }
         private float GetMaxHeight()
         {
@@ -61,7 +61,7 @@ namespace Mario.Game.Player
 
             float minHeight = Player.InputActions.Move.x == 0 ? Player.StateMachine.CurrentMode.ModeProfile.Jump.WalkHeight.Min : Player.StateMachine.CurrentMode.ModeProfile.Jump.RunHeight.Min;
             _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(minHeight, -Player.Movable.Gravity);
-            Player.Movable.AddJumpForce(_jumpForce);
+            Player.Movable.SetJumpForce(_jumpForce);
         }
         public override void Update()
         {
@@ -77,7 +77,7 @@ namespace Mario.Game.Player
         {
             if (hitInfo.IsBlock)
             {
-                Player.Movable.AddJumpForce(0);
+                Player.Movable.SetJumpForce(0);
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
             }
         }

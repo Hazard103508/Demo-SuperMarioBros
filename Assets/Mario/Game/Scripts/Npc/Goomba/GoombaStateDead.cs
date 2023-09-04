@@ -23,7 +23,7 @@ namespace Mario.Game.Npc.Goomba
 
             Services.ScoreService.Add(Goomba.Profile.Points);
             Services.ScoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.8f, 3f);
-            Goomba.Movable.AddJumpForce(Goomba.Profile.JumpAcceleration);
+            Goomba.Movable.SetJumpForce(Goomba.Profile.JumpAcceleration);
             Goomba.Renderer.transform.position += Vector3.up * 0.5f;
         }
         #endregion

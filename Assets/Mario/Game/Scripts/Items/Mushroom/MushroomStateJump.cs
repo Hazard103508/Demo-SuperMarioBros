@@ -14,7 +14,7 @@ namespace Mario.Game.Items.Mushroom
         #region IState Methods
         public override void Enter()
         {
-            Mushroom.Movable.AddJumpForce(Mushroom.Profile.JumpAcceleration);
+            Mushroom.Movable.SetJumpForce(Mushroom.Profile.JumpAcceleration);
         }
         #endregion
 

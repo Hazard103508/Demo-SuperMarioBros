@@ -24,7 +24,7 @@ namespace Mario.Game.Npc.Koopa
 
             Services.ScoreService.Add(Koopa.Profile.PointsKill);
             Services.ScoreService.ShowPoints(Koopa.Profile.PointsKill, Koopa.transform.position + Vector3.up * 2f, 0.8f, 3f);
-            Koopa.Movable.AddJumpForce(Koopa.Profile.JumpAcceleration);
+            Koopa.Movable.SetJumpForce(Koopa.Profile.JumpAcceleration);
             Koopa.Renderer.transform.position += Vector3.up * 0.5f;
         }
         #endregion

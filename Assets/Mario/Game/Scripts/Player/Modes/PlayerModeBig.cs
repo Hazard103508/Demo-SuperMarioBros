@@ -8,9 +8,9 @@ namespace Mario.Game.Player
             base.StateIdle = new PlayerStateBigIdle(player);
             base.StateRun = new PlayerStateBigRun(player);
             base.StateStop = new PlayerStateStop(player);
-            base.StateJump = new PlayerStateJump(player);
+            base.StateJump = new PlayerStateBigJump(player);
             base.StateFall = new PlayerStateFall(player);
-            //base.StateBuff= new PlayerStateBuff(player);
+            //base.StateBuff -- custom buff state in each state
             base.StateNerf = new PlayerStateBigNerf(player);
             base.StateDeath = new PlayerStateDeath(player);
             base.StateFlag = new PlayerStateFlag(player);

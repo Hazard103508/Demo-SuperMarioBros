@@ -44,7 +44,7 @@ namespace Mario.Game.Player
         public override void OnHittedByMovingToTop(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                Player.Movable.AddJumpForce(0);
+                Player.Movable.SetJumpForce(0);
         }
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {

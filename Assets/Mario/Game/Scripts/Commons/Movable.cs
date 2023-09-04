@@ -76,7 +76,7 @@ namespace Mario.Game.Commons
         #endregion
 
         #region Public
-        public void AddJumpForce(float force) => _currentSpeed.y = force;
+        public void SetJumpForce(float force) => _currentSpeed.y = force;
         public void RemoveGravity()
         {
             Gravity = 0;
