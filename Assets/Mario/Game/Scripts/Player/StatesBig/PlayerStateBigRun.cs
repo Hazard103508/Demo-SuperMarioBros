@@ -20,14 +20,10 @@ namespace Mario.Game.Player
         #region Protected Methods
         protected override bool SetTransitionToBuff()
         {
-            var animInfo = Player.Animator.GetCurrentAnimatorStateInfo(0);
-            float _currentTime = animInfo.normalizedTime % 0.25f;
-
             PlayerStateBuffFlower nextBuffSate =
-                _currentTime < 0.25 ? _flowerBuff1:
-                _currentTime < 0.5 ? _flowerBuff2 :
-                _currentTime < 0.75 ? _flowerBuff3 :
-                _flowerBuff1;
+                base.CurrentAnimationFrame == 0 ? _flowerBuff3:
+                base.CurrentAnimationFrame == 2 ? _flowerBuff1 :
+                _flowerBuff2;
 
             return Player.StateMachine.TransitionTo(nextBuffSate);
         }
