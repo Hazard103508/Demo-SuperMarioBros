@@ -16,7 +16,7 @@ public class _BORRAR : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Keypad0))
             playerController.Nerf();
 
-        if (Input.GetKeyDown(KeyCode.Keypad1))
+        if (Input.GetKeyDown(KeyCode.K))
             playerController.Kill();
 
         if (Input.GetKeyDown(KeyCode.F))
