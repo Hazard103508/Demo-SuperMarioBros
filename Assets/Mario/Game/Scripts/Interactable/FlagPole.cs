@@ -38,7 +38,7 @@ namespace Mario.Game.Interactable
                 player.transform.localScale = Vector3.one;
                 player.transform.position = new Vector3(transform.position.x - 0.5f, player.transform.position.y, player.transform.position.z);
 
-                var _playerAnimator = player.GetComponentInChildren<PlayerAnimator>();
+                var _playerAnimator = player.GetComponentInChildren<PlayerAnimator_OLD>();
 
                 _audioSource.Play();
                 StartCoroutine(DownPlayerPole(player, _playerAnimator));
@@ -47,7 +47,7 @@ namespace Mario.Game.Interactable
                 Services.GameDataService.IsGoalReached = true;
             }
         }
-        private IEnumerator DownFlagPole(PlayerController_OLD player, PlayerAnimator animator)
+        private IEnumerator DownFlagPole(PlayerController_OLD player, PlayerAnimator_OLD animator)
         {
             Services.MusicService.Stop();
             Services.PlayerService.CanMove = false;
@@ -70,7 +70,7 @@ namespace Mario.Game.Interactable
             Services.MusicService.Play();
             Services.PlayerService.CanMove = true;
         }
-        private IEnumerator DownPlayerPole(PlayerController_OLD player, PlayerAnimator animator)
+        private IEnumerator DownPlayerPole(PlayerController_OLD player, PlayerAnimator_OLD animator)
         {
             animator.IsInFlagPole = true;
             while (player.transform.position.y > transform.position.y)

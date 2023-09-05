@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Player
 {
-    public class PlayerAnimator : MonoBehaviour
+    public class PlayerAnimator_OLD : MonoBehaviour
     {
         [SerializeField] private SpriteRenderer _renderer;
 
