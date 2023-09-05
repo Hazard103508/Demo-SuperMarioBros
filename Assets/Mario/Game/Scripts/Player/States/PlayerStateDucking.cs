@@ -43,6 +43,9 @@ namespace Mario.Game.Player
             if (Player.InputActions.Ducking && Player.InputActions.Move.x == 0)
                 return;
 
+            if (Player.Movable.JumpForce != 0)
+                return;
+
             if (SetTransitionToRun())
                 return;
 

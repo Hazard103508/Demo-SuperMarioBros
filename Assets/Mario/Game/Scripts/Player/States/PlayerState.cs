@@ -17,7 +17,6 @@ namespace Mario.Game.Player
         #endregion
 
         #region Properties
-        public int CurrentAnimationFrame { get; set; }
         protected PlayerController Player { get; private set; }
         #endregion
 

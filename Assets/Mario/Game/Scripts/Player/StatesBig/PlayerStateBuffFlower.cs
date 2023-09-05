@@ -46,6 +46,12 @@ namespace Mario.Game.Player
             }
             return false;
         }
+        protected override bool SetTransitionToDucking()
+        {
+            if(Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Ducking)
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
+            return false;
+        }
         #endregion
 
         #region Private Methods
@@ -56,6 +62,9 @@ namespace Mario.Game.Player
         }
         private void SetNextState()
         {
+            if (SetTransitionToDucking())
+                return;
+
             if (SetTransitionToJump())
                 return;
 

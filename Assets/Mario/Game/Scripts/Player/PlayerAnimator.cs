@@ -12,7 +12,18 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public void OnFrameChange(int frame) => _playerController.StateMachine.CurrentState.CurrentAnimationFrame = frame;
+        public void SetFrameId(PlayerAnimationKeys key) => _playerController.CurrentAnimationKey = key;
+        #endregion
+
+        #region Structures
+        public enum PlayerAnimationKeys
+        {
+            Run1, 
+            Run2, 
+            Run3,
+            Jump,
+            Ducking
+        }
         #endregion
     }
 }

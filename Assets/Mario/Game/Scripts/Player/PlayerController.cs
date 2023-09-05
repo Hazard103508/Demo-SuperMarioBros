@@ -26,6 +26,7 @@ namespace Mario.Game.Player
         public PlayerProfile Profile => _profile;
         public SpriteRenderer Renderer => _renderer;
         public bool IsInvincible { get; set; }
+        public PlayerAnimator.PlayerAnimationKeys CurrentAnimationKey { get; set; }
         #endregion
 
         #region Unity Methods

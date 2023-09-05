@@ -21,9 +21,9 @@ namespace Mario.Game.Player
         protected override bool SetTransitionToBuff()
         {
             PlayerStateBuffFlower nextBuffSate =
-                base.CurrentAnimationFrame == 0 ? _flowerBuff3:
-                base.CurrentAnimationFrame == 2 ? _flowerBuff1 :
-                _flowerBuff2;
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run1 ? _flowerBuff1:
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run2 ? _flowerBuff2 :
+                _flowerBuff3;
 
             return Player.StateMachine.TransitionTo(nextBuffSate);
         }
@@ -38,6 +38,5 @@ namespace Mario.Game.Player
             base.Update();
         }
         #endregion
-
     }
 }
