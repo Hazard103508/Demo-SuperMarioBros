@@ -5,7 +5,7 @@ namespace Mario.Game.Player
 {
     public class TestEventListener : MonoBehaviour
     {
-        [SerializeField] private PlayerController_OLD player;
+        [SerializeField] private PlayerController player;
 
         private void Update()
         {
