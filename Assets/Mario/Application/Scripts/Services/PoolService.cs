@@ -50,14 +50,19 @@ namespace Mario.Application.Services
                 var pool = obj.AddComponent<Pool>();
                 _poolGroups.Add(type, pool);
 
-                if (Services.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjectsDic.ContainsKey(type))
+                if (Services.GameDataService.CurrentMapProfile.PoolProfile.PoolObjectsDic.ContainsKey(type))
                 {
-                    var poolItem = Services.GameDataService.CurrentMapProfile.ObjectsPool.PoolObjectsDic[type];
+                    var poolItem = Services.GameDataService.CurrentMapProfile.PoolProfile.PoolObjectsDic[type];
                     LoadObjectPool(pool, poolItem);
+                }
+                else if (Services.GameDataService.CurrentMapProfile.PoolProfile.PoolSoundDic.ContainsKey(type))
+                {
+                    var poolItem = Services.GameDataService.CurrentMapProfile.PoolProfile.PoolSoundDic[type];
+                    LoadSoundPool(pool, poolItem);
                 }
                 else
                 {
-                    var poolUI = Services.GameDataService.CurrentMapProfile.ObjectsPool.PooledUIDic[type];
+                    var poolUI = Services.GameDataService.CurrentMapProfile.PoolProfile.PooledUIDic[type];
                     LoadUIPool(pool, poolUI);
                 }
             }
@@ -73,10 +78,8 @@ namespace Mario.Application.Services
             pool.MaxSize = profile.MaxSize;
             pool.Load();
         }
-        private void LoadObjectPool(Pool pool, PooledObjectProfile profile)
-        {
-            LoadBasePool(pool, profile);
-        }
+        private void LoadObjectPool(Pool pool, PooledObjectProfile profile) => LoadBasePool(pool, profile);
+        private void LoadSoundPool(Pool pool, PooledSoundProfile profile) => LoadBasePool(pool, profile);
         private void LoadUIPool(Pool pool, PooledUIProfile profile)
         {
             LoadBasePool(pool, profile);

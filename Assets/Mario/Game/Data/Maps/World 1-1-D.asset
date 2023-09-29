@@ -29,4 +29,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
   NextMap: {fileID: 0}
   Music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
-  ObjectsPool: {fileID: 11400000, guid: e66928cabb0da6e4dbac7d768f224afd, type: 2}
+  PoolProfile: {fileID: 11400000, guid: e66928cabb0da6e4dbac7d768f224afd, type: 2}

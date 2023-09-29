@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEditor.Animations;
 using UnityEngine;
@@ -37,6 +38,7 @@ namespace Mario.Game.ScriptableObjects.Player
             public RangeNumber<float> WalkHeight;
             public RangeNumber<float> RunHeight;
             public float DeathHeight;
+            public PooledSoundProfile soundFX;
         }
         [Serializable]
         public class ModeRaycastRange

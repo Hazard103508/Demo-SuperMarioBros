@@ -21,10 +21,22 @@ MonoBehaviour:
     m_Address: BoxHitSoundFX
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 04dc49d54a9e71c41a812a616fc3a7bb
     m_Address: RiseItemSoundFX
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b275e24b1198634e8f40aca98de3407
+    m_Address: PlayerSmallJumpSoundFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78f9a2b8cda883a4da836341c452f884
+    m_Address: PlayerBigJumpSoundFX
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
   m_SchemaSet:

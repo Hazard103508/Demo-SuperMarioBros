@@ -1,6 +1,7 @@
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 namespace Mario.Game.ScriptableObjects.Player
 {
