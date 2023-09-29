@@ -50,6 +50,7 @@ namespace Mario.Game.Player
         public void Buff() => this.StateMachine.CurrentState.OnBuff();
         public void Nerf() => this.StateMachine.CurrentState.OnNerf();
         public void Kill() => this.StateMachine.CurrentState.OnDeath();
+        public void TimeOut() => this.StateMachine.CurrentState.OnTimeOut();   
         public void TouchFlag() => this.StateMachine.CurrentState.OnTouchFlag();
         #endregion
 

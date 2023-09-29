@@ -12,6 +12,7 @@ namespace Mario.Game.Player
             base.StateFall = new PlayerStateFall(player);
             base.StateBuff = new PlayerStateBuffMushroom(player);
             base.StateDeath = new PlayerStateDeath(player);
+            base.StateTimeOut = new PlayerStateTimeOut(player);
             base.StateFlag = new PlayerStateFlag(player);
         }
     }

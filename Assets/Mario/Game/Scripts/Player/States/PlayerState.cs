@@ -49,6 +49,7 @@ namespace Mario.Game.Player
         public virtual void OnBuff() { }
         public virtual void OnNerf() { }
         public virtual void OnDeath() { }
+        public virtual void OnTimeOut() { }
         public virtual void OnTouchFlag() { }
         #endregion
 
@@ -137,6 +138,7 @@ namespace Mario.Game.Player
         protected virtual bool SetTransitionToBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
         protected virtual bool SetTransitionToNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
         protected virtual bool SetTransitionToDeath() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
+        protected virtual bool SetTransitionToTimeOut() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateTimeOut);
         protected virtual bool SetTransitionToFlag() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFlag);
 
         protected void ChangeModeToSmall(PlayerController player)

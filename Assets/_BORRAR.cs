@@ -21,5 +21,8 @@ public class _BORRAR : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
             playerController.TouchFlag();
+
+        if (Input.GetKeyDown(KeyCode.T))
+            playerController.TimeOut();
     }
 }
