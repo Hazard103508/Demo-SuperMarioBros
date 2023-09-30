@@ -48,7 +48,7 @@ namespace Mario.Game.Player
         }
         protected override bool SetTransitionToDucking()
         {
-            if(Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Ducking)
+            if (Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Ducking)
                 return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
             return false;
         }

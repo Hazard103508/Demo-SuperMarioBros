@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -25,17 +24,6 @@ namespace UnityShared.Behaviours.Various.RaycastRange
         #endregion
 
         #region Public Methods
-        [Obsolete("Method1 is deprecated")]
-        public void CalculateCollision()
-        {
-            var rayBound = CalculateRayRange();
-            CalculateCollisionDetection(rayBound, out List<HitObject> hits);
-
-            var hitInfo = new RayHitInfo();
-            hitInfo.hitObjects = hits;
-            hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
-            onHit.Invoke(hitInfo);
-        }
         public RayHitInfo CalculateCollision(float rayExtraLength)
         {
             _rayExtraLength = rayExtraLength;

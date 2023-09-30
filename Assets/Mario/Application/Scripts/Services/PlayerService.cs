@@ -1,5 +1,4 @@
 using Mario.Application.Interfaces;
-using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
@@ -38,7 +37,7 @@ namespace Mario.Application.Services
         #region Public Methods
         public void LoadService()
         {
-            _soundService= ServiceLocator.Current.Get<ISoundService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
             Reset();
         }
         public void AddLife()

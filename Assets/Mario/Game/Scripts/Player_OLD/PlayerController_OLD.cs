@@ -1,10 +1,3 @@
-using Mario.Application.Services;
-using Mario.Game.Enums;
-using Mario.Game.ScriptableObjects.Player;
-using System.Linq;
-using UnityEngine;
-using UnityShared.Commons.Structs;
-
 namespace Mario.Game.Player
 {
     //public class PlayerController_OLD : MonoBehaviour

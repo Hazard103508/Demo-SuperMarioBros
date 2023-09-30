@@ -9,7 +9,7 @@ namespace Mario.Application.Services
     {
         #region Objects
         private ISoundService _soundService;
-        [SerializeField] private PooledSoundProfile _soundPoolReference; 
+        [SerializeField] private PooledSoundProfile _soundPoolReference;
         #endregion
 
         #region Properties

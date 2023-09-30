@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace Mario.Game.Player
 {
@@ -18,8 +15,8 @@ namespace Mario.Game.Player
         #region Structures
         public enum PlayerAnimationKeys
         {
-            Run1, 
-            Run2, 
+            Run1,
+            Run2,
             Run3,
             Jump,
             Ducking

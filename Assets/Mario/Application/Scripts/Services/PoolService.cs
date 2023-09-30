@@ -1,9 +1,7 @@
 using Mario.Application.Components;
 using Mario.Application.Interfaces;
-using Mario.Game.Commons;
 using Mario.Game.ScriptableObjects.Pool;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Application.Services

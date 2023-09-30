@@ -5,7 +5,6 @@ using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
-using System.Threading;
 using UnityEngine;
 
 namespace Mario.Game.Maps
