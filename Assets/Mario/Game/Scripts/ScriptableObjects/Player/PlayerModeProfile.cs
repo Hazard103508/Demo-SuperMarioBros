@@ -38,7 +38,7 @@ namespace Mario.Game.ScriptableObjects.Player
             public RangeNumber<float> WalkHeight;
             public RangeNumber<float> RunHeight;
             public float DeathHeight;
-            public PooledSoundProfile soundFX;
+            public PooledSoundProfile SoundFX;
         }
         [Serializable]
         public class ModeRaycastRange

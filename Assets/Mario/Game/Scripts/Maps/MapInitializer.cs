@@ -73,10 +73,11 @@ namespace Mario.Game.Maps
         }
         private void LoadObjectsPool()
         {
-            LoadObjectsPool(Services.GameDataService.CurrentMapProfile.PoolProfile.ObjectPool);
-            LoadObjectsPool(Services.GameDataService.CurrentMapProfile.PoolProfile.UIPool);
+            LoadObjectsPool<GameObject>(Services.GameDataService.CurrentMapProfile.PoolProfile.ObjectPool);
+            LoadObjectsPool<AudioClip>(Services.GameDataService.CurrentMapProfile.PoolProfile.SoundPool);
+            LoadObjectsPool<GameObject>(Services.GameDataService.CurrentMapProfile.PoolProfile.UIPool);
         }
-        private void LoadObjectsPool(BasePooledObjectProfile[] poolItems) => Array.ForEach(poolItems, item => Services.AddressablesService.AddAsset(item.Reference));
+        private void LoadObjectsPool<T>(BasePooledObjectProfile[] poolItems) => Array.ForEach(poolItems, item => Services.AddressablesService.AddAsset<T>(item.Reference));
         private IEnumerator StartGame()
         {
             _blackScreen.SetActive(true);

@@ -17,20 +17,20 @@ namespace Mario.Application.Services
         {
             _references = new Dictionary<AssetReference, AsyncOperationHandle>();
         }
-        public void AddAsset(AssetReference assetReference)
+        public void AddAsset<T>(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))
                 return;
 
             _references.Add(assetReference, default);
 
-            var asyncOperationHandle = assetReference.LoadAssetAsync<GameObject>();
+            var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
             asyncOperationHandle.Completed += handle => _references[assetReference] = handle;
         }
-        public GameObject GetAssetReference(AssetReference assetReference)
+        public T GetAssetReference<T>(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))
-                return (GameObject)_references[assetReference].Result;
+                return (T)_references[assetReference].Result;
 
             return default;
         }

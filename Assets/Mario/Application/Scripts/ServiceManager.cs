@@ -22,6 +22,7 @@ namespace Mario.Application
             RegisterServicer<IPlayerService>();
             RegisterServicer<ISceneService>();
             RegisterServicer<IMusicService>();
+            RegisterServicer<ISoundService>();
 
             Services.Services.Load();
             Services.Services.SceneService.LoadMainScene();
@@ -37,6 +38,7 @@ namespace Mario.Application
             UnregisterService<IPlayerService>();
             UnregisterService<ISceneService>();
             UnregisterService<IMusicService>();
+            UnregisterService<ISoundService>();
 
             Destroy(gameObject);
         }

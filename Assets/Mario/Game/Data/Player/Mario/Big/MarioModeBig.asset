@@ -33,7 +33,7 @@ MonoBehaviour:
       Min: 1.2
       Max: 5
     DeathHeight: 3.5
-    soundFX: {fileID: 11400000, guid: cea7a45644dec574c9001bd8dd9e8959, type: 2}
+    SoundFX: {fileID: 11400000, guid: cea7a45644dec574c9001bd8dd9e8959, type: 2}
   NormalRaycastRange:
     Top: {fileID: 11400000, guid: 200ca7a65f986c441a015c73438ed238, type: 2}
     Bottom: {fileID: 11400000, guid: e37f405da0173ab4bb5ace2710efab88, type: 2}

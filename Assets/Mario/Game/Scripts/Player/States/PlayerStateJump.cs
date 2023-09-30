@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -6,6 +8,8 @@ namespace Mario.Game.Player
     public class PlayerStateJump : PlayerState
     {
         #region Objects
+        private readonly ISoundService _soundService;
+
         private float _jumpForce;
         private float _initYPos;
         private float _maxHeight;
@@ -14,6 +18,7 @@ namespace Mario.Game.Player
         #region Constructor
         public PlayerStateJump(PlayerController player) : base(player)
         {
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -63,6 +68,8 @@ namespace Mario.Game.Player
             float minHeight = Player.InputActions.Move.x == 0 ? Player.StateMachine.CurrentMode.ModeProfile.Jump.WalkHeight.Min : Player.StateMachine.CurrentMode.ModeProfile.Jump.RunHeight.Min;
             _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(minHeight, -Player.Movable.Gravity);
             Player.Movable.SetJumpForce(_jumpForce);
+
+            _soundService.Play(Player.StateMachine.CurrentMode.ModeProfile.Jump.SoundFX);
         }
         public override void Update()
         {

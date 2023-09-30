@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PooledSoundProfile_PlayerBigJump
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 78f9a2b8cda883a4da836341c452f884
+    m_AssetGUID: 0187dc7dd84c01c49b1a5c46cf11222c
     m_SubObjectName: 
     m_SubObjectType: 
-    m_EditorAssetChanged: 0
+    m_EditorAssetChanged: 1
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 1

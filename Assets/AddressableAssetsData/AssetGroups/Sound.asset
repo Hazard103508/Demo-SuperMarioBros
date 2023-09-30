@@ -10,30 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: SoundFX
+  m_Name: Sound
   m_EditorClassIdentifier: 
-  m_GroupName: SoundFX
+  m_GroupName: Sound
   m_Data:
     m_SerializedData: []
   m_GUID: 87df5f74a7aefe9409c368ba6b1aab96
   m_SerializeEntries:
-  - m_GUID: ea9a9e0c70f5b694d8551ec0f14366fc
-    m_Address: BoxHitSoundFX
+  - m_GUID: bcdef1551937b394f99a0fff58e3efb3
+    m_Address: smb_jump-small
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 04dc49d54a9e71c41a812a616fc3a7bb
-    m_Address: RiseItemSoundFX
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3b275e24b1198634e8f40aca98de3407
-    m_Address: PlayerSmallJumpSoundFX
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 78f9a2b8cda883a4da836341c452f884
-    m_Address: PlayerBigJumpSoundFX
+  - m_GUID: 0187dc7dd84c01c49b1a5c46cf11222c
+    m_Address: smb_jump-super
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

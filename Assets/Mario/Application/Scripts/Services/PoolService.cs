@@ -2,6 +2,7 @@ using Mario.Application.Components;
 using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Pool;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Application.Services
@@ -17,10 +18,15 @@ namespace Mario.Application.Services
         {
             _poolGroups = new Dictionary<string, Pool>();
         }
+        public PooledObject GetObjectFromPool(BasePooledObjectProfile profile) => GetObjectFromPool(profile, Vector3.zero);
         public PooledObject GetObjectFromPool(BasePooledObjectProfile profile, Vector3 position)
         {
             var poolGroup = GetPoolGroup(profile.name);
             return poolGroup.Get(position);
+        }
+        public T GetObjectFromPool<T>(BasePooledObjectProfile profile) where T : MonoBehaviour
+        {
+            return GetObjectFromPool<T>(profile, Vector3.zero);
         }
         public T GetObjectFromPool<T>(BasePooledObjectProfile profile, Vector3 position) where T : MonoBehaviour
         {
@@ -69,20 +75,31 @@ namespace Mario.Application.Services
 
             return _poolGroups[type];
         }
-        private void LoadBasePool(Pool pool, BasePooledObjectProfile profile)
+        private void LoadItemPool(Pool pool, BasePooledObjectProfile profile)
         {
-            var itemReference = Services.AddressablesService.GetAssetReference(profile.Reference);
-            pool.PrefabReference = itemReference;
             pool.CollectionCheck = profile.CollectionCheck;
             pool.DefaultCapacity = profile.DefaultCapacity;
             pool.MaxSize = profile.MaxSize;
             pool.Load();
         }
-        private void LoadObjectPool(Pool pool, PooledObjectProfile profile) => LoadBasePool(pool, profile);
-        private void LoadSoundPool(Pool pool, PooledSoundProfile profile) => LoadBasePool(pool, profile);
+        private void LoadObjectPool(Pool pool, PooledObjectProfile profile)
+        {
+            pool.PrefabReference = Services.AddressablesService.GetAssetReference<GameObject>(profile.Reference);
+            LoadItemPool(pool, profile);
+        }
+        private void LoadSoundPool(Pool pool, PooledSoundProfile profile) 
+        {
+            GameObject obj = new GameObject(pool.name);
+            var audioSource =  obj.AddComponent<AudioSource>();
+            audioSource.clip = Services.AddressablesService.GetAssetReference<AudioClip>(profile.Reference);
+
+            pool.PrefabReference = obj;
+            LoadItemPool(pool, profile);
+        }
         private void LoadUIPool(Pool pool, PooledUIProfile profile)
         {
-            LoadBasePool(pool, profile);
+            pool.PrefabReference = Services.AddressablesService.GetAssetReference<GameObject>(profile.Reference);
+            LoadItemPool(pool, profile);
 
             var canvas = pool.gameObject.AddComponent<Canvas>();
             canvas.renderMode = profile.RenderMode;
