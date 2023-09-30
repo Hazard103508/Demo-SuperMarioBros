@@ -12,6 +12,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         #region Objects
         private readonly IPoolService _poolService;
         private readonly IScoreService _scoreService;
+        private readonly ISoundService _soundService;
         #endregion
 
         #region Properties
@@ -23,6 +24,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -41,6 +43,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
             {
                 _poolService.GetObjectFromPool(Box.Profile.BrokenBrickPoolReference, Box.transform.position);
                 _scoreService.Add(Box.Profile.Points);
+                _soundService.Play(Box.Profile.BreakSoundFXPoolReference);
                 Box.StartCoroutine(DestroyBox()); 
             }
             base.OnHittedByPlayerFromBottom(player);

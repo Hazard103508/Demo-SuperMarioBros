@@ -7,6 +7,7 @@ namespace Mario.Game.ScriptableObjects.Boxes
     public class BrickBoxEmptyProfile : BoxProfile
     {
         public PooledObjectProfile BrokenBrickPoolReference;
+        public PooledSoundProfile BreakSoundFXPoolReference;
         public int Points;
     }
 }

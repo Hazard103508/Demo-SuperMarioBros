@@ -47,6 +47,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 204f14f8ec3a2be4c88927745b93c7ec
+    m_Address: Sound_BoxBreak
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
   m_SchemaSet:

@@ -20,4 +20,5 @@ MonoBehaviour:
   MaxFallSpeed: 100
   JumpAcceleration: 10
   BrokenBrickPoolReference: {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
+  BreakSoundFXPoolReference: {fileID: 11400000, guid: d0256ae781eb57b4cb5ca59a015018d1, type: 2}
   Points: 50
