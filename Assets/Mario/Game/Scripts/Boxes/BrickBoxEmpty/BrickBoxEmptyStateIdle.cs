@@ -27,9 +27,9 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
-            if (player.Mode != Enums.PlayerModes.Small)
+            if (!player.StateMachine.CurrentMode.Equals(player.StateMachine.ModeSmall))
             {
                 Services.PoolService.GetObjectFromPool(Box.Profile.BrokenBrickPoolReference, Box.transform.position);
                 Services.ScoreService.Add(Box.Profile.Points);

@@ -41,7 +41,7 @@ namespace Mario.Game.Items
                 yield return null;
             }
         }
-        private void CollectFlower(PlayerController_OLD player)
+        private void CollectFlower(PlayerController player)
         {
             gameObject.layer = 0;
             Services.ScoreService.Add(_profile.Points);
@@ -53,10 +53,10 @@ namespace Mario.Game.Items
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => CollectFlower(player);
-        public void OnHittedByPlayerFromBottom(PlayerController_OLD player) => CollectFlower(player);
-        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => CollectFlower(player);
-        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => CollectFlower(player);
+        public void OnHittedByPlayerFromTop(PlayerController player) => CollectFlower(player);
+        public void OnHittedByPlayerFromBottom(PlayerController player) => CollectFlower(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player) => CollectFlower(player);
+        public void OnHittedByPlayerFromRight(PlayerController player) => CollectFlower(player);
         #endregion
     }
 }

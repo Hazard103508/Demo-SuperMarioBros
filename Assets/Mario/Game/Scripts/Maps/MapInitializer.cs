@@ -11,7 +11,7 @@ namespace Mario.Game.Maps
     public class MapInitializer : MonoBehaviour
     {
         #region Objects
-        [SerializeField] private PlayerController_OLD _player;
+        [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
         #endregion
 
@@ -96,7 +96,7 @@ namespace Mario.Game.Maps
             }
             else if (Services.GameDataService.CurrentMapProfile.MapInit.StartLocation == Enums.PlayerStartLocation.Falling)
             {
-                _player.Input.X = 1;
+                //_player.InputActions.Move.x = 1; // TODO
                 yield return new WaitForEndOfFrame();
             }
 

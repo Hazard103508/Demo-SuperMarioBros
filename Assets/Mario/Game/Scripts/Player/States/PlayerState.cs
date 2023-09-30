@@ -1,4 +1,6 @@
 using Mario.Game.Interfaces;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -156,6 +158,10 @@ namespace Mario.Game.Player
             Player.StateMachine.CurrentMode = Player.StateMachine.ModeSuper;
             ChangeMode(player);
         }
+        protected bool HitObjectOnTop(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromBottom>(hitObjects, script => script.OnHittedByPlayerFromBottom(Player));
+        protected bool HitObjectOnBottom(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromTop>(hitObjects, script => script.OnHittedByPlayerFromTop(Player));
+        protected bool HitObjectOnRight(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromLeft>(hitObjects, script => script.OnHittedByPlayerFromLeft(Player));
+        protected bool HitObjectOnLeft(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromRight>(hitObjects, script => script.OnHittedByPlayerFromRight(Player));
         #endregion
 
         #region Private Methods
@@ -170,6 +176,21 @@ namespace Mario.Game.Player
             Player.Movable.RaycastBottom.Profile = modeRaycastRange.Bottom;
             Player.Movable.RaycastLeft.Profile = modeRaycastRange.Left;
             Player.Movable.RaycastRight.Profile = modeRaycastRange.Right;
+        }
+        private bool HitObjectOn<T>(List<HitObject> hitObjects, Action<T> onHitFunc)
+        {
+            foreach (var hit in hitObjects)
+            {
+                if (hit == null || hit.Object == null)
+                    continue;
+
+                if (!hit.Object.TryGetComponent<T>(out var script))
+                    continue;
+
+                onHitFunc.Invoke(script);
+                return true;
+            }
+            return false;
         }
         #endregion
 

@@ -35,14 +35,14 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController_OLD player) => StartDelay();
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
+        public override void OnHittedByPlayerFromTop(PlayerController player) => StartDelay();
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (_delay == 0)
                 base.OnHittedByPlayerFromBottom(player);
         }
-        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => StartDelay();
-        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => StartDelay();
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => StartDelay();
+        public override void OnHittedByPlayerFromRight(PlayerController player) => StartDelay();
         #endregion
     }
 }

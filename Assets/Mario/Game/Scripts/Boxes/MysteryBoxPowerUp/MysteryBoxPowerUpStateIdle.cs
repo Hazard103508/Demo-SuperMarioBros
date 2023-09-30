@@ -24,9 +24,9 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
-            if (player.Mode == Enums.PlayerModes.Small)
+            if (player.StateMachine.CurrentMode.Equals(player.StateMachine.ModeSmall))
                 Box.StateMachine.StateLastJump = new MysteryBoxPowerUpStateLastJumpMushroom(Box);
             else
                 Box.StateMachine.StateLastJump = new MysteryBoxPowerUpStateLastJumpFlower(Box);

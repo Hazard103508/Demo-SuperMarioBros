@@ -87,6 +87,7 @@ namespace Mario.Game.Player
             {
                 Player.Movable.SetJumpForce(0);
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
+                HitObjectOnTop(hitInfo.hitObjects);
             }
         }
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)

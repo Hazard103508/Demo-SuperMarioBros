@@ -15,7 +15,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region Private Methods
-        private IEnumerator MoveIntoPipe(PlayerController_OLD player)
+        private IEnumerator MoveIntoPipe(PlayerController player)
         {
             Services.TimeService.StopTimer();
             Services.PlayerService.CanMove = false;
@@ -36,12 +36,12 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromTop(PlayerController_OLD player)
+        public void OnHittedByPlayerFromTop(PlayerController player)
         {
             if (_isInPipe)
                 return;
 
-            if (player.Input.IsDucking)
+            if (player.InputActions.Ducking)
                 StartCoroutine(MoveIntoPipe(player));
         }
         #endregion

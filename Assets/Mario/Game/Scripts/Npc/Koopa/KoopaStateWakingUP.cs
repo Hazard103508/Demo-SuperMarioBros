@@ -17,7 +17,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Private Methods
-        private void OnHittedByPlayerFromSide(PlayerController_OLD player)
+        private void OnHittedByPlayerFromSide(PlayerController player)
         {
             if (_timer > 0.1f)
             {
@@ -53,8 +53,8 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => OnHittedByPlayerFromSide(player);
-        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => OnHittedByPlayerFromSide(player);
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => OnHittedByPlayerFromSide(player);
+        public override void OnHittedByPlayerFromRight(PlayerController player) => OnHittedByPlayerFromSide(player);
         #endregion
 
         #region On Box Hit

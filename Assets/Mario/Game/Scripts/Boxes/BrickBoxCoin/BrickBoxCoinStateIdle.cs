@@ -37,7 +37,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (!_started)
             {

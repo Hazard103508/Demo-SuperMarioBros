@@ -50,8 +50,19 @@ namespace Mario.Game.Player
         public void Buff() => this.StateMachine.CurrentState.OnBuff();
         public void Nerf() => this.StateMachine.CurrentState.OnNerf();
         public void Kill() => this.StateMachine.CurrentState.OnDeath();
-        public void TimeOut() => this.StateMachine.CurrentState.OnTimeOut();   
+        public void TimeOut() => this.StateMachine.CurrentState.OnTimeOut();
         public void TouchFlag() => this.StateMachine.CurrentState.OnTouchFlag();
+        public void Hit()
+        {
+            if (StateMachine.CurrentMode == StateMachine.ModeSmall)
+                Kill();
+            else
+                Nerf();
+        }
+        //---Temp---
+        public void BounceJump() { }
+        public bool IsAutoWalk { get; set; }
+        //---Temp---
         #endregion
 
         #region On Movable Hit

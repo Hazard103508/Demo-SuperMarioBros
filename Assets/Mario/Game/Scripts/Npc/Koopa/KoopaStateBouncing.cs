@@ -20,10 +20,10 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Private Methods
-        private void DamagePlayer(PlayerController_OLD player)
+        private void DamagePlayer(PlayerController player)
         {
             if (_timer > 0.1f)
-                player.DamagePlayer();
+                player.Hit();
         }
         private void KillKoopa(Vector3 hitPosition)
         {
@@ -77,7 +77,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController_OLD player)
+        public override void OnHittedByPlayerFromTop(PlayerController player)
         {
             if (_timer > 0.1f)
             {
@@ -85,9 +85,9 @@ namespace Mario.Game.Npc.Koopa
                 player.BounceJump();
             }
         }
-        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => DamagePlayer(player);
-        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => DamagePlayer(player);
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player) => DamagePlayer(player);
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => DamagePlayer(player);
+        public override void OnHittedByPlayerFromRight(PlayerController player) => DamagePlayer(player);
+        public override void OnHittedByPlayerFromBottom(PlayerController player) => DamagePlayer(player);
         #endregion
 
         #region On Box Hit

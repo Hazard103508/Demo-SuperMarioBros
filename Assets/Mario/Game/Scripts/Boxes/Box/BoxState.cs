@@ -42,16 +42,16 @@ namespace Mario.Game.Boxes.Box
         #endregion
 
         #region On Player Hit
-        public virtual void OnHittedByPlayerFromTop(PlayerController_OLD player)
+        public virtual void OnHittedByPlayerFromTop(PlayerController player)
         {
         }
-        public virtual void OnHittedByPlayerFromBottom(PlayerController_OLD player)
+        public virtual void OnHittedByPlayerFromBottom(PlayerController player)
         {
         }
-        public virtual void OnHittedByPlayerFromLeft(PlayerController_OLD player)
+        public virtual void OnHittedByPlayerFromLeft(PlayerController player)
         {
         }
-        public virtual void OnHittedByPlayerFromRight(PlayerController_OLD player)
+        public virtual void OnHittedByPlayerFromRight(PlayerController player)
         {
         }
         #endregion

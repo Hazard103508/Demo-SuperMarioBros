@@ -48,10 +48,10 @@ namespace Mario.Game.Items.Mushroom
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController_OLD player) => ChangeStateToCollect();
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player) => ChangeStateToCollect();
-        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => ChangeStateToCollect();
-        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => ChangeStateToCollect();
+        public override void OnHittedByPlayerFromTop(PlayerController player) => ChangeStateToCollect();
+        public override void OnHittedByPlayerFromBottom(PlayerController player) => ChangeStateToCollect();
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => ChangeStateToCollect();
+        public override void OnHittedByPlayerFromRight(PlayerController player) => ChangeStateToCollect();
         #endregion
     }
 }

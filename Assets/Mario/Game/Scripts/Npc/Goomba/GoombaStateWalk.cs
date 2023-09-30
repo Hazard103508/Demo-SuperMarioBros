@@ -46,14 +46,14 @@ namespace Mario.Game.Npc.Goomba
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController_OLD player)
+        public override void OnHittedByPlayerFromTop(PlayerController player)
         {
             Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateHit);
             player.BounceJump();
         }
-        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => player.DamagePlayer();
-        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => player.DamagePlayer();
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player) => player.DamagePlayer();
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => player.Hit();
+        public override void OnHittedByPlayerFromRight(PlayerController player) => player.Hit();
+        public override void OnHittedByPlayerFromBottom(PlayerController player) => player.Hit();
         #endregion
 
         #region On Box Hit

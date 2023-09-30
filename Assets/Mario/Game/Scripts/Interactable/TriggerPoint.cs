@@ -28,7 +28,7 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region Protected Methods
-        protected virtual void OnHitCheckPoint(PlayerController_OLD player)
+        protected virtual void OnHitCheckPoint(PlayerController player)
         {
             onTriggerOn.Invoke();
             if (_destroyOnTrigger)
@@ -37,10 +37,10 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromLeft(PlayerController_OLD player) => OnHitCheckPoint(player);
-        public void OnHittedByPlayerFromRight(PlayerController_OLD player) => OnHitCheckPoint(player);
-        public void OnHittedByPlayerFromBottom(PlayerController_OLD player) => OnHitCheckPoint(player);
-        public void OnHittedByPlayerFromTop(PlayerController_OLD player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromRight(PlayerController player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromBottom(PlayerController player) => OnHitCheckPoint(player);
+        public void OnHittedByPlayerFromTop(PlayerController player) => OnHitCheckPoint(player);
         #endregion
     }
 }

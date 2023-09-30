@@ -23,10 +23,10 @@ namespace Mario.Game.Items.Mushroom
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController_OLD player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
-        public override void OnHittedByPlayerFromLeft(PlayerController_OLD player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
-        public override void OnHittedByPlayerFromRight(PlayerController_OLD player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
-        #endregion
+        public override void OnHittedByPlayerFromTop(PlayerController player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
+        public override void OnHittedByPlayerFromBottom(PlayerController player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
+        public override void OnHittedByPlayerFromRight(PlayerController player) => Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
+        #endregion  
     }
 }

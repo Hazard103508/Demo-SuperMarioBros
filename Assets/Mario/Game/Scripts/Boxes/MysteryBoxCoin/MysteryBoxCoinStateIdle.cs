@@ -25,7 +25,7 @@ namespace Mario.Game.Boxes.MysteryBoxCoin
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromBottom(PlayerController_OLD player)
+        public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             Services.PoolService.GetObjectFromPool(Box.Profile.CoinPoolReference, Box.transform.position);
             base.OnHittedByPlayerFromBottom(player);
