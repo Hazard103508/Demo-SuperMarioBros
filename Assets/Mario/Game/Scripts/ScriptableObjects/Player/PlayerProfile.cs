@@ -1,7 +1,6 @@
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 namespace Mario.Game.ScriptableObjects.Player
 {
@@ -10,8 +9,10 @@ namespace Mario.Game.ScriptableObjects.Player
     {
         public string PlayerName;
         public LayerMask GroundLayer;
-        public PlayerFireball Fireball;
         public PlayerModes Modes;
+        public PlayerFireball Fireball;
+        public ModeChange Buff;
+        public ModeChange Nerf;
 
         [Serializable]
         public class PlayerFireball
@@ -26,5 +27,11 @@ namespace Mario.Game.ScriptableObjects.Player
             public PlayerModeProfile Big;
             public PlayerModeProfile Super;
         }
+        [Serializable]
+        public class ModeChange
+        {
+            public PooledSoundProfile SoundFX;
+        }
+
     }
 }

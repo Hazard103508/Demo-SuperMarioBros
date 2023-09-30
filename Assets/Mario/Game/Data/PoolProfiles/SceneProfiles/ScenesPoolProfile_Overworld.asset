@@ -23,6 +23,8 @@ MonoBehaviour:
   SoundPool:
   - {fileID: 11400000, guid: b99e5550ffec5ba46bf00b0dd582e373, type: 2}
   - {fileID: 11400000, guid: cea7a45644dec574c9001bd8dd9e8959, type: 2}
+  - {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
+  - {fileID: 11400000, guid: 74bda110af327014198ed99405fd392a, type: 2}
   - {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
   - {fileID: 11400000, guid: 110a1e4ebf8ad6045ae0e9db4d41e435, type: 2}
   UIPool:

@@ -16,10 +16,14 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 8
-  Fireball:
-    StartLocalPosition: {x: 0.5, y: 1.5}
-    FireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
   Modes:
     Small: {fileID: 11400000, guid: 7ae9649b0173ad14189c39ae9d3cb3da, type: 2}
     Big: {fileID: 11400000, guid: ec62a4551b5c2e049ae5b4ae146a1cd7, type: 2}
     Super: {fileID: 11400000, guid: 65d241b1d2ac3764091c10e3d55961aa, type: 2}
+  Fireball:
+    StartLocalPosition: {x: 0.5, y: 1.5}
+    FireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
+  Buff:
+    SoundFX: {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
+  Nerf:
+    SoundFX: {fileID: 11400000, guid: 74bda110af327014198ed99405fd392a, type: 2}
