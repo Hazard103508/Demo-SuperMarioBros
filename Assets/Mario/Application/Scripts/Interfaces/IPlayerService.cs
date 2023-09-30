@@ -1,11 +1,9 @@
-using Mario.Game.Enums;
 using System;
 
 namespace Mario.Application.Interfaces
 {
     public interface IPlayerService : IGameService
     {
-        PlayerModes CurrentMode { get; set; }
         int Lives { get; }
         bool CanMove { get; set; }
 
@@ -14,7 +12,7 @@ namespace Mario.Application.Interfaces
         event Action LivesRemoved;
 
         void AddLife();
-        void Kill();
+        void RemoveLife();
         void Reset();
     }
 }

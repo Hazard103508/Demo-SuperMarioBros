@@ -131,7 +131,7 @@ namespace Mario.Game.Maps
         private void OnLivesRemoved()
         {
             Services.TimeService.StopTimer();
-            Services.PlayerService.CanMove = false;
+            //Services.PlayerService.CanMove = false;
 
             StartCoroutine(ReloadMap());
         }

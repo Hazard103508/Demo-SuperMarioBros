@@ -1,4 +1,3 @@
-using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using System.Linq;
 using UnityEngine;
@@ -48,9 +47,6 @@ namespace Mario.Game.Commons
         }
         private void FixedUpdate()
         {
-            if (Services.PlayerService != null && !Services.PlayerService.CanMove)
-                return;
-
             ApplyGravity();
 
             nextPosition = (Vector2)transform.position + _currentSpeed * Time.deltaTime;
@@ -64,9 +60,6 @@ namespace Mario.Game.Commons
         }
         private void LateUpdate()
         {
-            if (Services.PlayerService != null && !Services.PlayerService.CanMove)
-                return;
-
             Move(nextPosition);
         }
         private void OnEnable()

@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using System.Collections;
 using UnityEngine;
 
@@ -5,9 +7,14 @@ namespace Mario.Game.Player
 {
     public class PlayerStateDeath : PlayerState
     {
+        #region Objects
+        private readonly IPlayerService _playerService;
+        #endregion
+
         #region Constructor
         public PlayerStateDeath(PlayerController player) : base(player)
         {
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
         #endregion
 
@@ -34,6 +41,7 @@ namespace Mario.Game.Player
         {
             base.Enter();
             Player.StartCoroutine(PlayFall());
+            _playerService.RemoveLife();
         }
         #endregion
     }

@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
 
@@ -8,13 +9,14 @@ namespace Mario.Application.Services
     public class PlayerService : MonoBehaviour, IPlayerService
     {
         #region Objects
-        [SerializeField] private AudioSource _lifeUpSoundFX;
-        [SerializeField] private AudioSource _deadSoundFX;
+        private ISoundService _soundService;
+
         private bool _canMove;
+        [SerializeField] private PooledSoundProfile _1UpSoundPoolReference;
+        [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         #endregion
 
         #region Properties
-        public PlayerModes CurrentMode { get; set; }
         public bool CanMove
         {
             get => _canMove;
@@ -36,26 +38,25 @@ namespace Mario.Application.Services
         #region Public Methods
         public void LoadService()
         {
+            _soundService= ServiceLocator.Current.Get<ISoundService>();
             Reset();
         }
         public void AddLife()
         {
             this.Lives++;
-            _lifeUpSoundFX.Play();
+            _soundService.Play(_1UpSoundPoolReference);
             LivesAdded?.Invoke();
         }
-        public void Kill()
+        public void RemoveLife()
         {
             this.Lives--;
-            _deadSoundFX.Play();
+            _soundService.Play(_deadSoundPoolReference);
             LivesRemoved?.Invoke();
-            this.CurrentMode = PlayerModes.Small;
 
             Services.MusicService.Stop();
         }
         public void Reset()
         {
-            CurrentMode = PlayerModes.Small;
             Lives = 3;
             CanMove = true;
         }
