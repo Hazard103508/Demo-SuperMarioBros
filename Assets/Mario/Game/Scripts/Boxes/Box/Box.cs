@@ -26,16 +26,11 @@ namespace Mario.Game.Boxes.Box
         public BoxProfile Profile => _profile;
         #endregion
 
-        #region Properties
-        public bool IsLastJump { get; set; }
-        #endregion
-
         #region Unity Methods
         protected virtual void Awake()
         {
             this.StateMachine = new BoxStateMachine(this);
             this.Movable = GetComponent<Movable>();
-            this.IsLastJump = false;
         }
         private void Start()
         {
@@ -44,17 +39,6 @@ namespace Mario.Game.Boxes.Box
         private void Update()
         {
             this.StateMachine.Update();
-        }
-        #endregion
-
-        #region Public Methods
-        public void HitObjects(RayHitInfo hitInfo)
-        {
-            foreach (var obj in hitInfo.hitObjects)
-            {
-                var hitableObject = obj.Object.GetComponent<IHittableByBox>();
-                hitableObject?.OnHittedByBox(this.gameObject);
-            }
         }
         #endregion
 

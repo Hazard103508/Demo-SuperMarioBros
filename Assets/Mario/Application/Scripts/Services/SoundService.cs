@@ -14,5 +14,6 @@ namespace Mario.Application.Services
         }
 
         public void Play(PooledSoundProfile soundProfile) => _poolService.GetObjectFromPool(soundProfile);
+        public void Play(PooledSoundProfile soundProfile, Vector3 position) => _poolService.GetObjectFromPool(soundProfile, position);
     }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   TargetLayer:
     serializedVersion: 2
     m_Bits: 576
-  HitSoundFXPoolReference: {fileID: 11400000, guid: 484c1ed2a30c41d40a266ddbcbe4368c, type: 2}
+  HitSoundFXPoolReference: {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
   FallSpeed: 100
   MaxFallSpeed: 100
   JumpAcceleration: 10

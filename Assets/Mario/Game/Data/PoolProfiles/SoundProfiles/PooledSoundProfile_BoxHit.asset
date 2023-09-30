@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
-  m_Name: PooledObjectProfile_BoxHitSoundFX
+  m_Script: {fileID: 11500000, guid: 7fbbf34a1bcb8b34a859270bf34de8c4, type: 3}
+  m_Name: PooledSoundProfile_BoxHit
   m_EditorClassIdentifier: 
   Reference:
     m_AssetGUID: ea9a9e0c70f5b694d8551ec0f14366fc
@@ -19,4 +19,4 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
-  MaxSize: 2
+  MaxSize: 3

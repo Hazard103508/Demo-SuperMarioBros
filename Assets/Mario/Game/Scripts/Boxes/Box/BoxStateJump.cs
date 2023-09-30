@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -7,12 +8,14 @@ namespace Mario.Game.Boxes.Box
     public class BoxStateJump : BoxState
     {
         #region Objects
+        private readonly ISoundService _soundService;
         private Vector2 _initPosition;
         #endregion
 
         #region Constructor
         public BoxStateJump(Box box) : base(box)
         {
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -30,7 +33,7 @@ namespace Mario.Game.Boxes.Box
             Box.Movable.Gravity = Box.Profile.FallSpeed;
             Box.Movable.MaxFallSpeed = Box.Profile.MaxFallSpeed;
             Box.Movable.SetJumpForce(Box.Profile.JumpAcceleration);
-            Services.PoolService.GetObjectFromPool(Box.Profile.HitSoundFXPoolReference, Box.transform.position);
+            _soundService.Play(Box.Profile.HitSoundFXPoolReference, Box.transform.position);
         }
         public override void Update()
         {
@@ -44,7 +47,7 @@ namespace Mario.Game.Boxes.Box
         #endregion
 
         #region On Movable Hit
-        public override void OnHittedByMovingToTop(RayHitInfo hitInfo) => Box.HitObjects(hitInfo);
+        public override void OnHittedByMovingToTop(RayHitInfo hitInfo) => HitObjects(hitInfo);
         #endregion
     }
 }

@@ -26,12 +26,24 @@ namespace Mario.Game.Boxes.Box
 
         #region Properties
         protected Box Box { get; private set; }
+        protected bool IsLastJump { get; set; }
         #endregion
 
         #region Constructor
         public BoxState(Box box)
         {
             Box = box;
+        }
+        #endregion
+
+        #region Public Methods
+        public void HitObjects(RayHitInfo hitInfo)
+        {
+            foreach (var obj in hitInfo.hitObjects)
+            {
+                var hitableObject = obj.Object.GetComponent<IHittableByBox>();
+                hitableObject?.OnHittedByBox(Box.gameObject);
+            }
         }
         #endregion
 

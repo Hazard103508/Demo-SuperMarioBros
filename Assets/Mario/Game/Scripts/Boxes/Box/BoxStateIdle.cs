@@ -21,7 +21,7 @@ namespace Mario.Game.Boxes.Box
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
-            if (Box.IsLastJump)
+            if (IsLastJump)
                 Box.StateMachine.TransitionTo(Box.StateMachine.StateLastJump);
             else
                 Box.StateMachine.TransitionTo(Box.StateMachine.StateJump);

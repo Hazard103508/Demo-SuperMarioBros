@@ -31,7 +31,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
             {
                 _limitTime -= Time.deltaTime;
                 if (_limitTime < 0)
-                    Box.IsLastJump = true;
+                    IsLastJump = true;
             }
         }
         #endregion

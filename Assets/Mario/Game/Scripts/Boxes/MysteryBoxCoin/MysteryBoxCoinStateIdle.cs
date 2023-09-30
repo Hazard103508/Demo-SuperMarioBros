@@ -20,7 +20,7 @@ namespace Mario.Game.Boxes.MysteryBoxCoin
         public override void Enter()
         {
             base.Enter();
-            Box.IsLastJump = true;
+            IsLastJump = true;
         }
         #endregion
 

@@ -42,7 +42,7 @@ namespace Mario.Game.Boxes.Box
         #endregion
 
         #region On Movable Hit
-        public override void OnHittedByMovingToTop(RayHitInfo hitInfo) => Box.HitObjects(hitInfo);
+        public override void OnHittedByMovingToTop(RayHitInfo hitInfo) => HitObjects(hitInfo);
         #endregion
     }
 }

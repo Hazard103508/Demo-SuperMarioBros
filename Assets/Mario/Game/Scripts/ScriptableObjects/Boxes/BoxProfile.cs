@@ -7,7 +7,7 @@ namespace Mario.Game.ScriptableObjects.Boxes
     public class BoxProfile : ScriptableObject
     {
         public LayerMask TargetLayer;
-        public PooledObjectProfile HitSoundFXPoolReference;
+        public PooledSoundProfile HitSoundFXPoolReference;
         public float FallSpeed;
         public float MaxFallSpeed;
         public float JumpAcceleration;

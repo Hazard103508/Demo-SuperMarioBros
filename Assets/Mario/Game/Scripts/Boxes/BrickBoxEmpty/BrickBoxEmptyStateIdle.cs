@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Boxes.Box;
 using Mario.Game.Player;
@@ -8,6 +9,11 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
 {
     public class BrickBoxEmptyStateIdle : BoxStateIdle
     {
+        #region Objects
+        private readonly IPoolService _poolService;
+        private readonly IScoreService _scoreService;
+        #endregion
+
         #region Properties
         new protected BrickBoxEmpty Box => (BrickBoxEmpty)base.Box;
         #endregion
@@ -15,6 +21,8 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         #region Constructor
         public BrickBoxEmptyStateIdle(Box.Box box) : base(box)
         {
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -22,7 +30,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         private IEnumerator DestroyBox()
         {
             yield return new WaitForEndOfFrame();
-            GameObject.Destroy(Box.gameObject);
+            Object.Destroy(Box.gameObject);
         }
         #endregion
 
@@ -31,9 +39,9 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         {
             if (!player.StateMachine.CurrentMode.Equals(player.StateMachine.ModeSmall))
             {
-                Services.PoolService.GetObjectFromPool(Box.Profile.BrokenBrickPoolReference, Box.transform.position);
-                Services.ScoreService.Add(Box.Profile.Points);
-                Box.StartCoroutine(DestroyBox()); // need time to change state first
+                _poolService.GetObjectFromPool(Box.Profile.BrokenBrickPoolReference, Box.transform.position);
+                _scoreService.Add(Box.Profile.Points);
+                Box.StartCoroutine(DestroyBox()); 
             }
             base.OnHittedByPlayerFromBottom(player);
         }
