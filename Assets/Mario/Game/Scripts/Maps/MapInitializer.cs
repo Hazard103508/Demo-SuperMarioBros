@@ -1,9 +1,11 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
+using System.Threading;
 using UnityEngine;
 
 namespace Mario.Game.Maps
@@ -11,8 +13,17 @@ namespace Mario.Game.Maps
     public class MapInitializer : MonoBehaviour
     {
         #region Objects
+        private IAddressablesService _addressablesService;
+
         [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
+        #endregion
+
+        #region Constructor
+        public MapInitializer()
+        {
+            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
+        }
         #endregion
 
         #region Unity Methods
@@ -31,7 +42,7 @@ namespace Mario.Game.Maps
         private void OnDestroy()
         {
             SetNextMap();
-            Services.AddressablesService.ReleaseAllAssets();
+            _addressablesService.ReleaseAllAssets();
             Services.PoolService.ClearPool();
             Services.PlayerService.LivesRemoved -= OnLivesRemoved;
         }
@@ -77,7 +88,7 @@ namespace Mario.Game.Maps
             LoadObjectsPool<GameObject>(Services.GameDataService.CurrentMapProfile.PoolProfile.SoundPool);
             LoadObjectsPool<GameObject>(Services.GameDataService.CurrentMapProfile.PoolProfile.UIPool);
         }
-        private void LoadObjectsPool<T>(BasePooledObjectProfile[] poolItems) => Array.ForEach(poolItems, item => Services.AddressablesService.AddAsset<T>(item.Reference));
+        private void LoadObjectsPool<T>(BasePooledObjectProfile[] poolItems) => Array.ForEach(poolItems, item => _addressablesService.AddAsset<T>(item.Reference));
         private IEnumerator StartGame()
         {
             _blackScreen.SetActive(true);

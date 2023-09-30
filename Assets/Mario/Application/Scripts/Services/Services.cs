@@ -5,7 +5,7 @@ namespace Mario.Application.Services
     public static class Services
     {
         #region Properties
-        public static IAddressablesService AddressablesService { get; private set; }
+        //public static IAddressablesService AddressablesService { get; private set; }
         public static IPoolService PoolService { get; private set; }
         public static ILevelService GameDataService { get; private set; }
         public static ICoinService CoinService { get; private set; }
@@ -19,7 +19,7 @@ namespace Mario.Application.Services
         #region Public Methods
         public static void Load()
         {
-            AddressablesService = ServiceLocator.Current.Get<IAddressablesService>();
+            //AddressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             PoolService = ServiceLocator.Current.Get<IPoolService>();
             GameDataService = ServiceLocator.Current.Get<ILevelService>();
             CoinService = ServiceLocator.Current.Get<ICoinService>();

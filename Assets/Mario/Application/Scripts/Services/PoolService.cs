@@ -11,6 +11,7 @@ namespace Mario.Application.Services
     public class PoolService : MonoBehaviour, IPoolService
     {
         #region Objects
+        private IAddressablesService _addressablesService;
         private ILevelService _levelService;
 
         private Dictionary<string, Pool> _poolGroups;
@@ -19,6 +20,7 @@ namespace Mario.Application.Services
         #region Public Methods
         public void LoadService()
         {
+            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _poolGroups = new Dictionary<string, Pool>();
         }
@@ -83,12 +85,12 @@ namespace Mario.Application.Services
         }
         private void LoadWorldPool(Pool pool, BasePooledObjectProfile profile)
         {
-            pool.PrefabReference = Services.AddressablesService.GetAssetReference<GameObject>(profile.Reference);
+            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
             LoadItemPool(pool, profile);
         }
         private void LoadUIPool(Pool pool, PooledUIProfile profile)
         {
-            pool.PrefabReference = Services.AddressablesService.GetAssetReference<GameObject>(profile.Reference);
+            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
             LoadItemPool(pool, profile);
 
             var canvas = pool.gameObject.AddComponent<Canvas>();
