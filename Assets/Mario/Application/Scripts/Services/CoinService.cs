@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
 
@@ -7,25 +8,27 @@ namespace Mario.Application.Services
     public class CoinService : MonoBehaviour, ICoinService
     {
         #region Objects
-        [SerializeField] private AudioSource _coinSoundFX;
+        private ISoundService _soundService;
+        [SerializeField] private PooledSoundProfile _soundPoolReference; 
         #endregion
 
         #region Properties
-        public event Action CoinsChanged;
+        public int Coins { get; private set; }
         #endregion
 
         #region Events
-        public int Coins { get; private set; }
+        public event Action CoinsChanged;
         #endregion
 
         #region Public Methods
         public void LoadService()
         {
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         public void Add()
         {
             this.Coins++;
-            _coinSoundFX.Play();
+            _soundService.Play(_soundPoolReference);
 
             if (this.Coins >= 100)
             {
