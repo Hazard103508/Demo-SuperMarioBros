@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Application.Services
 {
-    public class GameDataService : MonoBehaviour, IGameDataService
+    public class LevelService : MonoBehaviour, ILevelService
     {
         #region Objects
         private bool _isGoalReached;

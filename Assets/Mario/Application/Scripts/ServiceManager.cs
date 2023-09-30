@@ -14,8 +14,8 @@ namespace Mario.Application
         {
             ServiceLocator.Initiailze();
             RegisterServicer<IAddressablesService>();
+            RegisterServicer<ILevelService>();
             RegisterServicer<IPoolService>();
-            RegisterServicer<IGameDataService>();
             RegisterServicer<ICoinService>();
             RegisterServicer<IScoreService>();
             RegisterServicer<ITimeService>();
@@ -30,8 +30,8 @@ namespace Mario.Application
         private void OnApplicationQuit()
         {
             UnregisterService<IAddressablesService>();
+            UnregisterService<ILevelService>();
             UnregisterService<IPoolService>();
-            UnregisterService<IGameDataService>();
             UnregisterService<ICoinService>();
             UnregisterService<IScoreService>();
             UnregisterService<ITimeService>();

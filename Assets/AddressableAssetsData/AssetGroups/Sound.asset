@@ -17,13 +17,23 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 87df5f74a7aefe9409c368ba6b1aab96
   m_SerializeEntries:
-  - m_GUID: bcdef1551937b394f99a0fff58e3efb3
-    m_Address: smb_jump-small
+  - m_GUID: ea9a9e0c70f5b694d8551ec0f14366fc
+    m_Address: Sound_BoxHit
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0187dc7dd84c01c49b1a5c46cf11222c
-    m_Address: smb_jump-super
+  - m_GUID: 78f9a2b8cda883a4da836341c452f884
+    m_Address: Sound_PlayerBigJump
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b275e24b1198634e8f40aca98de3407
+    m_Address: Sound_PlayerSmallJump
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 04dc49d54a9e71c41a812a616fc3a7bb
+    m_Address: Sound_RiseItem
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -1,5 +1,6 @@
 using Mario.Application.Components;
 using Mario.Application.Interfaces;
+using Mario.Game.Commons;
 using Mario.Game.ScriptableObjects.Pool;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,12 +11,15 @@ namespace Mario.Application.Services
     public class PoolService : MonoBehaviour, IPoolService
     {
         #region Objects
+        private ILevelService _levelService;
+
         private Dictionary<string, Pool> _poolGroups;
         #endregion
 
         #region Public Methods
         public void LoadService()
         {
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
             _poolGroups = new Dictionary<string, Pool>();
         }
         public PooledObject GetObjectFromPool(BasePooledObjectProfile profile) => GetObjectFromPool(profile, Vector3.zero);
@@ -56,19 +60,14 @@ namespace Mario.Application.Services
                 var pool = obj.AddComponent<Pool>();
                 _poolGroups.Add(type, pool);
 
-                if (Services.GameDataService.CurrentMapProfile.PoolProfile.PoolObjectsDic.ContainsKey(type))
+                if (_levelService.CurrentMapProfile.PoolProfile.WorldPoolProfiles.ContainsKey(type))
                 {
-                    var poolItem = Services.GameDataService.CurrentMapProfile.PoolProfile.PoolObjectsDic[type];
-                    LoadObjectPool(pool, poolItem);
-                }
-                else if (Services.GameDataService.CurrentMapProfile.PoolProfile.PoolSoundDic.ContainsKey(type))
-                {
-                    var poolItem = Services.GameDataService.CurrentMapProfile.PoolProfile.PoolSoundDic[type];
-                    LoadSoundPool(pool, poolItem);
+                    var poolItem = _levelService.CurrentMapProfile.PoolProfile.WorldPoolProfiles[type];
+                    LoadWorldPool(pool, poolItem);
                 }
                 else
                 {
-                    var poolUI = Services.GameDataService.CurrentMapProfile.PoolProfile.PooledUIDic[type];
+                    var poolUI = _levelService.CurrentMapProfile.PoolProfile.UIPoolProfiles[type];
                     LoadUIPool(pool, poolUI);
                 }
             }
@@ -82,18 +81,9 @@ namespace Mario.Application.Services
             pool.MaxSize = profile.MaxSize;
             pool.Load();
         }
-        private void LoadObjectPool(Pool pool, PooledObjectProfile profile)
+        private void LoadWorldPool(Pool pool, BasePooledObjectProfile profile)
         {
             pool.PrefabReference = Services.AddressablesService.GetAssetReference<GameObject>(profile.Reference);
-            LoadItemPool(pool, profile);
-        }
-        private void LoadSoundPool(Pool pool, PooledSoundProfile profile) 
-        {
-            GameObject obj = new GameObject(pool.name);
-            var audioSource =  obj.AddComponent<AudioSource>();
-            audioSource.clip = Services.AddressablesService.GetAssetReference<AudioClip>(profile.Reference);
-
-            pool.PrefabReference = obj;
             LoadItemPool(pool, profile);
         }
         private void LoadUIPool(Pool pool, PooledUIProfile profile)

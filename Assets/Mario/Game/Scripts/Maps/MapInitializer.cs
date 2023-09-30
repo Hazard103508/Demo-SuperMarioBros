@@ -74,7 +74,7 @@ namespace Mario.Game.Maps
         private void LoadObjectsPool()
         {
             LoadObjectsPool<GameObject>(Services.GameDataService.CurrentMapProfile.PoolProfile.ObjectPool);
-            LoadObjectsPool<AudioClip>(Services.GameDataService.CurrentMapProfile.PoolProfile.SoundPool);
+            LoadObjectsPool<GameObject>(Services.GameDataService.CurrentMapProfile.PoolProfile.SoundPool);
             LoadObjectsPool<GameObject>(Services.GameDataService.CurrentMapProfile.PoolProfile.UIPool);
         }
         private void LoadObjectsPool<T>(BasePooledObjectProfile[] poolItems) => Array.ForEach(poolItems, item => Services.AddressablesService.AddAsset<T>(item.Reference));

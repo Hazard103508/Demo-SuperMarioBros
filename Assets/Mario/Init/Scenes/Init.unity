@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 553816058}
   - component: {fileID: 553816059}
   m_Layer: 0
-  m_Name: GameDataService
+  m_Name: LevelService
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1085,8 +1085,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1538313985}
-  - {fileID: 593922595}
   - {fileID: 553816058}
+  - {fileID: 593922595}
   - {fileID: 698056648}
   - {fileID: 992258369}
   - {fileID: 1163315509}

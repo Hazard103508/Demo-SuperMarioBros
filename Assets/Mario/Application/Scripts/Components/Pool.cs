@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Pool;
 
@@ -15,6 +16,7 @@ namespace Mario.Application.Components
         public bool CollectionCheck { get; set; }
         public int DefaultCapacity { get; set; }
         public int MaxSize { get; set; }
+        public Action<GameObject> CreateInstanceCallback { get; set; }
         #endregion
 
         #region Public Methods
@@ -39,7 +41,7 @@ namespace Mario.Application.Components
         #region Private Methods
         private PooledObject CreateInstance()
         {
-            var obj = Instantiate(PrefabReference, _nextObjectPosition, Quaternion.identity, transform);
+            GameObject obj = Instantiate(PrefabReference, _nextObjectPosition, Quaternion.identity, transform);
             PooledObject pooledObject = obj.AddComponent<PooledObject>();
             pooledObject.ObjectPool = objectPool;
             return pooledObject;

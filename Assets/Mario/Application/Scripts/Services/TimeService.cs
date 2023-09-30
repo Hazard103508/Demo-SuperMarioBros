@@ -47,7 +47,7 @@ namespace Mario.Application.Services
         #region Public Methods
         public void LoadService()
         {
-            this.StartTime = ServiceLocator.Current.Get<IGameDataService>().CurrentMapProfile.Time.StartTime;
+            this.StartTime = ServiceLocator.Current.Get<ILevelService>().CurrentMapProfile.Time.StartTime;
         }
         public void ResetTimer()
         {
