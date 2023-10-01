@@ -17,16 +17,16 @@ namespace Mario.Game.Items
         IHittableByKoppa
     {
         #region Objects
-        private readonly IPoolService _poolService;
+        private IPoolService _poolService;
 
         private bool isCollected;
         [SerializeField] protected CoinProfile _profile;
         #endregion
 
-        #region Constructor
-        public Coin()
+        #region Unity Methods
+        private void Awake()
         {
-            //_poolService = ServiceLocator.Current.Get<IPoolService>();
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
         }
         #endregion
 

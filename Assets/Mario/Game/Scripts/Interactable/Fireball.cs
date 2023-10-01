@@ -15,21 +15,17 @@ namespace Mario.Game.Interactable
         IHittableByMovingToRight
     {
         #region Objects
-        private readonly IPoolService _poolService;
+        private IPoolService _poolService;
+
         private Movable _movable;
         [SerializeField] private FireballProfile _profile;
-        #endregion
-
-        #region Constructor
-        public Fireball()
-        {
-            _poolService = ServiceLocator.Current.Get<IPoolService>();
-        }
         #endregion
 
         #region Unity Methods
         private void Awake()
         {
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
+
             _movable = GetComponent<Movable>();
             _movable.Speed = _profile.Speed;
             _movable.Gravity = _profile.FallSpeed;

@@ -13,23 +13,19 @@ namespace Mario.Game.Maps
     {
         #region Objects
         private IAddressablesService _addressablesService;
-        private readonly IPoolService _poolService;
+        private IPoolService _poolService;
 
         [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
         #endregion
 
-        #region Constructor
-        public MapInitializer()
-        {
-            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
-            _poolService = ServiceLocator.Current.Get<IPoolService>();
-        }
-        #endregion
 
         #region Unity Methods
         private void Awake()
         {
+            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
+
             Services.TimeService.ResetTimer();
             Services.GameDataService.IsGoalReached = false;
             Services.PlayerService.LivesRemoved += OnLivesRemoved;
