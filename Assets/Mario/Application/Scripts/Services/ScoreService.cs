@@ -9,6 +9,8 @@ namespace Mario.Application.Services
     public class ScoreService : MonoBehaviour, IScoreService
     {
         #region Objects
+        private IPoolService _poolService;
+
         [SerializeField] private PooledUIProfile scoreLabelPoolProfile;
         #endregion
 
@@ -23,7 +25,7 @@ namespace Mario.Application.Services
         #region Public Methods
         public void LoadService()
         {
-
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
         }
         public void Add(int points)
         {
@@ -42,7 +44,7 @@ namespace Mario.Application.Services
         #region Private Methods
         private void ShowLabel(string text, Vector3 initPosition, float time, float hight)
         {
-            var label = Services.PoolService.GetObjectFromPool<WorldLabel>(scoreLabelPoolProfile, initPosition);
+            var label = _poolService.GetObjectFromPool<WorldLabel>(scoreLabelPoolProfile, initPosition);
             label.Show(text, time, hight);
         }
         #endregion

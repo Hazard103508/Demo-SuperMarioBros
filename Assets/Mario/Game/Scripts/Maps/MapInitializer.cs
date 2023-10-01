@@ -13,6 +13,7 @@ namespace Mario.Game.Maps
     {
         #region Objects
         private IAddressablesService _addressablesService;
+        private readonly IPoolService _poolService;
 
         [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
@@ -22,6 +23,7 @@ namespace Mario.Game.Maps
         public MapInitializer()
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
         }
         #endregion
 
@@ -42,7 +44,7 @@ namespace Mario.Game.Maps
         {
             SetNextMap();
             _addressablesService.ReleaseAllAssets();
-            Services.PoolService.ClearPool();
+            _poolService.ClearPool();
             Services.PlayerService.LivesRemoved -= OnLivesRemoved;
         }
         #endregion

@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
@@ -14,8 +15,16 @@ namespace Mario.Game.Interactable
         IHittableByMovingToRight
     {
         #region Objects
-        [SerializeField] private FireballProfile _profile;
+        private readonly IPoolService _poolService;
         private Movable _movable;
+        [SerializeField] private FireballProfile _profile;
+        #endregion
+
+        #region Constructor
+        public Fireball()
+        {
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
+        }
         #endregion
 
         #region Unity Methods
@@ -68,11 +77,11 @@ namespace Mario.Game.Interactable
         }
         private void Explode(RayHitInfo hitInfo)
         {
-            Services.PoolService.GetObjectFromPool(_profile.ExplotionPoolReference, hitInfo.hitObjects.First().Point);
+            _poolService.GetObjectFromPool(_profile.ExplotionPoolReference, hitInfo.hitObjects.First().Point);
             _movable.ChekCollisions = false;
             gameObject.SetActive(false);
         }
-        private void PlayHitSound() => Services.PoolService.GetObjectFromPool(_profile.HitSoundFXPoolReference, this.transform.position);
+        private void PlayHitSound() => _poolService.GetObjectFromPool(_profile.HitSoundFXPoolReference, this.transform.position);
         #endregion
 
         #region On Movable Hit

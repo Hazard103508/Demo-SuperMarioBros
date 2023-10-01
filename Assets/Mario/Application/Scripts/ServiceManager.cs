@@ -25,7 +25,7 @@ namespace Mario.Application
             RegisterServicer<IThemeMusicService>();
 
             Services.Services.Load();
-            Services.Services.SceneService.LoadMainScene();
+            //Services.Services.SceneService.LoadMainScene();
         }
         private void OnApplicationQuit()
         {
@@ -43,7 +43,7 @@ namespace Mario.Application
             Destroy(gameObject);
         }
 
-        private void RegisterServicer<T>() where T : IGameService => ServiceLocator.Current.Register<T>(transform.GetComponentInChildren<T>());
+        private void RegisterServicer<T>() where T : IGameService => ServiceLocator.Current.Register<T>(GetComponentInChildren<T>());
         private void UnregisterService<T>() where T : IGameService => ServiceLocator.Current.Unregister<T>();
     }
 }

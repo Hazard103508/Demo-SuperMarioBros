@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Boxes.Box;
 using Mario.Game.Player;
@@ -8,6 +9,8 @@ namespace Mario.Game.Boxes.BrickBoxCoin
     public class BrickBoxCoinStateIdle : BoxStateIdle
     {
         #region Objects
+        private readonly IPoolService _poolService;
+
         private float _limitTime;
         private bool _started;
         #endregion
@@ -19,6 +22,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         #region Constructor
         public BrickBoxCoinStateIdle(Box.Box box) : base(box)
         {
+            _poolService = ServiceLocator.Current.Get<IPoolService>();
         }
         #endregion
 
@@ -44,7 +48,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
                 _started = true;
                 _limitTime = Box.Profile.LimitTime;
             }
-            Services.PoolService.GetObjectFromPool(Box.Profile.CoinPoolReference, Box.transform.position);
+            _poolService.GetObjectFromPool(Box.Profile.CoinPoolReference, Box.transform.position);
             base.OnHittedByPlayerFromBottom(player);
         }
         #endregion

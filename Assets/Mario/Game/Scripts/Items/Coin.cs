@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Npc.Koopa;
@@ -16,8 +17,17 @@ namespace Mario.Game.Items
         IHittableByKoppa
     {
         #region Objects
-        [SerializeField] protected CoinProfile _profile;
+        private readonly IPoolService _poolService;
+
         private bool isCollected;
+        [SerializeField] protected CoinProfile _profile;
+        #endregion
+
+        #region Constructor
+        public Coin()
+        {
+            //_poolService = ServiceLocator.Current.Get<IPoolService>();
+        }
         #endregion
 
         #region Private Methods
@@ -37,7 +47,7 @@ namespace Mario.Game.Items
         private void CollectJumpingCoin()
         {
             CollectCoin(false);
-            Services.PoolService.GetObjectFromPool(_profile.CoinPoolReference, this.transform.position + Vector3.down);
+            _poolService.GetObjectFromPool(_profile.CoinPoolReference, this.transform.position + Vector3.down);
         }
         #endregion
 
