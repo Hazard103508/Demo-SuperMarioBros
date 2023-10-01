@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: PooledSoundProfile_Dead
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 1a61f394b1f339a4dbfed30ca996be96
+    m_AssetGUID: 058f515ef2c108c48962178c78f0ad5d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 1
+  Clip: {fileID: 8300000, guid: 1c85f8f71d4e7da4dae150e45c2f7a0b, type: 3}

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: PooledSoundProfile_PlayerNerf
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 5d4a49b97d3e39340814439602b112fe
+    m_AssetGUID: 058f515ef2c108c48962178c78f0ad5d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 1
+  Clip: {fileID: 8300000, guid: 92029666d81b11f4cb36741682141e75, type: 3}

@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: PooledSoundProfile_PlayerBigJump
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 78f9a2b8cda883a4da836341c452f884
+    m_AssetGUID: 058f515ef2c108c48962178c78f0ad5d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 2
+  Clip: {fileID: 8300000, guid: ce9930a01d4e6c343831f7ef78335107, type: 3}

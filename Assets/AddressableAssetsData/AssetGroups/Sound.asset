@@ -17,53 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 87df5f74a7aefe9409c368ba6b1aab96
   m_SerializeEntries:
-  - m_GUID: ea9a9e0c70f5b694d8551ec0f14366fc
-    m_Address: Sound_BoxHit
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 78f9a2b8cda883a4da836341c452f884
-    m_Address: Sound_PlayerBigJump
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 3b275e24b1198634e8f40aca98de3407
-    m_Address: Sound_PlayerSmallJump
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 04dc49d54a9e71c41a812a616fc3a7bb
-    m_Address: Sound_RiseItem
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: dee6b2139d3ed644c9e9e0fe0e9cf3ed
-    m_Address: Sound_PlayerBuff
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5d4a49b97d3e39340814439602b112fe
-    m_Address: Sound_PlayerNerf
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 204f14f8ec3a2be4c88927745b93c7ec
-    m_Address: Sound_BoxBreak
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 6e66f71ef8d497a42935a831919c5b05
-    m_Address: Sound_Coin
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1f8598a4d33bc64449ad6c983ffa1e2b
-    m_Address: Sound_1Up
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1a61f394b1f339a4dbfed30ca996be96
-    m_Address: Sound_Dead
+  - m_GUID: 058f515ef2c108c48962178c78f0ad5d
+    m_Address: Sound_SingleFX
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

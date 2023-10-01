@@ -65,6 +65,11 @@ namespace Mario.Application.Services
                     var poolItem = _levelService.CurrentMapProfile.PoolProfile.WorldPoolProfiles[type];
                     LoadWorldPool(pool, poolItem);
                 }
+                else if (_levelService.CurrentMapProfile.PoolProfile.SoundPoolProfiles.ContainsKey(type))
+                {
+                    var poolItem = _levelService.CurrentMapProfile.PoolProfile.SoundPoolProfiles[type];
+                    LoadSoundPool(pool, poolItem);
+                }
                 else
                 {
                     var poolUI = _levelService.CurrentMapProfile.PoolProfile.UIPoolProfiles[type];
@@ -84,6 +89,16 @@ namespace Mario.Application.Services
         private void LoadWorldPool(Pool pool, BasePooledObjectProfile profile)
         {
             pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
+            LoadItemPool(pool, profile);
+        }
+        private void LoadSoundPool(Pool pool, PooledSoundProfile profile)
+        {
+            var objRef = Instantiate(_addressablesService.GetAssetReference<GameObject>(profile.Reference));
+            objRef.transform.parent = null;
+            var audioSource = objRef.GetComponent<AudioSource>();
+            audioSource.clip = profile.Clip;
+
+            pool.PrefabReference = objRef;
             LoadItemPool(pool, profile);
         }
         private void LoadUIPool(Pool pool, PooledUIProfile profile)

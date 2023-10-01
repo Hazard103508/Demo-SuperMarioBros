@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: PooledSoundProfile_BoxBreak
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 204f14f8ec3a2be4c88927745b93c7ec
+    m_AssetGUID: 058f515ef2c108c48962178c78f0ad5d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 3
+  Clip: {fileID: 8300000, guid: 7927c84e8d087c04681ddaaa71d831f1, type: 3}

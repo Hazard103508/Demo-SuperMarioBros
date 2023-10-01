@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: PooledSoundProfile_PlayerSmallJump
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 3b275e24b1198634e8f40aca98de3407
+    m_AssetGUID: 058f515ef2c108c48962178c78f0ad5d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 2
+  Clip: {fileID: 8300000, guid: a82c2a43be1eb0045a3f77047c4752c6, type: 3}

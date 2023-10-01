@@ -10,16 +10,19 @@ namespace Mario.Game.ScriptableObjects.Pool
         public PooledSoundProfile[] SoundPool;
         public PooledUIProfile[] UIPool;
 
-        public Dictionary<string, BasePooledObjectProfile> WorldPoolProfiles { get; private set; }
+        public Dictionary<string, PooledObjectProfile> WorldPoolProfiles { get; private set; }
+        public Dictionary<string, PooledSoundProfile> SoundPoolProfiles { get; private set; }
         public Dictionary<string, PooledUIProfile> UIPoolProfiles { get; private set; }
 
         private void OnEnable()
         {
-            WorldPoolProfiles = new Dictionary<string, BasePooledObjectProfile>();
+            WorldPoolProfiles = new Dictionary<string, PooledObjectProfile>();
             foreach (var item in ObjectPool)
                 WorldPoolProfiles.Add(item.name, item);
+
+            SoundPoolProfiles = new Dictionary<string, PooledSoundProfile>();
             foreach (var item in SoundPool)
-                WorldPoolProfiles.Add(item.name, item);
+                SoundPoolProfiles.Add(item.name, item);
 
             UIPoolProfiles = new Dictionary<string, PooledUIProfile>();
             foreach (var item in UIPool)
