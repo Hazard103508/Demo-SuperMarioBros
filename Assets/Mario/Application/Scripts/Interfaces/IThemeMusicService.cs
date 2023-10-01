@@ -2,13 +2,12 @@ using UnityEngine;
 
 namespace Mario.Application.Interfaces
 {
-    public interface IMusicService : IGameService
+    public interface IThemeMusicService : IGameService
     {
         AudioClip Clip { get; set; }
         float Time { get; set; }
 
         void Play();
-        void Pause();
         void Stop();
     }
 }

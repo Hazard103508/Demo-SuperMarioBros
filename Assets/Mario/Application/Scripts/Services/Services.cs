@@ -6,14 +6,14 @@ namespace Mario.Application.Services
     {
         #region Properties
         //public static IAddressablesService AddressablesService { get; private set; }
-        public static IPoolService PoolService { get; private set; }
+        public static IPoolService PoolService { get; private set; }    // REFACTOR
         public static ILevelService GameDataService { get; private set; }
-        public static ICoinService CoinService { get; private set; }
+        public static ICoinService CoinService { get; private set; }    // REFACTOR
         public static IScoreService ScoreService { get; private set; }
         public static ITimeService TimeService { get; private set; }
         public static IPlayerService PlayerService { get; private set; }
-        public static ISceneService SceneService { get; private set; }
-        public static IMusicService MusicService { get; private set; }
+        public static ISceneService SceneService { get; private set; }  // REFACTOR
+        public static IThemeMusicService MusicService { get; private set; }  // REFACTOR -- PRIMERO
         #endregion
 
         #region Public Methods
@@ -27,7 +27,7 @@ namespace Mario.Application.Services
             TimeService = ServiceLocator.Current.Get<ITimeService>();
             PlayerService = ServiceLocator.Current.Get<IPlayerService>();
             SceneService = ServiceLocator.Current.Get<ISceneService>();
-            MusicService = ServiceLocator.Current.Get<IMusicService>();
+            MusicService = ServiceLocator.Current.Get<IThemeMusicService>();
         }
         #endregion
     }

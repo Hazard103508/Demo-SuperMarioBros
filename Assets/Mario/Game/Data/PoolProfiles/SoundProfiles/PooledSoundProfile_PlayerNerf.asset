@@ -19,4 +19,4 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
-  MaxSize: 3
+  MaxSize: 1
