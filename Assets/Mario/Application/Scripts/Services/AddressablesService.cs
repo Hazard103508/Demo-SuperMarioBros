@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
+
 namespace Mario.Application.Services
 {
     public class AddressablesService : MonoBehaviour, IAddressablesService
@@ -18,22 +19,24 @@ namespace Mario.Application.Services
         {
             _references = new Dictionary<AssetReference, AsyncOperationHandle>();
         }
-        public async Task AddAsset<T>(AssetReference assetReference)
-        {
-            if (_references.ContainsKey(assetReference))
-                return;
-
-            _references.Add(assetReference, default);
-
-            var handle = assetReference.LoadAssetAsync<T>();
-            await handle.Task;
-        }
         public T GetAssetReference<T>(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))
                 return (T)_references[assetReference].Result;
 
             return default;
+        }
+        public Task<AsyncOperationHandle<T>> LoadAssetAsync<T>(AssetReference assetReference)
+        {
+            var taskCompletionSource = new TaskCompletionSource<AsyncOperationHandle<T>>();
+            var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
+            asyncOperationHandle.Completed += handle => 
+            { 
+                taskCompletionSource.SetResult(handle); 
+                _references.Add(assetReference, handle);
+            };
+
+            return Task.Run(() => taskCompletionSource.Task);
         }
         public void ReleaseAllAssets()
         {

@@ -10,7 +10,7 @@ namespace Mario.Application.Components
         {
             var pool = base.CreatePool(profile, parent);
 
-            var asset = _addressablesService.AddAsset(profile.Reference).RunSynchronously();
+            var asset = _addressablesService.LoadAssetAsync<GameObject>(profile.Reference);
 
             //var pool = base.CreatePool(profile, parent);
             //PooledSoundProfile soundProfile = (PooledSoundProfile)profile;
