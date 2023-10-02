@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -17,15 +18,15 @@ namespace Mario.Application.Services
         {
             _references = new Dictionary<AssetReference, AsyncOperationHandle>();
         }
-        public void AddAsset<T>(AssetReference assetReference)
+        public async Task AddAsset<T>(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))
                 return;
 
             _references.Add(assetReference, default);
 
-            var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
-            asyncOperationHandle.Completed += handle => _references[assetReference] = handle;
+            var handle = assetReference.LoadAssetAsync<T>();
+            await handle.Task;
         }
         public T GetAssetReference<T>(AssetReference assetReference)
         {

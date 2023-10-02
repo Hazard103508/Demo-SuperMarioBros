@@ -3,7 +3,7 @@ using UnityEngine.AddressableAssets;
 
 namespace Mario.Game.ScriptableObjects.Pool
 {
-    public class BasePooledObjectProfile : ScriptableObject
+    public abstract class PooledBaseProfile : ScriptableObject
     {
         public AssetReference Reference;
         public bool CollectionCheck = true;

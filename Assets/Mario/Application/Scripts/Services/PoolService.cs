@@ -1,6 +1,7 @@
 using Mario.Application.Components;
 using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Pool;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ namespace Mario.Application.Services
         private ILevelService _levelService;
 
         private Dictionary<string, Pool> _poolGroups;
+        private Dictionary<Type, PoolFactory> _poolFactories;
         #endregion
 
         #region Public Methods
@@ -20,19 +22,21 @@ namespace Mario.Application.Services
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();
+            
             _poolGroups = new Dictionary<string, Pool>();
+            _poolFactories = new Dictionary<Type, PoolFactory>();
         }
-        public PooledObject GetObjectFromPool(BasePooledObjectProfile profile) => GetObjectFromPool(profile, Vector3.zero);
-        public PooledObject GetObjectFromPool(BasePooledObjectProfile profile, Vector3 position)
+        public PooledObject GetObjectFromPool(PooledBaseProfile profile) => GetObjectFromPool(profile, Vector3.zero);
+        public PooledObject GetObjectFromPool(PooledBaseProfile profile, Vector3 position)
         {
-            var poolGroup = GetPoolGroup(profile.name);
+            var poolGroup = GetPoolGroup(profile);
             return poolGroup.Get(position);
         }
-        public T GetObjectFromPool<T>(BasePooledObjectProfile profile) where T : MonoBehaviour
+        public T GetObjectFromPool<T>(PooledBaseProfile profile) where T : MonoBehaviour
         {
             return GetObjectFromPool<T>(profile, Vector3.zero);
         }
-        public T GetObjectFromPool<T>(BasePooledObjectProfile profile, Vector3 position) where T : MonoBehaviour
+        public T GetObjectFromPool<T>(PooledBaseProfile profile, Vector3 position) where T : MonoBehaviour
         {
             return GetObjectFromPool(profile, position).GetComponent<T>();
         }
@@ -50,42 +54,42 @@ namespace Mario.Application.Services
         #endregion
 
         #region Private Methods
-        private Pool GetPoolGroup(string type)
+        private Pool GetPoolGroup(PooledBaseProfile profile)
         {
-            if (!_poolGroups.ContainsKey(type))
+            string name = profile.name;
+            if (!_poolGroups.ContainsKey(name))
             {
-                var obj = new GameObject(type.ToString() + "Pool");
-                obj.transform.parent = transform;
-
-                var pool = obj.AddComponent<Pool>();
-                _poolGroups.Add(type, pool);
-
-                if (_levelService.CurrentMapProfile.PoolProfile.WorldPoolProfiles.ContainsKey(type))
-                {
-                    var poolItem = _levelService.CurrentMapProfile.PoolProfile.WorldPoolProfiles[type];
-                    LoadWorldPool(pool, poolItem);
-                }
-                else if (_levelService.CurrentMapProfile.PoolProfile.SoundPoolProfiles.ContainsKey(type))
-                {
-                    var poolItem = _levelService.CurrentMapProfile.PoolProfile.SoundPoolProfiles[type];
-                    LoadSoundPool(pool, poolItem);
-                }
-                else
-                {
-                    var poolUI = _levelService.CurrentMapProfile.PoolProfile.UIPoolProfiles[type];
-                    LoadUIPool(pool, poolUI);
-                }
+                var poolFactory = GetPoolFactory(profile);
+                var newPool = poolFactory.CreatePool(profile, transform);
+                _poolGroups.Add(name, newPool);
             }
 
-            return _poolGroups[type];
+            return _poolGroups[name];
         }
-        private void LoadItemPool(Pool pool, BasePooledObjectProfile profile)
+        private PoolFactory GetPoolFactory(PooledBaseProfile profile)
         {
-            pool.CollectionCheck = profile.CollectionCheck;
-            pool.DefaultCapacity = profile.DefaultCapacity;
-            pool.MaxSize = profile.MaxSize;
-            pool.Load();
+            Type poolType = profile.GetType();
+            if (!_poolFactories.ContainsKey(poolType))
+            {
+                var factory = (PoolFactory)(
+                    poolType == typeof(PooledObjectProfile) ? new PoolFactoryObject() :
+                    poolType == typeof(PooledSoundProfile) ? new PoolFactorySound() :
+                    poolType == typeof(PooledUIProfile) ? new PoolFactoryUI() :
+                    default);
+
+                _poolFactories[poolType] = factory;
+            }
+
+            return _poolFactories[poolType];
         }
+        //private void LoadPool(Pool pool, BasePooledObjectProfile profile)
+        //{
+        //    pool.CollectionCheck = profile.CollectionCheck;
+        //    pool.DefaultCapacity = profile.DefaultCapacity;
+        //    pool.MaxSize = profile.MaxSize;
+        //    pool.Load();
+        //}
+        /*
         private void LoadWorldPool(Pool pool, BasePooledObjectProfile profile)
         {
             pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
@@ -113,6 +117,7 @@ namespace Mario.Application.Services
 
             canvas.sortingLayerName = profile.CanvasSortingLayer;
         }
+        */
         #endregion
     }
 }
