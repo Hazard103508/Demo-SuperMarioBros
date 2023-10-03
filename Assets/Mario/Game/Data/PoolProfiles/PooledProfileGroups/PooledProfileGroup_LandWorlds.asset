@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d391f6475360f5489378ac68fe8f0b3, type: 3}
+  m_Name: PooledProfileGroup_LandWorlds
+  m_EditorClassIdentifier: 
+  PooledObjectProfiles: []
+  PooledSoundProfiles:
+  - {fileID: 11400000, guid: d0256ae781eb57b4cb5ca59a015018d1, type: 2}
+  - {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
+  - {fileID: 11400000, guid: cea7a45644dec574c9001bd8dd9e8959, type: 2}
+  - {fileID: 11400000, guid: b99e5550ffec5ba46bf00b0dd582e373, type: 2}
+  PooledUIProfiles: []

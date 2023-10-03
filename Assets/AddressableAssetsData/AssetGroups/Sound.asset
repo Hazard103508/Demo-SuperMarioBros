@@ -68,7 +68,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 058f515ef2c108c48962178c78f0ad5d
-    m_Address: Assets/Mario/Game/Prefabs/Sounds/Sound_SingleFX.prefab
+    m_Address: Sound_SingleFX
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

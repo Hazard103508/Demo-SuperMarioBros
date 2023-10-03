@@ -16,6 +16,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public MapProfile[] CheckPoints;
         public MapProfile NextMap;
         public MusicProfile Music;
+        public PooledProfileGroup[] PoolProfiles;
 
         [NonSerialized] public int Width;
     }

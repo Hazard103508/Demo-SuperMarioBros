@@ -32,6 +32,7 @@ namespace Mario.Game.Maps
 
             Camera.main.backgroundColor = Services.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             LoadMapSection();
+            LoadAssets();
 
             StartCoroutine(StartGame());
         }
@@ -78,6 +79,17 @@ namespace Mario.Game.Maps
 
             positionX += mapSection.Size.Width;
         }
+        private void LoadAssets()
+        {
+            foreach (PooledProfileGroup poolGroup in Services.GameDataService.CurrentMapProfile.PoolProfiles)
+            {
+                LoadObjectsPool<GameObject>(poolGroup.PooledObjectProfiles);
+                LoadObjectsPool<GameObject>(poolGroup.PooledSoundProfiles);
+                LoadObjectsPool<GameObject>(poolGroup.PooledUIProfiles);
+            }
+        }
+        private void LoadObjectsPool<T>(PooledBaseProfile[] poolItems) => Array.ForEach(poolItems, item => _addressablesService.LoadAssetAsync<T>(item.Reference));
+
         private IEnumerator StartGame()
         {
             _blackScreen.SetActive(true);
