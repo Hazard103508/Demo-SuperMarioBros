@@ -9,6 +9,8 @@ namespace Mario.Application.Components
     {
         protected IAddressablesService _addressablesService;
 
+        protected Pool Pool { get; private set; }
+
         public PoolFactory()
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
@@ -19,12 +21,12 @@ namespace Mario.Application.Components
             var obj = new GameObject($"Pool - {profile.name}");
             obj.transform.parent = parent;
 
-            var pool = obj.AddComponent<Pool>();
-            pool.CollectionCheck = profile.CollectionCheck;
-            pool.DefaultCapacity = profile.DefaultCapacity;
-            pool.MaxSize = profile.MaxSize;
+            Pool = obj.AddComponent<Pool>();
+            Pool.CollectionCheck = profile.CollectionCheck;
+            Pool.DefaultCapacity = profile.DefaultCapacity;
+            Pool.MaxSize = profile.MaxSize;
 
-            return pool;
+            return Pool;
         }
     }
 }

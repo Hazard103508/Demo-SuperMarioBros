@@ -73,42 +73,6 @@ namespace Mario.Application.Services
 
             return _poolFactories[poolType];
         }
-        //private void LoadPool(Pool pool, BasePooledObjectProfile profile)
-        //{
-        //    pool.CollectionCheck = profile.CollectionCheck;
-        //    pool.DefaultCapacity = profile.DefaultCapacity;
-        //    pool.MaxSize = profile.MaxSize;
-        //    pool.Load();
-        //}
-        /*
-        private void LoadWorldPool(Pool pool, BasePooledObjectProfile profile)
-        {
-            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
-            LoadItemPool(pool, profile);
-        }
-        private void LoadSoundPool(Pool pool, PooledSoundProfile profile)
-        {
-            var objRef = Instantiate(_addressablesService.GetAssetReference<GameObject>(profile.Reference));
-            objRef.transform.parent = null;
-            var audioSource = objRef.GetComponent<AudioSource>();
-            audioSource.clip = profile.Clip;
-
-            pool.PrefabReference = objRef;
-            LoadItemPool(pool, profile);
-        }
-        private void LoadUIPool(Pool pool, PooledUIProfile profile)
-        {
-            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
-            LoadItemPool(pool, profile);
-
-            var canvas = pool.gameObject.AddComponent<Canvas>();
-            canvas.renderMode = profile.RenderMode;
-            if (profile.RenderMode != RenderMode.ScreenSpaceOverlay)
-                canvas.worldCamera = Camera.main;
-
-            canvas.sortingLayerName = profile.CanvasSortingLayer;
-        }
-        */
-        #endregion
+         #endregion
     }
 }
