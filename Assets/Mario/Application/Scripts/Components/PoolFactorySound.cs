@@ -25,7 +25,7 @@ namespace Mario.Application.Components
         private void OnCreate(GameObject obj) 
         {
             var audioSource = obj.GetComponent<AudioSource>();
-            audioSource.clip = _profile.Clip;
+            audioSource.clip = _addressablesService.GetAssetReference<AudioClip>(_profile.Clip);
         }
     }
 }

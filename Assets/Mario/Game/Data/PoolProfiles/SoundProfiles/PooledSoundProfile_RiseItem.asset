@@ -20,4 +20,8 @@ MonoBehaviour:
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 1
-  Clip: {fileID: 8300000, guid: 9c4bd820c39c2ba44bf65cc496749db8, type: 3}
+  Clip:
+    m_AssetGUID: 9c4bd820c39c2ba44bf65cc496749db8
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0

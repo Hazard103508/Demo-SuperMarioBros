@@ -27,4 +27,7 @@ MonoBehaviour:
   CheckPoints: []
   NextMap: {fileID: 0}
   Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
-  PoolProfile: {fileID: 11400000, guid: e66928cabb0da6e4dbac7d768f224afd, type: 2}
+  PoolProfiles:
+  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
+  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
+  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}

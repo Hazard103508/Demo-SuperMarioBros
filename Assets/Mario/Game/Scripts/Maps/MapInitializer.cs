@@ -6,6 +6,7 @@ using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Mario.Game.Maps
 {
@@ -83,12 +84,16 @@ namespace Mario.Game.Maps
         {
             foreach (PooledProfileGroup poolGroup in Services.GameDataService.CurrentMapProfile.PoolProfiles)
             {
-                LoadObjectsPool<GameObject>(poolGroup.PooledObjectProfiles);
-                LoadObjectsPool<GameObject>(poolGroup.PooledSoundProfiles);
-                LoadObjectsPool<GameObject>(poolGroup.PooledUIProfiles);
+                LoadObjectsPool<GameObject, PooledObjectProfile>(poolGroup.PooledObjectProfiles, profile => profile.Reference);
+                LoadObjectsPool<GameObject, PooledSoundProfile>(poolGroup.PooledSoundProfiles, profile => profile.Reference);
+                LoadObjectsPool<AudioClip, PooledSoundProfile>(poolGroup.PooledSoundProfiles, profile => profile.Clip);
+                LoadObjectsPool<GameObject, PooledUIProfile>(poolGroup.PooledUIProfiles, profile => profile.Reference);
             }
         }
-        private void LoadObjectsPool<T>(PooledBaseProfile[] poolItems) => Array.ForEach(poolItems, item => _addressablesService.LoadAssetAsync<T>(item.Reference));
+        private void LoadObjectsPool<T, R>(R[] poolItems, Func<R, AssetReference> getReferenceFunc) where R : PooledBaseProfile
+        {
+            Array.ForEach(poolItems, item => _addressablesService.LoadAssetAsync<T>(getReferenceFunc(item)));
+        }
 
         private IEnumerator StartGame()
         {

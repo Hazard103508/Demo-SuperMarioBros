@@ -5,7 +5,7 @@ namespace Mario.Game.ScriptableObjects.Pool
     [CreateAssetMenu(fileName = "PooledUIProfile", menuName = "ScriptableObjects/Game/Pool/PooledUIProfile", order = 1)]
     public class PooledUIProfile : PooledBaseProfile
     {
-        [Header("Canvas")]
+        [Header("UI")]
         public RenderMode RenderMode;
         public string CanvasSortingLayer;
     }

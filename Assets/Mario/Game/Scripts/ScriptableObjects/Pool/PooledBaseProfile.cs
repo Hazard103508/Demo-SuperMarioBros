@@ -5,6 +5,7 @@ namespace Mario.Game.ScriptableObjects.Pool
 {
     public abstract class PooledBaseProfile : ScriptableObject
     {
+        [Header("Pool Base")]
         public AssetReference Reference;
         public bool CollectionCheck = true;
         public int DefaultCapacity = 1;
