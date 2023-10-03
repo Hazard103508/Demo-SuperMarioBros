@@ -10,6 +10,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
     {
         #region Objects
         private readonly IPoolService _poolService;
+        private readonly IAddressablesService _addressablesService;
 
         private float _limitTime;
         private bool _started;
@@ -23,6 +24,9 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         public BrickBoxCoinStateIdle(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
+
+            _addressablesService.LoadAssetAsync<GameObject>(Box.Profile.CoinPoolReference.Reference);
         }
         #endregion
 

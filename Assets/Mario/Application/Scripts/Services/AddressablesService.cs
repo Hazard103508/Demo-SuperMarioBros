@@ -28,13 +28,13 @@ namespace Mario.Application.Services
         }
         public Task<AsyncOperationHandle<T>> LoadAssetAsync<T>(AssetReference assetReference)
         {
+            if (_references.ContainsKey(assetReference))
+                return default;
+
             var taskCompletionSource = new TaskCompletionSource<AsyncOperationHandle<T>>();
             var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
-            asyncOperationHandle.Completed += handle => 
-            { 
-                taskCompletionSource.SetResult(handle); 
-                _references.Add(assetReference, handle);
-            };
+            asyncOperationHandle.Completed += handle => taskCompletionSource.SetResult(handle); 
+            _references.Add(assetReference, asyncOperationHandle);
 
             return Task.Run(() => taskCompletionSource.Task);
         }

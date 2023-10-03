@@ -13,6 +13,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         private readonly IPoolService _poolService;
         private readonly IScoreService _scoreService;
         private readonly ISoundService _soundService;
+        private readonly IAddressablesService _addressablesService;
         #endregion
 
         #region Properties
@@ -25,6 +26,9 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
+
+            _addressablesService.LoadAssetAsync<GameObject>(Box.Profile.BrokenBrickPoolReference.Reference);
         }
         #endregion
 

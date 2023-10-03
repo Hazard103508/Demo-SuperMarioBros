@@ -16,7 +16,7 @@ namespace Mario.Application.Components
         public bool CollectionCheck { get; set; }
         public int DefaultCapacity { get; set; }
         public int MaxSize { get; set; }
-        public Action<GameObject> CreateInstanceCallback { get; set; }
+        public Action<GameObject> OnCreate { get; set; }
         #endregion
 
         #region Public Methods
@@ -44,6 +44,8 @@ namespace Mario.Application.Components
             GameObject obj = Instantiate(PrefabReference, _nextObjectPosition, Quaternion.identity, transform);
             PooledObject pooledObject = obj.AddComponent<PooledObject>();
             pooledObject.ObjectPool = objectPool;
+            OnCreate?.Invoke(obj);
+
             return pooledObject;
         }
         private void OnReleaseToPool(PooledObject pooledObject) => pooledObject.gameObject.SetActive(false);

@@ -3,6 +3,7 @@ using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Mario.Application.Services
@@ -27,19 +28,9 @@ namespace Mario.Application.Services
             _poolFactories = new Dictionary<Type, PoolFactory>();
         }
         public PooledObject GetObjectFromPool(PooledBaseProfile profile) => GetObjectFromPool(profile, Vector3.zero);
-        public PooledObject GetObjectFromPool(PooledBaseProfile profile, Vector3 position)
-        {
-            var poolGroup = GetPoolGroup(profile);
-            return poolGroup.Get(position);
-        }
-        public T GetObjectFromPool<T>(PooledBaseProfile profile) where T : MonoBehaviour
-        {
-            return GetObjectFromPool<T>(profile, Vector3.zero);
-        }
-        public T GetObjectFromPool<T>(PooledBaseProfile profile, Vector3 position) where T : MonoBehaviour
-        {
-            return GetObjectFromPool(profile, position).GetComponent<T>();
-        }
+        public PooledObject GetObjectFromPool(PooledBaseProfile profile, Vector3 position) => GetPoolGroup(profile).Get(position);
+        public T GetObjectFromPool<T>(PooledBaseProfile profile) where T : MonoBehaviour => GetObjectFromPool<T>(profile, Vector3.zero);
+        public T GetObjectFromPool<T>(PooledBaseProfile profile, Vector3 position) where T : MonoBehaviour => GetObjectFromPool(profile, position).GetComponent<T>();
         public void ClearPool()
         {
             foreach (var item in _poolGroups)

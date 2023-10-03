@@ -17,8 +17,58 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 87df5f74a7aefe9409c368ba6b1aab96
   m_SerializeEntries:
+  - m_GUID: 7927c84e8d087c04681ddaaa71d831f1
+    m_Address: smb_breakblock
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a82c2a43be1eb0045a3f77047c4752c6
+    m_Address: smb_jump-small
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce9930a01d4e6c343831f7ef78335107
+    m_Address: smb_jump-super
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f1baf057584f0d04297274643bd12866
+    m_Address: smb_1-up
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6bef174eb209fa46864a49e69fd7a30
+    m_Address: smb_bump
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f213a0287786168489306c67ef02d347
+    m_Address: smb_coin
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1c85f8f71d4e7da4dae150e45c2f7a0b
+    m_Address: smb_mariodie
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 92029666d81b11f4cb36741682141e75
+    m_Address: smb_pipe_nerf
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e0b1461ceaa84a44899dbbee39f8476
+    m_Address: smb_powerup
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c4bd820c39c2ba44bf65cc496749db8
+    m_Address: smb_powerup_appears
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 058f515ef2c108c48962178c78f0ad5d
-    m_Address: Sound_SingleFX
+    m_Address: Assets/Mario/Game/Prefabs/Sounds/Sound_SingleFX.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
