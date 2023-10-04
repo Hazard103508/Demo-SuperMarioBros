@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
 
@@ -5,8 +6,14 @@ namespace Mario.Game.Player
 {
     public class TestEventListener : MonoBehaviour
     {
+        private ICoinService _coinService;
+
         [SerializeField] private PlayerController player;
 
+        private void Awake()
+        {
+            _coinService = ServiceLocator.Current.Get<ICoinService>();
+        }
         private void Update()
         {
             // TESTING----------------
@@ -18,7 +25,7 @@ namespace Mario.Game.Player
                 Services.PlayerService.AddLife();
 
             if (Input.GetKeyDown(KeyCode.G))
-                Services.CoinService.Add();
+                _coinService.Add();
 
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -30,6 +37,6 @@ namespace Mario.Game.Player
         public void OnEventListener_Nerf() => player.Nerf();
         public void OnEventListener_Kill() => player.Kill();
         public void OnEventListener_AddLife() => Services.PlayerService.AddLife();
-        public void OnEventListener_AddCoin() => Services.CoinService.Add();
+        public void OnEventListener_AddCoin() => _coinService.Add();
     }
 }

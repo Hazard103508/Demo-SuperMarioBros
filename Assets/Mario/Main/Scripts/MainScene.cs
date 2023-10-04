@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
 
@@ -5,6 +6,12 @@ namespace Mario.Main
 {
     public class MainScene : MonoBehaviour
     {
+        private ICoinService _coinService;
+
+        private void Awake()
+        {
+            _coinService = ServiceLocator.Current.Get<ICoinService>();
+        }
         private void Start()
         {
             ResetPlayerData();
@@ -17,7 +24,7 @@ namespace Mario.Main
         }
         private void ResetPlayerData()
         {
-            Services.CoinService.Reset();
+            _coinService.Reset();
             Services.PlayerService.Reset();
             Services.ScoreService.Reset();
         }

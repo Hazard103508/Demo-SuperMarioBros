@@ -18,6 +18,7 @@ namespace Mario.Game.Items
     {
         #region Objects
         private IPoolService _poolService;
+        private ICoinService _coinService;
 
         private bool isCollected;
         [SerializeField] protected CoinProfile _profile;
@@ -27,6 +28,7 @@ namespace Mario.Game.Items
         private void Awake()
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _coinService = ServiceLocator.Current.Get<ICoinService>();
         }
         #endregion
 
@@ -40,7 +42,7 @@ namespace Mario.Game.Items
             if (addPoint)
             {
                 Services.ScoreService.Add(_profile.Points);
-                Services.CoinService.Add();
+                _coinService.Add();
             }
             Destroy(gameObject);
         }
