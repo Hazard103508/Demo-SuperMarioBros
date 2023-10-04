@@ -15,6 +15,7 @@ namespace Mario.Game.Maps
         #region Objects
         private IAddressablesService _addressablesService;
         private IPoolService _poolService;
+        private ISceneService _sceneService;
 
         [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
@@ -26,6 +27,7 @@ namespace Mario.Game.Maps
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _sceneService = ServiceLocator.Current.Get<ISceneService>();
 
             Services.TimeService.ResetTimer();
             Services.GameDataService.IsGoalReached = false;
@@ -125,11 +127,11 @@ namespace Mario.Game.Maps
             yield return new WaitForSeconds(3.5f);
 
             if (Services.PlayerService.Lives <= 0)
-                Services.SceneService.LoadGameOverScene();
+                _sceneService.LoadGameOverScene();
             else if (Services.TimeService.Time == 0)
-                Services.SceneService.LoadTimeUpScene();
+                _sceneService.LoadTimeUpScene();
             else
-                Services.SceneService.LoadStandByScene();
+                _sceneService.LoadStandByScene();
         }
         #endregion
 

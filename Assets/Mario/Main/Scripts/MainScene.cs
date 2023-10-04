@@ -7,10 +7,12 @@ namespace Mario.Main
     public class MainScene : MonoBehaviour
     {
         private ICoinService _coinService;
+        private ISceneService _sceneService;
 
         private void Awake()
         {
             _coinService = ServiceLocator.Current.Get<ICoinService>();
+            _sceneService = ServiceLocator.Current.Get<ISceneService>();
         }
         private void Start()
         {
@@ -20,7 +22,7 @@ namespace Mario.Main
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Return))
-                Services.SceneService.LoadStandByScene();
+                _sceneService.LoadStandByScene();
         }
         private void ResetPlayerData()
         {

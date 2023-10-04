@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -8,11 +9,19 @@ namespace Mario.Game.Interactable
 {
     public class House : MonoBehaviour, IHittableByPlayerFromLeft
     {
+        #region Objects
+        private ISceneService _sceneService;
+        #endregion
+
         #region Private Methods
+        private void Awake()
+        {
+            _sceneService = ServiceLocator.Current.Get<ISceneService>();
+        }
         private IEnumerator CloseMap()
         {
             yield return new WaitForSeconds(6);
-            Services.SceneService.LoadStandByScene();
+            _sceneService.LoadStandByScene();
         }
         #endregion
 

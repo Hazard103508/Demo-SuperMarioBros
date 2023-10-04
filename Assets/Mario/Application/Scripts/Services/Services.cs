@@ -12,7 +12,7 @@ namespace Mario.Application.Services
         public static IScoreService ScoreService { get; private set; }
         public static ITimeService TimeService { get; private set; }
         public static IPlayerService PlayerService { get; private set; }
-        public static ISceneService SceneService { get; private set; }  // REFACTOR
+        //public static ISceneService SceneService { get; private set; }  // REFACTOR
         public static IThemeMusicService MusicService { get; private set; }  // REFACTOR -- PRIMERO
         #endregion
 
@@ -26,7 +26,7 @@ namespace Mario.Application.Services
             ScoreService = ServiceLocator.Current.Get<IScoreService>();
             TimeService = ServiceLocator.Current.Get<ITimeService>();
             PlayerService = ServiceLocator.Current.Get<IPlayerService>();
-            SceneService = ServiceLocator.Current.Get<ISceneService>();
+            //SceneService = ServiceLocator.Current.Get<ISceneService>();
             MusicService = ServiceLocator.Current.Get<IThemeMusicService>();
         }
         #endregion

@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -9,9 +10,18 @@ namespace Mario.Game.Interactable
     public class PipeRight : MonoBehaviour, IHittableByPlayerFromLeft
     {
         #region Objects
+        private ISceneService _sceneService;
+
         [SerializeField] private int _pipeIndex;
         [SerializeField] private AudioSource _pipeInSoundFX;
         private bool _isInPipe;
+        #endregion
+
+        #region Unity Methods
+        private void Awake()
+        {
+            _sceneService = ServiceLocator.Current.Get<ISceneService>();
+        }
         #endregion
 
         #region Protected Methods
@@ -20,7 +30,7 @@ namespace Mario.Game.Interactable
             Services.TimeService.StopTimer();
             Services.PlayerService.CanMove = false;
             Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.PipesConnections[_pipeIndex];
-            Services.SceneService.LoadMapScene(2.8f);
+            _sceneService.LoadMapScene(2.8f);
 
             _isInPipe = true;
             _pipeInSoundFX.Play();

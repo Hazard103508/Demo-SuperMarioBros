@@ -25,7 +25,7 @@ namespace Mario.Application
             RegisterServicer<IThemeMusicService>();
 
             Services.Services.Load();
-            Services.Services.SceneService.LoadMainScene();
+            ServiceLocator.Current.Get<ISceneService>().LoadMainScene();
         }
         private void OnApplicationQuit()
         {
