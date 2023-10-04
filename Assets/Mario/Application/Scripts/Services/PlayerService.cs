@@ -51,8 +51,6 @@ namespace Mario.Application.Services
             this.Lives--;
             _soundService.Play(_deadSoundPoolReference);
             LivesRemoved?.Invoke();
-
-            Services.MusicService.Stop();
         }
         public void Reset()
         {

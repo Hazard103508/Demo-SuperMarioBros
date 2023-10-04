@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.ScriptableObjects.Map;
 using System.Collections;
@@ -7,19 +8,24 @@ namespace Mario.Game.Maps
 {
     public class MapMusic : MonoBehaviour
     {
+        #region Objects
+        private IThemeMusicService _themeMusicService;
+        #endregion
+
         #region Unity Methods
         private void Awake()
         {
+            _themeMusicService = ServiceLocator.Current.Get<IThemeMusicService>();
             Services.TimeService.HurryUpTimeStarted += OnHurryUpTimeStart;
         }
         private void Start()
         {
             LoadThemeSong();
-            Services.MusicService.Play();
+            _themeMusicService.Play();
         }
         private void OnDestroy()
         {
-            Services.MusicService.Stop();
+            _themeMusicService.Stop();
             Services.TimeService.HurryUpTimeStarted -= OnHurryUpTimeStart;
         }
         #endregion
@@ -27,8 +33,8 @@ namespace Mario.Game.Maps
         #region Private Methods
         private void OnHurryUpTimeStart()
         {
-            Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryFX;
-            Services.MusicService.Play();
+            _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryFX;
+            _themeMusicService.Play();
 
             StartCoroutine(PlayHurryTheme());
         }
@@ -37,20 +43,20 @@ namespace Mario.Game.Maps
             switch (Services.GameDataService.CurrentMapProfile.Time.Type)
             {
                 case MapTimeType.None:
-                    Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
-                    Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
+                    _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
+                    _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
                     break;
                 case MapTimeType.Beginning:
                 case MapTimeType.Continuated:
                     if (Services.TimeService.IsHurry)
                     {
-                        Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.Clip;
-                        Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.StartTime;
+                        _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.Clip;
+                        _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.StartTime;
                     }
                     else
                     {
-                        Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
-                        Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
+                        _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
+                        _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
                     }
                     break;
             }
@@ -62,9 +68,9 @@ namespace Mario.Game.Maps
             while (!Services.TimeService.Enabled)
                 yield return null;
 
-            Services.MusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;
-            Services.MusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
-            Services.MusicService.Play();
+            _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;
+            _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
+            _themeMusicService.Play();
         }
         #endregion
     }

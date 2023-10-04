@@ -9,12 +9,14 @@ namespace Mario.Game.Player
     {
         #region Objects
         private readonly IPlayerService _playerService;
+        private readonly IThemeMusicService _themeMusicService;
         #endregion
 
         #region Constructor
         public PlayerStateDeath(PlayerController player) : base(player)
         {
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _themeMusicService = ServiceLocator.Current.Get<IThemeMusicService>();
         }
         #endregion
 
@@ -45,6 +47,7 @@ namespace Mario.Game.Player
             base.Enter();
             Player.StartCoroutine(PlayFall());
             _playerService.RemoveLife();
+            _themeMusicService.Stop();
         }
         #endregion
     }
