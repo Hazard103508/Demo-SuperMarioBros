@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
 
@@ -5,9 +6,14 @@ namespace Mario.Game.Npc.Goomba
 {
     public class GoombaStateDead : GoombaState
     {
+        #region Objects
+        private readonly IScoreService _scoreService;
+        #endregion
+
         #region Constructor
         public GoombaStateDead(Goomba goomba) : base(goomba)
         {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -21,8 +27,8 @@ namespace Mario.Game.Npc.Goomba
             Goomba.Renderer.sortingLayerName = "Dead";
             Goomba.PlayKickSoundFX();
 
-            Services.ScoreService.Add(Goomba.Profile.Points);
-            Services.ScoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.8f, 3f);
+            _scoreService.Add(Goomba.Profile.Points);
+            _scoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.8f, 3f);
             Goomba.Movable.SetJumpForce(Goomba.Profile.JumpAcceleration);
             Goomba.Renderer.transform.position += Vector3.up * 0.5f;
         }

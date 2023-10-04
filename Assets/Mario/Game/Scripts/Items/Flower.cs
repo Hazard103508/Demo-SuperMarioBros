@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -14,10 +15,16 @@ namespace Mario.Game.Items
         IHittableByPlayerFromRight
     {
         #region Objects
+        private IScoreService _scoreService;
+
         [SerializeField] protected FlowerProfile _profile;
         #endregion
 
         #region Unity Methods
+        private void Awake()
+        {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
+        }
         private void OnEnable()
         {
             StartCoroutine(RiseFlower());
@@ -44,8 +51,8 @@ namespace Mario.Game.Items
         private void CollectFlower(PlayerController player)
         {
             gameObject.layer = 0;
-            Services.ScoreService.Add(_profile.Points);
-            Services.ScoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 1.75f, 0.8f, 3f);
+            _scoreService.Add(_profile.Points);
+            _scoreService.ShowPoints(_profile.Points, transform.position + Vector3.up * 1.75f, 0.8f, 3f);
 
             player.Buff();
             gameObject.SetActive(false);

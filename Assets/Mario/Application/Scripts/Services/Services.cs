@@ -6,7 +6,6 @@ namespace Mario.Application.Services
     {
         #region Properties
         public static ILevelService GameDataService { get; private set; }
-        public static IScoreService ScoreService { get; private set; }
         public static ITimeService TimeService { get; private set; }
         public static IPlayerService PlayerService { get; private set; }
         #endregion
@@ -15,7 +14,6 @@ namespace Mario.Application.Services
         public static void Load()
         {
             GameDataService = ServiceLocator.Current.Get<ILevelService>();
-            ScoreService = ServiceLocator.Current.Get<IScoreService>();
             TimeService = ServiceLocator.Current.Get<ITimeService>();
             PlayerService = ServiceLocator.Current.Get<IPlayerService>();
         }

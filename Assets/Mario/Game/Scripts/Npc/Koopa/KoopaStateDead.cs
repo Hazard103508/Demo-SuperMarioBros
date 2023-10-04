@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
 
@@ -5,9 +6,14 @@ namespace Mario.Game.Npc.Koopa
 {
     public class KoopaStateDead : KoopaState
     {
+        #region Objects
+        private readonly IScoreService _scoreService;
+        #endregion
+
         #region Constructor
         public KoopaStateDead(Koopa koopa) : base(koopa)
         {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -22,8 +28,8 @@ namespace Mario.Game.Npc.Koopa
             Koopa.Renderer.sortingLayerName = "Dead";
             Koopa.PlayKickSoundFX();
 
-            Services.ScoreService.Add(Koopa.Profile.PointsKill);
-            Services.ScoreService.ShowPoints(Koopa.Profile.PointsKill, Koopa.transform.position + Vector3.up * 2f, 0.8f, 3f);
+            _scoreService.Add(Koopa.Profile.PointsKill);
+            _scoreService.ShowPoints(Koopa.Profile.PointsKill, Koopa.transform.position + Vector3.up * 2f, 0.8f, 3f);
             Koopa.Movable.SetJumpForce(Koopa.Profile.JumpAcceleration);
             Koopa.Renderer.transform.position += Vector3.up * 0.5f;
         }

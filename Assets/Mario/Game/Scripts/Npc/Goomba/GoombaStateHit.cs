@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
 
@@ -6,12 +7,14 @@ namespace Mario.Game.Npc.Goomba
     public class GoombaStateHit : GoombaState
     {
         #region Objects
+        private readonly IScoreService _scoreService;
         private float _timer = 0;
         #endregion
 
         #region Constructor
         public GoombaStateHit(Goomba goomba) : base(goomba)
         {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -23,8 +26,8 @@ namespace Mario.Game.Npc.Goomba
             Goomba.Animator.SetTrigger("Hit");
             Goomba.PlayHitSoundFX();
 
-            Services.ScoreService.Add(Goomba.Profile.Points);
-            Services.ScoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
+            _scoreService.Add(Goomba.Profile.Points);
+            _scoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
         }
         public override void Update()
         {

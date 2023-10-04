@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interactable;
 using Mario.Game.Player;
@@ -8,12 +9,15 @@ namespace Mario.Game.Npc.Koopa
     public class KoopaStateInShell : KoopaState
     {
         #region Objects
+        private readonly IScoreService _scoreService;
+
         private float _timer = 0;
         #endregion
 
         #region Constructor
         public KoopaStateInShell(Koopa koopa) : base(koopa)
         {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -40,8 +44,8 @@ namespace Mario.Game.Npc.Koopa
             Koopa.Movable.Speed = 0;
             Koopa.Animator.SetTrigger("Hit");
 
-            Services.ScoreService.Add(Koopa.Profile.PointsHit1);
-            Services.ScoreService.ShowPoints(Koopa.Profile.PointsHit1, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
+            _scoreService.Add(Koopa.Profile.PointsHit1);
+            _scoreService.ShowPoints(Koopa.Profile.PointsHit1, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
 
             Koopa.PlayHitSoundFX();
         }

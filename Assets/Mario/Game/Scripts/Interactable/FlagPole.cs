@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -9,11 +10,20 @@ namespace Mario.Game.Interactable
     public class FlagPole : MonoBehaviour, IHittableByPlayerFromLeft
     {
         #region Objects
+        private IScoreService _scoreService;
+
         [SerializeField] private FlagPoleProfile _profile;
         [SerializeField] private GameObject _flag;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private FlagScoreLabel _scoreLabel;
         private bool _isLowering;
+        #endregion
+
+        #region Unity Methods
+        private void Awake()
+        {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
+        }
         #endregion
 
         #region Private Methods
@@ -22,7 +32,7 @@ namespace Mario.Game.Interactable
             if (!_isLowering)
             {
                 int point = GetFlagPoints(player);
-                Services.ScoreService.Add(point);
+                _scoreService.Add(point);
                 _scoreLabel.ShowPoint(point);
             }
         }

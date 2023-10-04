@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interactable;
 using Mario.Game.Player;
@@ -10,12 +11,15 @@ namespace Mario.Game.Npc.Koopa
     public class KoopaStateBouncing : KoopaState
     {
         #region Objects
+        private readonly IScoreService _scoreService;
+
         private float _timer = 0;
         #endregion
 
         #region Constructor
         public KoopaStateBouncing(Koopa koopa) : base(koopa)
         {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -46,8 +50,8 @@ namespace Mario.Game.Npc.Koopa
             Koopa.Movable.Speed = Koopa.Profile.BouncingSpeed;
             Koopa.PlayKickSoundFX();
 
-            Services.ScoreService.Add(Koopa.Profile.PointsHit2);
-            Services.ScoreService.ShowPoints(Koopa.Profile.PointsHit2, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
+            _scoreService.Add(Koopa.Profile.PointsHit2);
+            _scoreService.ShowPoints(Koopa.Profile.PointsHit2, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
         }
         public override void Update()
         {

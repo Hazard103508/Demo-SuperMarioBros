@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Items.Mushroom;
 using Mario.Game.Player;
@@ -7,6 +8,10 @@ namespace Mario.Game.Items.RedMushroom
 {
     public class MushroomRedStateWalk : MushroomStateWalk
     {
+        #region Objects
+        private readonly IScoreService _scoreService;
+        #endregion
+
         #region Properties
         private new MushroomRed Mushroom => (MushroomRed)base.Mushroom;
         #endregion
@@ -14,6 +19,7 @@ namespace Mario.Game.Items.RedMushroom
         #region Constructor
         public MushroomRedStateWalk(MushroomRed mushroom) : base(mushroom)
         {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -24,8 +30,8 @@ namespace Mario.Game.Items.RedMushroom
                 return;
 
             Mushroom.gameObject.layer = 0;
-            Services.ScoreService.Add(Mushroom.Profile.Points);
-            Services.ScoreService.ShowPoints(Mushroom.Profile.Points, Mushroom.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
+            _scoreService.Add(Mushroom.Profile.Points);
+            _scoreService.ShowPoints(Mushroom.Profile.Points, Mushroom.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
 
             player.Buff();
             Mushroom.gameObject.SetActive(false);
