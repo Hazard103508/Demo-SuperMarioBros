@@ -6,27 +6,25 @@ namespace Mario.Application.Components
 {
     public class PoolFactoryUI : PoolFactory
     {
-        private PooledUIProfile _profile;
-
         public override Pool CreatePool(PooledBaseProfile profile, Transform parent)
         {
-            _profile = (PooledUIProfile)profile;
+            var pool = base.CreatePool(profile, parent);
+            pool.gameObject.AddComponent<Canvas>();
+            pool.OnCreate = OnCreate;
 
-            base.CreatePool(profile, parent);
-            Pool.gameObject.AddComponent<Canvas>();
-            Pool.OnCreate = OnCreate;
-
-            Pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
-            if (Pool.PrefabReference == null)
+            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
+            if (pool.PrefabReference == null)
                 Debug.LogError($"Missing asset reference: {profile.name}");
 
-            Pool.Load();
-            return Pool;
+            pool.Load();
+            return pool;
         }
 
-        private void OnCreate(GameObject obj)
+        private void OnCreate(Pool pool, GameObject obj)
         {
-            var canvas = Pool.GetComponent<Canvas>();
+            var _profile = (PooledUIProfile)pool.Profile;
+
+            var canvas = pool.GetComponent<Canvas>();
             canvas.renderMode = _profile.RenderMode;
             if (_profile.RenderMode != RenderMode.ScreenSpaceOverlay)
                 canvas.worldCamera = Camera.main;

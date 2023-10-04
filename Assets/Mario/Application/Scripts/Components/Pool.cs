@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
 using UnityEngine.Pool;
@@ -12,11 +13,9 @@ namespace Mario.Application.Components
         #endregion
 
         #region Properties
+        public PooledBaseProfile Profile { get; set; }
         public GameObject PrefabReference { get; set; }
-        public bool CollectionCheck { get; set; }
-        public int DefaultCapacity { get; set; }
-        public int MaxSize { get; set; }
-        public Action<GameObject> OnCreate { get; set; }
+        public Action<Pool, GameObject> OnCreate { get; set; }
         #endregion
 
         #region Public Methods
@@ -27,9 +26,9 @@ namespace Mario.Application.Components
                 OnGetFromPool,
                 OnReleaseToPool,
                 OnDestroyPooledObject,
-                CollectionCheck,
-                DefaultCapacity,
-                MaxSize);
+                Profile.CollectionCheck,
+                Profile.DefaultCapacity,
+                Profile.MaxSize);
         }
         public PooledObject Get(Vector3 position)
         {
@@ -44,7 +43,7 @@ namespace Mario.Application.Components
             GameObject obj = Instantiate(PrefabReference, _nextObjectPosition, Quaternion.identity, transform);
             PooledObject pooledObject = obj.AddComponent<PooledObject>();
             pooledObject.ObjectPool = objectPool;
-            OnCreate?.Invoke(obj);
+            OnCreate?.Invoke(this, obj);
 
             return pooledObject;
         }
