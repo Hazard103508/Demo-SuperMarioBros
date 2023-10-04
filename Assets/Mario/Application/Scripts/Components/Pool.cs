@@ -40,7 +40,10 @@ namespace Mario.Application.Components
         #region Private Methods
         private PooledObject CreateInstance()
         {
-            GameObject obj = Instantiate(PrefabReference, _nextObjectPosition, Quaternion.identity, transform);
+            GameObject obj = PrefabReference != null ? Instantiate(PrefabReference) : new GameObject(Profile.name);
+            obj.transform.position = _nextObjectPosition;
+            obj.transform.parent = transform;
+
             PooledObject pooledObject = obj.AddComponent<PooledObject>();
             pooledObject.ObjectPool = objectPool;
             OnCreate?.Invoke(this, obj);

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Mario.Game.ScriptableObjects.Pool
 {
@@ -7,6 +6,19 @@ namespace Mario.Game.ScriptableObjects.Pool
     public class PooledSoundProfile : PooledBaseProfile
     {
         [Header("Audio")]
-        public AssetReference Clip;
+        [SerializeField]
+        [Range(0,1)]
+        private float _volume = 1;
+
+        [SerializeField]
+        private bool _playOnAwake;
+
+        [SerializeField] 
+        private bool _disableOnComplete;
+
+
+        public float Volume => _volume;
+        public bool DisableOnComplete => _disableOnComplete;
+        public bool PlayOnAwake => _playOnAwake;
     }
 }

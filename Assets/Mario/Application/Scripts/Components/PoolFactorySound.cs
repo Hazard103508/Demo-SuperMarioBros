@@ -1,3 +1,4 @@
+using Mario.Game.Commons;
 using Mario.Game.ScriptableObjects.Pool;
 using UnityEngine;
 
@@ -9,19 +10,21 @@ namespace Mario.Application.Components
         {
             var pool = base.CreatePool(profile, parent);
             pool.OnCreate = OnCreate;
-
-            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
-            if (pool.PrefabReference == null)
-                Debug.LogError($"Missing sound asset reference: {profile.name}");
-
+            
             pool.Load();
             return pool;
         }
         private void OnCreate(Pool pool, GameObject obj) 
         {
             var _profile = (PooledSoundProfile)pool.Profile;
-            var audioSource = obj.GetComponent<AudioSource>();
-            audioSource.clip = _addressablesService.GetAssetReference<AudioClip>(_profile.Clip);
+            
+            var audioSource = obj.AddComponent<AudioSource>();
+            audioSource.clip = _addressablesService.GetAssetReference<AudioClip>(_profile.Reference);
+            audioSource.volume = _profile.Volume;
+            audioSource.playOnAwake = _profile.PlayOnAwake;
+
+            if (_profile.DisableOnComplete)
+                obj.AddComponent<DisableOnAudioCompleted>();
         }
     }
 }

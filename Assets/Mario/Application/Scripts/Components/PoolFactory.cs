@@ -22,6 +22,9 @@ namespace Mario.Application.Components
             var pool = obj.AddComponent<Pool>();
             pool.Profile = profile;
 
+            if (profile.Reference == null)
+                Debug.LogError($"Missing asset reference: {profile.name}");
+
             return pool;
         }
     }

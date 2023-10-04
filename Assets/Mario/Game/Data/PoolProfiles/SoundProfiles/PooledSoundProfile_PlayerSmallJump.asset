@@ -13,15 +13,13 @@ MonoBehaviour:
   m_Name: PooledSoundProfile_PlayerSmallJump
   m_EditorClassIdentifier: 
   Reference:
-    m_AssetGUID: 058f515ef2c108c48962178c78f0ad5d
+    m_AssetGUID: a82c2a43be1eb0045a3f77047c4752c6
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   CollectionCheck: 1
   DefaultCapacity: 1
   MaxSize: 2
-  Clip:
-    m_AssetGUID: a82c2a43be1eb0045a3f77047c4752c6
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  _volume: 1
+  _playOnAwake: 1
+  _disableOnComplete: 1

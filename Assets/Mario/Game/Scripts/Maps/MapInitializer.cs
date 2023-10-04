@@ -87,8 +87,7 @@ namespace Mario.Game.Maps
             foreach (PooledProfileGroup poolGroup in Services.GameDataService.CurrentMapProfile.PoolProfiles)
             {
                 LoadObjectsPool<GameObject, PooledObjectProfile>(poolGroup.PooledObjectProfiles, profile => profile.Reference);
-                LoadObjectsPool<GameObject, PooledSoundProfile>(poolGroup.PooledSoundProfiles, profile => profile.Reference);
-                LoadObjectsPool<AudioClip, PooledSoundProfile>(poolGroup.PooledSoundProfiles, profile => profile.Clip);
+                LoadObjectsPool<AudioClip, PooledSoundProfile>(poolGroup.PooledSoundProfiles, profile => profile.Reference);
                 LoadObjectsPool<GameObject, PooledUIProfile>(poolGroup.PooledUIProfiles, profile => profile.Reference);
             }
         }
