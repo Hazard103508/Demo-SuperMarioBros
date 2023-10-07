@@ -59,7 +59,6 @@ namespace Mario.Application.Services
                 return;
             }
 
-            service.LoadService();
             services.Add(key, service);
         }
 
@@ -77,6 +76,12 @@ namespace Mario.Application.Services
             }
 
             services.Remove(key);
+        }
+
+        public void LoadServices()
+        {
+            foreach (var service in services)
+                service.Value.LoadService();
         }
         #endregion
     }

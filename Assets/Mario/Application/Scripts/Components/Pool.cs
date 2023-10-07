@@ -42,7 +42,7 @@ namespace Mario.Application.Components
         {
             GameObject obj = PrefabReference != null ? Instantiate(PrefabReference) : new GameObject(Profile.name);
             obj.transform.position = _nextObjectPosition;
-            obj.transform.parent = transform;
+            obj.transform.SetParent(transform);
 
             PooledObject pooledObject = obj.AddComponent<PooledObject>();
             pooledObject.ObjectPool = objectPool;

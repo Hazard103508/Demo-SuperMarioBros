@@ -10,13 +10,16 @@ namespace Mario.Game.Maps
     {
         #region Objects
         private IThemeMusicService _themeMusicService;
+        private ITimeService _timeService;
         #endregion
 
         #region Unity Methods
         private void Awake()
         {
             _themeMusicService = ServiceLocator.Current.Get<IThemeMusicService>();
-            Services.TimeService.HurryUpTimeStarted += OnHurryUpTimeStart;
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
+
+            _timeService.HurryUpTimeStarted += OnHurryUpTimeStart;
         }
         private void Start()
         {
@@ -26,7 +29,7 @@ namespace Mario.Game.Maps
         private void OnDestroy()
         {
             _themeMusicService.Stop();
-            Services.TimeService.HurryUpTimeStarted -= OnHurryUpTimeStart;
+            _timeService.HurryUpTimeStarted -= OnHurryUpTimeStart;
         }
         #endregion
 
@@ -48,7 +51,7 @@ namespace Mario.Game.Maps
                     break;
                 case MapTimeType.Beginning:
                 case MapTimeType.Continuated:
-                    if (Services.TimeService.IsHurry)
+                    if (_timeService.IsHurry)
                     {
                         _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.Clip;
                         _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.StartTime;
@@ -65,7 +68,7 @@ namespace Mario.Game.Maps
         {
             yield return new WaitForSeconds(3.5f);
 
-            while (!Services.TimeService.Enabled)
+            while (!_timeService.Enabled)
                 yield return null;
 
             _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;

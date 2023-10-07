@@ -11,12 +11,14 @@ namespace Mario.Game.Interactable
     {
         #region Objects
         private ISceneService _sceneService;
+        private ITimeService _timeService;
         #endregion
 
         #region Private Methods
         private void Awake()
         {
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
         }
         private IEnumerator CloseMap()
         {
@@ -30,9 +32,8 @@ namespace Mario.Game.Interactable
         {
             player.gameObject.SetActive(false);
 
-            Services.PlayerService.CanMove = false;
             Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.NextMap;
-            Services.TimeService.StartTimer();
+            _timeService.StartTimer();
 
             StartCoroutine(CloseMap());
         }

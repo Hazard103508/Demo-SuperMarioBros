@@ -9,6 +9,8 @@ namespace Mario.Application.Services
     {
         #region Objects
         private ISoundService _soundService;
+        private IPlayerService _playerService;
+
         [SerializeField] private PooledSoundProfile _soundPoolReference;
         #endregion
 
@@ -24,6 +26,7 @@ namespace Mario.Application.Services
         public void LoadService()
         {
             _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
         public void Add()
         {
@@ -32,7 +35,7 @@ namespace Mario.Application.Services
 
             if (this.Coins >= 100)
             {
-                Services.PlayerService.AddLife();
+                _playerService.AddLife();
                 this.Coins = 0;
             }
 

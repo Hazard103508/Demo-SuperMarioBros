@@ -11,6 +11,7 @@ namespace Mario.Game.Interactable
     {
         #region Objects
         private ISceneService _sceneService;
+        private ITimeService _timeService;
 
         [SerializeField] private int _pipeIndex;
         [SerializeField] private AudioSource _pipeInSoundFX;
@@ -21,14 +22,14 @@ namespace Mario.Game.Interactable
         private void Awake()
         {
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
         }
         #endregion
 
         #region Private Methods
         private IEnumerator MoveIntoPipe(PlayerController player)
         {
-            Services.TimeService.StopTimer();
-            Services.PlayerService.CanMove = false;
+            _timeService.StopTimer();
             Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.PipesConnections[_pipeIndex];
             _sceneService.LoadMapScene(0.8f);
 

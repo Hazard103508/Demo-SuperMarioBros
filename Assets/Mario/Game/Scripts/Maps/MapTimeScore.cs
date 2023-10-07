@@ -9,6 +9,7 @@ namespace Mario.Game.Maps
     {
         #region Objects
         private IScoreService _scoreService;
+        private ITimeService _timeService;
 
         [SerializeField] private AudioSource _timeScoreFX;
         private int _previousTime;
@@ -19,8 +20,9 @@ namespace Mario.Game.Maps
         private void Awake()
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
 
-            Services.TimeService.TimeChangeded += OnTimeChanged;
+            _timeService.TimeChangeded += OnTimeChanged;
             Services.GameDataService.GoalReached += OnGoalReached;
 
             if (Services.GameDataService.CurrentMapProfile.Time.Type == MapTimeType.None)
@@ -28,7 +30,7 @@ namespace Mario.Game.Maps
         }
         private void OnDestroy()
         {
-            Services.TimeService.TimeChangeded -= OnTimeChanged;
+            _timeService.TimeChangeded -= OnTimeChanged;
             Services.GameDataService.GoalReached -= OnGoalReached;
         }
         #endregion
@@ -38,19 +40,19 @@ namespace Mario.Game.Maps
         {
             if (Services.GameDataService.IsGoalReached)
             {
-                int _timedif = _previousTime - Services.TimeService.Time;
+                int _timedif = _previousTime - _timeService.Time;
                 _scoreService.Add(_timedif * _pointsPerSecond);
 
                 _timeScoreFX.Play();
                 // se repduce al cambiar el valor del tiempo, 
                 // esta horrible, pero no encontre un audio clip con el sonido correcto
             }
-            _previousTime = Services.TimeService.Time;
-        }
+            _previousTime = _timeService.Time;
+        }   
         #endregion
 
         #region Service Events	
-        public void OnGoalReached() => Services.TimeService.TimeSpeed = 150f;
+        public void OnGoalReached() => _timeService.TimeSpeed = 150f;
         public void OnTimeChanged() => ValidScoreCount();
         #endregion
     }

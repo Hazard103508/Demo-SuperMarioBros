@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interactable;
@@ -41,7 +42,6 @@ namespace Mario.Game.Npc.Goomba
         private void Awake()
         {
             this.StateMachine = new GoombaStateMachine(this);
-            Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
             Movable = GetComponent<Movable>();
         }
         private void Start()
@@ -51,10 +51,6 @@ namespace Mario.Game.Npc.Goomba
         private void Update()
         {
             this.StateMachine.Update();
-        }
-        private void OnDestroy()
-        {
-            Services.PlayerService.CanMoveChanged -= OnCanMoveChanged;
         }
         #endregion
 
@@ -77,10 +73,6 @@ namespace Mario.Game.Npc.Goomba
         }
         public void PlayHitSoundFX() => _hitSoundFX.Play();
         public void PlayKickSoundFX() => _kickSoundFX.Play();
-        #endregion
-
-        #region Service Events
-        private void OnCanMoveChanged() => _animator.speed = Services.PlayerService.CanMove ? 1 : 0;
         #endregion
 
         #region On Movable Hit

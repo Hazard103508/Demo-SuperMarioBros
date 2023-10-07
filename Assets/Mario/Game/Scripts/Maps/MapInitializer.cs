@@ -16,6 +16,8 @@ namespace Mario.Game.Maps
         private IAddressablesService _addressablesService;
         private IPoolService _poolService;
         private ISceneService _sceneService;
+        private IPlayerService _playerService;
+        private ITimeService _timeService;
 
         [SerializeField] private PlayerController _player;
         [SerializeField] private GameObject _blackScreen; // pantalla de carga falsa para simular version de nes
@@ -28,10 +30,12 @@ namespace Mario.Game.Maps
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
 
-            Services.TimeService.ResetTimer();
+            _timeService.ResetTimer();
             Services.GameDataService.IsGoalReached = false;
-            Services.PlayerService.LivesRemoved += OnLivesRemoved;
+            _playerService.LivesRemoved += OnLivesRemoved;
 
             Camera.main.backgroundColor = Services.GameDataService.CurrentMapProfile.MapInit.BackgroundColor;
             LoadMapSection();
@@ -44,7 +48,7 @@ namespace Mario.Game.Maps
             SetNextMap();
             _addressablesService.ReleaseAllAssets();
             _poolService.ClearPool();
-            Services.PlayerService.LivesRemoved -= OnLivesRemoved;
+            _playerService.LivesRemoved -= OnLivesRemoved;
         }
         #endregion
 
@@ -53,8 +57,8 @@ namespace Mario.Game.Maps
         {
             if (Services.GameDataService.NextMapProfile != null)
             {
-                Services.TimeService.StartTime =
-                    Services.GameDataService.NextMapProfile.Time.Type == MapTimeType.Continuated ? Services.TimeService.Time :
+                _timeService.StartTime =
+                    Services.GameDataService.NextMapProfile.Time.Type == MapTimeType.Continuated ? _timeService.Time :
                     Services.GameDataService.NextMapProfile.Time.Type == MapTimeType.Beginning ? Services.GameDataService.NextMapProfile.Time.StartTime :
                     0;
 
@@ -118,16 +122,15 @@ namespace Mario.Game.Maps
                 yield return new WaitForEndOfFrame();
             }
 
-            Services.PlayerService.CanMove = true;
-            Services.TimeService.StartTimer();
+            _timeService.StartTimer();
         }
         private IEnumerator ReloadMap()
         {
             yield return new WaitForSeconds(3.5f);
 
-            if (Services.PlayerService.Lives <= 0)
+            if (_playerService.Lives <= 0)
                 _sceneService.LoadGameOverScene();
-            else if (Services.TimeService.Time == 0)
+            else if (_timeService.Time == 0)
                 _sceneService.LoadTimeUpScene();
             else
                 _sceneService.LoadStandByScene();
@@ -137,9 +140,7 @@ namespace Mario.Game.Maps
         #region Service Events	
         private void OnLivesRemoved()
         {
-            Services.TimeService.StopTimer();
-            //Services.PlayerService.CanMove = false;
-
+            _timeService.StopTimer();
             StartCoroutine(ReloadMap());
         }
         #endregion

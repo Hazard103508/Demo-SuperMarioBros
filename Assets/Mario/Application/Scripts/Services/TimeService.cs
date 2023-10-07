@@ -82,7 +82,7 @@ namespace Mario.Application.Services
             if (Services.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 return;
 
-            if (!IsHurry && Services.TimeService.Time <= _hurryTime && !Services.GameDataService.IsGoalReached)
+            if (!IsHurry && Time <= _hurryTime && !Services.GameDataService.IsGoalReached)
                 IsHurry = true;
         }
         #endregion

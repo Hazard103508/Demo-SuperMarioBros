@@ -8,6 +8,7 @@ namespace Mario.Game.Player
     {
         private ICoinService _coinService;
         private ISceneService _sceneService;
+        private IPlayerService _playerService;
 
         [SerializeField] private PlayerController player;
 
@@ -15,6 +16,7 @@ namespace Mario.Game.Player
         {
             _coinService = ServiceLocator.Current.Get<ICoinService>();
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
         private void Update()
         {
@@ -24,7 +26,7 @@ namespace Mario.Game.Player
                 _sceneService.LoadMapScene(0);
 
             if (Input.GetKeyDown(KeyCode.KeypadPlus))
-                Services.PlayerService.AddLife();
+                _playerService.AddLife();
 
             if (Input.GetKeyDown(KeyCode.G))
                 _coinService.Add();
@@ -38,7 +40,7 @@ namespace Mario.Game.Player
         public void OnEventListener_Buff() => player.Buff();
         public void OnEventListener_Nerf() => player.Nerf();
         public void OnEventListener_Kill() => player.Kill();
-        public void OnEventListener_AddLife() => Services.PlayerService.AddLife();
+        public void OnEventListener_AddLife() => _playerService.AddLife();
         public void OnEventListener_AddCoin() => _coinService.Add();
     }
 }

@@ -69,7 +69,7 @@ namespace Mario.Game.Player
             _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(minHeight, -Player.Movable.Gravity);
             Player.Movable.SetJumpForce(_jumpForce);
 
-            _soundService.Play(Player.StateMachine.CurrentMode.ModeProfile.Jump.SoundFX);
+            _soundService.Play(Player.StateMachine.CurrentMode.ModeProfile.Jump.SoundFX, Player.transform.position);
         }
         public override void Update()
         {

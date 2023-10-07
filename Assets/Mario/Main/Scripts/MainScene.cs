@@ -9,12 +9,14 @@ namespace Mario.Main
         private ICoinService _coinService;
         private ISceneService _sceneService;
         private IScoreService _scoreService;
+        private IPlayerService _playerService;
 
         private void Awake()
         {
             _coinService = ServiceLocator.Current.Get<ICoinService>();
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
         private void Start()
         {
@@ -29,7 +31,7 @@ namespace Mario.Main
         private void ResetPlayerData()
         {
             _coinService.Reset();
-            Services.PlayerService.Reset();
+            _playerService.Reset();
             _scoreService.Reset();
         }
     }

@@ -43,7 +43,6 @@ namespace Mario.Game.Npc.Koopa
         private void Awake()
         {
             this.StateMachine = new KoopaStateMachine(this);
-            Services.PlayerService.CanMoveChanged += OnCanMoveChanged;
             Movable = GetComponent<Movable>();
         }
         private void Start()
@@ -53,10 +52,6 @@ namespace Mario.Game.Npc.Koopa
         private void Update()
         {
             this.StateMachine.Update();
-        }
-        private void OnDestroy()
-        {
-            Services.PlayerService.CanMoveChanged -= OnCanMoveChanged;
         }
         #endregion
 
@@ -94,10 +89,6 @@ namespace Mario.Game.Npc.Koopa
 
             removeHits.ForEach(obj => hitInfo.hitObjects.Remove(obj));
         }
-        #endregion
-
-        #region Service Events
-        private void OnCanMoveChanged() => _animator.speed = Services.PlayerService.CanMove ? 1 : 0;
         #endregion
 
         #region On Movable Hit

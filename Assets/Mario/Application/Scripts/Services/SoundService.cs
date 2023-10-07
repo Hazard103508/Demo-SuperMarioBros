@@ -13,7 +13,11 @@ namespace Mario.Application.Services
             _poolService = ServiceLocator.Current.Get<IPoolService>();
         }
 
-        public void Play(PooledSoundProfile soundProfile) => _poolService.GetObjectFromPool(soundProfile);
-        public void Play(PooledSoundProfile soundProfile, Vector3 position) => _poolService.GetObjectFromPool(soundProfile, position);
+        public void Play(PooledSoundProfile soundProfile) => Play(soundProfile, Vector3.zero);
+        public void Play(PooledSoundProfile soundProfile, Vector3 position)
+        {
+            var sound = _poolService.GetObjectFromPool(soundProfile, position);
+            sound.GetComponent<AudioSource>().Play();
+        }
     }
 }
