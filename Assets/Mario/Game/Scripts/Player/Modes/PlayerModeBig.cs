@@ -2,9 +2,9 @@ namespace Mario.Game.Player
 {
     public class PlayerModeBig : PlayerMode
     {
-        public PlayerModeBig(PlayerController player)
+        public PlayerModeBig(PlayerController player) : base()
         {
-            base.ModeProfile = player.Profile.Modes.Big;
+            base.ModeProfile = PlayerService.PlayerProfile.Modes.Big;
             base.StateIdle = new PlayerStateBigIdle(player);
             base.StateRun = new PlayerStateBigRun(player);
             base.StateStop = new PlayerStateBigStop(player);

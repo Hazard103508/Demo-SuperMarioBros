@@ -10,6 +10,7 @@ namespace Mario.Game.Maps
         #region Objects
         private IScoreService _scoreService;
         private ITimeService _timeService;
+        private ILevelService _levelService;
 
         [SerializeField] private AudioSource _timeScoreFX;
         private int _previousTime;
@@ -21,24 +22,25 @@ namespace Mario.Game.Maps
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
 
             _timeService.TimeChangeded += OnTimeChanged;
-            Services.GameDataService.GoalReached += OnGoalReached;
+            _levelService.GoalReached += OnGoalReached;
 
-            if (Services.GameDataService.CurrentMapProfile.Time.Type == MapTimeType.None)
+            if (_levelService.CurrentMapProfile.Time.Type == MapTimeType.None)
                 Destroy(this);
         }
         private void OnDestroy()
         {
             _timeService.TimeChangeded -= OnTimeChanged;
-            Services.GameDataService.GoalReached -= OnGoalReached;
+            _levelService.GoalReached -= OnGoalReached;
         }
         #endregion
 
         #region Private Methods
         private void ValidScoreCount()
         {
-            if (Services.GameDataService.IsGoalReached)
+            if (_levelService.IsGoalReached)
             {
                 int _timedif = _previousTime - _timeService.Time;
                 _scoreService.Add(_timedif * _pointsPerSecond);

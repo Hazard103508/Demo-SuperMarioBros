@@ -10,6 +10,7 @@ namespace Mario.Game.Interactable
     public class House : MonoBehaviour, IHittableByPlayerFromLeft
     {
         #region Objects
+        private ILevelService _levelService;
         private ISceneService _sceneService;
         private ITimeService _timeService;
         #endregion
@@ -19,6 +20,7 @@ namespace Mario.Game.Interactable
         {
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
         }
         private IEnumerator CloseMap()
         {
@@ -32,7 +34,7 @@ namespace Mario.Game.Interactable
         {
             player.gameObject.SetActive(false);
 
-            Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.NextMap;
+            _levelService.NextMapProfile = _levelService.CurrentMapProfile.NextMap;
             _timeService.StartTimer();
 
             StartCoroutine(CloseMap());

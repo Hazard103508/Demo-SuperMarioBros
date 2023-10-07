@@ -1,3 +1,4 @@
+using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Player;
 using UnityEngine;
@@ -7,14 +8,16 @@ namespace Mario.Game.Interactable
     public class CheckPoint : TriggerPoint
     {
         #region Objects
+        private ILevelService _levelService;
+
         [SerializeField] private int _checkPointIndex;
         #endregion
 
         #region Protected Methods
         protected override void OnHitCheckPoint(PlayerController player)
         {
-            if (Services.GameDataService.CurrentMapProfile.CheckPoints.Length > _checkPointIndex)
-                Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.CheckPoints[_checkPointIndex];
+            if (_levelService.CurrentMapProfile.CheckPoints.Length > _checkPointIndex)
+                _levelService.NextMapProfile = _levelService.CurrentMapProfile.CheckPoints[_checkPointIndex];
 
             base.OnHitCheckPoint(player);
         }

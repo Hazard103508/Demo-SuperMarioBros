@@ -12,6 +12,7 @@ namespace Mario.Game.Interactable
         #region Objects
         private ISceneService _sceneService;
         private ITimeService _timeService;
+        private ILevelService _levelService;
 
         [SerializeField] private int _pipeIndex;
         [SerializeField] private AudioSource _pipeInSoundFX;
@@ -23,6 +24,7 @@ namespace Mario.Game.Interactable
         {
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
         }
         #endregion
 
@@ -30,7 +32,7 @@ namespace Mario.Game.Interactable
         private IEnumerator MoveIntoPipe(PlayerController player)
         {
             _timeService.StopTimer();
-            Services.GameDataService.NextMapProfile = Services.GameDataService.CurrentMapProfile.PipesConnections[_pipeIndex];
+            _levelService.NextMapProfile = _levelService.CurrentMapProfile.PipesConnections[_pipeIndex];
             _sceneService.LoadMapScene(0.8f);
 
             _isInPipe = true;

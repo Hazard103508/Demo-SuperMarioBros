@@ -78,10 +78,10 @@ namespace Mario.Application.Services
             services.Remove(key);
         }
 
-        public void LoadServices()
+        public void Initalize()
         {
             foreach (var service in services)
-                service.Value.LoadService();
+                service.Value.Initalize();
         }
         #endregion
     }

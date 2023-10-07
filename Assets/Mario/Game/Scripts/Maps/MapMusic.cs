@@ -9,6 +9,7 @@ namespace Mario.Game.Maps
     public class MapMusic : MonoBehaviour
     {
         #region Objects
+        private ILevelService _levelService;
         private IThemeMusicService _themeMusicService;
         private ITimeService _timeService;
         #endregion
@@ -18,6 +19,7 @@ namespace Mario.Game.Maps
         {
             _themeMusicService = ServiceLocator.Current.Get<IThemeMusicService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
 
             _timeService.HurryUpTimeStarted += OnHurryUpTimeStart;
         }
@@ -36,30 +38,30 @@ namespace Mario.Game.Maps
         #region Private Methods
         private void OnHurryUpTimeStart()
         {
-            _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryFX;
+            _themeMusicService.Clip = _levelService.CurrentMapProfile.Music.HurryFX;
             _themeMusicService.Play();
 
             StartCoroutine(PlayHurryTheme());
         }
         private void LoadThemeSong()
         {
-            switch (Services.GameDataService.CurrentMapProfile.Time.Type)
+            switch (_levelService.CurrentMapProfile.Time.Type)
             {
                 case MapTimeType.None:
-                    _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
-                    _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
+                    _themeMusicService.Clip = _levelService.CurrentMapProfile.Music.MainTheme.Clip;
+                    _themeMusicService.Time = _levelService.CurrentMapProfile.Music.MainTheme.StartTime;
                     break;
                 case MapTimeType.Beginning:
                 case MapTimeType.Continuated:
                     if (_timeService.IsHurry)
                     {
-                        _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.Clip;
-                        _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryTheme.StartTime;
+                        _themeMusicService.Clip = _levelService.CurrentMapProfile.Music.HurryTheme.Clip;
+                        _themeMusicService.Time = _levelService.CurrentMapProfile.Music.HurryTheme.StartTime;
                     }
                     else
                     {
-                        _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.MainTheme.Clip;
-                        _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.MainTheme.StartTime;
+                        _themeMusicService.Clip = _levelService.CurrentMapProfile.Music.MainTheme.Clip;
+                        _themeMusicService.Time = _levelService.CurrentMapProfile.Music.MainTheme.StartTime;
                     }
                     break;
             }
@@ -71,8 +73,8 @@ namespace Mario.Game.Maps
             while (!_timeService.Enabled)
                 yield return null;
 
-            _themeMusicService.Clip = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;
-            _themeMusicService.Time = Services.GameDataService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
+            _themeMusicService.Clip = _levelService.CurrentMapProfile.Music.HurryThemeFirstTime.Clip;
+            _themeMusicService.Time = _levelService.CurrentMapProfile.Music.HurryThemeFirstTime.StartTime;
             _themeMusicService.Play();
         }
         #endregion

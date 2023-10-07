@@ -1,4 +1,6 @@
 using Mario.Application.Interfaces;
+using Mario.Game.Player;
+using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
@@ -10,21 +12,14 @@ namespace Mario.Application.Services
         #region Objects
         private ISoundService _soundService;
 
-        private bool _canMove;
+        [SerializeField] private PlayerProfile _playerProfile;
         [SerializeField] private PooledSoundProfile _1UpSoundPoolReference;
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         #endregion
 
         #region Properties
-        public bool CanMove
-        {
-            get => _canMove;
-            set
-            {
-                _canMove = value;
-                CanMoveChanged?.Invoke();
-            }
-        }
+        public PlayerProfile PlayerProfile => _playerProfile;
+        public PlayerController PlayerController { get; set; }
         public int Lives { get; private set; }
         #endregion
 
@@ -35,7 +30,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Public Methods
-        public void LoadService()
+        public void Initalize()
         {
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             Reset();
@@ -55,7 +50,6 @@ namespace Mario.Application.Services
         public void Reset()
         {
             Lives = 3;
-            CanMove = true;
         }
         #endregion
     }

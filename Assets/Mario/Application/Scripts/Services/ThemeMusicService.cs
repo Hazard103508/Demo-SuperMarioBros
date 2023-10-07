@@ -23,7 +23,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Public Methods
-        public void LoadService()
+        public void Initalize()
         {
         }
         public void Play() => _audioSource.Play();

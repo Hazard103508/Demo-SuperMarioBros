@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.ScriptableObjects.Player;
@@ -13,7 +15,6 @@ namespace Mario.Game.Player
         IHittableByMovingToRight
     {
         #region Objects
-        [SerializeField] private PlayerProfile _profile;
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
         #endregion
@@ -23,7 +24,6 @@ namespace Mario.Game.Player
         public PlayerInputActions InputActions { get; private set; }
         public Movable Movable { get; private set; }
         public Animator Animator => _animator;
-        public PlayerProfile Profile => _profile;
         public SpriteRenderer Renderer => _renderer;
         public bool IsInvincible { get; set; }
         public PlayerAnimator.PlayerAnimationKeys CurrentAnimationKey { get; set; }

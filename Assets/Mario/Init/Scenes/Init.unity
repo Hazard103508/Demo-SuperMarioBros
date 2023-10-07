@@ -167,8 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a0833b31cda9949aad2b4a5efa12e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <PlayerProfile>k__BackingField: {fileID: 11400000, guid: 629a99770e243da45a5c7163e52df944, type: 2}
-  <CurrentMapProfile>k__BackingField: {fileID: 11400000, guid: e91824c6d41c8344fa80039c5a0d8967, type: 2}
+  _currentMapProfile: {fileID: 11400000, guid: e91824c6d41c8344fa80039c5a0d8967, type: 2}
 --- !u!1 &593922594
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 763245d5f38f5644598da86c7e629d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerProfile: {fileID: 11400000, guid: 629a99770e243da45a5c7163e52df944, type: 2}
   _1UpSoundPoolReference: {fileID: 11400000, guid: 7e4ef4bf45301d748b97b6e52f7c8555, type: 2}
   _deadSoundPoolReference: {fileID: 11400000, guid: 02aaf34b74439ec4997b0e10675d50b7, type: 2}
 --- !u!1 &1163315508

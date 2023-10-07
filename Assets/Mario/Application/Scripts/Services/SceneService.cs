@@ -8,7 +8,7 @@ namespace Mario.Application.Services
     public class SceneService : MonoBehaviour, ISceneService
     {
         #region Public Methods
-        public void LoadService()
+        public void Initalize()
         {
         }
         public void LoadMapScene(float minDelay) => StartCoroutine(LoadMapSceneCO(minDelay));

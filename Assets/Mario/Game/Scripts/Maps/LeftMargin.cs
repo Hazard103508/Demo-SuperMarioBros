@@ -5,7 +5,7 @@ namespace Mario.Game.Maps
     public class LeftMargin : MonoBehaviour
     {
         #region Objects
-        private float withMargin = 0.5f;
+        private readonly float withMargin = 0.5f;
         #endregion
 
         #region Unity Methods

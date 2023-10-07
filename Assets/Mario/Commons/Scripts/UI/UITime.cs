@@ -8,6 +8,7 @@ namespace Mario.Commons.UI
     {
         #region Objects
         private ITimeService _timeService;
+        private ILevelService _levelService;
 
         [SerializeField] private IconText label;
         #endregion
@@ -16,6 +17,7 @@ namespace Mario.Commons.UI
         private void Awake()
         {
             _timeService = ServiceLocator.Current.Get<ITimeService>();
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
 
             _timeService.TimeChangeded += OnTimeChanged;
             _timeService.TimeStarted += OnTimeStart;
@@ -23,7 +25,7 @@ namespace Mario.Commons.UI
             label.gameObject.SetActive(false);
             OnTimeChanged();
 
-            if (Services.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
+            if (_levelService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
                 Destroy(gameObject);
         }
         private void OnDestroy()

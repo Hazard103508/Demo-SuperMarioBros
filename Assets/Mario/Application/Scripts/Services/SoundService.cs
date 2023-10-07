@@ -8,7 +8,7 @@ namespace Mario.Application.Services
     {
         private IPoolService _poolService;
 
-        public void LoadService()
+        public void Initalize()
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
         }

@@ -7,12 +7,14 @@ namespace Mario.Game.Player
     {
         #region Objects
         private readonly ISoundService _soundService;
+        private readonly IPlayerService _playerService;
         #endregion
 
         #region Constructor
         public PlayerStateBuff(PlayerController player) : base(player)
         {
             _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
         #endregion
 
@@ -25,7 +27,7 @@ namespace Mario.Game.Player
         {
             base.Enter();
             Player.Movable.enabled = false;
-            _soundService.Play(Player.Profile.Buff.SoundFX);
+            _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
         }
         #endregion
     }

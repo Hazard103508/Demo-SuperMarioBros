@@ -1,6 +1,6 @@
 using Mario.Game.ScriptableObjects.Map;
-using Mario.Game.ScriptableObjects.Player;
 using System;
+using UnityEngine;
 
 namespace Mario.Application.Interfaces
 {
@@ -8,9 +8,14 @@ namespace Mario.Application.Interfaces
     {
         MapProfile CurrentMapProfile { get; set; }
         MapProfile NextMapProfile { get; set; }
-
         bool IsGoalReached { get; set; }
 
+        event Action LevelLoaded;
         event Action GoalReached;
+        event Action BackScreenEnabled;
+        event Action BackScreenDisabled;
+
+        void LoadLevel(Transform parent);
+        void UnloadLevel();
     }
 }

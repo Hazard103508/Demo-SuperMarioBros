@@ -1,10 +1,18 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.ScriptableObjects.Player;
 
 namespace Mario.Game.Player
 {
     public abstract class PlayerMode
     {
-        #region Properties
+        protected IPlayerService PlayerService;
+
+        public PlayerMode()
+        {
+            PlayerService = ServiceLocator.Current.Get<IPlayerService>();
+        }
+
         public PlayerModeProfile ModeProfile { get; set; }
         public PlayerStateIdle StateIdle { get; protected set; }
         public PlayerStateRun StateRun { get; protected set; }
@@ -18,6 +26,5 @@ namespace Mario.Game.Player
         public PlayerStateFlag StateFlag { get; protected set; }
         public PlayerStateDucking StateDucking { get; protected set; }
         public PlayerStateDuckingJump StateDuckingJump { get; protected set; }
-        #endregion
     }
 }

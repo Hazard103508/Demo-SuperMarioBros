@@ -7,6 +7,8 @@ namespace Mario.Application.Services
     public class TimeService : MonoBehaviour, ITimeService
     {
         #region Objects
+        private ILevelService _levelService;
+
         private float _timer;
         private bool _isHurry;
         private int _hurryTime = 100;
@@ -40,25 +42,26 @@ namespace Mario.Application.Services
         private void Update()
         {
             UpdateTimer();
-            ValidHurryUpTime();
+            //ValidHurryUpTime();
         }
         #endregion
 
         #region Public Methods
-        public void LoadService()
+        public void Initalize()
         {
-            this.StartTime = ServiceLocator.Current.Get<ILevelService>().CurrentMapProfile.Time.StartTime;
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
         }
         public void ResetTimer()
         {
             TimeSpeed = 2.5f;
-            this.Time = this.StartTime;
+            Time = StartTime;
             _timer = 0;
             IsHurry = false;
         }
         public void StopTimer() => Enabled = false;
         public void StartTimer()
         {
+            StartTime = _levelService.CurrentMapProfile.Time.StartTime;
             TimeStarted?.Invoke();
             Enabled = true;
         }
@@ -77,14 +80,14 @@ namespace Mario.Application.Services
                     TimeOut?.Invoke();
             }
         }
-        private void ValidHurryUpTime()
-        {
-            if (Services.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
-                return;
-
-            if (!IsHurry && Time <= _hurryTime && !Services.GameDataService.IsGoalReached)
-                IsHurry = true;
-        }
+        //private void ValidHurryUpTime()
+        //{
+        //    if (Services.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
+        //        return;
+        //
+        //    if (!IsHurry && Time <= _hurryTime && !Services.GameDataService.IsGoalReached)
+        //        IsHurry = true;
+        //}
         #endregion
     }
 }

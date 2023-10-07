@@ -23,7 +23,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Public Methods
-        public void LoadService()
+        public void Initalize()
         {
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();

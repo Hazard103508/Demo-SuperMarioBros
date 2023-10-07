@@ -19,7 +19,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Public Methods
-        public void LoadService()
+        public void Initalize()
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();

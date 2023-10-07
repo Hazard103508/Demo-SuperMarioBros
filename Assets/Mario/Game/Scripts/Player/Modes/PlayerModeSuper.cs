@@ -2,9 +2,9 @@ namespace Mario.Game.Player
 {
     public class PlayerModeSuper : PlayerMode
     {
-        public PlayerModeSuper(PlayerController player)
+        public PlayerModeSuper(PlayerController player) : base()
         {
-            base.ModeProfile = player.Profile.Modes.Super;
+            base.ModeProfile = PlayerService.PlayerProfile.Modes.Super;
             base.StateIdle = new PlayerStateSuperIdle(player);
             base.StateRun = new PlayerStateSuperRun(player);
             base.StateStop = new PlayerStateStop(player);
