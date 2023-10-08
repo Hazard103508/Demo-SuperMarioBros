@@ -40,6 +40,7 @@ namespace Mario.Application.Services
                     GoalReached?.Invoke();
             }
         }
+        public bool IsLoadCompleted { get; private set; }
         #endregion
 
         #region Events
@@ -134,6 +135,8 @@ namespace Mario.Application.Services
             _playerService.PlayerController.gameObject.SetActive(true);
 
             yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
+
+            IsLoadCompleted = true;
             LevelLoaded.Invoke();
         }
         private IEnumerator SetPlayerInitPosition()
