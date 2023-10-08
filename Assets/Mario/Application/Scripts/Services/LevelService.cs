@@ -17,13 +17,13 @@ namespace Mario.Application.Services
     public class LevelService : MonoBehaviour, ILevelService
     {
         #region Objects
-        private IAddressablesService _addressablesService;
         private IPoolService _poolService;
         private ISceneService _sceneService;
         private IPlayerService _playerService;
         private ITimeService _timeService;
 
         [SerializeField] private MapProfile _currentMapProfile;
+        private AddressablesLoaderContainer _assetLoaderContainer;
         private bool _isGoalReached;
         #endregion
 
@@ -50,52 +50,46 @@ namespace Mario.Application.Services
         #region Public Methods
         public void Initalize()
         {
-            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
 
             CurrentMapProfile = _currentMapProfile;
+            _assetLoaderContainer = new AddressablesLoaderContainer();
         }
-        public async void LoadLevel(Transform parent)
-        {
-            Stopwatch stopwatch = Stopwatch.StartNew();
 
+        public void LoadLevel(Transform parent)
+        {
             IsGoalReached = false;
             Camera.main.backgroundColor = CurrentMapProfile.MapInit.BackgroundColor;
             _playerService.LivesRemoved += OnLivesRemoved;
             _timeService.ResetTimer();
 
-            await LoadAssets();
+            LoadAssets();
             LoadMapSections(parent);
-            StartCoroutine(StartGame(stopwatch));
+            StartCoroutine(StartGame());
         }
         public void UnloadLevel()
         {
             SetNextMap();
-            _addressablesService.ReleaseAllAssets();
+            _assetLoaderContainer.Clear();
             _poolService.ClearPool();
             _playerService.LivesRemoved -= OnLivesRemoved;
         }
         #endregion
 
         #region Private Methods
-        private async Task LoadAssets()
+        private void LoadAssets()
         {
             foreach (PooledProfileGroup poolGroup in CurrentMapProfile.PoolProfiles)
             {
-                await LoadObjectsPool<GameObject, PooledObjectProfile>(poolGroup.PooledObjectProfiles, profile => profile.Reference);
-                await LoadObjectsPool<AudioClip, PooledSoundProfile>(poolGroup.PooledSoundProfiles, profile => profile.Reference);
-                await LoadObjectsPool<GameObject, PooledUIProfile>(poolGroup.PooledUIProfiles, profile => profile.Reference);
+                _assetLoaderContainer.Register<PooledObjectProfile, GameObject>(poolGroup.PooledObjectProfiles);
+                _assetLoaderContainer.Register<PooledSoundProfile, AudioClip>(poolGroup.PooledSoundProfiles);
+                _assetLoaderContainer.Register<PooledUIProfile, GameObject> (poolGroup.PooledUIProfiles);
             }
-        }
-        private async Task LoadObjectsPool<T, R>(R[] poolItems, Func<R, AssetReference> getReferenceFunc) where R : PooledBaseProfile
-        {
-            foreach (R item in poolItems)
-            {
-                await _addressablesService.LoadAssetAsync<T>(getReferenceFunc(item));
-            }
+            _assetLoaderContainer.LoadAssetAsync<GameObject>();
+            _assetLoaderContainer.LoadAssetAsync<AudioClip>();
         }
         private void SetNextMap()
         {
@@ -131,7 +125,7 @@ namespace Mario.Application.Services
             positionX += mapSection.Size.Width;
         }
 
-        private IEnumerator StartGame(Stopwatch stopwatch)
+        private IEnumerator StartGame()
         {
             yield return SetPlayerInitPosition();
             //yield return StartGameFalling();
@@ -139,11 +133,7 @@ namespace Mario.Application.Services
             _timeService.StartTimer();
             _playerService.PlayerController.gameObject.SetActive(true);
 
-            stopwatch.Stop();
-            float loadingTime = (float)TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds).TotalSeconds;
-            if (CurrentMapProfile.MapInit.BlackScreenTime > loadingTime)
-                yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime - loadingTime); // fuerza una pantalla negra de demora
-
+            yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
             LevelLoaded.Invoke();
         }
         private IEnumerator SetPlayerInitPosition()

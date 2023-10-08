@@ -23,22 +23,24 @@ namespace Mario.Application.Services
         {
             yield return null;
 
-            float timer = 0;
+            //float timer = 0;
 
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Game");
-            asyncOperation.allowSceneActivation = false;
+            //asyncOperation.allowSceneActivation = false;
 
-            while (!asyncOperation.isDone || timer < minDelay)
-            {
-                if (asyncOperation.progress >= 0.9f && timer >= minDelay)
-                {
-                    asyncOperation.allowSceneActivation = true;
-                    break;
-                }
-
-                timer += Time.deltaTime;
-                yield return null;
-            }
+            yield return new WaitUntil(() => asyncOperation.isDone);
+            //asyncOperation.allowSceneActivation = true;
+            //while (!asyncOperation.isDone || timer < minDelay)
+            //{
+            //    if (asyncOperation.progress >= 0.9f && timer >= minDelay)
+            //    {
+            //        
+            //        break;
+            //    }
+            //
+            //    timer += Time.deltaTime;
+            //    yield return null;
+            //}
         }
         #endregion
     }

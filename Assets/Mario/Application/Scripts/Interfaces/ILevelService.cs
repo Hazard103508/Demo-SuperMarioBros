@@ -1,5 +1,6 @@
 using Mario.Game.ScriptableObjects.Map;
 using System;
+using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Mario.Application.Interfaces

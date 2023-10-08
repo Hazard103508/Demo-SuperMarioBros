@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -26,6 +27,15 @@ namespace Mario.Application.Services
 
             return default;
         }
+        public void LoadAsset<T>(AssetReference assetReference, Action<AsyncOperationHandle<T>> onCompleted)
+        {
+            if (_references.ContainsKey(assetReference))
+                return;
+
+            var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
+            asyncOperationHandle.Completed += handle => onCompleted?.Invoke(handle);
+            _references.Add(assetReference, asyncOperationHandle);
+        }
         public Task<AsyncOperationHandle<T>> LoadAssetAsync<T>(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))
@@ -33,7 +43,7 @@ namespace Mario.Application.Services
 
             var taskCompletionSource = new TaskCompletionSource<AsyncOperationHandle<T>>();
             var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
-            asyncOperationHandle.Completed += handle => taskCompletionSource.SetResult(handle); 
+            asyncOperationHandle.Completed += handle => taskCompletionSource.SetResult(handle);
             _references.Add(assetReference, asyncOperationHandle);
 
             return Task.Run(() => taskCompletionSource.Task);
