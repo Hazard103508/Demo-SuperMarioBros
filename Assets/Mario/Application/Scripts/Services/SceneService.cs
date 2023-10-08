@@ -31,7 +31,10 @@ namespace Mario.Application.Services
             while (!asyncOperation.isDone || timer < minDelay)
             {
                 if (asyncOperation.progress >= 0.9f && timer >= minDelay)
+                {
                     asyncOperation.allowSceneActivation = true;
+                    break;
+                }
 
                 timer += Time.deltaTime;
                 yield return null;

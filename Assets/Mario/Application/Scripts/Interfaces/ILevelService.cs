@@ -12,8 +12,6 @@ namespace Mario.Application.Interfaces
 
         event Action LevelLoaded;
         event Action GoalReached;
-        event Action BackScreenEnabled;
-        event Action BackScreenDisabled;
 
         void LoadLevel(Transform parent);
         void UnloadLevel();

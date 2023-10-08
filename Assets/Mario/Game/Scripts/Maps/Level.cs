@@ -12,7 +12,7 @@ namespace Mario.Game.Maps
         private IPlayerService _playerService;
 
         [SerializeField] private GameObject _blackScreen;
-        [SerializeField] private PlayerController _playerController; 
+        [SerializeField] private PlayerController _playerController;
         #endregion
 
         #region Unity Methods
@@ -20,26 +20,25 @@ namespace Mario.Game.Maps
         {
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
-        }
-        private void Start()
-        {
+
+            _blackScreen.SetActive(true);
             _playerService.PlayerController = _playerController;
 
-            _levelService.BackScreenEnabled += OnBackScreenEnabled;
-            _levelService.BackScreenDisabled+= OnBackScreenDisabled;
             _levelService.LoadLevel(transform);
+            _levelService.LevelLoaded += OnLevelLoaded;
         }
         private void OnDestroy()
         {
-            _levelService.BackScreenEnabled -= OnBackScreenEnabled;
-            _levelService.BackScreenDisabled -= OnBackScreenDisabled;
+            _levelService.LevelLoaded -= OnLevelLoaded;
             _levelService.UnloadLevel();
         }
         #endregion
 
         #region Service Meethods
-        private void OnBackScreenEnabled() => _blackScreen.SetActive(true);
-        private void OnBackScreenDisabled() => _blackScreen.SetActive(false);
+        private void OnLevelLoaded()
+        {
+            _blackScreen.SetActive(false);
+        }
         #endregion
     }
 }

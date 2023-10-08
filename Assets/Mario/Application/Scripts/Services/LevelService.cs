@@ -1,11 +1,13 @@
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
 using Mario.Game.Maps;
+using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -43,8 +45,6 @@ namespace Mario.Application.Services
         #region Events
         public event Action LevelLoaded;
         public event Action GoalReached;
-        public event Action BackScreenEnabled;
-        public event Action BackScreenDisabled;
         #endregion
 
         #region Public Methods
@@ -60,6 +60,8 @@ namespace Mario.Application.Services
         }
         public async void LoadLevel(Transform parent)
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
             IsGoalReached = false;
             Camera.main.backgroundColor = CurrentMapProfile.MapInit.BackgroundColor;
             _playerService.LivesRemoved += OnLivesRemoved;
@@ -67,7 +69,7 @@ namespace Mario.Application.Services
 
             await LoadAssets();
             LoadMapSections(parent);
-            StartCoroutine(StartGame());
+            StartCoroutine(StartGame(stopwatch));
         }
         public void UnloadLevel()
         {
@@ -129,26 +131,22 @@ namespace Mario.Application.Services
             positionX += mapSection.Size.Width;
         }
 
-        private IEnumerator StartGame()
+        private IEnumerator StartGame(Stopwatch stopwatch)
         {
-            yield return ShowBlackScreen();
-            yield return StartGameOnPipe();
-            yield return StartGameFalling();
+            yield return SetPlayerInitPosition();
+            //yield return StartGameFalling();
 
             _timeService.StartTimer();
             _playerService.PlayerController.gameObject.SetActive(true);
+
+            stopwatch.Stop();
+            float loadingTime = (float)TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds).TotalSeconds;
+            if (CurrentMapProfile.MapInit.BlackScreenTime > loadingTime)
+                yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime - loadingTime); // fuerza una pantalla negra de demora
+
             LevelLoaded.Invoke();
         }
-        private IEnumerator ShowBlackScreen()
-        {
-            if (CurrentMapProfile.MapInit.BlackScreenTime > 0)
-            {
-                BackScreenEnabled.Invoke();
-                yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime); // fuerza una pantalla negra de demora
-                BackScreenDisabled.Invoke();
-            }
-        }
-        private IEnumerator StartGameOnPipe()
+        private IEnumerator SetPlayerInitPosition()
         {
             if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Pipe)
             {
@@ -160,15 +158,17 @@ namespace Mario.Application.Services
                     yield return null;
                 }
             }
+            else
+                _playerService.PlayerController.transform.position = CurrentMapProfile.MapInit.StartPosition.y * Vector3.up;
         }
-        private IEnumerator StartGameFalling()
-        {
-            if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Falling)
-            {
-                //_player.InputActions.Move.x = 1; // TODO
-                yield return new WaitForEndOfFrame();
-            }
-        }
+        //private IEnumerator StartGameFalling()
+        //{
+        //    if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Falling)
+        //    {
+        //        //_player.InputActions.Move.x = 1; // TODO
+        //        yield return new WaitForEndOfFrame();
+        //    }
+        //}
         private IEnumerator ReloadMap()
         {
             yield return new WaitForSeconds(3.5f);
