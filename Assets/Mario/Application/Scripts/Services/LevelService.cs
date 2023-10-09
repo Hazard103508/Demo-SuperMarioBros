@@ -130,12 +130,11 @@ namespace Mario.Application.Services
         {
             yield return SetPlayerInitPosition();
             //yield return StartGameFalling();
+            yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
+            yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime);
 
             _timeService.StartTimer();
             _playerService.PlayerController.gameObject.SetActive(true);
-
-            yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
-
             IsLoadCompleted = true;
             LevelLoaded.Invoke();
         }
@@ -162,7 +161,7 @@ namespace Mario.Application.Services
         //        yield return new WaitForEndOfFrame();
         //    }
         //}
-        private IEnumerator ReloadMap()
+        private IEnumerator ReloadAfterDead()
         {
             yield return new WaitForSeconds(3.5f);
 
@@ -176,7 +175,7 @@ namespace Mario.Application.Services
         private void OnLivesRemoved()
         {
             _timeService.StopTimer();
-            StartCoroutine(ReloadMap());
+            StartCoroutine(ReloadAfterDead());
         }
         #endregion
     }

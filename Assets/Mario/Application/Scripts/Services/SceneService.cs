@@ -27,16 +27,12 @@ namespace Mario.Application.Services
         #endregion
 
         #region Private Methods
-        private IEnumerator LoadMapSceneCO(float minDelay)
+        private IEnumerator LoadMapSceneCO(float delay)
         {
-            Stopwatch stopwatch = Stopwatch.StartNew();
+            yield return new WaitForSeconds(delay);
 
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Game");
             yield return new WaitUntil(() => asyncOperation.isDone && _levelService.IsLoadCompleted);
-
-            float loadingTime = (float)TimeSpan.FromMilliseconds(stopwatch.ElapsedMilliseconds).TotalSeconds;
-            if (minDelay > loadingTime)
-                yield return new WaitForSeconds(minDelay - loadingTime);
         }
         #endregion
     }
