@@ -2,6 +2,7 @@ using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Mario.Game.ScriptableObjects.Map
 {
@@ -11,7 +12,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public string WorldName;
         public MapInit MapInit;
         public MapTime Time;
-        public GameObject[] MapSectionReferences;
+        public AssetReference[] MapSectionReferences;
         public MapProfile[] PipesConnections;
         public MapProfile[] CheckPoints;
         public MapProfile NextMap;

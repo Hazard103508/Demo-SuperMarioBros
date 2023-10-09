@@ -17,6 +17,7 @@ namespace Mario.Application.Services
     public class LevelService : MonoBehaviour, ILevelService
     {
         #region Objects
+        private IAddressablesService _addressablesService;
         private IPoolService _poolService;
         private ISceneService _sceneService;
         private IPlayerService _playerService;
@@ -55,20 +56,21 @@ namespace Mario.Application.Services
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
+            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
 
             CurrentMapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
         }
 
-        public void LoadLevel(Transform parent)
+        public async void LoadLevel(Transform parent)
         {
             IsGoalReached = false;
             Camera.main.backgroundColor = CurrentMapProfile.MapInit.BackgroundColor;
             _playerService.LivesRemoved += OnLivesRemoved;
             _timeService.ResetTimer();
 
-            LoadAssets();
-            LoadMapSections(parent);
+            LoadAssetsReferences();
+            await LoadMapSections(parent);
             StartCoroutine(StartGame());
         }
         public void UnloadLevel()
@@ -81,13 +83,13 @@ namespace Mario.Application.Services
         #endregion
 
         #region Private Methods
-        private void LoadAssets()
+        private void LoadAssetsReferences()
         {
             foreach (PooledProfileGroup poolGroup in CurrentMapProfile.PoolProfiles)
             {
                 _assetLoaderContainer.Register<PooledObjectProfile, GameObject>(poolGroup.PooledObjectProfiles);
                 _assetLoaderContainer.Register<PooledSoundProfile, AudioClip>(poolGroup.PooledSoundProfiles);
-                _assetLoaderContainer.Register<PooledUIProfile, GameObject> (poolGroup.PooledUIProfiles);
+                _assetLoaderContainer.Register<PooledUIProfile, GameObject>(poolGroup.PooledUIProfiles);
             }
             _assetLoaderContainer.LoadAssetAsync<GameObject>();
             _assetLoaderContainer.LoadAssetAsync<AudioClip>();
@@ -105,12 +107,15 @@ namespace Mario.Application.Services
                 NextMapProfile = null;
             }
         }
-        private void LoadMapSections(Transform parent)
+        private async Task LoadMapSections(Transform parent)
         {
             int positionX = 0;
-            foreach (var mapSection in CurrentMapProfile.MapSectionReferences)
+            foreach (var references in CurrentMapProfile.MapSectionReferences)
+            {
+                await _addressablesService.LoadAssetAsync<GameObject>(references);
+                var mapSection = _addressablesService.GetAssetReference<GameObject>(references);
                 LoadMapSection(mapSection, ref positionX, parent);
-
+            }
             CurrentMapProfile.Width = positionX;
         }
         private void LoadMapSection(GameObject mapSectionReference, ref int positionX, Transform parent)

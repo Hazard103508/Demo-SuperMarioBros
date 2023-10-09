@@ -17,12 +17,15 @@ MonoBehaviour:
     BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
     StartPosition: {x: 2, y: 2}
     StartLocation: 0
-    BlackScreenTime: 2
+    BlackScreenTime: 0
   Time:
-    Type: 0
-    StartTime: 0
+    Type: 1
+    StartTime: 400
   MapSectionReferences:
-  - {fileID: 981654926499773033, guid: 2227a808dfe2c664daa7632fc5abdace, type: 3}
+  - m_AssetGUID: 2227a808dfe2c664daa7632fc5abdace
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   PipesConnections: []
   CheckPoints: []
   NextMap: {fileID: 0}
