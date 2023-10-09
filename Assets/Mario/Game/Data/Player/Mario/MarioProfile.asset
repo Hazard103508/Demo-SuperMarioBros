@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d963e7dbc7ab8418e2c720091ae392, type: 3}
   m_Name: MarioProfile
   m_EditorClassIdentifier: 
-  PlayerName: MARIO
-  GroundLayer:
+  _playerName: LUIGI
+  _groundLayer:
     serializedVersion: 2
-    m_Bits: 8
-  Modes:
+    m_Bits: 0
+  _modes:
     Small: {fileID: 11400000, guid: 7ae9649b0173ad14189c39ae9d3cb3da, type: 2}
     Big: {fileID: 11400000, guid: ec62a4551b5c2e049ae5b4ae146a1cd7, type: 2}
     Super: {fileID: 11400000, guid: 65d241b1d2ac3764091c10e3d55961aa, type: 2}
-  Fireball:
-    StartLocalPosition: {x: 0.5, y: 1.5}
-    FireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
-  Buff:
+  _fireball:
+    StartLocalPosition: {x: 0.5, y: 0.8}
+    FireballPoolProfile: {fileID: 0}
+  _buff:
     SoundFX: {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
-  Nerf:
+  _nerf:
     SoundFX: {fileID: 11400000, guid: 74bda110af327014198ed99405fd392a, type: 2}

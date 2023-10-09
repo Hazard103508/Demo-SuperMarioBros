@@ -7,12 +7,16 @@ namespace Mario.Game.ScriptableObjects.Player
     [CreateAssetMenu(fileName = "PlayerProfile", menuName = "ScriptableObjects/Game/Player/PlayerProfile", order = 0)]
     public class PlayerProfile : ScriptableObject
     {
-        public string PlayerName;
-        public LayerMask GroundLayer;
-        public PlayerModes Modes;
-        public PlayerFireball Fireball;
-        public ModeChange Buff;
-        public ModeChange Nerf;
+        [SerializeField] private string _playerName;
+        [SerializeField] private PlayerModes _modes;
+        [SerializeField] private PlayerFireball _fireball;
+        [SerializeField] private ModeChange _buff;
+        [SerializeField] private ModeChange _nerf;
+
+        public string PlayerName => _playerName;
+        public PlayerModes Modes => _modes;
+        public ModeChange Buff => _buff;
+        public ModeChange Nerf => _nerf;
 
         [Serializable]
         public class PlayerFireball
@@ -32,6 +36,5 @@ namespace Mario.Game.ScriptableObjects.Player
         {
             public PooledSoundProfile SoundFX;
         }
-
     }
 }
