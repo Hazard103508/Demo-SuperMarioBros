@@ -23,5 +23,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
   - {fileID: 11400000, guid: 74bda110af327014198ed99405fd392a, type: 2}
   - {fileID: 11400000, guid: 110a1e4ebf8ad6045ae0e9db4d41e435, type: 2}
+  - {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
+  - {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
   PooledUIProfiles:
   - {fileID: 11400000, guid: 321bfb91385fa494aa1678c86106335c, type: 2}

@@ -61,6 +61,8 @@ namespace Mario.Application
         private void OnLoadAssetAsyncCompleted<T>(AsyncOperationHandle<T> asyncOperationHandle)
         {
             _countLoaded++;
+            UnityEngine.Debug.Log($"{_countLoaded} - {asyncOperationHandle.Result}");
+
             if (_countLoaded == _countTotal)
             {
                 IsLoadCompleted = true;

@@ -12,16 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc6ede4b3c62e647a6cbd24231f78ae, type: 3}
   m_Name: Overworld_MusicProfile
   m_EditorClassIdentifier: 
-  MainTheme:
-    Clip: {fileID: 8300000, guid: f7d371ca30e638147abe7c2df94fd9b4, type: 3}
-    StartTime: 0
-  VictoryTheme:
-    Clip: {fileID: 8300000, guid: ec54ce87d8bca1048aca5c0ae7253c35, type: 3}
-    StartTime: 0
-  HurryFX: {fileID: 8300000, guid: 9d9e1a8b4fb62944aba994863e111ad3, type: 3}
+  MainTheme: {fileID: 11400000, guid: f34d26fa15bbf194abc3f5dcadede137, type: 2}
+  VictoryTheme: {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
+  HurryFX: {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
   HurryTheme:
-    Clip: {fileID: 8300000, guid: 932e32fcb7964664b8f4d5c79f35b905, type: 3}
-    StartTime: 20.6
-  HurryThemeFirstTime:
-    Clip: {fileID: 8300000, guid: 932e32fcb7964664b8f4d5c79f35b905, type: 3}
-    StartTime: 19.2
+    Profile: {fileID: 11400000, guid: 55ae874151e101e4eb7984cd5002047f, type: 2}
+    StartTimeInit: 19.2
+    StartTimeContinued: 20.6

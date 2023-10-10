@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Underworld_MusicProfile
   m_EditorClassIdentifier: 
   MainTheme:
-    Clip: {fileID: 8300000, guid: f3364285157f4564e83e7c4a6a702056, type: 3}
+    Profile: {fileID: 11400000, guid: 6d2356ab4c2f755498c2bdad1c42881e, type: 2}
     StartTime: 0
   VictoryTheme:
-    Clip: {fileID: 8300000, guid: ec54ce87d8bca1048aca5c0ae7253c35, type: 3}
+    Profile: {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
     StartTime: 0
-  HurryFX: {fileID: 8300000, guid: 9d9e1a8b4fb62944aba994863e111ad3, type: 3}
+  HurryFX: {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
   HurryTheme:
-    Clip: {fileID: 8300000, guid: c3ad02d476672464ebaa944c7fc6850c, type: 3}
+    Profile: {fileID: 11400000, guid: f4bb3a60fe064084eb3684746625245d, type: 2}
     StartTime: 0
   HurryThemeFirstTime:
-    Clip: {fileID: 8300000, guid: c3ad02d476672464ebaa944c7fc6850c, type: 3}
+    Profile: {fileID: 11400000, guid: f4bb3a60fe064084eb3684746625245d, type: 2}
     StartTime: 0

@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
 
@@ -6,16 +7,16 @@ namespace Mario.Game.ScriptableObjects.Map
     [CreateAssetMenu(fileName = "MusicProfile", menuName = "ScriptableObjects/Game/Map/MusicProfile", order = 2)]
     public class MusicProfile : ScriptableObject
     {
-        public MusicTheme MainTheme;
-        public MusicTheme VictoryTheme;
-        public AudioClip HurryFX;
-        public MusicTheme HurryTheme;
-        public MusicTheme HurryThemeFirstTime;
+        public PooledSoundProfile MainTheme;
+        public PooledSoundProfile VictoryTheme;
+        public PooledSoundProfile HurryFX;
+        public HurryTheme HurryTheme;
     }
     [Serializable]
-    public class MusicTheme
+    public class HurryTheme
     {
-        public AudioClip Clip;
-        public float StartTime;
+        public PooledSoundProfile Profile;
+        public float StartTimeInit;
+        public float StartTimeContinued;
     }
 }

@@ -22,6 +22,7 @@ namespace Mario.Application.Services
         private ISceneService _sceneService;
         private IPlayerService _playerService;
         private ITimeService _timeService;
+        private ISoundService _soundService;
 
         [SerializeField] private MapProfile _currentMapProfile;
         private AddressablesLoaderContainer _assetLoaderContainer;
@@ -52,11 +53,12 @@ namespace Mario.Application.Services
         #region Public Methods
         public void Initalize()
         {
+            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
-            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
 
             CurrentMapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
@@ -69,7 +71,7 @@ namespace Mario.Application.Services
             _playerService.LivesRemoved += OnLivesRemoved;
             _timeService.ResetTimer();
 
-            LoadAssetsReferences();
+            LoadAsyncReferences();
             await LoadMapSections(parent);
             StartCoroutine(StartGame());
         }
@@ -83,7 +85,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Private Methods
-        private void LoadAssetsReferences()
+        private void LoadAsyncReferences()
         {
             foreach (PooledProfileGroup poolGroup in CurrentMapProfile.PoolProfiles)
             {
@@ -91,6 +93,7 @@ namespace Mario.Application.Services
                 _assetLoaderContainer.Register<PooledSoundProfile, AudioClip>(poolGroup.PooledSoundProfiles);
                 _assetLoaderContainer.Register<PooledUIProfile, GameObject>(poolGroup.PooledUIProfiles);
             }
+
             _assetLoaderContainer.LoadAssetAsync<GameObject>();
             _assetLoaderContainer.LoadAssetAsync<AudioClip>();
         }
@@ -130,7 +133,36 @@ namespace Mario.Application.Services
 
             positionX += mapSection.Size.Width;
         }
-
+        //private async Task LoadThemeSong()
+        //{
+        //    await _addressablesService.LoadAssetAsync<AudioClip>(CurrentMapProfile.Music.MainTheme.Reference);
+        //    //var audioClip = _addressablesService.GetAssetReference<AudioClip>(CurrentMapProfile.Music.MainTheme.Reference);
+        //
+        //    _soundService.Play(CurrentMapProfile.Music.MainTheme);
+        //    // LLAMAR AL SOUND SERVICE Y DARLE PLAY (SUPONGO)
+        //    // GUARDAR LA REFERENCIA DEL AUDIO DE USO GLOBAL EN SERVICIO PARA HACERLO INTERCAMBIABLE
+        //
+        //    //switch (CurrentMapProfile.Time.Type)
+        //    //{
+        //    //    case MapTimeType.None:
+        //    //        //_themeMusicService.Clip = _levelService.CurrentMapProfile.Music.MainTheme.Clip;
+        //    //        _themeMusicService.Time = _levelService.CurrentMapProfile.Music.MainTheme.StartTime;
+        //    //        break;
+        //    //    case MapTimeType.Beginning:
+        //    //    case MapTimeType.Continuated:
+        //    //        if (_timeService.IsHurry)
+        //    //        {
+        //    //            //_themeMusicService.Clip = _levelService.CurrentMapProfile.Music.HurryTheme.Clip;
+        //    //            _themeMusicService.Time = _levelService.CurrentMapProfile.Music.HurryTheme.StartTime;
+        //    //        }
+        //    //        else
+        //    //        {
+        //    //            //_themeMusicService.Clip = _levelService.CurrentMapProfile.Music.MainTheme.Clip;
+        //    //            _themeMusicService.Time = _levelService.CurrentMapProfile.Music.MainTheme.StartTime;
+        //    //        }
+        //    //        break;
+        //    //}
+        //}
         private IEnumerator StartGame()
         {
             yield return SetPlayerInitPosition();
@@ -142,6 +174,8 @@ namespace Mario.Application.Services
             _playerService.PlayerController.gameObject.SetActive(true);
             IsLoadCompleted = true;
             LevelLoaded.Invoke();
+
+            _soundService.Play(CurrentMapProfile.Music.MainTheme);
         }
         private IEnumerator SetPlayerInitPosition()
         {
