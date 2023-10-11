@@ -22,28 +22,16 @@ namespace Mario.Application
             RegisterServicer<ITimeService>();
             RegisterServicer<IPlayerService>();
             RegisterServicer<ISceneService>();
-            RegisterServicer<IThemeMusicService>();
 
             ServiceLocator.Current.Initalize();
             ServiceLocator.Current.Get<ISceneService>().LoadMainScene();
         }
         private void OnApplicationQuit()
         {
-            UnregisterService<IAddressablesService>();
-            UnregisterService<ILevelService>();
-            UnregisterService<IPoolService>();
-            UnregisterService<ISoundService>();
-            UnregisterService<ICoinService>();
-            UnregisterService<IScoreService>();
-            UnregisterService<ITimeService>();
-            UnregisterService<IPlayerService>();
-            UnregisterService<ISceneService>();
-            UnregisterService<IThemeMusicService>();
-
+            ServiceLocator.Current.Dispose();
             Destroy(gameObject);
         }
 
         private void RegisterServicer<T>() where T : IGameService => ServiceLocator.Current.Register<T>(GetComponentInChildren<T>());
-        private void UnregisterService<T>() where T : IGameService => ServiceLocator.Current.Unregister<T>();
     }
 }

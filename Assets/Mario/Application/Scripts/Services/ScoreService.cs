@@ -27,6 +27,9 @@ namespace Mario.Application.Services
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
         }
+        public void Dispose()
+        {
+        }
         public void Add(int points)
         {
             this.Score += points;

@@ -18,6 +18,9 @@ namespace Mario.Application.Services
         {
             _levelService = ServiceLocator.Current.Get<ILevelService>();
         }
+        public void Dispose()
+        {
+        }
 
         public void LoadMapScene(float minDelay) => StartCoroutine(LoadMapSceneCO(minDelay));
         public void LoadMainScene() => SceneManager.LoadScene("Main");

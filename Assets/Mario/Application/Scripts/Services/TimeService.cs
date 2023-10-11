@@ -7,11 +7,7 @@ namespace Mario.Application.Services
     public class TimeService : MonoBehaviour, ITimeService
     {
         #region Objects
-        private ILevelService _levelService;
-
         private float _timer;
-        private bool _isHurry;
-        private int _hurryTime = 100;
         #endregion
 
         #region Properties
@@ -19,22 +15,11 @@ namespace Mario.Application.Services
         public int StartTime { get; set; }
         public int Time { get; private set; }
         public bool Enabled { get; private set; }
-        public bool IsHurry
-        {
-            get => _isHurry;
-            private set
-            {
-                _isHurry = value;
-                if (value)
-                    HurryUpTimeStarted?.Invoke();
-            }
-        }
         #endregion
 
         #region Events
         public event Action TimeStarted;
         public event Action TimeChangeded;
-        public event Action HurryUpTimeStarted;
         public event Action TimeOut;
         #endregion
 
@@ -42,26 +27,25 @@ namespace Mario.Application.Services
         private void Update()
         {
             UpdateTimer();
-            //ValidHurryUpTime();
         }
         #endregion
 
         #region Public Methods
         public void Initalize()
         {
-            _levelService = ServiceLocator.Current.Get<ILevelService>();
+        }
+        public void Dispose()
+        {
         }
         public void ResetTimer()
         {
             TimeSpeed = 2.5f;
             Time = StartTime;
             _timer = 0;
-            IsHurry = false;
         }
         public void StopTimer() => Enabled = false;
         public void StartTimer()
         {
-            StartTime = _levelService.CurrentMapProfile.Time.StartTime;
             TimeStarted?.Invoke();
             Enabled = true;
         }
@@ -80,14 +64,6 @@ namespace Mario.Application.Services
                     TimeOut?.Invoke();
             }
         }
-        //private void ValidHurryUpTime()
-        //{
-        //    if (Services.GameDataService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
-        //        return;
-        //
-        //    if (!IsHurry && Time <= _hurryTime && !Services.GameDataService.IsGoalReached)
-        //        IsHurry = true;
-        //}
         #endregion
     }
 }

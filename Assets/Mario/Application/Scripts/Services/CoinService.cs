@@ -28,6 +28,9 @@ namespace Mario.Application.Services
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
+        public void Dispose()
+        {
+        }
         public void Add()
         {
             this.Coins++;

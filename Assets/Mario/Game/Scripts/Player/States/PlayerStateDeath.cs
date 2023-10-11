@@ -9,14 +9,14 @@ namespace Mario.Game.Player
     {
         #region Objects
         private readonly IPlayerService _playerService;
-        private readonly IThemeMusicService _themeMusicService;
+        private readonly ISoundService _soundService;
         #endregion
 
         #region Constructor
         public PlayerStateDeath(PlayerController player) : base(player)
         {
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
-            _themeMusicService = ServiceLocator.Current.Get<IThemeMusicService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -25,7 +25,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private Methods
-        private IEnumerator PlayFall()
+        private IEnumerator FallOutOffScreen()
         {
             Player.Renderer.sortingLayerName = "Dead";
 
@@ -45,9 +45,9 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            Player.StartCoroutine(PlayFall());
+            Player.StartCoroutine(FallOutOffScreen());
+            _soundService.StopTheme();
             _playerService.RemoveLife();
-            _themeMusicService.Stop();
         }
         #endregion
     }

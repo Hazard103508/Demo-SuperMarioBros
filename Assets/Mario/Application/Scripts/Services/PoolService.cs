@@ -27,6 +27,9 @@ namespace Mario.Application.Services
             _poolGroups = new Dictionary<string, Pool>();
             _poolFactories = new Dictionary<Type, PoolFactory>();
         }
+        public void Dispose()
+        {
+        }
         public PooledObject GetObjectFromPool(PooledBaseProfile profile) => GetObjectFromPool(profile, Vector3.zero);
         public PooledObject GetObjectFromPool(PooledBaseProfile profile, Vector3 position) => GetPoolGroup(profile).Get(position);
         public T GetObjectFromPool<T>(PooledBaseProfile profile) where T : MonoBehaviour => GetObjectFromPool<T>(profile, Vector3.zero);

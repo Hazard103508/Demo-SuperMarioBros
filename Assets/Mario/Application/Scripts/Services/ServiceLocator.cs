@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Mario.Application.Services
 {
-    public class ServiceLocator
+    public class ServiceLocator : IDisposable
     {
         #region Objects
         private readonly Dictionary<Type, IGameService> services = new Dictionary<Type, IGameService>();
@@ -62,26 +62,18 @@ namespace Mario.Application.Services
             services.Add(key, service);
         }
 
-        /// <summary>
-        /// Unregisters the service from the current service locator.
-        /// </summary>
-        /// <typeparam name="T">Service type.</typeparam>
-        public void Unregister<T>() where T : IGameService
-        {
-            Type key = typeof(T);
-            if (!services.ContainsKey(key))
-            {
-                Debug.LogError($"Attempted to unregister service of type {key.Name} which is not registered with the {GetType().Name}.");
-                return;
-            }
-
-            services.Remove(key);
-        }
-
         public void Initalize()
         {
             foreach (var service in services)
                 service.Value.Initalize();
+        }
+
+        public void Dispose()
+        {
+            foreach (var service in services)
+                service.Value.Dispose();
+
+            services.Clear();
         }
         #endregion
     }

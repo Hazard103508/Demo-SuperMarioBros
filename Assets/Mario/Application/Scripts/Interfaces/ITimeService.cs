@@ -8,11 +8,9 @@ namespace Mario.Application.Interfaces
         int StartTime { get; set; }
         int Time { get; }
         bool Enabled { get; }
-        bool IsHurry { get; }
 
         event Action TimeStarted;
         event Action TimeChangeded;
-        event Action HurryUpTimeStarted;
         event Action TimeOut;
 
         void ResetTimer();

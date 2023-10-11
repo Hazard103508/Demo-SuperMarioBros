@@ -13,15 +13,27 @@ namespace Mario.Application.Services
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
         }
-
-        public void PlayTheme(PooledSoundProfile soundProfile)
+        public void Dispose()
         {
-            if(themeSong != null)
-                themeSong.gameObject.SetActive(false);
+        }
+
+        public void PlayTheme(PooledSoundProfile soundProfile) => PlayTheme(soundProfile, 0);
+        public void PlayTheme(PooledSoundProfile soundProfile, float initTime)
+        {
+            StopTheme();
 
             var sound = _poolService.GetObjectFromPool(soundProfile);
             themeSong = sound.GetComponent<AudioSource>();
+            themeSong.time = initTime;
             themeSong.Play();
+        }
+        public void StopTheme()
+        {
+            if (themeSong != null)
+            {
+                themeSong.Stop();
+                themeSong.gameObject.SetActive(false);
+            }
         }
         public void Play(PooledSoundProfile soundProfile) => Play(soundProfile, Vector3.zero);
         public void Play(PooledSoundProfile soundProfile, Vector3 position)
@@ -29,5 +41,7 @@ namespace Mario.Application.Services
             var sound = _poolService.GetObjectFromPool(soundProfile, position);
             sound.GetComponent<AudioSource>().Play();
         }
+
+
     }
 }

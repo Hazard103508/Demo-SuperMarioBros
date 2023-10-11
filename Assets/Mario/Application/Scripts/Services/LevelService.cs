@@ -1,16 +1,12 @@
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
 using Mario.Game.Maps;
-using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
-using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Mario.Application.Services
 {
@@ -24,9 +20,13 @@ namespace Mario.Application.Services
         private ITimeService _timeService;
         private ISoundService _soundService;
 
+        private readonly int _hurryTime = 100;
+
         [SerializeField] private MapProfile _currentMapProfile;
         private AddressablesLoaderContainer _assetLoaderContainer;
         private bool _isGoalReached;
+        private bool _isHurry;
+        private Coroutine _hurryCO;
         #endregion
 
         #region Properties
@@ -62,14 +62,18 @@ namespace Mario.Application.Services
 
             CurrentMapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
+            _playerService.LivesRemoved += OnLivesRemoved;
+            _timeService.TimeChangeded += OnTimeChangeded;
         }
-
+        public void Dispose()
+        {
+            _timeService.TimeChangeded -= OnTimeChangeded;
+            _playerService.LivesRemoved -= OnLivesRemoved;
+        }
         public async void LoadLevel(Transform parent)
         {
             IsGoalReached = false;
             Camera.main.backgroundColor = CurrentMapProfile.MapInit.BackgroundColor;
-            _playerService.LivesRemoved += OnLivesRemoved;
-            _timeService.ResetTimer();
 
             LoadAsyncReferences();
             await LoadMapSections(parent);
@@ -80,7 +84,9 @@ namespace Mario.Application.Services
             SetNextMap();
             _assetLoaderContainer.Clear();
             _poolService.ClearPool();
-            _playerService.LivesRemoved -= OnLivesRemoved;
+
+            if (_hurryCO != null)
+                StopCoroutine(_hurryCO);
         }
         #endregion
 
@@ -133,36 +139,6 @@ namespace Mario.Application.Services
 
             positionX += mapSection.Size.Width;
         }
-        //private async Task LoadThemeSong()
-        //{
-        //    await _addressablesService.LoadAssetAsync<AudioClip>(CurrentMapProfile.Music.MainTheme.Reference);
-        //    //var audioClip = _addressablesService.GetAssetReference<AudioClip>(CurrentMapProfile.Music.MainTheme.Reference);
-        //
-        //    _soundService.Play(CurrentMapProfile.Music.MainTheme);
-        //    // LLAMAR AL SOUND SERVICE Y DARLE PLAY (SUPONGO)
-        //    // GUARDAR LA REFERENCIA DEL AUDIO DE USO GLOBAL EN SERVICIO PARA HACERLO INTERCAMBIABLE
-        //
-        //    //switch (CurrentMapProfile.Time.Type)
-        //    //{
-        //    //    case MapTimeType.None:
-        //    //        //_themeMusicService.Clip = _levelService.CurrentMapProfile.Music.MainTheme.Clip;
-        //    //        _themeMusicService.Time = _levelService.CurrentMapProfile.Music.MainTheme.StartTime;
-        //    //        break;
-        //    //    case MapTimeType.Beginning:
-        //    //    case MapTimeType.Continuated:
-        //    //        if (_timeService.IsHurry)
-        //    //        {
-        //    //            //_themeMusicService.Clip = _levelService.CurrentMapProfile.Music.HurryTheme.Clip;
-        //    //            _themeMusicService.Time = _levelService.CurrentMapProfile.Music.HurryTheme.StartTime;
-        //    //        }
-        //    //        else
-        //    //        {
-        //    //            //_themeMusicService.Clip = _levelService.CurrentMapProfile.Music.MainTheme.Clip;
-        //    //            _themeMusicService.Time = _levelService.CurrentMapProfile.Music.MainTheme.StartTime;
-        //    //        }
-        //    //        break;
-        //    //}
-        //}
         private IEnumerator StartGame()
         {
             yield return SetPlayerInitPosition();
@@ -170,12 +146,16 @@ namespace Mario.Application.Services
             yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
             yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime);
 
+            _timeService.StartTime = CurrentMapProfile.Time.StartTime;
+            _timeService.ResetTimer();
             _timeService.StartTimer();
-            _playerService.PlayerController.gameObject.SetActive(true);
+
             IsLoadCompleted = true;
+            _isHurry = false;
+            _playerService.PlayerController.gameObject.SetActive(true);
             LevelLoaded.Invoke();
 
-            _soundService.Play(CurrentMapProfile.Music.MainTheme);
+            PlayInitTheme();
         }
         private IEnumerator SetPlayerInitPosition()
         {
@@ -211,10 +191,41 @@ namespace Mario.Application.Services
             else
                 _sceneService.LoadStandByScene();
         }
+        private IEnumerator PlayHurryUpTheme()
+        {
+            _soundService.PlayTheme(CurrentMapProfile.Music.HurryFX);
+            yield return new WaitForSeconds(3.5f);
+
+            _soundService.PlayTheme(CurrentMapProfile.Music.HurryTheme.Profile, CurrentMapProfile.Music.HurryTheme.StartTimeInit);
+        }
+        private void PlayInitTheme()
+        {
+            if (_timeService.Time <= _hurryTime)
+            {
+                _isHurry = true;
+                _soundService.PlayTheme(CurrentMapProfile.Music.HurryTheme.Profile, CurrentMapProfile.Music.HurryTheme.StartTimeContinued);
+            }
+            else
+                _soundService.PlayTheme(CurrentMapProfile.Music.MainTheme);
+        }
+        #endregion
+
+        #region Service Methods
         private void OnLivesRemoved()
         {
             _timeService.StopTimer();
             StartCoroutine(ReloadAfterDead());
+        }
+        private void OnTimeChangeded()
+        {
+            if (CurrentMapProfile.Time.Type == MapTimeType.None)
+                return;
+
+            if (!_isHurry && _timeService.Time <= _hurryTime && !IsGoalReached)
+            {
+                _isHurry = true;
+                _hurryCO = StartCoroutine(PlayHurryUpTheme());
+            }
         }
         #endregion
     }

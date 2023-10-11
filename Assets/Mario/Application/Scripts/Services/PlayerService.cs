@@ -35,6 +35,9 @@ namespace Mario.Application.Services
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             Reset();
         }
+        public void Dispose()
+        {
+        }
         public void AddLife()
         {
             this.Lives++;

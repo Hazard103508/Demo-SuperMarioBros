@@ -20,6 +20,10 @@ namespace Mario.Application.Services
         {
             _references = new Dictionary<AssetReference, AsyncOperationHandle>();
         }
+        public void Dispose()
+        {
+        }
+
         public T GetAssetReference<T>(AssetReference assetReference)
         {
             if (_references.ContainsKey(assetReference))

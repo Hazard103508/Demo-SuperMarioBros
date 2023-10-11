@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7d963e7dbc7ab8418e2c720091ae392, type: 3}
   m_Name: MarioProfile
   m_EditorClassIdentifier: 
-  _playerName: LUIGI
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  _playerName: MARIO
   _modes:
     Small: {fileID: 11400000, guid: 7ae9649b0173ad14189c39ae9d3cb3da, type: 2}
     Big: {fileID: 11400000, guid: ec62a4551b5c2e049ae5b4ae146a1cd7, type: 2}
