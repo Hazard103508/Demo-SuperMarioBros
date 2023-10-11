@@ -31,7 +31,7 @@ namespace Mario.Game.Interactable
         #region Private Methods
         private IEnumerator MoveIntoPipe(PlayerController player)
         {
-            _timeService.StopTimer();
+            _timeService.FreezeTimer();
             _levelService.NextMapProfile = _levelService.CurrentMapProfile.PipesConnections[_pipeIndex];
             _sceneService.LoadMapScene(0.8f);
 

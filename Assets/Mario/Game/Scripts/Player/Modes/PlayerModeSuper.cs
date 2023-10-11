@@ -11,6 +11,7 @@ namespace Mario.Game.Player
             base.StateJump = new PlayerStateJump(player);
             base.StateFall = new PlayerStateFall(player);
             base.StateNerf = new PlayerStateBigNerf(player);
+            base.StateDeath = new PlayerStateDeath(player);
             base.StateTimeOut = new PlayerStateTimeOut(player);
             base.StateFlag = new PlayerStateFlag(player);
             base.StateDucking = new PlayerStateDucking(player);

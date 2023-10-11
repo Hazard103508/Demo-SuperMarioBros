@@ -14,7 +14,8 @@ namespace Mario.Application.Interfaces
         event Action TimeOut;
 
         void ResetTimer();
-        void StopTimer();
+        void FreezeTimer();
+        void ResumeTimer();
         void StartTimer();
     }
 }

@@ -43,7 +43,8 @@ namespace Mario.Application.Services
             Time = StartTime;
             _timer = 0;
         }
-        public void StopTimer() => Enabled = false;
+        public void FreezeTimer() => Enabled = false;
+        public void ResumeTimer() => Enabled = true;
         public void StartTimer()
         {
             TimeStarted?.Invoke();
