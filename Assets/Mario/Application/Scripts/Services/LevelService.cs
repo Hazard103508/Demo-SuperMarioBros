@@ -63,13 +63,16 @@ namespace Mario.Application.Services
             CurrentMapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
             _playerService.LivesRemoved += OnLivesRemoved;
+            _timeService.TimeOut += OnTimeOut;
             _timeService.TimeChangeded += OnTimeChangeded;
         }
         public void Dispose()
         {
             _timeService.TimeChangeded -= OnTimeChangeded;
+            _timeService.TimeOut -= OnTimeOut;
             _playerService.LivesRemoved -= OnLivesRemoved;
         }
+
         public async void LoadLevel(Transform parent)
         {
             IsGoalReached = false;
@@ -152,7 +155,7 @@ namespace Mario.Application.Services
 
             IsLoadCompleted = true;
             _isHurry = false;
-            _playerService.PlayerController.gameObject.SetActive(true);
+            _playerService.SetPlayerEnabled(true);
             LevelLoaded.Invoke();
 
             PlayInitTheme();
@@ -163,14 +166,14 @@ namespace Mario.Application.Services
             {
                 yield return new WaitForSeconds(1);
 
-                while (_playerService.PlayerController.transform.position.y < CurrentMapProfile.MapInit.StartPosition.y + 2)
-                {
-                    _playerService.PlayerController.transform.Translate(2f * Time.deltaTime * Vector3.up);
-                    yield return null;
-                }
+                //while (_playerService.PlayerController.transform.position.y < CurrentMapProfile.MapInit.StartPosition.y + 2)
+                //{
+                //    _playerService.PlayerController.transform.Translate(2f * Time.deltaTime * Vector3.up);
+                //    yield return null;
+                //}
             }
             else
-                _playerService.PlayerController.transform.position = CurrentMapProfile.MapInit.StartPosition.y * Vector3.up;
+                _playerService.SetPlayerPosition(CurrentMapProfile.MapInit.StartPosition.y * Vector3.up);
         }
         //private IEnumerator StartGameFalling()
         //{
@@ -226,6 +229,10 @@ namespace Mario.Application.Services
                 _isHurry = true;
                 _hurryCO = StartCoroutine(PlayHurryUpTheme());
             }
+        }
+        private void OnTimeOut()
+        {
+            _playerService.KillPlayerByTimeOut();
         }
         #endregion
     }

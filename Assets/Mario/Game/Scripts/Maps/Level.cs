@@ -22,7 +22,7 @@ namespace Mario.Game.Maps
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
 
             _blackScreen.SetActive(true);
-            _playerService.PlayerController = _playerController;
+            _playerService.SetPlayer(_playerController);
 
             _levelService.LoadLevel(transform);
             _levelService.LevelLoaded += OnLevelLoaded;

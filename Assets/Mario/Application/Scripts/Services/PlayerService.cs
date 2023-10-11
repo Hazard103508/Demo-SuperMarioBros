@@ -15,11 +15,11 @@ namespace Mario.Application.Services
         [SerializeField] private PlayerProfile _playerProfile;
         [SerializeField] private PooledSoundProfile _1UpSoundPoolReference;
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
+        private PlayerController _playerController;
         #endregion
 
         #region Properties
         public PlayerProfile PlayerProfile => _playerProfile;
-        public PlayerController PlayerController { get; set; }
         public int Lives { get; private set; }
         #endregion
 
@@ -38,6 +38,11 @@ namespace Mario.Application.Services
         public void Dispose()
         {
         }
+        public void SetPlayer(PlayerController playerController) => _playerController = playerController;
+        public void SetPlayerEnabled(bool isActive) => _playerController.gameObject.SetActive(isActive);
+        public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
+        public void KillPlayer() => _playerController.Kill();
+        public void KillPlayerByTimeOut() => _playerController.TimeOut();
         public void AddLife()
         {
             this.Lives++;
