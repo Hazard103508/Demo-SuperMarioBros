@@ -52,6 +52,9 @@ namespace Mario.Game.Player
         }
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
+            if (!hitInfo.IsBlock)
+                return;
+
             if (SetTransitionToDucking())
                 return;
 

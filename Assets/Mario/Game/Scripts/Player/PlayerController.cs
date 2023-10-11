@@ -61,7 +61,7 @@ namespace Mario.Game.Player
         }
         //---Temp---
         public void BounceJump() { }
-        public bool IsAutoWalk { get; set; }
+        //public bool IsAutoWalk { get; set; }
         //---Temp---
         #endregion
 

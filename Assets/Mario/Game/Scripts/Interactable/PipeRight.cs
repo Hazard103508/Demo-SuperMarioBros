@@ -38,7 +38,7 @@ namespace Mario.Game.Interactable
             _isInPipe = true;
             _pipeInSoundFX.Play();
 
-            player.IsAutoWalk = true;
+            //player.IsAutoWalk = true;
             Destroy(player.GetComponent<PlayerController>());
             while (player.transform.position.x < transform.position.x)
             {
@@ -47,7 +47,7 @@ namespace Mario.Game.Interactable
             }
 
             player.transform.position = new Vector3(Mathf.Round(player.transform.position.x), player.transform.position.y, player.transform.position.z);
-            player.IsAutoWalk = false;
+            //player.IsAutoWalk = false;
         }
         #endregion
 

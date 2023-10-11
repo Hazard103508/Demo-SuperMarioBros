@@ -144,10 +144,9 @@ namespace Mario.Application.Services
         }
         private IEnumerator StartGame()
         {
-            yield return SetPlayerInitPosition();
-            //yield return StartGameFalling();
             yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
             yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime);
+            yield return InitializePlayer();
 
             _timeService.StartTime = CurrentMapProfile.Time.StartTime;
             _timeService.ResetTimer();
@@ -156,12 +155,21 @@ namespace Mario.Application.Services
             IsLoadCompleted = true;
             _isHurry = false;
             _playerService.SetPlayerEnabled(true);
+
             LevelLoaded.Invoke();
 
             PlayInitTheme();
         }
-        private IEnumerator SetPlayerInitPosition()
+        private IEnumerator InitializePlayer()
         {
+            //if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Falling)
+            //{
+            // MODIFICAR IDLE STATE PARA CAMBIAR AUTOMATICAMENTE A FALLING STATE SI NO ESTA TOCANDO EL SUELO
+            // PlayerStartLocation.Falling -- ANALIZAR SI SE BORRA ESTE ESTADO
+
+            //yield return new WaitForEndOfFrame();
+            //_playerService.SetPlayerStateFall();
+            //}
             if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Pipe)
             {
                 yield return new WaitForSeconds(1);
@@ -173,16 +181,8 @@ namespace Mario.Application.Services
                 //}
             }
             else
-                _playerService.SetPlayerPosition(CurrentMapProfile.MapInit.StartPosition.y * Vector3.up);
+                _playerService.SetPlayerPosition(CurrentMapProfile.MapInit.StartPosition);
         }
-        //private IEnumerator StartGameFalling()
-        //{
-        //    if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Falling)
-        //    {
-        //        //_player.InputActions.Move.x = 1; // TODO
-        //        yield return new WaitForEndOfFrame();
-        //    }
-        //}
         private IEnumerator ReloadAfterDead()
         {
             yield return new WaitForSeconds(3.5f);
