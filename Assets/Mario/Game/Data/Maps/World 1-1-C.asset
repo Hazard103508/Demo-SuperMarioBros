@@ -22,7 +22,7 @@ MonoBehaviour:
     Type: 2
     StartTime: 0
   MapSectionReferences:
-  - m_AssetGUID: 
+  - m_AssetGUID: 7c286d7ab204f9243854dbab54c97d2d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
@@ -31,4 +31,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
   NextMap: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
   Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
-  PoolProfiles: []
+  PoolProfiles:
+  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
+  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
+  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}

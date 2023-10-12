@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using Mario.Game.Commons;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
@@ -16,6 +17,7 @@ namespace Mario.Application.Services
         [SerializeField] private PooledSoundProfile _1UpSoundPoolReference;
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         private PlayerController _playerController;
+        private Movable _playerMovable;
         #endregion
 
         #region Properties
@@ -24,7 +26,6 @@ namespace Mario.Application.Services
         #endregion
 
         #region Events
-        public event Action CanMoveChanged;
         public event Action LivesAdded;
         public event Action LivesRemoved;
         #endregion
@@ -38,11 +39,17 @@ namespace Mario.Application.Services
         public void Dispose()
         {
         }
-        public void SetPlayer(PlayerController playerController) => _playerController = playerController;
+        public void SetPlayer(PlayerController playerController)
+        {
+            _playerController = playerController;
+            _playerMovable = _playerController.GetComponent<Movable>();
+        }
         public void SetPlayerEnabled(bool isActive) => _playerController.gameObject.SetActive(isActive);
+        public void SetPlayerMovable(bool canMove) => _playerMovable.enabled = canMove;
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
         public void KillPlayer() => _playerController.Kill();
         public void KillPlayerByTimeOut() => _playerController.TimeOut();
+        public void TranslatePlayerPosition(Vector3 position) => _playerController.transform.Translate(position);
         public void AddLife()
         {
             this.Lives++;

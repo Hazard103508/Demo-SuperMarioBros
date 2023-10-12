@@ -6,6 +6,7 @@ using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Application.Services
@@ -146,42 +147,36 @@ namespace Mario.Application.Services
         {
             yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
             yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime);
-            yield return InitializePlayer();
 
             _timeService.StartTime = CurrentMapProfile.Time.StartTime;
             _timeService.ResetTimer();
-            _timeService.StartTimer();
 
             IsLoadCompleted = true;
             _isHurry = false;
+            _playerService.SetPlayerPosition(CurrentMapProfile.MapInit.StartPosition);
             _playerService.SetPlayerEnabled(true);
 
             LevelLoaded.Invoke();
 
+            yield return ShowCustomIntroPosition();
+            _timeService.StartTimer();
+            _playerService.SetPlayerMovable(true);
             PlayInitTheme();
         }
-        private IEnumerator InitializePlayer()
+        private IEnumerator ShowCustomIntroPosition()
         {
-            //if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Falling)
-            //{
-            // MODIFICAR IDLE STATE PARA CAMBIAR AUTOMATICAMENTE A FALLING STATE SI NO ESTA TOCANDO EL SUELO
-            // PlayerStartLocation.Falling -- ANALIZAR SI SE BORRA ESTE ESTADO
-
-            //yield return new WaitForEndOfFrame();
-            //_playerService.SetPlayerStateFall();
-            //}
             if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.PipeUp)
             {
                 yield return new WaitForSeconds(1);
-
-                //while (_playerService.PlayerController.transform.position.y < CurrentMapProfile.MapInit.StartPosition.y + 2)
-                //{
-                //    _playerService.PlayerController.transform.Translate(2f * Time.deltaTime * Vector3.up);
-                //    yield return null;
-                //}
+                float _totalTranslate = 0;
+                while (_totalTranslate < 2)
+                {
+                    var _posToMove = 2f * Time.deltaTime * Vector3.up;
+                    _totalTranslate += _posToMove.y;
+                    _playerService.TranslatePlayerPosition(_posToMove);
+                    yield return null;
+                }
             }
-            else
-                _playerService.SetPlayerPosition(CurrentMapProfile.MapInit.StartPosition);
         }
         private IEnumerator ReloadAfterDead()
         {
