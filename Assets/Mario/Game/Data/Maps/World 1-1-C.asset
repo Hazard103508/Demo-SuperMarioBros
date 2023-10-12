@@ -16,16 +16,19 @@ MonoBehaviour:
   MapInit:
     BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
     StartPosition: {x: 3.5, y: 2}
-    StartLocation: 2
+    StartLocation: 1
     BlackScreenTime: 0.5
   Time:
     Type: 2
     StartTime: 0
   MapSectionReferences:
-  - {fileID: 981654926499773033, guid: 7c286d7ab204f9243854dbab54c97d2d, type: 3}
+  - m_AssetGUID: 
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
   PipesConnections: []
   CheckPoints:
   - {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
   NextMap: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
   Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
-  PoolProfile: {fileID: 11400000, guid: e66928cabb0da6e4dbac7d768f224afd, type: 2}
+  PoolProfiles: []

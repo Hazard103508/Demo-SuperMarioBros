@@ -170,7 +170,7 @@ namespace Mario.Application.Services
             //yield return new WaitForEndOfFrame();
             //_playerService.SetPlayerStateFall();
             //}
-            if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.Pipe)
+            if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.PipeUp)
             {
                 yield return new WaitForSeconds(1);
 

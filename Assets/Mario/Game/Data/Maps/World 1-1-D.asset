@@ -16,7 +16,7 @@ MonoBehaviour:
   MapInit:
     BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
     StartPosition: {x: 2, y: 11}
-    StartLocation: 1
+    StartLocation: 0
     BlackScreenTime: 0.5
   Time:
     Type: 2

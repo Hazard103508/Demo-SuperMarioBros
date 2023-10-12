@@ -18,6 +18,15 @@ namespace Mario.Game.Player
 
         #region Protected Methods
         protected override string GetAnimatorState() => "Idle";
+        protected override bool SetTransitionToFall()
+        {
+            if (base.SetTransitionToFall())
+            {
+                Player.Animator.CrossFade("Jump", 0);
+                return true;
+            }
+            return false;
+        }
         #endregion
 
         #region IState Methods
@@ -35,6 +44,8 @@ namespace Mario.Game.Player
                 return;
 
             SetTransitionToJump();
+
+            SetTransitionToFall();
         }
         #endregion
     }
