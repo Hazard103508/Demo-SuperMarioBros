@@ -13,9 +13,10 @@ namespace Mario.Application.Interfaces
         event Action LivesAdded;
         event Action LivesRemoved;
 
+        void EnablePlayerController(bool enable);
+        void EnablePlayerMovable(bool enable);
+        void EnablePlayerInput(bool enable);
         void SetPlayer(PlayerController playerController);
-        void SetPlayerEnabled(bool isActive);
-        void SetPlayerMovable(bool canMove);
         void SetPlayerPosition(Vector3 position);
         void TranslatePlayerPosition(Vector3 position);
         void KillPlayer();

@@ -154,13 +154,13 @@ namespace Mario.Application.Services
             IsLoadCompleted = true;
             _isHurry = false;
             _playerService.SetPlayerPosition(CurrentMapProfile.MapInit.StartPosition);
-            _playerService.SetPlayerEnabled(true);
+            _playerService.EnablePlayerController(true);
 
             LevelLoaded.Invoke();
 
             yield return ShowCustomIntroPosition();
             _timeService.StartTimer();
-            _playerService.SetPlayerMovable(true);
+            _playerService.EnablePlayerMovable(true);
             PlayInitTheme();
         }
         private IEnumerator ShowCustomIntroPosition()
@@ -177,6 +177,7 @@ namespace Mario.Application.Services
                     yield return null;
                 }
             }
+            _playerService.EnablePlayerInput(true);
         }
         private IEnumerator ReloadAfterDead()
         {

@@ -5,6 +5,7 @@ using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Mario.Application.Services
 {
@@ -18,6 +19,7 @@ namespace Mario.Application.Services
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         private PlayerController _playerController;
         private Movable _playerMovable;
+        private PlayerInput _playerInput;
         #endregion
 
         #region Properties
@@ -43,10 +45,12 @@ namespace Mario.Application.Services
         {
             _playerController = playerController;
             _playerMovable = _playerController.GetComponent<Movable>();
+            _playerInput = _playerController.GetComponent<PlayerInput>();
         }
-        public void SetPlayerEnabled(bool isActive) => _playerController.gameObject.SetActive(isActive);
-        public void SetPlayerMovable(bool canMove) => _playerMovable.enabled = canMove;
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
+        public void EnablePlayerController(bool enable) => _playerController.gameObject.SetActive(enable);
+        public void EnablePlayerMovable(bool enable) => _playerMovable.enabled = enable;
+        public void EnablePlayerInput(bool enable) => _playerInput.enabled = enable;
         public void KillPlayer() => _playerController.Kill();
         public void KillPlayerByTimeOut() => _playerController.TimeOut();
         public void TranslatePlayerPosition(Vector3 position) => _playerController.transform.Translate(position);
