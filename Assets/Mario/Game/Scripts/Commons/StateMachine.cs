@@ -5,6 +5,10 @@ namespace Mario.Game.Commons
 {
     public abstract class StateMachine
     {
+        #region Objects
+        private IState _nextState;
+        #endregion
+
         #region Properties
         protected IState CurrentState { get; private set; }
         #endregion
@@ -29,18 +33,30 @@ namespace Mario.Game.Commons
             if (nextState == CurrentState)
                 return false;
 
-            UnityEngine.Debug.Log(nextState);
-            CurrentState.Exit();
-            CurrentState = nextState;
-            nextState.Enter();
-
-            StateChanged?.Invoke(nextState);
+            _nextState = nextState;
             return true;
         }
         public void Update()
         {
             if (CurrentState != null)
                 CurrentState.Update();
+
+            ChangeState();
+        }
+        #endregion
+
+        #region Private Methods
+        private void ChangeState()
+        {
+            if (_nextState != null)
+            {
+                CurrentState.Exit();
+                CurrentState = _nextState;
+                _nextState.Enter();
+
+                StateChanged?.Invoke(_nextState);
+                _nextState = null;
+            }
         }
         #endregion
     }

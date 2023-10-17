@@ -160,7 +160,6 @@ namespace Mario.Application.Services
 
             yield return ShowCustomIntroPosition();
             _timeService.StartTimer();
-            _playerService.EnablePlayerMovable(true);
             PlayInitTheme();
         }
         private IEnumerator ShowCustomIntroPosition()
@@ -178,6 +177,7 @@ namespace Mario.Application.Services
                 }
             }
             _playerService.EnablePlayerInput(true);
+            _playerService.EnablePlayerMovable(true);
         }
         private IEnumerator ReloadAfterDead()
         {
