@@ -10,6 +10,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
     {
         #region Objects
         private readonly IPoolService _poolService;
+        private readonly ISoundService _soundService;
 
         private float _limitTime;
         private bool _started;
@@ -23,6 +24,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         public BrickBoxCoinStateIdle(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -49,6 +51,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
                 _limitTime = Box.Profile.LimitTime;
             }
             _poolService.GetObjectFromPool(Box.Profile.CoinPoolReference, Box.transform.position);
+            _soundService.Play(Box.Profile.HitSoundFXPoolReference);
             base.OnHittedByPlayerFromBottom(player);
         }
         #endregion

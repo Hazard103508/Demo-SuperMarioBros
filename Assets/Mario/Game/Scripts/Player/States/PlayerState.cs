@@ -35,10 +35,7 @@ namespace Mario.Game.Player
         {
             string newAnimatorState = GetAnimatorState();
             if (!string.IsNullOrWhiteSpace(newAnimatorState))
-            {
-                Debug.Log(newAnimatorState);
                 Player.Animator.CrossFade(newAnimatorState, 0);
-            }
 
             _jumpWasPressed = Player.InputActions.Jump;
         }

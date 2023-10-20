@@ -20,7 +20,7 @@ MonoBehaviour:
     BlackScreenTime: 0
   Time:
     Type: 1
-    StartTime: 10
+    StartTime: 400
   MapSectionReferences:
   - m_AssetGUID: 2227a808dfe2c664daa7632fc5abdace
     m_SubObjectName: 

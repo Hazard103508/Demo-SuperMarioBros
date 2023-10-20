@@ -43,7 +43,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
             {
                 _poolService.GetObjectFromPool(Box.Profile.BrokenBrickPoolReference, Box.transform.position);
                 _scoreService.Add(Box.Profile.Points);
-                _soundService.Play(Box.Profile.BreakSoundFXPoolReference);
+                _soundService.Play(Box.Profile.BreakSoundFXPoolReference, Box.transform.position);
                 Box.StartCoroutine(DestroyBox());
             }
             base.OnHittedByPlayerFromBottom(player);

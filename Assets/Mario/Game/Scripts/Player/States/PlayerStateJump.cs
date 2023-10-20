@@ -34,7 +34,7 @@ namespace Mario.Game.Player
         protected override string GetAnimatorState() => "Jump";
         protected override bool SetTransitionToFall()
         {
-            if (!Player.InputActions.Jump || Player.Movable.JumpForce < 0)
+            if (!Player.InputActions.Jump || Player.Movable.JumpForce <= 0)
                 return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
 
             return false;

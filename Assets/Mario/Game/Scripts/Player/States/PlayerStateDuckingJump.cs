@@ -1,5 +1,3 @@
-using UnityShared.Commons.Structs;
-
 namespace Mario.Game.Player
 {
     public class PlayerStateDuckingJump : PlayerStateJump
@@ -20,13 +18,6 @@ namespace Mario.Game.Player
             base.Enter();
             SetRaycastDucking();
         }
-        #endregion
-
-        #region On Movable Hit
-        public override void OnHittedByMovingToTop(RayHitInfo hitInfo) => HitObjectOnTop(hitInfo.hitObjects);
-        public override void OnHittedByMovingToBottom(RayHitInfo hitInfo) => HitObjectOnBottom(hitInfo.hitObjects);
-        public override void OnHittedByMovingToLeft(RayHitInfo hitInfo) => HitObjectOnLeft(hitInfo.hitObjects);
-        public override void OnHittedByMovingToRight(RayHitInfo hitInfo) => HitObjectOnRight(hitInfo.hitObjects);
         #endregion
     }
 }

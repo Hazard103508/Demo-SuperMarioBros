@@ -1,5 +1,6 @@
 using Mario.Game.Interfaces;
 using System;
+using System.Diagnostics;
 
 namespace Mario.Game.Commons
 {
@@ -38,7 +39,7 @@ namespace Mario.Game.Commons
         }
         public void Update()
         {
-            if (CurrentState != null)
+            if (CurrentState != null && _nextState == null)
                 CurrentState.Update();
 
             ChangeState();
@@ -52,6 +53,7 @@ namespace Mario.Game.Commons
             {
                 CurrentState.Exit();
                 CurrentState = _nextState;
+                UnityEngine.Debug.Log(_nextState);
                 _nextState.Enter();
 
                 StateChanged?.Invoke(_nextState);
