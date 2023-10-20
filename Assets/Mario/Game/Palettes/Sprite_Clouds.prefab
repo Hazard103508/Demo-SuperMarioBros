@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2542172652241099898}
   - component: {fileID: 3938870854379626031}
   m_Layer: 0
-  m_Name: Clouds
+  m_Name: Sprite_Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -277,7 +277,7 @@ GameObject:
   - component: {fileID: 7278613451409881782}
   - component: {fileID: 5718088310515220401}
   m_Layer: 0
-  m_Name: Bushes
+  m_Name: Sprite_Bushes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

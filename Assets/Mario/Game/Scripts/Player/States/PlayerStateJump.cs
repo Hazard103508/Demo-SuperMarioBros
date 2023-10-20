@@ -87,18 +87,21 @@ namespace Mario.Game.Player
             {
                 Player.Movable.SetJumpForce(0);
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
-                HitObjectOnTop(hitInfo.hitObjects);
             }
+            HitObjectOnTop(hitInfo.hitObjects);
         }
+        public override void OnHittedByMovingToBottom(RayHitInfo hitInfo) => HitObjectOnBottom(hitInfo.hitObjects);
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
                 Player.Movable.Speed = 0;
+            HitObjectOnLeft(hitInfo.hitObjects);
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
                 Player.Movable.Speed = 0;
+            HitObjectOnRight(hitInfo.hitObjects);
         }
         #endregion
     }

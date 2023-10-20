@@ -433,7 +433,7 @@ GameObject:
   - component: {fileID: 3616717029261291049}
   - component: {fileID: 8682609391044408856}
   m_Layer: 0
-  m_Name: Tubes
+  m_Name: Sprite_Tubes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

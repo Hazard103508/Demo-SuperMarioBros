@@ -13,6 +13,13 @@ namespace Mario.Game.Interactable
         [SerializeField] private int _checkPointIndex;
         #endregion
 
+        #region Unity Methods
+        private void Awake()
+        {
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
+        }
+        #endregion
+
         #region Protected Methods
         protected override void OnHitCheckPoint(PlayerController player)
         {
