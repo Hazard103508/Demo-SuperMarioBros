@@ -1,16 +1,17 @@
 using Mario.Game.ScriptableObjects.Boxes;
+using UnityEngine;
 
 namespace Mario.Game.Boxes.BrickBoxCoin
 {
     public class BrickBoxCoin : Box.Box
     {
         #region Objects
-        //private float _limitTime;
-        //private bool _started;
+        private float _limitTime;
         #endregion
 
         #region Properties
         new public BrickBoxCoinProfile Profile => (BrickBoxCoinProfile)base.Profile;
+        public bool IsTimerRunning { get; set; }
         #endregion
 
         #region Unity Methods
@@ -18,16 +19,19 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         {
             base.Awake();
             base.StateMachine.StateIdle = new BrickBoxCoinStateIdle(this);
+            _limitTime = Profile.LimitTime;
         }
-        //private void Update()
-        //{
-        //    if (_started)
-        //    {
-        //        _limitTime -= Time.deltaTime;
-        //        if (_limitTime < 0)
-        //            IsLastJump = true;
-        //    }
-        //}
+        protected override void Update()
+        {
+            if (IsTimerRunning)
+            {
+                _limitTime = Mathf.Max(_limitTime - Time.deltaTime, 0);
+                if (_limitTime == 0)
+                    IsLastJump = true;
+            }
+
+            base.Update();
+        }
         #endregion
     }
 }

@@ -19,7 +19,6 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         public override void Enter()
         {
             base.Enter();
-            IsLastJump = true;
         }
         #endregion
 

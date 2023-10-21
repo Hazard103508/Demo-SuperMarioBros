@@ -24,6 +24,7 @@ namespace Mario.Game.Boxes.Box
         public Movable Movable { get; private set; }
         public Animator Animator => _animator;
         public BoxProfile Profile => _profile;
+        public bool IsLastJump { get; set; }
         #endregion
 
         #region Unity Methods
@@ -36,7 +37,7 @@ namespace Mario.Game.Boxes.Box
         {
             this.StateMachine.Initialize(this.StateMachine.StateIdle);
         }
-        private void Update()
+        protected virtual void Update()
         {
             this.StateMachine.Update();
         }

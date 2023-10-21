@@ -25,7 +25,6 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
         {
             base.Enter();
             _delay = 0;
-            IsLastJump = true;
         }
         public override void Update()
         {

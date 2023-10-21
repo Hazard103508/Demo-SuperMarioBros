@@ -26,7 +26,6 @@ namespace Mario.Game.Boxes.Box
 
         #region Properties
         protected Box Box { get; private set; }
-        protected bool IsLastJump { get; set; }
         #endregion
 
         #region Constructor

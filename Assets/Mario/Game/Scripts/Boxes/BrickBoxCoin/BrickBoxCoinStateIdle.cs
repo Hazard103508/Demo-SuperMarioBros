@@ -11,9 +11,6 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         #region Objects
         private readonly IPoolService _poolService;
         private readonly ISoundService _soundService;
-
-        private float _limitTime;
-        private bool _started;
         #endregion
 
         #region Properties
@@ -28,28 +25,12 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         }
         #endregion
 
-        #region IState Methods
-        public override void Update()
-        {
-            base.Update();
-
-            if (_started)
-            {
-                _limitTime -= Time.deltaTime;
-                if (_limitTime < 0)
-                    IsLastJump = true;
-            }
-        }
-        #endregion
-
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
-            if (!_started)
-            {
-                _started = true;
-                _limitTime = Box.Profile.LimitTime;
-            }
+            if (!Box.IsTimerRunning)
+                Box.IsTimerRunning = true;
+            
             _poolService.GetObjectFromPool(Box.Profile.CoinPoolReference, Box.transform.position);
             _soundService.Play(Box.Profile.HitSoundFXPoolReference);
             base.OnHittedByPlayerFromBottom(player);
