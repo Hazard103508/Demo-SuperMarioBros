@@ -41,8 +41,9 @@ namespace Mario.Application.Components
         private PooledObject CreateInstance()
         {
             GameObject obj = PrefabReference != null ? Instantiate(PrefabReference) : new GameObject(Profile.name);
-            obj.transform.position = _nextObjectPosition;
             obj.transform.SetParent(transform);
+            obj.transform.position = _nextObjectPosition;
+            obj.transform.localScale = Vector3.one;
 
             PooledObject pooledObject = obj.AddComponent<PooledObject>();
             pooledObject.ObjectPool = objectPool;
