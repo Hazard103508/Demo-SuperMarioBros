@@ -3,7 +3,6 @@ using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Mario.Application.Services
@@ -23,7 +22,7 @@ namespace Mario.Application.Services
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();
-            
+
             _poolGroups = new Dictionary<string, Pool>();
             _poolFactories = new Dictionary<Type, PoolFactory>();
         }
@@ -76,6 +75,6 @@ namespace Mario.Application.Services
 
             return _poolFactories[poolType];
         }
-         #endregion
+        #endregion
     }
 }

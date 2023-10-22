@@ -1,7 +1,5 @@
 using Mario.Application.Interfaces;
-using System;
 using System.Collections;
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 

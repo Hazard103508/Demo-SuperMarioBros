@@ -6,7 +6,6 @@ using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Application.Services

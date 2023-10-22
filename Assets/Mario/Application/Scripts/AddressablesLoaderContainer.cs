@@ -1,9 +1,9 @@
-using System;
-using System.Collections.Generic;
-using UnityEngine.ResourceManagement.AsyncOperations;
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.ScriptableObjects.Pool;
+using System;
+using System.Collections.Generic;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Mario.Application
 {

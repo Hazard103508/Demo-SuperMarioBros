@@ -9,7 +9,7 @@ namespace Mario.Application.Components
         {
             var pool = base.CreatePool(profile, parent);
             pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
-            
+
             pool.Load();
             return pool;
         }

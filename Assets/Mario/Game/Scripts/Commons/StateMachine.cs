@@ -1,6 +1,5 @@
 using Mario.Game.Interfaces;
 using System;
-using System.Diagnostics;
 
 namespace Mario.Game.Commons
 {

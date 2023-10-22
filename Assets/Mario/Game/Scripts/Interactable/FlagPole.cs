@@ -3,7 +3,6 @@ using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Interactable;
-using Mario.Game.ScriptableObjects.Items;
 using UnityEngine;
 
 namespace Mario.Game.Interactable

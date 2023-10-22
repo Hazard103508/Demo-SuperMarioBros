@@ -26,7 +26,7 @@ namespace UnityShared.ScriptableObjects.GameObjects
             [SerializeField] private int _count = 1;
 
             public Vector2 StartPoint => _startPoint;
-            public Vector2 EndPoint => _endPoint;   
+            public Vector2 EndPoint => _endPoint;
             public int Count => _count;
         }
         [Serializable]

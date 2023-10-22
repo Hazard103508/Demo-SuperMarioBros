@@ -17,3 +17,4 @@ MonoBehaviour:
     _mapProfile: {fileID: 11400000, guid: e91824c6d41c8344fa80039c5a0d8967, type: 2}
     _startLocation: 1
     _startPosition: {x: 10.5, y: 8}
+    _blackScreenTime: 1

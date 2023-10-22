@@ -1,5 +1,3 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using System;

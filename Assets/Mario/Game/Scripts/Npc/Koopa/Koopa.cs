@@ -1,4 +1,3 @@
-using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interactable;
 using Mario.Game.Interfaces;

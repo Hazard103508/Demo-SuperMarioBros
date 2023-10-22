@@ -65,7 +65,7 @@ namespace Mario.Game.Items.Flower
             Flower.gameObject.layer = 0;
             _scoreService.Add(Flower.Profile.Points);
             _scoreService.ShowPoints(Flower.Profile.Points, Flower.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
-        
+
             player.Buff();
             Flower.gameObject.SetActive(false);
         }

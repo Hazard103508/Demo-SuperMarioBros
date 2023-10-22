@@ -5,7 +5,7 @@ namespace Mario.Game.Items.Flower
     public class FlowerStateIdle : FlowerState
     {
         #region Constructor
-        public FlowerStateIdle(Flower flower): base(flower)
+        public FlowerStateIdle(Flower flower) : base(flower)
         {
         }
         #endregion

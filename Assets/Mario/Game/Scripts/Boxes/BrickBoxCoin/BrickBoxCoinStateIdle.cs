@@ -2,7 +2,6 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Boxes.Box;
 using Mario.Game.Player;
-using UnityEngine;
 
 namespace Mario.Game.Boxes.BrickBoxCoin
 {
@@ -30,7 +29,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         {
             if (!Box.IsTimerRunning)
                 Box.IsTimerRunning = true;
-            
+
             _poolService.GetObjectFromPool(Box.Profile.CoinPoolReference, Box.transform.position);
             _soundService.Play(Box.Profile.HitSoundFXPoolReference);
             base.OnHittedByPlayerFromBottom(player);

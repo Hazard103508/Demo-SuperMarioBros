@@ -1,6 +1,5 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
-using Mario.Game.ScriptableObjects.Map;
 using UnityEngine;
 
 namespace Mario.Game.Maps
@@ -50,7 +49,7 @@ namespace Mario.Game.Maps
                 // esta horrible, pero no encontre un audio clip con el sonido correcto
             }
             _previousTime = _timeService.Time;
-        }   
+        }
         #endregion
 
         #region Service Events	

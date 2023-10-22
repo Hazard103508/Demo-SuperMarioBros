@@ -7,10 +7,10 @@ namespace Mario.Game.ScriptableObjects.Pool
     {
         [Header("Audio")]
         [SerializeField]
-        [Range(0,1)]
+        [Range(0, 1)]
         private float _volume = 1;
 
-        [SerializeField] 
+        [SerializeField]
         private bool _disableOnComplete;
 
 
