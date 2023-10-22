@@ -32,7 +32,7 @@ namespace Mario.Game.Interactable
         private IEnumerator MoveIntoPipe(PlayerController player)
         {
             _timeService.FreezeTimer();
-            _levelService.NextMapProfile = _levelService.CurrentMapProfile.PipesConnections[_pipeIndex];
+            //_levelService.NextMapProfile = _levelService.CurrentMapProfile.PipesConnections[_pipeIndex];
             _sceneService.LoadMapScene(2.8f);
 
             _isInPipe = true;

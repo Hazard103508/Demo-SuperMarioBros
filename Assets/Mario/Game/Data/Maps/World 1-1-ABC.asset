@@ -16,17 +16,13 @@ MonoBehaviour:
   _mapInit:
     _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
     _startPosition: {x: 2.5, y: 2}
-    _startLocation: 0
-    _blackScreenTime: 0
-    BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    StartPosition: {x: 2.5, y: 2}
-    StartLocation: 0
-    BlackScreenTime: 0
-  _time:
-    _type: 1
     _startTime: 400
-    Type: 1
-    StartTime: 400
+    _blackScreenTime: 0
+  _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
+  _startPosition: {x: 2.5, y: 2}
+  _startTime: 400
+  _blackScreenTime: 0
+  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _mapSectionReferences:
   - m_AssetGUID: 18234092574721c4596e9a8b37bbed6b
     m_SubObjectName: 
@@ -40,51 +36,7 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 1
-  _pipesConnections:
-  - {fileID: 11400000, guid: d6bda0b06819520488366b3810c7bf51, type: 2}
-  _checkPoints:
-  - {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
-  _nextMap: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
-  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _poolProfiles:
-  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
-  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
-  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}
-  WorldName: 1-1
-  MapInit:
-    _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    _startPosition: {x: 0, y: 0}
-    _startLocation: 0
-    _blackScreenTime: 0
-    BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    StartPosition: {x: 2.5, y: 2}
-    StartLocation: 0
-    BlackScreenTime: 0
-  Time:
-    _type: 0
-    _startTime: 0
-    Type: 1
-    StartTime: 400
-  MapSectionReferences:
-  - m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  - m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  PipesConnections:
-  - {fileID: 11400000, guid: d6bda0b06819520488366b3810c7bf51, type: 2}
-  CheckPoints:
-  - {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
-  NextMap: {fileID: 11400000, guid: 6d552bc88efb8fa448545c9d6717458d, type: 2}
-  Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
-  PoolProfiles:
   - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
   - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
   - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}

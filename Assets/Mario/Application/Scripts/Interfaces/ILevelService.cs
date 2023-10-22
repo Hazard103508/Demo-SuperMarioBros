@@ -6,8 +6,7 @@ namespace Mario.Application.Interfaces
 {
     public interface ILevelService : IGameService
     {
-        MapProfile CurrentMapProfile { get; set; }
-        MapProfile NextMapProfile { get; set; }
+        MapProfile MapProfile { get; }
         bool IsGoalReached { get; set; }
         bool IsLoadCompleted { get; }
 
@@ -16,5 +15,6 @@ namespace Mario.Application.Interfaces
 
         void LoadLevel(Transform parent);
         void UnloadLevel();
+        void SetNextMap(MapConnection connection);
     }
 }

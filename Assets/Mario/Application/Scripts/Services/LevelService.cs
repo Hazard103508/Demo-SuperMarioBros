@@ -28,11 +28,12 @@ namespace Mario.Application.Services
         private bool _isGoalReached;
         private bool _isHurry;
         private Coroutine _hurryCO;
+
+        private MapConnection _mapConnection;
         #endregion
 
         #region Properties
-        public MapProfile CurrentMapProfile { get; set; }
-        public MapProfile NextMapProfile { get; set; }
+        public MapProfile MapProfile { get; private set; }
         public bool IsGoalReached
         {
             get => _isGoalReached;
@@ -61,7 +62,7 @@ namespace Mario.Application.Services
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
 
-            CurrentMapProfile = _currentMapProfile;
+            MapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
             _playerService.LivesRemoved += OnLivesRemoved;
             _timeService.TimeOut += OnTimeOut;
@@ -76,8 +77,11 @@ namespace Mario.Application.Services
 
         public async void LoadLevel(Transform parent)
         {
+            if (_mapConnection != null)
+                MapProfile = _mapConnection.MapProfile;
+
             IsGoalReached = false;
-            Camera.main.backgroundColor = CurrentMapProfile.MapInit.BackgroundColor;
+            Camera.main.backgroundColor = MapProfile.BackgroundColor;
 
             LoadAsyncReferences();
             await LoadMapSections(parent);
@@ -85,19 +89,19 @@ namespace Mario.Application.Services
         }
         public void UnloadLevel()
         {
-            SetNextMap();
             _assetLoaderContainer.Clear();
             _poolService.ClearPool();
 
             if (_hurryCO != null)
                 StopCoroutine(_hurryCO);
         }
+        public void SetNextMap(MapConnection connection) => _mapConnection = connection;
         #endregion
 
         #region Private Methods
         private void LoadAsyncReferences()
         {
-            foreach (PooledProfileGroup poolGroup in CurrentMapProfile.PoolProfiles)
+            foreach (PooledProfileGroup poolGroup in MapProfile.PoolProfiles)
             {
                 _assetLoaderContainer.Register<PooledObjectProfile, GameObject>(poolGroup.PooledObjectProfiles);
                 _assetLoaderContainer.Register<PooledSoundProfile, AudioClip>(poolGroup.PooledSoundProfiles);
@@ -107,29 +111,16 @@ namespace Mario.Application.Services
             _assetLoaderContainer.LoadAssetAsync<GameObject>();
             _assetLoaderContainer.LoadAssetAsync<AudioClip>();
         }
-        private void SetNextMap()
-        {
-            if (NextMapProfile != null)
-            {
-                _timeService.StartTime =
-                    NextMapProfile.Time.Type == MapTimeType.Continuated ? _timeService.Time :
-                    NextMapProfile.Time.Type == MapTimeType.Beginning ? NextMapProfile.Time.StartTime :
-                    0;
-
-                CurrentMapProfile = NextMapProfile;
-                NextMapProfile = null;
-            }
-        }
         private async Task LoadMapSections(Transform parent)
         {
             int positionX = 0;
-            foreach (var references in CurrentMapProfile.MapSectionReferences)
+            foreach (var references in MapProfile.MapSectionReferences)
             {
                 await _addressablesService.LoadAssetAsync<GameObject>(references);
                 var mapSection = _addressablesService.GetAssetReference<GameObject>(references);
                 LoadMapSection(mapSection, ref positionX, parent);
             }
-            CurrentMapProfile.Width = positionX;
+            MapProfile.Width = positionX;
         }
         private void LoadMapSection(GameObject mapSectionReference, ref int positionX, Transform parent)
         {
@@ -146,34 +137,45 @@ namespace Mario.Application.Services
         private IEnumerator StartGame()
         {
             yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
-            yield return new WaitForSeconds(CurrentMapProfile.MapInit.BlackScreenTime);
 
-            _timeService.StartTime = CurrentMapProfile.Time.StartTime;
-            _timeService.ResetTimer();
+            if (_mapConnection != null)
+                yield return new WaitForSeconds(_mapConnection.BlackScreenTime);
+
+            if (_mapConnection == null)
+            {
+                _timeService.StartTime = MapProfile.StartTime;
+                _timeService.ResetTimer();
+            }
 
             IsLoadCompleted = true;
             _isHurry = false;
-            _playerService.SetPlayerPosition(CurrentMapProfile.MapInit.StartPosition);
+            _playerService.SetPlayerPosition(_mapConnection != null ? _mapConnection.StartPosition : MapProfile.StartPosition);
             _playerService.EnablePlayerController(true);
 
             LevelLoaded.Invoke();
 
             yield return ShowCustomIntroPosition();
+
             _timeService.StartTimer();
             PlayInitTheme();
+
+            _mapConnection = null;
         }
         private IEnumerator ShowCustomIntroPosition()
         {
-            if (CurrentMapProfile.MapInit.StartLocation == PlayerStartLocation.PipeUp)
+            if (_mapConnection != null)
             {
-                yield return new WaitForSeconds(1);
-                float _totalTranslate = 0;
-                while (_totalTranslate < 2)
+                if (_mapConnection.StartLocation == PlayerStartLocation.PipeUp)
                 {
-                    var _posToMove = 2f * Time.deltaTime * Vector3.up;
-                    _totalTranslate += _posToMove.y;
-                    _playerService.TranslatePlayerPosition(_posToMove);
-                    yield return null;
+                    yield return new WaitForSeconds(1);
+                    float _totalTranslate = 0;
+                    while (_totalTranslate < 2)
+                    {
+                        var _posToMove = 2f * Time.deltaTime * Vector3.up;
+                        _totalTranslate += _posToMove.y;
+                        _playerService.TranslatePlayerPosition(_posToMove);
+                        yield return null;
+                    }
                 }
             }
             _playerService.EnablePlayerInput(true);
@@ -192,20 +194,20 @@ namespace Mario.Application.Services
         }
         private IEnumerator PlayHurryUpTheme()
         {
-            _soundService.PlayTheme(CurrentMapProfile.Music.HurryFX);
+            _soundService.PlayTheme(MapProfile.Music.HurryFX);
             yield return new WaitForSeconds(3.5f);
 
-            _soundService.PlayTheme(CurrentMapProfile.Music.HurryTheme.Profile, CurrentMapProfile.Music.HurryTheme.StartTimeInit);
+            _soundService.PlayTheme(MapProfile.Music.HurryTheme.Profile, MapProfile.Music.HurryTheme.StartTimeInit);
         }
         private void PlayInitTheme()
         {
             if (_timeService.Time <= _hurryTime)
             {
                 _isHurry = true;
-                _soundService.PlayTheme(CurrentMapProfile.Music.HurryTheme.Profile, CurrentMapProfile.Music.HurryTheme.StartTimeContinued);
+                _soundService.PlayTheme(MapProfile.Music.HurryTheme.Profile, MapProfile.Music.HurryTheme.StartTimeContinued);
             }
             else
-                _soundService.PlayTheme(CurrentMapProfile.Music.MainTheme);
+                _soundService.PlayTheme(MapProfile.Music.MainTheme);
         }
         #endregion
 
@@ -217,7 +219,7 @@ namespace Mario.Application.Services
         }
         private void OnTimeChangeded()
         {
-            if (CurrentMapProfile.Time.Type == MapTimeType.None)
+            if (MapProfile.StartTime <= 0)
                 return;
 
             if (!_isHurry && _timeService.Time <= _hurryTime && !IsGoalReached)

@@ -15,7 +15,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public PooledSoundProfile MainTheme => _mainTheme;
         public PooledSoundProfile VictoryTheme => _victoryTheme;
         public PooledSoundProfile HurryFX => _hurryFX;
-        public HurryTheme HurryTheme => HurryTheme;
+        public HurryTheme HurryTheme => _hurryTheme;
     }
     [Serializable]
     public class HurryTheme

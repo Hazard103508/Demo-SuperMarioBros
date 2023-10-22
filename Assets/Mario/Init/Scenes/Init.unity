@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a0833b31cda9949aad2b4a5efa12e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _currentMapProfile: {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
+  _currentMapProfile: {fileID: 11400000, guid: e91824c6d41c8344fa80039c5a0d8967, type: 2}
 --- !u!1 &593922594
 GameObject:
   m_ObjectHideFlags: 0

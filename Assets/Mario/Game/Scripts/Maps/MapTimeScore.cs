@@ -27,7 +27,7 @@ namespace Mario.Game.Maps
             _timeService.TimeChangeded += OnTimeChanged;
             _levelService.GoalReached += OnGoalReached;
 
-            if (_levelService.CurrentMapProfile.Time.Type == MapTimeType.None)
+            if (_levelService.MapProfile.StartTime <= 0)
                 Destroy(this);
         }
         private void OnDestroy()

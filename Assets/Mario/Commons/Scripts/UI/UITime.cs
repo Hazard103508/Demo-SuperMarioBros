@@ -25,7 +25,7 @@ namespace Mario.Commons.UI
             label.gameObject.SetActive(false);
             OnTimeChanged();
 
-            if (_levelService.CurrentMapProfile.Time.Type == Game.ScriptableObjects.Map.MapTimeType.None)
+            if (_levelService.MapProfile.StartTime <= 0)
                 Destroy(gameObject);
         }
         private void OnDestroy()

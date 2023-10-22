@@ -12,7 +12,7 @@ namespace Mario.Commons.UI
         private void Awake()
         {
             _levelService = ServiceLocator.Current.Get<ILevelService>();
-            label.Text = _levelService.CurrentMapProfile.WorldName;
+            label.Text = _levelService.MapProfile.WorldName;
         }
     }
 }

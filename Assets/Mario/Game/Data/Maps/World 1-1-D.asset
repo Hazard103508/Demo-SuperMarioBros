@@ -16,59 +16,19 @@ MonoBehaviour:
   _mapInit:
     _backgroundColor: {r: 0, g: 0, b: 0, a: 1}
     _startPosition: {x: 2, y: 11}
-    _startLocation: 0
-    _blackScreenTime: 0.5
-    BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-    StartPosition: {x: 2, y: 11}
-    StartLocation: 0
-    BlackScreenTime: 0.5
-  _time:
-    _type: 2
     _startTime: 0
-    Type: 2
-    StartTime: 0
+    _blackScreenTime: 0.5
+  _backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+  _startPosition: {x: 2, y: 11}
+  _startTime: 0
+  _blackScreenTime: 0.5
+  _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
   _mapSectionReferences:
   - m_AssetGUID: 6cc1974c8c2b5df4399571cfbf1a745e
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _pipesConnections:
-  - {fileID: 11400000, guid: b78297708f5853a4b803aa7687cdc32c, type: 2}
-  _checkPoints:
-  - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
-  _nextMap: {fileID: 0}
-  _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
   _poolProfiles:
-  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
-  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
-  - {fileID: 11400000, guid: 3e883192d434abf4ea87fbde6ccad675, type: 2}
-  WorldName: 1-1
-  MapInit:
-    _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    _startPosition: {x: 0, y: 0}
-    _startLocation: 0
-    _blackScreenTime: 0
-    BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
-    StartPosition: {x: 2, y: 11}
-    StartLocation: 0
-    BlackScreenTime: 0.5
-  Time:
-    _type: 0
-    _startTime: 0
-    Type: 2
-    StartTime: 0
-  MapSectionReferences:
-  - m_AssetGUID: 6cc1974c8c2b5df4399571cfbf1a745e
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  PipesConnections:
-  - {fileID: 11400000, guid: b78297708f5853a4b803aa7687cdc32c, type: 2}
-  CheckPoints:
-  - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
-  NextMap: {fileID: 0}
-  Music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
-  PoolProfiles:
   - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
   - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
   - {fileID: 11400000, guid: 3e883192d434abf4ea87fbde6ccad675, type: 2}

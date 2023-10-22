@@ -38,7 +38,7 @@ namespace Mario.Game.Maps
         #region Service Methods
         private void OnLevelLoaded()
         {
-            limitXPosition = _levelService.CurrentMapProfile.Width;
+            limitXPosition = _levelService.MapProfile.Width;
         }
         #endregion
     }

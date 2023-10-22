@@ -34,7 +34,7 @@ namespace Mario.Game.Interactable
         {
             player.gameObject.SetActive(false);
 
-            _levelService.NextMapProfile = _levelService.CurrentMapProfile.NextMap;
+            //_levelService.NextMapProfile = _levelService.MapProfile.NextMap;
             _timeService.StartTimer();
 
             StartCoroutine(CloseMap());

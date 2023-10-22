@@ -16,59 +16,19 @@ MonoBehaviour:
   _mapInit:
     _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
     _startPosition: {x: 2, y: 2}
-    _startLocation: 0
-    _blackScreenTime: 0
-    BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    StartPosition: {x: 2, y: 2}
-    StartLocation: 0
-    BlackScreenTime: 0
-  _time:
-    _type: 0
     _startTime: 0
-    Type: 0
-    StartTime: 0
+    _blackScreenTime: 0
+  _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
+  _startPosition: {x: 2, y: 2}
+  _startTime: 0
+  _blackScreenTime: 0
+  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _mapSectionReferences:
   - m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _pipesConnections:
-  - {fileID: 11400000, guid: 6ef5b6ef43bc5564191f919bc67b025f, type: 2}
-  - {fileID: 11400000, guid: 6ef5b6ef43bc5564191f919bc67b025f, type: 2}
-  _checkPoints: []
-  _nextMap: {fileID: 0}
-  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _poolProfiles:
-  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
-  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
-  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}
-  WorldName: 1-2
-  MapInit:
-    _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-    _startPosition: {x: 0, y: 0}
-    _startLocation: 0
-    _blackScreenTime: 0
-    BackgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    StartPosition: {x: 2, y: 2}
-    StartLocation: 0
-    BlackScreenTime: 0
-  Time:
-    _type: 0
-    _startTime: 0
-    Type: 0
-    StartTime: 0
-  MapSectionReferences:
-  - m_AssetGUID: 
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  PipesConnections:
-  - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
-  - {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
-  CheckPoints: []
-  NextMap: {fileID: 0}
-  Music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
-  PoolProfiles:
   - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
   - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
   - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}
