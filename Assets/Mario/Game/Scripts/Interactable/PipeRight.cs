@@ -10,6 +10,7 @@ namespace Mario.Game.Interactable
         #region Protected Method
         protected override IEnumerator OnMovePlayer(PlayerController player)
         {
+            _playerService.EnableAutoWalk(true);
             while (player.transform.position.x < transform.position.x)
             {
                 player.transform.Translate(2f * Time.deltaTime * Vector3.right);
@@ -19,7 +20,11 @@ namespace Mario.Game.Interactable
         #endregion
 
         #region On Player Hit
-        public void OnHittedByPlayerFromLeft(PlayerController player) => MoveIntoPipe(player);
+        public void OnHittedByPlayerFromLeft(PlayerController player)
+        {
+            if (player.InputActions.Move.x != 0)
+                MoveIntoPipe(player);
+        }
         #endregion
     }
 }

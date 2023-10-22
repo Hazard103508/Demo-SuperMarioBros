@@ -9,6 +9,7 @@ namespace Mario.Application.Interfaces
     {
         PlayerProfile PlayerProfile { get; }
         int Lives { get; }
+        bool IsAutowalk { get; }
 
         event Action LivesAdded;
         event Action LivesRemoved;
@@ -16,6 +17,7 @@ namespace Mario.Application.Interfaces
         void EnablePlayerController(bool enable);
         void EnablePlayerMovable(bool enable);
         void EnablePlayerInput(bool enable);
+        void EnableAutoWalk(bool enable);
         void SetPlayer(PlayerController playerController);
         void SetPlayerPosition(Vector3 position);
         void TranslatePlayerPosition(Vector3 position);

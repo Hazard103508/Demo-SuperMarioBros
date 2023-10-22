@@ -10,6 +10,7 @@ namespace Mario.Game.Interactable
     public class Pipe : MonoBehaviour
     {
         #region Objects
+        protected IPlayerService _playerService;
         private ISceneService _sceneService;
         private ITimeService _timeService;
         private ILevelService _levelService;
@@ -22,6 +23,7 @@ namespace Mario.Game.Interactable
         #region Unity Methods
         private void Awake()
         {
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();

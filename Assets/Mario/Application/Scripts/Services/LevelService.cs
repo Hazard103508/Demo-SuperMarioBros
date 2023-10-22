@@ -179,6 +179,7 @@ namespace Mario.Application.Services
             }
             _playerService.EnablePlayerInput(true);
             _playerService.EnablePlayerMovable(true);
+            _playerService.EnableAutoWalk(false);
         }
         private IEnumerator ReloadAfterDead()
         {

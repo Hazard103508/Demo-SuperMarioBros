@@ -25,6 +25,7 @@ namespace Mario.Application.Services
         #region Properties
         public PlayerProfile PlayerProfile => _playerProfile;
         public int Lives { get; private set; }
+        public bool IsAutowalk { get; private set; }
         #endregion
 
         #region Events
@@ -51,6 +52,7 @@ namespace Mario.Application.Services
         public void EnablePlayerController(bool enable) => _playerController.gameObject.SetActive(enable);
         public void EnablePlayerMovable(bool enable) => _playerMovable.enabled = enable;
         public void EnablePlayerInput(bool enable) => _playerInput.enabled = enable;
+        public void EnableAutoWalk(bool enable) => IsAutowalk = enable;
         public void KillPlayer() => _playerController.Kill();
         public void KillPlayerByTimeOut() => _playerController.TimeOut();
         public void TranslatePlayerPosition(Vector3 position) => _playerController.transform.Translate(position);
