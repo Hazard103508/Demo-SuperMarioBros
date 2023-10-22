@@ -10,29 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
-  m_Name: MarioRaycastRangeBigNormalLeftProfile
+  m_Name: MarioRaycastRangeBigBottomProfile
   m_EditorClassIdentifier: 
   _blockLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   _otherLayers:
     serializedVersion: 2
     m_Bits: 832
   _range:
-    _startPoint: {x: -0.4, y: 1}
-    _endPoint: {x: -0.4, y: -0.2}
+    _startPoint: {x: -0.3, y: -0.4}
+    _endPoint: {x: 0.3, y: -0.4}
     _count: 6
-    StartPoint: {x: -0.4, y: 1}
-    EndPoint: {x: -0.4, y: -0.2}
+    StartPoint: {x: -0.3, y: -0.4}
+    EndPoint: {x: 0.3, y: -0.4}
     Count: 6
   _ray:
-    _direction: {x: -1, y: 0}
-    _length: 0.05
-    Direction: {x: -1, y: 0}
-    Length: 0.05
+    _direction: {x: 0, y: -1}
+    _length: 0.1
+    Direction: {x: 0, y: -1}
+    Length: 0.1
   BlockLayers:
     serializedVersion: 2
-    m_Bits: 136
+    m_Bits: 8
   OtherLayers:
     serializedVersion: 2
     m_Bits: 832
@@ -40,11 +40,11 @@ MonoBehaviour:
     _startPoint: {x: 0, y: 0}
     _endPoint: {x: 0, y: 0}
     _count: 0
-    StartPoint: {x: -0.4, y: 1}
-    EndPoint: {x: -0.4, y: -0.2}
+    StartPoint: {x: -0.3, y: -0.4}
+    EndPoint: {x: 0.3, y: -0.4}
     Count: 6
   Ray:
     _direction: {x: 0, y: 0}
     _length: 0
-    Direction: {x: -1, y: 0}
-    Length: 0.05
+    Direction: {x: 0, y: -1}
+    Length: 0.1

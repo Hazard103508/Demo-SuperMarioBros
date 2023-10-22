@@ -3,11 +3,8 @@ using System;
 namespace UnityShared.Commons.Structs
 {
     [Serializable]
-    public class RangeNumber<T> where T : IComparable<T>
+    public struct RangeNumber<T> where T : IComparable<T>
     {
-        public RangeNumber()
-        {
-        }
         public RangeNumber(T min, T max)
         {
             this.Min = min;

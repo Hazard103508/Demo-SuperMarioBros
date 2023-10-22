@@ -12,20 +12,94 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551ef53d1e6b8624b8fb91a6906b1a14, type: 3}
   m_Name: MarioModeSmall
   m_EditorClassIdentifier: 
+  _animatorController: {fileID: 9100000, guid: 5be6658bcee870349b926d77836ebcf1, type: 2}
+  _walk:
+    _acceleration: 28
+    _maxSpeed: 5.8
+    _deacceleration: 20
+    Acceleration: 28
+    MaxSpeed: 5.8
+    Deacceleration: 20
+  _run:
+    _acceleration: 30
+    _maxSpeed: 9.5
+    _deacceleration: 15
+    Acceleration: 30
+    MaxSpeed: 9.5
+    Deacceleration: 15
+  _fall:
+    _normalSpeed: 60
+    _deathFallSpeed: 35
+    _maxFallSpeed: 16
+    NormalSpeed: 60
+    DeathFallSpeed: 35
+    MaxFallSpeed: 16
+  _jump:
+    _walkHeight:
+      Min: 1.2
+      Max: 4.3
+    _runHeight:
+      Min: 1.2
+      Max: 5
+    _deathHeight: 3.5
+    _soundFX: {fileID: 11400000, guid: b99e5550ffec5ba46bf00b0dd582e373, type: 2}
+    WalkHeight:
+      Min: 1.2
+      Max: 4.3
+    RunHeight:
+      Min: 1.2
+      Max: 5
+    DeathHeight: 3.5
+    SoundFX: {fileID: 11400000, guid: b99e5550ffec5ba46bf00b0dd582e373, type: 2}
+  _normalRaycastRange:
+    _top: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
+    _bottom: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
+    _left: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
+    _right: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
+    Top: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
+    Bottom: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
+    Left: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
+    Right: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
+  _duckingRaycastRange:
+    _top: {fileID: 0}
+    _bottom: {fileID: 0}
+    _left: {fileID: 0}
+    _right: {fileID: 0}
+    Top: {fileID: 0}
+    Bottom: {fileID: 0}
+    Left: {fileID: 0}
+    Right: {fileID: 0}
   AnimatorController: {fileID: 9100000, guid: 5be6658bcee870349b926d77836ebcf1, type: 2}
   Walk:
+    _acceleration: 0
+    _maxSpeed: 0
+    _deacceleration: 0
     Acceleration: 28
     MaxSpeed: 5.8
     Deacceleration: 20
   Run:
+    _acceleration: 0
+    _maxSpeed: 0
+    _deacceleration: 0
     Acceleration: 30
     MaxSpeed: 9.5
     Deacceleration: 15
   Fall:
+    _normalSpeed: 0
+    _deathFallSpeed: 0
+    _maxFallSpeed: 0
     NormalSpeed: 60
     DeathFallSpeed: 35
     MaxFallSpeed: 16
   Jump:
+    _walkHeight:
+      Min: 0
+      Max: 0
+    _runHeight:
+      Min: 0
+      Max: 0
+    _deathHeight: 0
+    _soundFX: {fileID: 0}
     WalkHeight:
       Min: 1.2
       Max: 4.3
@@ -35,11 +109,19 @@ MonoBehaviour:
     DeathHeight: 3.5
     SoundFX: {fileID: 11400000, guid: b99e5550ffec5ba46bf00b0dd582e373, type: 2}
   NormalRaycastRange:
+    _top: {fileID: 0}
+    _bottom: {fileID: 0}
+    _left: {fileID: 0}
+    _right: {fileID: 0}
     Top: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}
     Bottom: {fileID: 11400000, guid: 9646c51d2a39e0f43bd179d946201ec7, type: 2}
     Left: {fileID: 11400000, guid: 96e3e36c5550ae94186ddb3e8a6e1c44, type: 2}
     Right: {fileID: 11400000, guid: 28d79717fe341e1409dd59a625cc6093, type: 2}
   DuckingRaycastRange:
+    _top: {fileID: 0}
+    _bottom: {fileID: 0}
+    _left: {fileID: 0}
+    _right: {fileID: 0}
     Top: {fileID: 0}
     Bottom: {fileID: 0}
     Left: {fileID: 0}

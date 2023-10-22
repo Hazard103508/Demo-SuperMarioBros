@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 938199a48aa334b42b1dc9ff7c8f6341, type: 3}
   m_Name: FireballProfile
   m_EditorClassIdentifier: 
-  Speed: 14
-  BounceSpeed: 11.5
-  FallSpeed: 45
-  MaxFallSpeed: 12
-  ExplotionPoolReference: {fileID: 11400000, guid: 4a1933c96519e3d4e9e323e7656992a1, type: 2}
-  HitSoundFXPoolReference: {fileID: 11400000, guid: 484c1ed2a30c41d40a266ddbcbe4368c, type: 2}
+  _speed: 14
+  _bounceSpeed: 11.5
+  _fallSpeed: 45
+  _maxFallSpeed: 12
+  _explotionPoolReference: {fileID: 11400000, guid: 4a1933c96519e3d4e9e323e7656992a1, type: 2}
+  _hitSoundFXPoolReference: {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
