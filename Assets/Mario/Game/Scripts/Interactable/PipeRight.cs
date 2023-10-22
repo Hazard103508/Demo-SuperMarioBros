@@ -2,6 +2,7 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
+using Mario.Game.ScriptableObjects.Interactable;
 using System.Collections;
 using UnityEngine;
 
@@ -13,9 +14,9 @@ namespace Mario.Game.Interactable
         private ISceneService _sceneService;
         private ITimeService _timeService;
         private ILevelService _levelService;
+        private ISoundService _soundService;
 
-        [SerializeField] private int _pipeIndex;
-        [SerializeField] private AudioSource _pipeInSoundFX;
+        [SerializeField] private PipeProfile _profile;
         private bool _isInPipe;
         #endregion
 
@@ -25,6 +26,7 @@ namespace Mario.Game.Interactable
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -32,14 +34,12 @@ namespace Mario.Game.Interactable
         private IEnumerator MoveIntoPipe(PlayerController player)
         {
             _timeService.FreezeTimer();
-            //_levelService.NextMapProfile = _levelService.CurrentMapProfile.PipesConnections[_pipeIndex];
-            _sceneService.LoadMapScene(2.8f);
 
             _isInPipe = true;
-            _pipeInSoundFX.Play();
-
+            player.Movable.enabled = false;
             //player.IsAutoWalk = true;
-            Destroy(player.GetComponent<PlayerController>());
+
+            _soundService.Play(_profile.SoundFXPoolReference);
             while (player.transform.position.x < transform.position.x)
             {
                 player.transform.Translate(2f * Time.deltaTime * Vector3.right);
@@ -47,6 +47,8 @@ namespace Mario.Game.Interactable
             }
 
             player.transform.position = new Vector3(Mathf.Round(player.transform.position.x), player.transform.position.y, player.transform.position.z);
+            _levelService.SetNextMap(_profile.Connection);
+            _sceneService.LoadMapScene(0.2f);
             //player.IsAutoWalk = false;
         }
         #endregion
@@ -57,8 +59,7 @@ namespace Mario.Game.Interactable
             if (_isInPipe)
                 return;
 
-            //if (player.IsGrounded && !player.InputActions.Jump)
-            //    StartCoroutine(MoveIntoPipe(player));
+            StartCoroutine(MoveIntoPipe(player));
         }
         #endregion
     }
