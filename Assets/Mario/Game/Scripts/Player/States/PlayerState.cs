@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,9 @@ namespace Mario.Game.Player
     {
 
         #region Objects
+        private readonly ISoundService _soundService;
+        private readonly IPlayerService _playerService;
+
         private bool _jumpWasPressed;
         #endregion
 
@@ -26,6 +31,9 @@ namespace Mario.Game.Player
         #region Constructor
         public PlayerState(PlayerController player)
         {
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
+
             Player = player;
         }
         #endregion
@@ -137,7 +145,16 @@ namespace Mario.Game.Player
 
             return false;
         }
-        protected virtual bool SetTransitionToBuff() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
+        protected virtual bool SetTransitionToBuff()
+        {
+            if (Player.StateMachine.CurrentMode.StateBuff != null)
+                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
+            else
+            {
+                _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
+                return false;
+            }
+        }
         protected virtual bool SetTransitionToNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
         protected virtual bool SetTransitionToDeath() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
         protected virtual bool SetTransitionToTimeOut() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateTimeOut);
