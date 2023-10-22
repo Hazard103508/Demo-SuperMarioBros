@@ -24,17 +24,16 @@ namespace Mario.Game.Items.RedMushroom
         #endregion
 
         #region Private Methods
-        public void CollectMushroom(PlayerController player)
+        protected override bool CollectMushroom(PlayerController player)
         {
-            if (!Mushroom.gameObject.activeSelf)
-                return;
-
-            Mushroom.gameObject.layer = 0;
-            _scoreService.Add(Mushroom.Profile.Points);
-            _scoreService.ShowPoints(Mushroom.Profile.Points, Mushroom.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
-
-            player.Buff();
-            Mushroom.gameObject.SetActive(false);
+            if (base.CollectMushroom(player))
+            {
+                _scoreService.Add(Mushroom.Profile.Points);
+                _scoreService.ShowPoints(Mushroom.Profile.Points, Mushroom.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
+                player.Buff();
+                return true;
+            }
+            return false;
         }
         #endregion
 

@@ -4,24 +4,22 @@ using Mario.Game.Items.Mushroom;
 using Mario.Game.Player;
 using UnityEngine;
 
-namespace Mario.Game.Items.GreenMushroom
+namespace Mario.Game.Items.RedMushroom
 {
-    public class MushroomGreenStateWalk : MushroomStateWalk
+    public class MushroomRedStateRising : MushroomStateRising
     {
         #region Objects
         private readonly IScoreService _scoreService;
-        private readonly IPlayerService _playerService;
         #endregion
 
         #region Properties
-        private new MushroomGreen Mushroom => (MushroomGreen)base.Mushroom;
+        private new MushroomRed Mushroom => (MushroomRed)base.Mushroom;
         #endregion
 
         #region Constructor
-        public MushroomGreenStateWalk(MushroomGreen mushroom) : base(mushroom)
+        public MushroomRedStateRising(MushroomRed mushroom) : base(mushroom)
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
-            _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
         #endregion
 
@@ -30,8 +28,9 @@ namespace Mario.Game.Items.GreenMushroom
         {
             if (base.CollectMushroom(player))
             {
-                _playerService.AddLife();
-                _scoreService.Show1UP(Mushroom.transform.position + Vector3.up * 1.70f, 0.8f, 3f);
+                _scoreService.Add(Mushroom.Profile.Points);
+                _scoreService.ShowPoints(Mushroom.Profile.Points, Mushroom.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
+                player.Buff();
                 return true;
             }
             return false;

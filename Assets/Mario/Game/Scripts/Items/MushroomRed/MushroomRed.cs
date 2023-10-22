@@ -13,6 +13,7 @@ namespace Mario.Game.Items.RedMushroom
         {
             base.Awake();
             base.StateMachine.StateWalk = new MushroomRedStateWalk(this);
+            base.StateMachine.StateRising = new MushroomRedStateRising(this);
         }
         #endregion
     }

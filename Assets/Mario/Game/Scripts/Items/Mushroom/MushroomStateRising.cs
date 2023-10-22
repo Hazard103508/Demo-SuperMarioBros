@@ -1,4 +1,3 @@
-using Mario.Game.Player;
 using UnityEngine;
 
 namespace Mario.Game.Items.Mushroom
@@ -8,7 +7,6 @@ namespace Mario.Game.Items.Mushroom
         #region Objects
         float _timer = 0;
         float _maxTime = 0.8f;
-        float _collectTime = 0.4f;
         Vector3 _initPosition;
         Vector3 _targetPosition;
         #endregion
@@ -16,14 +14,6 @@ namespace Mario.Game.Items.Mushroom
         #region Constructor
         public MushroomStateRising(Mushroom mushroom) : base(mushroom)
         {
-        }
-        #endregion
-
-        #region Private Methods
-        private void ChangeStateToCollect()
-        {
-            if (_timer >= _collectTime)
-                Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
         }
         #endregion
 
@@ -45,13 +35,6 @@ namespace Mario.Game.Items.Mushroom
             if (_timer >= _maxTime)
                 Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);
         }
-        #endregion
-
-        #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController player) => ChangeStateToCollect();
-        public override void OnHittedByPlayerFromBottom(PlayerController player) => ChangeStateToCollect();
-        public override void OnHittedByPlayerFromLeft(PlayerController player) => ChangeStateToCollect();
-        public override void OnHittedByPlayerFromRight(PlayerController player) => ChangeStateToCollect();
         #endregion
     }
 }

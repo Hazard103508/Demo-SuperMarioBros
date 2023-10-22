@@ -19,4 +19,4 @@ MonoBehaviour:
   _fallSpeed: 60
   _maxFallSpeed: 14.5
   _jumpAcceleration: 15
-  _points: 100
+  _points: 1000

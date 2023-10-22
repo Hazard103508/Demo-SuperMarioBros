@@ -15,6 +15,7 @@ MonoBehaviour:
   PooledObjectProfiles:
   - {fileID: 11400000, guid: d6a62de408a4d22419774db8e7e5126b, type: 2}
   - {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
+  - {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}
   PooledSoundProfiles:
   - {fileID: 11400000, guid: 55ae874151e101e4eb7984cd5002047f, type: 2}
   - {fileID: 11400000, guid: f34d26fa15bbf194abc3f5dcadede137, type: 2}

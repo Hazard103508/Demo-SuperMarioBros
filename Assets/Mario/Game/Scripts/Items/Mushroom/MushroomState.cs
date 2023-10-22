@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using System;
@@ -41,12 +43,21 @@ namespace Mario.Game.Items.Mushroom
         #endregion
 
         #region Protected Methods
-        public void ChangeDirectionToRight() => Mushroom.Movable.Speed = Mathf.Abs(Mushroom.Movable.Speed);
-        public void ChangeDirectionToLeft() => Mushroom.Movable.Speed = -Mathf.Abs(Mushroom.Movable.Speed);
-        public void ChangeSpeedAfferHit(Vector3 hitPosition)
+        protected void ChangeDirectionToRight() => Mushroom.Movable.Speed = Mathf.Abs(Mushroom.Movable.Speed);
+        protected void ChangeDirectionToLeft() => Mushroom.Movable.Speed = -Mathf.Abs(Mushroom.Movable.Speed);
+        protected void ChangeSpeedAfferHit(Vector3 hitPosition)
         {
             if (Math.Sign(Mushroom.Movable.Speed) != Math.Sign(Mushroom.transform.position.x - hitPosition.x))
                 Mushroom.Movable.Speed *= -1;
+        }
+        protected virtual bool CollectMushroom(PlayerController player)
+        {
+            if (!Mushroom.gameObject.activeSelf)
+                return false;
+
+            Mushroom.gameObject.layer = 0;
+            Mushroom.gameObject.SetActive(false);
+            return true;
         }
         #endregion
 

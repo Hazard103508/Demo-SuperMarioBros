@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Mario.Game.Items.GreenMushroom
 {
-    public class MushroomGreenStateWalk : MushroomStateWalk
+    public class MushroomGreenStateRising : MushroomStateRising
     {
         #region Objects
         private readonly IScoreService _scoreService;
@@ -18,14 +18,14 @@ namespace Mario.Game.Items.GreenMushroom
         #endregion
 
         #region Constructor
-        public MushroomGreenStateWalk(MushroomGreen mushroom) : base(mushroom)
+        public MushroomGreenStateRising(MushroomGreen mushroom) : base(mushroom)
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
         }
         #endregion
 
-        #region Protected Methods
+        #region Private Methods
         protected override bool CollectMushroom(PlayerController player)
         {
             if (base.CollectMushroom(player))

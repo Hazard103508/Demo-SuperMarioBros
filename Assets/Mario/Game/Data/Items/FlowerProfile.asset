@@ -12,9 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3514091f6e9a42249a1f24cdade38b68, type: 3}
   m_Name: FlowerProfile
   m_EditorClassIdentifier: 
-  PowerUpFXReference:
-    m_AssetGUID: 76824b930fc80f347b83fc7084db0e83
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  Points: 1000
+  _points: 1000
