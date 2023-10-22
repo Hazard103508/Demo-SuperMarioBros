@@ -2,8 +2,6 @@ using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
-using System;
-using System.Collections;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -45,27 +43,12 @@ namespace Mario.Game.Items.Mushroom
         }
         private void OnEnable()
         {
-            StartCoroutine(ResetMushroom());
+            this.StateMachine.TransitionTo(this.StateMachine.StateRising);
         }
         #endregion
 
         #region Public Methods
         public void OnFall() => gameObject.SetActive(false);
-        public void ChangeDirectionToRight() => Movable.Speed = Mathf.Abs(Movable.Speed);
-        public void ChangeDirectionToLeft() => Movable.Speed = -Mathf.Abs(Movable.Speed);
-        public void ChangeSpeedAfferHit(Vector3 hitPosition)
-        {
-            if (Math.Sign(Movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
-                Movable.Speed *= -1;
-        }
-        #endregion
-
-        #region Private Methods
-        private IEnumerator ResetMushroom()
-        {
-            yield return new WaitForEndOfFrame();
-            this.StateMachine.TransitionTo(this.StateMachine.StateRising);
-        }
         #endregion
 
         #region On Movable Hit

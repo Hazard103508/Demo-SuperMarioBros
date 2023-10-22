@@ -9,6 +9,7 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
     {
         #region Objects
         private readonly IPoolService _poolService;
+        private readonly ISoundService _soundService;
         #endregion
 
         #region Properties
@@ -19,6 +20,7 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
         public InvisibleBox1UPStateLastJump(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -27,7 +29,7 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
         {
             base.Enter();
             Box.gameObject.layer = LayerMask.NameToLayer("Ground");
-            _poolService.GetObjectFromPool(Box.Profile.RiseItemSoundFXPoolReference, Box.transform.position);
+            _soundService.Play(Box.Profile.RiseItemSoundFXPoolReference, Box.transform.position);
         }
         #endregion
 

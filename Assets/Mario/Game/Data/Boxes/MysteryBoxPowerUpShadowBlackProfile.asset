@@ -16,6 +16,6 @@ MonoBehaviour:
   _fallSpeed: 100
   _maxFallSpeed: 100
   _jumpAcceleration: 10
-  _riseItemSoundFXPoolReference: {fileID: 0}
+  _riseItemSoundFXPoolReference: {fileID: 11400000, guid: 110a1e4ebf8ad6045ae0e9db4d41e435, type: 2}
   _mushroomPoolReference: {fileID: 11400000, guid: 1522160af6c20304ea615b6a2d26d164, type: 2}
   _flowerPoolReference: {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}

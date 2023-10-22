@@ -1,5 +1,6 @@
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
+using System;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -36,6 +37,16 @@ namespace Mario.Game.Items.Mushroom
         }
         public virtual void Update()
         {
+        }
+        #endregion
+
+        #region Protected Methods
+        public void ChangeDirectionToRight() => Mushroom.Movable.Speed = Mathf.Abs(Mushroom.Movable.Speed);
+        public void ChangeDirectionToLeft() => Mushroom.Movable.Speed = -Mathf.Abs(Mushroom.Movable.Speed);
+        public void ChangeSpeedAfferHit(Vector3 hitPosition)
+        {
+            if (Math.Sign(Mushroom.Movable.Speed) != Math.Sign(Mushroom.transform.position.x - hitPosition.x))
+                Mushroom.Movable.Speed *= -1;
         }
         #endregion
 

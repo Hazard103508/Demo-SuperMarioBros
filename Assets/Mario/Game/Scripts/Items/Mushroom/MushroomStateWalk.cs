@@ -25,12 +25,12 @@ namespace Mario.Game.Items.Mushroom
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                Mushroom.ChangeDirectionToRight();
+                ChangeDirectionToRight();
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                Mushroom.ChangeDirectionToLeft();
+                ChangeDirectionToLeft();
         }
         #endregion
 
@@ -38,7 +38,7 @@ namespace Mario.Game.Items.Mushroom
         public override void OnHittedByBox(GameObject box)
         {
             Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateJump);
-            Mushroom.ChangeSpeedAfferHit(box.transform.position);
+            ChangeSpeedAfferHit(box.transform.position);
         }
         #endregion
     }

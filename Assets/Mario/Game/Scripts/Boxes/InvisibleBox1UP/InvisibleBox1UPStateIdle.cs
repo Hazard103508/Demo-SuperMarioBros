@@ -38,7 +38,10 @@ namespace Mario.Game.Boxes.InvisibleBox1UP
         public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
             if (_delay == 0)
+            {
+                Box.IsLastJump = true;
                 base.OnHittedByPlayerFromBottom(player);
+            }
         }
         public override void OnHittedByPlayerFromLeft(PlayerController player) => StartDelay();
         public override void OnHittedByPlayerFromRight(PlayerController player) => StartDelay();

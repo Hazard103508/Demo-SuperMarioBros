@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 286eea8ff593584449527785ccb93554, type: 3}
   m_Name: MushroomGreenProfile
   m_EditorClassIdentifier: 
-  GroundLayer:
+  _groundLayer:
     serializedVersion: 2
     m_Bits: 8
-  MoveSpeed: 3.7
-  FallSpeed: 60
-  MaxFallSpeed: 14.5
-  JumpAcceleration: 15
+  _moveSpeed: 3.7
+  _fallSpeed: 60
+  _maxFallSpeed: 14.5
+  _jumpAcceleration: 15

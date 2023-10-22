@@ -12,12 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46b97501013ddf48b3b41691f185c43, type: 3}
   m_Name: InvisibleBox1UpGreenProfile
   m_EditorClassIdentifier: 
-  _targetLayer:
-    serializedVersion: 2
-    m_Bits: 576
   _hitSoundFXPoolReference: {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
   _fallSpeed: 100
   _maxFallSpeed: 100
   _jumpAcceleration: 10
-  _riseItemSoundFXPoolReference: {fileID: 0}
+  _riseItemSoundFXPoolReference: {fileID: 11400000, guid: 110a1e4ebf8ad6045ae0e9db4d41e435, type: 2}
   _mushroomPoolReference: {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
