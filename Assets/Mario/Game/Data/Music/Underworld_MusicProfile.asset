@@ -12,10 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc6ede4b3c62e647a6cbd24231f78ae, type: 3}
   m_Name: Underworld_MusicProfile
   m_EditorClassIdentifier: 
+  _mainTheme: {fileID: 11400000, guid: 6d2356ab4c2f755498c2bdad1c42881e, type: 2}
+  _victoryTheme: {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
+  _hurryFX: {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
+  _hurryTheme:
+    _profile: {fileID: 11400000, guid: f4bb3a60fe064084eb3684746625245d, type: 2}
+    _startTimeInit: 0
+    _startTimeContinued: 0
+    Profile: {fileID: 11400000, guid: f4bb3a60fe064084eb3684746625245d, type: 2}
+    StartTimeInit: 0
+    StartTimeContinued: 0
   MainTheme: {fileID: 11400000, guid: 6d2356ab4c2f755498c2bdad1c42881e, type: 2}
   VictoryTheme: {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
   HurryFX: {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
   HurryTheme:
+    _profile: {fileID: 0}
+    _startTimeInit: 0
+    _startTimeContinued: 0
     Profile: {fileID: 11400000, guid: f4bb3a60fe064084eb3684746625245d, type: 2}
     StartTimeInit: 0
     StartTimeContinued: 0

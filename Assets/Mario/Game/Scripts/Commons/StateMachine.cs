@@ -53,7 +53,6 @@ namespace Mario.Game.Commons
             {
                 CurrentState.Exit();
                 CurrentState = _nextState;
-                UnityEngine.Debug.Log(_nextState);
                 _nextState.Enter();
 
                 StateChanged?.Invoke(_nextState);

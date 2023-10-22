@@ -12,10 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc6ede4b3c62e647a6cbd24231f78ae, type: 3}
   m_Name: Overworld_MusicProfile
   m_EditorClassIdentifier: 
+  _mainTheme: {fileID: 11400000, guid: f34d26fa15bbf194abc3f5dcadede137, type: 2}
+  _victoryTheme: {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
+  _hurryFX: {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
+  _hurryTheme:
+    _profile: {fileID: 11400000, guid: 55ae874151e101e4eb7984cd5002047f, type: 2}
+    _startTimeInit: 19.2
+    _startTimeContinued: 20.6
+    Profile: {fileID: 11400000, guid: 55ae874151e101e4eb7984cd5002047f, type: 2}
+    StartTimeInit: 19.2
+    StartTimeContinued: 20.6
   MainTheme: {fileID: 11400000, guid: f34d26fa15bbf194abc3f5dcadede137, type: 2}
   VictoryTheme: {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
   HurryFX: {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
   HurryTheme:
+    _profile: {fileID: 11400000, guid: 55ae874151e101e4eb7984cd5002047f, type: 2}
+    _startTimeInit: 19.2
+    _startTimeContinued: 20.6
     Profile: {fileID: 11400000, guid: 55ae874151e101e4eb7984cd5002047f, type: 2}
     StartTimeInit: 19.2
     StartTimeContinued: 20.6

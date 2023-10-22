@@ -9,31 +9,48 @@ namespace Mario.Game.ScriptableObjects.Map
     [CreateAssetMenu(fileName = "MapProfile", menuName = "ScriptableObjects/Game/Map/MapProfile", order = 0)]
     public class MapProfile : ScriptableObject
     {
-        public string WorldName;
-        public MapInit MapInit;
-        public MapTime Time;
-        public AssetReference[] MapSectionReferences;
-        public MapProfile[] PipesConnections;
-        public MapProfile[] CheckPoints;
-        public MapProfile NextMap;
-        public MusicProfile Music;
-        public PooledProfileGroup[] PoolProfiles;
+        [SerializeField] private string _worldName;
+        [SerializeField] private MapInit _mapInit;
+        [SerializeField] private MapTime _time;
+        [SerializeField] private AssetReference[] _mapSectionReferences;
+        [SerializeField] private MapProfile[] _pipesConnections;
+        [SerializeField] private MapProfile[] _checkPoints;
+        [SerializeField] private MapProfile _nextMap;
+        [SerializeField] private MusicProfile _music;
+        [SerializeField] private PooledProfileGroup[] _poolProfiles;
 
-        [NonSerialized] public int Width;
+        public string WorldName => _worldName;
+        public MapInit MapInit => _mapInit;
+        public MapTime Time => _time;
+        public AssetReference[] MapSectionReferences => _mapSectionReferences;
+        public MapProfile[] PipesConnections => _pipesConnections;
+        public MapProfile[] CheckPoints => _checkPoints;
+        public MapProfile NextMap => _nextMap;
+        public MusicProfile Music => _music;
+        public PooledProfileGroup[] PoolProfiles => _poolProfiles;
+        public int Width { get; set; }
     }
     [Serializable]
     public class MapInit
     {
-        public Color BackgroundColor;
-        public Vector2 StartPosition;
-        public PlayerStartLocation StartLocation;
-        public float BlackScreenTime;
+        [SerializeField] private Color _backgroundColor;
+        [SerializeField] private Vector2 _startPosition;
+        [SerializeField] private PlayerStartLocation _startLocation;
+        [SerializeField] private float _blackScreenTime;
+
+        public Color BackgroundColor => _backgroundColor;
+        public Vector2 StartPosition => _startPosition;
+        public PlayerStartLocation StartLocation => _startLocation;
+        public float BlackScreenTime => _blackScreenTime;
     }
     [Serializable]
     public class MapTime
     {
-        public MapTimeType Type;
-        public int StartTime;
+        [SerializeField] private MapTimeType _type;
+        [SerializeField] private int _startTime;
+
+        public MapTimeType Type => _type;
+        public int StartTime => _startTime;
     }
     public enum MapTimeType
     {

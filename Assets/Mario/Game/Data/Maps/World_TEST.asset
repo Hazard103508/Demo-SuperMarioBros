@@ -12,13 +12,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55d97fa783210a4c8c30bc6e76f176f, type: 3}
   m_Name: World_TEST
   m_EditorClassIdentifier: 
+  _worldName: 1-2
+  _mapInit:
+    _backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    _startPosition: {x: 2, y: 2}
+    _startLocation: 0
+    _blackScreenTime: 0
+    BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    StartPosition: {x: 2, y: 2}
+    StartLocation: 0
+    BlackScreenTime: 0
+  _time:
+    _type: 1
+    _startTime: 400
+    Type: 1
+    StartTime: 400
+  _mapSectionReferences:
+  - m_AssetGUID: 2227a808dfe2c664daa7632fc5abdace
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _pipesConnections: []
+  _checkPoints: []
+  _nextMap: {fileID: 0}
+  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
+  _poolProfiles:
+  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
+  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
+  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}
   WorldName: 1-2
   MapInit:
+    _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+    _startPosition: {x: 0, y: 0}
+    _startLocation: 0
+    _blackScreenTime: 0
     BackgroundColor: {r: 0, g: 0, b: 0, a: 1}
     StartPosition: {x: 2, y: 2}
     StartLocation: 0
     BlackScreenTime: 0
   Time:
+    _type: 0
+    _startTime: 0
     Type: 1
     StartTime: 400
   MapSectionReferences:

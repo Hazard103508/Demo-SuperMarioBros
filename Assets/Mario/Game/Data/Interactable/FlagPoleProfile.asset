@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadd5570bdbeefc46a609183c08d395b, type: 3}
   m_Name: FlagPoleProfile
   m_EditorClassIdentifier: 
+  _points: 88130000d0070000200300009001000064000000
   Points: 88130000d0070000200300009001000064000000
