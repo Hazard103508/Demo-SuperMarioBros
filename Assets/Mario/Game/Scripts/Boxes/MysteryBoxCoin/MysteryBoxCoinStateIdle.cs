@@ -9,6 +9,7 @@ namespace Mario.Game.Boxes.MysteryBoxCoin
     {
         #region Objects
         private readonly IPoolService _poolService;
+        private readonly ISoundService _soundService;
         #endregion
 
         #region Properties
@@ -19,6 +20,7 @@ namespace Mario.Game.Boxes.MysteryBoxCoin
         public MysteryBoxCoinStateIdle(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -32,7 +34,9 @@ namespace Mario.Game.Boxes.MysteryBoxCoin
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
+            Box.IsLastJump = true;
             _poolService.GetObjectFromPool(Box.Profile.CoinPoolReference, Box.transform.position);
+            _soundService.Play(Box.Profile.HitSoundFXPoolReference, Box.transform.position);
             base.OnHittedByPlayerFromBottom(player);
         }
         #endregion

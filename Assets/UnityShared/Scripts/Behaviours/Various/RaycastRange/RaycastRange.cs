@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityShared.Commons.Structs;
 using UnityShared.ScriptableObjects.GameObjects;
 
@@ -11,7 +10,6 @@ namespace UnityShared.Behaviours.Various.RaycastRange
     {
         #region Objects
         [SerializeField] protected RaycastRangeProfile _profile;
-        public UnityEvent<RayHitInfo> onHit;
         private float _rayExtraLength;
         #endregion
 
