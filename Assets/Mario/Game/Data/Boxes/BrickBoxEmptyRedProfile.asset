@@ -12,13 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
   m_Name: BrickBoxEmptyRedProfile
   m_EditorClassIdentifier: 
-  _targetLayer:
-    serializedVersion: 2
-    m_Bits: 576
   _hitSoundFXPoolReference: {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
   _fallSpeed: 100
   _maxFallSpeed: 100
   _jumpAcceleration: 10
-  BrokenBrickPoolReference: {fileID: 11400000, guid: d6a62de408a4d22419774db8e7e5126b, type: 2}
-  BreakSoundFXPoolReference: {fileID: 11400000, guid: d0256ae781eb57b4cb5ca59a015018d1, type: 2}
-  Points: 50
+  _brokenBrickPoolReference: {fileID: 11400000, guid: d6a62de408a4d22419774db8e7e5126b, type: 2}
+  _breakSoundFXPoolReference: {fileID: 11400000, guid: d0256ae781eb57b4cb5ca59a015018d1, type: 2}
+  _points: 50

@@ -12,6 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
   m_Name: MushroomRaycastRangeBottomProfile
   m_EditorClassIdentifier: 
+  _blockLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  _otherLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _range:
+    _startPoint: {x: -0.25, y: -0.45}
+    _endPoint: {x: 0.25, y: -0.45}
+    _count: 2
+    StartPoint: {x: -0.25, y: -0.45}
+    EndPoint: {x: 0.25, y: -0.45}
+    Count: 2
+  _ray:
+    _direction: {x: 0, y: -1}
+    _length: 0.05
+    Direction: {x: 0, y: -1}
+    Length: 0.05
   BlockLayers:
     serializedVersion: 2
     m_Bits: 8
@@ -19,9 +37,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   Range:
+    _startPoint: {x: 0, y: 0}
+    _endPoint: {x: 0, y: 0}
+    _count: 0
     StartPoint: {x: -0.25, y: -0.45}
     EndPoint: {x: 0.25, y: -0.45}
     Count: 2
   Ray:
+    _direction: {x: 0, y: 0}
+    _length: 0
     Direction: {x: 0, y: -1}
     Length: 0.05

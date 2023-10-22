@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3e6286afd053f4fbf5925828e26800, type: 3}
   m_Name: MarioRaycastRangeBigDuckingTopProfile
   m_EditorClassIdentifier: 
-  BlockLayers:
+  _blockLayers:
     serializedVersion: 2
     m_Bits: 8
-  OtherLayers:
+  _otherLayers:
     serializedVersion: 2
     m_Bits: 832
-  Range:
-    StartPoint: {x: 0, y: 0.7}
-    EndPoint: {x: 0, y: 0.7}
-    Count: 1
-  Ray:
-    Direction: {x: 0, y: 1}
-    Length: 0.1
+  _range:
+    _startPoint: {x: 0, y: 0.7}
+    _endPoint: {x: 0, y: 0.7}
+    _count: 1
+  _ray:
+    _direction: {x: 0, y: 1}
+    _length: 0.1
