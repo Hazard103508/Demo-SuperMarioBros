@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8b61afac54fe6458c8349739db409d, type: 3}
   m_Name: CoinProfile
   m_EditorClassIdentifier: 
-  CoinPoolReference: {fileID: 11400000, guid: 6ff576011a12e6e4f81c7c35ebad7920, type: 2}
-  Points: 200
+  _coinPoolReference: {fileID: 11400000, guid: 6ff576011a12e6e4f81c7c35ebad7920, type: 2}
+  _points: 200

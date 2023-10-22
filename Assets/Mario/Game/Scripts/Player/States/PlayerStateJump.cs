@@ -67,9 +67,11 @@ namespace Mario.Game.Player
 
             float minHeight = Player.InputActions.Move.x == 0 ? Player.StateMachine.CurrentMode.ModeProfile.Jump.WalkHeight.Min : Player.StateMachine.CurrentMode.ModeProfile.Jump.RunHeight.Min;
             _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(minHeight, -Player.Movable.Gravity);
-            Player.Movable.SetJumpForce(_jumpForce);
 
-            _soundService.Play(Player.StateMachine.CurrentMode.ModeProfile.Jump.SoundFX, Player.transform.position);
+            if (Player.Movable.JumpForce == 0)
+                _soundService.Play(Player.StateMachine.CurrentMode.ModeProfile.Jump.SoundFX, Player.transform.position);
+
+            Player.Movable.SetJumpForce(_jumpForce);
         }
         public override void Update()
         {

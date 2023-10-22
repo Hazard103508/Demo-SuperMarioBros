@@ -6,7 +6,10 @@ namespace Mario.Game.ScriptableObjects.Items
     [CreateAssetMenu(fileName = "CoinProfile", menuName = "ScriptableObjects/Game/Items/CoinProfile", order = 0)]
     public class CoinProfile : ScriptableObject
     {
-        public PooledObjectProfile CoinPoolReference;
-        public int Points;
+        [SerializeField] private PooledObjectProfile _coinPoolReference;
+        [SerializeField] private int _points;
+
+        public PooledObjectProfile CoinPoolReference => _coinPoolReference;
+        public int Points => _points;
     }
 }
