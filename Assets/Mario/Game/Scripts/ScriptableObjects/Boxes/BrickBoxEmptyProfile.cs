@@ -6,8 +6,12 @@ namespace Mario.Game.ScriptableObjects.Boxes
     [CreateAssetMenu(fileName = "BrickBoxEmptyProfile", menuName = "ScriptableObjects/Game/Boxes/BrickBoxEmptyProfile", order = 1)]
     public class BrickBoxEmptyProfile : BoxProfile
     {
-        public PooledObjectProfile BrokenBrickPoolReference;
-        public PooledSoundProfile BreakSoundFXPoolReference;
-        public int Points;
+        [SerializeField] private PooledObjectProfile _brokenBrickPoolReference;
+        [SerializeField] private PooledSoundProfile _breakSoundFXPoolReference;
+        [SerializeField] private int _points;
+
+        public PooledObjectProfile BrokenBrickPoolReference => _brokenBrickPoolReference;
+        public PooledSoundProfile BreakSoundFXPoolReference => _breakSoundFXPoolReference;
+        public int Points => _points;
     }
 }

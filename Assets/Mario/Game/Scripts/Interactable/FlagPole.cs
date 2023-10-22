@@ -16,7 +16,7 @@ namespace Mario.Game.Interactable
         [SerializeField] private GameObject _flag;
         [SerializeField] private AudioSource _audioSource;
         [SerializeField] private FlagScoreLabel _scoreLabel;
-        private bool _isLowering;
+        //private bool _isLowering;
         #endregion
 
         #region Unity Methods
@@ -29,12 +29,12 @@ namespace Mario.Game.Interactable
         #region Private Methods
         private void ShowPoint(PlayerController player)
         {
-            if (!_isLowering)
-            {
-                int point = GetFlagPoints(player);
-                _scoreService.Add(point);
-                _scoreLabel.ShowPoint(point);
-            }
+            //if (!_isLowering)
+            //{
+            //    int point = GetFlagPoints(player);
+            //    _scoreService.Add(point);
+            //    _scoreLabel.ShowPoint(point);
+            //}
         }
         //private void LowerFlag(PlayerController player)
         //{

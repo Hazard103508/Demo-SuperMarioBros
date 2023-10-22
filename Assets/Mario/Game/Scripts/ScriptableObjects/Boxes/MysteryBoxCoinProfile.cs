@@ -6,6 +6,8 @@ namespace Mario.Game.ScriptableObjects.Boxes
     [CreateAssetMenu(fileName = "MysteryBoxCoinProfile", menuName = "ScriptableObjects/Game/Boxes/MysteryBoxCoinProfile", order = 3)]
     public class MysteryBoxCoinProfile : BoxProfile
     {
-        public PooledObjectProfile CoinPoolReference;
+        [SerializeField] private PooledObjectProfile _coinPoolReference;
+
+        public PooledObjectProfile CoinPoolReference => _coinPoolReference;
     }
 }
