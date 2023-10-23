@@ -29,7 +29,7 @@ namespace Mario.Game.Player
         {
             Player.Renderer.sortingLayerName = "Dead";
 
-            Player.Movable.enabled = false;
+            _playerService.EnablePlayerMovable(false);
             Player.Movable.Speed = 0;
             Player.Movable.Gravity = Player.StateMachine.CurrentMode.ModeProfile.Fall.DeathFallSpeed;
             yield return new WaitForSeconds(0.25f);

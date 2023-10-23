@@ -29,6 +29,7 @@ namespace Mario.Game.Player
         {
             base.Enter();
             Player.Movable.enabled = false;
+            _playerService.EnablePlayerMovable(false);
             _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
             _timeService.FreezeTimer();
         }

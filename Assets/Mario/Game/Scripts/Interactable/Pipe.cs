@@ -52,6 +52,7 @@ namespace Mario.Game.Interactable
 
             _isInPipe = true;
             player.Movable.enabled = false;
+            player.enabled = false;
 
             _soundService.Play(_profile.SoundFXPoolReference);
             yield return OnMovePlayer(player);

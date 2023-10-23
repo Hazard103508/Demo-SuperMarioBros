@@ -56,6 +56,7 @@ namespace Mario.Game.Player
             else
                 Nerf();
         }
+        public void OnFall() => Kill();
         //---Temp---
         public void BounceJump() { }
         //public bool IsAutoWalk { get; set; }
