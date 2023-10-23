@@ -30,12 +30,12 @@ namespace Mario.Game.ScriptableObjects.Map
     public class MapConnection
     {
         [SerializeField] private MapProfile _mapProfile;
-        [SerializeField] private PlayerStartLocation _startLocation;
+        [SerializeField] private PlayerStartMode _startMode;
         [SerializeField] private Vector2 _startPosition;
         [SerializeField] private float _blackScreenTime;
 
         public MapProfile MapProfile => _mapProfile;
-        public PlayerStartLocation StartLocation => _startLocation;
+        public PlayerStartMode StartMode => _startMode;
         public Vector2 StartPosition => _startPosition;
         public float BlackScreenTime => _blackScreenTime;
     }

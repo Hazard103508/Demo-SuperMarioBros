@@ -1,6 +1,6 @@
 namespace Mario.Game.Enums
 {
-    public enum PlayerStartLocation
+    public enum PlayerStartMode
     {
         Default,
         PipeUp

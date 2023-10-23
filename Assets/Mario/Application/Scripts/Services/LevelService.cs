@@ -164,7 +164,7 @@ namespace Mario.Application.Services
         {
             if (_mapConnection != null)
             {
-                if (_mapConnection.StartLocation == PlayerStartLocation.PipeUp)
+                if (_mapConnection.StartMode == PlayerStartMode.PipeUp)
                 {
                     yield return new WaitForSeconds(1);
                     float _totalTranslate = 0;

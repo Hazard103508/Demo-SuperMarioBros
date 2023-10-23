@@ -15,6 +15,6 @@ MonoBehaviour:
   _soundFXPoolReference: {fileID: 11400000, guid: ec4e24934fdb0d24eb8e8ad184529244, type: 2}
   _connection:
     _mapProfile: {fileID: 11400000, guid: e91824c6d41c8344fa80039c5a0d8967, type: 2}
-    _startLocation: 1
+    _startMode: 1
     _startPosition: {x: 10.5, y: 8}
     _blackScreenTime: 1
