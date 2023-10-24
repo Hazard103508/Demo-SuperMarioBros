@@ -150,6 +150,7 @@ namespace Mario.Application.Services
             _isHurry = false;
             _playerService.SetPlayerPosition(_mapConnection != null ? _mapConnection.StartPosition : MapProfile.StartPosition);
             _playerService.EnablePlayerController(true);
+            _playerService.RestorePlayerMode();
 
             LevelLoaded.Invoke();
 

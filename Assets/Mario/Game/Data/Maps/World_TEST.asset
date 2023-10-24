@@ -15,7 +15,7 @@ MonoBehaviour:
   _worldName: 8-8
   _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   _startPosition: {x: 2, y: 2}
-  _startTime: 0
+  _startTime: 400
   _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _mapSectionReferences:
   - m_AssetGUID: 2227a808dfe2c664daa7632fc5abdace

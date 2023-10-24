@@ -20,6 +20,7 @@ namespace Mario.Application.Services
         private PlayerController _playerController;
         private Movable _playerMovable;
         private PlayerInput _playerInput;
+        private Type _playerMode;
         #endregion
 
         #region Properties
@@ -44,11 +45,20 @@ namespace Mario.Application.Services
         }
         public void SetPlayer(PlayerController playerController)
         {
+            _playerMode = _playerController?.StateMachine.CurrentMode.GetType();
+
             _playerController = playerController;
             _playerMovable = _playerController.GetComponent<Movable>();
             _playerInput = _playerController.GetComponent<PlayerInput>();
         }
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
+        public void RestorePlayerMode()
+        {
+            _playerController.StateMachine.CurrentMode =
+                _playerMode == typeof(PlayerModeBig) ? _playerController.StateMachine.ModeBig :
+                _playerMode == typeof(PlayerModeSuper) ? _playerController.StateMachine.ModeSuper :
+                _playerController.StateMachine.ModeSmall;
+        }
         public void EnablePlayerController(bool enable) => _playerController.gameObject.SetActive(enable);
         public void EnablePlayerMovable(bool enable) => _playerMovable.enabled = enable;
         public void EnablePlayerInput(bool enable) => _playerInput.enabled = enable;
