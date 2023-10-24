@@ -16,29 +16,19 @@ namespace Mario.Game.Maps
         private void Start()
         {
             _levelService = ServiceLocator.Current.Get<ILevelService>();
-            _levelService.LevelLoaded += OnLevelLoaded;
-        }
-        private void OnDestroy()
-        {
-            _levelService.LevelLoaded -= OnLevelLoaded;
         }
         private void LateUpdate()
         {
-            if (limitXPosition == 0)
+            if (_levelService.MapProfile.Width == 0)
+            {
                 return;
+            } 
 
             var cam = Camera.main;
             var topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
 
-            if (topRight.x > limitXPosition)
-                this.transform.position -= Vector3.right * (topRight.x - limitXPosition);
-        }
-        #endregion
-
-        #region Service Methods
-        private void OnLevelLoaded()
-        {
-            limitXPosition = _levelService.MapProfile.Width;
+            if (topRight.x > _levelService.MapProfile.Width)
+                this.transform.position -= Vector3.right * (topRight.x - _levelService.MapProfile.Width);
         }
         #endregion
     }

@@ -51,15 +51,15 @@ namespace Mario.Game.Interactable
             _timeService.FreezeTimer();
 
             _isInPipe = true;
-            player.Movable.enabled = false;
-            player.enabled = false;
+            _playerService.EnablePlayerMovable(false);
+            _playerService.EnablePlayerController(false);
 
             _soundService.Play(_profile.SoundFXPoolReference);
             yield return OnMovePlayer(player);
 
             player.transform.position = new Vector3(player.transform.position.x, Mathf.Round(player.transform.position.y), player.transform.position.z);
             _levelService.SetNextMap(_profile.Connection);
-            _sceneService.LoadMapScene(0.2f);
+            _levelService.LoadNextLevel();
         }
         #endregion
     }

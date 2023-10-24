@@ -29,6 +29,7 @@ namespace Mario.Application.Services
         private Coroutine _hurryCO;
 
         private MapConnection _mapConnection;
+        private GameObject _root;
         #endregion
 
         #region Properties
@@ -47,7 +48,6 @@ namespace Mario.Application.Services
         #endregion
 
         #region Events
-        public event Action LevelLoaded;
         public event Action GoalReached;
         #endregion
 
@@ -74,8 +74,9 @@ namespace Mario.Application.Services
             _playerService.LivesRemoved -= OnLivesRemoved;
         }
 
-        public async void LoadLevel(Transform parent)
+        public async void LoadLevel()
         {
+            _root = new GameObject("Map");
             if (_mapConnection != null)
                 MapProfile = _mapConnection.MapProfile;
 
@@ -83,11 +84,22 @@ namespace Mario.Application.Services
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
 
             LoadAsyncReferences();
-            await LoadMapSections(parent);
+            await LoadMapSections(_root.transform);
             StartCoroutine(StartGame());
+        }
+        public void LoadNextLevel()
+        {
+            _playerService.SetActivePlayer(false);
+            _playerService.EnableAutoWalk(false);
+
+            UnloadLevel();
+            LoadLevel();
         }
         public void UnloadLevel()
         {
+            if (_root != null)
+                Destroy(_root);
+
             _assetLoaderContainer.Clear();
             _poolService.ClearPool();
 
@@ -149,10 +161,6 @@ namespace Mario.Application.Services
             IsLoadCompleted = true;
             _isHurry = false;
             _playerService.SetPlayerPosition(_mapConnection != null ? _mapConnection.StartPosition : MapProfile.StartPosition);
-            _playerService.EnablePlayerController(true);
-            _playerService.RestorePlayerMode();
-
-            LevelLoaded.Invoke();
 
             yield return ShowCustomIntroPosition();
 
@@ -163,6 +171,7 @@ namespace Mario.Application.Services
         }
         private IEnumerator ShowCustomIntroPosition()
         {
+            _playerService.SetActivePlayer(true);
             if (_mapConnection != null)
             {
                 if (_mapConnection.StartMode == PlayerStartMode.PipeUp)
@@ -178,9 +187,11 @@ namespace Mario.Application.Services
                     }
                 }
             }
-            _playerService.EnablePlayerInput(true);
+
+            _playerService.EnablePlayerController(true);
             _playerService.EnablePlayerMovable(true);
-            _playerService.EnableAutoWalk(false);
+            _playerService.EnablePlayerInput(true);
+
         }
         private IEnumerator ReloadAfterDead()
         {

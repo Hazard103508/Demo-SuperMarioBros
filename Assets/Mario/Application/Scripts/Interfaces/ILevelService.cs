@@ -10,10 +10,10 @@ namespace Mario.Application.Interfaces
         bool IsGoalReached { get; set; }
         bool IsLoadCompleted { get; }
 
-        event Action LevelLoaded;
         event Action GoalReached;
 
-        void LoadLevel(Transform parent);
+        void LoadLevel();
+        void LoadNextLevel();
         void UnloadLevel();
         void SetNextMap(MapConnection connection);
     }

@@ -16,7 +16,7 @@ namespace Mario.Application.Interfaces
 
         void SetPlayer(PlayerController playerController);
         void SetPlayerPosition(Vector3 position);
-        void RestorePlayerMode();
+        void SetActivePlayer(bool isActive);
         void EnablePlayerController(bool enable);
         void EnablePlayerMovable(bool enable);
         void EnablePlayerInput(bool enable);

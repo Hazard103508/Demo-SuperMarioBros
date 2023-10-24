@@ -20,7 +20,7 @@ namespace Mario.Application.Services
         private PlayerController _playerController;
         private Movable _playerMovable;
         private PlayerInput _playerInput;
-        private Type _playerMode;
+        private PlayerInputActions _playerInputActions;
         #endregion
 
         #region Properties
@@ -45,24 +45,21 @@ namespace Mario.Application.Services
         }
         public void SetPlayer(PlayerController playerController)
         {
-            _playerMode = _playerController?.StateMachine.CurrentMode.GetType();
-
             _playerController = playerController;
             _playerMovable = _playerController.GetComponent<Movable>();
             _playerInput = _playerController.GetComponent<PlayerInput>();
+            _playerInputActions = _playerController.GetComponent<PlayerInputActions>();
         }
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
-        public void RestorePlayerMode()
-        {
-            _playerController.StateMachine.CurrentMode =
-                _playerMode == typeof(PlayerModeBig) ? _playerController.StateMachine.ModeBig :
-                _playerMode == typeof(PlayerModeSuper) ? _playerController.StateMachine.ModeSuper :
-                _playerController.StateMachine.ModeSmall;
-        }
-        public void EnablePlayerController(bool enable) => _playerController.gameObject.SetActive(enable);
+        public void SetActivePlayer(bool isActive) => _playerController.gameObject.SetActive(isActive);
+        public void EnablePlayerController(bool enable) => _playerController.enabled = enable;
         public void EnablePlayerMovable(bool enable) => _playerMovable.enabled = enable;
         public void EnablePlayerInput(bool enable) => _playerInput.enabled = enable;
-        public void EnableAutoWalk(bool enable) => IsAutowalk = enable;
+        public void EnableAutoWalk(bool enable)
+        {
+            _playerInputActions.ResetInputs();
+            IsAutowalk = enable;
+        }
         public void KillPlayer() => _playerController.Kill();
         public void KillPlayerByTimeOut() => _playerController.TimeOut();
         public void TranslatePlayerPosition(Vector3 position) => _playerController.transform.Translate(position);

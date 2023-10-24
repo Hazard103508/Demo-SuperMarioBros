@@ -30,6 +30,14 @@ namespace Mario.Game.Player
         public void OnJump(InputValue value) => Jump = !_playerService.IsAutowalk && value.isPressed;
         public void OnSprint(InputValue value) => Sprint = !_playerService.IsAutowalk && value.isPressed;
         public void OnDuck(InputValue value) => Ducking = !_playerService.IsAutowalk && value.isPressed;
+        public void ResetInputs()
+        {
+            Move = Vector2.zero;
+            Jump = false; 
+            Sprint = false; 
+            Ducking = false;
+        }
         #endregion
+
     }
 }
