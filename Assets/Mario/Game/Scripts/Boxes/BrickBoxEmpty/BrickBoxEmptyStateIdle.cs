@@ -31,7 +31,8 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         #region Private Methods
         private IEnumerator DestroyBox()
         {
-            yield return new WaitForEndOfFrame();
+            yield return new WaitForEndOfFrame(); // wait state changed to jump
+            yield return new WaitForEndOfFrame(); // wait for collition over the box
             Object.Destroy(Box.gameObject);
         }
         #endregion
@@ -39,6 +40,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         #region On Player Hit
         public override void OnHittedByPlayerFromBottom(PlayerController player)
         {
+            base.OnHittedByPlayerFromBottom(player);
             if (!player.StateMachine.CurrentMode.Equals(player.StateMachine.ModeSmall))
             {
                 _poolService.GetObjectFromPool(Box.Profile.BrokenBrickPoolReference, Box.transform.position);
@@ -46,7 +48,6 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
                 _soundService.Play(Box.Profile.BreakSoundFXPoolReference, Box.transform.position);
                 Box.StartCoroutine(DestroyBox());
             }
-            base.OnHittedByPlayerFromBottom(player);
         }
         #endregion
     }

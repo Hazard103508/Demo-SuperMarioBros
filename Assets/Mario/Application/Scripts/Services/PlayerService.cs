@@ -60,6 +60,7 @@ namespace Mario.Application.Services
             _playerInputActions.ResetInputs();
             IsAutowalk = enable;
         }
+        public void ResetState() => _playerController.StateMachine.TransitionTo(_playerController.StateMachine.CurrentMode.StateIdle);
         public void KillPlayer() => _playerController.Kill();
         public void KillPlayerByTimeOut() => _playerController.TimeOut();
         public void TranslatePlayerPosition(Vector3 position) => _playerController.transform.Translate(position);

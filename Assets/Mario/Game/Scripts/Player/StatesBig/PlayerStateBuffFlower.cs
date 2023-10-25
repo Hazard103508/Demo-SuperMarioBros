@@ -65,9 +65,6 @@ namespace Mario.Game.Player
             if (SetTransitionToDucking())
                 return;
 
-            if (SetTransitionToJump())
-                return;
-
             if (SetTransitionToFall())
                 return;
 

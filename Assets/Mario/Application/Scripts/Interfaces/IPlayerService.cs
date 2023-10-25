@@ -21,6 +21,7 @@ namespace Mario.Application.Interfaces
         void EnablePlayerMovable(bool enable);
         void EnablePlayerInput(bool enable);
         void EnableAutoWalk(bool enable);
+        void ResetState();
         void TranslatePlayerPosition(Vector3 position);
         void KillPlayer();
         void KillPlayerByTimeOut();

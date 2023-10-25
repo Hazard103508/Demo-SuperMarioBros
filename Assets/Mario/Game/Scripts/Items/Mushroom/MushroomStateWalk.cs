@@ -15,7 +15,7 @@ namespace Mario.Game.Items.Mushroom
         public override void Enter()
         {
             Mushroom.Movable.enabled = true;
-            Mushroom.Movable.Speed = Mushroom.Profile.MoveSpeed;
+            Mushroom.Movable.Speed = Mushroom.Profile.MoveSpeed * Mathf.Sign(Mushroom.Movable.Speed);
             Mushroom.Movable.Gravity = Mushroom.Profile.FallSpeed;
             Mushroom.Movable.MaxFallSpeed = Mushroom.Profile.MaxFallSpeed;
         }
@@ -37,8 +37,8 @@ namespace Mario.Game.Items.Mushroom
         #region On Box Hit
         public override void OnHittedByBox(GameObject box)
         {
-            Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateJump);
             ChangeSpeedAfferHit(box.transform.position);
+            Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateJump);
         }
         #endregion
     }

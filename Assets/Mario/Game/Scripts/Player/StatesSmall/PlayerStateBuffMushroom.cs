@@ -56,9 +56,6 @@ namespace Mario.Game.Player
         }
         private void SetNextState()
         {
-            if (SetTransitionToJump())
-                return;
-
             if (SetTransitionToFall())
                 return;
 

@@ -91,6 +91,7 @@ namespace Mario.Application.Services
         {
             _playerService.SetActivePlayer(false);
             _playerService.EnableAutoWalk(false);
+            _playerService.ResetState();
 
             UnloadLevel();
             LoadLevel();
