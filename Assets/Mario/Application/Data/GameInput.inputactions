@@ -1,5 +1,5 @@
 {
-    "name": "PlayerInput",
+    "name": "GameInput",
     "maps": [
         {
             "name": "Player",
@@ -106,6 +106,34 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Duck",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "b7c476f5-6119-41ba-94c6-9175b9514576",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "814fba1a-c66b-483d-8eb5-54ff3fe09dd7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f88d4f5c-ff7e-4bcf-9933-5509e82181e8",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Start",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
