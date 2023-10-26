@@ -2,7 +2,7 @@
     "name": "GameInput",
     "maps": [
         {
-            "name": "Player",
+            "name": "GamePlay",
             "id": "f62a4b92-ef5e-4175-8f4c-c9075429d32c",
             "actions": [
                 {
@@ -37,6 +37,15 @@
                     "type": "PassThrough",
                     "id": "9d78d411-5d6d-4d9b-aa26-dabf2aa22ee9",
                     "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "a7e6e8bc-3afc-4342-9813-09f049fba0c7",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -106,6 +115,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "Duck",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "aa3cd814-2bec-4f18-8b8c-3c84546331f5",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

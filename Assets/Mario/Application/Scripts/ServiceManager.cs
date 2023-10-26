@@ -23,6 +23,7 @@ namespace Mario.Application
             RegisterServicer<IPlayerService>();
             RegisterServicer<ISceneService>();
             RegisterServicer<IPauseService>();
+            RegisterServicer<IInputService>();
 
             ServiceLocator.Current.Initalize();
             ServiceLocator.Current.Get<ISceneService>().LoadMainScene();
@@ -33,6 +34,6 @@ namespace Mario.Application
             Destroy(gameObject);
         }
 
-        private void RegisterServicer<T>() where T : IGameService => ServiceLocator.Current.Register<T>(GetComponentInChildren<T>());
+        private void RegisterServicer<T>() where T : IGameService => ServiceLocator.Current.Register(GetComponentInChildren<T>());
     }
 }

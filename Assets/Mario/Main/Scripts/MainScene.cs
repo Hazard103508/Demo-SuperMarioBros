@@ -10,6 +10,7 @@ namespace Mario.Main
         private ISceneService _sceneService;
         private IScoreService _scoreService;
         private IPlayerService _playerService;
+        private IInputService _inputService;
 
         private void Awake()
         {
@@ -17,16 +18,21 @@ namespace Mario.Main
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _inputService = ServiceLocator.Current.Get<IInputService>();
+
+            _inputService.UseUIMap();
         }
         private void Start()
         {
             ResetPlayerData();
         }
-
-        private void Update()
+        private void OnEnable()
         {
-            if (Input.GetKeyDown(KeyCode.Return))
-                _sceneService.LoadStandByScene();
+            _inputService.StartPressed += InputService_StartPressed; ;
+        }
+        private void OnDisable()
+        {
+            _inputService.StartPressed -= InputService_StartPressed;
         }
         private void ResetPlayerData()
         {
@@ -34,5 +40,7 @@ namespace Mario.Main
             _playerService.Reset();
             _scoreService.Reset();
         }
+
+        private void InputService_StartPressed() => _sceneService.LoadStandByScene();
     }
 }
