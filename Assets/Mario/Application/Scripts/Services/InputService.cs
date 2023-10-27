@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 namespace Mario.Application.Services
 {
     public delegate void InputActionDelegate();
+    public delegate void InputActionDelegate<T>(T value);
 
     public class InputService : MonoBehaviour, IInputService
     {
@@ -16,7 +17,10 @@ namespace Mario.Application.Services
 
         public event InputActionDelegate StartPressed;
         public event InputActionDelegate PausePressed;
-
+        public event InputActionDelegate<float> MovePressed;
+        public event InputActionDelegate<bool> JumpPressed;
+        public event InputActionDelegate<bool> SprintPressed;
+        public event InputActionDelegate<bool> DuckPressed;
 
         public void Initalize()
         {
@@ -31,7 +35,11 @@ namespace Mario.Application.Services
         public void UseUIMap() => _playerInput.currentActionMap = _inputMaps["UI"];
         public void UseGameplayMap() => _playerInput.currentActionMap = _inputMaps["GamePlay"];
 
-        public void OnStart(InputValue value) => StartPressed?.Invoke();
-        public void OnPause(InputValue value) => PausePressed?.Invoke();
+        public void OnStart() => StartPressed?.Invoke();
+        public void OnPause() => PausePressed?.Invoke();
+        public void OnMove(InputValue value) => MovePressed?.Invoke(value.Get<float>());
+        public void OnJump(InputValue value) => JumpPressed?.Invoke(value.isPressed);
+        public void OnSprint(InputValue value) => SprintPressed?.Invoke(value.isPressed);
+        public void OnDuck(InputValue value) => DuckPressed?.Invoke(value.isPressed);
     }
 }

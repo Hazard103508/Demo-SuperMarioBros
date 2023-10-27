@@ -66,10 +66,10 @@ namespace Mario.Game.Player
         #region Protected Methods
         protected void SpeedUp()
         {
-            if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking)
+            if (Player.InputActions.Move != 0 && !Player.InputActions.Ducking)
             {
                 float currentAcceleration = Player.InputActions.Sprint ? Player.StateMachine.CurrentMode.ModeProfile.Run.Acceleration : Player.StateMachine.CurrentMode.ModeProfile.Walk.Acceleration;
-                Player.Movable.Speed += Player.InputActions.Move.x * currentAcceleration * Time.deltaTime;
+                Player.Movable.Speed += Player.InputActions.Move * currentAcceleration * Time.deltaTime;
 
                 float _speed = Player.InputActions.Sprint ? Player.StateMachine.CurrentMode.ModeProfile.Run.MaxSpeed : Player.StateMachine.CurrentMode.ModeProfile.Walk.MaxSpeed;
                 Player.Movable.Speed = Mathf.Clamp(Player.Movable.Speed, -_speed, _speed);
@@ -103,14 +103,14 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToRun()
         {
-            if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking)
+            if (Player.InputActions.Move != 0 && !Player.InputActions.Ducking)
                 return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
 
             return false;
         }
         protected virtual bool SetTransitionToStop()
         {
-            if (Player.InputActions.Move.x != 0 && !Player.InputActions.Ducking && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move.x))
+            if (Player.InputActions.Move != 0 && !Player.InputActions.Ducking && Mathf.Sign(Player.Movable.Speed) != Mathf.Sign(Player.InputActions.Move))
                 return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateStop);
 
             return false;
@@ -140,7 +140,7 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToDucking()
         {
-            if (Player.InputActions.Ducking && Player.InputActions.Move.x == 0)
+            if (Player.InputActions.Ducking && Player.InputActions.Move == 0)
                 return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDucking);
 
             return false;

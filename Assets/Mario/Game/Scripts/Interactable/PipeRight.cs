@@ -22,7 +22,7 @@ namespace Mario.Game.Interactable
         #region On Player Hit
         public void OnHittedByPlayerFromLeft(PlayerController player)
         {
-            if (player.InputActions.Move.x > 0)
+            if (player.InputActions.Move > 0)
                 MoveIntoPipe(player);
         }
         #endregion

@@ -2,7 +2,6 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Player;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Mario.Game.Maps
 {
@@ -45,8 +44,6 @@ namespace Mario.Game.Maps
 
         private void InputService_PausePressed()
         {
-            Debug.Log("PAUSE");
-
             if (_pauseService.IsPaused)
                 _pauseService.Resume();
             else

@@ -65,7 +65,7 @@ namespace Mario.Game.Player
             _initYPos = Player.transform.position.y;
             _maxHeight = GetMaxHeight();
 
-            float minHeight = Player.InputActions.Move.x == 0 ? Player.StateMachine.CurrentMode.ModeProfile.Jump.WalkHeight.Min : Player.StateMachine.CurrentMode.ModeProfile.Jump.RunHeight.Min;
+            float minHeight = Player.InputActions.Move == 0 ? Player.StateMachine.CurrentMode.ModeProfile.Jump.WalkHeight.Min : Player.StateMachine.CurrentMode.ModeProfile.Jump.RunHeight.Min;
             _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(minHeight, -Player.Movable.Gravity);
 
             if (Player.Movable.JumpForce == 0)

@@ -22,7 +22,7 @@ namespace Mario.Game.Player
         #region protected Methods
         protected override string GetAnimatorState() => "Stop";
         protected override void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed > 0;
-        protected override bool SetTransitionToRun() => Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move.x) && base.SetTransitionToRun();
+        protected override bool SetTransitionToRun() => Mathf.Sign(Player.Movable.Speed) == Mathf.Sign(Player.InputActions.Move) && base.SetTransitionToRun();
         #endregion
 
         #region IState Methods

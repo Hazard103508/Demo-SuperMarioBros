@@ -19,7 +19,6 @@ namespace Mario.Application.Services
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         private PlayerController _playerController;
         private Movable _playerMovable;
-        private PlayerInput _playerInput;
         private PlayerInputActions _playerInputActions;
         #endregion
 
@@ -47,14 +46,12 @@ namespace Mario.Application.Services
         {
             _playerController = playerController;
             _playerMovable = _playerController.GetComponent<Movable>();
-            _playerInput = _playerController.GetComponent<PlayerInput>();
             _playerInputActions = _playerController.GetComponent<PlayerInputActions>();
         }
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
         public void SetActivePlayer(bool isActive) => _playerController.gameObject.SetActive(isActive);
         public void EnablePlayerController(bool enable) => _playerController.enabled = enable;
         public void EnablePlayerMovable(bool enable) => _playerMovable.enabled = enable;
-        public void EnablePlayerInput(bool enable) => _playerInput.enabled = enable;
         public void EnableAutoWalk(bool enable)
         {
             _playerInputActions.ResetInputs();

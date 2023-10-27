@@ -191,8 +191,6 @@ namespace Mario.Application.Services
 
             _playerService.EnablePlayerController(true);
             _playerService.EnablePlayerMovable(true);
-            _playerService.EnablePlayerInput(true);
-
         }
         private IEnumerator ReloadAfterDead()
         {
