@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c522b9711e57364c8e51a954bcea9cc, type: 3}
   m_Name: GoombaProfile
   m_EditorClassIdentifier: 
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  _moveSpeed: -2.2
+  _fallSpeed: 60
+  _maxFallSpeed: 14.5
+  _jumpAcceleration: 15
+  _points: 100
   MoveSpeed: -2.2
   FallSpeed: 60
   MaxFallSpeed: 14.5

@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fde5b4b5829ec418708142419f2d54, type: 3}
   m_Name: KoopaProfile
   m_EditorClassIdentifier: 
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  _moveSpeed: -2.2
+  _bouncingSpeed: -11
+  _fallSpeed: 60
+  _maxFallSpeed: 14.5
+  _jumpAcceleration: 15
+  _pointsHit1: 100
+  _pointsHit2: 400
+  _pointsKill: 200
   MoveSpeed: -2.2
   BouncingSpeed: -11
   FallSpeed: 60
