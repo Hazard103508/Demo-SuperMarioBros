@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbbf34a1bcb8b34a859270bf34de8c4, type: 3}
   m_Name: PooledSoundProfile_NPCHit
   m_EditorClassIdentifier: 
+  _reference:
+    m_AssetGUID: 60b23332eff16b744b896403736486d0
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _defaultCapacity: 1
+  _maxSize: 1
   Reference:
     m_AssetGUID: 60b23332eff16b744b896403736486d0
     m_SubObjectName: 

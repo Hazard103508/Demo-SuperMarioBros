@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
   m_Name: PooledObjectProfile_MushroomRed
   m_EditorClassIdentifier: 
-  Type: RedMushroom
-  RequireCanvas: 0
+  _reference:
+    m_AssetGUID: e3a5b4b0351280c45a9fa635d777580b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _defaultCapacity: 1
+  _maxSize: 1
   Reference:
     m_AssetGUID: e3a5b4b0351280c45a9fa635d777580b
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
+  CollectionCheck: 1
+  DefaultCapacity: 1
+  MaxSize: 1

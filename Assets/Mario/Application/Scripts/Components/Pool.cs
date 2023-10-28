@@ -26,7 +26,7 @@ namespace Mario.Application.Components
                 OnGetFromPool,
                 OnReleaseToPool,
                 OnDestroyPooledObject,
-                Profile.CollectionCheck,
+                true,
                 Profile.DefaultCapacity,
                 Profile.MaxSize);
         }

@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbbf34a1bcb8b34a859270bf34de8c4, type: 3}
   m_Name: PooledSoundProfile_BoxBreak
   m_EditorClassIdentifier: 
-  Reference:
+  _reference:
     m_AssetGUID: 7927c84e8d087c04681ddaaa71d831f1
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  CollectionCheck: 1
-  DefaultCapacity: 1
-  MaxSize: 3
+  _defaultCapacity: 1
+  _maxSize: 3
   _volume: 1
-  _playOnAwake: 1
   _disableOnComplete: 1

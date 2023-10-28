@@ -12,6 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
   m_Name: PooledObjectProfile_BrokenBrickRed
   m_EditorClassIdentifier: 
+  _reference:
+    m_AssetGUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _collectionCheck: 1
+  _defaultCapacity: 1
+  _maxSize: 5
   Reference:
     m_AssetGUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
     m_SubObjectName: 

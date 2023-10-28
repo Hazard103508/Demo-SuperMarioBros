@@ -6,7 +6,10 @@ namespace Mario.Game.ScriptableObjects.Pool
     public class PooledUIProfile : PooledBaseProfile
     {
         [Header("UI")]
-        public RenderMode RenderMode;
-        public string CanvasSortingLayer;
+        [SerializeField] private RenderMode _renderMode;
+        [SerializeField] private string _canvasSortingLayer;
+
+        public RenderMode RenderMode => _renderMode;
+        public string CanvasSortingLayer =>  _canvasSortingLayer;
     }
 }

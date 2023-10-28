@@ -6,9 +6,12 @@ namespace Mario.Game.ScriptableObjects.Pool
     public abstract class PooledBaseProfile : ScriptableObject
     {
         [Header("Pool")]
-        public AssetReference Reference;
-        public bool CollectionCheck = true;
-        public int DefaultCapacity = 1;
-        public int MaxSize = 1;
+        [SerializeField] private AssetReference _reference;
+        [SerializeField] private int _defaultCapacity = 1;
+        [SerializeField] private int _maxSize = 1;
+
+        public AssetReference Reference => _reference ;
+        public int DefaultCapacity => _defaultCapacity;
+        public int MaxSize => _maxSize;
     }
 }

@@ -12,14 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fbbf34a1bcb8b34a859270bf34de8c4, type: 3}
   m_Name: PooledSoundProfile_PlayerSmallJump
   m_EditorClassIdentifier: 
-  Reference:
+  _reference:
     m_AssetGUID: a82c2a43be1eb0045a3f77047c4752c6
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  CollectionCheck: 1
-  DefaultCapacity: 1
-  MaxSize: 2
+  _defaultCapacity: 1
+  _maxSize: 1
   _volume: 1
-  _playOnAwake: 1
   _disableOnComplete: 1

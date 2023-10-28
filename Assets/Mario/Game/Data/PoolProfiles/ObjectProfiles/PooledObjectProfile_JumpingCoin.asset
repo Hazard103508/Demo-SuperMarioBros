@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
   m_Name: PooledObjectProfile_JumpingCoin
   m_EditorClassIdentifier: 
+  _reference:
+    m_AssetGUID: 11edffef54ef3e24cb397f4c763299ab
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _defaultCapacity: 1
+  _maxSize: 5
   Reference:
     m_AssetGUID: 11edffef54ef3e24cb397f4c763299ab
     m_SubObjectName: 
