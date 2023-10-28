@@ -33,7 +33,7 @@ MonoBehaviour:
       Min: 1.2
       Max: 5
     _deathHeight: 3.5
-    _bounce: 1
+    _bounce: 10
     _soundFX: {fileID: 11400000, guid: b99e5550ffec5ba46bf00b0dd582e373, type: 2}
   _normalRaycastRange:
     _top: {fileID: 11400000, guid: fac906f1ae367df49b9cc8d11679bdb5, type: 2}

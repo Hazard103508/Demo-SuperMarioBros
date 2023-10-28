@@ -75,7 +75,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ccc5c806aeafd3c40ba5e462a2655a3e, type: 2}
+  m_Motion: {fileID: 7400000, guid: c5dbf860d4ec1d84c885e359e14249bc, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -101,7 +101,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fc24e051026225d48b7bc9749dde914a, type: 2}
+  m_Motion: {fileID: 7400000, guid: e297bf6fa40e6f048bacf6687914b36e, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -113,7 +113,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GoombaBrownAnimatorController
+  m_Name: GoombaAnimatorController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Hit
@@ -121,13 +121,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Kill
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -186,7 +186,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7945ada10fc0d004384276da42a2a83c, type: 2}
+  m_Motion: {fileID: 7400000, guid: eb753ff76bda41d4a9d7ae528915c6a5, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
