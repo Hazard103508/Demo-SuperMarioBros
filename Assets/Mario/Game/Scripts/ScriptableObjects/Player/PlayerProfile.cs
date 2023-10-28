@@ -15,25 +15,34 @@ namespace Mario.Game.ScriptableObjects.Player
 
         public string PlayerName => _playerName;
         public PlayerModes Modes => _modes;
+        public PlayerFireball Fireball => _fireball;
         public ModeChange Buff => _buff;
         public ModeChange Nerf => _nerf;
 
         [Serializable]
         public class PlayerFireball
         {
-            public Vector2 StartLocalPosition;
-            public PooledObjectProfile FireballPoolProfile;
+            [SerializeField] private Vector2 _startLocalPosition;
+            [SerializeField] private PooledObjectProfile _fireballPoolProfile;
+
+            public Vector2 StartLocalPosition => _startLocalPosition;
+            public PooledObjectProfile FireballPoolProfile => _fireballPoolProfile;
         }
         [Serializable]
         public class PlayerModes
         {
-            public PlayerModeProfile Small;
-            public PlayerModeProfile Big;
-            public PlayerModeProfile Super;
+            [SerializeField] private PlayerModeProfile _small;
+            [SerializeField] private PlayerModeProfile _big;
+            [SerializeField] private PlayerModeProfile _super;
+
+            public PlayerModeProfile Small => _small;
+            public PlayerModeProfile Big => _big;
+            public PlayerModeProfile Super => _super;
         }
         [Serializable]
         public class ModeChange
         {
+            [SerializeField] private PooledSoundProfile _soundFX;
             public PooledSoundProfile SoundFX;
         }
     }

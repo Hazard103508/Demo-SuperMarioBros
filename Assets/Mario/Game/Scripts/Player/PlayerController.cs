@@ -77,12 +77,12 @@ namespace Mario.Game.Player
         private void GameplayService_GameUnfreezed()
         {
             Movable.enabled = true;
-            enabled = true;
+            InputActions.enabled = true;
         }
         private void GameplayService_GameFreezed()
         {
             Movable.enabled = false;
-            enabled = false;
+            InputActions.enabled = false;
         }
         #endregion
 

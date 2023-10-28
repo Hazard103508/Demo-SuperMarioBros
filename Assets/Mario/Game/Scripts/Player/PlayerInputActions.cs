@@ -22,25 +22,27 @@ namespace Mario.Game.Player
         {
             get
             {
-                return _pauseService.IsPaused ? 0 :
-                _playerService.IsAutowalk ? 1 :
-                _move;
+                return
+                    !enabled ? 0 :
+                    _pauseService.IsPaused ? 0 :
+                    _playerService.IsAutowalk ? 1 :
+                    _move;
             }
             private set => _move = value;
         }
         public bool Jump
         {
-            get => !_pauseService.IsPaused && !_playerService.IsAutowalk && _jump;
+            get => enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _jump;
             private set => _jump = value;
         }
         public bool Sprint
         {
-            get => !_pauseService.IsPaused && !_playerService.IsAutowalk && _sprint;
+            get => enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _sprint;
             private set => _sprint = value;
         }
         public bool Ducking
         {
-            get => !_pauseService.IsPaused && !_playerService.IsAutowalk && _ducking;
+            get => enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _ducking;
             private set => _ducking = value;
         }
         #endregion
@@ -51,15 +53,13 @@ namespace Mario.Game.Player
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _pauseService = ServiceLocator.Current.Get<IPauseService>();
             _inputService = ServiceLocator.Current.Get<IInputService>();
-        }
-        private void OnEnable()
-        {
+
             _inputService.MovePressed += InputService_MovePressed;
             _inputService.JumpPressed += InputService_JumpPressed;
             _inputService.SprintPressed += InputService_SprintPressed;
             _inputService.DuckPressed += InputService_DuckPressed;
         }
-        private void OnDisable()
+        private void OnDestroy()
         {
             _inputService.MovePressed -= InputService_MovePressed;
             _inputService.JumpPressed -= InputService_JumpPressed;
