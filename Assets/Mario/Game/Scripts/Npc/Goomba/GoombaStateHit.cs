@@ -1,6 +1,7 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc.Goomba
 {
@@ -36,6 +37,19 @@ namespace Mario.Game.Npc.Goomba
             _timer += Time.deltaTime;
             if (_timer >= 0.4f)
                 GameObject.Destroy(Goomba.gameObject);
+        }
+        #endregion
+
+        #region On Movable Hit
+        public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                ChangeDirectionToRight();
+        }
+        public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
+        {
+            if (hitInfo.IsBlock)
+                ChangeDirectionToLeft();
         }
         #endregion
     }
