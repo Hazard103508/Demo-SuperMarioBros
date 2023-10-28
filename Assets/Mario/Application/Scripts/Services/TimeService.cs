@@ -7,6 +7,8 @@ namespace Mario.Application.Services
     public class TimeService : MonoBehaviour, ITimeService
     {
         #region Objects
+        private IGameplayService _gameplayService;
+
         private float _timer;
         #endregion
 
@@ -33,9 +35,14 @@ namespace Mario.Application.Services
         #region Public Methods
         public void Initalize()
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
+            _gameplayService.GameFreezed += GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
         }
         public void Dispose()
         {
+            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
         }
         public void ResetTimer()
         {
@@ -43,8 +50,6 @@ namespace Mario.Application.Services
             Time = StartTime;
             _timer = 0;
         }
-        public void FreezeTimer() => Enabled = false;
-        public void ResumeTimer() => Enabled = true;
         public void StartTimer()
         {
             TimeStarted?.Invoke();
@@ -65,6 +70,8 @@ namespace Mario.Application.Services
                     TimeOut?.Invoke();
             }
         }
+        private void GameplayService_GameUnfreezed() => Enabled = true;
+        private void GameplayService_GameFreezed() => Enabled = false;
         #endregion
     }
 }

@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using UnityEngine;
@@ -12,6 +14,8 @@ namespace Mario.Game.Player
         IHittableByMovingToRight
     {
         #region Objects
+        private IGameplayService _gameplayService;
+
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
         #endregion
@@ -29,6 +33,8 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
+
             this.StateMachine = new PlayerStateMachine(this);
             this.InputActions = GetComponent<PlayerInputActions>();
             this.Movable = GetComponent<Movable>();
@@ -40,6 +46,16 @@ namespace Mario.Game.Player
         private void Update()
         {
             this.StateMachine.Update();
+        }
+        private void OnEnable()
+        {
+            _gameplayService.GameFreezed += GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+        }
+        private void OnDisable()
+        {
+            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
         }
         #endregion
 
@@ -57,10 +73,14 @@ namespace Mario.Game.Player
                 Nerf();
         }
         public void OnFall() => Kill();
-        //---Temp---
-        public void BounceJump() { }
-        //public bool IsAutoWalk { get; set; }
-        //---Temp---
+        public void BounceJump() 
+        {
+        }
+        #endregion
+
+        #region Private Methods
+        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
+        private void GameplayService_GameFreezed() => Movable.enabled = false;
         #endregion
 
         #region On Movable Hit

@@ -225,7 +225,6 @@ namespace Mario.Application.Services
         #region Service Methods
         private void OnLivesRemoved()
         {
-            _timeService.FreezeTimer();
             StartCoroutine(ReloadAfterDead());
         }
         private void OnTimeChangeded()

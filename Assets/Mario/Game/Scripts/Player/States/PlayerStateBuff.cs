@@ -9,6 +9,7 @@ namespace Mario.Game.Player
         private readonly ITimeService _timeService;
         private readonly ISoundService _soundService;
         private readonly IPlayerService _playerService;
+        private readonly IGameplayService _gameplayService;
         #endregion
 
         #region Constructor
@@ -17,6 +18,7 @@ namespace Mario.Game.Player
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -28,14 +30,12 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
-            Player.Movable.enabled = false;
-            _playerService.EnablePlayerMovable(false);
+            _gameplayService.FreezeGame();
             _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
-            _timeService.FreezeTimer();
         }
         public override void Exit()
         {
-            _timeService.ResumeTimer();
+            _gameplayService.UnfreezeGame();
         }
         #endregion
     }

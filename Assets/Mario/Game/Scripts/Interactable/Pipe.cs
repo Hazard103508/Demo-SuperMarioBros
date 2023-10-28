@@ -15,6 +15,7 @@ namespace Mario.Game.Interactable
         private ITimeService _timeService;
         private ILevelService _levelService;
         private ISoundService _soundService;
+        private IGameplayService _gameplayService;
 
         [SerializeField] private PipeProfile _profile;
         private bool _isInPipe;
@@ -28,6 +29,7 @@ namespace Mario.Game.Interactable
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -48,7 +50,7 @@ namespace Mario.Game.Interactable
         #region Private Methods
         private IEnumerator MoveIntoPipeCO(PlayerController player)
         {
-            _timeService.FreezeTimer();
+            _gameplayService.FreezeGame();
 
             _isInPipe = true;
             _playerService.EnablePlayerMovable(false);

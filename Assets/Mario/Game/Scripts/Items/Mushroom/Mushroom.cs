@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -18,6 +20,8 @@ namespace Mario.Game.Items.Mushroom
         IHittableByBox
     {
         #region Objects
+        private IGameplayService _gameplayService;
+
         [SerializeField] private MushroomProfile _profile;
         #endregion
 
@@ -30,6 +34,8 @@ namespace Mario.Game.Items.Mushroom
         #region Unity Methods
         protected virtual void Awake()
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
+
             this.StateMachine = new MushroomStateMachine(this);
             Movable = GetComponent<Movable>();
         }
@@ -44,11 +50,23 @@ namespace Mario.Game.Items.Mushroom
         private void OnEnable()
         {
             this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+            _gameplayService.GameFreezed += GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+        }
+        private void OnDisable()
+        {
+            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
         }
         #endregion
 
         #region Public Methods
         public void OnFall() => gameObject.SetActive(false);
+        #endregion
+
+        #region Private Methods
+        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
+        private void GameplayService_GameFreezed() => Movable.enabled = false;
         #endregion
 
         #region On Movable Hit

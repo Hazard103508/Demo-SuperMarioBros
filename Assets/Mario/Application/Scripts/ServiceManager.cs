@@ -24,6 +24,7 @@ namespace Mario.Application
             RegisterServicer<ISceneService>();
             RegisterServicer<IPauseService>();
             RegisterServicer<IInputService>();
+            RegisterServicer<IGameplayService>();
 
             ServiceLocator.Current.Initalize();
             ServiceLocator.Current.Get<ISceneService>().LoadMainScene();

@@ -6,17 +6,17 @@ namespace Mario.Game.Player
     public abstract class PlayerStateNerf : PlayerState
     {
         #region Objects
-        private readonly ITimeService _timeService;
         private readonly ISoundService _soundService;
         private readonly IPlayerService _playerService;
+        private IGameplayService _gameplayService;
         #endregion
 
         #region Constructor
         public PlayerStateNerf(PlayerController player) : base(player)
         {
-            _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -30,11 +30,11 @@ namespace Mario.Game.Player
             base.Enter();
             Player.Movable.enabled = false;
             _soundService.Play(_playerService.PlayerProfile.Nerf.SoundFX);
-            _timeService.FreezeTimer();
+            _gameplayService.FreezeGame();
         }
         public override void Exit()
         {
-            _timeService.ResumeTimer();
+            _gameplayService.UnfreezeGame();
         }
         #endregion
     }
