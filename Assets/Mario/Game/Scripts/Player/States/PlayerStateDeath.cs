@@ -10,6 +10,7 @@ namespace Mario.Game.Player
         #region Objects
         private readonly IPlayerService _playerService;
         private readonly ISoundService _soundService;
+        private readonly IGameplayService _gameplayService;
         #endregion
 
         #region Constructor
@@ -17,6 +18,7 @@ namespace Mario.Game.Player
         {
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -29,7 +31,7 @@ namespace Mario.Game.Player
         {
             Player.Renderer.sortingLayerName = "Dead";
 
-            _playerService.EnablePlayerMovable(false);
+            _gameplayService.FreezeGame();
             Player.Movable.Speed = 0;
             Player.Movable.Gravity = Player.StateMachine.CurrentMode.ModeProfile.Fall.DeathFallSpeed;
             yield return new WaitForSeconds(0.25f);
@@ -45,6 +47,8 @@ namespace Mario.Game.Player
         public override void Enter()
         {
             base.Enter();
+
+
             Player.StartCoroutine(FallOutOffScreen());
             _soundService.StopTheme();
             _playerService.RemoveLife();

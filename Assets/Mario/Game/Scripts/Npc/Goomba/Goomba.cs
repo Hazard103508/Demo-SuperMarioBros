@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interactable;
 using Mario.Game.Interfaces;
@@ -21,6 +23,8 @@ namespace Mario.Game.Npc.Goomba
         IHittableByFireBall
     {
         #region Objects
+        private IGameplayService _gameplayService;
+
         [SerializeField] private GoombaProfile _profile;
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
@@ -37,6 +41,8 @@ namespace Mario.Game.Npc.Goomba
         #region Unity Methods
         private void Awake()
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
+
             this.StateMachine = new GoombaStateMachine(this);
             Movable = GetComponent<Movable>();
         }
@@ -48,10 +54,25 @@ namespace Mario.Game.Npc.Goomba
         {
             this.StateMachine.Update();
         }
+        private void OnEnable()
+        {
+            _gameplayService.GameFreezed += GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+        }
+        private void OnDisable()
+        {
+            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+        }
         #endregion
 
         #region Public Methods
         public void OnFall() => Destroy(gameObject);
+        #endregion
+
+        #region Private
+        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
+        private void GameplayService_GameFreezed() => Movable.enabled = false;
         #endregion
 
         #region On Movable Hit

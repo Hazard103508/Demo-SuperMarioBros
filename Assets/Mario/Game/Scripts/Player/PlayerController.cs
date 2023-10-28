@@ -34,6 +34,8 @@ namespace Mario.Game.Player
         private void Awake()
         {
             _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
+            _gameplayService.GameFreezed += GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
 
             this.StateMachine = new PlayerStateMachine(this);
             this.InputActions = GetComponent<PlayerInputActions>();
@@ -47,12 +49,7 @@ namespace Mario.Game.Player
         {
             this.StateMachine.Update();
         }
-        private void OnEnable()
-        {
-            _gameplayService.GameFreezed += GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
-        }
-        private void OnDisable()
+        private void OnDestroy()
         {
             _gameplayService.GameFreezed -= GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
@@ -77,8 +74,16 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private Methods
-        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
-        private void GameplayService_GameFreezed() => Movable.enabled = false;
+        private void GameplayService_GameUnfreezed()
+        {
+            Movable.enabled = true;
+            enabled = true;
+        }
+        private void GameplayService_GameFreezed()
+        {
+            Movable.enabled = false;
+            enabled = false;
+        }
         #endregion
 
         #region On Movable Hit

@@ -19,6 +19,7 @@ namespace Mario.Application.Services
         private IPlayerService _playerService;
         private ITimeService _timeService;
         private ISoundService _soundService;
+        private IGameplayService _gameplayService;
 
         private readonly int _hurryTime = 100;
 
@@ -60,6 +61,7 @@ namespace Mario.Application.Services
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
 
             MapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
@@ -189,8 +191,7 @@ namespace Mario.Application.Services
                 }
             }
 
-            _playerService.EnablePlayerController(true);
-            _playerService.EnablePlayerMovable(true);
+            _gameplayService.UnfreezeGame();
         }
         private IEnumerator ReloadAfterDead()
         {

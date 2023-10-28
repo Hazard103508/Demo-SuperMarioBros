@@ -53,9 +53,6 @@ namespace Mario.Game.Interactable
             _gameplayService.FreezeGame();
 
             _isInPipe = true;
-            _playerService.EnablePlayerMovable(false);
-            _playerService.EnablePlayerController(false);
-
             _soundService.Play(_profile.SoundFXPoolReference);
             yield return OnMovePlayer(player);
 
