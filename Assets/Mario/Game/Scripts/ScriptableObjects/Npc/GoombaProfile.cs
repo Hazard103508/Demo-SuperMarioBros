@@ -8,10 +8,10 @@ namespace Mario.Game.ScriptableObjects.Items
     {
         [SerializeField] private PooledSoundProfile _hitSoundFXPoolReference;
         [SerializeField] private PooledSoundProfile _kickSoundFXPoolReference;
-        [SerializeField]private float _moveSpeed;
-        [SerializeField]private float _fallSpeed;
-        [SerializeField]private float _maxFallSpeed;
-        [SerializeField]private float _jumpAcceleration;
+        [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _fallSpeed;
+        [SerializeField] private float _maxFallSpeed;
+        [SerializeField] private float _jumpAcceleration;
         [SerializeField] private int _points;
 
         public PooledSoundProfile HitSoundFXPoolReference => _hitSoundFXPoolReference;

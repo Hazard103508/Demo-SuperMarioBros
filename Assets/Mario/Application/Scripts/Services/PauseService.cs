@@ -7,7 +7,7 @@ namespace Mario.Application.Services
     public class PauseService : MonoBehaviour, IPauseService
     {
         [SerializeField] private PooledSoundProfile _pauseSoundPoolReference;
-        
+
         private ISoundService _soundService;
 
         public bool IsPaused { get; protected set; }

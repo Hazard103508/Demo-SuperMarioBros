@@ -22,7 +22,7 @@ namespace Mario.Game.Maps
             if (_levelService.MapProfile.Width == 0)
             {
                 return;
-            } 
+            }
 
             var cam = Camera.main;
             var topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));

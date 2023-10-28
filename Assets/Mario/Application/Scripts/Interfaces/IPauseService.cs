@@ -1,5 +1,3 @@
-using System;
-
 namespace Mario.Application.Interfaces
 {
     public interface IPauseService : IGameService

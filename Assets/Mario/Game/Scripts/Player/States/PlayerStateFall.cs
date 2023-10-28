@@ -61,7 +61,7 @@ namespace Mario.Game.Player
             if (SetTransitionToIdle())
                 return;
 
-              SetTransitionToRun();
+            SetTransitionToRun();
         }
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {

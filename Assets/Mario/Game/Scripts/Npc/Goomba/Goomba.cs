@@ -5,7 +5,6 @@ using Mario.Game.Interactable;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
-using System;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 

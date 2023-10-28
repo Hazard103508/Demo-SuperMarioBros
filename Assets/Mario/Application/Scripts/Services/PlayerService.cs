@@ -5,7 +5,6 @@ using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Mario.Application.Services
 {
@@ -50,11 +49,7 @@ namespace Mario.Application.Services
         }
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
         public void SetActivePlayer(bool isActive) => _playerController.gameObject.SetActive(isActive);
-        public void EnableAutoWalk(bool enable)
-        {
-            _playerInputActions.ResetInputs();
-            IsAutowalk = enable;
-        }
+        public void EnableAutoWalk(bool enable) => IsAutowalk = enable;
         public void ResetState() => _playerController.StateMachine.TransitionTo(_playerController.StateMachine.CurrentMode.StateIdle);
         public void KillPlayer() => _playerController.Kill();
         public void KillPlayerByTimeOut() => _playerController.TimeOut();

@@ -1,7 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Mario.Game.Player
 {
@@ -19,7 +18,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Properties
-        public float Move 
+        public float Move
         {
             get
             {
@@ -27,12 +26,12 @@ namespace Mario.Game.Player
                 _playerService.IsAutowalk ? 1 :
                 _move;
             }
-            private set => _move = value; 
+            private set => _move = value;
         }
-        public bool Jump 
+        public bool Jump
         {
             get => !_pauseService.IsPaused && !_playerService.IsAutowalk && _jump;
-            private set => _jump = value; 
+            private set => _jump = value;
         }
         public bool Sprint
         {
@@ -74,14 +73,6 @@ namespace Mario.Game.Player
         private void InputService_JumpPressed(bool value) => Jump = value;
         private void InputService_DuckPressed(bool value) => Ducking = value;
         private void InputService_SprintPressed(bool value) => Sprint = value;
-        public void ResetInputs()
-        {
-            Move = 0;
-            Jump = false; 
-            Sprint = false; 
-            Ducking = false;
-        }
         #endregion
-
     }
 }
