@@ -29,6 +29,7 @@ namespace Mario.Game.Boxes.Box
         public override void Enter()
         {
             _initPosition = Box.transform.position;
+            Box.Renderer.sortingOrder = 1;
             Box.Animator.SetTrigger("Jump");
             Box.Movable.Gravity = Box.Profile.FallSpeed;
             Box.Movable.MaxFallSpeed = Box.Profile.MaxFallSpeed;

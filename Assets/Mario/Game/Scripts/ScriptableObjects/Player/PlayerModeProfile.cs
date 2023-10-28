@@ -54,11 +54,13 @@ namespace Mario.Game.ScriptableObjects.Player
             [SerializeField] private RangeNumber<float> _walkHeight;
             [SerializeField] private RangeNumber<float> _runHeight;
             [SerializeField] private float _deathHeight;
+            [SerializeField] private float _bounce;
             [SerializeField] private PooledSoundProfile _soundFX;
 
             public RangeNumber<float> WalkHeight => _walkHeight;
             public RangeNumber<float> RunHeight => _runHeight;
             public float DeathHeight => _deathHeight;
+            public float Bounce => _bounce;
             public PooledSoundProfile SoundFX => _soundFX;
         }
         [Serializable]

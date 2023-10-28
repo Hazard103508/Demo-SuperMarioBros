@@ -23,8 +23,6 @@ namespace Mario.Game.Npc.Goomba
         #region Objects
         [SerializeField] private GoombaProfile _profile;
         [SerializeField] private SpriteRenderer _renderer;
-        [SerializeField] private AudioSource _hitSoundFX;
-        [SerializeField] private AudioSource _kickSoundFX;
         [SerializeField] private Animator _animator;
         #endregion
 
@@ -54,23 +52,6 @@ namespace Mario.Game.Npc.Goomba
 
         #region Public Methods
         public void OnFall() => Destroy(gameObject);
-        public void ChangeDirectionToRight()
-        {
-            _renderer.flipX = true;
-            Movable.Speed = Mathf.Abs(Movable.Speed);
-        }
-        public void ChangeDirectionToLeft()
-        {
-            _renderer.flipX = false;
-            Movable.Speed = -Mathf.Abs(Movable.Speed);
-        }
-        public void ChangeSpeedAfferHit(Vector3 hitPosition)
-        {
-            if (Math.Sign(Movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
-                Movable.Speed *= -1;
-        }
-        public void PlayHitSoundFX() => _hitSoundFX.Play();
-        public void PlayKickSoundFX() => _kickSoundFX.Play();
         #endregion
 
         #region On Movable Hit

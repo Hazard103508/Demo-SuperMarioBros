@@ -1,6 +1,7 @@
 using Mario.Game.Interactable;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
+using System;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -38,6 +39,24 @@ namespace Mario.Game.Npc.Goomba
         public GoombaState(Goomba goomba)
         {
             Goomba = goomba;
+        }
+        #endregion
+
+        #region Protected Methods
+        public void ChangeDirectionToRight()
+        {
+            Goomba.Renderer.flipX = true;
+            Goomba.Movable.Speed = Mathf.Abs(Goomba.Movable.Speed);
+        }
+        public void ChangeDirectionToLeft()
+        {
+            Goomba.Renderer.flipX = false;
+            Goomba.Movable.Speed = -Mathf.Abs(Goomba.Movable.Speed);
+        }
+        public void ChangeSpeedAfferHit(Vector3 hitPosition)
+        {
+            if (Math.Sign(Goomba.Movable.Speed) != Math.Sign(Goomba.transform.position.x - hitPosition.x))
+                Goomba.Movable.Speed *= -1;
         }
         #endregion
 

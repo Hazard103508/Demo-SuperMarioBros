@@ -17,6 +17,7 @@ namespace Mario.Game.Boxes.Box
         #region Objects
         [SerializeField] private BoxProfile _profile;
         [SerializeField] private Animator _animator;
+        [SerializeField] private SpriteRenderer _renderer;
         #endregion
 
         #region Properties
@@ -24,6 +25,7 @@ namespace Mario.Game.Boxes.Box
         public Movable Movable { get; private set; }
         public Animator Animator => _animator;
         public BoxProfile Profile => _profile;
+        public SpriteRenderer Renderer => _renderer;
         public bool IsLastJump { get; set; }
         #endregion
 

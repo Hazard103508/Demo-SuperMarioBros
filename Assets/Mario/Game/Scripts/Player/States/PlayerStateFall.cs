@@ -50,6 +50,8 @@ namespace Mario.Game.Player
         }
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
+            HitObjectOnBottom(hitInfo.hitObjects);
+
             if (!hitInfo.IsBlock)
                 return;
 
@@ -59,8 +61,7 @@ namespace Mario.Game.Player
             if (SetTransitionToIdle())
                 return;
 
-            HitObjectOnBottom(hitInfo.hitObjects);
-            SetTransitionToRun();
+              SetTransitionToRun();
         }
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {

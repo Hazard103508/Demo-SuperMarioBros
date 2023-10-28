@@ -8,6 +8,7 @@ namespace Mario.Game.Npc.Goomba
     {
         #region Objects
         private readonly IScoreService _scoreService;
+        private readonly ISoundService _soundService;
         private float _timer = 0;
         #endregion
 
@@ -15,6 +16,7 @@ namespace Mario.Game.Npc.Goomba
         public GoombaStateHit(Goomba goomba) : base(goomba)
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -24,7 +26,7 @@ namespace Mario.Game.Npc.Goomba
             Goomba.Movable.enabled = false;
             Goomba.gameObject.layer = 0;
             Goomba.Animator.SetTrigger("Hit");
-            Goomba.PlayHitSoundFX();
+            _soundService.Play(Goomba.Profile.HitSoundFXPoolReference);
 
             _scoreService.Add(Goomba.Profile.Points);
             _scoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.5f, 1.5f);

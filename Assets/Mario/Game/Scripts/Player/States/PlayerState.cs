@@ -15,7 +15,6 @@ namespace Mario.Game.Player
         IHittableByMovingToLeft,
         IHittableByMovingToRight
     {
-
         #region Objects
         private readonly ISoundService _soundService;
         private readonly IPlayerService _playerService;
@@ -26,7 +25,6 @@ namespace Mario.Game.Player
         #region Properties
         protected PlayerController Player { get; private set; }
         #endregion
-
 
         #region Constructor
         public PlayerState(PlayerController player)
@@ -61,6 +59,10 @@ namespace Mario.Game.Player
         public virtual void OnDeath() { }
         public virtual void OnTimeOut() { }
         public virtual void OnTouchFlag() { }
+        public virtual void OnBounceJump()
+        {
+            Player.Movable.SetJumpForce(Player.StateMachine.CurrentMode.ModeProfile.Jump.Bounce);
+        }
         #endregion
 
         #region Protected Methods
@@ -177,7 +179,7 @@ namespace Mario.Game.Player
         }
         protected bool HitObjectOnTop(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromBottom>(hitObjects, script => script.OnHittedByPlayerFromBottom(Player));
         protected bool HitObjectOnBottom(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromTop>(hitObjects, script => script.OnHittedByPlayerFromTop(Player));
-        protected bool HitObjectOnRight(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromLeft>(hitObjects, script => script.OnHittedByPlayerFromLeft(Player));
+        protected bool HitObjectOnRight(List<HitObject> hitObjects) =>  HitObjectOn<IHittableByPlayerFromLeft>(hitObjects, script => script.OnHittedByPlayerFromLeft(Player));
         protected bool HitObjectOnLeft(List<HitObject> hitObjects) => HitObjectOn<IHittableByPlayerFromRight>(hitObjects, script => script.OnHittedByPlayerFromRight(Player));
         #endregion
 

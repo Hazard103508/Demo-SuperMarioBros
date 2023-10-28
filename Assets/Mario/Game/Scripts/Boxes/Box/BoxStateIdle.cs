@@ -13,6 +13,7 @@ namespace Mario.Game.Boxes.Box
         #region IState Methods
         public override void Enter()
         {
+            Box.Renderer.sortingOrder = 0;
             Box.Animator.SetTrigger("Idle");
             Box.Movable.RemoveGravity();
         }

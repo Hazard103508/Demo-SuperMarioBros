@@ -28,7 +28,7 @@ namespace Mario.Game.Npc.Goomba
         private void KillGoomba(Vector3 hitPosition)
         {
             Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateDead);
-            Goomba.ChangeSpeedAfferHit(hitPosition);
+            ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -36,12 +36,12 @@ namespace Mario.Game.Npc.Goomba
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                Goomba.ChangeDirectionToRight();
+                ChangeDirectionToRight();
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                Goomba.ChangeDirectionToLeft();
+                ChangeDirectionToLeft();
         }
         #endregion
 

@@ -112,6 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _profile: {fileID: 11400000, guid: e211d387cabb3c44bbd1fd3e1683e6cd, type: 2}
   _animator: {fileID: 40360478294182497}
+  _renderer: {fileID: 40360478294182501}
 --- !u!1 &40360478294182502
 GameObject:
   m_ObjectHideFlags: 0
