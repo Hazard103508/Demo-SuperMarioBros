@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fec195161cd50e4d89aa767318c9674, type: 3}
-  m_Name: MysteryBoxPowerUpShadowBlackProfile
+  m_Script: {fileID: 11500000, guid: b7926e5e97423ac4cb4cccf485f313cf, type: 3}
+  m_Name: BoxBrickEmptyRedProfile
   m_EditorClassIdentifier: 
   _hitSoundFXPoolReference: {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
   _fallSpeed: 100
   _maxFallSpeed: 100
   _jumpAcceleration: 10
-  _riseItemSoundFXPoolReference: {fileID: 11400000, guid: 110a1e4ebf8ad6045ae0e9db4d41e435, type: 2}
-  _mushroomPoolReference: {fileID: 11400000, guid: 1522160af6c20304ea615b6a2d26d164, type: 2}
-  _flowerPoolReference: {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}
+  _brokenBrickPoolReference: {fileID: 11400000, guid: d6a62de408a4d22419774db8e7e5126b, type: 2}
+  _breakSoundFXPoolReference: {fileID: 11400000, guid: d0256ae781eb57b4cb5ca59a015018d1, type: 2}
+  _points: 50

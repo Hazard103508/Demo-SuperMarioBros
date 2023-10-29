@@ -16,7 +16,7 @@ MonoBehaviour:
   _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   _startPosition: {x: 2, y: 2}
   _startTime: 400
-  _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
+  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _mapSectionReferences:
   - m_AssetGUID: 2227a808dfe2c664daa7632fc5abdace
     m_SubObjectName: 
@@ -25,4 +25,4 @@ MonoBehaviour:
   _poolProfiles:
   - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
   - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
-  - {fileID: 11400000, guid: 3e883192d434abf4ea87fbde6ccad675, type: 2}
+  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}
