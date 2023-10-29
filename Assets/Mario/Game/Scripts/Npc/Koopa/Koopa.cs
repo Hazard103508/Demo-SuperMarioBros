@@ -1,10 +1,10 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interactable;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Items;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -22,11 +22,10 @@ namespace Mario.Game.Npc.Koopa
         IHittableByFireBall
     {
         #region Objects
+        private IGameplayService _gameplayService;
+
         [SerializeField] private KoopaProfile _profile;
         [SerializeField] private SpriteRenderer _renderer;
-        [SerializeField] private AudioSource _hitSoundFX;
-        [SerializeField] private AudioSource _kickSoundFX;
-        [SerializeField] private AudioSource _blockSoundFX;
         [SerializeField] private Animator _animator;
         #endregion
 
@@ -41,6 +40,8 @@ namespace Mario.Game.Npc.Koopa
         #region Unity Methods
         private void Awake()
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
+
             this.StateMachine = new KoopaStateMachine(this);
             Movable = GetComponent<Movable>();
         }
@@ -52,42 +53,25 @@ namespace Mario.Game.Npc.Koopa
         {
             this.StateMachine.Update();
         }
+        private void OnEnable()
+        {
+            _gameplayService.GameFreezed += GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+        }
+        private void OnDisable()
+        {
+            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+        }
         #endregion
 
         #region Public Methods
         public void OnFall() => Destroy(gameObject);
-        public void ChangeDirectionToRight()
-        {
-            _renderer.flipX = true;
-            Movable.Speed = Mathf.Abs(Movable.Speed);
-        }
-        public void ChangeDirectionToLeft()
-        {
-            _renderer.flipX = false;
-            Movable.Speed = -Mathf.Abs(Movable.Speed);
-        }
-        public void ChangeSpeedAfferHit(Vector3 hitPosition)
-        {
-            if (Math.Sign(Movable.Speed) != Math.Sign(this.transform.position.x - hitPosition.x))
-                Movable.Speed *= -1;
-        }
-        public void PlayHitSoundFX() => _hitSoundFX.Play();
-        public void PlayKickSoundFX() => _kickSoundFX.Play();
-        public void PlayBlockSoundFX() => _blockSoundFX.Play();
-        public void HitObject(RayHitInfo hitInfo)
-        {
-            var removeHits = new List<HitObject>();
-            foreach (var obj in hitInfo.hitObjects)
-            {
-                if (obj.Object.TryGetComponent<IHittableByKoppa>(out var hitableObject))
-                {
-                    removeHits.Add(obj);
-                    hitableObject?.OnHittedByKoppa(this);
-                }
-            }
+        #endregion
 
-            removeHits.ForEach(obj => hitInfo.hitObjects.Remove(obj));
-        }
+        #region Private
+        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
+        private void GameplayService_GameFreezed() => Movable.enabled = false;
         #endregion
 
         #region On Movable Hit

@@ -8,12 +8,14 @@ namespace Mario.Game.Npc.Koopa
     {
         #region Objects
         private readonly IScoreService _scoreService;
+        private readonly ISoundService _soundService;
         #endregion
 
         #region Constructor
         public KoopaStateDead(Koopa koopa) : base(koopa)
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -22,16 +24,16 @@ namespace Mario.Game.Npc.Koopa
         {
             Koopa.Movable.ChekCollisions = false;
             Koopa.Movable.enabled = true;
-            Koopa.Movable.Speed = Koopa.Profile.MoveSpeed;
+            Koopa.Movable.Speed = Koopa.Profile.MoveSpeed * GetDirection();
             Koopa.gameObject.layer = 0;
             Koopa.Animator.SetTrigger("Kill");
             Koopa.Renderer.sortingLayerName = "Dead";
-            Koopa.PlayKickSoundFX();
-
-            _scoreService.Add(Koopa.Profile.PointsKill);
-            _scoreService.ShowPoints(Koopa.Profile.PointsKill, Koopa.transform.position + Vector3.up * 2f, 0.8f, 3f);
             Koopa.Movable.SetJumpForce(Koopa.Profile.JumpAcceleration);
             Koopa.Renderer.transform.position += Vector3.up * 0.5f;
+
+            _soundService.Play(Koopa.Profile.KickSoundFXPoolReference, Koopa.transform.position);
+            _scoreService.Add(Koopa.Profile.PointsKill);
+            _scoreService.ShowPoints(Koopa.Profile.PointsKill, Koopa.transform.position + Vector3.up * 2f, 0.8f, 3f);
         }
         #endregion
     }

@@ -22,13 +22,13 @@ namespace Mario.Game.Npc.Koopa
             if (_timer > 0.1f)
             {
                 Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateBouncing);
-                Koopa.ChangeSpeedAfferHit(player.transform.position);
+                ChangeSpeedAfferHit(player.transform.position);
             }
         }
         private void KillKoopa(Vector3 hitPosition)
         {
             Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
-            Koopa.ChangeSpeedAfferHit(hitPosition);
+            ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -45,9 +45,9 @@ namespace Mario.Game.Npc.Koopa
             {
                 Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateWalk);
                 if (Koopa.Renderer.flipX)
-                    Koopa.ChangeDirectionToRight();
+                    ChangeDirectionToRight();
                 else
-                    Koopa.ChangeDirectionToLeft();
+                    ChangeDirectionToLeft();
             }
         }
         #endregion

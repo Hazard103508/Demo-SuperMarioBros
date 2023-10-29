@@ -10,6 +10,7 @@ namespace Mario.Game.Npc.Koopa
     {
         #region Objects
         private readonly IScoreService _scoreService;
+        private readonly ISoundService _soundService;
 
         private float _timer = 0;
         #endregion
@@ -18,6 +19,7 @@ namespace Mario.Game.Npc.Koopa
         public KoopaStateInShell(Koopa koopa) : base(koopa)
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -27,13 +29,13 @@ namespace Mario.Game.Npc.Koopa
             if (_timer > 0.1f)
             {
                 Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateBouncing);
-                Koopa.ChangeSpeedAfferHit(player.transform.position);
+                ChangeSpeedAfferHit(player.transform.position);
             }
         }
         private void KillKoopa(Vector3 hitPosition)
         {
             Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
-            Koopa.ChangeSpeedAfferHit(hitPosition);
+            ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -46,8 +48,7 @@ namespace Mario.Game.Npc.Koopa
 
             _scoreService.Add(Koopa.Profile.PointsHit1);
             _scoreService.ShowPoints(Koopa.Profile.PointsHit1, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
-
-            Koopa.PlayHitSoundFX();
+            _soundService.Play(Koopa.Profile.HitSoundFXPoolReference, Koopa.transform.position);
         }
         public override void Update()
         {

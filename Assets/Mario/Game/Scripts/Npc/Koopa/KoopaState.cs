@@ -1,6 +1,8 @@
 using Mario.Game.Interactable;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -26,6 +28,39 @@ namespace Mario.Game.Npc.Koopa
         public KoopaState(Koopa koopa)
         {
             this.Koopa = koopa;
+        }
+        #endregion
+
+        #region Protected Methods
+        protected float GetDirection() => Koopa.Renderer.flipX ? 1 : -1;
+        protected void ChangeDirectionToRight()
+        {
+            Koopa.Renderer.flipX = true;
+            Koopa.Movable.Speed = Mathf.Abs(Koopa.Movable.Speed);
+        }
+        protected void ChangeDirectionToLeft()
+        {
+            Koopa.Renderer.flipX = false;
+            Koopa.Movable.Speed = -Mathf.Abs(Koopa.Movable.Speed);
+        }
+        protected void ChangeSpeedAfferHit(Vector3 hitPosition)
+        {
+            if (Math.Sign(Koopa.Movable.Speed) != Math.Sign(Koopa.transform.position.x - hitPosition.x))
+                Koopa.Renderer.flipX = !Koopa.Renderer.flipX;
+        }
+        protected void HitObject(RayHitInfo hitInfo)
+        {
+            var removeHits = new List<HitObject>();
+            foreach (var obj in hitInfo.hitObjects)
+            {
+                if (obj.Object.TryGetComponent<IHittableByKoppa>(out var hitableObject))
+                {
+                    removeHits.Add(obj);
+                    hitableObject?.OnHittedByKoppa(Koopa);
+                }
+            }
+
+            removeHits.ForEach(obj => hitInfo.hitObjects.Remove(obj));
         }
         #endregion
 

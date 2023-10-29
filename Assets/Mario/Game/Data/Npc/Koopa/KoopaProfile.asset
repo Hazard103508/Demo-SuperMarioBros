@@ -12,19 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5fde5b4b5829ec418708142419f2d54, type: 3}
   m_Name: KoopaProfile
   m_EditorClassIdentifier: 
-  _moveSpeed: -2.2
-  _bouncingSpeed: -11
+  _hitSoundFXPoolReference: {fileID: 11400000, guid: aa0c407b85295404a9b3f9ea2724fb08, type: 2}
+  _kickSoundFXPoolReference: {fileID: 11400000, guid: 40d2d935d4bee0b4ebb42a3928a7f062, type: 2}
+  _bouncingSoundFXPoolReference: {fileID: 11400000, guid: a5aed2da758b8dc4a8c5af8cd8ea2540, type: 2}
+  _moveSpeed: 2.2
+  _bouncingSpeed: 11
   _fallSpeed: 60
   _maxFallSpeed: 14.5
   _jumpAcceleration: 15
   _pointsHit1: 100
   _pointsHit2: 400
   _pointsKill: 200
-  MoveSpeed: -2.2
-  BouncingSpeed: -11
-  FallSpeed: 60
-  MaxFallSpeed: 14.5
-  JumpAcceleration: 15
-  PointsHit1: 100
-  PointsHit2: 400
-  PointsKill: 200

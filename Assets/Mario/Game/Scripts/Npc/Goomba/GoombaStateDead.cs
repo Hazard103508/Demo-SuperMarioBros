@@ -24,15 +24,15 @@ namespace Mario.Game.Npc.Goomba
         {
             Goomba.Movable.ChekCollisions = false;
             Goomba.Movable.enabled = true;
-            Goomba.gameObject.layer = 0;
-            Goomba.Animator.SetTrigger("Kill");
+            Goomba.Movable.SetJumpForce(Goomba.Profile.JumpAcceleration);
             Goomba.Renderer.sortingLayerName = "Dead";
-            _soundService.Play(Goomba.Profile.KickSoundFXPoolReference);
+            Goomba.Renderer.transform.position += Vector3.up * 0.5f;
+            Goomba.Animator.SetTrigger("Kill");
+            Goomba.gameObject.layer = 0;
 
+            _soundService.Play(Goomba.Profile.KickSoundFXPoolReference);
             _scoreService.Add(Goomba.Profile.Points);
             _scoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.8f, 3f);
-            Goomba.Movable.SetJumpForce(Goomba.Profile.JumpAcceleration);
-            Goomba.Renderer.transform.position += Vector3.up * 0.5f;
         }
         #endregion
     }

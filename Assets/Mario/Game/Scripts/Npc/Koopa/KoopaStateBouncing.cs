@@ -12,6 +12,7 @@ namespace Mario.Game.Npc.Koopa
     {
         #region Objects
         private readonly IScoreService _scoreService;
+        private readonly ISoundService _soundService;
 
         private float _timer = 0;
         #endregion
@@ -20,6 +21,7 @@ namespace Mario.Game.Npc.Koopa
         public KoopaStateBouncing(Koopa koopa) : base(koopa)
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
+            _soundService = ServiceLocator.Current.Get<ISoundService>();
         }
         #endregion
 
@@ -32,11 +34,11 @@ namespace Mario.Game.Npc.Koopa
         private void KillKoopa(Vector3 hitPosition)
         {
             Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
-            Koopa.ChangeSpeedAfferHit(hitPosition);
+            ChangeSpeedAfferHit(hitPosition);
         }
-        private void HitObject(RayHitInfo hitInfo)
+        private void HitObjectBySide(RayHitInfo hitInfo)
         {
-            Koopa.HitObject(hitInfo);
+            HitObject(hitInfo);
             hitInfo.IsBlock = hitInfo.hitObjects.Any(obj => obj.IsBlock);
         }
         #endregion
@@ -47,9 +49,10 @@ namespace Mario.Game.Npc.Koopa
             _timer = 0;
             Koopa.Animator.SetTrigger("Hit");
             Koopa.Movable.enabled = true;
-            Koopa.Movable.Speed = Koopa.Profile.BouncingSpeed;
-            Koopa.PlayKickSoundFX();
+            //Koopa.Movable.Speed = Mathf.Abs(Koopa.Profile.BouncingSpeed) * Mathf.Sign(Koopa.Movable.Speed);
+            Koopa.Movable.Speed = Koopa.Profile.BouncingSpeed * GetDirection();
 
+            _soundService.Play(Koopa.Profile.KickSoundFXPoolReference, Koopa.transform.position);
             _scoreService.Add(Koopa.Profile.PointsHit2);
             _scoreService.ShowPoints(Koopa.Profile.PointsHit2, Koopa.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
         }
@@ -62,20 +65,20 @@ namespace Mario.Game.Npc.Koopa
         #region On Movable Hit
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
-            HitObject(hitInfo);
+            HitObjectBySide(hitInfo);
             if (hitInfo.IsBlock)
             {
-                Koopa.ChangeDirectionToRight();
-                Koopa.PlayBlockSoundFX();
+                ChangeDirectionToRight();
+                _soundService.Play(Koopa.Profile.BouncingSoundFXPoolReference, Koopa.transform.position);
             }
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
-            HitObject(hitInfo);
+            HitObjectBySide(hitInfo);
             if (hitInfo.IsBlock)
             {
-                Koopa.ChangeDirectionToLeft();
-                Koopa.PlayBlockSoundFX();
+                ChangeDirectionToLeft();
+                _soundService.Play(Koopa.Profile.BouncingSoundFXPoolReference, Koopa.transform.position);
             }
         }
         #endregion

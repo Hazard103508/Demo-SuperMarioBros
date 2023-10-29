@@ -17,7 +17,7 @@ namespace Mario.Game.Npc.Koopa
         private void KillKoopa(Vector3 hitPosition)
         {
             Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
-            Koopa.ChangeSpeedAfferHit(hitPosition);
+            ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -25,7 +25,7 @@ namespace Mario.Game.Npc.Koopa
         public override void Enter()
         {
             Koopa.Movable.enabled = true;
-            Koopa.Movable.Speed = Koopa.Profile.MoveSpeed;
+            Koopa.Movable.Speed = Koopa.Profile.MoveSpeed * GetDirection();
             Koopa.Movable.Gravity = Koopa.Profile.FallSpeed;
             Koopa.Movable.MaxFallSpeed = Koopa.Profile.MaxFallSpeed;
             Koopa.Animator.SetTrigger("Idle");
@@ -36,12 +36,12 @@ namespace Mario.Game.Npc.Koopa
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                Koopa.ChangeDirectionToRight();
+                ChangeDirectionToRight();
         }
         public override void OnHittedByMovingToRight(RayHitInfo hitInfo)
         {
             if (hitInfo.IsBlock)
-                Koopa.ChangeDirectionToLeft();
+                ChangeDirectionToLeft();
         }
         #endregion
 
