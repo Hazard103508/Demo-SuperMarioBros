@@ -32,8 +32,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b6de99f027f1088479950fb4b50f96da
-    m_Address: FlowerRed
+  - m_GUID: 32b0d73f5981a264785a79306e1e71d6
+    m_Address: FlowerGreen
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -44,6 +44,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f2532cd0d2e6ef9498332c4a292bdeb9
     m_Address: BrokenBrickRed
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fe5ef46e624026645bd9e13455cd3b26
+    m_Address: FlowerTeal
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

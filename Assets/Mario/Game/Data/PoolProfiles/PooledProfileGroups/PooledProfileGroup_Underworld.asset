@@ -15,14 +15,8 @@ MonoBehaviour:
   _pooledObjectProfiles:
   - {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
   - {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
+  - {fileID: 11400000, guid: 0d34e0f1cba78e248b0adc1832e227c2, type: 2}
   _pooledSoundProfiles:
   - {fileID: 11400000, guid: f4bb3a60fe064084eb3684746625245d, type: 2}
   - {fileID: 11400000, guid: 6d2356ab4c2f755498c2bdad1c42881e, type: 2}
   _pooledUIProfiles: []
-  PooledObjectProfiles:
-  - {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
-  - {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
-  PooledSoundProfiles:
-  - {fileID: 11400000, guid: f4bb3a60fe064084eb3684746625245d, type: 2}
-  - {fileID: 11400000, guid: 6d2356ab4c2f755498c2bdad1c42881e, type: 2}
-  PooledUIProfiles: []

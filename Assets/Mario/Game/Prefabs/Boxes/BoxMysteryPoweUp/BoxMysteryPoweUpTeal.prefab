@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbd08e7078e1ac64a9c8148403600491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _profile: {fileID: 11400000, guid: e98054718b7e67b469b09329c304f4be, type: 2}
+  _profile: {fileID: 11400000, guid: 451eec785c7b9ee4894270a3994fe17e, type: 2}
   _animator: {fileID: 254122537660549774}
   _renderer: {fileID: 254122537660549770}
 --- !u!212 &254122537660549770 stripped

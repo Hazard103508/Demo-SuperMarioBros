@@ -10,20 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dea0b26e7f4309d45ad84d1294aa65e0, type: 3}
-  m_Name: PooledObjectProfile_FlowerRed
+  m_Name: PooledObjectProfile_FlowerTeal
   m_EditorClassIdentifier: 
   _reference:
-    m_AssetGUID: b6de99f027f1088479950fb4b50f96da
+    m_AssetGUID: fe5ef46e624026645bd9e13455cd3b26
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _defaultCapacity: 1
   _maxSize: 1
-  Reference:
-    m_AssetGUID: b6de99f027f1088479950fb4b50f96da
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  CollectionCheck: 1
-  DefaultCapacity: 1
-  MaxSize: 1
