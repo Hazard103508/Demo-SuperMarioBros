@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1522044025785936082
+--- !u!1001 &114117631752154546
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -50,16 +50,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 40360478236427875, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Name
-      value: BoxBrickCoinTopTeal
+      value: BoxMysteryCoinTeal
+      objectReference: {fileID: 0}
+    - target: {fileID: 40360478236427875, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 40360478294182497, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 2d8019d1159ca294e9f37c9e34dbaa14, type: 2}
+      objectReference: {fileID: 22100000, guid: 8a1abfd2deac07142ba91376e90c45a5, type: 2}
     - target: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1144122176, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
+      objectReference: {fileID: 190277456, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
     - target: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -70,35 +74,35 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 40360478236427875, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2590940573381071978}
+      addedObject: {fileID: 2903431935389278299}
   m_SourcePrefab: {fileID: 100100000, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
---- !u!1 &1553743374971219633 stripped
+--- !u!95 &79392184926906323 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 40360478294182497, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
+  m_PrefabInstance: {fileID: 114117631752154546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &79392184926906327 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
+  m_PrefabInstance: {fileID: 114117631752154546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &79392184969554897 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 40360478236427875, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
-  m_PrefabInstance: {fileID: 1522044025785936082}
+  m_PrefabInstance: {fileID: 114117631752154546}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2590940573381071978
+--- !u!114 &2903431935389278299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1553743374971219633}
+  m_GameObject: {fileID: 79392184969554897}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b59680049246c4cb882a50daf4d3fd, type: 3}
+  m_Script: {fileID: 11500000, guid: cf5dd83a5f83d214894ef90f562358ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _profile: {fileID: 11400000, guid: e211d387cabb3c44bbd1fd3e1683e6cd, type: 2}
-  _animator: {fileID: 1553743374996562611}
-  _renderer: {fileID: 1553743374996562615}
---- !u!95 &1553743374996562611 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 40360478294182497, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
-  m_PrefabInstance: {fileID: 1522044025785936082}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &1553743374996562615 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
-  m_PrefabInstance: {fileID: 1522044025785936082}
-  m_PrefabAsset: {fileID: 0}
+  _profile: {fileID: 11400000, guid: c211a313d2239c34194e28ddcb84e03d, type: 2}
+  _animator: {fileID: 79392184926906323}
+  _renderer: {fileID: 79392184926906327}

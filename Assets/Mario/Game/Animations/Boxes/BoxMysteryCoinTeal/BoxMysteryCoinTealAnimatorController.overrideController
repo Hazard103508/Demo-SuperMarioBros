@@ -6,7 +6,7 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MysteryBoxShadowTealAnimatorOverrideController
+  m_Name: BoxMysteryCoinTealAnimatorController
   m_Controller: {fileID: 9100000, guid: 3ff884e73b7f450498ccaa5a0fc43a27, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 683a54df416711c47bf6945d0da2e9ae, type: 2}
