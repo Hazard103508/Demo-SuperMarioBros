@@ -78,6 +78,8 @@ namespace Mario.Application.Services
 
         public async void LoadLevel()
         {
+            _playerService.EnableInputs(false);
+
             _root = new GameObject("Map");
             if (_mapConnection != null)
                 MapProfile = _mapConnection.MapProfile;
@@ -170,6 +172,7 @@ namespace Mario.Application.Services
             _timeService.StartTimer();
             PlayInitTheme();
 
+            _playerService.EnableInputs(true);
             _mapConnection = null;
         }
         private IEnumerator ShowCustomIntroPosition()

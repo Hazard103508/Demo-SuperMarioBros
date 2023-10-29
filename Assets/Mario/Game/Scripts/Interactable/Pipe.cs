@@ -11,8 +11,6 @@ namespace Mario.Game.Interactable
     {
         #region Objects
         protected IPlayerService _playerService;
-        private ISceneService _sceneService;
-        private ITimeService _timeService;
         private ILevelService _levelService;
         private ISoundService _soundService;
         private IGameplayService _gameplayService;
@@ -25,8 +23,6 @@ namespace Mario.Game.Interactable
         private void Awake()
         {
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
-            _sceneService = ServiceLocator.Current.Get<ISceneService>();
-            _timeService = ServiceLocator.Current.Get<ITimeService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _gameplayService = ServiceLocator.Current.Get<IGameplayService>();

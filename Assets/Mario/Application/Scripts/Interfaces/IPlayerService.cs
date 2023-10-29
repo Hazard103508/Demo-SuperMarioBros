@@ -18,6 +18,7 @@ namespace Mario.Application.Interfaces
         void SetPlayerPosition(Vector3 position);
         void SetActivePlayer(bool isActive);
         void EnableAutoWalk(bool enable);
+        void EnableInputs(bool enable);
         void ResetState();
         void TranslatePlayerPosition(Vector3 position);
         void KillPlayer();

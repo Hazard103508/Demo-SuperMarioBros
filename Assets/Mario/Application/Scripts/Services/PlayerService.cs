@@ -50,6 +50,7 @@ namespace Mario.Application.Services
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
         public void SetActivePlayer(bool isActive) => _playerController.gameObject.SetActive(isActive);
         public void EnableAutoWalk(bool enable) => IsAutowalk = enable;
+        public void EnableInputs(bool enable) => _playerInputActions.enabled = enable;
         public void ResetState() => _playerController.StateMachine.TransitionTo(_playerController.StateMachine.CurrentMode.StateIdle);
         public void KillPlayer() => _playerController.Kill();
         public void KillPlayerByTimeOut() => _playerController.TimeOut();

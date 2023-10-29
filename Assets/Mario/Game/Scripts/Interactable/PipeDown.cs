@@ -10,6 +10,7 @@ namespace Mario.Game.Interactable
         #region Protected Method
         protected override IEnumerator OnMovePlayer(PlayerController player)
         {
+            _playerService.EnableInputs(false);
             while (player.transform.position.y > transform.position.y)
             {
                 player.transform.Translate(4f * Time.deltaTime * Vector3.down);
