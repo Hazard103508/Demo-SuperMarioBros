@@ -17,8 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 0654d3842bda4ed4bbed8e1b1ee45c7e
   m_SerializeEntries:
-  - m_GUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
-    m_Address: BrokenBrickRed
+  - m_GUID: 262bd42324a100049ac4b740f54fe4f5
+    m_Address: BrokenBrickTeal
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -42,8 +42,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 56e9151935fd98b438a3a6d79b458f99
-    m_Address: BrokenBrickTeal
+  - m_GUID: f2532cd0d2e6ef9498332c4a292bdeb9
+    m_Address: BrokenBrickRed
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

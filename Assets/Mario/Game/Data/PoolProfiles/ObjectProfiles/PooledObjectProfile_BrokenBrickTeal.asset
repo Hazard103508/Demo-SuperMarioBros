@@ -13,18 +13,9 @@ MonoBehaviour:
   m_Name: PooledObjectProfile_BrokenBrickTeal
   m_EditorClassIdentifier: 
   _reference:
-    m_AssetGUID: 56e9151935fd98b438a3a6d79b458f99
+    m_AssetGUID: 262bd42324a100049ac4b740f54fe4f5
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _collectionCheck: 1
   _defaultCapacity: 1
   _maxSize: 5
-  Reference:
-    m_AssetGUID: 56e9151935fd98b438a3a6d79b458f99
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  CollectionCheck: 1
-  DefaultCapacity: 1
-  MaxSize: 5

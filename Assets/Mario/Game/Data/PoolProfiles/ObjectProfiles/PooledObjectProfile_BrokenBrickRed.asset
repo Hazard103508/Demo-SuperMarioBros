@@ -13,18 +13,9 @@ MonoBehaviour:
   m_Name: PooledObjectProfile_BrokenBrickRed
   m_EditorClassIdentifier: 
   _reference:
-    m_AssetGUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
+    m_AssetGUID: f2532cd0d2e6ef9498332c4a292bdeb9
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _collectionCheck: 1
   _defaultCapacity: 1
   _maxSize: 5
-  Reference:
-    m_AssetGUID: 3fc1e033ec0a6d54ab0e7c3f96c98dce
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  CollectionCheck: 1
-  DefaultCapacity: 1
-  MaxSize: 5
