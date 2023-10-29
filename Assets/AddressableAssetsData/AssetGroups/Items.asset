@@ -21,26 +21,32 @@ MonoBehaviour:
     m_Address: BrokenBrickRed
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 11edffef54ef3e24cb397f4c763299ab
     m_Address: JumpingCoin
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 3dc86bf01a9156e44a09dc9ec612d79b
-    m_Address: MushroomGreen
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c4d66cae4038b384db2561bb9a86ae0b
+    m_Address: MushroomRed
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b6de99f027f1088479950fb4b50f96da
     m_Address: FlowerRed
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e3a5b4b0351280c45a9fa635d777580b
-    m_Address: MushroomRed
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b02e8c746cecac44692c5612e25122e9
+    m_Address: MushroomGreen
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 56e9151935fd98b438a3a6d79b458f99
     m_Address: BrokenBrickTeal
     m_ReadOnly: 0
     m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
   m_SchemaSet:

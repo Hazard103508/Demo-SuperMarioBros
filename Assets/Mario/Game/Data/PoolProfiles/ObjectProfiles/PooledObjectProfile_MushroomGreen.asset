@@ -13,17 +13,9 @@ MonoBehaviour:
   m_Name: PooledObjectProfile_MushroomGreen
   m_EditorClassIdentifier: 
   _reference:
-    m_AssetGUID: 3dc86bf01a9156e44a09dc9ec612d79b
+    m_AssetGUID: b02e8c746cecac44692c5612e25122e9
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   _defaultCapacity: 1
   _maxSize: 1
-  Reference:
-    m_AssetGUID: 3dc86bf01a9156e44a09dc9ec612d79b
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  CollectionCheck: 1
-  DefaultCapacity: 1
-  MaxSize: 1
