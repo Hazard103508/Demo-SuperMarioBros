@@ -5,7 +5,7 @@ using Mario.Game.Player;
 
 namespace Mario.Game.Boxes.MysteryBoxCoin
 {
-    public class MysteryBoxCoinStateIdle : BoxStateIdle
+    public class BoxMysteryCoinStateIdle : BoxStateIdle
     {
         #region Objects
         private readonly IPoolService _poolService;
@@ -13,11 +13,11 @@ namespace Mario.Game.Boxes.MysteryBoxCoin
         #endregion
 
         #region Properties
-        new protected MysteryBoxCoin Box => (MysteryBoxCoin)base.Box;
+        new protected BoxMysteryCoin Box => (BoxMysteryCoin)base.Box;
         #endregion
 
         #region Constructor
-        public MysteryBoxCoinStateIdle(Box.Box box) : base(box)
+        public BoxMysteryCoinStateIdle(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();

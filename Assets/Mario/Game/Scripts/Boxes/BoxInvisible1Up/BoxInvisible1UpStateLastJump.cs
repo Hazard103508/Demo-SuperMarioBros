@@ -1,10 +1,11 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Boxes.Box;
+using UnityEngine;
 
-namespace Mario.Game.Boxes.MysteryBoxPowerUp
+namespace Mario.Game.Boxes.InvisibleBox1UP
 {
-    public class MysteryBoxPowerUpStateLastJumpMushroom : BoxStateLastJump
+    public class BoxInvisible1UpStateLastJump : BoxStateLastJump
     {
         #region Objects
         private readonly IPoolService _poolService;
@@ -12,11 +13,11 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         #endregion
 
         #region Properties
-        new protected MysteryBoxPowerUp Box => (MysteryBoxPowerUp)base.Box;
+        new protected BoxInvisible1Up Box => (BoxInvisible1Up)base.Box;
         #endregion
 
         #region Constructor
-        public MysteryBoxPowerUpStateLastJumpMushroom(Box.Box box) : base(box)
+        public BoxInvisible1UpStateLastJump(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
@@ -27,6 +28,7 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         public override void Enter()
         {
             base.Enter();
+            Box.gameObject.layer = LayerMask.NameToLayer("Ground");
             _soundService.Play(Box.Profile.RiseItemSoundFXPoolReference, Box.transform.position);
         }
         #endregion

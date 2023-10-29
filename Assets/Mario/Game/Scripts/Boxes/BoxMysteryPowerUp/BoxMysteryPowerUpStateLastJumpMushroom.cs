@@ -4,7 +4,7 @@ using Mario.Game.Boxes.Box;
 
 namespace Mario.Game.Boxes.MysteryBoxPowerUp
 {
-    public class MysteryBoxPowerUpStateLastJumpFlower : BoxStateLastJump
+    public class BoxMysteryPowerUpStateLastJumpMushroom : BoxStateLastJump
     {
         #region Objects
         private readonly IPoolService _poolService;
@@ -12,11 +12,11 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         #endregion
 
         #region Properties
-        new protected MysteryBoxPowerUp Box => (MysteryBoxPowerUp)base.Box;
+        new protected BoxMysteryPowerUp Box => (BoxMysteryPowerUp)base.Box;
         #endregion
 
         #region Constructor
-        public MysteryBoxPowerUpStateLastJumpFlower(Box.Box box) : base(box)
+        public BoxMysteryPowerUpStateLastJumpMushroom(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
@@ -34,7 +34,7 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         #region Protected Methods
         protected override void OnJumpCompleted()
         {
-            _poolService.GetObjectFromPool(Box.Profile.FlowerPoolReference, Box.transform.position);
+            _poolService.GetObjectFromPool(Box.Profile.MushroomPoolReference, Box.transform.position);
         }
         #endregion
     }

@@ -4,14 +4,14 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes.InvisibleBox1UP
 {
-    public class InvisibleBox1UPStateIdle : BoxStateIdle
+    public class BoxInvisible1UpStateIdle : BoxStateIdle
     {
         #region Objects
         private float _delay;
         #endregion
 
         #region Constructor
-        public InvisibleBox1UPStateIdle(Box.Box box) : base(box)
+        public BoxInvisible1UpStateIdle(Box.Box box) : base(box)
         {
         }
         #endregion

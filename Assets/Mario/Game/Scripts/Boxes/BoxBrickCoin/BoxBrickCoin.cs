@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes.BrickBoxCoin
 {
-    public class BrickBoxCoin : Box.Box
+    public class BoxBrickCoin : Box.Box
     {
         #region Objects
         private float _limitTime;
@@ -18,7 +18,7 @@ namespace Mario.Game.Boxes.BrickBoxCoin
         protected override void Awake()
         {
             base.Awake();
-            base.StateMachine.StateIdle = new BrickBoxCoinStateIdle(this);
+            base.StateMachine.StateIdle = new BoxBrickCoinStateIdle(this);
             _limitTime = Profile.LimitTime;
         }
         protected override void Update()

@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Mario.Game.Boxes.BrickBoxEmpty
 {
-    public class BrickBoxEmptyStateIdle : BoxStateIdle
+    public class BoxBrickEmptyStateIdle : BoxStateIdle
     {
         #region Objects
         private readonly IPoolService _poolService;
@@ -16,11 +16,11 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         #endregion
 
         #region Properties
-        new protected BrickBoxEmpty Box => (BrickBoxEmpty)base.Box;
+        new protected BoxBrickEmpty Box => (BoxBrickEmpty)base.Box;
         #endregion
 
         #region Constructor
-        public BrickBoxEmptyStateIdle(Box.Box box) : base(box)
+        public BoxBrickEmptyStateIdle(Box.Box box) : base(box)
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();

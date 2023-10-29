@@ -2,7 +2,7 @@ using Mario.Game.ScriptableObjects.Boxes;
 
 namespace Mario.Game.Boxes.MysteryBoxPowerUp
 {
-    public class MysteryBoxPowerUp : Box.Box
+    public class BoxMysteryPowerUp : Box.Box
     {
         #region Properties
         new public MysteryBoxPowerUpProfile Profile => (MysteryBoxPowerUpProfile)base.Profile;
@@ -12,7 +12,7 @@ namespace Mario.Game.Boxes.MysteryBoxPowerUp
         protected override void Awake()
         {
             base.Awake();
-            base.StateMachine.StateIdle = new MysteryBoxPowerUpStateIdle(this);
+            base.StateMachine.StateIdle = new BoxMysteryPowerUpStateIdle(this);
         }
         #endregion
     }
