@@ -20,11 +20,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMasterTextureLimit: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -63,6 +64,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -75,6 +77,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -87,6 +90,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -99,6 +103,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -111,6 +116,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -123,6 +129,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -430,8 +450,8 @@ TextureImporter:
         y: 48
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -451,8 +471,8 @@ TextureImporter:
         y: 48
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -472,8 +492,8 @@ TextureImporter:
         y: 48
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -493,8 +513,8 @@ TextureImporter:
         y: 48
         width: 16
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -513,9 +533,9 @@ TextureImporter:
         x: 112
         y: 48
         width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -534,9 +554,9 @@ TextureImporter:
         x: 128
         y: 48
         width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -544,6 +564,27 @@ TextureImporter:
       bones: []
       spriteID: 8eb912570fc99ed4ea972b9e7bcf7b43
       internalID: 973238089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NPC_3
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 32
+        width: 1
+        height: 1
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe9bb88306b6eba4dbbf07e2a5c744fc
+      internalID: -1392637762
       vertices: []
       indices: 
       edges: []
@@ -559,39 +600,38 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      NPC_13: -1986497150
-      NPC_25: -664440163
-      NPC_10: 688096580
+      NPC_0: -52697177
       NPC_1: -1236738634
-      NPC_9: 1351487353
-      NPC_24: -26237067
-      NPC_27: -208501820
-      NPC_21: -906483847
-      NPC_22: -890726030
-      NPC_17: 1178551467
-      NPC_16: -547860458
-      NPC_26: 1071690201
-      NPC_14: 823989907
-      NPC_2: 1046096211
-      NPC_12: -48868588
-      NPC_5: 972884318
+      NPC_10: 688096580
       NPC_11: -1484526067
+      NPC_12: -48868588
+      NPC_13: -1986497150
+      NPC_14: 823989907
       NPC_15: -924741832
+      NPC_16: -547860458
+      NPC_17: 1178551467
       NPC_18: -1455619421
       NPC_19: 1708887851
+      NPC_2: 1046096211
       NPC_20: 1435959549
-      NPC_8: 705247097
+      NPC_21: -906483847
+      NPC_22: -890726030
       NPC_23: 1013960357
-      NPC_0: -52697177
+      NPC_24: -26237067
+      NPC_25: -664440163
+      NPC_26: 1071690201
+      NPC_27: -208501820
       NPC_28: -1066315800
-      NPC_4: 1321762336
-      NPC_3: -1392637762
-      NPC_7: 1012417340
       NPC_29: 973238089
+      NPC_3: -1392637762
+      NPC_4: 1321762336
+      NPC_5: 972884318
       NPC_6: 1303413217
-  spritePackingTag: 
+      NPC_7: 1012417340
+      NPC_8: 705247097
+      NPC_9: 1351487353
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
