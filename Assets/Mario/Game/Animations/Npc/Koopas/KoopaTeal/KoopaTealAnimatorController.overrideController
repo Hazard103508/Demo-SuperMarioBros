@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: KoopaTealAnimatorController
+  m_Controller: {fileID: 9100000, guid: a10a6b306e0ba054c9db419cebe5bcce, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 08bec126fa5cc30449ccdd5bab8c1ce3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 85dca864abc52564085c00778ed2d9c3, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9a98d0b10a9fa5d46b75684564d5b4b1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3c698468124804e4a885124b537bfb8e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 730cee402a33b8042aa83b7f296284e8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e9ce8bca957f7ad499df8b85aed49944, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 09d2947e6aac62a499f348c3f98fc0c3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e471bdc6fc18c5142b349cef7dd477e1, type: 2}
