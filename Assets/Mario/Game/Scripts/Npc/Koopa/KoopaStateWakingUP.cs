@@ -45,9 +45,9 @@ namespace Mario.Game.Npc.Koopa
             {
                 Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateWalk);
                 if (Koopa.Renderer.flipX)
-                    ChangeDirectionToRight();
-                else
                     ChangeDirectionToLeft();
+                else
+                    ChangeDirectionToRight();
             }
         }
         #endregion

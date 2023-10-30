@@ -43,7 +43,7 @@ namespace Mario.Game.Npc.Koopa
         public override void Enter()
         {
             _timer = 0;
-            Koopa.Movable.Speed = 0;
+            Koopa.Movable.enabled = false;
             Koopa.Animator.SetTrigger("Hit");
 
             _scoreService.Add(Koopa.Profile.PointsHit1);

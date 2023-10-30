@@ -32,21 +32,24 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Protected Methods
-        protected float GetDirection() => Koopa.Renderer.flipX ? 1 : -1;
+        protected float GetDirection() => Koopa.Renderer.flipX ? -1 : 1;
         protected void ChangeDirectionToRight()
         {
-            Koopa.Renderer.flipX = true;
+            Koopa.Renderer.flipX = false;
             Koopa.Movable.Speed = Mathf.Abs(Koopa.Movable.Speed);
         }
         protected void ChangeDirectionToLeft()
         {
-            Koopa.Renderer.flipX = false;
+            Koopa.Renderer.flipX = true;
             Koopa.Movable.Speed = -Mathf.Abs(Koopa.Movable.Speed);
         }
         protected void ChangeSpeedAfferHit(Vector3 hitPosition)
         {
             if (Math.Sign(Koopa.Movable.Speed) != Math.Sign(Koopa.transform.position.x - hitPosition.x))
+            {
                 Koopa.Renderer.flipX = !Koopa.Renderer.flipX;
+                Koopa.Movable.Speed *= -1;
+            }
         }
         protected void HitObject(RayHitInfo hitInfo)
         {

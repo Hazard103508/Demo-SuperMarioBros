@@ -49,7 +49,6 @@ namespace Mario.Game.Npc.Koopa
             _timer = 0;
             Koopa.Animator.SetTrigger("Hit");
             Koopa.Movable.enabled = true;
-            //Koopa.Movable.Speed = Mathf.Abs(Koopa.Profile.BouncingSpeed) * Mathf.Sign(Koopa.Movable.Speed);
             Koopa.Movable.Speed = Koopa.Profile.BouncingSpeed * GetDirection();
 
             _soundService.Play(Koopa.Profile.KickSoundFXPoolReference, Koopa.transform.position);

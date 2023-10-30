@@ -19,32 +19,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   _range:
-    _startPoint: {x: -0.45, y: -0.1}
-    _endPoint: {x: -0.45, y: -0.55}
+    _startPoint: {x: -0.45, y: -0.2}
+    _endPoint: {x: -0.45, y: -0.8}
     _count: 4
-    StartPoint: {x: -0.45, y: -0.1}
-    EndPoint: {x: -0.45, y: -0.55}
-    Count: 4
   _ray:
     _direction: {x: -1, y: 0}
     _length: 0.05
-    Direction: {x: -1, y: 0}
-    Length: 0.05
-  BlockLayers:
-    serializedVersion: 2
-    m_Bits: 520
-  OtherLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  Range:
-    _startPoint: {x: 0, y: 0}
-    _endPoint: {x: 0, y: 0}
-    _count: 0
-    StartPoint: {x: -0.45, y: -0.1}
-    EndPoint: {x: -0.45, y: -0.55}
-    Count: 4
-  Ray:
-    _direction: {x: 0, y: 0}
-    _length: 0
-    Direction: {x: -1, y: 0}
-    Length: 0.05
