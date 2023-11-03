@@ -55,7 +55,7 @@ namespace Mario.Game.Interactable
         }
         private IEnumerator DownPlayerPole(PlayerController player)
         {
-            player.Movable.enabled = false;
+            player.StateMachine.TransitionTo(player.StateMachine.CurrentMode.StateFlag);
             player.transform.localScale = Vector3.one;
             player.transform.position = new Vector3(transform.position.x - 0.5f, player.transform.position.y, player.transform.position.z);
 
@@ -65,6 +65,7 @@ namespace Mario.Game.Interactable
                 yield return null;
             }
 
+            player.Animator.speed = 0;
             player.transform.position = new Vector3(player.transform.position.x, transform.position.y);
             player.Renderer.flipX = true;
             player.transform.Translate(Vector3.right);
@@ -85,8 +86,8 @@ namespace Mario.Game.Interactable
         {
             yield return new WaitUntil(() => _isPlayerDown && _isFlagDown);
 
+            player.StateMachine.TransitionTo(player.StateMachine.CurrentMode.StateRun);
             _playerService.EnableAutoWalk(true);
-            player.Movable.enabled = true;
             player.Movable.SetJumpForce(0);
         }
         private int GetFlagPoints(PlayerController player)
