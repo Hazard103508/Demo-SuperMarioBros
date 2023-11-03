@@ -79,6 +79,7 @@ namespace Mario.Application.Services
         public async void LoadLevel()
         {
             _playerService.EnableInputs(false);
+            _playerService.EnableAutoWalk(false);
 
             _root = new GameObject("Map");
             if (_mapConnection != null)

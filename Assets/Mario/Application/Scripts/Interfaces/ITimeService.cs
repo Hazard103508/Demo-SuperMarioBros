@@ -15,5 +15,7 @@ namespace Mario.Application.Interfaces
 
         void ResetTimer();
         void StartTimer();
+        void FreezeTimer();
+        void UnfreezeTimer();
     }
 }

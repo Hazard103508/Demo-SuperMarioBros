@@ -27,22 +27,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
   - {fileID: 11400000, guid: ec4e24934fdb0d24eb8e8ad184529244, type: 2}
   - {fileID: 11400000, guid: 7a7e41f2d3e8c36499b9014423a8ac6a, type: 2}
+  - {fileID: 11400000, guid: 09247c21492036741b4bbc1bcad5ce9e, type: 2}
   _pooledUIProfiles:
-  - {fileID: 11400000, guid: 321bfb91385fa494aa1678c86106335c, type: 2}
-  PooledObjectProfiles:
-  - {fileID: 11400000, guid: 1522160af6c20304ea615b6a2d26d164, type: 2}
-  - {fileID: 11400000, guid: 4a1933c96519e3d4e9e323e7656992a1, type: 2}
-  - {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
-  PooledSoundProfiles:
-  - {fileID: 11400000, guid: 7e4ef4bf45301d748b97b6e52f7c8555, type: 2}
-  - {fileID: 11400000, guid: 42e030cc42f100d4383989db61c7b2e2, type: 2}
-  - {fileID: 11400000, guid: 02aaf34b74439ec4997b0e10675d50b7, type: 2}
-  - {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
-  - {fileID: 11400000, guid: 74bda110af327014198ed99405fd392a, type: 2}
-  - {fileID: 11400000, guid: 110a1e4ebf8ad6045ae0e9db4d41e435, type: 2}
-  - {fileID: 11400000, guid: 9307adf8764ab0e4cb1056b87e54e042, type: 2}
-  - {fileID: 11400000, guid: d8e06f2104b7dd54fbeaa0308574094b, type: 2}
-  - {fileID: 11400000, guid: ec4e24934fdb0d24eb8e8ad184529244, type: 2}
-  - {fileID: 11400000, guid: 7a7e41f2d3e8c36499b9014423a8ac6a, type: 2}
-  PooledUIProfiles:
   - {fileID: 11400000, guid: 321bfb91385fa494aa1678c86106335c, type: 2}
