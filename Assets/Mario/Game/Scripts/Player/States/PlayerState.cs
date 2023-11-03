@@ -158,7 +158,15 @@ namespace Mario.Game.Player
             }
         }
         protected virtual bool SetTransitionToNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
-        protected virtual bool SetTransitionToDeath() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
+        protected virtual bool SetTransitionToDeath()
+        {
+            if (!Player.IsInvincible)
+            { 
+                Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
+                return true;
+            }
+            return false;
+        }
         protected virtual bool SetTransitionToTimeOut() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateTimeOut);
         protected virtual bool SetTransitionToFlag() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFlag);
 

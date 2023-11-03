@@ -6,7 +6,6 @@ namespace Mario.Game.Player
     public abstract class PlayerStateBuff : PlayerState
     {
         #region Objects
-        private readonly ITimeService _timeService;
         private readonly ISoundService _soundService;
         private readonly IPlayerService _playerService;
         private readonly IGameplayService _gameplayService;
@@ -15,7 +14,6 @@ namespace Mario.Game.Player
         #region Constructor
         public PlayerStateBuff(PlayerController player) : base(player)
         {
-            _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
