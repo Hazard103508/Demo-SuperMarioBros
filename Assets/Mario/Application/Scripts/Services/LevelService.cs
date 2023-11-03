@@ -41,15 +41,11 @@ namespace Mario.Application.Services
             set
             {
                 _isGoalReached = value;
-                if (value)
-                    GoalReached?.Invoke();
+                // DALE PLAY...
+
             }
         }
         public bool IsLoadCompleted { get; private set; }
-        #endregion
-
-        #region Events
-        public event Action GoalReached;
         #endregion
 
         #region Public Methods

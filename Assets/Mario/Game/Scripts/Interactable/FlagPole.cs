@@ -15,6 +15,7 @@ namespace Mario.Game.Interactable
         private ITimeService _timeService;
         private ISoundService _soundService;
         private IPlayerService _playerService;
+        private ILevelService _levelService;
 
         [SerializeField] private FlagPoleProfile _profile;
         [SerializeField] private GameObject _flag;
@@ -31,6 +32,7 @@ namespace Mario.Game.Interactable
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
         }
         #endregion
 
@@ -85,6 +87,7 @@ namespace Mario.Game.Interactable
         private IEnumerator WalkToHouse(PlayerController player)
         {
             yield return new WaitUntil(() => _isPlayerDown && _isFlagDown);
+            _levelService.IsGoalReached = true;
 
             player.StateMachine.TransitionTo(player.StateMachine.CurrentMode.StateRun);
             _playerService.EnableAutoWalk(true);
