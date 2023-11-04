@@ -25,7 +25,7 @@ namespace Mario.Application.Services
 
         [SerializeField] private MapProfile _currentMapProfile;
         private AddressablesLoaderContainer _assetLoaderContainer;
-        private bool _isGoalReached;
+        private bool _isFlagReached;
         private bool _isHurry;
         private Coroutine _hurryCO;
 
@@ -35,16 +35,6 @@ namespace Mario.Application.Services
 
         #region Properties
         public MapProfile MapProfile { get; private set; }
-        public bool IsGoalReached
-        {
-            get => _isGoalReached;
-            set
-            {
-                _isGoalReached = value;
-                if (_isGoalReached)
-                    _soundService.PlayTheme(MapProfile.Music.VictoryTheme);
-            }
-        }
         public bool IsLoadCompleted { get; private set; }
         #endregion
 
@@ -71,7 +61,6 @@ namespace Mario.Application.Services
             _timeService.TimeOut -= OnTimeOut;
             _playerService.LivesRemoved -= OnLivesRemoved;
         }
-
         public async void LoadLevel()
         {
             _playerService.EnableInputs(false);
@@ -81,7 +70,7 @@ namespace Mario.Application.Services
             if (_mapConnection != null)
                 MapProfile = _mapConnection.MapProfile;
 
-            IsGoalReached = false;
+            _isFlagReached = false;
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
 
             LoadAsyncReferences();
@@ -109,6 +98,13 @@ namespace Mario.Application.Services
                 StopCoroutine(_hurryCO);
         }
         public void SetNextMap(MapConnection connection) => _mapConnection = connection;
+        public void SetFlagReached()
+        {
+            _isFlagReached = true;
+            if (_isFlagReached)
+                _soundService.PlayTheme(MapProfile.Music.VictoryTheme);
+        }
+        public void SetHouseReached() => StartCoroutine(FinishLevel());
         #endregion
 
         #region Private Methods
@@ -150,9 +146,6 @@ namespace Mario.Application.Services
         private IEnumerator StartGame()
         {
             yield return new WaitUntil(() => _assetLoaderContainer.IsLoadCompleted);
-
-            if (_mapConnection != null)
-                yield return new WaitForSeconds(_mapConnection.BlackScreenTime);
 
             if (_mapConnection == null)
             {
@@ -233,7 +226,7 @@ namespace Mario.Application.Services
             if (MapProfile.StartTime <= 0)
                 return;
 
-            if (!_isHurry && _timeService.Time <= _hurryTime && !IsGoalReached)
+            if (!_isHurry && _timeService.Time <= _hurryTime && !_isFlagReached)
             {
                 _isHurry = true;
                 _hurryCO = StartCoroutine(PlayHurryUpTheme());
@@ -242,6 +235,12 @@ namespace Mario.Application.Services
         private void OnTimeOut()
         {
             _playerService.KillPlayerByTimeOut();
+        }
+        private IEnumerator FinishLevel()
+        {
+            _soundService.StopTheme();
+            yield return new WaitForSeconds(6);
+            LoadNextLevel();
         }
         #endregion
     }

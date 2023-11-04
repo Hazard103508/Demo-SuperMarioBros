@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2473471470706415901
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 460384663832853242, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Roof2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071155887892968420, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 674216905, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
+    - target: {fileID: 1395473991249368290, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -269228584, guid: 231696a663264584ca01b8978891cfec, type: 3}
+    - target: {fileID: 1717327618538189326, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Windows2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1798826174468349572, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 118408559, guid: 231696a663264584ca01b8978891cfec, type: 3}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590613867973770049, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3547245958805623603, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 674216905, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
+    - target: {fileID: 3600063969143856301, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3937521896890639359, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Roof1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387366620507815150, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -952606616, guid: 231696a663264584ca01b8978891cfec, type: 3}
+    - target: {fileID: 4884512766067558958, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: HouseRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5510231127740309510, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5771356238698939572, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Windows1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6603057968718313602, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Roof4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782955811346416317, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Roof3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026819880576132275, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Front
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026819880576132275, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7258146376407048669, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1148305970, guid: 231696a663264584ca01b8978891cfec, type: 3}
+    - target: {fileID: 7441389051139057420, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -952606616, guid: 231696a663264584ca01b8978891cfec, type: 3}
+    - target: {fileID: 8412988183156936633, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1909153568, guid: 231696a663264584ca01b8978891cfec, type: 3}
+    - target: {fileID: 8601875045753010897, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -952606616, guid: 231696a663264584ca01b8978891cfec, type: 3}
+    - target: {fileID: 8653431469986654153, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Door2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8757832506273232465, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}
+      propertyPath: m_Name
+      value: Door1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2e7d847bb5364e7498b8bc157336733c, type: 3}

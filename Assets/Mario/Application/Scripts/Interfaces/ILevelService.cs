@@ -1,5 +1,4 @@
 using Mario.Game.ScriptableObjects.Map;
-using System;
 
 namespace Mario.Application.Interfaces
 {
@@ -8,11 +7,11 @@ namespace Mario.Application.Interfaces
         MapProfile MapProfile { get; }
         bool IsLoadCompleted { get; }
 
-        bool IsGoalReached { get; set; }
-
         void LoadLevel();
         void LoadNextLevel();
         void UnloadLevel();
         void SetNextMap(MapConnection connection);
+        void SetFlagReached();
+        void SetHouseReached();
     }
 }

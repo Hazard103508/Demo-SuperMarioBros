@@ -93,7 +93,7 @@ namespace Mario.Game.Interactable
             player.Movable.SetJumpForce(0);
 
             yield return new WaitForSeconds(.3f);
-            _levelService.IsGoalReached = true;
+            _levelService.SetFlagReached();
         }
         private int GetFlagPoints(PlayerController player)
         {
