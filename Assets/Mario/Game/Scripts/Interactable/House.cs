@@ -10,7 +10,7 @@ namespace Mario.Game.Interactable
     public class House : MonoBehaviour, IHittableByPlayerFromLeft
     {
         #region Objects
-        private ILevelService _levelService;
+        private IGameplayService _gameplayService;
 
         [SerializeField] private HouseProfile _profile;
         #endregion
@@ -18,7 +18,7 @@ namespace Mario.Game.Interactable
         #region Private Methods
         private void Awake()
         {
-            _levelService = ServiceLocator.Current.Get<ILevelService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -26,8 +26,8 @@ namespace Mario.Game.Interactable
         public void OnHittedByPlayerFromLeft(PlayerController player)
         {
             player.gameObject.SetActive(false);
-            _levelService.SetNextMap(_profile.Connection);
-            _levelService.SetHouseReached();
+            _gameplayService.SetNextMap(_profile.Connection);
+            _gameplayService.SetHouseReached();
         }
         #endregion
     }

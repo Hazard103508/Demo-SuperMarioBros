@@ -53,7 +53,7 @@ namespace Mario.Game.Interactable
             yield return OnMovePlayer(player);
 
             player.transform.position = new Vector3(player.transform.position.x, Mathf.Round(player.transform.position.y), player.transform.position.z);
-            _levelService.SetNextMap(_profile.Connection);
+            _gameplayService.SetNextMap(_profile.Connection);
             _levelService.LoadNextLevel();
         }
         #endregion

@@ -2263,7 +2263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3707476724326963612, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5254,6 +5254,10 @@ PrefabInstance:
     - target: {fileID: 7033161684153111347, guid: 264a6213d6184444d9b7d34d0979561f, type: 3}
       propertyPath: m_Name
       value: HouseRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033161684153111347, guid: 264a6213d6184444d9b7d34d0979561f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8113145754847156506, guid: 264a6213d6184444d9b7d34d0979561f, type: 3}
       propertyPath: _profile

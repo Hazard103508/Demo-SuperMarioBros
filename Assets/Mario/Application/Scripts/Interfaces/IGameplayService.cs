@@ -1,3 +1,4 @@
+using Mario.Game.ScriptableObjects.Map;
 using System;
 
 namespace Mario.Application.Interfaces
@@ -7,7 +8,10 @@ namespace Mario.Application.Interfaces
         event Action GameFreezed;
         event Action GameUnfreezed;
 
+        void SetNextMap(MapConnection connection);
         void FreezeGame();
         void UnfreezeGame();
+        void SetFlagReached();
+        void SetHouseReached();
     }
 }

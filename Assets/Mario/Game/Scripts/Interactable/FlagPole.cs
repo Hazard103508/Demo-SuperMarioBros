@@ -15,7 +15,7 @@ namespace Mario.Game.Interactable
         private ITimeService _timeService;
         private ISoundService _soundService;
         private IPlayerService _playerService;
-        private ILevelService _levelService;
+        private IGameplayService _gameplayService;
 
         [SerializeField] private FlagPoleProfile _profile;
         [SerializeField] private GameObject _flag;
@@ -32,7 +32,7 @@ namespace Mario.Game.Interactable
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
-            _levelService = ServiceLocator.Current.Get<ILevelService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -93,7 +93,7 @@ namespace Mario.Game.Interactable
             player.Movable.SetJumpForce(0);
 
             yield return new WaitForSeconds(.3f);
-            _levelService.SetFlagReached();
+            _gameplayService.SetFlagReached();
         }
         private int GetFlagPoints(PlayerController player)
         {
