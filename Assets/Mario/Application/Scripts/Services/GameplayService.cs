@@ -15,8 +15,10 @@ namespace Mario.Application.Services
         private ILevelService _levelService;
         private IPlayerService _playerService;
         private ISceneService _sceneService;
+        private IScoreService _scoreService;
 
         private readonly int _hurryTime = 100;
+        private readonly int _pointsPerSecond = 50;
         private bool _isFlagReached;
         private bool _isHurry;
         private MapConnection _mapConnection;
@@ -35,6 +37,7 @@ namespace Mario.Application.Services
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
 
             _levelService.LoadCompleted += OnLoadCompleted;
             _levelService.LoadingConnection += OnLoadingConnection;
@@ -67,7 +70,11 @@ namespace Mario.Application.Services
             if (_isFlagReached)
                 _soundService.PlayTheme(_levelService.MapProfile.Music.VictoryTheme);
         }
-        public void SetHouseReached() => StartCoroutine(FinishLevel());
+        public void SetHouseReached()
+        {
+            StartCoroutine(AddTimeScore());
+            StartCoroutine(FinishLevel());
+        }
         #endregion
 
         #region Private Methods
@@ -140,9 +147,23 @@ namespace Mario.Application.Services
                 }
             }
         }
+        private IEnumerator AddTimeScore()
+        {
+            _timeService.TimeSpeed = 150f;
+            _timeService.UnfreezeTimer();
+
+            int _previousTime = _timeService.Time;
+            while (_timeService.Time > 0)
+            {
+                int timedif = _previousTime - _timeService.Time;
+                int score = timedif * _pointsPerSecond;
+                _scoreService.Add(score);
+                _previousTime = _timeService.Time;
+                yield return null;
+            }
+        }
         private IEnumerator FinishLevel()
         {
-            _soundService.StopTheme();
             yield return new WaitForSeconds(6);
             _levelService.LoadNextLevel();
         }

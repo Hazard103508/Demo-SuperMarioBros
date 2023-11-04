@@ -661,7 +661,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 2147483649
-  - first: {x: 7, y: 2, z: 0}
+  - first: {x: 4, y: 2, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 20
@@ -1121,17 +1121,17 @@ CompositeCollider2D:
         Y: 20000040
       - X: 160000032
         Y: 20000100
-      - X: 80000096
+      - X: 50000100
         Y: 20000100
-      - X: 80000096
+      - X: 50000100
         Y: 30000040
-      - X: 80000040
+      - X: 50000044
         Y: 30000100
-      - X: 69999960
+      - X: 39999960
         Y: 30000100
-      - X: 69999896
+      - X: 39999900
         Y: 30000040
-      - X: 69999896
+      - X: 39999900
         Y: 20000100
       - X: -41
         Y: 20000100
@@ -1159,10 +1159,10 @@ CompositeCollider2D:
       - {x: 2.0000253, y: 4.99999}
     - - {x: 15.999974, y: -0.00001}
       - {x: 15.999974, y: 2.00001}
-      - {x: 8.00001, y: 2.0000393}
-      - {x: 7.9999747, y: 3.00001}
-      - {x: 6.9999895, y: 2.9999747}
-      - {x: 6.99996, y: 2.00001}
+      - {x: 5.00001, y: 2.0000393}
+      - {x: 4.999975, y: 3.00001}
+      - {x: 3.99999, y: 2.9999747}
+      - {x: 3.999961, y: 2.00001}
       - {x: -0.00001, y: 1.9999748}
       - {x: 0.0000252, y: -0.00001}
   m_VertexDistance: 0.0005
@@ -2267,7 +2267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5207533758068693650, guid: 43afa07ccb0cfed4e923b50e0422df59, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5213,7 +5213,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 117160268659827292, guid: 264a6213d6184444d9b7d34d0979561f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 117160268659827292, guid: 264a6213d6184444d9b7d34d0979561f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5257,7 +5257,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7033161684153111347, guid: 264a6213d6184444d9b7d34d0979561f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8113145754847156506, guid: 264a6213d6184444d9b7d34d0979561f, type: 3}
       propertyPath: _profile
