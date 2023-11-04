@@ -41,8 +41,8 @@ namespace Mario.Application.Services
             set
             {
                 _isGoalReached = value;
-                // DALE PLAY...
-
+                if (_isGoalReached)
+                    _soundService.PlayTheme(MapProfile.Music.VictoryTheme);
             }
         }
         public bool IsLoadCompleted { get; private set; }
