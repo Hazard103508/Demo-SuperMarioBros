@@ -1,6 +1,7 @@
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
 using Mario.Game.ScriptableObjects.Map;
+using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -22,6 +23,8 @@ namespace Mario.Application.Services
         private bool _isFlagReached;
         private bool _isHurry;
         private MapConnection _mapConnection;
+
+        [SerializeField] private PooledSoundProfile _scoreSoundPoolReference;
         #endregion
 
         #region Events
@@ -152,6 +155,7 @@ namespace Mario.Application.Services
             _timeService.TimeSpeed = 150f;
             _timeService.UnfreezeTimer();
 
+            _soundService.Play(_scoreSoundPoolReference);
             int _previousTime = _timeService.Time;
             while (_timeService.Time > 0)
             {
@@ -161,6 +165,7 @@ namespace Mario.Application.Services
                 _previousTime = _timeService.Time;
                 yield return null;
             }
+            _soundService.Stop();
         }
         private IEnumerator FinishLevel()
         {

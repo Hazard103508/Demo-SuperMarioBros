@@ -10,5 +10,6 @@ namespace Mario.Application.Interfaces
         void StopTheme();
         void Play(PooledSoundProfile soundProfile);
         void Play(PooledSoundProfile soundProfile, Vector3 position);
+        void Stop();
     }
 }

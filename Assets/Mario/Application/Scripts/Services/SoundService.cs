@@ -7,7 +7,8 @@ namespace Mario.Application.Services
     public class SoundService : MonoBehaviour, ISoundService
     {
         private IPoolService _poolService;
-        private AudioSource themeSong;
+        private AudioSource _themeSong;
+        private AudioSource _soundSong;
 
         public void Initalize()
         {
@@ -23,25 +24,25 @@ namespace Mario.Application.Services
             StopTheme();
 
             var sound = _poolService.GetObjectFromPool(soundProfile);
-            themeSong = sound.GetComponent<AudioSource>();
-            themeSong.time = initTime;
-            themeSong.Play();
+            _themeSong = sound.GetComponent<AudioSource>();
+            _themeSong.time = initTime;
+            _themeSong.Play();
         }
         public void StopTheme()
         {
-            if (themeSong != null)
+            if (_themeSong != null)
             {
-                themeSong.Stop();
-                themeSong.gameObject.SetActive(false);
+                _themeSong.Stop();
+                _themeSong.gameObject.SetActive(false);
             }
         }
         public void Play(PooledSoundProfile soundProfile) => Play(soundProfile, Vector3.zero);
         public void Play(PooledSoundProfile soundProfile, Vector3 position)
         {
             var sound = _poolService.GetObjectFromPool(soundProfile, position);
-            sound.GetComponent<AudioSource>().Play();
+            _soundSong = sound.GetComponent<AudioSource>();
+            _soundSong.Play();
         }
-
-
+        public void Stop() => _soundSong?.Stop();
     }
 }
