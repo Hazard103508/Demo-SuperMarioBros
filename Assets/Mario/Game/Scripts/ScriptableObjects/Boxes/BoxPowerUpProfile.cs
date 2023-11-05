@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Boxes
 {
-    [CreateAssetMenu(fileName = "MysteryBoxPowerUpProfile", menuName = "ScriptableObjects/Game/Boxes/MysteryBoxPowerUpProfile", order = 4)]
-    public class MysteryBoxPowerUpProfile : BoxProfile
+    [CreateAssetMenu(fileName = "BoxPowerUpProfile", menuName = "ScriptableObjects/Game/Boxes/BoxPowerUpProfile", order = 4)]
+    public class BoxPowerUpProfile : BoxProfile
     {
         [SerializeField] private PooledSoundProfile _riseItemSoundFXPoolReference;
         [SerializeField] private PooledObjectProfile _mushroomPoolReference;

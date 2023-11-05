@@ -5,7 +5,7 @@ namespace Mario.Game.Boxes.MysteryBoxCoin
     public class BoxMysteryCoin : Box.Box
     {
         #region Properties
-        new public MysteryBoxCoinProfile Profile => (MysteryBoxCoinProfile)base.Profile;
+        new public BoxCoinProfile Profile => (BoxCoinProfile)base.Profile;
         #endregion
 
         #region Unity Methods

@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace Mario.Game.ScriptableObjects.Boxes
 {
-    [CreateAssetMenu(fileName = "MysteryBoxCoinProfile", menuName = "ScriptableObjects/Game/Boxes/MysteryBoxCoinProfile", order = 3)]
-    public class MysteryBoxCoinProfile : BoxProfile
+    [CreateAssetMenu(fileName = "BoxCoinProfile", menuName = "ScriptableObjects/Game/Boxes/BoxCoinProfile", order = 3)]
+    public class BoxCoinProfile : BoxProfile
     {
         [SerializeField] private PooledObjectProfile _coinPoolReference;
 
