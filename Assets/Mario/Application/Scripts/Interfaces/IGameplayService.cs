@@ -9,6 +9,7 @@ namespace Mario.Application.Interfaces
         event Action GameUnfreezed;
 
         void SetNextMap(MapConnection connection);
+        void SetCheckPoint(MapProfile mapProfile);
         void FreezeGame();
         void UnfreezeGame();
         void SetFlagReached();

@@ -213,7 +213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7025068359800996003
 Transform:
   m_ObjectHideFlags: 0
@@ -5825,7 +5825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8706498510487539210, guid: 99a7729944271bb45bd2c6daf0c187ea, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7704,9 +7704,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7083448271374346351, guid: 40dcb160ba08ebc40843669286b7551e, type: 3}
+      propertyPath: _checkPointProfile
+      value: 
+      objectReference: {fileID: 11400000, guid: 1162f5b16db3c6f43a97ba9d979b9f83, type: 2}
     - target: {fileID: 8718786794393583591, guid: 40dcb160ba08ebc40843669286b7551e, type: 3}
       propertyPath: m_Name
       value: CheckPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 8718786794393583591, guid: 40dcb160ba08ebc40843669286b7551e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
