@@ -10,25 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f55d97fa783210a4c8c30bc6e76f176f, type: 3}
-  m_Name: World 1-2-A
+  m_Name: MapProfile - World 1-2-B
   m_EditorClassIdentifier: 
   _worldName: 1-2
   _mapInit:
-    _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
+    _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
     _startPosition: {x: 2, y: 2}
     _startTime: 0
     _blackScreenTime: 0
-  _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
+  _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   _startPosition: {x: 2, y: 2}
   _startTime: 0
   _blackScreenTime: 0
-  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
+  _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
   _mapSectionReferences:
-  - m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
+  - m_AssetGUID: 54ed28a8a2ab4eb499cbbfa0881a84a7
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  _poolProfiles:
-  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
-  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
-  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}
+  _poolProfiles: []
