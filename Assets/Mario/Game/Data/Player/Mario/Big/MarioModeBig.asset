@@ -28,7 +28,7 @@ MonoBehaviour:
   _jump:
     _walkHeight:
       Min: 1.2
-      Max: 4.3
+      Max: 4.2
     _runHeight:
       Min: 1.2
       Max: 5
