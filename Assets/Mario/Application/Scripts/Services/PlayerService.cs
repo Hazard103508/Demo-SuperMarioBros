@@ -17,7 +17,6 @@ namespace Mario.Application.Services
         [SerializeField] private PooledSoundProfile _1UpSoundPoolReference;
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         private PlayerController _playerController;
-        private Movable _playerMovable;
         private PlayerInputActions _playerInputActions;
         #endregion
 
@@ -44,7 +43,6 @@ namespace Mario.Application.Services
         public void SetPlayer(PlayerController playerController)
         {
             _playerController = playerController;
-            _playerMovable = _playerController.GetComponent<Movable>();
             _playerInputActions = _playerController.GetComponent<PlayerInputActions>();
         }
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;

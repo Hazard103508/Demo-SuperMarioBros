@@ -15,7 +15,6 @@ namespace Mario.Application.Services
         #region Objects
         private IAddressablesService _addressablesService;
         private IPoolService _poolService;
-        private IPlayerService _playerService;
 
         [SerializeField] private MapProfile _currentMapProfile;
         private AddressablesLoaderContainer _assetLoaderContainer;
@@ -23,6 +22,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Events
+        public event Action StartLoading;
         public event Action LoadCompleted;
         #endregion
 
@@ -37,7 +37,6 @@ namespace Mario.Application.Services
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _poolService = ServiceLocator.Current.Get<IPoolService>();
-            _playerService = ServiceLocator.Current.Get<IPlayerService>();
 
             MapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
@@ -47,13 +46,12 @@ namespace Mario.Application.Services
         }
         public async void LoadLevel()
         {
+            IsLoadCompleted = false;
+            StartLoading.Invoke();
+
             var mapConnectionProfile = GetMapConnection.Invoke();
             if (mapConnectionProfile != null)
                 MapProfile = mapConnectionProfile;
-
-            IsLoadCompleted = false;
-            _playerService.EnableInputs(false);
-            _playerService.EnableAutoWalk(false);
 
             _root = new GameObject("Map");
             Camera.main.backgroundColor = Color.black;
@@ -66,10 +64,6 @@ namespace Mario.Application.Services
         }
         public void LoadNextLevel()
         {
-            _playerService.SetActivePlayer(false);
-            _playerService.EnableAutoWalk(false);
-            _playerService.ResetState();
-
             UnloadLevel();
             LoadLevel();
         }

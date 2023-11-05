@@ -44,6 +44,7 @@ namespace Mario.Application.Services
 
             _levelService.GetMapConnection = GetMapConnection;
 
+            _levelService.StartLoading += OnStartLoading;
             _levelService.LoadCompleted += OnLoadCompleted;
             _timeService.TimeOut += OnTimeOut;
             _timeService.TimeChangeded += OnTimeChangeded;
@@ -51,6 +52,7 @@ namespace Mario.Application.Services
         }
         public void Dispose()
         {
+            _levelService.StartLoading -= OnStartLoading;
             _levelService.LoadCompleted -= OnLoadCompleted;
             _timeService.TimeOut -= OnTimeOut;
             _timeService.TimeChangeded -= OnTimeChangeded;
@@ -111,9 +113,6 @@ namespace Mario.Application.Services
         }
         private IEnumerator StartGame()
         {
-            _isFlagReached = false;
-            _isHurry = false;
-
             if (_mapConnection == null)
             {
                 _timeService.StartTime = _levelService.MapProfile.StartTime;
@@ -121,11 +120,13 @@ namespace Mario.Application.Services
             }
 
             _playerService.SetPlayerPosition(_mapConnection != null ? _mapConnection.StartPosition : _levelService.MapProfile.StartPosition);
-
             yield return ShowCustomIntroPosition();
 
-            _timeService.StartTimer();
             _playerService.EnableInputs(true);
+            _playerService.EnableAutoWalk(_levelService.MapProfile.Autowalk);
+            _playerService.ResetState();
+
+            _timeService.StartTimer();
             _mapConnection = null;
 
             UnfreezeGame();
@@ -175,6 +176,12 @@ namespace Mario.Application.Services
         #endregion
 
         #region Service Methods
+        private void OnStartLoading()
+        {
+            _isFlagReached = false;
+            _isHurry = false;
+            _playerService.SetActivePlayer(false);
+        }
         private void OnLoadCompleted() => StartCoroutine(StartGame());
         private MapProfile GetMapConnection() => _mapConnection != null ? _mapConnection.MapProfile : null;
         private void OnTimeChangeded()

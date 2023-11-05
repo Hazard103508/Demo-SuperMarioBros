@@ -13,6 +13,7 @@ namespace Mario.Game.ScriptableObjects.Map
         [SerializeField] private Color _backgroundColor;
         [SerializeField] private Vector2 _startPosition;
         [SerializeField] private int _startTime;
+        [SerializeField] private bool _autowalk;
         [SerializeField] private MusicProfile _music;
         [SerializeField] private AssetReference[] _mapSectionReferences;
         [SerializeField] private PooledProfileGroup[] _poolProfiles;
@@ -21,6 +22,7 @@ namespace Mario.Game.ScriptableObjects.Map
         public Color BackgroundColor => _backgroundColor;
         public Vector2 StartPosition => _startPosition;
         public int StartTime => _startTime;
+        public bool Autowalk => _autowalk;
         public MusicProfile Music => _music;
         public AssetReference[] MapSectionReferences => _mapSectionReferences;
         public PooledProfileGroup[] PoolProfiles => _poolProfiles;
