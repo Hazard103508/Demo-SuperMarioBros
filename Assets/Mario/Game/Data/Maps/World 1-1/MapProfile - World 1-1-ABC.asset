@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55d97fa783210a4c8c30bc6e76f176f, type: 3}
+  m_Name: MapProfile - World 1-1-ABC
+  m_EditorClassIdentifier: 
+  _worldName: 1-1
+  _mapInit:
+    _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
+    _startPosition: {x: 2.5, y: 2}
+    _startTime: 400
+    _blackScreenTime: 0
+  _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
+  _startPosition: {x: 2.5, y: 2}
+  _startTime: 400
+  _blackScreenTime: 0
+  _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
+  _mapSectionReferences:
+  - m_AssetGUID: 18234092574721c4596e9a8b37bbed6b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 1eb2a5e16892cc140bb2e7d989da51eb
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  - m_AssetGUID: 7c286d7ab204f9243854dbab54c97d2d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 1
+  _poolProfiles:
+  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
+  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
+  - {fileID: 11400000, guid: 608febb141a0b964baf98bf76cdf1a61, type: 2}

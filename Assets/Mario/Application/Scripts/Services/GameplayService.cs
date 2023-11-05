@@ -42,8 +42,9 @@ namespace Mario.Application.Services
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
 
+            _levelService.GetMapConnection = GetMapConnection;
+
             _levelService.LoadCompleted += OnLoadCompleted;
-            _levelService.LoadingConnection += OnLoadingConnection;
             _timeService.TimeOut += OnTimeOut;
             _timeService.TimeChangeded += OnTimeChangeded;
             _playerService.LivesRemoved += OnLivesRemoved;
@@ -51,7 +52,6 @@ namespace Mario.Application.Services
         public void Dispose()
         {
             _levelService.LoadCompleted -= OnLoadCompleted;
-            _levelService.LoadingConnection -= OnLoadingConnection;
             _timeService.TimeOut -= OnTimeOut;
             _timeService.TimeChangeded -= OnTimeChangeded;
             _playerService.LivesRemoved -= OnLivesRemoved;
@@ -176,7 +176,7 @@ namespace Mario.Application.Services
 
         #region Service Methods
         private void OnLoadCompleted() => StartCoroutine(StartGame());
-        private MapProfile OnLoadingConnection() => _mapConnection != null ? _mapConnection.MapProfile : null;
+        private MapProfile GetMapConnection() => _mapConnection != null ? _mapConnection.MapProfile : null;
         private void OnTimeChangeded()
         {
             if (_levelService.MapProfile.StartTime <= 0)

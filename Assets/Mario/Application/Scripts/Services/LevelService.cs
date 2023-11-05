@@ -24,12 +24,12 @@ namespace Mario.Application.Services
 
         #region Events
         public event Action LoadCompleted;
-        public event Func<MapProfile> LoadingConnection;
         #endregion
 
         #region Properties
         public MapProfile MapProfile { get; private set; }
         public bool IsLoadCompleted { get; private set; }
+        public Func<MapProfile> GetMapConnection { get; set; }
         #endregion
 
         #region Public Methods
@@ -47,7 +47,7 @@ namespace Mario.Application.Services
         }
         public async void LoadLevel()
         {
-            var mapConnectionProfile = LoadingConnection.Invoke();
+            var mapConnectionProfile = GetMapConnection.Invoke();
             if (mapConnectionProfile != null)
                 MapProfile = mapConnectionProfile;
 
@@ -56,7 +56,7 @@ namespace Mario.Application.Services
             _playerService.EnableAutoWalk(false);
 
             _root = new GameObject("Map");
-            Camera.main.backgroundColor = MapProfile.BackgroundColor;
+            Camera.main.backgroundColor = Color.black;
 
             LoadAsyncReferences();
             await LoadMapSections(_root.transform);
@@ -106,6 +106,7 @@ namespace Mario.Application.Services
                 LoadMapSection(mapSection, ref positionX, parent);
             }
             MapProfile.Width = positionX;
+            Camera.main.backgroundColor = MapProfile.BackgroundColor;
         }
         private void LoadMapSection(GameObject mapSectionReference, ref int positionX, Transform parent)
         {

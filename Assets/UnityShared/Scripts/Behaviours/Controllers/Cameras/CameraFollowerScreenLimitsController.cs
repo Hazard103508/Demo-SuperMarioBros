@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using System;
 using UnityEngine;
 
@@ -10,10 +12,21 @@ namespace UnityShared.Behaviours.Controllers.Cameras
         public Margins<bool> lockedMargin;
         public Margins<float> percentMargin;
 
+        private ILevelService _levelService;
         private Margins<float> pixelMargins;
         private Vector3 distance;
         private Margins<float> worldMargins;
+        private Vector3 _initPosition = new Vector3(8, 7.5f, -10f);
 
+        private void Awake()
+        {
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
+            _levelService.LoadCompleted += OnLevelLoadCompleted;
+        }
+        private void OnDestroy()
+        {
+            _levelService.LoadCompleted -= OnLevelLoadCompleted;
+        }
         private void Start()
         {
             pixelMargins = new Margins<float>()
@@ -24,7 +37,6 @@ namespace UnityShared.Behaviours.Controllers.Cameras
                 right = percentMargin.right * Screen.width,
             };
 
-            distance = transform.position;
             worldMargins = new Margins<float>()
             {
                 left = camera.ScreenToWorldPoint(Vector3.right * pixelMargins.left).x,
@@ -51,6 +63,12 @@ namespace UnityShared.Behaviours.Controllers.Cameras
                 y = targetToFollow.transform.position.y - worldMargins.top;
 
             this.transform.position = Vector3.Lerp(this.transform.position, distance + new Vector3(x, y), Time.deltaTime * 8);
+        }
+
+        private void OnLevelLoadCompleted()
+        {
+            distance = _initPosition;
+            this.transform.position = _initPosition;
         }
 
         [Serializable]

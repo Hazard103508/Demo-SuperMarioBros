@@ -7,9 +7,9 @@ namespace Mario.Application.Interfaces
     {
         MapProfile MapProfile { get; }
         bool IsLoadCompleted { get; }
+        Func<MapProfile> GetMapConnection { get; set; }
 
         event Action LoadCompleted;
-        event Func<MapProfile> LoadingConnection;
 
         void LoadLevel();
         void LoadNextLevel();

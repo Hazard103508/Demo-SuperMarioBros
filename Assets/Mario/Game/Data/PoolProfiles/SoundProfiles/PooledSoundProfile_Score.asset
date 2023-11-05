@@ -19,5 +19,5 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _defaultCapacity: 1
   _maxSize: 1
-  _volume: 1
+  _volume: 0.1
   _disableOnComplete: 1
