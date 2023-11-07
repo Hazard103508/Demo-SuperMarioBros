@@ -23,6 +23,7 @@ namespace Mario.Game.Player
         public PlayerStateNerf StateNerf { get; protected set; }
         public PlayerStateDeath StateDeath { get; protected set; }
         public PlayerStateTimeOut StateTimeOut { get; protected set; }
+        public PlayerStateDeathFall StateDeathFall { get; protected set; }
         public PlayerStateFlag StateFlag { get; protected set; }
         public PlayerStateDucking StateDucking { get; protected set; }
         public PlayerStateDuckingJump StateDuckingJump { get; protected set; }

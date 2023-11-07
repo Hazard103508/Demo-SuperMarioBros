@@ -23,7 +23,8 @@ namespace Mario.Game.Items
             var downLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
 
             var scale = transform.localScale;
-            bottomBorder = downLeft.y - (spriteRenderer.sprite.bounds.size.y * scale.y) / 2.0f;
+            var spritePivot = 1 - spriteRenderer.sprite.pivot.y / spriteRenderer.sprite.rect.height;
+            bottomBorder = downLeft.y - (spriteRenderer.sprite.bounds.size.y * scale.y) * spritePivot;
         }
 
         void LateUpdate()

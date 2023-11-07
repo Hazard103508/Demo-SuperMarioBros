@@ -48,7 +48,6 @@ namespace Mario.Game.Player
         {
             base.Enter();
 
-
             Player.StartCoroutine(FallOutOffScreen());
             _soundService.StopTheme();
             _playerService.RemoveLife();

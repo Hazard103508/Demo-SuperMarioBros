@@ -69,7 +69,7 @@ namespace Mario.Game.Player
             else
                 Nerf();
         }
-        public void OnFall() => Kill();
+        public void OnFall() => this.StateMachine.CurrentState.OnFall();
         public void BounceJump() => this.StateMachine.CurrentState.OnBounceJump();
         #endregion
 

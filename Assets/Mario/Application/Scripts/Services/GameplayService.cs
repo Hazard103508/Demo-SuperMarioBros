@@ -204,7 +204,11 @@ namespace Mario.Application.Services
                 StartCoroutine(PlayHurryUpTheme());
             }
         }
-        private void OnTimeOut() => _playerService.KillPlayerByTimeOut();
+        private void OnTimeOut()
+        {
+            if (!_isFlagReached)
+                _playerService.KillPlayerByTimeOut();
+        }
         private void OnLivesRemoved() => StartCoroutine(ReloadAfterDead());
         #endregion
     }

@@ -54,11 +54,13 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
+        public void OnFall() => SetTransitionToDeathFall();
+        public void OnTimeOut() => SetTransitionToTimeOut();
+        public void OnTouchFlag() => SetTransitionToFlag();
         public virtual void OnBuff() { }
         public virtual void OnNerf() { }
         public virtual void OnDeath() { }
-        public virtual void OnTimeOut() { }
-        public virtual void OnTouchFlag() { }
+
         public virtual void OnBounceJump()
         {
             Player.Movable.SetJumpForce(Player.StateMachine.CurrentMode.ModeProfile.Jump.Bounce);
@@ -167,6 +169,7 @@ namespace Mario.Game.Player
             }
             return false;
         }
+        protected virtual void SetTransitionToDeathFall() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeathFall); 
         protected virtual bool SetTransitionToTimeOut() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateTimeOut);
         protected virtual bool SetTransitionToFlag() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFlag);
 
