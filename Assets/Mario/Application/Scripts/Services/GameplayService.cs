@@ -87,7 +87,7 @@ namespace Mario.Application.Services
         #region Private Methods
         private void PlayInitTheme()
         {
-            if (_timeService.Time <= _hurryTime)
+            if (_timeService.Time > 0 && _timeService.Time <= _hurryTime)
             {
                 _isHurry = true;
                 _soundService.PlayTheme(_levelService.MapProfile.Music.HurryTheme.Profile, _levelService.MapProfile.Music.HurryTheme.StartTimeContinued);
