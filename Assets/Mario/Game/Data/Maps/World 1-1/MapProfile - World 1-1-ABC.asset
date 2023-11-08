@@ -13,15 +13,10 @@ MonoBehaviour:
   m_Name: MapProfile - World 1-1-ABC
   m_EditorClassIdentifier: 
   _worldName: 1-1
-  _mapInit:
-    _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
-    _startPosition: {x: 2.5, y: 2}
-    _startTime: 400
-    _blackScreenTime: 0
   _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
   _startPosition: {x: 2.5, y: 2}
   _startTime: 400
-  _blackScreenTime: 0
+  _autowalk: 0
   _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _mapSectionReferences:
   - m_AssetGUID: 18234092574721c4596e9a8b37bbed6b

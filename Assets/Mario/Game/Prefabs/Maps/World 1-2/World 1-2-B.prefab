@@ -4612,7 +4612,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (10)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -4868,7 +4868,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (11)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -5392,7 +5392,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (1)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -5722,7 +5722,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (3)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -6754,7 +6754,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (2)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -7406,7 +7406,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (1)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -7534,7 +7534,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (4)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -9722,7 +9722,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (9)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -9916,7 +9916,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (3)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -11366,7 +11366,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (6)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -12770,7 +12770,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (11)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -13092,7 +13092,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (5)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -13608,7 +13608,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (7)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -13736,7 +13736,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (2)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -13802,7 +13802,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (4)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -13930,7 +13930,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (8)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -14500,7 +14500,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (10)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -15260,7 +15260,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (8)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -16090,7 +16090,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (6)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -16726,7 +16726,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (7)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -17168,7 +17168,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (5)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
@@ -17296,7 +17296,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8157448522220804472, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_Name
-      value: BoxBrickEmptyTeal (9)
+      value: BoxBrickEmptyTeal
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: a85ba52653bc29f4cbabb4435e8915ed, type: 3}
       propertyPath: m_RootOrder
