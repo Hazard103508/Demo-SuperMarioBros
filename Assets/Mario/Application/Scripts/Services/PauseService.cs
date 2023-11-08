@@ -22,12 +22,14 @@ namespace Mario.Application.Services
         public void Pause()
         {
             _soundService.Play(_pauseSoundPoolReference);
+            _soundService.PauseTheme();
             Time.timeScale = 0;
             IsPaused = true;
         }
         public void Resume()
         {
             _soundService.Play(_pauseSoundPoolReference);
+            _soundService.ResumeTheme();
             Time.timeScale = 1;
             IsPaused = false;
         }
