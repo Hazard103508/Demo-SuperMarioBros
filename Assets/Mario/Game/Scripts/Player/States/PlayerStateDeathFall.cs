@@ -8,6 +8,7 @@ namespace Mario.Game.Player
         #region Objects
         private readonly IPlayerService _playerService;
         private readonly ISoundService _soundService;
+        private readonly IGameplayService _gameplayService;
         #endregion
 
         #region Constructor
@@ -15,6 +16,7 @@ namespace Mario.Game.Player
         {
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -25,7 +27,7 @@ namespace Mario.Game.Player
 
             _soundService.StopTheme();
             _playerService.RemoveLife();
-            // frizzar tiempo
+            _gameplayService.FreezeGame();
         }
         #endregion
     }
