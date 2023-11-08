@@ -18,6 +18,7 @@ namespace Mario.Game.Player
         #region Objects
         private readonly ISoundService _soundService;
         private readonly IPlayerService _playerService;
+        private readonly ITimeService _timeService;
 
         private bool _jumpWasPressed;
         #endregion
@@ -31,6 +32,7 @@ namespace Mario.Game.Player
         {
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _timeService = ServiceLocator.Current.Get<ITimeService>();
 
             Player = player;
         }
@@ -54,7 +56,11 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public void OnFall() => SetTransitionToDeathFall();
+        public void OnFall()
+        {
+            if (_timeService.Time > 0)
+                SetTransitionToDeathFall();
+        }
         public void OnTimeOut() => SetTransitionToTimeOut();
         public void OnTouchFlag() => SetTransitionToFlag();
         public virtual void OnBuff() { }
@@ -163,13 +169,13 @@ namespace Mario.Game.Player
         protected virtual bool SetTransitionToDeath()
         {
             if (!Player.IsInvincible)
-            { 
+            {
                 Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeath);
                 return true;
             }
             return false;
         }
-        protected virtual void SetTransitionToDeathFall() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeathFall); 
+        protected virtual void SetTransitionToDeathFall() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateDeathFall);
         protected virtual bool SetTransitionToTimeOut() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateTimeOut);
         protected virtual bool SetTransitionToFlag() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFlag);
 
