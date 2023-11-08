@@ -2,6 +2,7 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Player;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Mario.Game.Maps
 {
@@ -14,6 +15,7 @@ namespace Mario.Game.Maps
         private IInputService _inputService;
 
         [SerializeField] private PlayerController _playerController;
+        [SerializeField] private Image _loadingCover;
         #endregion
 
         #region Unity Methods
@@ -24,12 +26,17 @@ namespace Mario.Game.Maps
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _inputService = ServiceLocator.Current.Get<IInputService>();
 
+            _levelService.LoadCompleted += OnLoadCompleted;
+
             _playerService.SetPlayer(_playerController);
             _levelService.LoadLevel();
             _inputService.UseGameplayMap();
         }
+
         private void OnDestroy()
         {
+            _levelService.LoadCompleted -= OnLoadCompleted;
+            _loadingCover.gameObject.SetActive(true);
             _levelService.UnloadLevel();
         }
         private void OnEnable()
@@ -42,6 +49,7 @@ namespace Mario.Game.Maps
         }
         #endregion
 
+        #region Private Methods
         private void InputService_PausePressed()
         {
             if (_pauseService.IsPaused)
@@ -49,5 +57,10 @@ namespace Mario.Game.Maps
             else
                 _pauseService.Pause();
         }
+        private void OnLoadCompleted()
+        {
+            _loadingCover.gameObject.SetActive(false);
+        }
+        #endregion
     }
 }
