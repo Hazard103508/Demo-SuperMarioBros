@@ -115,7 +115,7 @@ namespace Mario.Application.Services
         }
         private IEnumerator StartGame()
         {
-            if (_mapConnection == null)
+            if (_mapConnection == null || _timeService.Time == 0)
             {
                 _timeService.StartTime = _levelService.MapProfile.StartTime;
                 _timeService.ResetTimer();
@@ -174,7 +174,7 @@ namespace Mario.Application.Services
         private IEnumerator FinishLevel()
         {
             yield return new WaitForSeconds(6);
-            _levelService.LoadNextLevel();
+            _sceneService.LoadStandByScene();
         }
         #endregion
 

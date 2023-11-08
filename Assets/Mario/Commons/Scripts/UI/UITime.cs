@@ -22,11 +22,8 @@ namespace Mario.Commons.UI
             _timeService.TimeChangeded += OnTimeChanged;
             _timeService.TimeStarted += OnTimeStart;
 
-            label.gameObject.SetActive(false);
+            gameObject.SetActive(false);
             OnTimeChanged();
-
-            if (_levelService.MapProfile.StartTime <= 0)
-                Destroy(gameObject);
         }
         private void OnDestroy()
         {
@@ -37,7 +34,7 @@ namespace Mario.Commons.UI
 
         #region Service Events
         private void OnTimeChanged() => label.Text = _timeService.Time.ToString("D3");
-        private void OnTimeStart() => label.gameObject.SetActive(true);
+        private void OnTimeStart() => gameObject.SetActive(_timeService.StartTime > 0);
         #endregion
     }
 }
