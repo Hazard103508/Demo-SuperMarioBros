@@ -13,18 +13,14 @@ MonoBehaviour:
   m_Name: MapProfile - World 1-1-D
   m_EditorClassIdentifier: 
   _worldName: 1-1
-  _mapInit:
-    _backgroundColor: {r: 0, g: 0, b: 0, a: 1}
-    _startPosition: {x: 2, y: 11}
-    _startTime: 0
-    _blackScreenTime: 0.5
+  _width: 16
   _backgroundColor: {r: 0, g: 0, b: 0, a: 1}
   _startPosition: {x: 2, y: 11}
   _startTime: 0
-  _blackScreenTime: 0.5
+  _autowalk: 0
   _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
-  _mapSectionReferences:
-  - m_AssetGUID: 6cc1974c8c2b5df4399571cfbf1a745e
+  _mapReferences:
+    m_AssetGUID: 6cc1974c8c2b5df4399571cfbf1a745e
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

@@ -10,23 +10,24 @@ namespace Mario.Game.ScriptableObjects.Map
     public class MapProfile : ScriptableObject
     {
         [SerializeField] private string _worldName;
+        [SerializeField] private int _width;
         [SerializeField] private Color _backgroundColor;
         [SerializeField] private Vector2 _startPosition;
         [SerializeField] private int _startTime;
         [SerializeField] private bool _autowalk;
         [SerializeField] private MusicProfile _music;
-        [SerializeField] private AssetReference[] _mapSectionReferences;
+        [SerializeField] private AssetReference _mapReferences;
         [SerializeField] private PooledProfileGroup[] _poolProfiles;
 
         public string WorldName => _worldName;
+        public int Width => _width;
         public Color BackgroundColor => _backgroundColor;
         public Vector2 StartPosition => _startPosition;
         public int StartTime => _startTime;
         public bool Autowalk => _autowalk;
         public MusicProfile Music => _music;
-        public AssetReference[] MapSectionReferences => _mapSectionReferences;
+        public AssetReference MapReferences => _mapReferences;
         public PooledProfileGroup[] PoolProfiles => _poolProfiles;
-        public int Width { get; set; }
     }
     [Serializable]
     public class MapConnection

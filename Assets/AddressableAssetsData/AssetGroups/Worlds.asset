@@ -10,30 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Levels
+  m_Name: Worlds
   m_EditorClassIdentifier: 
-  m_GroupName: Levels
+  m_GroupName: Worlds
   m_Data:
     m_SerializedData: []
   m_GUID: 5c92e08b31057d4459162aee54caffb4
   m_SerializeEntries:
   - m_GUID: 2227a808dfe2c664daa7632fc5abdace
     m_Address: Map_TEST
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 18234092574721c4596e9a8b37bbed6b
-    m_Address: Map_1-1-A
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 1eb2a5e16892cc140bb2e7d989da51eb
-    m_Address: Map_1-1-B
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 7c286d7ab204f9243854dbab54c97d2d
-    m_Address: Map_1-1-C
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -47,8 +32,23 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b7908ad82b82a5a4c8d025bcbbe6ef5c
+    m_Address: World 1-1-ABC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7c286d7ab204f9243854dbab54c97d2d
+    m_Address: World 1-1-C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6cc1974c8c2b5df4399571cfbf1a745e
-    m_Address: Map_Underworld_Gold_A
+    m_Address: World 1-1-D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0278af7d6dcfc7042abe5d8496bd3173
+    m_Address: World 1-1-BC
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

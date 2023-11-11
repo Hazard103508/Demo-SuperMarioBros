@@ -852,7 +852,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 981654926499773032}
-  - component: {fileID: -774594980354284400}
   m_Layer: 0
   m_Name: World 1-2-A
   m_TagString: Untagged
@@ -877,21 +876,6 @@ Transform:
   - {fileID: 1199356950819116907}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-774594980354284400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 981654926499773033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec6b8e02fdcc22b448cd8527004d8c1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Size:
-    Width: 16
-    Height: 14
 --- !u!1 &981654926502408868
 GameObject:
   m_ObjectHideFlags: 0

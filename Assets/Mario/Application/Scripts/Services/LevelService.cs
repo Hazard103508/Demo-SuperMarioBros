@@ -57,7 +57,7 @@ namespace Mario.Application.Services
             Camera.main.backgroundColor = Color.black;
 
             LoadAsyncReferences();
-            await LoadMapSections(_root.transform);
+            await LoadWorld(_root.transform);
 
             IsLoadCompleted = true;
             LoadCompleted.Invoke();
@@ -90,30 +90,25 @@ namespace Mario.Application.Services
             _assetLoaderContainer.LoadAssetAsync<GameObject>();
             _assetLoaderContainer.LoadAssetAsync<AudioClip>();
         }
-        private async Task LoadMapSections(Transform parent)
+        private async Task LoadWorld(Transform parent)
         {
-            int positionX = 0;
-            foreach (var references in MapProfile.MapSectionReferences)
-            {
-                await _addressablesService.LoadAssetAsync<GameObject>(references);
-                var mapSection = _addressablesService.GetAssetReference<GameObject>(references);
-                LoadMapSection(mapSection, ref positionX, parent);
-            }
-            MapProfile.Width = positionX;
+            await _addressablesService.LoadAssetAsync<GameObject>(MapProfile.MapReferences);
+            var mapReference = _addressablesService.GetAssetReference<GameObject>(MapProfile.MapReferences);
+            Instantiate(mapReference, parent);
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
         }
-        private void LoadMapSection(GameObject mapSectionReference, ref int positionX, Transform parent)
-        {
-            var mapObj = Instantiate(mapSectionReference, parent);
-            mapObj.transform.position = Vector3.right * positionX;
-
-            var mapSection = mapObj.GetComponent<MapSection>();
-
-            var unloader = mapObj.AddComponent<MapSectionUnloader>();
-            unloader.Width = mapSection.Size.Width;
-
-            positionX += mapSection.Size.Width;
-        }
+        //private void LoadMapSection(GameObject mapSectionReference, ref int positionX, Transform parent)
+        //{
+        //    var mapObj = Instantiate(mapSectionReference, parent);
+        //    mapObj.transform.position = Vector3.right * positionX;
+        //
+        //    var mapSection = mapObj.GetComponent<MapSection>();
+        //
+        //    var unloader = mapObj.AddComponent<MapSectionUnloader>();
+        //    unloader.Width = mapSection.Size.Width;
+        //
+        //    positionX += mapSection.Size.Width;
+        //}
         #endregion
     }
 }

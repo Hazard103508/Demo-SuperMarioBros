@@ -36,8 +36,10 @@ namespace Mario.Game.Maps
         private void OnDestroy()
         {
             _levelService.LoadCompleted -= OnLoadCompleted;
-            _loadingCover.gameObject.SetActive(true);
             _levelService.UnloadLevel();
+
+            if (_loadingCover != null && _loadingCover.gameObject != null)
+                _loadingCover.gameObject.SetActive(true);
         }
         private void OnEnable()
         {
