@@ -1,13 +1,15 @@
+using System;
 using System.IO;
 
 namespace UnityShared.Files
 {
     public class Files
     {
-        public static void Save(string message, string path)
+        public static void Save(string message)
         {
-            using (StreamWriter sw = new StreamWriter(path))
-                sw.Write(message);
+            string path = $"C:\\Libraries\\Agustin\\Desktop\\Logs\\LOG.txt";
+            using (StreamWriter sw = new StreamWriter(path, true))
+                sw.WriteLine(message);
         }
 
     }

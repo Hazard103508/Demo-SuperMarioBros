@@ -15,10 +15,8 @@ public class LogError : MonoBehaviour
     {
         if (type == LogType.Exception)
         {
-            string path = $"C:\\Libraries\\Agustin\\Desktop\\Logs\\{DateTime.Now.ToString("HHmmssffff")}.txt";
             string message = logString + "\r\n" + stackTrace;
-
-            UnityShared.Files.Files.Save(message, path);
+            UnityShared.Files.Files.Save(message);
         }
     }
 
