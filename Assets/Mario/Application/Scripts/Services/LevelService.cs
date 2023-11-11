@@ -1,10 +1,7 @@
 using Mario.Application.Interfaces;
-using Mario.Game.Enums;
-using Mario.Game.Maps;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
-using System.Collections;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -97,18 +94,6 @@ namespace Mario.Application.Services
             Instantiate(mapReference, parent);
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
         }
-        //private void LoadMapSection(GameObject mapSectionReference, ref int positionX, Transform parent)
-        //{
-        //    var mapObj = Instantiate(mapSectionReference, parent);
-        //    mapObj.transform.position = Vector3.right * positionX;
-        //
-        //    var mapSection = mapObj.GetComponent<MapSection>();
-        //
-        //    var unloader = mapObj.AddComponent<MapSectionUnloader>();
-        //    unloader.Width = mapSection.Size.Width;
-        //
-        //    positionX += mapSection.Size.Width;
-        //}
         #endregion
     }
 }

@@ -10,6 +10,6 @@ namespace Mario.Game.ScriptableObjects.Pool
         [SerializeField] private string _canvasSortingLayer;
 
         public RenderMode RenderMode => _renderMode;
-        public string CanvasSortingLayer =>  _canvasSortingLayer;
+        public string CanvasSortingLayer => _canvasSortingLayer;
     }
 }

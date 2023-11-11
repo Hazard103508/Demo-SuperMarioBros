@@ -10,7 +10,7 @@ namespace Mario.Game.ScriptableObjects.Pool
         [SerializeField] private int _defaultCapacity = 1;
         [SerializeField] private int _maxSize = 1;
 
-        public AssetReference Reference => _reference ;
+        public AssetReference Reference => _reference;
         public int DefaultCapacity => _defaultCapacity;
         public int MaxSize => _maxSize;
     }

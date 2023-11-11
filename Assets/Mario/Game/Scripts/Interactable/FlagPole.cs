@@ -87,7 +87,7 @@ namespace Mario.Game.Interactable
         private IEnumerator WalkToHouse(PlayerController player)
         {
             yield return new WaitUntil(() => _isPlayerDown && _isFlagDown);
-  
+
             player.StateMachine.TransitionTo(player.StateMachine.CurrentMode.StateRun);
             _playerService.EnableAutoWalk(true);
             player.Movable.SetJumpForce(0);
