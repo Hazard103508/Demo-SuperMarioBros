@@ -11,7 +11,7 @@ namespace Mario.Game.Interactable
         private IPoolService _poolService;
 
         [SerializeField] private PooledObjectProfile _npcPoolReference;
-        [SerializeField] private Vector2 _targetLocation;
+        [SerializeField] private Vector2[] _targetLocations;
         #endregion
 
         #region Unity Methods
@@ -24,7 +24,10 @@ namespace Mario.Game.Interactable
         #region Public Methods
         public void OnTriggerOn()
         {
-            var aux = _poolService.GetObjectFromPool(_npcPoolReference, _targetLocation);
+            foreach (Vector2 initPosition in _targetLocations)
+            {
+                _poolService.GetObjectFromPool(_npcPoolReference, initPosition);
+            }
         }
         #endregion
     }

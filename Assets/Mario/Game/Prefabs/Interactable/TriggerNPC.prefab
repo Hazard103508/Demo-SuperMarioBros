@@ -120,5 +120,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c07f66e980c1fe14cbd629f55c483ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _npcPoolReference: {fileID: 11400000, guid: d2f41ff5e33e86f42ae5d642d5240605, type: 2}
-  _targetLocation: {x: 22, y: 2}
+  _npcPoolReference: {fileID: 0}
+  _targetLocation: {x: 0, y: 0}

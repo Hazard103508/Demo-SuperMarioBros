@@ -62,6 +62,7 @@ namespace Mario.Game.Npc.Goomba
         {
             _gameplayService.GameFreezed -= GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            this.StateMachine.TransitionTo(this.StateMachine.StateWalk);
         }
         #endregion
 

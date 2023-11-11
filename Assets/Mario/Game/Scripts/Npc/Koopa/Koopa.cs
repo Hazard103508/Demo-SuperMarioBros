@@ -66,7 +66,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Public Methods
-        public void OnFall() => Destroy(gameObject);
+        public void OnFall() => gameObject.SetActive(false);
         #endregion
 
         #region Private

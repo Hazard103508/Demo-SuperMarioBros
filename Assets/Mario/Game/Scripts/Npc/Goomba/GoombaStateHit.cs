@@ -24,11 +24,12 @@ namespace Mario.Game.Npc.Goomba
         #region IState Methods
         public override void Enter()
         {
+            _timer = 0;
             Goomba.Movable.enabled = false;
             Goomba.gameObject.layer = 0;
             Goomba.Animator.SetTrigger("Hit");
-            _soundService.Play(Goomba.Profile.HitSoundFXPoolReference);
 
+            _soundService.Play(Goomba.Profile.HitSoundFXPoolReference);
             _scoreService.Add(Goomba.Profile.Points);
             _scoreService.ShowPoints(Goomba.Profile.Points, Goomba.transform.position + Vector3.up * 2f, 0.5f, 1.5f);
         }
@@ -36,7 +37,7 @@ namespace Mario.Game.Npc.Goomba
         {
             _timer += Time.deltaTime;
             if (_timer >= 0.4f)
-                GameObject.Destroy(Goomba.gameObject);
+                Goomba.gameObject.SetActive(false);
         }
         #endregion
 

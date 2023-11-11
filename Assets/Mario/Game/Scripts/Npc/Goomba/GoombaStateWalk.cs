@@ -16,6 +16,7 @@ namespace Mario.Game.Npc.Goomba
         #region IState Methods
         public override void Enter()
         {
+            Goomba.gameObject.layer = LayerMask.NameToLayer("NPC");
             Goomba.Movable.enabled = true;
             Goomba.Movable.Speed = Goomba.Profile.MoveSpeed;
             Goomba.Movable.Gravity = Goomba.Profile.FallSpeed;

@@ -56,13 +56,9 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public void OnFall()
-        {
-            if (_timeService.Time > 0)
-                SetTransitionToDeathFall();
-        }
         public void OnTimeOut() => SetTransitionToTimeOut();
         public void OnTouchFlag() => SetTransitionToFlag();
+        public virtual void OnFall() { }
         public virtual void OnBuff() { }
         public virtual void OnNerf() { }
         public virtual void OnDeath() { }
