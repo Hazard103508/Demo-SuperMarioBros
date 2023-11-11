@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: MapProfile - World 1-2-A
   m_EditorClassIdentifier: 
   _worldName: 1-2
+  _width: 16
   _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
   _startPosition: {x: 2, y: 2}
   _startTime: 0
   _autowalk: 1
   _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
-  _mapSectionReferences:
-  - m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
+  _mapReferences:
+    m_AssetGUID: 317b8460021e2ce4d85764db25e4f653
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

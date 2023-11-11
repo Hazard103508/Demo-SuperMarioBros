@@ -22,13 +22,13 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 317b8460021e2ce4d85764db25e4f653
-    m_Address: Map_1-2-A
+  - m_GUID: 54ed28a8a2ab4eb499cbbfa0881a84a7
+    m_Address: World 1-2-B
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 54ed28a8a2ab4eb499cbbfa0881a84a7
-    m_Address: Map_1-2-B
+  - m_GUID: 317b8460021e2ce4d85764db25e4f653
+    m_Address: World 1-2-A
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

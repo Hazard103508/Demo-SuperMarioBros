@@ -22,6 +22,10 @@ namespace Mario.Game.Npc.Goomba
             Goomba.Movable.MaxFallSpeed = Goomba.Profile.MaxFallSpeed;
             Goomba.Animator.SetTrigger("Idle");
         }
+        public override void Update()
+        {
+            base.Update();
+        }
         #endregion
 
         #region Private Methods
