@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f55d97fa783210a4c8c30bc6e76f176f, type: 3}
-  m_Name: MapProfile - World 1-2-B
+  m_Name: MapProfile - World 1-2-BC
   m_EditorClassIdentifier: 
   _worldName: 1-2
-  _width: 200
+  _width: 192
   _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
   _startPosition: {x: 2, y: 11}
   _startTime: 400
   _autowalk: 0
   _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
   _mapReferences:
-    m_AssetGUID: 54ed28a8a2ab4eb499cbbfa0881a84a7
+    m_AssetGUID: accb8c0cc61cac64289f71903ff589c8
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

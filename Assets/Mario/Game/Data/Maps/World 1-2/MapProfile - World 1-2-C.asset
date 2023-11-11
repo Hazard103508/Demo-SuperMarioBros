@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55d97fa783210a4c8c30bc6e76f176f, type: 3}
+  m_Name: MapProfile - World 1-2-C
+  m_EditorClassIdentifier: 
+  _worldName: 1-2
+  _width: 96
+  _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
+  _startPosition: {x: 2.5, y: 2}
+  _startTime: 400
+  _autowalk: 0
+  _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
+  _mapReferences:
+    m_AssetGUID: fdf231be616b1074994203fd4cf39f7e
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _poolProfiles:
+  - {fileID: 11400000, guid: 479fbe68414319d44810b234eff91efa, type: 2}
+  - {fileID: 11400000, guid: 1f96ebf88e0b6e34e81662c5460a1fa4, type: 2}
+  - {fileID: 11400000, guid: 3e883192d434abf4ea87fbde6ccad675, type: 2}

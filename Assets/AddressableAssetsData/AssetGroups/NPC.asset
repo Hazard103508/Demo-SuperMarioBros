@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: NPC
+  m_EditorClassIdentifier: 
+  m_GroupName: NPC
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 3c2e013482b35a44c847802448b7c4c6
+  m_SerializeEntries:
+  - m_GUID: 0d536e98b1ea09c4aae0b21594e34d43
+    m_Address: GoombaBrown
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 99e54faa4a1f44348931a98acfb0b923
+    m_Address: GoombaTeal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: cd060111e8c517a43abb4ad306db984e, type: 2}
+    - {fileID: 11400000, guid: 06fac611adf507f4eb94ced359312ee1, type: 2}

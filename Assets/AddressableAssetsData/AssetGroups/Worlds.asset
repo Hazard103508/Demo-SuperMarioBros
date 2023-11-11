@@ -22,8 +22,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 54ed28a8a2ab4eb499cbbfa0881a84a7
-    m_Address: World 1-2-B
+  - m_GUID: accb8c0cc61cac64289f71903ff589c8
+    m_Address: World 1-2-BC
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -49,6 +49,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0278af7d6dcfc7042abe5d8496bd3173
     m_Address: World 1-1-BC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fdf231be616b1074994203fd4cf39f7e
+    m_Address: World 1-2-C
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
