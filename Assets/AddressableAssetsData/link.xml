@@ -1,0 +1,143 @@
+<linker>
+  <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Mario.Commons.UI.IconText" preserve="all" />
+    <type fullname="Mario.Game.Boxes.BrickBoxCoin.BoxBrickCoin" preserve="all" />
+    <type fullname="Mario.Game.Boxes.BrickBoxEmpty.BoxBrickEmpty" preserve="all" />
+    <type fullname="Mario.Game.Boxes.InvisibleBox1UP.BoxInvisible1Up" preserve="all" />
+    <type fullname="Mario.Game.Boxes.MysteryBoxCoin.BoxMysteryCoin" preserve="all" />
+    <type fullname="Mario.Game.Boxes.MysteryBoxPowerUp.BoxBrickPowerUp" preserve="all" />
+    <type fullname="Mario.Game.Boxes.MysteryBoxPowerUp.BoxMysteryPowerUp" preserve="all" />
+    <type fullname="Mario.Game.Commons.Movable" preserve="all" />
+    <type fullname="Mario.Game.Interactable.CheckPoint" preserve="all" />
+    <type fullname="Mario.Game.Interactable.Explotion" preserve="all" />
+    <type fullname="Mario.Game.Interactable.Fireball" preserve="all" />
+    <type fullname="Mario.Game.Interactable.FlagPole" preserve="all" />
+    <type fullname="Mario.Game.Interactable.FlagScoreLabel" preserve="all" />
+    <type fullname="Mario.Game.Interactable.House" preserve="all" />
+    <type fullname="Mario.Game.Interactable.NpcCreator" preserve="all" />
+    <type fullname="Mario.Game.Interactable.PipeDown" preserve="all" />
+    <type fullname="Mario.Game.Interactable.PipeRight" preserve="all" />
+    <type fullname="Mario.Game.Interactable.TriggerPoint" preserve="all" />
+    <type fullname="Mario.Game.Items.BrokenBrick" preserve="all" />
+    <type fullname="Mario.Game.Items.Coin" preserve="all" />
+    <type fullname="Mario.Game.Items.Flower.Flower" preserve="all" />
+    <type fullname="Mario.Game.Items.GreenMushroom.MushroomGreen" preserve="all" />
+    <type fullname="Mario.Game.Items.ItemOutMapTrigger" preserve="all" />
+    <type fullname="Mario.Game.Items.JumpingCoin" preserve="all" />
+    <type fullname="Mario.Game.Items.RedMushroom.MushroomRed" preserve="all" />
+    <type fullname="Mario.Game.Npc.Goomba.Goomba" preserve="all" />
+    <type fullname="Mario.Game.Npc.Koopa.Koopa" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Boxes.BoxCoinProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Boxes.BoxPowerUpProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Boxes.BrickBoxCoinProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Boxes.BrickBoxEmptyProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Boxes.InvisibleBox1UPProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Interactable.FireballProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Interactable.FlagPoleProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Interactable.HouseProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Interactable.PipeProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Items.CoinProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Items.FlowerProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Items.GoombaProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Items.KoopaProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Items.MushroomProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Items.MushroomRedProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Map.MapProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Map.MusicProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Pool.PooledObjectProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Pool.PooledProfileGroup" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Pool.PooledSoundProfile" preserve="all" />
+    <type fullname="Mario.Game.ScriptableObjects.Pool.PooledUIProfile" preserve="all" />
+    <type fullname="Mario.Game.UI.WorldLabel" preserve="all" />
+    <type fullname="UnityShared.Behaviours.Various.RaycastRange.RaycastRange" preserve="all" />
+    <type fullname="UnityShared.ScriptableObjects.GameObjects.RaycastRangeProfile" preserve="all" />
+    <type fullname="UnityShared.ScriptableObjects.GameObjects.RaycastRangeProfile/RangeInfo" preserve="nothing" serialized="true" />
+    <type fullname="UnityShared.ScriptableObjects.GameObjects.RaycastRangeProfile/RayInfo" preserve="nothing" serialized="true" />
+    <type fullname="Mario.Game.Interactable.FlagScoreLabel/NumberSprite" preserve="nothing" serialized="true" />
+    <type fullname="Mario.Game.ScriptableObjects.Map.HurryTheme" preserve="nothing" serialized="true" />
+    <type fullname="Mario.Game.ScriptableObjects.Map.MapConnection" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+    <type fullname="UnityEngine.AddressableAssets.AssetReference" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.LegacyResourcesProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="TMPro.TextMeshProUGUI" preserve="all" />
+    <type fullname="TMPro.TMP_FontAsset" preserve="all" />
+    <type fullname="TMPro.TMP_SpriteAsset" preserve="all" />
+    <type fullname="TMPro.FaceInfo_Legacy" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.FontAssetCreationSettings" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.KerningTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_Character" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontFeatureTable" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_FontWeightPair" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_GlyphAdjustmentRecord" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_GlyphPairAdjustmentRecord" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_GlyphValueRecord" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_SpriteCharacter" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.TMP_SpriteGlyph" preserve="nothing" serialized="true" />
+    <type fullname="TMPro.VertexGradient" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AnimationClip" preserve="all" />
+    <type fullname="UnityEngine.Animator" preserve="all" />
+    <type fullname="UnityEngine.AnimatorOverrideController" preserve="all" />
+    <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AudioModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AudioClip" preserve="all" />
+    <type fullname="UnityEngine.AudioSource" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.MonoBehaviour" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.RectTransform" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.SpriteRenderer" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+    <type fullname="UnityEngine.Events.PersistentCallGroup" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.UnityEvent" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.ArgumentCache" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.Events.PersistentListenerMode" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.GridModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Grid" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.BoxCollider2D" preserve="all" />
+    <type fullname="UnityEngine.CompositeCollider2D" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody2D" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Font" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TilemapModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Tilemaps.Tile" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.Tilemap" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.TilemapCollider2D" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.TilemapRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.UIModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.CanvasRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TextCoreFontEngineModule">
+    <type fullname="UnityEngine.TextCore.FaceInfo" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.Glyph" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphMetrics" preserve="nothing" serialized="true" />
+    <type fullname="UnityEngine.TextCore.GlyphRect" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="UnityEngine.UI">
+    <type fullname="UnityEngine.UI.MaskableGraphic/CullStateChangedEvent" preserve="nothing" serialized="true" />
+  </assembly>
+</linker>

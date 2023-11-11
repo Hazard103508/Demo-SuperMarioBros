@@ -1,6 +1,5 @@
 using Mario.Game.ScriptableObjects.Pool;
 using System;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 using UnityShared.ScriptableObjects.GameObjects;
@@ -10,7 +9,7 @@ namespace Mario.Game.ScriptableObjects.Player
     [CreateAssetMenu(fileName = "PlayerMode", menuName = "ScriptableObjects/Game/Player/PlayerMode", order = 1)]
     public class PlayerModeProfile : ScriptableObject
     {
-        [SerializeField] private AnimatorController _animatorController;
+        [SerializeField] private RuntimeAnimatorController _animatorController;
         [SerializeField] private HorizontalMovement _walk;
         [SerializeField] private HorizontalMovement _run;
         [SerializeField] private VerticalMovement _fall;
@@ -18,7 +17,7 @@ namespace Mario.Game.ScriptableObjects.Player
         [SerializeField] private ModeRaycastRange _normalRaycastRange;
         [SerializeField] private ModeRaycastRange _duckingRaycastRange;
 
-        public AnimatorController AnimatorController => _animatorController;
+        public RuntimeAnimatorController AnimatorController => _animatorController;
         public HorizontalMovement Walk => _walk;
         public HorizontalMovement Run => _run;
         public VerticalMovement Fall => _fall;
