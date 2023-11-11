@@ -1,12 +1,11 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
-using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using UnityEngine;
 
 namespace Mario.Game.Interactable
 {
-    public class CheckPoint : TriggerPoint
+    public class CheckPoint : MonoBehaviour
     {
         #region Objects
         private IGameplayService _gameplayService;
@@ -21,11 +20,10 @@ namespace Mario.Game.Interactable
         }
         #endregion
 
-        #region Protected Methods
-        protected override void OnHitCheckPoint(PlayerController player)
+        #region Public Methods
+        public void OnTriggerOn()
         {
             _gameplayService.SetCheckPoint(_checkPointProfile);
-            base.OnHitCheckPoint(player);
         }
         #endregion
     }
