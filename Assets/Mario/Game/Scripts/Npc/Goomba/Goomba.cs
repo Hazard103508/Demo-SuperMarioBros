@@ -57,17 +57,21 @@ namespace Mario.Game.Npc.Goomba
         {
             _gameplayService.GameFreezed += GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+
+            if (this.StateMachine.CurrentState == this.StateMachine.StateWalk)
+                this.StateMachine.CurrentState.Enter();
+            else
+                this.StateMachine.TransitionTo(this.StateMachine.StateWalk);
         }
         private void OnDisable()
         {
             _gameplayService.GameFreezed -= GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
-            this.StateMachine.TransitionTo(this.StateMachine.StateWalk);
         }
         #endregion
 
         #region Public Methods
-        public void OnFall() => gameObject.SetActive(false);
+        public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 
         #region Private

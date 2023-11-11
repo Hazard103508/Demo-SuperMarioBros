@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {
@@ -8,8 +9,8 @@ namespace Mario.Game.Items
     {
         #region Objects
         [SerializeField] private Vector2 _margin;
-        private float bottomBorder;
 
+        private Bounds<float> bordersOut;
         private bool isOut;
         #endregion
 
@@ -20,12 +21,6 @@ namespace Mario.Game.Items
         #endregion
 
         #region Unity Methods
-        void Awake()
-        {
-            var cam = Camera.main;
-            var downLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
-            bottomBorder = downLeft.y - _margin.y;
-        }
         private void OnEnable()
         {
             isOut = false;
@@ -35,11 +30,38 @@ namespace Mario.Game.Items
             if (isOut)
                 return;
 
+            var cam = Camera.main;
+            var downLeft = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
+            var topRight = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
+
+            bordersOut = new Bounds<float>()
+            {
+                left = downLeft.x - _margin.x,
+                right = topRight.x + _margin.x,
+                bottom = downLeft.y - _margin.y,
+            };
+
             var pos = transform.position;
-            if (pos.y < bottomBorder)
+
+            if (pos.y < bordersOut.bottom)
             {
                 onOutFromDown.Invoke();
                 isOut = true;
+                return;
+            }
+
+            if (pos.x < bordersOut.left)
+            {
+                onOutFromLeft.Invoke();
+                isOut = true;
+                return;
+            }
+
+            if (pos.x > bordersOut.right)
+            {
+                onOutFromRight.Invoke();
+                isOut = true;
+                return;
             }
         }
         #endregion

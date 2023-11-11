@@ -13,11 +13,14 @@ namespace Mario.Game.Interactable
     {
         #region Objects
         public UnityEvent onTriggerOn;
+#if UNITY_EDITOR
         [SerializeField] private Color _gizmoColor;
+#endif
         [SerializeField] private bool _destroyOnTrigger;
         #endregion
 
         #region Unity Methods
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             var collider = GetComponent<BoxCollider2D>();
@@ -25,6 +28,7 @@ namespace Mario.Game.Interactable
             Gizmos.color = _gizmoColor;
             Gizmos.DrawCube(transform.position + (Vector3)collider.offset, collider.size);
         }
+#endif
         #endregion
 
         #region Protected Methods

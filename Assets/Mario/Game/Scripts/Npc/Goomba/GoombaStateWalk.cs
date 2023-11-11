@@ -16,12 +16,19 @@ namespace Mario.Game.Npc.Goomba
         #region IState Methods
         public override void Enter()
         {
+            Goomba.Animator.SetTrigger("Idle");
+
             Goomba.gameObject.layer = LayerMask.NameToLayer("NPC");
+            Goomba.Movable.ChekCollisions = true;
             Goomba.Movable.enabled = true;
             Goomba.Movable.Speed = Goomba.Profile.MoveSpeed;
             Goomba.Movable.Gravity = Goomba.Profile.FallSpeed;
             Goomba.Movable.MaxFallSpeed = Goomba.Profile.MaxFallSpeed;
-            Goomba.Animator.SetTrigger("Idle");
+            Goomba.Movable.SetJumpForce(0);
+
+            Goomba.Renderer.flipY = false;
+            Goomba.Renderer.transform.localPosition = new Vector3(0.5f, 0.5f);
+            Goomba.Renderer.sortingLayerName = "Item";
         }
         public override void Update()
         {
