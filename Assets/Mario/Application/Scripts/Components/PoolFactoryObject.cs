@@ -8,7 +8,7 @@ namespace Mario.Application.Components
         public override Pool CreatePool(PooledBaseProfile profile, Transform parent)
         {
             var pool = base.CreatePool(profile, parent);
-            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
+            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.name, profile.Reference);
 
             pool.Load();
             return pool;

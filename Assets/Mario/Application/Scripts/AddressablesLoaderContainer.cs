@@ -47,7 +47,7 @@ namespace Mario.Application
 
             foreach (var item in poolItems)
             {
-                _addressablesService.LoadAsset<T>(item.Reference, OnLoadAssetAsyncCompleted);
+                _addressablesService.LoadAsset<T>(item.name, item.Reference, OnLoadAssetAsyncCompleted);
             }
         }
         public void Clear()

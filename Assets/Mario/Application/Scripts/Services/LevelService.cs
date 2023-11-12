@@ -89,8 +89,8 @@ namespace Mario.Application.Services
         }
         private async Task LoadWorld(Transform parent)
         {
-            await _addressablesService.LoadAssetAsync<GameObject>(MapProfile.MapReferences);
-            var mapReference = _addressablesService.GetAssetReference<GameObject>(MapProfile.MapReferences);
+            await _addressablesService.LoadAssetAsync<GameObject>(MapProfile.name, MapProfile.MapReferences);
+            var mapReference = _addressablesService.GetAssetReference<GameObject>(MapProfile.name, MapProfile.MapReferences);
             Instantiate(mapReference, parent);
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
         }

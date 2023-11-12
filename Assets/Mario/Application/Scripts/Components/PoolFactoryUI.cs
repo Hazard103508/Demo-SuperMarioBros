@@ -10,7 +10,7 @@ namespace Mario.Application.Components
             var pool = base.CreatePool(profile, parent);
             pool.gameObject.AddComponent<Canvas>();
             pool.OnCreate = OnCreate;
-            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.Reference);
+            pool.PrefabReference = _addressablesService.GetAssetReference<GameObject>(profile.name, profile.Reference);
 
             pool.Load();
             return pool;

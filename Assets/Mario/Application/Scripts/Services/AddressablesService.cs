@@ -26,17 +26,15 @@ namespace Mario.Application.Services
         {
         }
 
-        public T GetAssetReference<T>(AssetReference assetReference)
+        public T GetAssetReference<T>(string key, AssetReference assetReference)
         {
-            string key = assetReference.RuntimeKey.ToString();
-            if (_operationsHandle.ContainsKey(assetReference.RuntimeKey.ToString()))
+            if (_operationsHandle.ContainsKey(key))
                 return (T)_operationsHandle[key].Result;
 
             return default;
         }
-        public void LoadAsset<T>(AssetReference assetReference, Action<AsyncOperationHandle<T>> onCompleted)
+        public void LoadAsset<T>(string key, AssetReference assetReference, Action<AsyncOperationHandle<T>> onCompleted)
         {
-            string key = assetReference.RuntimeKey.ToString();
             if (_operationsHandle.ContainsKey(key))
                 return;
 
@@ -46,9 +44,8 @@ namespace Mario.Application.Services
             _operationsHandle.Add(key, asyncOperationHandle);
             _references.Add(key, assetReference);
         }
-        public Task<AsyncOperationHandle<T>> LoadAssetAsync<T>(AssetReference assetReference)
+        public Task<AsyncOperationHandle<T>> LoadAssetAsync<T>(string key, AssetReference assetReference)
         {
-            string key = assetReference.RuntimeKey.ToString();
             if (_operationsHandle.ContainsKey(key))
                 return default;
 
