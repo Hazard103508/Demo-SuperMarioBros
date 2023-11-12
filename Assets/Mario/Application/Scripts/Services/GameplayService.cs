@@ -59,9 +59,9 @@ namespace Mario.Application.Services
         public void SetNextMap(MapConnection connection)
         {
             _mapConnection = connection;
-            _levelService.SetMap(connection.MapProfile);
+            _levelService.SetMap(connection.MapProfile.name);
         }
-        public void SetCheckPoint(MapProfile mapProfile) => _levelService.SetMap(mapProfile);
+        public void SetCheckPoint(MapProfile mapProfile) => _levelService.SetMap(mapProfile.name);
         public void FreezeGame()
         {
             _timeService.FreezeTimer();

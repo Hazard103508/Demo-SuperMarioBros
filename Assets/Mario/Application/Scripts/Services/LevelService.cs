@@ -2,7 +2,9 @@ using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 namespace Mario.Application.Services
 {
@@ -14,7 +16,7 @@ namespace Mario.Application.Services
         [SerializeField] private MapProfile _currentMapProfile;
         private AddressablesLoaderContainer _assetLoaderContainer;
         private GameObject _root;
-        private MapProfile _nextMapProfile;
+        private NextMap _nextMap;
         #endregion
 
         #region Events
@@ -48,13 +50,7 @@ namespace Mario.Application.Services
             _root = new GameObject("Map");
             Camera.main.backgroundColor = Color.black;
 
-            if (_nextMapProfile != null)
-            {
-                MapProfile = _nextMapProfile;
-                _nextMapProfile = null;
-            }
-
-            LoadAsyncReferences();
+            StartCoroutine(LoadAsyncReferences());
         }
         public void LoadNextLevel()
         {
@@ -69,12 +65,30 @@ namespace Mario.Application.Services
             _assetLoaderContainer.Clear();
             _poolService.ClearPool();
         }
-        public void SetMap(MapProfile mapProfile) => _nextMapProfile = mapProfile;
+        public void SetMap(string mapName)
+        {
+            _nextMap = new NextMap();
+            var asyncOperationHandle = Addressables.LoadAssetAsync<MapProfile>(mapName);
+            asyncOperationHandle.Completed += handle => 
+            {
+                _nextMap.Profile = handle.Result;
+                //Addressables.Release(handle);
+            };
+        }
         #endregion
 
         #region Private Methods
-        private void LoadAsyncReferences()
+        private IEnumerator LoadAsyncReferences()
         {
+            if (_nextMap != null && _nextMap.Profile == null)
+                yield return new WaitUntil(() => _nextMap.Profile != null);
+
+            if (_nextMap != null && _nextMap.Profile != null)
+            {
+                MapProfile = _nextMap.Profile;
+                _nextMap = null;
+            }
+
             foreach (PooledProfileGroup poolGroup in MapProfile.PoolProfiles)
             {
                 _assetLoaderContainer.Register(poolGroup.PooledObjectProfiles);
@@ -90,17 +104,23 @@ namespace Mario.Application.Services
                 _assetLoaderContainer.LoadAssetAsync<GameObject>(poolGroup.PooledUIProfiles);
             }
             _assetLoaderContainer.LoadAssetAsync<GameObject>(MapProfile.name);
-            UnityShared.Files.Files.Save($"I - Map is null: {MapProfile == null}");
         }
         private void OnAssetsLoadCompleted()
         {
-            UnityShared.Files.Files.Save($"J - Map is null: {MapProfile == null}");
             var mapReference = _assetLoaderContainer.GetAssetReference<GameObject>(MapProfile.name);
             Instantiate(mapReference, _root.transform);
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
 
             IsLoadCompleted = true;
             LoadCompleted.Invoke();
+        }
+        #endregion
+
+        #region Structures
+        public class NextMap
+        {
+            public string Name { get; set; }
+            public MapProfile Profile { get; set; }
         }
         #endregion
     }

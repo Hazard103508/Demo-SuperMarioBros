@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: WorldsProfiles
+  m_EditorClassIdentifier: 
+  m_GroupName: WorldsProfiles
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 385994f4819462d4fa5531e7fbf8d840
+  m_SerializeEntries:
+  - m_GUID: f3122618514c40f479cb946eace18894
+    m_Address: MapProfile - World 1-1-ABC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6bda0b06819520488366b3810c7bf51
+    m_Address: MapProfile - World 1-1-D
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b78297708f5853a4b803aa7687cdc32c
+    m_Address: MapProfile - World 1-1-C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1162f5b16db3c6f43a97ba9d979b9f83
+    m_Address: MapProfile - World 1-1-BC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ccc7981e47261a48bd834669fe8c6b9
+    m_Address: MapProfile - World 1-2-C
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6d552bc88efb8fa448545c9d6717458d
+    m_Address: MapProfile - World 1-2-A
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ef5b6ef43bc5564191f919bc67b025f
+    m_Address: MapProfile - World 1-2-BC
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 17d63276808b3db4c9cfc71dbcfe1961, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 2d6159e6cc44ada4d994e38152f60d29, type: 2}
+    - {fileID: 11400000, guid: ce989342e9d970e48abebab8719e3c98, type: 2}
