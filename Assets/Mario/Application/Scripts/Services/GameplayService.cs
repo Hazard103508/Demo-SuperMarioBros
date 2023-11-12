@@ -23,7 +23,6 @@ namespace Mario.Application.Services
         private bool _isFlagReached;
         private bool _isHurry;
         private MapConnection _mapConnection;
-        private MapProfile _checkPoint;
 
         [SerializeField] private PooledSoundProfile _scoreSoundPoolReference;
         #endregion
@@ -43,8 +42,6 @@ namespace Mario.Application.Services
             _sceneService = ServiceLocator.Current.Get<ISceneService>();
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
 
-            _levelService.GetMapConnection = GetMapConnection;
-
             _levelService.StartLoading += OnStartLoading;
             _levelService.LoadCompleted += OnLoadCompleted;
             _timeService.TimeOut += OnTimeOut;
@@ -59,8 +56,12 @@ namespace Mario.Application.Services
             _timeService.TimeChangeded -= OnTimeChangeded;
             _playerService.LivesRemoved -= OnLivesRemoved;
         }
-        public void SetNextMap(MapConnection connection) => _mapConnection = connection;
-        public void SetCheckPoint(MapProfile mapProfile) => _checkPoint = mapProfile;
+        public void SetNextMap(MapConnection connection)
+        {
+            _mapConnection = connection;
+            _levelService.SetMap(connection.MapProfile);
+        }
+        public void SetCheckPoint(MapProfile mapProfile) => _levelService.SetMap(mapProfile);
         public void FreezeGame()
         {
             _timeService.FreezeTimer();
@@ -130,7 +131,6 @@ namespace Mario.Application.Services
 
             _timeService.StartTimer();
             _mapConnection = null;
-            _checkPoint = null;
 
             UnfreezeGame();
             PlayInitTheme();
@@ -186,13 +186,6 @@ namespace Mario.Application.Services
             _playerService.SetActivePlayer(false);
         }
         private void OnLoadCompleted() => StartCoroutine(StartGame());
-        private MapProfile GetMapConnection()
-        {
-            if (_mapConnection != null)
-                return _mapConnection.MapProfile;
-            else
-                return _checkPoint;
-        }
         private void OnTimeChangeded()
         {
             if (_levelService.MapProfile.StartTime <= 0)

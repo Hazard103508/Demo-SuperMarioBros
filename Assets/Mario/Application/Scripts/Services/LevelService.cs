@@ -2,7 +2,6 @@ using Mario.Application.Interfaces;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Mario.Application.Services
@@ -15,6 +14,7 @@ namespace Mario.Application.Services
         [SerializeField] private MapProfile _currentMapProfile;
         private AddressablesLoaderContainer _assetLoaderContainer;
         private GameObject _root;
+        private MapProfile _nextMapProfile;
         #endregion
 
         #region Events
@@ -25,7 +25,6 @@ namespace Mario.Application.Services
         #region Properties
         public MapProfile MapProfile { get; private set; }
         public bool IsLoadCompleted { get; private set; }
-        public Func<MapProfile> GetMapConnection { get; set; }
         #endregion
 
         #region Public Methods
@@ -46,12 +45,14 @@ namespace Mario.Application.Services
             IsLoadCompleted = false;
             StartLoading.Invoke();
 
-            var mapConnectionProfile = GetMapConnection.Invoke();
-            if (mapConnectionProfile != null)
-                MapProfile = mapConnectionProfile;
-
             _root = new GameObject("Map");
             Camera.main.backgroundColor = Color.black;
+
+            if (_nextMapProfile != null)
+            {
+                MapProfile = _nextMapProfile;
+                _nextMapProfile = null;
+            }
 
             LoadAsyncReferences();
         }
@@ -68,6 +69,7 @@ namespace Mario.Application.Services
             _assetLoaderContainer.Clear();
             _poolService.ClearPool();
         }
+        public void SetMap(MapProfile mapProfile) => _nextMapProfile = mapProfile;
         #endregion
 
         #region Private Methods
@@ -88,9 +90,11 @@ namespace Mario.Application.Services
                 _assetLoaderContainer.LoadAssetAsync<GameObject>(poolGroup.PooledUIProfiles);
             }
             _assetLoaderContainer.LoadAssetAsync<GameObject>(MapProfile.name);
+            UnityShared.Files.Files.Save($"I - Map is null: {MapProfile == null}");
         }
         private void OnAssetsLoadCompleted()
         {
+            UnityShared.Files.Files.Save($"J - Map is null: {MapProfile == null}");
             var mapReference = _assetLoaderContainer.GetAssetReference<GameObject>(MapProfile.name);
             Instantiate(mapReference, _root.transform);
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
