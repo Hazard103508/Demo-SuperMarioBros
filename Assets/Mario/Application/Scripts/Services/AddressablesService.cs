@@ -1,7 +1,6 @@
 using Mario.Application.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -26,36 +25,14 @@ namespace Mario.Application.Services
         {
         }
 
-        public T GetAssetReference<T>(string key, AssetReference assetReference)
-        {
-            if (_operationsHandle.ContainsKey(key))
-                return (T)_operationsHandle[key].Result;
-
-            return default;
-        }
+        public T GetAssetReference<T>(string key) => (T)_operationsHandle[key].Result;
         public void LoadAsset<T>(string key, AssetReference assetReference, Action<AsyncOperationHandle<T>> onCompleted)
         {
-            if (_operationsHandle.ContainsKey(key))
-                return;
-
             var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
             asyncOperationHandle.Completed += handle => onCompleted?.Invoke(handle);
 
             _operationsHandle.Add(key, asyncOperationHandle);
             _references.Add(key, assetReference);
-        }
-        public Task<AsyncOperationHandle<T>> LoadAssetAsync<T>(string key, AssetReference assetReference)
-        {
-            if (_operationsHandle.ContainsKey(key))
-                return default;
-
-            var taskCompletionSource = new TaskCompletionSource<AsyncOperationHandle<T>>();
-            var asyncOperationHandle = assetReference.LoadAssetAsync<T>();
-            asyncOperationHandle.Completed += handle => taskCompletionSource.SetResult(handle);
-            _operationsHandle.Add(key, asyncOperationHandle);
-            _references.Add(key, assetReference);
-
-            return Task.Run(() => taskCompletionSource.Task);
         }
         public void ReleaseAllAssets()
         {

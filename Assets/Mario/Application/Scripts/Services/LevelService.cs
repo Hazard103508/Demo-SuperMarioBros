@@ -10,7 +10,6 @@ namespace Mario.Application.Services
     public class LevelService : MonoBehaviour, ILevelService
     {
         #region Objects
-        private IAddressablesService _addressablesService;
         private IPoolService _poolService;
 
         [SerializeField] private MapProfile _currentMapProfile;
@@ -32,16 +31,17 @@ namespace Mario.Application.Services
         #region Public Methods
         public void Initalize()
         {
-            _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
             _poolService = ServiceLocator.Current.Get<IPoolService>();
 
             MapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
+            _assetLoaderContainer.LoadCompleted += OnAssetsLoadCompleted;
         }
         public void Dispose()
         {
+            _assetLoaderContainer.LoadCompleted -= OnAssetsLoadCompleted;
         }
-        public async void LoadLevel()
+        public void LoadLevel()
         {
             IsLoadCompleted = false;
             StartLoading.Invoke();
@@ -54,10 +54,6 @@ namespace Mario.Application.Services
             Camera.main.backgroundColor = Color.black;
 
             LoadAsyncReferences();
-            await LoadWorld(_root.transform);
-
-            IsLoadCompleted = true;
-            LoadCompleted.Invoke();
         }
         public void LoadNextLevel()
         {
@@ -79,20 +75,28 @@ namespace Mario.Application.Services
         {
             foreach (PooledProfileGroup poolGroup in MapProfile.PoolProfiles)
             {
-                _assetLoaderContainer.Register<PooledObjectProfile, GameObject>(poolGroup.PooledObjectProfiles);
-                _assetLoaderContainer.Register<PooledSoundProfile, AudioClip>(poolGroup.PooledSoundProfiles);
-                _assetLoaderContainer.Register<PooledUIProfile, GameObject>(poolGroup.PooledUIProfiles);
+                _assetLoaderContainer.Register(poolGroup.PooledObjectProfiles);
+                _assetLoaderContainer.Register(poolGroup.PooledSoundProfiles);
+                _assetLoaderContainer.Register(poolGroup.PooledUIProfiles);
             }
+            _assetLoaderContainer.Register(MapProfile.name, MapProfile.MapReferences);
 
-            _assetLoaderContainer.LoadAssetAsync<GameObject>();
-            _assetLoaderContainer.LoadAssetAsync<AudioClip>();
+            foreach (PooledProfileGroup poolGroup in MapProfile.PoolProfiles)
+            {
+                _assetLoaderContainer.LoadAssetAsync<GameObject>(poolGroup.PooledObjectProfiles);
+                _assetLoaderContainer.LoadAssetAsync<AudioClip>(poolGroup.PooledSoundProfiles);
+                _assetLoaderContainer.LoadAssetAsync<GameObject>(poolGroup.PooledUIProfiles);
+            }
+            _assetLoaderContainer.LoadAssetAsync<GameObject>(MapProfile.name);
         }
-        private async Task LoadWorld(Transform parent)
+        private void OnAssetsLoadCompleted()
         {
-            await _addressablesService.LoadAssetAsync<GameObject>(MapProfile.name, MapProfile.MapReferences);
-            var mapReference = _addressablesService.GetAssetReference<GameObject>(MapProfile.name, MapProfile.MapReferences);
-            Instantiate(mapReference, parent);
+            var mapReference = _assetLoaderContainer.GetAssetReference<GameObject>(MapProfile.name);
+            Instantiate(mapReference, _root.transform);
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
+
+            IsLoadCompleted = true;
+            LoadCompleted.Invoke();
         }
         #endregion
     }

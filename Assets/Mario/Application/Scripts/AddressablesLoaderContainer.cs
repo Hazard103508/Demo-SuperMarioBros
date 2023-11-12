@@ -3,6 +3,7 @@ using Mario.Application.Services;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Mario.Application
@@ -10,46 +11,46 @@ namespace Mario.Application
     public class AddressablesLoaderContainer
     {
         private IAddressablesService _addressablesService;
-        private Dictionary<Type, List<PooledBaseProfile>> _references;
-
+        private Dictionary<string, AssetReference> _references;
         private int _countTotal;
         private int _countLoaded;
 
         public event Action LoadCompleted;
 
-        public bool IsLoadCompleted { get; private set; }
-
         public AddressablesLoaderContainer()
         {
             _addressablesService = ServiceLocator.Current.Get<IAddressablesService>();
-            _references = new Dictionary<Type, List<PooledBaseProfile>>();
+            _references = new Dictionary<string, AssetReference>();
         }
 
-        public void Register<T, R>(T[] poolItems) where T : PooledBaseProfile
+        public void Register<T>(T[] poolItems) where T : PooledBaseProfile
         {
             foreach (T item in poolItems)
             {
-                Register<T, R>(item);
+                Register<T>(item);
             }
         }
-        public void Register<T, R>(T poolItem) where T : PooledBaseProfile
+        public void Register<T>(T poolItem) where T : PooledBaseProfile => Register(poolItem.name, poolItem.Reference);
+        public void Register(string key, AssetReference assetReference)
         {
-            Type type = typeof(R);
-            if (!_references.ContainsKey(type))
-                _references[type] = new List<PooledBaseProfile>();
-
+            _references.Add(key, assetReference);
             _countTotal++;
-            _references[type].Add(poolItem);
         }
-        public void LoadAssetAsync<T>()
-        {
-            var poolItems = _references[typeof(T)];
 
-            foreach (var item in poolItems)
+        public void LoadAssetAsync<T>(PooledBaseProfile[] poolItems)
+        {
+            foreach (PooledBaseProfile item in poolItems)
             {
-                _addressablesService.LoadAsset<T>(item.name, item.Reference, OnLoadAssetAsyncCompleted);
+                LoadAssetAsync<T>(item);
             }
         }
+        public void LoadAssetAsync<T>(PooledBaseProfile poolItem) => LoadAssetAsync<T>(poolItem.name);
+        public void LoadAssetAsync<T>(string key)
+        {
+            var assetReference = _references[key];
+            _addressablesService.LoadAsset<T>(key, assetReference, OnLoadAssetAsyncCompleted);
+        }
+        public T GetAssetReference<T>(string key) => _addressablesService.GetAssetReference<T>(key);
         public void Clear()
         {
             _countTotal = 0;
@@ -63,7 +64,6 @@ namespace Mario.Application
             _countLoaded++;
             if (_countLoaded == _countTotal)
             {
-                IsLoadCompleted = true;
                 LoadCompleted?.Invoke();
             }
         }
