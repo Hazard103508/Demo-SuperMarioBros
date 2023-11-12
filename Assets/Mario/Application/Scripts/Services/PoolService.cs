@@ -38,7 +38,7 @@ namespace Mario.Application.Services
             foreach (var item in _poolGroups)
             {
                 var group = item.Value;
-                if (group.gameObject != null)
+                if (group != null && group.gameObject != null)
                     Destroy(group.gameObject);
             }
 
