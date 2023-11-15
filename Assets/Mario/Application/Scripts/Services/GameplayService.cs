@@ -35,6 +35,8 @@ namespace Mario.Application.Services
         #region Public Methods
         public void Initalize()
         {
+            Screen.SetResolution(1200, 1050, true);
+
             _timeService = ServiceLocator.Current.Get<ITimeService>();
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _levelService = ServiceLocator.Current.Get<ILevelService>();
