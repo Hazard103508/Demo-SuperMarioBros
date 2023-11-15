@@ -3,20 +3,22 @@ using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 namespace Mario.Application.Services
 {
     public class LevelService : MonoBehaviour, ILevelService
     {
         #region Objects
+        [SerializeField] private MapProfile[] _worldProfiles;
+
         private IPoolService _poolService;
 
-        [SerializeField] private MapProfile _currentMapProfile;
+        private Dictionary<string, MapProfile> _worldProfilesDic;
         private AddressablesLoaderContainer _assetLoaderContainer;
         private GameObject _root;
-        private NextMap _nextMap;
+        private string _nextMap;
         #endregion
 
         #region Events
@@ -34,9 +36,14 @@ namespace Mario.Application.Services
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
 
-            MapProfile = _currentMapProfile;
             _assetLoaderContainer = new AddressablesLoaderContainer();
             _assetLoaderContainer.LoadCompleted += OnAssetsLoadCompleted;
+
+            _worldProfilesDic = new Dictionary<string, MapProfile>();
+            foreach (var map in _worldProfiles)
+                _worldProfilesDic.Add(map.name, map);
+
+            MapProfile = _worldProfiles[0];
         }
         public void Dispose()
         {
@@ -50,7 +57,7 @@ namespace Mario.Application.Services
             _root = new GameObject("Map");
             Camera.main.backgroundColor = Color.black;
 
-            StartCoroutine(LoadAsyncReferences());
+            LoadAsyncReferences();
         }
         public void LoadNextLevel()
         {
@@ -64,31 +71,15 @@ namespace Mario.Application.Services
 
             _assetLoaderContainer.Clear();
             _poolService.ClearPool();
+
+            MapProfile = _worldProfilesDic[_nextMap];
         }
-        public void SetMap(string mapName)
-        {
-            _nextMap = new NextMap();
-            var asyncOperationHandle = Addressables.LoadAssetAsync<MapProfile>(mapName);
-            asyncOperationHandle.Completed += handle => 
-            {
-                _nextMap.Profile = handle.Result;
-                //Addressables.Release(handle);
-            };
-        }
+        public void SetMap(MapProfile mapProfile) => _nextMap = mapProfile.name;
         #endregion
 
         #region Private Methods
-        private IEnumerator LoadAsyncReferences()
+        private void LoadAsyncReferences()
         {
-            if (_nextMap != null && _nextMap.Profile == null)
-                yield return new WaitUntil(() => _nextMap.Profile != null);
-
-            if (_nextMap != null && _nextMap.Profile != null)
-            {
-                MapProfile = _nextMap.Profile;
-                _nextMap = null;
-            }
-
             foreach (PooledProfileGroup poolGroup in MapProfile.PoolProfiles)
             {
                 _assetLoaderContainer.Register(poolGroup.PooledObjectProfiles);
@@ -113,14 +104,6 @@ namespace Mario.Application.Services
 
             IsLoadCompleted = true;
             LoadCompleted.Invoke();
-        }
-        #endregion
-
-        #region Structures
-        public class NextMap
-        {
-            public string Name { get; set; }
-            public MapProfile Profile { get; set; }
         }
         #endregion
     }

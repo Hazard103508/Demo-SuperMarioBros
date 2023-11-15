@@ -8,8 +8,6 @@ namespace Mario.Game.Maps
     {
         #region Objects
         private ILevelService _levelService;
-
-        private int limitXPosition;
         #endregion
 
         #region Unity Methods

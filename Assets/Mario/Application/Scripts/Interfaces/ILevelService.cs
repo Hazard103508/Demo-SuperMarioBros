@@ -14,6 +14,6 @@ namespace Mario.Application.Interfaces
         void LoadLevel();
         void LoadNextLevel();
         void UnloadLevel();
-        void SetMap(string mapName);
+        void SetMap(MapProfile mapProfile);
     }
 }

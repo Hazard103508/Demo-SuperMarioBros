@@ -54,8 +54,8 @@
     <type fullname="UnityShared.ScriptableObjects.GameObjects.RaycastRangeProfile/RangeInfo" preserve="nothing" serialized="true" />
     <type fullname="UnityShared.ScriptableObjects.GameObjects.RaycastRangeProfile/RayInfo" preserve="nothing" serialized="true" />
     <type fullname="Mario.Game.Interactable.FlagScoreLabel/NumberSprite" preserve="nothing" serialized="true" />
-    <type fullname="Mario.Game.ScriptableObjects.Map.MapConnection" preserve="nothing" serialized="true" />
     <type fullname="Mario.Game.ScriptableObjects.Map.HurryTheme" preserve="nothing" serialized="true" />
+    <type fullname="Mario.Game.ScriptableObjects.Map.MapConnection" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
