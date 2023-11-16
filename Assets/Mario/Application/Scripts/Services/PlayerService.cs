@@ -68,6 +68,7 @@ namespace Mario.Application.Services
         {
             Lives = 3;
         }
+        public bool IsPlayerSmall() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeSmall);
         #endregion
     }
 }

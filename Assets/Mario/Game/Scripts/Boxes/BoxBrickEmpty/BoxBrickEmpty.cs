@@ -12,7 +12,7 @@ namespace Mario.Game.Boxes.BrickBoxEmpty
         protected override void Awake()
         {
             base.Awake();
-            base.StateMachine.StateIdle = new BoxBrickEmptyStateIdle(this);
+            base.StateMachine.StateJump = new BoxBrickEmptyStateJump(this);
         }
         #endregion
     }
