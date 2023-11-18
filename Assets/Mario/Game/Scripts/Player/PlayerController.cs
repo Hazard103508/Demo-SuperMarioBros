@@ -2,6 +2,7 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
+using System.Collections;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
@@ -15,6 +16,9 @@ namespace Mario.Game.Player
     {
         #region Objects
         private IGameplayService _gameplayService;
+        private ILevelService _levelService;
+
+        private Coroutine _invincibleCO;
 
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
@@ -37,6 +41,9 @@ namespace Mario.Game.Player
             _gameplayService.GameFreezed += GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
 
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
+            _levelService.StartLoading += LevelService_StartLoading;
+
             this.StateMachine = new PlayerStateMachine(this);
             this.InputActions = GetComponent<PlayerInputActions>();
             this.Movable = GetComponent<Movable>();
@@ -53,6 +60,7 @@ namespace Mario.Game.Player
         {
             _gameplayService.GameFreezed -= GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            _levelService.StartLoading -= LevelService_StartLoading;
         }
         #endregion
 
@@ -71,6 +79,7 @@ namespace Mario.Game.Player
         }
         public void OnFall() => this.StateMachine.CurrentState.OnFall();
         public void BounceJump() => this.StateMachine.CurrentState.OnBounceJump();
+        public void SetInvincible() => _invincibleCO = StartCoroutine(SetInvincibleCO());
         #endregion
 
         #region Private Methods
@@ -81,6 +90,33 @@ namespace Mario.Game.Player
         private void GameplayService_GameFreezed()
         {
             Movable.enabled = false;
+        }
+        private void LevelService_StartLoading()
+        {
+            if (_invincibleCO != null)
+            {
+                StopCoroutine(_invincibleCO);
+                Renderer.color = Color.white;
+            }
+        }
+        private IEnumerator SetInvincibleCO()
+        {
+            IsInvincible = true;
+            yield return new WaitForEndOfFrame();
+
+            float _intervalTime = 0.05f;
+            float _intervalCount = 2.5f / _intervalTime;
+
+            var _colorEnabled = Color.white;
+            var _colorDisable = new Color(0, 0, 0, 0);
+            for (int i = 0; i < _intervalCount; i++)
+            {
+                Renderer.color = i % 2 == 0 ? _colorEnabled : _colorDisable;
+                yield return new WaitForSeconds(_intervalTime);
+            }
+
+            Renderer.color = _colorEnabled;
+            IsInvincible = false;
         }
         #endregion
 

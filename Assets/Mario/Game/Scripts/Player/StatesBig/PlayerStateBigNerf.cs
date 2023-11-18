@@ -52,7 +52,7 @@ namespace Mario.Game.Player
         #region Private Methods
         private void ChangePlayerMode()
         {
-            Player.StartCoroutine(SetInvincible());
+            Player.SetInvincible();
             Player.Movable.enabled = true;
             base.ChangeModeToSmall(Player);
         }
@@ -68,25 +68,6 @@ namespace Mario.Game.Player
                 return;
 
             SetTransitionToIdle();
-        }
-        private IEnumerator SetInvincible()
-        {
-            Player.IsInvincible = true;
-            yield return new WaitForEndOfFrame();
-
-            float _intervalTime = 0.05f;
-            float _intervalCount = 2.5f / _intervalTime;
-
-            var _colorEnabled = Color.white;
-            var _colorDisable = new Color(0, 0, 0, 0);
-            for (int i = 0; i < _intervalCount; i++)
-            {
-                Player.Renderer.color = i % 2 == 0 ? _colorEnabled : _colorDisable;
-                yield return new WaitForSeconds(_intervalTime);
-            }
-
-            Player.Renderer.color = _colorEnabled;
-            Player.IsInvincible = false;
         }
         #endregion
 
@@ -106,6 +87,10 @@ namespace Mario.Game.Player
             }
 
             _timer += Time.deltaTime;
+        }
+        public override void Exit()
+        {
+            base.Exit();
         }
         #endregion
     }
