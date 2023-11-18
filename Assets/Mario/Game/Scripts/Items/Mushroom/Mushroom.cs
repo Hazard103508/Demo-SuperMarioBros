@@ -50,6 +50,7 @@ namespace Mario.Game.Items.Mushroom
         private void OnEnable()
         {
             this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+            Movable.Speed = 0;
             _gameplayService.GameFreezed += GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
         }
@@ -61,7 +62,7 @@ namespace Mario.Game.Items.Mushroom
         #endregion
 
         #region Public Methods
-        public void OnFall() => gameObject.SetActive(false);
+        public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 
         #region Private Methods

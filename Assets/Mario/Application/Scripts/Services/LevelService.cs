@@ -72,7 +72,8 @@ namespace Mario.Application.Services
             _assetLoaderContainer.Clear();
             _poolService.ClearPool();
 
-            MapProfile = _worldProfilesDic[_nextMap];
+            if (!string.IsNullOrWhiteSpace(_nextMap))
+                MapProfile = _worldProfilesDic[_nextMap];
         }
         public void SetMap(MapProfile mapProfile) => _nextMap = mapProfile.name;
         #endregion
