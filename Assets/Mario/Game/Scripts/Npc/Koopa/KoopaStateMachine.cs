@@ -6,7 +6,7 @@ namespace Mario.Game.Npc.Koopa
     {
         #region Properties
         new public KoopaState CurrentState => (KoopaState)base.CurrentState;
-        public KoopaStateWalk StateWalk { get; private set; }
+        public KoopaStateWalk StateWalk { get; set; }
         public KoopaStateInShell StateInShell { get; private set; }
         public KoopaStateWakingUp StateWakingUp { get; private set; }
         public KoopaStateBouncing StateBouncing { get; private set; }

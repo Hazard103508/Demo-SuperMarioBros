@@ -38,7 +38,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Unity Methods
-        private void Awake()
+        protected virtual void Awake()
         {
             _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
 
@@ -49,7 +49,7 @@ namespace Mario.Game.Npc.Koopa
         {
             this.StateMachine.Initialize(this.StateMachine.StateWalk);
         }
-        private void Update()
+        protected virtual void Update()
         {
             this.StateMachine.Update();
         }

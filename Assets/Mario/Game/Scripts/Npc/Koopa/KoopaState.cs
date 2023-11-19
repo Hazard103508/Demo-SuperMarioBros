@@ -31,6 +31,14 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
+        #region Public 
+        public void ChangeDirection()
+        {
+            Koopa.Renderer.flipX = !Koopa.Renderer.flipX;
+            Koopa.Movable.Speed *= -1;
+        }
+        #endregion
+
         #region Protected Methods
         protected float GetDirection() => Koopa.Renderer.flipX ? -1 : 1;
         protected void ChangeDirectionToRight()
@@ -47,8 +55,7 @@ namespace Mario.Game.Npc.Koopa
         {
             if (Math.Sign(Koopa.Movable.Speed) != Math.Sign(Koopa.transform.position.x - hitPosition.x))
             {
-                Koopa.Renderer.flipX = !Koopa.Renderer.flipX;
-                Koopa.Movable.Speed *= -1;
+                ChangeDirection();
             }
         }
         protected void HitObject(RayHitInfo hitInfo)

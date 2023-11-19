@@ -90,6 +90,9 @@ namespace UnityShared.Behaviours.Various.RaycastRange
                     yield return Vector2.Lerp(range.Start, range.End, t);
                 }
         }
+        #endregion
+
+#if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             var rayRange = CalculateRayRange();
@@ -97,6 +100,6 @@ namespace UnityShared.Behaviours.Various.RaycastRange
             foreach (var point in EvaluateRayPositions(rayRange))
                 Gizmos.DrawRay(point, rayRange.Dir * _profile.Ray.Length);
         }
-        #endregion
+#endif
     }
 }

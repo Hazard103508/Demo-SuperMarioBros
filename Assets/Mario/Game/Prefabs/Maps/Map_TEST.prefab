@@ -2363,6 +2363,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoxBrickEmptyRed
       objectReference: {fileID: 0}
+    - target: {fileID: 8157448522220804472, guid: 511c441675fab494a970f83311514475, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: 511c441675fab494a970f83311514475, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4
@@ -2851,7 +2855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8236909991643148967, guid: 72ecc0dd281de144e8b7472fca727d56, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3060,6 +3064,10 @@ PrefabInstance:
     - target: {fileID: 8157448522220804472, guid: 511c441675fab494a970f83311514475, type: 3}
       propertyPath: m_Name
       value: BoxBrickEmptyRed (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8157448522220804472, guid: 511c441675fab494a970f83311514475, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8157448522220804475, guid: 511c441675fab494a970f83311514475, type: 3}
       propertyPath: m_LocalPosition.x
