@@ -57,6 +57,11 @@ namespace Mario.Game.Npc.Koopa
         {
             _gameplayService.GameFreezed += GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+
+            if (this.StateMachine.CurrentState == this.StateMachine.StateWalk)
+                this.StateMachine.CurrentState.Enter();
+            else
+                this.StateMachine.TransitionTo(this.StateMachine.StateWalk);
         }
         private void OnDisable()
         {
@@ -66,7 +71,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Public Methods
-        public void OnFall() => gameObject.SetActive(false);
+        public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 
         #region Private

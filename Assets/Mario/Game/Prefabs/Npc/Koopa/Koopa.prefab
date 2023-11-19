@@ -167,7 +167,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6065699191482839056}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 903e5a9f4f9bc2145ba44658134a9332, type: 3}
   m_Name: 
@@ -359,7 +359,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -401,12 +401,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c52db694b28b74db1139fd8ddd0edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onOut:
+  _margin: {x: 10, y: 2}
+  onOutFromDown:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3194608496738762439}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.NPC, Assembly-CSharp
-        m_MethodName: OnFall
+        m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa.Koopa, Assembly-CSharp
+        m_MethodName: OnOutOfScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onOutFromLeft:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3194608496738762439}
+        m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa.Koopa, Assembly-CSharp
+        m_MethodName: OnOutOfScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onOutFromRight:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3194608496738762439}
+        m_TargetAssemblyTypeName: Mario.Game.Npc.Koopa.Koopa, Assembly-CSharp
+        m_MethodName: OnOutOfScreen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
