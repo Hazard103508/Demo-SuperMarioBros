@@ -26,10 +26,10 @@ namespace Mario.Game.Npc.Koopa
             Koopa.Movable.enabled = true;
             Koopa.Movable.Speed = Koopa.Profile.MoveSpeed * GetDirection();
             Koopa.gameObject.layer = 0;
+            Koopa.Movable.SetJumpForce(Koopa.Profile.JumpAcceleration);
             Koopa.Animator.SetTrigger("Kill");
             Koopa.Renderer.sortingLayerName = "Dead";
-            Koopa.Movable.SetJumpForce(Koopa.Profile.JumpAcceleration);
-            Koopa.Renderer.transform.position += Vector3.up * 0.5f;
+            Koopa.Renderer.transform.position += Vector3.up;
 
             _soundService.Play(Koopa.Profile.KickSoundFXPoolReference, Koopa.transform.position);
             _scoreService.Add(Koopa.Profile.PointsKill);

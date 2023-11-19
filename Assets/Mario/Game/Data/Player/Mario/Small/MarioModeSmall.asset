@@ -45,3 +45,6 @@ MonoBehaviour:
     _bottom: {fileID: 0}
     _left: {fileID: 0}
     _right: {fileID: 0}
+  _collider:
+    _offSet: {x: 0.5, y: 0.55}
+    _size: {x: 0.8, y: 0.8}

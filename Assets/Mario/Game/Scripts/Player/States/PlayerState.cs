@@ -1,6 +1,7 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Interfaces;
+using Mario.Game.Npc.Koopa;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,12 +14,12 @@ namespace Mario.Game.Player
         IHittableByMovingToTop,
         IHittableByMovingToBottom,
         IHittableByMovingToLeft,
-        IHittableByMovingToRight
+        IHittableByMovingToRight,
+        IHittableByKoppa
     {
         #region Objects
         private readonly ISoundService _soundService;
         private readonly IPlayerService _playerService;
-        private readonly ITimeService _timeService;
 
         private bool _jumpWasPressed;
         #endregion
@@ -32,7 +33,6 @@ namespace Mario.Game.Player
         {
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
-            _timeService = ServiceLocator.Current.Get<ITimeService>();
 
             Player = player;
         }
@@ -200,6 +200,8 @@ namespace Mario.Game.Player
         private void ChangeMode(PlayerController player)
         {
             player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.AnimatorController;
+            player.Collider.offset = Player.StateMachine.CurrentMode.ModeProfile.Collider.Offset;
+            player.Collider.size = Player.StateMachine.CurrentMode.ModeProfile.Collider.Size;
             SetRaycastNormal();
         }
         private void SetRaycast(ScriptableObjects.Player.PlayerModeProfile.ModeRaycastRange modeRaycastRange)
@@ -231,6 +233,10 @@ namespace Mario.Game.Player
         public virtual void OnHittedByMovingToBottom(RayHitInfo hitInfo) { }
         public virtual void OnHittedByMovingToLeft(RayHitInfo hitInfo) { }
         public virtual void OnHittedByMovingToRight(RayHitInfo hitInfo) { }
+        #endregion
+
+        #region On Koopa Hit
+        public virtual void OnHittedByKoppa(Koopa koopa) => Player.Hit();
         #endregion
     }
 }

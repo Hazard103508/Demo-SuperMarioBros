@@ -16,6 +16,7 @@ namespace Mario.Game.ScriptableObjects.Player
         [SerializeField] private JumpMovement _jump;
         [SerializeField] private ModeRaycastRange _normalRaycastRange;
         [SerializeField] private ModeRaycastRange _duckingRaycastRange;
+        [SerializeField] private ModeCollider _collider;
 
         public RuntimeAnimatorController AnimatorController => _animatorController;
         public HorizontalMovement Walk => _walk;
@@ -24,6 +25,7 @@ namespace Mario.Game.ScriptableObjects.Player
         public JumpMovement Jump => _jump;
         public ModeRaycastRange NormalRaycastRange => _normalRaycastRange;
         public ModeRaycastRange DuckingRaycastRange => _duckingRaycastRange;
+        public ModeCollider Collider => _collider;
 
         [Serializable]
         public class HorizontalMovement
@@ -74,6 +76,15 @@ namespace Mario.Game.ScriptableObjects.Player
             public RaycastRangeProfile Bottom => _bottom;
             public RaycastRangeProfile Left => _left;
             public RaycastRangeProfile Right => _right;
+        }
+        [Serializable]
+        public class ModeCollider
+        {
+            [SerializeField] private Vector2 _offSet;
+            [SerializeField] private Vector2 _size;
+
+            public Vector2 Offset => _offSet;
+            public Vector2 Size => _size;
         }
     }
 }

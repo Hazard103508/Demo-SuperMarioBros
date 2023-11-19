@@ -2,6 +2,7 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
+using Mario.Game.Npc.Koopa;
 using System.Collections;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -12,7 +13,8 @@ namespace Mario.Game.Player
         IHittableByMovingToTop,
         IHittableByMovingToBottom,
         IHittableByMovingToLeft,
-        IHittableByMovingToRight
+        IHittableByMovingToRight,
+        IHittableByKoppa
     {
         #region Objects
         private IGameplayService _gameplayService;
@@ -22,6 +24,7 @@ namespace Mario.Game.Player
 
         [SerializeField] private SpriteRenderer _renderer;
         [SerializeField] private Animator _animator;
+        [SerializeField] private BoxCollider2D _boxCollider;
         #endregion
 
         #region Properties
@@ -30,6 +33,7 @@ namespace Mario.Game.Player
         public Movable Movable { get; private set; }
         public Animator Animator => _animator;
         public SpriteRenderer Renderer => _renderer;
+        public BoxCollider2D Collider => _boxCollider;
         public bool IsInvincible { get; set; }
         public PlayerAnimator.PlayerAnimationKeys CurrentAnimationKey { get; set; }
         #endregion
@@ -125,6 +129,10 @@ namespace Mario.Game.Player
         public void OnHittedByMovingToBottom(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToBottom(hitInfo);
         public void OnHittedByMovingToLeft(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToLeft(hitInfo);
         public void OnHittedByMovingToRight(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToRight(hitInfo);
+        #endregion
+
+        #region On Koopa Hit
+        public void OnHittedByKoppa(Koopa koopa) => this.StateMachine.CurrentState.OnHittedByKoppa(koopa);
         #endregion
     }
 }
