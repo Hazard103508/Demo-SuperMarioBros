@@ -47,6 +47,16 @@ namespace UnityShared.Behaviours.Controllers.Cameras
         }
         private void LateUpdate()
         {
+            MoveCamera(Time.deltaTime * 8);
+        }
+
+        private void OnLevelLoadCompleted()
+        {
+            distance = _initPosition;
+            MoveCamera(1);
+        }
+        private void MoveCamera(float learpT)
+        {
             float x = this.transform.position.x - distance.x;
             float y = this.transform.position.y - distance.y;
 
@@ -62,13 +72,7 @@ namespace UnityShared.Behaviours.Controllers.Cameras
             if (!lockedMargin.top && targetToFollow.transform.position.y - y > worldMargins.top)
                 y = targetToFollow.transform.position.y - worldMargins.top;
 
-            this.transform.position = Vector3.Lerp(this.transform.position, distance + new Vector3(x, y), Time.deltaTime * 8);
-        }
-
-        private void OnLevelLoadCompleted()
-        {
-            distance = _initPosition;
-            this.transform.position = _initPosition;
+            this.transform.position = Vector3.Lerp(this.transform.position, distance + new Vector3(x, y), learpT);
         }
 
         [Serializable]

@@ -20,7 +20,7 @@ MonoBehaviour:
   _run:
     _acceleration: 30
     _maxSpeed: 9.5
-    _deacceleration: 15
+    _deacceleration: 12
   _fall:
     _normalSpeed: 60
     _deathFallSpeed: 35

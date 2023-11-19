@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c52db694b28b74db1139fd8ddd0edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _margin: {x: 0, y: 2}
+  _margin: {x: 10, y: 2}
   onOutFromDown:
     m_PersistentCalls:
       m_Calls:
