@@ -28,7 +28,7 @@ namespace Mario.Game.Npc.Goomba
 
             Goomba.Renderer.flipY = false;
             Goomba.Renderer.transform.localPosition = new Vector3(0.5f, 0.5f);
-            Goomba.Renderer.sortingLayerName = "Item";
+            Goomba.Renderer.sortingLayerName = "NPC";
         }
         public override void Update()
         {

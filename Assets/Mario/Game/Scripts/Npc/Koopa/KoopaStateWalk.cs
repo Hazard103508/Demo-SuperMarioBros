@@ -27,16 +27,18 @@ namespace Mario.Game.Npc.Koopa
             Koopa.Animator.SetTrigger("Idle");
 
             Koopa.gameObject.layer = LayerMask.NameToLayer("NPC");
+
+            Koopa.Renderer.flipY = false;
+            Koopa.Renderer.flipX = true;
+            Koopa.Renderer.transform.localPosition = new Vector3(0.5f, 0f);
+            Koopa.Renderer.sortingLayerName = "NPC";
+
             Koopa.Movable.ChekCollisions = true;
             Koopa.Movable.enabled = true;
             Koopa.Movable.Speed = Koopa.Profile.MoveSpeed * GetDirection();
             Koopa.Movable.Gravity = Koopa.Profile.FallSpeed;
             Koopa.Movable.MaxFallSpeed = Koopa.Profile.MaxFallSpeed;
             Koopa.Movable.SetJumpForce(0);
-
-            Koopa.Renderer.flipY = false;
-            Koopa.Renderer.transform.localPosition = new Vector3(0.5f, 0f);
-            Koopa.Renderer.sortingLayerName = "Item";
         }
         #endregion
 

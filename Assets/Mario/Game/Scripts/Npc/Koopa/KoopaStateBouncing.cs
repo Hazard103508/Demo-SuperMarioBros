@@ -28,7 +28,7 @@ namespace Mario.Game.Npc.Koopa
         #region Private Methods
         private void DamagePlayer(PlayerController player)
         {
-            if (_timer > 0.5f)
+            if (_timer > 0.15f)
                 player.Hit();
         }
         private void KillKoopa(Vector3 hitPosition)
