@@ -67,6 +67,8 @@ namespace Mario.Game.Npc.Koopa
         {
             _gameplayService.GameFreezed -= GameplayService_GameFreezed;
             _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+
+            Renderer.flipY = false;
         }
         #endregion
 
