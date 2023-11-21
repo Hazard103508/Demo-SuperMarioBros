@@ -50,6 +50,9 @@ TagManager:
   - name: NPC
     uniqueID: 911977699
     locked: 0
+  - name: Fireball
+    uniqueID: 3338298191
+    locked: 0
   - name: Player
     uniqueID: 1418808743
     locked: 0

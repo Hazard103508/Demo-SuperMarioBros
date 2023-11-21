@@ -62,11 +62,7 @@ namespace Mario.Game.Player
         public virtual void OnBuff() { }
         public virtual void OnNerf() { }
         public virtual void OnDeath() { }
-
-        public virtual void OnBounceJump()
-        {
-            Player.Movable.SetJumpForce(Player.StateMachine.CurrentMode.ModeProfile.Jump.Bounce);
-        }
+        public virtual void OnBounceJump() => Player.Movable.SetJumpForce(Player.StateMachine.CurrentMode.ModeProfile.Jump.Bounce);
         #endregion
 
         #region Protected Methods
@@ -97,6 +93,11 @@ namespace Mario.Game.Player
         protected void ResetAnimationSpeed() => Player.Animator.speed = 1;
         protected void SetRaycastDucking() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.DuckingRaycastRange);
         protected void SetRaycastNormal() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.NormalRaycastRange);
+        protected void ShootFireball()
+        {
+            if(Player.InputActions.Fire && Player.StateMachine.CurrentMode.Equals(Player.StateMachine.ModeSuper))
+                _playerService.ShootFireball();
+        }
 
         protected virtual string GetAnimatorState() => string.Empty;
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;

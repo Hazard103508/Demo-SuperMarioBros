@@ -14,13 +14,13 @@ namespace Mario.Application.Services
 
         private Dictionary<string, InputActionMap> _inputMaps;
 
-
         public event InputActionDelegate StartPressed;
         public event InputActionDelegate PausePressed;
         public event InputActionDelegate<float> MovePressed;
         public event InputActionDelegate<bool> JumpPressed;
         public event InputActionDelegate<bool> SprintPressed;
         public event InputActionDelegate<bool> DuckPressed;
+        public event InputActionDelegate<bool> FirePressed;
 
         public void Initalize()
         {
@@ -41,5 +41,6 @@ namespace Mario.Application.Services
         public void OnJump(InputValue value) => JumpPressed?.Invoke(value.isPressed);
         public void OnSprint(InputValue value) => SprintPressed?.Invoke(value.isPressed);
         public void OnDuck(InputValue value) => DuckPressed?.Invoke(value.isPressed);
+        public void OnFire(InputValue value) => FirePressed?.Invoke(value.isPressed);
     }
 }

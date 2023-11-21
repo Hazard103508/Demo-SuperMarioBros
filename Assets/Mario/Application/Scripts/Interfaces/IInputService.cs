@@ -10,6 +10,7 @@ namespace Mario.Application.Interfaces
         event InputActionDelegate<bool> JumpPressed;
         event InputActionDelegate<bool> SprintPressed;
         event InputActionDelegate<bool> DuckPressed;
+        event InputActionDelegate<bool> FirePressed;
 
         void UseUIMap();
         void UseGameplayMap();

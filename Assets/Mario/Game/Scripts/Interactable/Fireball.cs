@@ -21,6 +21,10 @@ namespace Mario.Game.Interactable
         [SerializeField] private FireballProfile _profile;
         #endregion
 
+        #region Properties
+        public Movable Movable => _movable;
+        #endregion
+
         #region Unity Methods
         private void Awake()
         {
@@ -33,6 +37,7 @@ namespace Mario.Game.Interactable
         }
         private void OnEnable()
         {
+            _movable.SetJumpForce(0);
             _movable.ChekCollisions = true;
         }
         #endregion
@@ -40,7 +45,7 @@ namespace Mario.Game.Interactable
         #region Public Methods
         public void ChangeDirectionToRight() => _movable.Speed = Mathf.Abs(_movable.Speed);
         public void ChangeDirectionToLeft() => _movable.Speed = -Mathf.Abs(_movable.Speed);
-
+        public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 
         #region Private Methods

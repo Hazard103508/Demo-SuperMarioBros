@@ -47,6 +47,8 @@ namespace Mario.Game.Player
             SetTransitionToJump();
 
             SetTransitionToFall();
+
+            ShootFireball();
         }
         #endregion
 
