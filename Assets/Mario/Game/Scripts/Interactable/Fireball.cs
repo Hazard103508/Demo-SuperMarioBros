@@ -3,6 +3,7 @@ using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.ScriptableObjects.Interactable;
+using System;
 using System.Linq;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -16,6 +17,7 @@ namespace Mario.Game.Interactable
     {
         #region Objects
         private IPoolService _poolService;
+        private IPlayerService _playerService;
 
         private Movable _movable;
         [SerializeField] private FireballProfile _profile;
@@ -29,6 +31,7 @@ namespace Mario.Game.Interactable
         private void Awake()
         {
             _poolService = ServiceLocator.Current.Get<IPoolService>();
+            _playerService = ServiceLocator.Current.Get<IPlayerService>();
 
             _movable = GetComponent<Movable>();
             _movable.Speed = _profile.Speed;
@@ -40,6 +43,7 @@ namespace Mario.Game.Interactable
             _movable.SetJumpForce(0);
             _movable.ChekCollisions = true;
         }
+        private void OnDisable() => _playerService.ReturnFireball();
         #endregion
 
         #region Public Methods

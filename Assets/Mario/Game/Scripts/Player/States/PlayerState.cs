@@ -93,7 +93,7 @@ namespace Mario.Game.Player
         protected void ResetAnimationSpeed() => Player.Animator.speed = 1;
         protected void SetRaycastDucking() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.DuckingRaycastRange);
         protected void SetRaycastNormal() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.NormalRaycastRange);
-        protected void ShootFireball()
+        protected virtual void ShootFireball()
         {
             if(Player.InputActions.Fire && Player.StateMachine.CurrentMode.Equals(Player.StateMachine.ModeSuper))
                 _playerService.ShootFireball();

@@ -19,6 +19,7 @@ namespace Mario.Application.Services
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         private PlayerController _playerController;
         private PlayerInputActions _playerInputActions;
+        private int _bulletCount;
         #endregion
 
         #region Properties
@@ -72,24 +73,27 @@ namespace Mario.Application.Services
         {
             Lives = 3;
         }
+        public void ReturnFireball() => _bulletCount--;
         public void ShootFireball()
         {
-            float x = 0;
-            float y = _playerController.transform.position.y + PlayerProfile.Fireball.StartLocalPosition.y;
-            var fireBall = _poolService.GetObjectFromPool<Fireball>(PlayerProfile.Fireball.FireballPoolProfile);
-            if (_playerController.Renderer.flipX)
-            {
-                x = _playerController.transform.position.x - PlayerProfile.Fireball.StartLocalPosition.x + _playerController.Renderer.transform.position.x;
-                fireBall.ChangeDirectionToLeft();
-            }
-            else
-            {
-                x = _playerController.transform.position.x + PlayerProfile.Fireball.StartLocalPosition.x;
-                fireBall.ChangeDirectionToRight();
-            }
+            if (_bulletCount >= 2)
+                return;
 
-            fireBall.transform.position = new Vector2(x, y);
+            float x;
+            float y = _playerController.transform.position.y + PlayerProfile.Fireball.StartLocalPosition.y;
+            if (_playerController.Renderer.flipX)
+                x = _playerController.Renderer.transform.position.x - PlayerProfile.Fireball.StartLocalPosition.x;
+            else
+                x = _playerController.Renderer.transform.position.x + PlayerProfile.Fireball.StartLocalPosition.x;
+
+            var fireBall = _poolService.GetObjectFromPool<Fireball>(PlayerProfile.Fireball.FireballPoolProfile, new Vector2(x, y));
+            if (_playerController.Renderer.flipX)
+                fireBall.ChangeDirectionToLeft();
+            else
+                fireBall.ChangeDirectionToRight();
+
             fireBall.Movable.enabled = true;
+            _bulletCount++;
         }
         public bool IsPlayerSmall() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeSmall);
         #endregion

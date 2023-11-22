@@ -18,7 +18,7 @@ MonoBehaviour:
     _big: {fileID: 11400000, guid: ec62a4551b5c2e049ae5b4ae146a1cd7, type: 2}
     _super: {fileID: 11400000, guid: 65d241b1d2ac3764091c10e3d55961aa, type: 2}
   _fireball:
-    _startLocalPosition: {x: 0.75, y: 1.25}
+    _startLocalPosition: {x: 0.25, y: 1.25}
     _fireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
   _buff:
     _soundFX: {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}

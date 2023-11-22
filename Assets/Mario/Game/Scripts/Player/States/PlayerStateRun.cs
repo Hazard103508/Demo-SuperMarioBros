@@ -41,6 +41,7 @@ namespace Mario.Game.Player
                 return;
 
             SetSpriteDirection();
+            ShootFireball();
         }
         #endregion
 

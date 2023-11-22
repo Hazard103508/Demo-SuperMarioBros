@@ -18,6 +18,7 @@ namespace Mario.Game.Player
             base.StateFlag = new PlayerStateFlag(player);
             base.StateDucking = new PlayerStateBigDucking(player);
             base.StateDuckingJump = new PlayerStateBigDuckingJump(player);
+            base.StateDuckingFall = new PlayerStateDuckingFall(player);
         }
     }
 }

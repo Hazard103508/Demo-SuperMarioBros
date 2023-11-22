@@ -14,7 +14,7 @@ namespace Mario.Game.Commons
         public RaycastRange RaycastLeft;
         public RaycastRange RaycastRight;
 
-        private Vector2 nextPosition;
+        private Vector2 _nextPosition;
         private Vector2 _currentSpeed;
         private IHittableByMovingToTop hittableByMovingToTop;
         private IHittableByMovingToBottom hittableByMovingToBottom;
@@ -49,22 +49,22 @@ namespace Mario.Game.Commons
         {
             ApplyGravity();
 
-            nextPosition = (Vector2)transform.position + _currentSpeed * Time.deltaTime;
+            _nextPosition = (Vector2)transform.position + _currentSpeed * Time.deltaTime;
             if (ChekCollisions)
             {
-                CalculateCollision_Top(ref nextPosition);
-                CalculateCollision_Bottom(ref nextPosition);
-                CalculateCollision_Right(ref nextPosition);
-                CalculateCollision_Left(ref nextPosition);
+                CalculateCollision_Top(ref _nextPosition);
+                CalculateCollision_Bottom(ref _nextPosition);
+                CalculateCollision_Right(ref _nextPosition);
+                CalculateCollision_Left(ref _nextPosition);
             }
         }
         private void LateUpdate()
         {
-            Move(nextPosition);
+            Move(_nextPosition);
         }
         private void OnEnable()
         {
-            nextPosition = transform.position;
+            _nextPosition = transform.position;
         }
         #endregion
 
@@ -74,7 +74,7 @@ namespace Mario.Game.Commons
         {
             Gravity = 0;
             MaxFallSpeed = 0;
-            nextPosition = new Vector2(nextPosition.x, transform.position.y);
+            _nextPosition = new Vector2(_nextPosition.x, transform.position.y);
         }
         #endregion
 

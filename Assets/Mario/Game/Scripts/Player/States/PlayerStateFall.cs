@@ -31,6 +31,7 @@ namespace Mario.Game.Player
         {
             SpeedUp();
             SpeedDown();
+            ShootFireball();
         }
         public override void Exit()
         {
