@@ -57,6 +57,9 @@ namespace UnityShared.Behaviours.Controllers.Cameras
         }
         private void MoveCamera(float learpT)
         {
+            if (!targetToFollow.gameObject.activeSelf)
+                return;
+
             float x = this.transform.position.x - distance.x;
             float y = this.transform.position.y - distance.y;
 
