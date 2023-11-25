@@ -1,4 +1,3 @@
-using Mario.Game.Items;
 using Mario.Game.ScriptableObjects.Interactable;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -25,7 +24,7 @@ namespace Mario.Game.Interactable
                 top = topRight.y,
             };
         }
-        private void Update()
+        private void LateUpdate()
         {
             transform.Translate(_profile.Speed * Time.deltaTime * Vector3.up);
         }
@@ -35,6 +34,10 @@ namespace Mario.Game.Interactable
         public void OnOutScreenFromTop()
         {
             transform.position = new Vector3(transform.position.x, borders.bottom, transform.position.z);
+        }
+        public void OnOutScreenFromBottom()
+        {
+            transform.position = new Vector3(transform.position.x, borders.top, transform.position.z);
         }
         #endregion
     }
