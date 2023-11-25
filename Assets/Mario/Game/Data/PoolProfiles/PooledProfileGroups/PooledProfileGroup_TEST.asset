@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8d32f14f4eb6a1949949e6a721d6d603, type: 2}
   - {fileID: 11400000, guid: d6a62de408a4d22419774db8e7e5126b, type: 2}
   - {fileID: 11400000, guid: 74339e972daa5964e912591bfa5abcac, type: 2}
+  - {fileID: 11400000, guid: 58716dad9e2eb314496878c43d610007, type: 2}
   - {fileID: 11400000, guid: 76bd835fe68d5f346b35099a4e249ae7, type: 2}
   - {fileID: 11400000, guid: 0d34e0f1cba78e248b0adc1832e227c2, type: 2}
   _pooledSoundProfiles:
