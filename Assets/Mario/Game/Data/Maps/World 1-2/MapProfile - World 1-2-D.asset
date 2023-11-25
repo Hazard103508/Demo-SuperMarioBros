@@ -15,7 +15,7 @@ MonoBehaviour:
   _worldName: 1-2
   _width: 16
   _backgroundColor: {r: 0, g: 0, b: 0, a: 0}
-  _startPosition: {x: 1.5, y: 11}
+  _startPosition: {x: 0, y: 0}
   _startTime: 0
   _autowalk: 0
   _music: {fileID: 11400000, guid: 3c8672bd5e1f22f4abd7bae47f2b5f4b, type: 2}
