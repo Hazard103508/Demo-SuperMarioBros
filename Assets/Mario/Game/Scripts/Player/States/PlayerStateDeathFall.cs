@@ -29,6 +29,11 @@ namespace Mario.Game.Player
             _playerService.RemoveLife();
             _gameplayService.FreezeGame();
         }
+        public override void Exit()
+        {
+            base.Exit();
+            ChangeModeToSmall(Player);
+        }
         #endregion
     }
 }

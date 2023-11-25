@@ -20,7 +20,7 @@ namespace Mario.TimeUp
         private IEnumerator LoadStandBy()
         {
             yield return new WaitForSeconds(2.4f);
-            _sceneService.LoadStandByScene();
+            _sceneService.LoadGameScene();
         }
     }
 }

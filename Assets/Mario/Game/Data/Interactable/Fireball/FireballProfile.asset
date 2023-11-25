@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireballProfile
   m_EditorClassIdentifier: 
   _speed: 11
-  _bounceSpeed: 11
+  _bounceSpeed: 10
   _fallSpeed: 45
   _maxFallSpeed: 12
   _explotionPoolReference: {fileID: 11400000, guid: 4a1933c96519e3d4e9e323e7656992a1, type: 2}

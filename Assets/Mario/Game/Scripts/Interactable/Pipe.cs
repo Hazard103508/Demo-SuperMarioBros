@@ -54,7 +54,7 @@ namespace Mario.Game.Interactable
 
             player.transform.position = new Vector3(player.transform.position.x, Mathf.Round(player.transform.position.y), player.transform.position.z);
             _gameplayService.SetNextMap(_profile.Connection);
-            _levelService.LoadNextLevel(false);
+            _levelService.LoadLevel(false);
         }
         #endregion
     }

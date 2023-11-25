@@ -4,7 +4,6 @@ namespace Mario.Application.Interfaces
     {
         void LoadGameScene();
         void LoadMainScene();
-        void LoadStandByScene();
         void LoadGameOverScene();
         void LoadTimeUpScene();
     }

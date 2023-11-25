@@ -52,6 +52,11 @@ namespace Mario.Game.Player
             _soundService.StopTheme();
             _playerService.RemoveLife();
         }
+        public override void Exit()
+        {
+            base.Exit();
+            ChangeModeToSmall(Player);
+        }
         #endregion
     }
 }

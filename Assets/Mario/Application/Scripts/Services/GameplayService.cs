@@ -108,7 +108,7 @@ namespace Mario.Application.Services
             else if (_timeService.Time == 0)
                 _sceneService.LoadTimeUpScene();
             else
-                _levelService.LoadNextLevel(true);
+                _levelService.LoadLevel(true);
         }
         private IEnumerator PlayHurryUpTheme()
         {
@@ -178,7 +178,7 @@ namespace Mario.Application.Services
         private IEnumerator FinishLevel()
         {
             yield return new WaitForSeconds(6);
-            _levelService.LoadNextLevel(true);
+            _levelService.LoadLevel(true);
         }
         #endregion
 

@@ -13,7 +13,6 @@ namespace Mario.Application.Interfaces
         event Action LoadCompleted;
 
         void LoadLevel(bool showStandby);
-        void LoadNextLevel(bool showStandby);
         void UnloadLevel();
         void SetMap(MapProfile mapProfile);
     }

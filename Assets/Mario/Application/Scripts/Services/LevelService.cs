@@ -53,6 +53,7 @@ namespace Mario.Application.Services
         }
         public void LoadLevel(bool showStandby)
         {
+            UnloadLevel();
             Stopwatch stopwatch = Stopwatch.StartNew();
 
             IsLoadCompleted = false;
@@ -63,11 +64,6 @@ namespace Mario.Application.Services
 
             LoadAsyncReferences();
             StartCoroutine(CheckLoadCompleted(showStandby, stopwatch));
-        }
-        public void LoadNextLevel(bool showStandby)
-        {
-            UnloadLevel();
-            LoadLevel(showStandby);
         }
         public void UnloadLevel()
         {
