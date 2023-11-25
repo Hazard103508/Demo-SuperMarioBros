@@ -3,6 +3,7 @@ using Mario.Application.Services;
 using Mario.Game.Player;
 using UnityEngine;
 using UnityEngine.UI;
+using static Mario.Application.Services.LevelService;
 
 namespace Mario.Game.Maps
 {
@@ -16,6 +17,7 @@ namespace Mario.Game.Maps
 
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private Image _loadingCover;
+        [SerializeField] private GameObject _standBy;
         #endregion
 
         #region Unity Methods
@@ -26,16 +28,13 @@ namespace Mario.Game.Maps
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _inputService = ServiceLocator.Current.Get<IInputService>();
 
-            _levelService.LoadCompleted += OnLoadCompleted;
 
             _playerService.SetPlayer(_playerController);
-            _levelService.LoadLevel();
+            _levelService.LoadLevel(true);
             _inputService.UseGameplayMap();
         }
-
         private void OnDestroy()
         {
-            _levelService.LoadCompleted -= OnLoadCompleted;
             _levelService.UnloadLevel();
 
             if (_loadingCover != null && _loadingCover.gameObject != null)
@@ -44,10 +43,14 @@ namespace Mario.Game.Maps
         private void OnEnable()
         {
             _inputService.PausePressed += InputService_PausePressed;
+            _levelService.StartLoading += OnLevelStartLoading;
+            _levelService.LoadCompleted += OnLevelLoadCompleted;
         }
         private void OnDisable()
         {
             _inputService.PausePressed -= InputService_PausePressed;
+            _levelService.StartLoading -= OnLevelStartLoading;
+            _levelService.LoadCompleted -= OnLevelLoadCompleted;
         }
         #endregion
 
@@ -59,8 +62,14 @@ namespace Mario.Game.Maps
             else
                 _pauseService.Pause();
         }
-        private void OnLoadCompleted()
+        private void OnLevelStartLoading(StartLoadingEvent arg)
         {
+            _standBy.gameObject.SetActive(arg.ShowStandby);
+            _loadingCover.gameObject.SetActive(true);
+        }
+        private void OnLevelLoadCompleted()
+        {
+            _standBy.gameObject.SetActive(false);
             _loadingCover.gameObject.SetActive(false);
         }
         #endregion

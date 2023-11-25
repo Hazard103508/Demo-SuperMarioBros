@@ -1,5 +1,6 @@
 using Mario.Game.ScriptableObjects.Map;
 using System;
+using static Mario.Application.Services.LevelService;
 
 namespace Mario.Application.Interfaces
 {
@@ -8,11 +9,11 @@ namespace Mario.Application.Interfaces
         MapProfile MapProfile { get; }
         bool IsLoadCompleted { get; }
 
-        event Action StartLoading;
+        event Action<StartLoadingEvent> StartLoading;
         event Action LoadCompleted;
 
-        void LoadLevel();
-        void LoadNextLevel();
+        void LoadLevel(bool showStandby);
+        void LoadNextLevel(bool showStandby);
         void UnloadLevel();
         void SetMap(MapProfile mapProfile);
     }

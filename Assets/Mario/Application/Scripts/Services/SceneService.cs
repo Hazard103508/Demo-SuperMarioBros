@@ -20,7 +20,7 @@ namespace Mario.Application.Services
         {
         }
 
-        public void LoadMapScene(float minDelay) => StartCoroutine(LoadMapSceneCO(minDelay));
+        public void LoadGameScene() => StartCoroutine(LoadMapSceneCO());
         public void LoadMainScene() => SceneManager.LoadScene("Main");
         public void LoadStandByScene() => SceneManager.LoadScene("StandBy");
         public void LoadGameOverScene() => SceneManager.LoadScene("GameOver");
@@ -28,10 +28,8 @@ namespace Mario.Application.Services
         #endregion
 
         #region Private Methods
-        private IEnumerator LoadMapSceneCO(float delay)
+        private IEnumerator LoadMapSceneCO()
         {
-            yield return new WaitForSeconds(delay);
-
             AsyncOperation asyncOperation = SceneManager.LoadSceneAsync("Game");
             yield return new WaitUntil(() => asyncOperation.isDone && _levelService.IsLoadCompleted);
         }

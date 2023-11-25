@@ -2,6 +2,7 @@ using Mario.Application.Interfaces;
 using Mario.Application.Services;
 using System;
 using UnityEngine;
+using static Mario.Application.Services.LevelService;
 
 namespace UnityShared.Behaviours.Controllers.Cameras
 {
@@ -21,10 +22,12 @@ namespace UnityShared.Behaviours.Controllers.Cameras
         private void Awake()
         {
             _levelService = ServiceLocator.Current.Get<ILevelService>();
+            _levelService.StartLoading += OnLevelStartLoading;
             _levelService.LoadCompleted += OnLevelLoadCompleted;
         }
         private void OnDestroy()
         {
+            _levelService.StartLoading -= OnLevelStartLoading;
             _levelService.LoadCompleted -= OnLevelLoadCompleted;
         }
         private void Start()
@@ -49,7 +52,10 @@ namespace UnityShared.Behaviours.Controllers.Cameras
         {
             MoveCamera(Time.deltaTime * 8);
         }
-
+        private void OnLevelStartLoading(StartLoadingEvent arg)
+        {
+            this.transform.position = _initPosition;
+        }
         private void OnLevelLoadCompleted()
         {
             distance = _initPosition;

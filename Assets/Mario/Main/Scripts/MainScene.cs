@@ -41,6 +41,6 @@ namespace Mario.Main
             _scoreService.Reset();
         }
 
-        private void InputService_StartPressed() => _sceneService.LoadStandByScene();
+        private void InputService_StartPressed() => _sceneService.LoadGameScene();
     }
 }

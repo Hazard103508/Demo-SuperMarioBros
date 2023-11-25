@@ -4,6 +4,7 @@ using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 
 namespace Mario.Application.Services
@@ -19,10 +20,11 @@ namespace Mario.Application.Services
         private AddressablesLoaderContainer _assetLoaderContainer;
         private GameObject _root;
         private string _nextMap;
+        private float _standbyDelay = 2.5f;
         #endregion
 
         #region Events
-        public event Action StartLoading;
+        public event Action<StartLoadingEvent> StartLoading;
         public event Action LoadCompleted;
         #endregion
 
@@ -49,20 +51,23 @@ namespace Mario.Application.Services
         {
             _assetLoaderContainer.LoadCompleted -= OnAssetsLoadCompleted;
         }
-        public void LoadLevel()
+        public void LoadLevel(bool showStandby)
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+
             IsLoadCompleted = false;
-            StartLoading.Invoke();
+            StartLoading.Invoke(new StartLoadingEvent(showStandby));
 
             _root = new GameObject("Map");
             Camera.main.backgroundColor = Color.black;
 
             LoadAsyncReferences();
+            StartCoroutine(CheckLoadCompleted(showStandby, stopwatch));
         }
-        public void LoadNextLevel()
+        public void LoadNextLevel(bool showStandby)
         {
             UnloadLevel();
-            LoadLevel();
+            LoadLevel(showStandby);
         }
         public void UnloadLevel()
         {
@@ -104,7 +109,27 @@ namespace Mario.Application.Services
             Camera.main.backgroundColor = MapProfile.BackgroundColor;
 
             IsLoadCompleted = true;
+        }
+        private IEnumerator CheckLoadCompleted(bool showStandby, Stopwatch stopwatch)
+        {
+            if (showStandby)
+                yield return new WaitUntil(() => stopwatch.Elapsed.TotalSeconds >= _standbyDelay);
+            stopwatch.Stop();
+
+            yield return new WaitUntil(() => IsLoadCompleted);
             LoadCompleted.Invoke();
+        }
+        #endregion
+
+        #region Structures
+        public struct StartLoadingEvent
+        {
+            public bool ShowStandby;
+
+            public StartLoadingEvent(bool showStandby)
+            {
+                ShowStandby = showStandby;
+            }
         }
         #endregion
     }

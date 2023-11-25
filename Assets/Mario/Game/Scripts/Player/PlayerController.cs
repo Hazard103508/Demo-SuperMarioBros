@@ -6,6 +6,7 @@ using Mario.Game.Npc.Koopa;
 using System.Collections;
 using UnityEngine;
 using UnityShared.Commons.Structs;
+using static Mario.Application.Services.LevelService;
 
 namespace Mario.Game.Player
 {
@@ -66,6 +67,10 @@ namespace Mario.Game.Player
             _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
             _levelService.StartLoading -= LevelService_StartLoading;
         }
+        private void OnEnable()
+        {
+            Renderer.sortingLayerName = "Player";
+        }
         #endregion
 
         #region Public Methods
@@ -95,7 +100,7 @@ namespace Mario.Game.Player
         {
             Movable.enabled = false;
         }
-        private void LevelService_StartLoading()
+        private void LevelService_StartLoading(StartLoadingEvent arg)
         {
             if (_invincibleCO != null)
             {

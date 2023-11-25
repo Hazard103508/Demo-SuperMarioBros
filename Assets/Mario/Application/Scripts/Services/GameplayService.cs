@@ -5,6 +5,7 @@ using Mario.Game.ScriptableObjects.Pool;
 using System;
 using System.Collections;
 using UnityEngine;
+using static Mario.Application.Services.LevelService;
 
 namespace Mario.Application.Services
 {
@@ -107,7 +108,7 @@ namespace Mario.Application.Services
             else if (_timeService.Time == 0)
                 _sceneService.LoadTimeUpScene();
             else
-                _sceneService.LoadStandByScene();
+                _levelService.LoadNextLevel(true);
         }
         private IEnumerator PlayHurryUpTheme()
         {
@@ -124,6 +125,7 @@ namespace Mario.Application.Services
                 _timeService.ResetTimer();
             }
 
+            _playerService.EnablePlayerCollision(true);
             _playerService.SetPlayerPosition(_mapConnection != null ? _mapConnection.StartPosition : _levelService.MapProfile.StartPosition);
             yield return ShowCustomIntroPosition();
 
@@ -176,12 +178,12 @@ namespace Mario.Application.Services
         private IEnumerator FinishLevel()
         {
             yield return new WaitForSeconds(6);
-            _sceneService.LoadStandByScene();
+            _levelService.LoadNextLevel(true);
         }
         #endregion
 
         #region Service Methods
-        private void OnStartLoading()
+        private void OnStartLoading(StartLoadingEvent arg)
         {
             _isFlagReached = false;
             _isHurry = false;

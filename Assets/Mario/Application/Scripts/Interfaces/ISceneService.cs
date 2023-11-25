@@ -2,7 +2,7 @@ namespace Mario.Application.Interfaces
 {
     public interface ISceneService : IGameService
     {
-        void LoadMapScene(float delay);
+        void LoadGameScene();
         void LoadMainScene();
         void LoadStandByScene();
         void LoadGameOverScene();

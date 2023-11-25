@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using Mario.Game.Commons;
 using Mario.Game.Interactable;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Player;
@@ -19,6 +20,7 @@ namespace Mario.Application.Services
         [SerializeField] private PooledSoundProfile _deadSoundPoolReference;
         private PlayerController _playerController;
         private PlayerInputActions _playerInputActions;
+        private Movable _playerMovable;
         private int _bulletCount;
         #endregion
 
@@ -48,9 +50,11 @@ namespace Mario.Application.Services
         {
             _playerController = playerController;
             _playerInputActions = _playerController.GetComponent<PlayerInputActions>();
+            _playerMovable = _playerController.GetComponent<Movable>();
         }
         public void SetPlayerPosition(Vector3 position) => _playerController.transform.position = position;
         public void SetActivePlayer(bool isActive) => _playerController.gameObject.SetActive(isActive);
+        public void EnablePlayerCollision(bool enable) => _playerMovable.ChekCollisions = enable;
         public void EnableAutoWalk(bool enable) => IsAutowalk = enable;
         public void EnableInputs(bool enable) => _playerInputActions.enabled = enable;
         public void ResetState() => _playerController.StateMachine.TransitionTo(_playerController.StateMachine.CurrentMode.StateIdle);

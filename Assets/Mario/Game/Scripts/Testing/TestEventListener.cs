@@ -23,7 +23,7 @@ namespace Mario.Game.Player
             // TESTING----------------
 
             if (Input.GetKeyDown(KeyCode.R))
-                _sceneService.LoadMapScene(0);
+                _sceneService.LoadGameScene();
 
             if (Input.GetKeyDown(KeyCode.KeypadPlus))
                 _playerService.AddLife();
