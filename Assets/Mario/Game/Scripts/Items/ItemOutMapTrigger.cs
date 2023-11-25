@@ -9,6 +9,7 @@ namespace Mario.Game.Items
     {
         #region Objects
         [SerializeField] private Vector2 _margin;
+        [SerializeField] private bool _isSingleUse = true;
 
         private Bounds<float> bordersOut;
         private bool isOut;
@@ -16,6 +17,7 @@ namespace Mario.Game.Items
 
         #region Events
         public UnityEvent onOutFromDown;
+        public UnityEvent onOutFromTop;
         public UnityEvent onOutFromLeft;
         public UnityEvent onOutFromRight;
         #endregion
@@ -27,7 +29,7 @@ namespace Mario.Game.Items
         }
         void LateUpdate()
         {
-            if (isOut)
+            if (_isSingleUse && isOut)
                 return;
 
             var cam = Camera.main;
@@ -39,6 +41,7 @@ namespace Mario.Game.Items
                 left = downLeft.x - _margin.x,
                 right = topRight.x + _margin.x,
                 bottom = downLeft.y - _margin.y,
+                top = topRight.y + _margin.y,
             };
 
             var pos = transform.position;
@@ -46,6 +49,13 @@ namespace Mario.Game.Items
             if (pos.y < bordersOut.bottom)
             {
                 onOutFromDown.Invoke();
+                isOut = true;
+                return;
+            }
+
+            if (pos.y > bordersOut.top)
+            {
+                onOutFromTop.Invoke();
                 isOut = true;
                 return;
             }
