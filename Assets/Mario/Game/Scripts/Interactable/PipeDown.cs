@@ -23,7 +23,11 @@ namespace Mario.Game.Interactable
         public void OnHittedByPlayerFromTop(PlayerController player)
         {
             if (player.InputActions.Ducking)
-                MoveIntoPipe(player);
+            {
+                var positionDiff = Mathf.Abs((transform.position.x + 1) - (player.transform.position.x + 0.5f));
+                if (positionDiff < 0.25f)
+                    MoveIntoPipe(player);
+            }
         }
         #endregion
     }
