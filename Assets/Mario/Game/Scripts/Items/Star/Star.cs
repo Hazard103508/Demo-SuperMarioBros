@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -17,6 +19,8 @@ namespace Mario.Game.Items.Star
         IHittableByPlayerFromRight
     {
         #region Objects
+        private IGameplayService _gameplayService;
+
         [SerializeField] private StarProfile _profile;
         #endregion
 
@@ -29,6 +33,8 @@ namespace Mario.Game.Items.Star
         #region Unity Methods
         protected virtual void Awake()
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
+
             this.StateMachine = new StarStateMachine(this);
             Movable = GetComponent<Movable>();
         }
@@ -42,13 +48,27 @@ namespace Mario.Game.Items.Star
         }
         private void OnEnable()
         {
+            _gameplayService.GameFreezed += GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+
             this.StateMachine.TransitionTo(this.StateMachine.StateRising);
             Movable.Speed = 0;
+        }
+        private void OnDisable()
+        {
+            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
         }
         #endregion
 
         #region Public Methods
         public void OnOutOfScreen() => gameObject.SetActive(false);
+        #endregion
+
+
+        #region Private Methods
+        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
+        private void GameplayService_GameFreezed() => Movable.enabled = false;
         #endregion
 
         #region On Movable Hit
