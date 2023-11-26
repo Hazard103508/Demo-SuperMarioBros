@@ -363,13 +363,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c52db694b28b74db1139fd8ddd0edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _margin: {x: 10, y: 2}
-  onOutFromDown:
-    m_PersistentCalls:
-      m_Calls: []
-  onOutFromLeft:
-    m_PersistentCalls:
-      m_Calls: []
-  onOutFromRight:
-    m_PersistentCalls:
-      m_Calls: []
+  borders:
+    left:
+      Check: 1
+      Margin: 10
+      onOut:
+        m_PersistentCalls:
+          m_Calls: []
+    right:
+      Check: 1
+      Margin: 10
+      onOut:
+        m_PersistentCalls:
+          m_Calls: []
+    top:
+      Check: 0
+      Margin: 0
+      onOut:
+        m_PersistentCalls:
+          m_Calls: []
+    bottom:
+      Check: 1
+      Margin: 2
+      onOut:
+        m_PersistentCalls:
+          m_Calls: []

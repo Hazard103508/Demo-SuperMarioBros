@@ -190,41 +190,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c52db694b28b74db1139fd8ddd0edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _margin: {x: 0, y: 2}
-  _isSingleUse: 0
-  onOutFromDown:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8464475497190180821}
-        m_TargetAssemblyTypeName: Mario.Game.Interactable.Elevator, Assembly-CSharp
-        m_MethodName: OnOutScreenFromBottom
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onOutFromTop:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8464475497190180821}
-        m_TargetAssemblyTypeName: Mario.Game.Interactable.Elevator, Assembly-CSharp
-        m_MethodName: OnOutScreenFromTop
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onOutFromLeft:
-    m_PersistentCalls:
-      m_Calls: []
-  onOutFromRight:
-    m_PersistentCalls:
-      m_Calls: []
+  borders:
+    left:
+      Check: 0
+      Margin: 0
+      onOut:
+        m_PersistentCalls:
+          m_Calls: []
+    right:
+      Check: 0
+      Margin: 0
+      onOut:
+        m_PersistentCalls:
+          m_Calls: []
+    top:
+      Check: 1
+      Margin: 2
+      onOut:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 8464475497190180821}
+            m_TargetAssemblyTypeName: Mario.Game.Interactable.Elevator, Assembly-CSharp
+            m_MethodName: OnOutScreenFromTop
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    bottom:
+      Check: 1
+      Margin: 2
+      onOut:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 8464475497190180821}
+            m_TargetAssemblyTypeName: Mario.Game.Interactable.Elevator, Assembly-CSharp
+            m_MethodName: OnOutScreenFromBottom
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2

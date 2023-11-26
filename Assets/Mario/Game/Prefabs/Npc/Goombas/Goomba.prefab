@@ -401,49 +401,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48c52db694b28b74db1139fd8ddd0edd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _margin: {x: 20, y: 2}
-  onOutFromDown:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3895425941044523143}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba.Goomba, Assembly-CSharp
-        m_MethodName: OnOutOfScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onOutFromLeft:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3895425941044523143}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba.Goomba, Assembly-CSharp
-        m_MethodName: OnOutOfScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onOutFromRight:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3895425941044523143}
-        m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba.Goomba, Assembly-CSharp
-        m_MethodName: OnOutOfScreen
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  borders:
+    left:
+      Check: 1
+      Margin: 15
+      onOut:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3895425941044523143}
+            m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba.Goomba, Assembly-CSharp
+            m_MethodName: OnOutOfScreen
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    right:
+      Check: 1
+      Margin: 15
+      onOut:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3895425941044523143}
+            m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba.Goomba, Assembly-CSharp
+            m_MethodName: OnOutOfScreen
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2
+    top:
+      Check: 0
+      Margin: 0
+      onOut:
+        m_PersistentCalls:
+          m_Calls: []
+    bottom:
+      Check: 1
+      Margin: 2
+      onOut:
+        m_PersistentCalls:
+          m_Calls:
+          - m_Target: {fileID: 3895425941044523143}
+            m_TargetAssemblyTypeName: Mario.Game.Npc.Goomba.Goomba, Assembly-CSharp
+            m_MethodName: OnOutOfScreen
+            m_Mode: 1
+            m_Arguments:
+              m_ObjectArgument: {fileID: 0}
+              m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+              m_IntArgument: 0
+              m_FloatArgument: 0
+              m_StringArgument: 
+              m_BoolArgument: 0
+            m_CallState: 2

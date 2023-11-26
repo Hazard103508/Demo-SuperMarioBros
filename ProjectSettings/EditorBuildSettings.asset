@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Mario/Main/Scenes/Main.unity
     guid: cf9d1cbb132bf2c42bc6a206c535200d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Mario/StandBy/Scenes/StandBy.unity
     guid: 080731c60857e7744bee76e42370570a
   - enabled: 1
