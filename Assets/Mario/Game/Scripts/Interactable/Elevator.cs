@@ -1,14 +1,19 @@
+using Mario.Game.Interfaces;
+using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Interactable;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Interactable
 {
-    public class Elevator : MonoBehaviour
+    public class Elevator : MonoBehaviour, IHittableByPlayerFromTop
     {
         #region Objects
         [SerializeField] private ElevatorProfile _profile;
+        [SerializeField] private SpriteRenderer _renderer;
         private Bounds<float> borders;
+        private float halfHeight;
+        private PlayerController _playerOnTop;
         #endregion
 
         #region Unity Methods
@@ -23,21 +28,47 @@ namespace Mario.Game.Interactable
                 bottom = downLeft.y,
                 top = topRight.y,
             };
+
+            halfHeight = _renderer.bounds.size.y / 2;
         }
-        private void LateUpdate()
+        private void FixedUpdate()
         {
             transform.Translate(_profile.Speed * Time.deltaTime * Vector3.up);
+            AttachPlayerPositionToElevator();
         }
         #endregion
 
         #region Public Methods
         public void OnOutScreenFromTop()
         {
+            _playerOnTop = null;
             transform.position = new Vector3(transform.position.x, borders.bottom, transform.position.z);
         }
         public void OnOutScreenFromBottom()
         {
+            _playerOnTop = null;
             transform.position = new Vector3(transform.position.x, borders.top, transform.position.z);
+        }
+        #endregion
+
+        #region Private Methods
+        private void AttachPlayerPositionToElevator()
+        {
+            if (_playerOnTop != null && _playerOnTop.Movable.JumpForce != 0)
+                _playerOnTop = null;
+
+            if (_playerOnTop != null)
+            {
+                _playerOnTop.Movable.SetJumpForce(0);
+                _playerOnTop.Movable.SetNextYPosition(transform.position.y + halfHeight);
+            }
+        }
+        #endregion
+
+        #region IHittableByMovingToTop
+        public void OnHittedByPlayerFromTop(PlayerController player)
+        {
+            _playerOnTop = player;
         }
         #endregion
     }

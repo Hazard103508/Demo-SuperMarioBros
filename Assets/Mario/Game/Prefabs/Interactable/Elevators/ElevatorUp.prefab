@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 18862528119803795, guid: 333d31e0ef5b63a45890f42ef6d74a14, type: 3}
       propertyPath: m_Name
-      value: ElevatorDown
+      value: ElevatorUp
       objectReference: {fileID: 0}
     - target: {fileID: 3133487881285805712, guid: 333d31e0ef5b63a45890f42ef6d74a14, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8464475497190180821, guid: 333d31e0ef5b63a45890f42ef6d74a14, type: 3}
+      propertyPath: _profile
+      value: 
+      objectReference: {fileID: 11400000, guid: 02507d5167ea43b44870284dbab9b495, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

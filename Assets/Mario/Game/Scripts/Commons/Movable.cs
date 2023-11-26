@@ -76,6 +76,11 @@ namespace Mario.Game.Commons
             MaxFallSpeed = 0;
             _nextPosition = new Vector2(_nextPosition.x, transform.position.y);
         }
+        public void SetNextYPosition(float yPosition)
+        {
+            _nextPosition = new Vector2(_nextPosition.x, yPosition);
+            transform.position = _nextPosition;
+        }
         #endregion
 
         #region Private Methods
