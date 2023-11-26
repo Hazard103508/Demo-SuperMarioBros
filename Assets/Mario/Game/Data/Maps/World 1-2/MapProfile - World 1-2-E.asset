@@ -16,7 +16,7 @@ MonoBehaviour:
   _width: 37
   _backgroundColor: {r: 0.36078432, g: 0.5803922, b: 0.9882353, a: 1}
   _startPosition: {x: 0, y: 0}
-  _startTime: 0
+  _startTime: 400
   _autowalk: 0
   _music: {fileID: 11400000, guid: 7e4c0dca80c438f4bb154ce069021a14, type: 2}
   _mapReferences:

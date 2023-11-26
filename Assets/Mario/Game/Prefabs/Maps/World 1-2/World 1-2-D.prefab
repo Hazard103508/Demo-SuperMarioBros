@@ -965,7 +965,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 817178179
-  m_SortingLayer: 4
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -3994,7 +3994,7 @@ PrefabInstance:
     - target: {fileID: 7083448271374346351, guid: 40dcb160ba08ebc40843669286b7551e, type: 3}
       propertyPath: _checkPointProfile
       value: 
-      objectReference: {fileID: 11400000, guid: f3122618514c40f479cb946eace18894, type: 2}
+      objectReference: {fileID: 11400000, guid: 6ccc7981e47261a48bd834669fe8c6b9, type: 2}
     - target: {fileID: 8718786794393583591, guid: 40dcb160ba08ebc40843669286b7551e, type: 3}
       propertyPath: m_Name
       value: CheckPoint
