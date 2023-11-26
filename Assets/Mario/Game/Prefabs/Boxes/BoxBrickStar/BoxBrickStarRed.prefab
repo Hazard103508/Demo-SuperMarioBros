@@ -10,11 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 40360478236427872, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 40360478236427872, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 40360478236427872, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 40360478236427875, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Name
-      value: 10 - BoxBrickStarRed
+      value: BoxBrickStarRed
       objectReference: {fileID: 0}
     - target: {fileID: 40360478294182497, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Controller

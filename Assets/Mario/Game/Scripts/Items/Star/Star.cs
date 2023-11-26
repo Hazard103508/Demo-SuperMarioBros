@@ -10,6 +10,7 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Items.Star
 {
     public class Star : MonoBehaviour,
+        IHittableByMovingToTop,
         IHittableByMovingToBottom,
         IHittableByMovingToLeft,
         IHittableByMovingToRight,
@@ -72,6 +73,7 @@ namespace Mario.Game.Items.Star
         #endregion
 
         #region On Movable Hit
+        public void OnHittedByMovingToTop(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToTop(hitInfo);
         public void OnHittedByMovingToBottom(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToBottom(hitInfo);
         public void OnHittedByMovingToLeft(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToLeft(hitInfo);
         public void OnHittedByMovingToRight(RayHitInfo hitInfo) => this.StateMachine.CurrentState.OnHittedByMovingToRight(hitInfo);

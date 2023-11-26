@@ -44,6 +44,11 @@ namespace Mario.Game.Items.Star
         #endregion
 
         #region On Movable Hit
+        public override void OnHittedByMovingToTop(RayHitInfo hitInfo)
+        {
+            if (Star.gameObject.activeSelf && hitInfo.IsBlock)
+                Star.Movable.SetJumpForce(0);
+        }
         public override void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
             if (Star.gameObject.activeSelf && hitInfo.IsBlock)

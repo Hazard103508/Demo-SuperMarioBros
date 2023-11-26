@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 40360478236427875, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Name
-      value: BoxBrickStarTeal
+      value: BoxBrickTopStarTeal
       objectReference: {fileID: 0}
     - target: {fileID: 40360478294182497, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Controller
@@ -59,7 +59,7 @@ PrefabInstance:
     - target: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1545990637, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
+      objectReference: {fileID: 1144122176, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
     - target: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

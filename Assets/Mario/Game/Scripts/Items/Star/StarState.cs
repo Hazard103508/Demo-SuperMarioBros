@@ -8,6 +8,7 @@ namespace Mario.Game.Items.Star
 {
     public abstract class StarState :
         IState,
+        IHittableByMovingToTop,
         IHittableByMovingToBottom,
         IHittableByMovingToLeft,
         IHittableByMovingToRight,
@@ -59,6 +60,9 @@ namespace Mario.Game.Items.Star
         #endregion
 
         #region On Movable Hit
+        public virtual void OnHittedByMovingToTop(RayHitInfo hitInfo)
+        {
+        }
         public virtual void OnHittedByMovingToBottom(RayHitInfo hitInfo)
         {
         }

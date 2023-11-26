@@ -50,16 +50,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 40360478236427875, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Name
-      value: BoxBrickStarTeal
+      value: BoxBrickTopStarRed
       objectReference: {fileID: 0}
     - target: {fileID: 40360478294182497, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 2d8019d1159ca294e9f37c9e34dbaa14, type: 2}
+      objectReference: {fileID: 22100000, guid: e64615e4657f8fc4a94be1c1330044fc, type: 2}
     - target: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 1545990637, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
+      objectReference: {fileID: 1422982781, guid: 8222c28abb1ef5242a9fd4157896cd26, type: 3}
     - target: {fileID: 40360478294182501, guid: 14f3d8d04c1adaf458def8473e791b1f, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0460e90d892c22349be411a946ad8e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _profile: {fileID: 11400000, guid: 1f40db19cb47ebe44abb79896d23fd4a, type: 2}
+  _profile: {fileID: 11400000, guid: c4b26561664086c48b4d47fef90182f3, type: 2}
   _animator: {fileID: 4389386536801312912}
   _renderer: {fileID: 4389386536801312916}
 --- !u!95 &4389386536801312912 stripped
