@@ -25,7 +25,7 @@ namespace Mario.Game.Items.GreenMushroom
         }
         #endregion
 
-        #region Private Methods
+        #region protected Methods
         protected override bool CollectMushroom(PlayerController player)
         {
             if (base.CollectMushroom(player))

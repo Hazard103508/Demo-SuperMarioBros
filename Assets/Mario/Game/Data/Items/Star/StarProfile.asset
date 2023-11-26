@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StarProfile
   m_EditorClassIdentifier: 
   _points: 1000
-  _speed: 11
+  _moveSpeed: 11
   _bounceSpeed: 10
   _fallSpeed: 45
   _maxFallSpeed: 12
