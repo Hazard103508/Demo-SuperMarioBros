@@ -4,14 +4,17 @@ using UnityEngine;
 
 namespace Mario.Game.Npc.Plant
 {
-    public class PlantStateIdle : PlantState
+    public class PlantStateRising : PlantState
     {
         #region Objects
-        private float _timer;
+        float _timer = 0;
+        float _maxTime = 1f;
+        Vector3 _initPosition;
+        Vector3 _targetPosition;
         #endregion
 
         #region Constructor
-        public PlantStateIdle(Plant plant) : base(plant)
+        public PlantStateRising(Plant plant) : base(plant)
         {
         }
         #endregion
@@ -20,16 +23,24 @@ namespace Mario.Game.Npc.Plant
         public override void Enter()
         {
             _timer = 0;
+
+            if(_initPosition == Vector3.zero)
+                _initPosition = Plant.transform.transform.position;
+            else
+                Plant.transform.transform.position = _initPosition;
+
+            _targetPosition = _initPosition + (2 * Vector3.up);
         }
         public override void Update()
         {
             _timer += Time.deltaTime;
+            var t = Mathf.InverseLerp(0, _maxTime, _timer);
+            Plant.transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
 
-            if (_timer >= Plant.Profile.TimeVisible)
-                Plant.StateMachine.TransitionTo(Plant.StateMachine.StateHiding);
+            if (_timer >= _maxTime)
+                Plant.StateMachine.TransitionTo(Plant.StateMachine.StateIdle);
         }
         #endregion
-
 
         #region On Player Hit
         public override void OnHittedByPlayerFromTop(PlayerController player) => player.Hit();

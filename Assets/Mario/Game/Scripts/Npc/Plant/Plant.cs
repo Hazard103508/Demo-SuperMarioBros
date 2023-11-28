@@ -1,5 +1,3 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
 using Mario.Game.Interactable;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
@@ -15,24 +13,22 @@ namespace Mario.Game.Npc.Plant
         IHittableByFireBall
     {
         #region Objects
-        private IGameplayService _gameplayService;
-
         [SerializeField] private PlantProfile _profile;
         #endregion
 
         #region Properties
         public PlantStateMachine StateMachine { get; private set; }
+        public PlantProfile Profile => _profile;
         #endregion
 
         #region Unity Methods
         protected virtual void Awake()
         {
-            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
             this.StateMachine = new PlantStateMachine(this);
         }
         private void Start()
         {
-            this.StateMachine.Initialize(this.StateMachine.StateIdle);
+            this.StateMachine.Initialize(this.StateMachine.StateRising);
         }
         protected virtual void Update()
         {
@@ -40,28 +36,15 @@ namespace Mario.Game.Npc.Plant
         }
         private void OnEnable()
         {
-            _gameplayService.GameFreezed += GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
-
-            //if (this.StateMachine.CurrentState == this.StateMachine.StateWalk)
-            //    this.StateMachine.CurrentState.Enter();
-            //else
-            //    this.StateMachine.TransitionTo(this.StateMachine.StateWalk);
-        }
-        private void OnDisable()
-        {
-            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            if (this.StateMachine.CurrentState == this.StateMachine.StateRising)
+                this.StateMachine.CurrentState.Enter();
+            else
+                this.StateMachine.TransitionTo(this.StateMachine.StateRising);
         }
         #endregion
 
         #region Public Methods
         public void OnOutOfScreen() => gameObject.SetActive(false);
-        #endregion
-
-        #region Private
-        private void GameplayService_GameUnfreezed() => enabled = true;
-        private void GameplayService_GameFreezed() => enabled = false;
         #endregion
 
         #region On Player Hit
