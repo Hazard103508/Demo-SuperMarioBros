@@ -7,10 +7,10 @@ namespace Mario.Game.Npc.Plant
     public class PlantStateHiding : PlantState
     {
         #region Objects
-        float _timer = 0;
-        float _maxTime = 1f;
-        Vector3 _initPosition;
-        Vector3 _targetPosition;
+        private float _timer = 0;
+        private float _maxTime = 1f;
+        private float _initPosition;
+        private float _targetPosition;
         #endregion
 
         #region Constructor
@@ -24,14 +24,16 @@ namespace Mario.Game.Npc.Plant
         {
             _timer = 0;
 
-            _initPosition = Plant.transform.transform.position;
-            _targetPosition = _initPosition + (2 * Vector3.down);
+            _initPosition = Plant.transform.transform.position.y;
+            _targetPosition = _initPosition - 2;
         }
         public override void Update()
         {
             _timer += Time.deltaTime;
             var t = Mathf.InverseLerp(0, _maxTime, _timer);
-            Plant.transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
+
+            float y = Mathf.Lerp(_initPosition, _targetPosition, t);
+            Plant.transform.localPosition = new Vector3(Plant.transform.localPosition.x, y, Plant.transform.localPosition.z);
 
             if (_timer >= _maxTime)
                 Plant.StateMachine.TransitionTo(Plant.StateMachine.StateHiden);
