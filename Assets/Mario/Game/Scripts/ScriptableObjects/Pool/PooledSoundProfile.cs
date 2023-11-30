@@ -13,8 +13,11 @@ namespace Mario.Game.ScriptableObjects.Pool
         [SerializeField]
         private bool _disableOnComplete;
 
+        [SerializeField]
+        private bool _allowPause;
 
         public float Volume => _volume;
         public bool DisableOnComplete => _disableOnComplete;
+        public bool AllowPause => _allowPause;
     }
 }

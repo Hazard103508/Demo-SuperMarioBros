@@ -33,6 +33,10 @@ namespace Mario.Application.Services
         public event Action GameUnfreezed;
         #endregion
 
+        #region Properties
+        public GameState State { get; set; }
+        #endregion
+
         #region Public Methods
         public void Initalize()
         {
@@ -83,6 +87,7 @@ namespace Mario.Application.Services
         }
         public void SetHouseReached()
         {
+            State = GameState.Win;
             StartCoroutine(AddTimeScore());
             StartCoroutine(FinishLevel());
         }
@@ -138,6 +143,7 @@ namespace Mario.Application.Services
 
             UnfreezeGame();
             PlayInitTheme();
+            State = GameState.Play;
         }
         private IEnumerator ShowCustomIntroPosition()
         {
@@ -185,6 +191,7 @@ namespace Mario.Application.Services
         #region Service Methods
         private void OnStartLoading(StartLoadingEvent arg)
         {
+            State = GameState.StandBy;
             _isFlagReached = false;
             _isHurry = false;
             _playerService.SetActivePlayer(false);
@@ -207,6 +214,17 @@ namespace Mario.Application.Services
                 _playerService.KillPlayerByTimeOut();
         }
         private void OnLivesRemoved() => StartCoroutine(ReloadAfterDead());
+        #endregion
+
+        #region Structures
+        public enum GameState
+        {
+            StandBy,
+            Play,
+            Pause,
+            Lose,
+            Win
+        }
         #endregion
     }
 }

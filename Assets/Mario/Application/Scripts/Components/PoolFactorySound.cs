@@ -22,8 +22,9 @@ namespace Mario.Application.Components
             audioSource.clip = _addressablesService.GetAssetReference<AudioClip>(_profile.name);
             audioSource.volume = _profile.Volume;
 
-            if (_profile.DisableOnComplete)
-                obj.AddComponent<DisableOnAudioCompleted>();
+            var player = obj.AddComponent<AudioPlayer>();
+            player.AllowPause = _profile.AllowPause;
+            player.DisableOnComplete = _profile.DisableOnComplete;
         }
     }
 }

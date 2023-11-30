@@ -1,5 +1,6 @@
 using Mario.Game.ScriptableObjects.Map;
 using System;
+using static Mario.Application.Services.GameplayService;
 
 namespace Mario.Application.Interfaces
 {
@@ -7,6 +8,8 @@ namespace Mario.Application.Interfaces
     {
         event Action GameFreezed;
         event Action GameUnfreezed;
+
+        GameState State { get; set; }
 
         void SetNextMap(MapConnection connection);
         void SetCheckPoint(MapProfile mapProfile);

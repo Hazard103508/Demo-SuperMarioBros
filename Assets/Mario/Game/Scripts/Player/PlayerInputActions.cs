@@ -7,6 +7,7 @@ namespace Mario.Game.Player
     public class PlayerInputActions : MonoBehaviour
     {
         #region Objects
+        private IGameplayService _gameplayService;
         private IPlayerService _playerService;
         private IPauseService _pauseService;
         private IInputService _inputService;
@@ -24,6 +25,7 @@ namespace Mario.Game.Player
             get
             {
                 return
+                    _gameplayService.State != GameplayService.GameState.Play ? 0:
                     !enabled ? 0 :
                     _pauseService.IsPaused ? 0 :
                     _playerService.IsAutowalk ? 1 :
@@ -33,22 +35,22 @@ namespace Mario.Game.Player
         }
         public bool Jump
         {
-            get => enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _jump;
+            get => _gameplayService.State == GameplayService.GameState.Play && enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _jump;
             private set => _jump = value;
         }
         public bool Sprint
         {
-            get => enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _sprint;
+            get => _gameplayService.State == GameplayService.GameState.Play && enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _sprint;
             private set => _sprint = value;
         }
         public bool Ducking
         {
-            get => enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _ducking;
+            get => _gameplayService.State == GameplayService.GameState.Play && enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _ducking;
             private set => _ducking = value;
         }
         public bool Fire
         {
-            get => enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _fire;
+            get => _gameplayService.State == GameplayService.GameState.Play &&  enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _fire;
             private set => _fire = value;
         }
         #endregion
@@ -56,6 +58,7 @@ namespace Mario.Game.Player
         #region Unity Methods
         private void Awake()
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _pauseService = ServiceLocator.Current.Get<IPauseService>();
             _inputService = ServiceLocator.Current.Get<IInputService>();

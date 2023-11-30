@@ -28,7 +28,6 @@ namespace Mario.Game.Maps
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _inputService = ServiceLocator.Current.Get<IInputService>();
 
-
             _playerService.SetPlayer(_playerController);
             _levelService.LoadLevel(true);
             _inputService.UseGameplayMap();

@@ -19,13 +19,6 @@ MonoBehaviour:
     m_EditorAssetChanged: 0
   _defaultCapacity: 1
   _maxSize: 3
-  Reference:
-    m_AssetGUID: f213a0287786168489306c67ef02d347
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  CollectionCheck: 1
-  DefaultCapacity: 1
-  MaxSize: 3
   _volume: 1
   _disableOnComplete: 1
+  _allowPause: 1

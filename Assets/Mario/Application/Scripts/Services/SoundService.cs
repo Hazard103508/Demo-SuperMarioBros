@@ -36,8 +36,6 @@ namespace Mario.Application.Services
                 _themeSong.gameObject.SetActive(false);
             }
         }
-        public void PauseTheme() => _themeSong?.Pause();
-        public void ResumeTheme() => _themeSong?.Play();
         public void Play(PooledSoundProfile soundProfile) => Play(soundProfile, Vector3.zero);
         public void Play(PooledSoundProfile soundProfile, Vector3 position)
         {

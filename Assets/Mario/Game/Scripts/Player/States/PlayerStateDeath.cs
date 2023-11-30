@@ -31,6 +31,7 @@ namespace Mario.Game.Player
         {
             Player.Renderer.sortingLayerName = "Dead";
 
+            _gameplayService.State = GameplayService.GameState.Lose;
             _gameplayService.FreezeGame();
             Player.Movable.Speed = 0;
             Player.Movable.Gravity = Player.StateMachine.CurrentMode.ModeProfile.Fall.DeathFallSpeed;

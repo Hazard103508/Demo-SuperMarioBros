@@ -8,8 +8,6 @@ namespace Mario.Application.Interfaces
         void PlayTheme(PooledSoundProfile soundProfile);
         void PlayTheme(PooledSoundProfile soundProfile, float initTime);
         void StopTheme();
-        void PauseTheme();
-        void ResumeTheme();
 
         void Play(PooledSoundProfile soundProfile);
         void Play(PooledSoundProfile soundProfile, Vector3 position);

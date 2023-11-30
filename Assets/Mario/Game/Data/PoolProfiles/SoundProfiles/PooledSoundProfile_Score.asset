@@ -21,3 +21,4 @@ MonoBehaviour:
   _maxSize: 1
   _volume: 0.1
   _disableOnComplete: 1
+  _allowPause: 1

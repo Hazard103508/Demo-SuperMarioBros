@@ -25,6 +25,7 @@ namespace Mario.Game.Player
         {
             base.Enter();
 
+            _gameplayService.State = GameplayService.GameState.Lose;
             _soundService.StopTheme();
             _playerService.RemoveLife();
             _gameplayService.FreezeGame();
