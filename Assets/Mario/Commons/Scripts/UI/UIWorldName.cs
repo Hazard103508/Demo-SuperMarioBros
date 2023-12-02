@@ -13,15 +13,15 @@ namespace Mario.Commons.UI
         {
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _levelService.StartLoading += OnStartLoading;
+
+            SetWorldName();
         }
         private void OnDestroy()
         {
             _levelService.StartLoading -= OnStartLoading;
         }
 
-        private void OnStartLoading(LevelService.StartLoadingEvent obj)
-        {
-            label.Text = _levelService.MapProfile.WorldName;
-        }
+        private void OnStartLoading(LevelService.StartLoadingEvent obj) => SetWorldName();
+        private void SetWorldName() => label.Text = _levelService.MapProfile.WorldName;
     }
 }
