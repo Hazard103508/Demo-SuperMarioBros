@@ -77,8 +77,8 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Private
-        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
-        private void GameplayService_GameFreezed() => Movable.enabled = false;
+        private void GameplayService_GameUnfreezed() => this.StateMachine.CurrentState.OnGameUnfreezed();
+        private void GameplayService_GameFreezed() => this.StateMachine.CurrentState.OnGameFrozen();
         #endregion
 
         #region On Movable Hit

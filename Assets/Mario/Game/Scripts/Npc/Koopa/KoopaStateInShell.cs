@@ -23,6 +23,15 @@ namespace Mario.Game.Npc.Koopa
         }
         #endregion
 
+        #region Public methods
+        public override void OnGameFrozen()
+        {
+        }
+        public override void OnGameUnfreezed()
+        {
+        }
+        #endregion
+
         #region Private Methods
         private void OnHittedByPlayerFromSide(PlayerController player)
         {
