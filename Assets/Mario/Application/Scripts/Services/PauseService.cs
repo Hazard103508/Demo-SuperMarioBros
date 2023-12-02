@@ -41,7 +41,7 @@ namespace Mario.Application.Services
         {
             _soundService.Play(_pauseSoundPoolReference);
             Time.timeScale = 1;
-            
+
             IsPaused = false;
             _gameplayService.State = GameplayService.GameState.Play;
             Resumed.Invoke();

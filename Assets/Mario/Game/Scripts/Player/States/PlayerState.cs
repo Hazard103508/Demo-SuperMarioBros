@@ -63,6 +63,8 @@ namespace Mario.Game.Player
         public virtual void OnNerf() { }
         public virtual void OnDeath() { }
         public virtual void OnBounceJump() => Player.Movable.SetJumpForce(Player.StateMachine.CurrentMode.ModeProfile.Jump.Bounce);
+        public virtual void OnGameUnfrozen() => Player.Movable.enabled = true;
+        public virtual void OnGameFrozen() => Player.Movable.enabled = false;
         #endregion
 
         #region Protected Methods
@@ -95,7 +97,7 @@ namespace Mario.Game.Player
         protected void SetRaycastNormal() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.NormalRaycastRange);
         protected virtual void ShootFireball()
         {
-            if(Player.InputActions.Fire && Player.StateMachine.CurrentMode.Equals(Player.StateMachine.ModeSuper))
+            if (Player.InputActions.Fire && Player.StateMachine.CurrentMode.Equals(Player.StateMachine.ModeSuper))
                 _playerService.ShootFireball();
         }
 

@@ -31,7 +31,7 @@ namespace Mario.Game.Interactable
                 Vector2 _position = GetTargetLocation(targetLocalPosition) + new Vector2(0.5f, 0.5f);
                 Gizmos.DrawCube(_position, Vector2.one);
             }
-            
+
         }
 #endif
         #endregion

@@ -33,7 +33,7 @@ namespace Mario.Game.Npc.Plant
             var t = Mathf.InverseLerp(0, _maxTime, _timer);
 
             float y = Mathf.Lerp(_initPosition, _targetPosition, t);
-            Plant.transform.localPosition = new Vector3(Plant.transform.localPosition.x,  y, Plant.transform.localPosition.z);
+            Plant.transform.localPosition = new Vector3(Plant.transform.localPosition.x, y, Plant.transform.localPosition.z);
 
             if (_timer >= _maxTime)
                 Plant.StateMachine.TransitionTo(Plant.StateMachine.StateIdle);

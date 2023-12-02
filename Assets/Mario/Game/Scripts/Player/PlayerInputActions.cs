@@ -25,7 +25,7 @@ namespace Mario.Game.Player
             get
             {
                 return
-                    _gameplayService.State != GameplayService.GameState.Play ? 0:
+                    _gameplayService.State != GameplayService.GameState.Play ? 0 :
                     !enabled ? 0 :
                     _pauseService.IsPaused ? 0 :
                     _playerService.IsAutowalk ? 1 :
@@ -50,7 +50,7 @@ namespace Mario.Game.Player
         }
         public bool Fire
         {
-            get => _gameplayService.State == GameplayService.GameState.Play &&  enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _fire;
+            get => _gameplayService.State == GameplayService.GameState.Play && enabled && !_pauseService.IsPaused && !_playerService.IsAutowalk && _fire;
             private set => _fire = value;
         }
         #endregion
@@ -67,7 +67,7 @@ namespace Mario.Game.Player
             _inputService.JumpPressed += InputService_JumpPressed;
             _inputService.SprintPressed += InputService_SprintPressed;
             _inputService.DuckPressed += InputService_DuckPressed;
-            _inputService.FirePressed += InputService_FirePressed;   
+            _inputService.FirePressed += InputService_FirePressed;
         }
         private void LateUpdate()
         {

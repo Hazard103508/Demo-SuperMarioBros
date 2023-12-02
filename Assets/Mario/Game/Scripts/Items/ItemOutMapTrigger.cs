@@ -57,7 +57,7 @@ namespace Mario.Game.Items
         private bool ChechLeftEdge(float edge)
         {
             var border = borders.left;
-            if ( border.Check && transform.position.x < edge - border.Margin)
+            if (border.Check && transform.position.x < edge - border.Margin)
             {
                 border.onOut.Invoke();
                 return true;

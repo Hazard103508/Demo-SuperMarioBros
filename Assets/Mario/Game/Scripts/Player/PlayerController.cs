@@ -43,8 +43,8 @@ namespace Mario.Game.Player
         private void Awake()
         {
             _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
-            _gameplayService.GameFrozen += GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen += GameplayService_GameFrozen;
+            _gameplayService.GameUnfrozen += GameplayService_GameUnfrozen;
 
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _levelService.StartLoading += LevelService_StartLoading;
@@ -63,8 +63,8 @@ namespace Mario.Game.Player
         }
         private void OnDestroy()
         {
-            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen -= GameplayService_GameFrozen;
+            _gameplayService.GameUnfrozen -= GameplayService_GameUnfrozen;
             _levelService.StartLoading -= LevelService_StartLoading;
         }
         private void OnEnable()
@@ -92,14 +92,8 @@ namespace Mario.Game.Player
         #endregion
 
         #region Private Methods
-        private void GameplayService_GameUnfreezed()
-        {
-            Movable.enabled = true;
-        }
-        private void GameplayService_GameFreezed()
-        {
-            Movable.enabled = false;
-        }
+        private void GameplayService_GameUnfrozen() => this.StateMachine.CurrentState.OnGameUnfrozen();
+        private void GameplayService_GameFrozen() => this.StateMachine.CurrentState.OnGameFrozen();
         private void LevelService_StartLoading(StartLoadingEvent arg)
         {
             if (_invincibleCO != null)
