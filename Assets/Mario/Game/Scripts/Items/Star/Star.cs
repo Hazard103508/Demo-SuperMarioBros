@@ -49,16 +49,16 @@ namespace Mario.Game.Items.Star
         }
         private void OnEnable()
         {
-            _gameplayService.GameFrozen += GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen += GameplayService_GameFrozen;
+            _gameplayService.GameUnfrozen += GameplayService_GameUnfrozen;
 
             this.StateMachine.TransitionTo(this.StateMachine.StateRising);
             Movable.Speed = 0;
         }
         private void OnDisable()
         {
-            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen -= GameplayService_GameFrozen;
+            _gameplayService.GameUnfrozen -= GameplayService_GameUnfrozen;
         }
         #endregion
 
@@ -66,10 +66,9 @@ namespace Mario.Game.Items.Star
         public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 
-
         #region Private Methods
-        private void GameplayService_GameUnfreezed() => Movable.enabled = !this.StateMachine.CurrentState.Equals(this.StateMachine.StateRising);
-        private void GameplayService_GameFreezed() => Movable.enabled = false;
+        private void GameplayService_GameUnfrozen() => this.StateMachine.CurrentState.OnGameUnfrozen();
+        private void GameplayService_GameFrozen() => this.StateMachine.CurrentState.OnGameFrozen();
         #endregion
 
         #region On Movable Hit

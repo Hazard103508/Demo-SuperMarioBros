@@ -40,6 +40,11 @@ namespace Mario.Game.Items.Star
         }
         #endregion
 
+        #region Public Methods
+        public virtual void OnGameUnfrozen() => Star.Movable.enabled = true;
+        public virtual void OnGameFrozen() => Star.Movable.enabled = false;
+        #endregion
+
         #region Protected Methods
         protected void ChangeDirectionToRight() => Star.Movable.Speed = Mathf.Abs(Star.Movable.Speed);
         protected void ChangeDirectionToLeft() => Star.Movable.Speed = -Mathf.Abs(Star.Movable.Speed);

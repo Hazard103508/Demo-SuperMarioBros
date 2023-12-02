@@ -40,6 +40,11 @@ namespace Mario.Game.Items.Mushroom
         }
         #endregion
 
+        #region Public Methods
+        public virtual void OnGameUnfrozen() => Mushroom.Movable.enabled = true;
+        public virtual void OnGameFrozen() => Mushroom.Movable.enabled = false;
+        #endregion
+
         #region Protected Methods
         protected void ChangeDirectionToRight() => Mushroom.Movable.Speed = Mathf.Abs(Mushroom.Movable.Speed);
         protected void ChangeDirectionToLeft() => Mushroom.Movable.Speed = -Mathf.Abs(Mushroom.Movable.Speed);

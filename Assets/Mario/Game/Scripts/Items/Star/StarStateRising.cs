@@ -1,5 +1,3 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
 using UnityEngine;
 
 namespace Mario.Game.Items.Star
@@ -7,8 +5,6 @@ namespace Mario.Game.Items.Star
     public class StarStateRising : StarState
     {
         #region Objects
-        private IGameplayService _gameplayService;
-
         private float _timer = 0;
         private float _maxTime = 0.8f;
         private Vector3 _initPosition;
@@ -19,13 +15,12 @@ namespace Mario.Game.Items.Star
         #region Constructor
         public StarStateRising(Star star) : base(star)
         {
-            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
-        #region Private Methods
-        private void GameplayService_GameUnfreezed() => _isFrozen = false;
-        private void GameplayService_GameFreezed() => _isFrozen = true;
+        #region Public Methods
+        public override void OnGameFrozen() => _isFrozen = true;
+        public override void OnGameUnfrozen() => _isFrozen = false;
         #endregion
 
         #region IState Methods
@@ -37,15 +32,6 @@ namespace Mario.Game.Items.Star
             Star.gameObject.layer = LayerMask.NameToLayer("Item");
             _initPosition = Star.transform.transform.position;
             _targetPosition = _initPosition + Vector3.up;
-
-            _gameplayService.GameFrozen += GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
-        }
-        public override void Exit()
-        {
-            base.Exit();
-            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
         }
         public override void Update()
         {
