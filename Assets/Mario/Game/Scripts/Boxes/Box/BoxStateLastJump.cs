@@ -30,6 +30,7 @@ namespace Mario.Game.Boxes.Box
             Box.Movable.Gravity = Box.Profile.FallSpeed;
             Box.Movable.MaxFallSpeed = Box.Profile.MaxFallSpeed;
             Box.Movable.SetJumpForce(Box.Profile.JumpAcceleration);
+            Box.Movable.ChekCollisions = true;
         }
         public override void Update()
         {

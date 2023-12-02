@@ -26,6 +26,7 @@ namespace Mario.Game.Boxes.Box
             Box.Renderer.sortingOrder = 0;
             Box.Animator.SetTrigger("Disable");
             Box.Movable.RemoveGravity();
+            Box.Movable.ChekCollisions = false;
         }
         public override void Update()
         {

@@ -16,6 +16,7 @@ namespace Mario.Game.Boxes.Box
             Box.Renderer.sortingOrder = 0;
             Box.Animator.SetTrigger("Idle");
             Box.Movable.RemoveGravity();
+            Box.Movable.ChekCollisions = false;
         }
         #endregion
 
