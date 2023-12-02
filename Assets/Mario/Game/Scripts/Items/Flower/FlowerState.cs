@@ -15,7 +15,6 @@ namespace Mario.Game.Items.Flower
     {
         #region Objects
         private readonly IScoreService _scoreService;
-        private readonly IPlayerService _playerService;
         #endregion
 
         #region Properties
@@ -26,8 +25,6 @@ namespace Mario.Game.Items.Flower
         public FlowerState(Flower flower)
         {
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
-            _playerService = ServiceLocator.Current.Get<IPlayerService>();
-
             this.Flower = flower;
         }
         #endregion
@@ -57,6 +54,11 @@ namespace Mario.Game.Items.Flower
         public virtual void OnHittedByPlayerFromRight(PlayerController player)
         {
         }
+        #endregion
+
+        #region Public Methods
+        public virtual void OnGameUnfrozen() { }
+        public virtual void OnGameFrozen() { }
         #endregion
 
         #region Protected

@@ -1,5 +1,3 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
 using Mario.Game.Player;
 using UnityEngine;
 
@@ -8,8 +6,6 @@ namespace Mario.Game.Items.Flower
     public class FlowerStateRising : FlowerState
     {
         #region Objects
-        private IGameplayService _gameplayService;
-
         private float _timer = 0;
         private float _maxTime = 0.8f;
         private float _collectTime = 0.4f;
@@ -21,7 +17,6 @@ namespace Mario.Game.Items.Flower
         #region Constructor
         public FlowerStateRising(Flower flower) : base(flower)
         {
-            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -33,9 +28,9 @@ namespace Mario.Game.Items.Flower
         }
         #endregion
 
-        #region Private Methods
-        private void GameplayService_GameUnfreezed() => _isFrozen = false;
-        private void GameplayService_GameFreezed() => _isFrozen = true;
+        #region Public Methods
+        public override void OnGameFrozen() => _isFrozen = true;
+        public override void OnGameUnfrozen() => _isFrozen = false;
         #endregion
 
         #region IState Methods
@@ -46,9 +41,6 @@ namespace Mario.Game.Items.Flower
             Flower.gameObject.layer = LayerMask.NameToLayer("Item");
             _initPosition = Flower.transform.transform.position;
             _targetPosition = _initPosition + Vector3.up;
-
-            _gameplayService.GameFrozen += GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
         }
         public override void Update()
         {
@@ -61,12 +53,6 @@ namespace Mario.Game.Items.Flower
 
             if (_timer >= _maxTime)
                 Flower.StateMachine.TransitionTo(Flower.StateMachine.StateIdle);
-        }
-        public override void Exit()
-        {
-            base.Exit();
-            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
         }
         #endregion
 
