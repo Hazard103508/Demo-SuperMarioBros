@@ -68,7 +68,7 @@ namespace Mario.Game.Items.Star
 
 
         #region Private Methods
-        private void GameplayService_GameUnfreezed() => Movable.enabled = true;
+        private void GameplayService_GameUnfreezed() => Movable.enabled = !this.StateMachine.CurrentState.Equals(this.StateMachine.StateRising);
         private void GameplayService_GameFreezed() => Movable.enabled = false;
         #endregion
 
