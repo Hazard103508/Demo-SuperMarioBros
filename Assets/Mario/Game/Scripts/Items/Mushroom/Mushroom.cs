@@ -51,13 +51,13 @@ namespace Mario.Game.Items.Mushroom
         {
             this.StateMachine.TransitionTo(this.StateMachine.StateRising);
             Movable.Speed = 0;
-            _gameplayService.GameFreezed += GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen += GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
         }
         private void OnDisable()
         {
-            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
         }
         #endregion
 

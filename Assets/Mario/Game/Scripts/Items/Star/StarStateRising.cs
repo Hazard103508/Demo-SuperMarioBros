@@ -38,14 +38,14 @@ namespace Mario.Game.Items.Star
             _initPosition = Star.transform.transform.position;
             _targetPosition = _initPosition + Vector3.up;
 
-            _gameplayService.GameFreezed += GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen += GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
         }
         public override void Exit()
         {
             base.Exit();
-            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
         }
         public override void Update()
         {

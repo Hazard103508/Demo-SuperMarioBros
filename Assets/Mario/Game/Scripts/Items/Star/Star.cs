@@ -49,16 +49,16 @@ namespace Mario.Game.Items.Star
         }
         private void OnEnable()
         {
-            _gameplayService.GameFreezed += GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen += GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
 
             this.StateMachine.TransitionTo(this.StateMachine.StateRising);
             Movable.Speed = 0;
         }
         private void OnDisable()
         {
-            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
         }
         #endregion
 

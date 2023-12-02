@@ -6,8 +6,8 @@ namespace Mario.Application.Interfaces
 {
     public interface IGameplayService : IGameService
     {
-        event Action GameFreezed;
-        event Action GameUnfreezed;
+        event Action GameFrozen;
+        event Action GameUnfrozen;
 
         GameState State { get; set; }
 

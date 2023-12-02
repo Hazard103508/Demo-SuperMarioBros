@@ -55,8 +55,8 @@ namespace Mario.Game.Npc.Koopa
         }
         private void OnEnable()
         {
-            _gameplayService.GameFreezed += GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen += GameplayService_GameFrozen;
+            _gameplayService.GameUnfrozen += GameplayService_GameUnfrozen;
 
             if (this.StateMachine.CurrentState == this.StateMachine.StateWalk)
                 this.StateMachine.CurrentState.Enter();
@@ -65,8 +65,8 @@ namespace Mario.Game.Npc.Koopa
         }
         private void OnDisable()
         {
-            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen -= GameplayService_GameFrozen;
+            _gameplayService.GameUnfrozen -= GameplayService_GameUnfrozen;
 
             Renderer.flipY = false;
         }
@@ -77,8 +77,8 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Private
-        private void GameplayService_GameUnfreezed() => this.StateMachine.CurrentState.OnGameUnfreezed();
-        private void GameplayService_GameFreezed() => this.StateMachine.CurrentState.OnGameFrozen();
+        private void GameplayService_GameUnfrozen() => this.StateMachine.CurrentState.OnGameUnfrozen();
+        private void GameplayService_GameFrozen() => this.StateMachine.CurrentState.OnGameFrozen();
         #endregion
 
         #region On Movable Hit

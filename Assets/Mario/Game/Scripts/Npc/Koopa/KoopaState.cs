@@ -32,7 +32,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Public 
-        public virtual void OnGameUnfreezed() => Koopa.Movable.enabled = true;
+        public virtual void OnGameUnfrozen() => Koopa.Movable.enabled = true;
         public virtual void OnGameFrozen() => Koopa.Movable.enabled = false;
         public void ChangeDirection()
         {

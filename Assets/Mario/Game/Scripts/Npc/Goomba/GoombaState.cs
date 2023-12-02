@@ -43,6 +43,8 @@ namespace Mario.Game.Npc.Goomba
         #endregion
 
         #region Protected Methods
+        public virtual void OnGameUnfrozen() => Goomba.Movable.enabled = true;
+        public virtual void OnGameFrozen() => Goomba.Movable.enabled = false;
         public void ChangeDirectionToRight()
         {
             Goomba.Renderer.flipX = true;

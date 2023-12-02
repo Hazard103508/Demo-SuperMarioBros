@@ -29,8 +29,8 @@ namespace Mario.Application.Services
         #endregion
 
         #region Events
-        public event Action GameFreezed;
-        public event Action GameUnfreezed;
+        public event Action GameFrozen;
+        public event Action GameUnfrozen;
         #endregion
 
         #region Properties
@@ -72,12 +72,12 @@ namespace Mario.Application.Services
         public void FreezeGame()
         {
             _timeService.FreezeTimer();
-            GameFreezed?.Invoke();
+            GameFrozen?.Invoke();
         }
         public void UnfreezeGame()
         {
             _timeService.UnfreezeTimer();
-            GameUnfreezed?.Invoke();
+            GameUnfrozen?.Invoke();
         }
         public void SetFlagReached()
         {

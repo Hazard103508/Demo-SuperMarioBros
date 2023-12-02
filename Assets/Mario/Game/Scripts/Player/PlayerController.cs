@@ -43,8 +43,8 @@ namespace Mario.Game.Player
         private void Awake()
         {
             _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
-            _gameplayService.GameFreezed += GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed += GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen += GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen += GameplayService_GameUnfreezed;
 
             _levelService = ServiceLocator.Current.Get<ILevelService>();
             _levelService.StartLoading += LevelService_StartLoading;
@@ -63,8 +63,8 @@ namespace Mario.Game.Player
         }
         private void OnDestroy()
         {
-            _gameplayService.GameFreezed -= GameplayService_GameFreezed;
-            _gameplayService.GameUnfreezed -= GameplayService_GameUnfreezed;
+            _gameplayService.GameFrozen -= GameplayService_GameFreezed;
+            _gameplayService.GameUnfrozen -= GameplayService_GameUnfreezed;
             _levelService.StartLoading -= LevelService_StartLoading;
         }
         private void OnEnable()

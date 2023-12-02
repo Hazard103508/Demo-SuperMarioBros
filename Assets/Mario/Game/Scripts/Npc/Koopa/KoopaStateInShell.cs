@@ -27,7 +27,7 @@ namespace Mario.Game.Npc.Koopa
         public override void OnGameFrozen()
         {
         }
-        public override void OnGameUnfreezed()
+        public override void OnGameUnfrozen()
         {
         }
         #endregion
