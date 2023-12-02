@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MarioBigStarAnimationController
+  m_Controller: {fileID: 9100000, guid: 4ccac5ba58bacc3438ed8fe3a8d9b512, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 3d00db84c9130464e9502584e5456b9f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8c1473df5c24bee45bd1852fbb1d825a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a216e49c5c6c2e944b8496c1e2843a23, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1e4d10878fd88384da98fb9dd18f7386, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 10c3e34b5f0f1b0438109c4f2a8b466b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eda5e1bbcf5a56d4f9fb53a76fa53bde, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 981f234f793733f44864825a4a544a24, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 1826db375430fb540b0bd4301db86f04, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: ffaa34e41e1012c40b49643e6e1a3a06, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 725c61a78367b624daef5c2fc4cd45d5, type: 2}

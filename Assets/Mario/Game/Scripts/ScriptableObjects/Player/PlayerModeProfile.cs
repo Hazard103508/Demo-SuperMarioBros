@@ -10,6 +10,7 @@ namespace Mario.Game.ScriptableObjects.Player
     public class PlayerModeProfile : ScriptableObject
     {
         [SerializeField] private RuntimeAnimatorController _animatorController;
+        [SerializeField] private RuntimeAnimatorController _starAnimatorController;
         [SerializeField] private HorizontalMovement _walk;
         [SerializeField] private HorizontalMovement _run;
         [SerializeField] private VerticalMovement _fall;
@@ -19,6 +20,7 @@ namespace Mario.Game.ScriptableObjects.Player
         [SerializeField] private ModeCollider _collider;
 
         public RuntimeAnimatorController AnimatorController => _animatorController;
+        public RuntimeAnimatorController StarAnimatorController => _starAnimatorController;
         public HorizontalMovement Walk => _walk;
         public HorizontalMovement Run => _run;
         public VerticalMovement Fall => _fall;

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MarioModeBig
   m_EditorClassIdentifier: 
   _animatorController: {fileID: 9100000, guid: 4ccac5ba58bacc3438ed8fe3a8d9b512, type: 2}
+  _starAnimatorController: {fileID: 22100000, guid: 631874ab1fe83c440bc0434685e00597, type: 2}
   _walk:
     _acceleration: 28
     _maxSpeed: 5.8

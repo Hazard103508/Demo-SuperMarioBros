@@ -37,6 +37,7 @@ namespace Mario.Game.Player
             // TESTING----------------
         }
 
+        public void OnEventListener_Star() => player.ActivateSuperStar();
         public void OnEventListener_Buff() => player.Buff();
         public void OnEventListener_Nerf() => player.Nerf();
         public void OnEventListener_Kill() => player.Kill();

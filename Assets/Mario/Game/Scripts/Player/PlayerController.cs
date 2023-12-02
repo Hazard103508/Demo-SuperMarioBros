@@ -74,6 +74,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
+        public void ActivateSuperStar() => this.StateMachine.CurrentState.OnSuperStarActivated();
         public void Buff() => this.StateMachine.CurrentState.OnBuff();
         public void Nerf() => this.StateMachine.CurrentState.OnNerf();
         public void Kill() => this.StateMachine.CurrentState.OnDeath();

@@ -56,6 +56,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
+        public void OnSuperStarActivated() => Player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.StarAnimatorController;
         public void OnTimeOut() => SetTransitionToTimeOut();
         public void OnTouchFlag() => SetTransitionToFlag();
         public virtual void OnFall() { }
