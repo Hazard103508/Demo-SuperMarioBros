@@ -143,7 +143,7 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToFall()
         {
-            if (Player.Movable.JumpForce < -5f)
+            if (Player.Movable.JumpForce < -3f)
                 return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFall);
 
             return false;

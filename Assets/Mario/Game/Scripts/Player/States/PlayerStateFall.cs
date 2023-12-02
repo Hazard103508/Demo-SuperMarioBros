@@ -1,3 +1,5 @@
+using System.Net;
+using Unity.VisualScripting;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -19,14 +21,17 @@ namespace Mario.Game.Player
 
         #region Protected Methods
         protected override bool SetTransitionToRun() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateRun);
+        protected override string GetAnimatorState()
+        {
+            return
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run1 ? "Fall_1" :
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run2 ? "Fall_2" :
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run3 ? "Fall_3" :
+                "";
+        }
         #endregion
 
         #region IState Methods
-        public override void Enter()
-        {
-            base.Enter();
-            Player.Animator.speed = 0;
-        }
         public override void Update()
         {
             SpeedUp();
@@ -36,7 +41,6 @@ namespace Mario.Game.Player
         public override void Exit()
         {
             base.Exit();
-            Player.Animator.speed = 1;
             SetRaycastNormal();
         }
         #endregion
