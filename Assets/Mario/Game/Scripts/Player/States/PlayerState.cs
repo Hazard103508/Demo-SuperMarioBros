@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityShared.Commons.Structs;
+using static Mario.Game.ScriptableObjects.Player.PlayerModeProfile;
 
 namespace Mario.Game.Player
 {
@@ -59,7 +60,11 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public void OnSuperStarActivated() => Player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.Animators.Star;
+        public void OnSuperStarActivated()
+        {
+            Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.StarMaterial;
+            _gameplayService.ActivateStarman(() => Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.Default.Material);
+        }
         public void OnTimeOut() => SetTransitionToTimeOut();
         public void OnTouchFlag() => SetTransitionToFlag();
         public virtual void OnFall() { }
@@ -104,7 +109,6 @@ namespace Mario.Game.Player
             if (Player.InputActions.Fire && Player.StateMachine.CurrentMode.Equals(Player.StateMachine.ModeSuper))
                 _playerService.ShootFireball();
         }
-
         protected virtual string GetAnimatorState() => string.Empty;
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
         protected virtual bool SetTransitionToIdle()
@@ -202,12 +206,14 @@ namespace Mario.Game.Player
         #region Private Methods
         private void ChangeMode(PlayerController player)
         {
-            player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.Animators.Default;
+            Player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.Default.Animator;
+            Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.Default.Material;
+
             player.Collider.offset = Player.StateMachine.CurrentMode.ModeProfile.Collider.Offset;
             player.Collider.size = Player.StateMachine.CurrentMode.ModeProfile.Collider.Size;
             SetRaycastNormal();
         }
-        private void SetRaycast(ScriptableObjects.Player.PlayerModeProfile.ModeRaycastRange modeRaycastRange)
+        private void SetRaycast(ModeRaycastRange modeRaycastRange)
         {
             Player.Movable.RaycastTop.Profile = modeRaycastRange.Top;
             Player.Movable.RaycastBottom.Profile = modeRaycastRange.Bottom;
@@ -231,20 +237,30 @@ namespace Mario.Game.Player
         }
         private IEnumerator BuffCO()
         {
+            // BORRAR CORRUTINA REDUNDANTE...
             _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
-            var buffData = Player.StateMachine.CurrentMode.ModeProfile.Animators.Buff;
-            if (buffData.Animator != null)
-            {
-                Player.Animator.runtimeAnimatorController = buffData.Animator;
-                Player.Animator.Play(GetAnimatorState(), 0, 0);
-                _gameplayService.FreezeGame();
-                yield return new WaitForSeconds(buffData.FreezeTime);
-                _gameplayService.UnfreezeGame();
-                
-                if(_playerService.IsPlayerSmall())
-                    ChangeModeToBig(Player);
-            }
+            //yield return SetPlayerAnimator(Player.StateMachine.CurrentMode.ModeProfile.Animators.Buff);
+            yield return null;
+
+            if (_playerService.IsPlayerSmall())
+                ChangeModeToBig(Player);
         }
+        //private IEnumerator SetPlayerAnimator(PlayerAnimatorData playerAnimator)
+        //{
+        //    Player.Renderer.material = playerAnimator.Material;
+        //    if (playerAnimator.Animator != null)
+        //    {
+        //        Player.Animator.runtimeAnimatorController = playerAnimator.Animator;
+        //        Player.Animator.Play(GetAnimatorState(), 0, 0);
+        //
+        //        if (playerAnimator.FreezeTime > 0)
+        //        {
+        //            _gameplayService.FreezeGame();
+        //            yield return new WaitForSeconds(playerAnimator.FreezeTime);
+        //            _gameplayService.UnfreezeGame();
+        //        }
+        //    }
+        //}
         #endregion
 
         #region On Movable Hit

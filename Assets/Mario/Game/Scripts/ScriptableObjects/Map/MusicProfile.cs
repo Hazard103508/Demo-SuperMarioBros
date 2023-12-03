@@ -9,11 +9,15 @@ namespace Mario.Game.ScriptableObjects.Map
     {
         [SerializeField] private PooledSoundProfile _mainTheme;
         [SerializeField] private PooledSoundProfile _victoryTheme;
+        [SerializeField] private PooledSoundProfile _starman;
+        [SerializeField] private PooledSoundProfile _starmanHurry;
         [SerializeField] private PooledSoundProfile _hurryFX;
         [SerializeField] private HurryTheme _hurryTheme;
 
         public PooledSoundProfile MainTheme => _mainTheme;
         public PooledSoundProfile VictoryTheme => _victoryTheme;
+        public PooledSoundProfile Starman => _starman;
+        public PooledSoundProfile StarmanHurry => _starmanHurry;
         public PooledSoundProfile HurryFX => _hurryFX;
         public HurryTheme HurryTheme => _hurryTheme;
     }

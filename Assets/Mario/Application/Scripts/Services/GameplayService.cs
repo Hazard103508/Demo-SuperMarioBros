@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Game.Enums;
+using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
@@ -23,7 +24,9 @@ namespace Mario.Application.Services
         private readonly int _pointsPerSecond = 50;
         private bool _isFlagReached;
         private bool _isHurry;
+        private bool _isStarman;
         private MapConnection _mapConnection;
+        private Coroutine _starCO;
 
         [SerializeField] private PooledSoundProfile _scoreSoundPoolReference;
         #endregion
@@ -85,6 +88,7 @@ namespace Mario.Application.Services
             if (_isFlagReached)
                 _soundService.PlayTheme(_levelService.MapProfile.Music.VictoryTheme);
         }
+        public void ActivateStarman(Action callback) => _starCO = StartCoroutine(ActivateStarmanCO(callback));
         public void SetHouseReached()
         {
             State = GameState.Win;
@@ -120,7 +124,10 @@ namespace Mario.Application.Services
             _soundService.PlayTheme(_levelService.MapProfile.Music.HurryFX);
             yield return new WaitForSeconds(3.5f);
 
-            _soundService.PlayTheme(_levelService.MapProfile.Music.HurryTheme.Profile, _levelService.MapProfile.Music.HurryTheme.StartTimeInit);
+            if (_isStarman)
+                _soundService.PlayTheme(_levelService.MapProfile.Music.StarmanHurry);
+            else
+                _soundService.PlayTheme(_levelService.MapProfile.Music.HurryTheme.Profile, _levelService.MapProfile.Music.HurryTheme.StartTimeInit);
         }
         private IEnumerator StartGame()
         {
@@ -186,6 +193,19 @@ namespace Mario.Application.Services
             yield return new WaitForSeconds(6);
             _levelService.LoadLevel(true);
         }
+        private IEnumerator ActivateStarmanCO(Action callback)
+        {
+            _isStarman = true;
+            if (_isHurry)
+                _soundService.PlayTheme(_levelService.MapProfile.Music.StarmanHurry);
+            else
+                _soundService.PlayTheme(_levelService.MapProfile.Music.Starman);
+
+            yield return new WaitForSeconds(10);
+            _isStarman = false;
+            callback.Invoke();
+            PlayInitTheme();
+        }
         #endregion
 
         #region Service Methods
@@ -194,7 +214,11 @@ namespace Mario.Application.Services
             State = GameState.StandBy;
             _isFlagReached = false;
             _isHurry = false;
+            _isStarman = false;
             _playerService.SetActivePlayer(false);
+
+            if (_starCO != null)
+                StopCoroutine(_starCO);
         }
         private void OnLoadCompleted() => StartCoroutine(StartGame());
         private void OnTimeChangeded()
