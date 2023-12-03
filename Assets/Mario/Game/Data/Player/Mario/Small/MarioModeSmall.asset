@@ -14,10 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animators:
     _default: {fileID: 22100000, guid: 14ef6815fc4e0cc42ae22a02e97de38e, type: 2}
-    _buff: {fileID: 0}
-    _nerf: {fileID: 0}
     _fireBall: {fileID: 0}
     _star: {fileID: 0}
+    _buff:
+      _animator: {fileID: 22100000, guid: 1ecdaa142ff998d4b8396f9315147f92, type: 2}
+      _freezeTime: 0.5
+    _nerf:
+      _animator: {fileID: 0}
+      _freezeTime: 0
   _walk:
     _acceleration: 28
     _maxSpeed: 5.8
