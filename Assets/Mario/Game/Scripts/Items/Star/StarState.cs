@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using System;
@@ -17,6 +19,10 @@ namespace Mario.Game.Items.Star
         IHittableByPlayerFromLeft,
         IHittableByPlayerFromRight
     {
+        #region Objects
+        private readonly IScoreService _scoreService;
+        #endregion
+
         #region Properties
         protected Star Star { get; private set; }
         #endregion
@@ -24,6 +30,7 @@ namespace Mario.Game.Items.Star
         #region Constructor
         public StarState(Star star)
         {
+            _scoreService = ServiceLocator.Current.Get<IScoreService>();
             this.Star = star;
         }
         #endregion
@@ -60,6 +67,11 @@ namespace Mario.Game.Items.Star
 
             Star.gameObject.layer = 0;
             Star.gameObject.SetActive(false);
+
+            _scoreService.Add(Star.Profile.Points);
+            _scoreService.ShowPoints(Star.Profile.Points, Star.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
+            player.ActivateSuperStar();
+
             return true;
         }
         #endregion

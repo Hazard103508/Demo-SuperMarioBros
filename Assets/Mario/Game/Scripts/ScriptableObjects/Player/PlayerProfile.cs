@@ -43,7 +43,7 @@ namespace Mario.Game.ScriptableObjects.Player
         public class ModeChange
         {
             [SerializeField] private PooledSoundProfile _soundFX;
-            public PooledSoundProfile SoundFX;
+            public PooledSoundProfile SoundFX => _soundFX;
         }
     }
 }

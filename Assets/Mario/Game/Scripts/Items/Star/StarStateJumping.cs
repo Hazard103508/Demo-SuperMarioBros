@@ -8,14 +8,9 @@ namespace Mario.Game.Items.Star
 {
     public class StarStateJumping : StarState
     {
-        #region Objects
-        private readonly IScoreService _scoreService;
-        #endregion
-
         #region Constructor
         public StarStateJumping(Star star) : base(star)
         {
-            _scoreService = ServiceLocator.Current.Get<IScoreService>();
         }
         #endregion
 
@@ -26,20 +21,6 @@ namespace Mario.Game.Items.Star
             Star.Movable.Speed = Star.Profile.MoveSpeed * Mathf.Sign(Star.Movable.Speed);
             Star.Movable.Gravity = Star.Profile.FallSpeed;
             Star.Movable.MaxFallSpeed = Star.Profile.MaxFallSpeed;
-        }
-        #endregion
-
-        #region Private Methods
-        protected override bool CollectStar(PlayerController player)
-        {
-            if (base.CollectStar(player))
-            {
-                _scoreService.Add(Star.Profile.Points);
-                _scoreService.ShowPoints(Star.Profile.Points, Star.transform.position + Vector3.up * 1.75f, 0.8f, 3f);
-                player.Buff();
-                return true;
-            }
-            return false;
         }
         #endregion
 

@@ -63,6 +63,7 @@ namespace Mario.Game.Player
         public void OnSuperStarActivated()
         {
             Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.StarMaterial;
+            _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
             _gameplayService.ActivateStarman(() => Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.Default.Material);
         }
         public void OnTimeOut() => SetTransitionToTimeOut();
