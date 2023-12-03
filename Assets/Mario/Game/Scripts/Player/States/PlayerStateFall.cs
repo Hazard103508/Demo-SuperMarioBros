@@ -1,5 +1,3 @@
-using System.Net;
-using Unity.VisualScripting;
 using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
@@ -24,9 +22,11 @@ namespace Mario.Game.Player
         protected override string GetAnimatorState()
         {
             return
-                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run1 ? "Fall_1" :
-                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run2 ? "Fall_2" :
-                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run3 ? "Fall_3" :
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run1 ? "Fall_Run1" :
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run2 ? "Fall_Run2" :
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Run3 ? "Fall_Run3" :
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Jump ? "Jump" :
+                Player.CurrentAnimationKey == PlayerAnimator.PlayerAnimationKeys.Ducking ? "Ducking" :
                 "";
         }
         #endregion

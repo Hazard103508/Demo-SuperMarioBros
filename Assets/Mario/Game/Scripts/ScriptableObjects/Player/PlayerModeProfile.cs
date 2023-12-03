@@ -9,8 +9,7 @@ namespace Mario.Game.ScriptableObjects.Player
     [CreateAssetMenu(fileName = "PlayerMode", menuName = "ScriptableObjects/Game/Player/PlayerMode", order = 1)]
     public class PlayerModeProfile : ScriptableObject
     {
-        [SerializeField] private RuntimeAnimatorController _animatorController;
-        [SerializeField] private RuntimeAnimatorController _starAnimatorController;
+        [SerializeField] private PlayerAnimators _animators;
         [SerializeField] private HorizontalMovement _walk;
         [SerializeField] private HorizontalMovement _run;
         [SerializeField] private VerticalMovement _fall;
@@ -19,8 +18,7 @@ namespace Mario.Game.ScriptableObjects.Player
         [SerializeField] private ModeRaycastRange _duckingRaycastRange;
         [SerializeField] private ModeCollider _collider;
 
-        public RuntimeAnimatorController AnimatorController => _animatorController;
-        public RuntimeAnimatorController StarAnimatorController => _starAnimatorController;
+        public PlayerAnimators Animators => _animators;
         public HorizontalMovement Walk => _walk;
         public HorizontalMovement Run => _run;
         public VerticalMovement Fall => _fall;
@@ -29,6 +27,21 @@ namespace Mario.Game.ScriptableObjects.Player
         public ModeRaycastRange DuckingRaycastRange => _duckingRaycastRange;
         public ModeCollider Collider => _collider;
 
+        [Serializable]
+        public class PlayerAnimators
+        {
+            [SerializeField] private RuntimeAnimatorController _default;
+            [SerializeField] private RuntimeAnimatorController _buff;
+            [SerializeField] private RuntimeAnimatorController _nerf;
+            [SerializeField] private RuntimeAnimatorController _fireBall;
+            [SerializeField] private RuntimeAnimatorController _star;
+
+            public RuntimeAnimatorController Default => _default;
+            public RuntimeAnimatorController Buff=> _buff;
+            public RuntimeAnimatorController Nerf => _nerf;
+            public RuntimeAnimatorController FireBall=> _fireBall;
+            public RuntimeAnimatorController Star => _star;
+        }
         [Serializable]
         public class HorizontalMovement
         {

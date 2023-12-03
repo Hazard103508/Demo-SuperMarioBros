@@ -56,7 +56,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region Public Methods
-        public void OnSuperStarActivated() => Player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.StarAnimatorController;
+        public void OnSuperStarActivated() => Player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.Animators.Star;
         public void OnTimeOut() => SetTransitionToTimeOut();
         public void OnTouchFlag() => SetTransitionToFlag();
         public virtual void OnFall() { }
@@ -203,7 +203,7 @@ namespace Mario.Game.Player
         #region Private Methods
         private void ChangeMode(PlayerController player)
         {
-            player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.AnimatorController;
+            player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.Animators.Default;
             player.Collider.offset = Player.StateMachine.CurrentMode.ModeProfile.Collider.Offset;
             player.Collider.size = Player.StateMachine.CurrentMode.ModeProfile.Collider.Size;
             SetRaycastNormal();

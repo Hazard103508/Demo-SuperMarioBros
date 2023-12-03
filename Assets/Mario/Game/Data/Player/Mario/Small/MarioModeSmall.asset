@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551ef53d1e6b8624b8fb91a6906b1a14, type: 3}
   m_Name: MarioModeSmall
   m_EditorClassIdentifier: 
-  _animatorController: {fileID: 9100000, guid: 5be6658bcee870349b926d77836ebcf1, type: 2}
+  _animators:
+    _default: {fileID: 22100000, guid: 14ef6815fc4e0cc42ae22a02e97de38e, type: 2}
+    _buff: {fileID: 0}
+    _nerf: {fileID: 0}
+    _fireBall: {fileID: 0}
+    _star: {fileID: 0}
   _walk:
     _acceleration: 28
     _maxSpeed: 5.8
