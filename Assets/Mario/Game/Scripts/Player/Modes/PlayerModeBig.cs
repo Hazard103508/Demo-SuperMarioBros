@@ -11,7 +11,7 @@ namespace Mario.Game.Player
             base.StateJump = new PlayerStateBigJump(player);
             base.StateFall = new PlayerStateBigFall(player);
             //base.StateBuff -- custom buff state in each state
-            base.StateNerf = new PlayerStateBigNerf(player);
+            //base.StateNerf = new PlayerStateBigNerf(player);
             base.StateDeath = new PlayerStateDeath(player);
             base.StateTimeOut = new PlayerStateTimeOut(player);
             base.StateDeathFall = new PlayerStateDeathFall(player);

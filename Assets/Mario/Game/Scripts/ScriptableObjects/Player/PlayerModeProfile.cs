@@ -31,17 +31,27 @@ namespace Mario.Game.ScriptableObjects.Player
         public class PlayerAnimators
         {
             [SerializeField] private RuntimeAnimatorController _default;
-            [SerializeField] private RuntimeAnimatorController _buff;
-            [SerializeField] private RuntimeAnimatorController _nerf;
             [SerializeField] private RuntimeAnimatorController _fireBall;
             [SerializeField] private RuntimeAnimatorController _star;
+            [SerializeField] private PlayerAnimator _buff;
+            [SerializeField] private PlayerAnimator _nerf;
 
             public RuntimeAnimatorController Default => _default;
-            public RuntimeAnimatorController Buff=> _buff;
-            public RuntimeAnimatorController Nerf => _nerf;
+            public PlayerAnimator Buff => _buff;
+            public PlayerAnimator Nerf => _nerf;
             public RuntimeAnimatorController FireBall=> _fireBall;
             public RuntimeAnimatorController Star => _star;
         }
+        [Serializable]
+        public class PlayerAnimator
+        {
+            [SerializeField] private RuntimeAnimatorController _animator;
+            [SerializeField] private float _freezeTime;
+
+            public RuntimeAnimatorController Animator => _animator;
+            public float FreezeTime => _freezeTime;
+        }
+
         [Serializable]
         public class HorizontalMovement
         {

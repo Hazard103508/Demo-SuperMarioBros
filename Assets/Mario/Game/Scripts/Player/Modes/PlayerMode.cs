@@ -19,8 +19,6 @@ namespace Mario.Game.Player
         public PlayerStateStop StateStop { get; protected set; }
         public PlayerStateJump StateJump { get; protected set; }
         public PlayerStateFall StateFall { get; protected set; }
-        public PlayerStateBuff StateBuff { get; protected set; }
-        public PlayerStateNerf StateNerf { get; protected set; }
         public PlayerStateDeath StateDeath { get; protected set; }
         public PlayerStateTimeOut StateTimeOut { get; protected set; }
         public PlayerStateDeathFall StateDeathFall { get; protected set; }

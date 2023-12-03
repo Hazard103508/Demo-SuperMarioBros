@@ -3,6 +3,7 @@ using Mario.Application.Services;
 using Mario.Game.Interfaces;
 using Mario.Game.Npc.Koopa;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityShared.Commons.Structs;
@@ -20,6 +21,7 @@ namespace Mario.Game.Player
         #region Objects
         private readonly ISoundService _soundService;
         private readonly IPlayerService _playerService;
+        private readonly IGameplayService _gameplayService;
 
         private bool _jumpWasPressed;
         #endregion
@@ -33,6 +35,7 @@ namespace Mario.Game.Player
         {
             _soundService = ServiceLocator.Current.Get<ISoundService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
 
             Player = player;
         }
@@ -157,15 +160,11 @@ namespace Mario.Game.Player
         }
         protected virtual bool SetTransitionToBuff()
         {
-            if (Player.StateMachine.CurrentMode.StateBuff != null)
-                return Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateBuff);
-            else
-            {
-                _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
-                return false;
-            }
+            // SACAR ESTOY DE ACA ----------------------
+            Player.StartCoroutine(BuffCO());
+            return true;
         }
-        protected virtual bool SetTransitionToNerf() => Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
+        protected virtual bool SetTransitionToNerf() => false;//Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
         protected virtual bool SetTransitionToDeath()
         {
             if (!Player.IsInvincible)
@@ -229,6 +228,22 @@ namespace Mario.Game.Player
                 return true;
             }
             return false;
+        }
+        private IEnumerator BuffCO()
+        {
+            _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
+            var buffData = Player.StateMachine.CurrentMode.ModeProfile.Animators.Buff;
+            if (buffData.Animator != null)
+            {
+                Player.Animator.runtimeAnimatorController = buffData.Animator;
+                Player.Animator.Play(GetAnimatorState(), 0, 0);
+                _gameplayService.FreezeGame();
+                yield return new WaitForSeconds(buffData.FreezeTime);
+                _gameplayService.UnfreezeGame();
+                
+                if(_playerService.IsPlayerSmall())
+                    ChangeModeToBig(Player);
+            }
         }
         #endregion
 
