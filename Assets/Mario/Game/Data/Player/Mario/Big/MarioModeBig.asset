@@ -18,7 +18,7 @@ MonoBehaviour:
   _buff:
     _material: {fileID: 2100000, guid: b3929ec717f22bd428f030da2b066abf, type: 2}
     _freezeTime: 1
-    _soundFX: {fileID: 0}
+    _soundFX: {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
   _walk:
     _acceleration: 28
     _maxSpeed: 5.8
