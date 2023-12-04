@@ -10,14 +10,14 @@ namespace Mario.Game.ScriptableObjects.Player
         [SerializeField] private string _playerName;
         [SerializeField] private PlayerModes _modes;
         [SerializeField] private PlayerFireball _fireball;
-        [SerializeField] private ModeChange _buff;
-        [SerializeField] private ModeChange _nerf;
+        [SerializeField] private PlayerStarData _star;
+
 
         public string PlayerName => _playerName;
         public PlayerModes Modes => _modes;
         public PlayerFireball Fireball => _fireball;
-        public ModeChange Buff => _buff;
-        public ModeChange Nerf => _nerf;
+        public PlayerStarData Star => _star;
+
 
         [Serializable]
         public class PlayerFireball
@@ -40,9 +40,11 @@ namespace Mario.Game.ScriptableObjects.Player
             public PlayerModeProfile Super => _super;
         }
         [Serializable]
-        public class ModeChange
+        public class PlayerStarData
         {
+            [SerializeField] private Material _material;
             [SerializeField] private PooledSoundProfile _soundFX;
+            public Material Material => _material;
             public PooledSoundProfile SoundFX => _soundFX;
         }
     }

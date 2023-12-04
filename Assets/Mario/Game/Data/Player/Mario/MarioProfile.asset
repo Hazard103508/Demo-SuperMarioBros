@@ -20,9 +20,6 @@ MonoBehaviour:
   _fireball:
     _startLocalPosition: {x: 0.25, y: 1.25}
     _fireballPoolProfile: {fileID: 11400000, guid: d6799fe5b1422cd4f98744bb9dff65e3, type: 2}
-  _buff:
+  _star:
+    _material: {fileID: 2100000, guid: b3929ec717f22bd428f030da2b066abf, type: 2}
     _soundFX: {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
-    SoundFX: {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
-  _nerf:
-    _soundFX: {fileID: 11400000, guid: 74bda110af327014198ed99405fd392a, type: 2}
-    SoundFX: {fileID: 11400000, guid: 74bda110af327014198ed99405fd392a, type: 2}

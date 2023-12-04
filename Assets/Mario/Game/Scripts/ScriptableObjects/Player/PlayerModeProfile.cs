@@ -10,6 +10,7 @@ namespace Mario.Game.ScriptableObjects.Player
     public class PlayerModeProfile : ScriptableObject
     {
         [SerializeField] private PlayerSpriteData _default;
+        [SerializeField] private PlayerBuffData _buff;
         [SerializeField] private HorizontalMovement _walk;
         [SerializeField] private HorizontalMovement _run;
         [SerializeField] private VerticalMovement _fall;
@@ -17,9 +18,9 @@ namespace Mario.Game.ScriptableObjects.Player
         [SerializeField] private ModeRaycastRange _normalRaycastRange;
         [SerializeField] private ModeRaycastRange _duckingRaycastRange;
         [SerializeField] private ModeCollider _collider;
-        [SerializeField] private Material _starMaterial;
 
         public PlayerSpriteData Default => _default;
+        public PlayerBuffData Buff => _buff;
         public HorizontalMovement Walk => _walk;
         public HorizontalMovement Run => _run;
         public VerticalMovement Fall => _fall;
@@ -27,7 +28,6 @@ namespace Mario.Game.ScriptableObjects.Player
         public ModeRaycastRange NormalRaycastRange => _normalRaycastRange;
         public ModeRaycastRange DuckingRaycastRange => _duckingRaycastRange;
         public ModeCollider Collider => _collider;
-        public Material StarMaterial => _starMaterial;
 
 
         [Serializable]
@@ -38,6 +38,16 @@ namespace Mario.Game.ScriptableObjects.Player
 
             public RuntimeAnimatorController Animator => _animator;
             public Material Material => _material;
+        }
+        [Serializable]
+        public class PlayerBuffData
+        {
+            [SerializeField] private Material _material;
+            [SerializeField] private float _freezeTime;
+            [SerializeField] private PooledSoundProfile _soundFX;
+            public Material Material => _material;
+            public float FreezeTime => _freezeTime;
+            public PooledSoundProfile SoundFX => _soundFX;
         }
         [Serializable]
         public class HorizontalMovement

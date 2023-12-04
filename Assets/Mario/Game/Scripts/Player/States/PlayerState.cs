@@ -62,15 +62,15 @@ namespace Mario.Game.Player
         #region Public Methods
         public void OnSuperStarActivated()
         {
-            Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.StarMaterial;
-            _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
+            Player.Renderer.material = _playerService.PlayerProfile.Star.Material;
+            _soundService.Play(_playerService.PlayerProfile.Star.SoundFX);
             _gameplayService.ActivateStarman(() => Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.Default.Material);
         }
         public void OnTimeOut() => SetTransitionToTimeOut();
         public void OnTouchFlag() => SetTransitionToFlag();
+        public void OnBuff() => Player.StartCoroutine(BuffCO());
+        public void OnNerf() { } // -- completar
         public virtual void OnFall() { }
-        public virtual void OnBuff() { }
-        public virtual void OnNerf() { }
         public virtual void OnDeath() { }
         public virtual void OnBounceJump() => Player.Movable.SetJumpForce(Player.StateMachine.CurrentMode.ModeProfile.Jump.Bounce);
         public virtual void OnGameUnfrozen() => Player.Movable.enabled = true;
@@ -163,13 +163,6 @@ namespace Mario.Game.Player
 
             return false;
         }
-        protected virtual bool SetTransitionToBuff()
-        {
-            // SACAR ESTOY DE ACA ----------------------
-            Player.StartCoroutine(BuffCO());
-            return true;
-        }
-        protected virtual bool SetTransitionToNerf() => false;//Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateNerf);
         protected virtual bool SetTransitionToDeath()
         {
             if (!Player.IsInvincible)
@@ -238,30 +231,28 @@ namespace Mario.Game.Player
         }
         private IEnumerator BuffCO()
         {
-            // BORRAR CORRUTINA REDUNDANTE...
-            _soundService.Play(_playerService.PlayerProfile.Buff.SoundFX);
-            //yield return SetPlayerAnimator(Player.StateMachine.CurrentMode.ModeProfile.Animators.Buff);
-            yield return null;
+            _soundService.Play(Player.StateMachine.CurrentMode.ModeProfile.Buff.SoundFX);
+
+            var buffData = Player.StateMachine.CurrentMode.ModeProfile.Buff;
+            Player.Renderer.material = buffData.Material;
+
+            int currentState = Player.Animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
+            Player.Animator.CrossFade("Buff", 0);
+
+            if (buffData.FreezeTime > 0)
+            {
+                _gameplayService.FreezeGame();
+                yield return new WaitForSeconds(buffData.FreezeTime);
+                _gameplayService.UnfreezeGame();
+            }
+
+            Player.Animator.Play(currentState, 0);
 
             if (_playerService.IsPlayerSmall())
                 ChangeModeToBig(Player);
+            else
+                ChangeModeToSuper(Player);
         }
-        //private IEnumerator SetPlayerAnimator(PlayerAnimatorData playerAnimator)
-        //{
-        //    Player.Renderer.material = playerAnimator.Material;
-        //    if (playerAnimator.Animator != null)
-        //    {
-        //        Player.Animator.runtimeAnimatorController = playerAnimator.Animator;
-        //        Player.Animator.Play(GetAnimatorState(), 0, 0);
-        //
-        //        if (playerAnimator.FreezeTime > 0)
-        //        {
-        //            _gameplayService.FreezeGame();
-        //            yield return new WaitForSeconds(playerAnimator.FreezeTime);
-        //            _gameplayService.UnfreezeGame();
-        //        }
-        //    }
-        //}
         #endregion
 
         #region On Movable Hit

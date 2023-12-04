@@ -29,7 +29,7 @@ namespace Mario.Game.Player
         {
             base.Enter();
             Player.Movable.enabled = false;
-            _soundService.Play(_playerService.PlayerProfile.Nerf.SoundFX);
+            //_soundService.Play(_playerService.PlayerProfile.Nerf.SoundFX);
             _gameplayService.FreezeGame();
         }
         public override void Exit()
