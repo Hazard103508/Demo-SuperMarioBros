@@ -246,12 +246,12 @@ namespace Mario.Game.Player
                 _gameplayService.UnfreezeGame();
             }
 
-            Player.Animator.Play(currentState, 0);
-
             if (_playerService.IsPlayerSmall())
                 ChangeModeToBig(Player);
             else
                 ChangeModeToSuper(Player);
+
+            Player.Animator.Play(currentState, 0);
         }
         #endregion
 

@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PlayerFireBallMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 4446ca12aa581db4da644ec9cbffb2ee, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 24d4bd0fae1844f468ce12576328707a, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -94,6 +94,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _FPS: 16
     - _Fade: 1
     - _GlossMapScale: 1
     - _Glossiness: 0.5
