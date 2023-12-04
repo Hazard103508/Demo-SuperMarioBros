@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 551ef53d1e6b8624b8fb91a6906b1a14, type: 3}
   m_Name: MarioModeSuper
   m_EditorClassIdentifier: 
-  _animatorController: {fileID: 9100000, guid: 36ffea62a1536d64dbe67dbae9b3d487, type: 2}
+  _default:
+    _animator: {fileID: 22100000, guid: 1f1b0b8bfa58216439ab5fe14a13b15f, type: 2}
+    _material: {fileID: 2100000, guid: 097a441a626044546867e316c6d3ddde, type: 2}
+  _buff:
+    _material: {fileID: 0}
+    _freezeTime: 0
+    _soundFX: {fileID: 0}
   _walk:
     _acceleration: 28
     _maxSpeed: 5.8
