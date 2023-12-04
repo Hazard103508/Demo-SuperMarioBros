@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Interactable;
 using Mario.Game.Player;
 using UnityEngine;
@@ -8,27 +10,30 @@ namespace Mario.Game.Npc.Koopa
     {
         #region Objects
         private float _timer = 0;
+        private readonly IGameplayService _gameplayService;
         #endregion
 
         #region Constructor
         public KoopaStateWakingUp(Koopa koopa) : base(koopa)
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
         #region Private Methods
         private void OnHittedByPlayerFromSide(PlayerController player)
         {
+            if (_gameplayService.IsStarman)
+            {
+                Kill(player.transform.position);
+                return;
+            }
+
             if (_timer > 0.1f)
             {
                 Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateBouncing);
                 ChangeSpeedAfferHit(player.transform.position);
             }
-        }
-        private void KillKoopa(Vector3 hitPosition)
-        {
-            Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
-            ChangeSpeedAfferHit(hitPosition);
         }
         #endregion
 
@@ -58,15 +63,15 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Box Hit
-        public override void OnHittedByBox(GameObject box) => KillKoopa(box.transform.position);
+        public override void OnHittedByBox(GameObject box) => Kill(box.transform.position);
         #endregion
 
         #region On Koopa Hit
-        public override void OnHittedByKoppa(Koopa koopa) => KillKoopa(koopa.transform.position);
+        public override void OnHittedByKoppa(Koopa koopa) => Kill(koopa.transform.position);
         #endregion
 
         #region On Fireball Hit
-        public override void OnHittedByFireBall(Fireball fireball) => KillKoopa(fireball.transform.position);
+        public override void OnHittedByFireBall(Fireball fireball) => Kill(fireball.transform.position);
         #endregion
     }
 }

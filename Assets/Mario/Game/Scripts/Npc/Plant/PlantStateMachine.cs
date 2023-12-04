@@ -7,7 +7,6 @@ namespace Mario.Game.Npc.Plant
         #region Properties
         new public PlantState CurrentState => (PlantState)base.CurrentState;
         public PlantStateIdle StateIdle { get; private set; }
-        public PlantStateDead StateDead { get; private set; }
         public PlantStateRising StateRising { get; private set; }
         public PlantStateHiding StateHiding { get; private set; }
         public PlantStateHiden StateHiden { get; private set; }
@@ -19,7 +18,6 @@ namespace Mario.Game.Npc.Plant
         {
             StateRising = new PlantStateRising(plant);
             StateIdle = new PlantStateIdle(plant);
-            StateDead = new PlantStateDead(plant);
             StateHiding = new PlantStateHiding(plant);
             StateHiden = new PlantStateHiden(plant);
         }

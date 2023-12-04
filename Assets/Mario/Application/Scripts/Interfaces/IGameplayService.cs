@@ -10,6 +10,7 @@ namespace Mario.Application.Interfaces
         event Action GameFrozen;
         event Action GameUnfrozen;
 
+        bool IsStarman { get; }
         GameState State { get; set; }
 
         void SetNextMap(MapConnection connection);

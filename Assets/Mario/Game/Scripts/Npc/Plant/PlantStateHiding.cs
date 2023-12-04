@@ -41,16 +41,13 @@ namespace Mario.Game.Npc.Plant
         #endregion
 
         #region On Player Hit
-        public override void OnHittedByPlayerFromTop(PlayerController player) => player.Hit();
-        public override void OnHittedByPlayerFromLeft(PlayerController player) => player.Hit();
-        public override void OnHittedByPlayerFromRight(PlayerController player) => player.Hit();
+        public override void OnHittedByPlayerFromTop(PlayerController player) => player.Hit(Plant);
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => player.Hit(Plant);
+        public override void OnHittedByPlayerFromRight(PlayerController player) => player.Hit(Plant);
         #endregion
 
         #region On Fireball Hit
-        public override void OnHittedByFireBall(Fireball fireball)
-        {
-            Plant.StateMachine.TransitionTo(Plant.StateMachine.StateDead);
-        }
+        public override void OnHittedByFireBall(Fireball fireball) => Kill(fireball.transform.position);
         #endregion
     }
 }

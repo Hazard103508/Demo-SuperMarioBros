@@ -9,6 +9,7 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Npc.Koopa
 {
     public abstract class KoopaState :
+        IEnemy,
         IState,
         IHittableByMovingToLeft,
         IHittableByMovingToRight,
@@ -32,6 +33,11 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Public 
+        public void Kill(Vector3 hitPosition)
+        {
+            Koopa.StateMachine.TransitionTo(Koopa.StateMachine.StateDead);
+            ChangeSpeedAfferHit(hitPosition);
+        }
         public virtual void OnGameUnfrozen() => Koopa.Movable.enabled = true;
         public virtual void OnGameFrozen() => Koopa.Movable.enabled = false;
         public void ChangeDirection()

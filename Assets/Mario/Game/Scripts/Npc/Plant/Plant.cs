@@ -7,6 +7,7 @@ using UnityEngine;
 namespace Mario.Game.Npc.Plant
 {
     public class Plant : MonoBehaviour,
+        IEnemy,
         IHittableByPlayerFromTop,
         IHittableByPlayerFromLeft,
         IHittableByPlayerFromRight,
@@ -44,6 +45,7 @@ namespace Mario.Game.Npc.Plant
         #endregion
 
         #region Public Methods
+        public void Kill(Vector3 hitPosition) => this.StateMachine.CurrentState.Kill(hitPosition);
         public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 

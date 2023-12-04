@@ -24,7 +24,6 @@ namespace Mario.Application.Services
         private readonly int _pointsPerSecond = 50;
         private bool _isFlagReached;
         private bool _isHurry;
-        private bool _isStarman;
         private MapConnection _mapConnection;
         private Coroutine _starCO;
 
@@ -37,6 +36,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Properties
+        public bool IsStarman { get; private set; }
         public GameState State { get; set; }
         #endregion
 
@@ -124,7 +124,7 @@ namespace Mario.Application.Services
             _soundService.PlayTheme(_levelService.MapProfile.Music.HurryFX);
             yield return new WaitForSeconds(3.5f);
 
-            if (_isStarman)
+            if (IsStarman)
                 _soundService.PlayTheme(_levelService.MapProfile.Music.StarmanHurry);
             else
                 _soundService.PlayTheme(_levelService.MapProfile.Music.HurryTheme.Profile, _levelService.MapProfile.Music.HurryTheme.StartTimeInit);
@@ -195,16 +195,19 @@ namespace Mario.Application.Services
         }
         private IEnumerator ActivateStarmanCO(Action callback)
         {
-            _isStarman = true;
+            IsStarman = true;
             if (_isHurry)
                 _soundService.PlayTheme(_levelService.MapProfile.Music.StarmanHurry);
             else
                 _soundService.PlayTheme(_levelService.MapProfile.Music.Starman);
 
             yield return new WaitForSeconds(10);
-            _isStarman = false;
-            callback.Invoke();
-            PlayInitTheme();
+            if (State == GameState.Play)
+            {
+                IsStarman = false;
+                callback.Invoke();
+                PlayInitTheme();
+            }
         }
         #endregion
 
@@ -214,7 +217,7 @@ namespace Mario.Application.Services
             State = GameState.StandBy;
             _isFlagReached = false;
             _isHurry = false;
-            _isStarman = false;
+            IsStarman = false;
             _playerService.SetActivePlayer(false);
 
             if (_starCO != null)

@@ -80,8 +80,14 @@ namespace Mario.Game.Player
         public void Kill() => this.StateMachine.CurrentState.OnDeath();
         public void TimeOut() => this.StateMachine.CurrentState.OnTimeOut();
         public void TouchFlag() => this.StateMachine.CurrentState.OnTouchFlag();
-        public void Hit()
+        public void Hit(IEnemy npc)
         {
+            if (_gameplayService.IsStarman)
+            {
+                npc.Kill(transform.position);
+                return;
+            }
+
             if (StateMachine.CurrentMode == StateMachine.ModeSmall)
                 Kill();
             else

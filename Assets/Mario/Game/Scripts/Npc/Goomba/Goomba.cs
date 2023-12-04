@@ -11,6 +11,7 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Npc.Goomba
 {
     public class Goomba : MonoBehaviour,
+        IEnemy,
         IHittableByMovingToLeft,
         IHittableByMovingToRight,
         IHittableByPlayerFromTop,
@@ -71,6 +72,7 @@ namespace Mario.Game.Npc.Goomba
         #endregion
 
         #region Public Methods
+        public void Kill(Vector3 hitPosition) => this.StateMachine.CurrentState.Kill(hitPosition);
         public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 

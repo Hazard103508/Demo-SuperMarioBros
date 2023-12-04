@@ -1,3 +1,5 @@
+using Mario.Application.Interfaces;
+using Mario.Application.Services;
 using Mario.Game.Interactable;
 using Mario.Game.Player;
 using UnityEngine;
@@ -7,9 +9,14 @@ namespace Mario.Game.Npc.Goomba
 {
     public class GoombaStateWalk : GoombaState
     {
+        #region Objects
+        private IGameplayService _gameplayService;
+        #endregion
+
         #region Constructor
         public GoombaStateWalk(Goomba goomba) : base(goomba)
         {
+            _gameplayService = ServiceLocator.Current.Get<IGameplayService>();
         }
         #endregion
 
@@ -36,14 +43,6 @@ namespace Mario.Game.Npc.Goomba
         }
         #endregion
 
-        #region Private Methods
-        private void KillGoomba(Vector3 hitPosition)
-        {
-            Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateDead);
-            ChangeSpeedAfferHit(hitPosition);
-        }
-        #endregion
-
         #region On Movable Hit
         public override void OnHittedByMovingToLeft(RayHitInfo hitInfo)
         {
@@ -60,24 +59,29 @@ namespace Mario.Game.Npc.Goomba
         #region On Player Hit
         public override void OnHittedByPlayerFromTop(PlayerController player)
         {
-            Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateHit);
-            player.BounceJump();
+            if (_gameplayService.IsStarman)
+                Kill(player.transform.position);
+            else
+            {
+                Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateHit);
+                player.BounceJump();
+            }
         }
-        public override void OnHittedByPlayerFromLeft(PlayerController player) => player.Hit();
-        public override void OnHittedByPlayerFromRight(PlayerController player) => player.Hit();
-        public override void OnHittedByPlayerFromBottom(PlayerController player) => player.Hit();
+        public override void OnHittedByPlayerFromLeft(PlayerController player) => player.Hit(Goomba);
+        public override void OnHittedByPlayerFromRight(PlayerController player) => player.Hit(Goomba);
+        public override void OnHittedByPlayerFromBottom(PlayerController player) => player.Hit(Goomba);
         #endregion
 
         #region On Box Hit
-        public override void OnHittedByBox(GameObject box) => KillGoomba(box.transform.position);
+        public override void OnHittedByBox(GameObject box) => Kill(box.transform.position);
         #endregion
 
         #region On Koopa Hit
-        public override void OnHittedByKoppa(Koopa.Koopa koopa) => KillGoomba(koopa.transform.position);
+        public override void OnHittedByKoppa(Koopa.Koopa koopa) => Kill(koopa.transform.position);
         #endregion
 
         #region On Fireball Hit
-        public override void OnHittedByFireBall(Fireball fireball) => KillGoomba(fireball.transform.position);
+        public override void OnHittedByFireBall(Fireball fireball) => Kill(fireball.transform.position);
         #endregion
     }
 }

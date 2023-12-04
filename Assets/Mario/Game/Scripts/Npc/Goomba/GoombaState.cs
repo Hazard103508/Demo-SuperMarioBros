@@ -9,6 +9,7 @@ namespace Mario.Game.Npc.Goomba
 {
     public abstract class GoombaState :
         IState,
+        IEnemy,
         IHittableByMovingToLeft,
         IHittableByMovingToRight,
         IHittableByPlayerFromTop,
@@ -42,7 +43,12 @@ namespace Mario.Game.Npc.Goomba
         }
         #endregion
 
-        #region Protected Methods
+        #region Public Methods
+        public void Kill(Vector3 hitPosition)
+        {
+            Goomba.StateMachine.TransitionTo(Goomba.StateMachine.StateDead);
+            ChangeSpeedAfferHit(hitPosition);
+        }
         public virtual void OnGameUnfrozen() => Goomba.Movable.enabled = true;
         public virtual void OnGameFrozen() => Goomba.Movable.enabled = false;
         public void ChangeDirectionToRight()

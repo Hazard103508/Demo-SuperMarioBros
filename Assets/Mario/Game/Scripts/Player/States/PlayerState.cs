@@ -272,7 +272,7 @@ namespace Mario.Game.Player
         #endregion
 
         #region On Koopa Hit
-        public virtual void OnHittedByKoppa(Koopa koopa) => Player.Hit();
+        public virtual void OnHittedByKoppa(Koopa koopa) => Player.Hit(koopa);
         #endregion
     }
 }

@@ -11,6 +11,7 @@ using UnityShared.Commons.Structs;
 namespace Mario.Game.Npc.Koopa
 {
     public class Koopa : MonoBehaviour,
+        IEnemy,
         IHittableByMovingToLeft,
         IHittableByMovingToRight,
         IHittableByPlayerFromTop,
@@ -73,6 +74,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region Public Methods
+        public void Kill(Vector3 hitPosition) => this.StateMachine.CurrentState.Kill(hitPosition);
         public void OnOutOfScreen() => gameObject.SetActive(false);
         #endregion
 
