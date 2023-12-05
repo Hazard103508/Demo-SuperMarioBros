@@ -100,6 +100,8 @@ namespace Mario.Application.Services
             _bulletCount++;
         }
         public bool IsPlayerSmall() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeSmall);
+        public bool IsPlayerBig() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeBig);
+        public bool IsPlayerSuper() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeSuper);
         #endregion
     }
 }

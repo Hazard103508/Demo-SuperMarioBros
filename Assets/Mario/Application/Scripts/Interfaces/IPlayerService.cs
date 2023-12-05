@@ -30,5 +30,7 @@ namespace Mario.Application.Interfaces
         void ReturnFireball();
         void ShootFireball();
         bool IsPlayerSmall();
+        bool IsPlayerBig();
+        bool IsPlayerSuper();
     }
 }

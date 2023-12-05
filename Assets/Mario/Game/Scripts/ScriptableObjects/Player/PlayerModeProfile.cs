@@ -10,7 +10,8 @@ namespace Mario.Game.ScriptableObjects.Player
     public class PlayerModeProfile : ScriptableObject
     {
         [SerializeField] private PlayerSpriteData _default;
-        [SerializeField] private PlayerBuffData _buff;
+        [SerializeField] private PlayerChangeModeData _buff;
+        [SerializeField] private PlayerChangeModeData _nerf;
         [SerializeField] private HorizontalMovement _walk;
         [SerializeField] private HorizontalMovement _run;
         [SerializeField] private VerticalMovement _fall;
@@ -20,7 +21,8 @@ namespace Mario.Game.ScriptableObjects.Player
         [SerializeField] private ModeCollider _collider;
 
         public PlayerSpriteData Default => _default;
-        public PlayerBuffData Buff => _buff;
+        public PlayerChangeModeData Buff => _buff;
+        public PlayerChangeModeData Nerf => _nerf;
         public HorizontalMovement Walk => _walk;
         public HorizontalMovement Run => _run;
         public VerticalMovement Fall => _fall;
@@ -40,7 +42,7 @@ namespace Mario.Game.ScriptableObjects.Player
             public Material Material => _material;
         }
         [Serializable]
-        public class PlayerBuffData
+        public class PlayerChangeModeData
         {
             [SerializeField] private Material _material;
             [SerializeField] private float _freezeTime;
