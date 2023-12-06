@@ -59,6 +59,9 @@ namespace Mario.Game.Player
         }
         private void Update()
         {
+            if (_gameplayService.IsFrozen)
+                return;
+
             this.StateMachine.Update();
         }
         private void OnDestroy()

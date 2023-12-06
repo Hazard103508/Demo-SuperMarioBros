@@ -36,6 +36,7 @@ namespace Mario.Application.Services
         #endregion
 
         #region Properties
+        public bool IsFrozen { get; private set; }
         public bool IsStarman { get; private set; }
         public GameState State { get; set; }
         #endregion
@@ -74,6 +75,7 @@ namespace Mario.Application.Services
         public void SetCheckPoint(MapProfile mapProfile) => _levelService.SetMap(mapProfile);
         public void FreezeGame()
         {
+            IsFrozen = true;
             _timeService.FreezeTimer();
             GameFrozen?.Invoke();
         }
@@ -81,6 +83,7 @@ namespace Mario.Application.Services
         {
             _timeService.UnfreezeTimer();
             GameUnfrozen?.Invoke();
+            IsFrozen = false;
         }
         public void SetFlagReached()
         {

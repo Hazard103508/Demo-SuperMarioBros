@@ -5,6 +5,8 @@ using Mario.Game.Npc.Koopa;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 using UnityShared.Commons.Structs;
 using static Mario.Game.ScriptableObjects.Player.PlayerModeProfile;
@@ -209,7 +211,8 @@ namespace Mario.Game.Player
         private void ChangeMode(PlayerController player)
         {
             Player.Animator.runtimeAnimatorController = Player.StateMachine.CurrentMode.ModeProfile.Default.Animator;
-            Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.Default.Material;
+            if (!_gameplayService.IsStarman)
+                Player.Renderer.material = Player.StateMachine.CurrentMode.ModeProfile.Default.Material;
 
             player.Collider.offset = Player.StateMachine.CurrentMode.ModeProfile.Collider.Offset;
             player.Collider.size = Player.StateMachine.CurrentMode.ModeProfile.Collider.Size;
@@ -242,10 +245,15 @@ namespace Mario.Game.Player
             var buffData = Player.StateMachine.CurrentMode.ModeProfile.Buff;
 
             _soundService.Play(buffData.SoundFX);
-            Player.Renderer.material = buffData.Material;
+            if (!_gameplayService.IsStarman)
+                Player.Renderer.material = buffData.Material;
 
-            int currentState = Player.Animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
-            Player.Animator.CrossFade("Buff", 0);
+            var currentStateType = GetCurrentStateBaseType();
+             Player.Animator.speed = 1;
+            if (_playerService.IsPlayerSmall())
+            {
+                Player.Animator.CrossFade("Buff", 0);
+            }
 
             if (buffData.FreezeTime > 0)
             {
@@ -259,7 +267,7 @@ namespace Mario.Game.Player
             else
                 ChangeModeToSuper(Player);
 
-            Player.Animator.Play(currentState, 0);
+            SetStateByType(currentStateType);
         }
         private IEnumerator NerfCO()
         {
@@ -268,7 +276,8 @@ namespace Mario.Game.Player
             _soundService.Play(neftData.SoundFX);
             Player.Renderer.material = neftData.Material;
 
-            int currentState = Player.Animator.GetCurrentAnimatorStateInfo(0).shortNameHash;
+            var currentStateType = GetCurrentStateBaseType();
+            Player.Animator.speed = 1;
             Player.Animator.CrossFade("Nerf", 0);
 
             if (neftData.FreezeTime > 0)
@@ -279,8 +288,26 @@ namespace Mario.Game.Player
             }
 
             ChangeModeToSmall(Player);
-            Player.Animator.Play(currentState, 0);
+            SetStateByType(currentStateType);
             Player.SetInvincible();
+        }
+        private Type GetCurrentStateBaseType()
+        {
+            Type t = Player.StateMachine.CurrentState.GetType();
+            while (t.BaseType != typeof(PlayerState))
+                t = t.BaseType;
+
+            return t;
+        }
+        private void SetStateByType(Type stateType)
+        {
+            var properties = typeof(PlayerMode).GetProperties();
+            var stateProperty = properties.FirstOrDefault(state => state.PropertyType.IsAssignableFrom(stateType));
+            var targetState = (IState)stateProperty.GetValue(Player.StateMachine.CurrentMode);
+            if (targetState != null)
+                Player.StateMachine.TransitionTo(targetState);
+            else
+                SetStateByType(typeof(PlayerStateIdle));
         }
         #endregion
 
