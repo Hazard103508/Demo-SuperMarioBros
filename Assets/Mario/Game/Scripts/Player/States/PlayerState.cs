@@ -301,6 +301,9 @@ namespace Mario.Game.Player
         }
         private void SetStateByType(Type stateType)
         {
+            if (stateType == typeof(PlayerStateJump))
+                stateType = typeof(PlayerStateFall);
+
             var properties = typeof(PlayerMode).GetProperties();
             var stateProperty = properties.FirstOrDefault(state => state.PropertyType.IsAssignableFrom(stateType));
             var targetState = (IState)stateProperty.GetValue(Player.StateMachine.CurrentMode);
