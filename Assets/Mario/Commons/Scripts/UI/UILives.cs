@@ -21,6 +21,7 @@ namespace Mario.Commons.UI
             OnLivesChanged();
         }
         private void OnDestroy() => _playerService.LivesAdded -= OnLivesChanged;
+        private void OnEnable() => OnLivesChanged();
         #endregion
 
         #region Service Events		
