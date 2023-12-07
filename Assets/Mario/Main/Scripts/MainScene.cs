@@ -11,6 +11,7 @@ namespace Mario.Main
         private IScoreService _scoreService;
         private IPlayerService _playerService;
         private IInputService _inputService;
+        private ILevelService _levelService;
 
         private void Awake()
         {
@@ -19,6 +20,7 @@ namespace Mario.Main
             _scoreService = ServiceLocator.Current.Get<IScoreService>();
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _inputService = ServiceLocator.Current.Get<IInputService>();
+            _levelService = ServiceLocator.Current.Get<ILevelService>();
 
             _inputService.UseUIMap();
         }
@@ -39,6 +41,7 @@ namespace Mario.Main
             _coinService.Reset();
             _playerService.Reset();
             _scoreService.Reset();
+            _levelService.Reset();
         }
 
         private void InputService_StartPressed() => _sceneService.LoadGameScene();

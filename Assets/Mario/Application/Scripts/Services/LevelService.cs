@@ -45,7 +45,7 @@ namespace Mario.Application.Services
             foreach (var map in _worldProfiles)
                 _worldProfilesDic.Add(map.name, map);
 
-            MapProfile = _worldProfiles[0];
+            Reset();
         }
         public void Dispose()
         {
@@ -77,6 +77,11 @@ namespace Mario.Application.Services
                 MapProfile = _worldProfilesDic[_nextMap];
         }
         public void SetMap(MapProfile mapProfile) => _nextMap = mapProfile.name;
+        public void Reset()
+        {
+            _nextMap = null;
+            MapProfile = _worldProfiles[0];
+        }
         #endregion
 
         #region Private Methods
