@@ -5,6 +5,7 @@ using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Application.Services
@@ -102,6 +103,11 @@ namespace Mario.Application.Services
         public bool IsPlayerSmall() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeSmall);
         public bool IsPlayerBig() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeBig);
         public bool IsPlayerSuper() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeSuper);
+        public bool IsPlayerNearX(float x, float distance)
+        {
+            var difPos = Math.Abs(x - _playerController.transform.position.x);
+            return difPos < distance;
+        }
         #endregion
     }
 }
