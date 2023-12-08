@@ -1145,10 +1145,10 @@ MonoBehaviour:
   m_YDamping: 1
   m_ZDamping: 1
   m_TargetMovementOnly: 0
-  m_ScreenX: 0.1
+  m_ScreenX: 0.35
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0.4
+  m_DeadZoneWidth: 0.2
   m_DeadZoneHeight: 1
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
@@ -1178,11 +1178,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1057324704649230136, guid: 37fa525e06bb9c44daa655c7622e480a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.5
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 1057324704649230136, guid: 37fa525e06bb9c44daa655c7622e480a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1057324704649230136, guid: 37fa525e06bb9c44daa655c7622e480a, type: 3}
       propertyPath: m_LocalPosition.z
