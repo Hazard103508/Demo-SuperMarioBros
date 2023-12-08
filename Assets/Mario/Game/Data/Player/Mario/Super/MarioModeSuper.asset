@@ -18,7 +18,7 @@ MonoBehaviour:
   _buff:
     _material: {fileID: 0}
     _freezeTime: 0
-    _soundFX: {fileID: 0}
+    _soundFX: {fileID: 11400000, guid: 077f820945a7f1d4e937e876fbb04af1, type: 2}
   _nerf:
     _material: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     _freezeTime: 0.8

@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
+using Mario.Game.Commons;
 using Mario.Game.Player;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,7 @@ namespace Mario.Game.Maps
         private IPlayerService _playerService;
         private IInputService _inputService;
 
+        [SerializeField] private LockCameraX _lockCameraX;
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private Image _loadingCover;
         [SerializeField] private GameObject _standBy;
@@ -28,28 +30,24 @@ namespace Mario.Game.Maps
             _playerService = ServiceLocator.Current.Get<IPlayerService>();
             _inputService = ServiceLocator.Current.Get<IInputService>();
 
+            _inputService.PausePressed += InputService_PausePressed;
+            _levelService.StartLoading += OnLevelStartLoading;
+            _levelService.LoadCompleted += OnLevelLoadCompleted;
+
             _playerService.SetPlayer(_playerController);
             _levelService.LoadLevel(true);
             _inputService.UseGameplayMap();
         }
         private void OnDestroy()
         {
+            _inputService.PausePressed -= InputService_PausePressed;
+            _levelService.StartLoading -= OnLevelStartLoading;
+            _levelService.LoadCompleted -= OnLevelLoadCompleted;
+
             _levelService.UnloadLevel();
 
             if (_loadingCover != null && _loadingCover.gameObject != null)
                 _loadingCover.gameObject.SetActive(true);
-        }
-        private void OnEnable()
-        {
-            _inputService.PausePressed += InputService_PausePressed;
-            _levelService.StartLoading += OnLevelStartLoading;
-            _levelService.LoadCompleted += OnLevelLoadCompleted;
-        }
-        private void OnDisable()
-        {
-            _inputService.PausePressed -= InputService_PausePressed;
-            _levelService.StartLoading -= OnLevelStartLoading;
-            _levelService.LoadCompleted -= OnLevelLoadCompleted;
         }
         #endregion
 
@@ -65,6 +63,10 @@ namespace Mario.Game.Maps
         {
             _standBy.gameObject.SetActive(arg.ShowStandby);
             _loadingCover.gameObject.SetActive(true);
+
+            float _min = 8.08f;
+            float _max = Mathf.Max(_min, _levelService.MapProfile.Width - _min);
+            _lockCameraX.XPosition = new UnityShared.Commons.Structs.RangeNumber<float>(_min, _max);
         }
         private void OnLevelLoadCompleted()
         {
