@@ -222,6 +222,7 @@ namespace Mario.Application.Services
             _isHurry = false;
             IsStarman = false;
             _playerService.SetActivePlayer(false);
+            _playerService.SetPlayerPosition(Vector3.zero);
 
             if (_starCO != null)
                 StopCoroutine(_starCO);

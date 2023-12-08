@@ -22,6 +22,9 @@ namespace Mario.Game.Commons
                 var pos = state.RawPosition;
                 pos.x = Mathf.Clamp(pos.x, XPosition.Min, XPosition.Max);
                 state.RawPosition = pos;
+
+                if(pos.x > XPosition.Min)
+                    XPosition.Min = pos.x;
             }
         }
     }
