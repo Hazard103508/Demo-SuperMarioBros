@@ -70,16 +70,8 @@ namespace Mario.Game.Player
         }
         public void OnTimeOut() => SetTransitionToTimeOut();
         public void OnTouchFlag() => SetTransitionToFlag();
-        public void OnBuff()
-        {
-            if (!_playerService.IsPlayerSuper())
-                Player.StartCoroutine(BuffCO());
-        }
-        public void OnNerf()
-        {
-            if (!_playerService.IsPlayerSmall())
-                Player.StartCoroutine(NerfCO());
-        }
+        public void OnBuff() => Player.StartCoroutine(BuffCO());
+        public void OnNerf() => Player.StartCoroutine(NerfCO());
         public void OnBounceJump() => Player.Movable.SetJumpForce(Player.StateMachine.CurrentMode.ModeProfile.Jump.Bounce);
         public void OnGameUnfrozen() => Player.Movable.enabled = true;
         public void OnGameFrozen() => Player.Movable.enabled = false;
@@ -245,51 +237,59 @@ namespace Mario.Game.Player
             var buffData = Player.StateMachine.CurrentMode.ModeProfile.Buff;
 
             _soundService.Play(buffData.SoundFX);
-            if (!_gameplayService.IsStarman)
-                Player.Renderer.material = buffData.Material;
 
-            var currentStateType = GetCurrentStateBaseType();
-             Player.Animator.speed = 1;
-            if (_playerService.IsPlayerSmall())
+            if (!_playerService.IsPlayerSuper())
             {
-                Player.Animator.CrossFade("Buff", 0);
+                if (!_gameplayService.IsStarman)
+                    Player.Renderer.material = buffData.Material;
+
+                var currentStateType = GetCurrentStateBaseType();
+                Player.Animator.speed = 1;
+                if (_playerService.IsPlayerSmall())
+                {
+                    Player.Animator.CrossFade("Buff", 0);
+                }
+
+                if (buffData.FreezeTime > 0)
+                {
+                    _gameplayService.FreezeGame();
+                    yield return new WaitForSeconds(buffData.FreezeTime);
+                    _gameplayService.UnfreezeGame();
+                }
+
+                if (_playerService.IsPlayerSmall())
+                    ChangeModeToBig(Player);
+                else
+                    ChangeModeToSuper(Player);
+
+                SetStateByType(currentStateType);
             }
-
-            if (buffData.FreezeTime > 0)
-            {
-                _gameplayService.FreezeGame();
-                yield return new WaitForSeconds(buffData.FreezeTime);
-                _gameplayService.UnfreezeGame();
-            }
-
-            if (_playerService.IsPlayerSmall())
-                ChangeModeToBig(Player);
-            else
-                ChangeModeToSuper(Player);
-
-            SetStateByType(currentStateType);
         }
         private IEnumerator NerfCO()
         {
-            var neftData = Player.StateMachine.CurrentMode.ModeProfile.Nerf;
-
-            _soundService.Play(neftData.SoundFX);
-            Player.Renderer.material = neftData.Material;
-
-            var currentStateType = GetCurrentStateBaseType();
-            Player.Animator.speed = 1;
-            Player.Animator.CrossFade("Nerf", 0);
-
-            if (neftData.FreezeTime > 0)
+            if (!_playerService.IsPlayerSmall())
             {
-                _gameplayService.FreezeGame();
-                yield return new WaitForSeconds(neftData.FreezeTime);
-                _gameplayService.UnfreezeGame();
-            }
+                var neftData = Player.StateMachine.CurrentMode.ModeProfile.Nerf;
 
-            ChangeModeToSmall(Player);
-            SetStateByType(currentStateType);
-            Player.SetInvincible();
+                _soundService.Play(neftData.SoundFX);
+
+                Player.Renderer.material = neftData.Material;
+
+                var currentStateType = GetCurrentStateBaseType();
+                Player.Animator.speed = 1;
+                Player.Animator.CrossFade("Nerf", 0);
+
+                if (neftData.FreezeTime > 0)
+                {
+                    _gameplayService.FreezeGame();
+                    yield return new WaitForSeconds(neftData.FreezeTime);
+                    _gameplayService.UnfreezeGame();
+                }
+
+                ChangeModeToSmall(Player);
+                SetStateByType(currentStateType);
+                Player.SetInvincible();
+            }
         }
         private Type GetCurrentStateBaseType()
         {

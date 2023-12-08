@@ -48,7 +48,7 @@ namespace UnityShared.Behaviours.Controllers.Cameras
                 top = camera.ScreenToWorldPoint(Vector3.up * (Screen.height - pixelMargins.top)).y,
             };
         }
-        private void LateUpdate()
+        private void Update()
         {
             MoveCamera(Time.deltaTime * 8);
         }
