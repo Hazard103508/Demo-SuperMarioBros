@@ -52,7 +52,7 @@ namespace Mario.Game.Interactable
             _soundService.Play(_profile.SoundFXPoolReference);
             yield return OnMovePlayer(player);
 
-            player.transform.position = new Vector3(player.transform.position.x, Mathf.Round(player.transform.position.y), player.transform.position.z);
+            player.transform.position = Vector3.zero;
             _gameplayService.SetNextMap(_profile.Connection);
             _levelService.LoadLevel(false);
         }
