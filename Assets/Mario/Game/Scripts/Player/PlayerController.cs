@@ -111,6 +111,7 @@ namespace Mario.Game.Player
                 StopCoroutine(_invincibleCO);
                 Renderer.color = Color.white;
             }
+            CurrentAnimationKey = PlayerAnimator.PlayerAnimationKeys.Run1;
         }
         private IEnumerator SetInvincibleCO()
         {

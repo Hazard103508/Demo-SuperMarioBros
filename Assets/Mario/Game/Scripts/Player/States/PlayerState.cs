@@ -244,7 +244,7 @@ namespace Mario.Game.Player
                     Player.Renderer.material = buffData.Material;
 
                 var currentStateType = GetCurrentStateBaseType();
-                Player.Animator.speed = 1;
+                Player.Animator.speed = _playerService.IsPlayerSmall() ? 1 : 0;
                 if (_playerService.IsPlayerSmall())
                 {
                     Player.Animator.CrossFade("Buff", 0);
@@ -256,6 +256,7 @@ namespace Mario.Game.Player
                     yield return new WaitForSeconds(buffData.FreezeTime);
                     _gameplayService.UnfreezeGame();
                 }
+                Player.Animator.speed = 1;
 
                 if (_playerService.IsPlayerSmall())
                     ChangeModeToBig(Player);
