@@ -2,7 +2,7 @@ using Mario.Commons.ScriptableObjects;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Mario.Commons
+namespace Mario.Commons.Testing
 {
     public class GameEventListener : MonoBehaviour
     {
