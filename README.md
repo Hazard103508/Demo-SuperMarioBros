@@ -1,4 +1,6 @@
 # SuperMarioBros
+"Super Mario Bros" originally from Nintendo Entertainment system developed in Unity
+
 This project was made for learning without any commercial purposes.
 
 All assets belong to Nintendo
