@@ -1,6 +1,6 @@
+using Mario.Commons.Structs;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes.Box
 {

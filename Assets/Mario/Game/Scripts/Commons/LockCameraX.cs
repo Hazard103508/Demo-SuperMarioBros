@@ -1,6 +1,6 @@
 using UnityEngine;
 using Cinemachine;
-using UnityShared.Commons.Structs;
+using Mario.Commons.Structs;
 
 namespace Mario.Game.Commons
 {

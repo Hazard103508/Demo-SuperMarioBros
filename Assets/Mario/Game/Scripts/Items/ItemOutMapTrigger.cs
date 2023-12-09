@@ -1,7 +1,7 @@
+using Mario.Commons.Structs;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items
 {

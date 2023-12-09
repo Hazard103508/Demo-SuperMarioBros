@@ -1,8 +1,8 @@
+using Mario.Commons.ScriptableObjects;
+using Mario.Commons.Structs;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
 using UnityEngine;
-using UnityShared.Commons.Structs;
-using UnityShared.ScriptableObjects.GameObjects;
 
 namespace Mario.Game.ScriptableObjects.Player
 {

@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
+using Mario.Commons.Structs;
 using Mario.Game.Interfaces;
 using Mario.Game.Npc.Koopa;
 using System;
@@ -8,7 +9,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 using static Mario.Game.ScriptableObjects.Player.PlayerModeProfile;
 
 namespace Mario.Game.Player

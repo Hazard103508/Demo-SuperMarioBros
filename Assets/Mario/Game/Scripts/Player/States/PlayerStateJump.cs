@@ -1,7 +1,8 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
+using Mario.Commons.Helpers;
+using Mario.Commons.Structs;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Player
 {
@@ -41,7 +42,7 @@ namespace Mario.Game.Player
         #region Private Methods
         private void Jump()
         {
-            var jumpHeight = UnityShared.Helpers.MathEquations.Trajectory.GetHeight(_jumpForce, -Player.Movable.Gravity);
+            var jumpHeight = MathEquations.Trajectory.GetHeight(_jumpForce, -Player.Movable.Gravity);
             var jumpedHeight = Player.transform.position.y - _initYPos;
             var currentJump = jumpHeight + jumpedHeight;
             if (currentJump < _maxHeight)
@@ -63,7 +64,7 @@ namespace Mario.Game.Player
             _maxHeight = GetMaxHeight();
 
             float minHeight = Player.InputActions.Move == 0 ? Player.StateMachine.CurrentMode.ModeProfile.Jump.WalkHeight.Min : Player.StateMachine.CurrentMode.ModeProfile.Jump.RunHeight.Min;
-            _jumpForce = UnityShared.Helpers.MathEquations.Trajectory.GetVelocity(minHeight, -Player.Movable.Gravity);
+            _jumpForce = MathEquations.Trajectory.GetVelocity(minHeight, -Player.Movable.Gravity);
 
             if (Player.Movable.JumpForce == 0)
                 _soundService.Play(Player.StateMachine.CurrentMode.ModeProfile.Jump.SoundFX, Player.transform.position);

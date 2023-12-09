@@ -1,8 +1,6 @@
-using Mario.Application.Interfaces;
-using Mario.Application.Services;
+using Mario.Commons.Structs;
 using Mario.Game.Player;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items.Star
 {

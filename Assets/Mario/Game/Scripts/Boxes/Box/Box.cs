@@ -1,9 +1,9 @@
+using Mario.Commons.Structs;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Boxes;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Boxes.Box
 {

@@ -1,5 +1,5 @@
+using Mario.Commons.Structs;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Items.Mushroom
 {

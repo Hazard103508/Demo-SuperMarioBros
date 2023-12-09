@@ -1,8 +1,8 @@
+using Mario.Commons.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityShared.Extensions.CSharp;
 
 namespace Mario.Game.Interactable
 {

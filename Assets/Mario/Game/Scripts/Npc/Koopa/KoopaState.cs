@@ -1,10 +1,10 @@
+using Mario.Commons.Structs;
 using Mario.Game.Interactable;
 using Mario.Game.Interfaces;
 using Mario.Game.Player;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Npc.Koopa
 {

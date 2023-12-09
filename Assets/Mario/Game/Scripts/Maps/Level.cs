@@ -1,5 +1,6 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
+using Mario.Commons.Structs;
 using Mario.Game.Commons;
 using Mario.Game.Player;
 using UnityEngine;
@@ -77,7 +78,7 @@ namespace Mario.Game.Maps
 
             float _min = 8f;
             float _max = Mathf.Max(_min, map.Width - _min);
-            _lockCameraX.XPosition = new UnityShared.Commons.Structs.RangeNumber<float>(_min, _max);
+            _lockCameraX.XPosition = new RangeNumber<float>(_min, _max);
         }
         #endregion
     }

@@ -1,4 +1,4 @@
-using UnityShared.Commons.Structs;
+using Mario.Commons.Structs;
 
 namespace Mario.Game.Player
 {

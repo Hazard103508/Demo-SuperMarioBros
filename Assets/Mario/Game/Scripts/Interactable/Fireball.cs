@@ -1,11 +1,11 @@
 using Mario.Application.Interfaces;
 using Mario.Application.Services;
+using Mario.Commons.Structs;
 using Mario.Game.Commons;
 using Mario.Game.Interfaces;
 using Mario.Game.ScriptableObjects.Interactable;
 using System.Linq;
 using UnityEngine;
-using UnityShared.Commons.Structs;
 
 namespace Mario.Game.Interactable
 {
