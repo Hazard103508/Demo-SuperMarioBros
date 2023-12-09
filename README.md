@@ -8,7 +8,7 @@ All assets belong to Nintendo
 * Level 1-1
 * Level 1-2
 
+This code is free to use, but as the owner I am not responsible for its final use by third parties.
+
 * Sprint Z
 * Jump X
-
-This code is free to use, but as the owner I am not responsible for its final use by third parties.
