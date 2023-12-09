@@ -2,4 +2,4 @@
 This project was made for learning without any commercial purposes.
 All assets belong to Nintendo
 
-Este código es de uso gratuito, pero como propietario no me responsabilizo del uso final por parte de terceros.
+This code is free to use, but as the owner I am not responsible for its final use by third parties.
