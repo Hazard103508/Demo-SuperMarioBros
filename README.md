@@ -5,9 +5,8 @@ This project was made for learning without any commercial purposes.
 
 All assets belong to Nintendo
 
-Level 1-1
-
-Level 1-2
+* Level 1-1
+* Level 1-2
 
 * Sprint Z
 * Jump X
