@@ -54,12 +54,20 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 549e49d1eec348a41a8d8c5b7f58be87, type: 2}
     - target: {fileID: 4463018068206923581, guid: 653d47440689e674e9f50b1353a8602a, type: 3}
       propertyPath: m_Name
-      value: CoinShadowBlack Variant
+      value: CoinShadowBlack
       objectReference: {fileID: 0}
     - target: {fileID: 7454247646606119182, guid: 653d47440689e674e9f50b1353a8602a, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -861398466, guid: 5ac8ee2ab88d137489962757303ff419, type: 3}
+    - target: {fileID: 7454247646606119182, guid: 653d47440689e674e9f50b1353a8602a, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7454247646606119182, guid: 653d47440689e674e9f50b1353a8602a, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1559953691
+      objectReference: {fileID: 0}
     - target: {fileID: 7454247646606119182, guid: 653d47440689e674e9f50b1353a8602a, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
