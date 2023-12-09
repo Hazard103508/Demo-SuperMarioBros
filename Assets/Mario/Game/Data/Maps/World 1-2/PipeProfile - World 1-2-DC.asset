@@ -17,3 +17,4 @@ MonoBehaviour:
     _mapProfile: {fileID: 11400000, guid: 6ccc7981e47261a48bd834669fe8c6b9, type: 2}
     _startMode: 1
     _startPosition: {x: 19.5, y: 2}
+    _cameraPositionX: 16

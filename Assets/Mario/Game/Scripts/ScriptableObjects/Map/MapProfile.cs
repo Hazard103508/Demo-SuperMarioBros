@@ -35,9 +35,11 @@ namespace Mario.Game.ScriptableObjects.Map
         [SerializeField] private MapProfile _mapProfile;
         [SerializeField] private PlayerStartMode _startMode;
         [SerializeField] private Vector2 _startPosition;
+        [SerializeField] private float _cameraPositionX;
 
         public MapProfile MapProfile => _mapProfile;
         public PlayerStartMode StartMode => _startMode;
         public Vector2 StartPosition => _startPosition;
+        public float CameraPositionX => _cameraPositionX;
     }
 }

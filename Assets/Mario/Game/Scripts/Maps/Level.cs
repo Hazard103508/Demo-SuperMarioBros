@@ -63,20 +63,20 @@ namespace Mario.Game.Maps
         {
             _standBy.gameObject.SetActive(arg.ShowStandby);
             _loadingCover.gameObject.SetActive(true);
-
-            CenterCamera(0);
         }
         private void OnLevelLoadCompleted()
         {
             _standBy.gameObject.SetActive(false);
             _loadingCover.gameObject.SetActive(false);
 
-            CenterCamera(_levelService.MapProfile.Width);
+            CenterCamera();
         }
-        private void CenterCamera(int mapProfileWidth)
+        private void CenterCamera()
         {
+            var map = _levelService.MapProfile;
+
             float _min = 8f;
-            float _max = Mathf.Max(_min, mapProfileWidth - _min);
+            float _max = Mathf.Max(_min, map.Width - _min);
             _lockCameraX.XPosition = new UnityShared.Commons.Structs.RangeNumber<float>(_min, _max);
         }
         #endregion

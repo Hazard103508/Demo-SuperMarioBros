@@ -1,4 +1,5 @@
 using Mario.Application.Interfaces;
+using Mario.Game.Commons;
 using Mario.Game.Enums;
 using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
@@ -140,9 +141,16 @@ namespace Mario.Application.Services
                 _timeService.ResetTimer();
             }
 
+            var camera = Camera.main;
+            var virtualCamera = camera.transform.Find("Virtual Camera");
+            virtualCamera.gameObject.SetActive(false);
+            float cameraXPosition = (_mapConnection != null ? _mapConnection.CameraPositionX : 0) + 8;
+            camera.transform.position = new Vector3(cameraXPosition, camera.transform.position.y, camera.transform.position.z);
+
             _playerService.EnablePlayerCollision(true);
             _playerService.SetPlayerPosition(_mapConnection != null ? _mapConnection.StartPosition : _levelService.MapProfile.StartPosition);
             yield return ShowCustomIntroPosition();
+            virtualCamera.gameObject.SetActive(true);
 
             _playerService.EnableInputs(true);
             _playerService.EnableAutoWalk(_levelService.MapProfile.Autowalk);
