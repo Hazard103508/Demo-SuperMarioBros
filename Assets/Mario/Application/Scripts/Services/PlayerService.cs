@@ -5,7 +5,6 @@ using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Player;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mario.Application.Services

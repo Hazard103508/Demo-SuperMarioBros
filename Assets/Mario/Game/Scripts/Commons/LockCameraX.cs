@@ -1,6 +1,6 @@
-using UnityEngine;
 using Cinemachine;
 using Mario.Commons.Structs;
+using UnityEngine;
 
 namespace Mario.Game.Commons
 {
@@ -23,7 +23,7 @@ namespace Mario.Game.Commons
                 pos.x = Mathf.Clamp(pos.x, XPosition.Min, XPosition.Max);
                 state.RawPosition = pos;
 
-                if(pos.x > XPosition.Min)
+                if (pos.x > XPosition.Min)
                     XPosition.Min = pos.x;
             }
         }

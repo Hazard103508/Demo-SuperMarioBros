@@ -1,4 +1,3 @@
-using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using System;
 using static Mario.Application.Services.GameplayService;

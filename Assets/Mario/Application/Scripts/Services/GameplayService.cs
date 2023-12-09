@@ -1,7 +1,5 @@
 using Mario.Application.Interfaces;
-using Mario.Game.Commons;
 using Mario.Game.Enums;
-using Mario.Game.Player;
 using Mario.Game.ScriptableObjects.Map;
 using Mario.Game.ScriptableObjects.Pool;
 using System;
