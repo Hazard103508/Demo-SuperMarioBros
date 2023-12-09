@@ -34,5 +34,6 @@ namespace Mario.Application.Interfaces
         bool IsPlayerBig();
         bool IsPlayerSuper();
         bool IsPlayerNearX(float x, float distance);
+        bool IsStateJumping();
     }
 }

@@ -109,6 +109,7 @@ namespace Mario.Application.Services
             var difPos = Math.Abs(x - _playerController.transform.position.x);
             return difPos < distance;
         }
+        public bool IsStateJumping() => _playerController.StateMachine.CurrentState is PlayerStateJump;
         #endregion
     }
 }
