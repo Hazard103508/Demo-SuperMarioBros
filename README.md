@@ -1,4 +1,4 @@
-# Demo-SuperMarioBros
+# SuperMarioBros
 This project was made for learning without any commercial purposes.
 All assets belong to Nintendo
 
