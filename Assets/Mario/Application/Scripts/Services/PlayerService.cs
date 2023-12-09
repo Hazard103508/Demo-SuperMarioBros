@@ -78,6 +78,7 @@ namespace Mario.Application.Services
             Lives = 3;
         }
         public void ReturnFireball() => _bulletCount--;
+        public bool CanShootFireball() => _bulletCount < 2;
         public void ShootFireball()
         {
             if (_bulletCount >= 2)
@@ -98,6 +99,7 @@ namespace Mario.Application.Services
 
             fireBall.Movable.enabled = true;
             _bulletCount++;
+            return;
         }
         public bool IsPlayerSmall() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeSmall);
         public bool IsPlayerBig() => _playerController.StateMachine.CurrentMode.Equals(_playerController.StateMachine.ModeBig);

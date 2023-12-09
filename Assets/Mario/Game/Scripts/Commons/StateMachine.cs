@@ -6,6 +6,7 @@ namespace Mario.Game.Commons
     public abstract class StateMachine
     {
         #region Objects
+        private IState _previousState;
         private IState _nextState;
         #endregion
 
@@ -36,6 +37,8 @@ namespace Mario.Game.Commons
             _nextState = nextState;
             return true;
         }
+        public bool TransitionToPreviousState() => TransitionTo(_previousState);
+        public Type GetPreviousStateType() => _previousState.GetType();
         public void Update()
         {
             if (CurrentState != null && _nextState == null)
@@ -51,6 +54,7 @@ namespace Mario.Game.Commons
             if (_nextState != null)
             {
                 CurrentState.Exit();
+                _previousState = CurrentState;
                 CurrentState = _nextState;
                 _nextState.Enter();
 

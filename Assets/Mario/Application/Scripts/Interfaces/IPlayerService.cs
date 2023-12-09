@@ -28,6 +28,7 @@ namespace Mario.Application.Interfaces
         void RemoveLife();
         void Reset();
         void ReturnFireball();
+        bool CanShootFireball();
         void ShootFireball();
         bool IsPlayerSmall();
         bool IsPlayerBig();

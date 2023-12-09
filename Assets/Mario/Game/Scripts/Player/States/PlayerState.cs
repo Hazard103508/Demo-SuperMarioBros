@@ -108,8 +108,11 @@ namespace Mario.Game.Player
         protected void SetRaycastNormal() => SetRaycast(Player.StateMachine.CurrentMode.ModeProfile.NormalRaycastRange);
         protected virtual void ShootFireball()
         {
-            if (Player.InputActions.Fire && Player.StateMachine.CurrentMode.Equals(Player.StateMachine.ModeSuper))
-                _playerService.ShootFireball();
+            if (Player.InputActions.Fire && _playerService.IsPlayerSuper())
+            {
+                if(_playerService.CanShootFireball())
+                    Player.StateMachine.TransitionTo(Player.StateMachine.CurrentMode.StateFire);
+            }
         }
         protected virtual string GetAnimatorState() => string.Empty;
         protected virtual void SetSpriteDirection() => Player.Renderer.flipX = Player.Movable.Speed < 0;
