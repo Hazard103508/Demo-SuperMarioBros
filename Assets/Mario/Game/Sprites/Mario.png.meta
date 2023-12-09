@@ -408,7 +408,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -429,7 +429,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -450,7 +450,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -471,7 +471,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -492,7 +492,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -513,7 +513,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -534,7 +534,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -555,7 +555,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -576,7 +576,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 320
+        y: 64
         width: 16
         height: 16
       alignment: 7
@@ -597,7 +597,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -618,7 +618,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -639,7 +639,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -660,7 +660,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -681,7 +681,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -702,7 +702,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 80
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -723,7 +723,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 96
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -744,7 +744,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 112
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -765,7 +765,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -786,7 +786,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 144
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -807,7 +807,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 160
-        y: 288
+        y: 32
         width: 16
         height: 32
       alignment: 7
@@ -824,85 +824,106 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mario_52
+      name: Mario_10
       rect:
         serializedVersion: 2
         x: 16
-        y: 128
+        y: 0
         width: 16
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d10dd926d68f094d8f5f663fde94a1a
-      internalID: 1451525951
+      spriteID: e6196b5b32916d642b7cd67e24dd8cad
+      internalID: 365423674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mario_53
+      name: Mario_11
       rect:
         serializedVersion: 2
         x: 32
-        y: 128
+        y: 0
         width: 16
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9710b9265f115314fb3d5a6f65b28361
-      internalID: -682159563
+      spriteID: e58b6e57191c87845935efce3ef686ce
+      internalID: 603249684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mario_54
+      name: Mario_12
       rect:
         serializedVersion: 2
         x: 48
-        y: 128
+        y: 0
         width: 16
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a746f3a38c607043898d66db300b486
-      internalID: 42413104
+      spriteID: 2043c6c8ff7d3e44cb263bd997bcf91d
+      internalID: 643307246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mario_55
+      name: Mario_13
       rect:
         serializedVersion: 2
-        x: 128
-        y: 128
+        x: 112
+        y: 0
         width: 16
         height: 32
-      alignment: 5
-      pivot: {x: 1, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd4b6c2505704ee4d80f543a300b5108
-      internalID: -1951760223
+      spriteID: 8a173f74dc0e55549a3501fe007157f0
+      internalID: -986314831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Mario_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83bb4587cd52d1b4f93fe880b3e721e5
+      internalID: -1169620793
       vertices: []
       indices: 
       edges: []
