@@ -49,10 +49,14 @@ namespace Mario.Game.Items.Star
         }
         private void OnEnable()
         {
+            if (this.StateMachine.CurrentState == this.StateMachine.StateRising)
+                this.StateMachine.CurrentState.Enter();
+            else
+                this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+
             _gameplayService.GameFrozen += GameplayService_GameFrozen;
             _gameplayService.GameUnfrozen += GameplayService_GameUnfrozen;
-
-            this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+            
             Movable.Speed = 0;
         }
         private void OnDisable()

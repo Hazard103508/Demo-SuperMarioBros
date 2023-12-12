@@ -40,7 +40,10 @@ namespace Mario.Game.Items.Flower
         }
         private void OnEnable()
         {
-            this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+            if (this.StateMachine.CurrentState == this.StateMachine.StateRising)
+                this.StateMachine.CurrentState.Enter();
+            else
+                this.StateMachine.TransitionTo(this.StateMachine.StateRising);
 
             _gameplayService.GameFrozen += GameplayService_GameFrozen;
             _gameplayService.GameUnfrozen += GameplayService_GameUnfrozen;

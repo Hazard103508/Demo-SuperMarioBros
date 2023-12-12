@@ -49,7 +49,11 @@ namespace Mario.Game.Items.Mushroom
         }
         private void OnEnable()
         {
-            this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+            if (this.StateMachine.CurrentState == this.StateMachine.StateRising)
+                this.StateMachine.CurrentState.Enter();
+            else
+                this.StateMachine.TransitionTo(this.StateMachine.StateRising);
+
             Movable.Speed = 0;
             _gameplayService.GameFrozen += GameplayService_GameFrozen;
             _gameplayService.GameUnfrozen += GameplayService_GameUnfrozen;

@@ -6,9 +6,9 @@ namespace Mario.Game.Items.Mushroom
     {
         #region Objects
         private float _timer = 0;
-        private float _maxTime = 0.8f;
-        private Vector3 _initPosition;
-        private Vector3 _targetPosition;
+        private float _maxTime = 1f;
+        private float _initPosition;
+        private float _targetPosition;
         private bool _isFrozen;
         #endregion
 
@@ -27,11 +27,13 @@ namespace Mario.Game.Items.Mushroom
         public override void Enter()
         {
             base.Enter();
+            _isFrozen = false;
             _timer = 0;
             Mushroom.Movable.enabled = false;
             Mushroom.gameObject.layer = LayerMask.NameToLayer("Item");
-            _initPosition = Mushroom.transform.transform.position;
-            _targetPosition = _initPosition + Vector3.up;
+
+            _initPosition = Mushroom.transform.transform.position.y;
+            _targetPosition = _initPosition + 1;
         }
         public override void Exit()
         {
@@ -44,7 +46,9 @@ namespace Mario.Game.Items.Mushroom
 
             _timer += Time.deltaTime;
             var t = Mathf.InverseLerp(0, _maxTime, _timer);
-            Mushroom.transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
+
+            float y = Mathf.Lerp(_initPosition, _targetPosition, t);
+            Mushroom.transform.localPosition = new Vector3(Mushroom.transform.localPosition.x, y, Mushroom.transform.localPosition.z);
 
             if (_timer >= _maxTime)
                 Mushroom.StateMachine.TransitionTo(Mushroom.StateMachine.StateWalk);

@@ -1,4 +1,5 @@
 using Mario.Game.Player;
+using System.Net.Sockets;
 using UnityEngine;
 
 namespace Mario.Game.Items.Flower
@@ -7,10 +8,10 @@ namespace Mario.Game.Items.Flower
     {
         #region Objects
         private float _timer = 0;
-        private float _maxTime = 0.8f;
+        private float _maxTime = 1f;
         private float _collectTime = 0.4f;
-        private Vector3 _initPosition;
-        private Vector3 _targetPosition;
+        private float _initPosition;
+        private float _targetPosition;
         private bool _isFrozen;
         #endregion
 
@@ -37,10 +38,12 @@ namespace Mario.Game.Items.Flower
         public override void Enter()
         {
             base.Enter();
+            _isFrozen = false;
             _timer = 0;
             Flower.gameObject.layer = LayerMask.NameToLayer("Item");
-            _initPosition = Flower.transform.transform.position;
-            _targetPosition = _initPosition + Vector3.up;
+
+            _initPosition = Flower.transform.transform.position.y;
+            _targetPosition = _initPosition + 1;
         }
         public override void Update()
         {
@@ -49,7 +52,9 @@ namespace Mario.Game.Items.Flower
 
             _timer += Time.deltaTime;
             var t = Mathf.InverseLerp(0, _maxTime, _timer);
-            Flower.transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
+
+            float y = Mathf.Lerp(_initPosition, _targetPosition, t);
+            Flower.transform.localPosition = new Vector3(Flower.transform.localPosition.x, y, Flower.transform.localPosition.z);
 
             if (_timer >= _maxTime)
                 Flower.StateMachine.TransitionTo(Flower.StateMachine.StateIdle);

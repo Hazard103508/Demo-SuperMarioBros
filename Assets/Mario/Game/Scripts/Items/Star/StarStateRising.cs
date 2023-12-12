@@ -6,9 +6,9 @@ namespace Mario.Game.Items.Star
     {
         #region Objects
         private float _timer = 0;
-        private float _maxTime = 0.8f;
-        private Vector3 _initPosition;
-        private Vector3 _targetPosition;
+        private float _maxTime = 1f;
+        private float _initPosition;
+        private float _targetPosition;
         private bool _isFrozen;
         #endregion
 
@@ -28,10 +28,12 @@ namespace Mario.Game.Items.Star
         {
             base.Enter();
             _timer = 0;
+            _isFrozen = false;
             Star.Movable.enabled = false;
             Star.gameObject.layer = LayerMask.NameToLayer("Item");
-            _initPosition = Star.transform.transform.position;
-            _targetPosition = _initPosition + Vector3.up;
+            
+            _initPosition = Star.transform.transform.position.y;
+            _targetPosition = _initPosition + 1;
         }
         public override void Update()
         {
@@ -40,7 +42,9 @@ namespace Mario.Game.Items.Star
 
             _timer += Time.deltaTime;
             var t = Mathf.InverseLerp(0, _maxTime, _timer);
-            Star.transform.localPosition = Vector3.Lerp(_initPosition, _targetPosition, t);
+
+            float y = Mathf.Lerp(_initPosition, _targetPosition, t);
+            Star.transform.localPosition = new Vector3(Star.transform.localPosition.x, y, Star.transform.localPosition.z);
 
             if (_timer >= _maxTime)
                 Star.StateMachine.TransitionTo(Star.StateMachine.StateJumping);
