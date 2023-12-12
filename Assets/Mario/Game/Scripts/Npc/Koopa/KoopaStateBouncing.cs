@@ -108,7 +108,7 @@ namespace Mario.Game.Npc.Koopa
         #endregion
 
         #region On Fireball Hit
-        public override void OnHittedByFireBall(Fireball fireball) => Kill(fireball.transform.position);
+        public override void OnHittedByFireBall(Fireball fireball) => Kill(fireball.GetHitPosition());
         #endregion
     }
 }

@@ -49,6 +49,7 @@ namespace Mario.Game.Interactable
         public void ChangeDirectionToRight() => _movable.Speed = Mathf.Abs(_movable.Speed);
         public void ChangeDirectionToLeft() => _movable.Speed = -Mathf.Abs(_movable.Speed);
         public void OnOutOfScreen() => gameObject.SetActive(false);
+        public Vector3 GetHitPosition() => gameObject.transform.position + new Vector3(-Mathf.Sign(Movable.Speed), 0);
         #endregion
 
         #region Private Methods
